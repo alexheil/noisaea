@@ -1,0 +1,30 @@
+<%= provide(:title, "Change Your Password | Noisaea //") %>
+<%= render 'partials/uni_header' %>
+<div class="buffalo">
+  <div class="delaware">
+    <div class="elmwood">
+      <div class="harlem">
+        <h1>change your password</h1>
+      </div>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+
+        <div class="highgate">
+          <%= f.password_field :password, autofocus: true, autocomplete: "off", placeholder: "new password", class: "huron"  %>
+        </div>
+
+        <div class="highgate">
+          <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "confirm your password", class: "huron"  %>
+        </div>
+
+        <div class="ellicott">
+          <%= f.submit "change my password", class: "exchange" %>
+        </div>
+      <% end %>
+      <div class="virginia">
+        <%= render "artists/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render 'partials/uni_footer' %>

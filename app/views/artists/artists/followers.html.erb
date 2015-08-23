@@ -1,0 +1,51 @@
+<%= provide(:title, "#{@artist.artist_name} | Followers") %>
+<div class="buffalo">
+  <% if @artist.artist_profile.cover_image == "" %>
+    <div class="clinton">
+      <% if artist_signed_in? && @artist.id == current_artist.id %>
+        you do not have a cover image yet. <%= link_to "add one?", edit_artist_profile_path(current_artist) %>
+      <% else %>
+        <%= "#{@artist.artist_name} hasn't uploaded a cover photo yet" %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="broadway">
+      <img src="<%= @artist.artist_profile.cover_image %>" width="100%" height="auto" />
+    </div>
+  <% end %>
+  <div class="delaware">
+    <div class="winspear">
+      <h1><%= link_to @artist.artist_name, artist_path(@artist) %></h1>
+    </div>
+    <div class="amherst">
+      <strong>// <%= pluralize(@artist.fans.count, "fan") %></strong>
+    </div>
+
+    <% if @artist.fans.any? %>
+    <div class="harlem">
+        <% @artist.fans.each do |fan| %>
+          <div class="utica">
+
+            <% if fan.fan_profile.cover_image == "" %>
+              <div class="sycamore">
+                <% if fan_signed_in? && fan.id == current_fan.id %>
+                  you do not have a profile image yet
+                <% else %>
+                  <%= "#{fan.fan_name} hasn't uploaded a profile image yet" %>
+                <% end %>
+              </div>
+            <% else %>
+            <div class="genesee">
+              <img src="<%= fan.fan_profile.cover_image %>" width="100%" height="auto" />
+            </div>
+            <% end %>
+
+            <center><%= link_to fan.fan_name, fan_path(fan) %></center>
+          </div>
+        <% end %>
+    </div>
+    <% end %>
+
+  </div>
+</div>
+<%= render 'partials/uni_footer' %>

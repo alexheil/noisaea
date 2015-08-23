@@ -1,0 +1,46 @@
+<%= provide(:title, "Edit Your Profile | Noisaea //") %>
+<div class="buffalo">
+  <div class="delaware">
+    <div class="elmwood">
+      <div class="harlem">
+        <h1>edit your profile</h1>
+      </div>
+
+      <%= form_for(@profile, url: venue_profile_path) do |f| %>
+      <%= render 'errors/profile_errors' %>
+        <div class="highgate">
+          <%= f.text_field :website, placeholder: "your website", class: "huron" %>
+        </div>
+        <div class="highgate">
+          <%= f.text_field :facebook_url, placeholder: "facebook url", class: "huron" %>
+        </div>
+        <div class="highgate">
+          <%= f.text_field :twitter_url, placeholder: "twitter url", class: "huron" %>
+        </div>
+        <div class="highgate">
+          <%= f.text_field :youtube_url, placeholder: "youtube url", class: "huron" %>
+        </div>
+        <div class="highgate">
+          <%= f.text_field :location, placeholder: "location", class: "huron" %>
+        </div>
+        <div class="highgate">
+          <%= f.text_field :founded, placeholder: "founded", class: "huron" %>
+        </div>
+        <div class="highgate">
+          <%= f.text_area :biography, placeholder: "biography", class: "chippewa" %>
+        </div>
+        <div class="highgate">
+          <%= f.text_field :cover_image, placeholder: "cover image", class: "huron" %>
+        </div>
+        <div class="highgate">
+          <%= f.text_field :profile_image, placeholder: "profile image", class: "huron" %>
+        </div>
+        <div class="ellicott">
+          <%= f.submit "update profile", class: "exchange" %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+<%= render 'partials/uni_footer' %>

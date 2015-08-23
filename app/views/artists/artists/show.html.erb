@@ -1,0 +1,210 @@
+<%= provide(:title, "#{@artist.artist_name}") %>
+<div class="buffalo">
+  <% if @artist.artist_profile.cover_image == "" %>
+    <div class="clinton">
+      <% if artist_signed_in? && @artist.id == current_artist.id %>
+        you do not have a cover image yet. <%= link_to "add one?", edit_artist_profile_path(current_artist) %>
+      <% else %>
+        <%= "#{@artist.artist_name} hasn't uploaded a cover photo yet" %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="broadway">
+      <img src="<%= @artist.artist_profile.cover_image %>" width="100%" height="auto" />
+    </div>
+  <% end %>
+  <div class="delaware">
+
+
+    <div class="main">
+      <div class="hedley">
+        <%= @artist.artist_name %>
+      </div>
+
+      <% if @artist == current_artist %>
+      <% else %>
+      <div class="niagara">
+        <div class="harlem">
+        <% if fan_signed_in? && current_fan.following_artist?(@artist) %>
+          <%= button_to "unfollow", artist_relationship_path, method: :delete, class: "exchange" %>
+        <% elsif fan_signed_in? %>
+          <%= form_for(ArtistRelationship.new, url: artist_relationships_path) do |f| %>
+            <%= hidden_field_tag :artist_id, @artist.id %>
+            <%= f.submit "follow", class: "exchange" %>
+          <% end %>
+        <% else %>
+          <%= button_to "follow", fan_session_path, class: "exchange" %>
+        <% end %>
+        </div>
+      </div>
+      <% end %>
+
+      <% if @artist == current_artist %>
+        <%= form_for(ArtistMicropost.new, url: artist_microposts_path(@artist)) do |f| %>
+          <div class="highgate">
+            <%= f.text_area :content, placeholder: "what have you been up to?", class: "court" %>
+          </div>
+          <div class="ellicott">
+            <%= f.submit "post update", class: "exchange" %>
+          </div>
+        <% end %>
+      <% end %>
+
+      <% if @artist.artist_microposts.any? %>
+        <div class="harlem">
+          <% @artist.artist_microposts.each do | micropost | %>
+          <div class="harlem">
+            <span class="winspear"><strong><%= link_to "#{@artist.artist_name}", artist_micropost_path(@artist, micropost) %></strong> posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
+                <% if @artist == current_artist %>
+               // <%= link_to "delete post", artist_micropost_path(@artist, micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %></span>
+                <% end %>
+              <div class="winspear">
+                <%= micropost.content %>
+              </div>
+              <div class="lisbon">
+                <a class="linden"><%= pluralize(micropost.artist_micropost_comments.count, "comment") %></a>
+              </div>
+
+              <div class="walden">
+                <div class="minnesota">
+                  <% micropost.artist_micropost_comments.each do |comment| %>
+                  <div class="northrup">
+                    <div class="winspear">
+                      <%= link_to Artist.find(comment.artist_id).artist_name, artist_path(Artist.find(comment.artist_id)) if comment.fan_id.nil? && comment.record_label_id.nil? && comment.venue_id.nil? && comment.producer_id.nil? %><%= link_to Fan.find(comment.fan_id).fan_name, fan_path(Fan.find(comment.fan_id)) if comment.artist_id.nil? && comment.record_label_id.nil? && comment.venue_id.nil? && comment.producer_id.nil? %><%= link_to RecordLabel.find(comment.record_label_id).label_name, record_label_path(RecordLabel.find(comment.record_label_id)) if comment.artist_id.nil? && comment.fan_id.nil? && comment.venue_id.nil? && comment.producer_id.nil? %><%= link_to Venue.find(comment.venue_id).venue_name, venue_path(Venue.find(comment.venue_id)) if comment.artist_id.nil? && comment.fan_id.nil? && comment.record_label_id.nil? && comment.producer_id.nil? %><%= link_to Producer.find(comment.producer_id).producer_name, producer_path(Producer.find(comment.producer_id)) if comment.artist_id.nil? && comment.fan_id.nil? && comment.record_label_id.nil? && comment.venue_id.nil? %> posted <%= time_ago_in_words(comment.created_at) %> ago
+                      <% if @artist == current_artist || (artist_signed_in? && current_artist.id == comment.artist_id) || (fan_signed_in? && current_fan.id == comment.fan_id) || (record_label_signed_in? && current_record_label.id == comment.record_label_id) || (venue_signed_in? && current_venue.id == comment.venue_id) || (producer_signed_in? && current_producer.id == comment.producer_id) %>
+                      // <%= link_to "delete comment", artist_micropost_comment_path(@artist, micropost, comment), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+                      <% end %>
+                    </div>
+
+                    <div class="winspear">
+                      <%= comment.content %>
+                    </div>
+                  </div>
+                  <% end %>
+
+                  <%= form_for(ArtistMicropostComment.new, url: artist_micropost_comments_path(@artist, micropost)) do |f| %>
+                    <div class="highgate">
+                      <%= f.text_area :content, placeholder: "leave a comment", class: "court" %>
+                    </div>
+                    <div class="ellicott">
+                      <%= f.submit "comment",  class: "exchange" %>
+                    </div>
+                  <% end %>
+
+                </div>
+              </div>
+
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
+    </div>
+
+
+    <div class="pearl">
+
+      <% if @artist == current_artist %>
+      <% else %>
+      <div class="washington">
+        <div class="lisbon">
+        <% if fan_signed_in? && current_fan.following_artist?(@artist) %>
+          <%= button_to "unfollow", artist_relationship_path, method: :delete, class: "exchange" %>
+        <% elsif fan_signed_in? %>
+          <%= form_for(ArtistRelationship.new, url: artist_relationships_path) do |f| %>
+            <%= hidden_field_tag :artist_id, @artist.id %>
+            <%= f.submit "follow", class: "exchange" %>
+          <% end %>
+        <% else %>
+          <%= button_to "follow", fan_session_path, class: "exchange" %>
+        <% end %>
+        </div>
+      </div>
+      <% end %>
+
+      <% if @artist.fans.any? %>
+        <div class="amherst">
+          <strong><%= link_to pluralize(@artist.fans.count, "fan"), artist_followers_path(@artist) %></strong>
+        </div>
+      <% else %>
+        <div class="amherst">
+          <strong>0 fans</strong>
+        </div>
+      <% end %>
+
+      <% if artist_signed_in? && @artist.id == current_artist.id && @artist.artist_profile.location == "" && @artist.artist_profile.genre == "" && @artist.artist_profile.members == "" && @artist.artist_profile.biography == "" && @artist.artist_profile.facebook_url == "" && @artist.artist_profile.twitter_url == "" && @artist.artist_profile.youtube_url == "" && @artist.artist_profile.itunes_url == "" && @artist.artist_profile.amazon_url == "" && @artist.artist_profile.google_play_url == "" && @artist.artist_profile.record_label == "" && @artist.artist_profile.website == "" %>
+        <p class="hertel">you do not have any profile information</p>
+        <div class="jefferson">
+          <%= link_to "update your profile", edit_artist_profile_path(current_artist) %>
+        </div>
+      <% elsif @artist.artist_profile.location == "" && @artist.artist_profile.genre == "" && @artist.artist_profile.members == "" && @artist.artist_profile.biography == "" && @artist.artist_profile.facebook_url == "" && @artist.artist_profile.twitter_url == "" && @artist.artist_profile.youtube_url == "" && @artist.artist_profile.itunes_url == "" && @artist.artist_profile.amazon_url == "" && @artist.artist_profile.google_play_url == "" && @artist.artist_profile.record_label == "" && @artist.artist_profile.website == "" %>
+        <p class="hertel"><%= "#{@artist.artist_name} does not have any profile information yet" %></p>
+      <% end %>
+      <% if @artist.artist_profile.location == "" %>
+      <% else %>
+      <p class="jefferson">location //</p>
+      <p class="fillmore"><%= @artist.artist_profile.location %></p>
+      <% end %>
+      <% if @artist.artist_profile.genre == "" %>
+      <% else %>
+      <p class="jefferson">genre //</p>
+      <p class="fillmore"><%= @artist.artist_profile.genre %></p>
+      <% end %>
+      <% if @artist.artist_profile.members == "" %>
+      <% else %>
+      <p class="jefferson">members //</p>
+      <p class="fillmore"><%= @artist.artist_profile.members %></p>
+      <% end %>
+      <% if @artist.artist_profile.record_label == "" %>
+      <% else %>
+      <p class="jefferson">record label //</p>
+      <p class="fillmore"><%= @artist.artist_profile.record_label %></p>
+      <% end %>
+      <% if @artist.artist_profile.biography == "" %>
+      <% else %>
+      <p class="jefferson">biography //</p>
+      <p class="fillmore"><%= @artist.artist_profile.biography %></p>
+      <% end %>
+      <% if @artist.artist_profile.website == "" %>
+      <% else %>
+      <p class="fillmore"><%= link_to "Website", @artist.artist_profile.website %></p>
+      <% end %>
+      <% if @artist.artist_profile.facebook_url == "" %>
+      <% else %>
+      <p class="fillmore"><%= link_to "Facebook", @artist.artist_profile.facebook_url %></p>
+      <% end %>
+      <% if @artist.artist_profile.twitter_url == "" %>
+      <% else %>
+      <p class="fillmore"><%= link_to "Twitter", @artist.artist_profile.twitter_url %></p>
+      <% end %>
+      <% if @artist.artist_profile.youtube_url == "" %>
+      <% else %>
+      <p class="fillmore"><%= link_to "YouTube", @artist.artist_profile.youtube_url %></p>
+      <% end %>
+      <% if @artist.artist_profile.itunes_url == "" %>
+      <% else %>
+      <p class="fillmore"><%= link_to "iTunes", @artist.artist_profile.itunes_url %></p>
+      <% end %>
+      <% if @artist.artist_profile.amazon_url == "" %>
+      <% else %>
+      <p class="fillmore"><%= link_to "Amazon", @artist.artist_profile.amazon_url %></p>
+      <% end %>
+      <% if @artist.artist_profile.google_play_url == "" %>
+      <% else %>
+      <p class="fillmore"><%= link_to "Google Play", @artist.artist_profile.google_play_url %></p>
+      <% end %>
+    </div>
+  </div>
+</div>
+<%= render "partials/uni_footer" %>
+
+<% if buffalo_signed_in? %>
+  <div class="forest">
+    <li><%= @artist.id %></li>
+    <li><%= @artist.artist_name %></li>
+    <li><%= @artist.username %></li>
+    <li><%= @artist.email %></li>
+    <li><%= @artist.sign_in_count %></li>
+    <li><%= @artist.last_sign_in_at %></li>
+  </div>
+<% end %>

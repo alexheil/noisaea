@@ -1,0 +1,148 @@
+<%= provide(:title, "#{@fan.fan_name} | Following") %>
+<div class="buffalo">
+  <% if @fan.fan_profile.cover_image == "" %>
+    <div class="clinton">
+      <% if fan_signed_in? && @fan.id == current_fan.id %>
+        you do not have a cover image yet. <%= link_to "add one?", edit_fan_profile_path(current_fan) %>
+      <% else %>
+        <%= "#{@fan.fan_name} hasn't uploaded a cover photo yet" %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="broadway">
+      <img src="<%= @fan.fan_profile.cover_image %>" width="100%" height="auto" />
+    </div>
+  <% end %>
+  <div class="delaware">
+    <div class="winspear">
+      <h1><%= link_to @fan.fan_name, fan_path(@fan) %></h1>
+    </div>
+
+    <div class="highgate">
+
+      <div class="allen">
+        <a id="fan-artist-click"><strong>artists</strong></a>
+        <div class="amherst">
+          // following <%= pluralize(@fan.artists.count, "artist") %>
+        </div>
+      </div>
+
+      <div class="allen">
+        <a id="fan-record-label-click"><strong>record labels</strong></a>
+        <div class="amherst">
+          // following <%= pluralize(@fan.record_labels.count, "record label") %>
+        </div>
+      </div>
+
+      <div class="allen">
+        <a id="fan-venue-click"><strong>venues</strong></a>
+        <div class="amherst">
+          // following <%= pluralize(@fan.venues.count, "venue") %>
+        </div>
+      </div>
+
+      <div class="allen">
+        <a id="fan-producer-click"><strong>producers</strong></a>
+        <div class="amherst">
+          // following <%= pluralize(@fan.producers.count, "producer") %>
+        </div>
+      </div>
+
+      <div id="fan-artist" class="ferry colvin">
+        <% @fan.artists.each do |artist| %>
+          <div class="utica">
+
+            <% if artist.artist_profile.cover_image == "" %>
+              <div class="sycamore">
+                <% if artist_signed_in? && artist.id == current_artist.id %>
+                  you do not have a profile image yet
+                <% else %>
+                  <%= "#{artist.artist_name} hasn't uploaded a profile image yet" %>
+                <% end %>
+              </div>
+            <% else %>
+            <div class="genesee">
+              <img src="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
+            </div>
+            <% end %>
+
+            <center><%= link_to artist.artist_name, artist_path(artist) %></center>
+          </div>
+        <% end %>
+      </div>
+
+      <div id="fan-record-label" class="ferry colvin">
+        <% @fan.record_labels.each do |record_label| %>
+          <div class="utica">
+
+            <% if record_label.record_label_profile.cover_image == "" %>
+              <div class="sycamore">
+                <% if record_label_signed_in? && record_label.id == current_record_label.id %>
+                  you do not have a profile image yet
+                <% else %>
+                  <%= "#{record_label.label_name} hasn't uploaded a profile image yet" %>
+                <% end %>
+              </div>
+            <% else %>
+            <div class="genesee">
+              <img src="<%= record_label.record_label_profile.cover_image %>" width="100%" height="auto" />
+            </div>
+            <% end %>
+
+            <center><%= link_to record_label.label_name, record_label_path(record_label) %></center>
+          </div>
+        <% end %>
+      </div>
+
+      <div id="fan-venue" class="ferry colvin">
+        <% @fan.venues.each do |venue| %>
+          <div class="utica">
+
+            <% if venue.venue_profile.cover_image == "" %>
+              <div class="sycamore">
+                <% if venue_signed_in? && venue.id == current_venue.id %>
+                  you do not have a profile image yet
+                <% else %>
+                  <%= "#{venue.venue_name} hasn't uploaded a profile image yet" %>
+                <% end %>
+              </div>
+            <% else %>
+            <div class="genesee">
+              <img src="<%= venue.venue_profile.cover_image %>" width="100%" height="auto" />
+            </div>
+            <% end %>
+
+            <center><%= link_to venue.venue_name, venue_path(venue) %></center>
+          </div>
+        <% end %>
+      </div>
+
+      <div id="fan-producer" class="ferry colvin">
+        <% @fan.producers.each do |producer| %>
+          <div class="utica">
+
+            <% if producer.producer_profile.cover_image == "" %>
+              <div class="sycamore">
+                <% if producer_signed_in? && producer.id == current_producer.id %>
+                  you do not have a profile image yet
+                <% else %>
+                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
+                <% end %>
+              </div>
+            <% else %>
+            <div class="genesee">
+              <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+            </div>
+            <% end %>
+
+            <center><%= link_to producer.producer_name, producer_path(producer) %></center>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<%= render 'partials/uni_footer' %>
+

@@ -1,0 +1,67 @@
+$main-color: #1DE9B6;
+$accent-color1: #A7FFEB;
+$my-black: #212121;
+$normal-font: Georgia, "Times New Roman", Times, serif;
+$fancy-font: 'Open Sans', Helvetica, arial, sans-serif;
+
+/* ************************* POSTS **************************** */
+
+.kenmore {
+  width: 50%;
+  margin: 2vh auto;
+}
+
+.north {
+  font-family: $fancy-font;
+  font-weight: 300;
+  font-size: 4em;
+  margin: 10vh 0 15vh 0;
+}
+
+.best {
+  font-family: $fancy-font;
+  word-break: break-word;
+  white-space: pre-line;
+  margin: 5vh 0;
+}
+
+.summer {
+  font-family: $fancy-font;
+  font-size: 1.25em;
+  margin: 2vh 0;
+}
+
+.eagle {
+  width: 100%;
+  background-color: #FFF176;
+  padding: 2vh 2vw;
+}
+
+.swan {
+  width: 100%;
+  background-color: #E0E0E0;
+  padding: 2vh 2vw;
+}
+
+@media screen and (min-width: 1450px) {
+
+  .north {
+    font-size: 5em;
+  }
+
+}
+
+@media screen and (max-width: 585px) {
+
+  .north {
+    font-size: 2em;
+  }
+
+}
+
+@media screen and (max-width: 425px) {
+    .north {
+      font-size: 1.75em;
+    }
+
+}

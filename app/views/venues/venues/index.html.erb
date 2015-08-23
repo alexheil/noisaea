@@ -1,0 +1,135 @@
+<%= provide(:title, "Discover Venues") %>
+<%= render "partials/uni_header" %>
+<div class="buffalo">
+  <div class="delaware">
+    <% if @venues.any? %>
+
+      <div class="washington">
+        <div class="highgate">
+          <div id="popular" class="porter lafayette">
+            popular
+          </div>
+          <div id="recent" class="porter">
+            recent
+          </div>
+          <div id="location" class="porter">
+            location
+          </div>
+        </div>
+      </div>
+
+      <div class="niagara">
+        <div class="highgate">
+        <center>
+          <div id="mpopular" class="porter lafayette">
+            <strong>popular</strong>
+          </div>
+          <div id="mrecent" class="porter">
+            <strong>recent</strong>
+          </div>
+          <div id="mlocation" class="porter">
+            <strong>location</strong>
+          </div>
+        </center>
+        </div>
+      </div>
+
+      <div id="container-popular" class="ferry">
+        <% @venues.sort_by{ |venue| -venue.fans.count }.take(10).each do |venue| %>
+          <div class="utica">
+            <% if venue.venue_profile.cover_image == "" %>
+              <div class="sycamore">
+                <% if venue_signed_in? && venue.id == current_venue.id %>
+                  you do not have a profile image yet
+                <% else %>
+                  <%= "#{venue.venue_name} hasn't uploaded a profile image yet" %>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="genesee">
+                <img src="<%= venue.venue_profile.cover_image %>" width="100%" height="auto" />
+              </div>
+            <% end %>
+              <div class="hertel">
+                <center><%= link_to venue.venue_name, venue_path(venue) %></center>
+              </div>
+              <div class="hertel">
+                <center><%= venue.venue_profile.location unless venue.venue_profile.location == "" %></center>
+              </div>
+              <div class="hertel">
+              <center><%= link_to pluralize(venue.fans.count, "fan"), venue_followers_path(venue) %></center>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <div id="container-recent" class="ferry colvin">
+        <% @venues.order( 'id DESC' ).take(10).each do |venue| %>
+          <div class="utica">
+            <% if venue.venue_profile.cover_image == "" %>
+              <div class="sycamore">
+                <% if venue_signed_in? && venue.id == current_venue.id %>
+                  you do not have a profile image yet
+                <% else %>
+                  <%= "#{venue.venue_name} hasn't uploaded a profile image yet" %>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="genesee">
+                <img src="<%= venue.venue_profile.cover_image %>" width="100%" height="auto" />
+              </div>
+            <% end %>
+              <div class="hertel">
+                <center><%= link_to venue.venue_name, venue_path(venue) %></center>
+              </div>
+              <div class="hertel">
+                <center><%= venue.venue_profile.location unless venue.venue_profile.location == "" %></center>
+              </div>
+              <div class="hertel">
+              <center><%= link_to pluralize(venue.fans.count, "fan"), venue_followers_path(venue) %></center>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <div id="container-location" class="ferry colvin">
+        <% if fan_signed_in? %>
+          <% @venues.each do |venue| %>
+            <% if venue.venue_profile.location == current_fan.fan_profile.location %>
+              <div class="utica">
+                <% if venue.venue_profile.cover_image == "" %>
+                  <div class="sycamore">
+                    <% if venue_signed_in? && venue.id == current_venue.id %>
+                      you do not have a profile image yet
+                    <% else %>
+                      <%= "#{venue.venue_name} hasn't uploaded a profile image yet" %>
+                    <% end %>
+                  </div>
+                <% else %>
+                  <div class="genesee">
+                    <img src="<%= venue.venue_profile.cover_image %>" width="100%" height="auto" />
+                  </div>
+                <% end %>
+                  <div class="hertel">
+                    <center><%= link_to venue.venue_name, venue_path(venue) %></center>
+                  </div>
+                  <div class="hertel">
+                    <center><%= venue.venue_profile.location unless venue.venue_profile.location == "" %></center>
+                  </div>
+                  <div class="hertel">
+                  <center><%= link_to pluralize(venue.fans.count, "fan"), venue_followers_path(venue) %></center>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        <% else %>
+          <div class="hertel">
+            <center><%= link_to "sign in", new_fan_session_path %> to view venues based on location</center>
+          </div>
+        <% end %>
+      </div>
+
+    <% end %>
+  </div>
+</div>
+<%= render "partials/uni_footer" %>

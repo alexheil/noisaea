@@ -1,0 +1,39 @@
+    <div class="pearl">
+      <div class="summer">
+        categories //
+      </div>
+      <div class="amherst">
+        <%= link_to "marketing", '#' %>
+      </div>
+      <div class="amherst">
+        <%= link_to "news", '#' %>
+      </div>
+      <div class="amherst">
+        <%= link_to "meta", '#' %>
+      </div>
+
+      <div class="summer">
+        popular //
+      </div>
+
+      <% if @posts.any? %>
+        <% @posts.sort_by{ |post| -post.post_comments.count }.take(5).each do |post| %>
+          <div class="amherst">
+            <%= link_to post.title, post_path(post) %>
+          </div>
+        <% end %>
+      <% end %>
+
+      <div class="summer">
+        recent //
+      </div>
+
+      <% if @posts.any? %>
+        <% @posts.take(5).each do |post| %>
+          <div class="amherst">
+            <%= link_to post.title, post_path(post) %>
+          </div>
+        <% end %>
+      <% end %>
+
+    </div>

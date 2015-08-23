@@ -1,0 +1,28 @@
+<%= provide(:title, "Frequently Asked Questions") %>
+<%= render "partials/uni_header" %>
+<div class="buffalo">
+  <div class="kenmore">
+    <div class="harlem">
+      <h1>faq</h1>
+    </div>
+
+    <div class="highgate">
+      <h2>account information</h2>
+    </div>
+    <div class="highgate">
+      <h3>I can't sign into my account</h3>
+    </div>
+    <p class="minnesota">Uh, oh. That's not good. Think of all the activity that's happening on your account while you waste your time reading this meaningless sentence when you could have just skipped to the next paragraph and figured it out by now. Ok, sorry.</p>
+    <p class="minnesota">I'm guessing you either used the wrong email address or you forgot your password. In the second case, you need to <%= link_to "reset your password", new_fan_password_path if fan_signed_in? %><%= link_to "reset your password", new_artist_password_path if artist_signed_in? %><%= link_to "reset your password", new_record_label_password_path if record_label_signed_in? %><%= link_to "reset your password", new_venue_password_path if venue_signed_in? %><%= link_to "reset your password", new_producer_password_path if producer_signed_in? %><%= "reset your password" if !artist_signed_in? && !fan_signed_in? && !record_label_signed_in? && !venue_signed_in? && !producer_signed_in? %>. Click the link and enter the email you that is associated with your account. Confirmation instructions will be sent to you in order to reset and change your password. Once you change your password be sure to tattoo it somewhere on your body for quick reference.</p>
+    <p class="minnesota">I don't have a way to find user's emails yet, so try not to be so forgetful next time. If you think you've forgotten the email address you signed up with, please <%= link_to "contact", contact_path %> me and I'll get it taken care of for you. Include some sweet information such as your username and artist/fan/record label/venue/producer name.</p>
+    <div class="highgate">
+      <h3>How do I delete my account?</h3>
+    </div>
+    <p class="minnesota">First of all, I'm very sad to see that you want to delete your account. Deeply saddened... alright, I'm over it.</p>
+    <p class="minnesota">To delete your account, go to your <%= link_to "settings", edit_fan_registration_path if fan_signed_in? %><%= link_to "settings", edit_artist_registration_path if artist_signed_in? %><%= link_to "settings", edit_record_label_registration_path if record_label_signed_in? %><%= link_to "settings", edit_venue_registration_path if venue_signed_in? %><%= link_to "settings", edit_producer_registration_path if producer_signed_in? %><%= "settings" if !artist_signed_in? && !fan_signed_in? && !record_label_signed_in? && !venue_signed_in? && !producer_signed_in? %> and locate the delete button on the bottom of the page. Click it and you'll be prompted to delete your account. Beware, this is permanent and wipes you clean out of the database. No one, not even me, can get your account back.</p>
+    <p class="minnesota">Good riddance, and don't let the door slam you on the ass on your way out.</p>
+
+
+  </div>
+</div>
+<%= render "partials/uni_footer" %>

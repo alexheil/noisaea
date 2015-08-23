@@ -1,0 +1,38 @@
+<%= provide(:title, "Register As A Producer | Noisaea //") %>
+<%= render 'partials/uni_header' %>
+<div class="buffalo">
+  <div class="delaware">
+    <div class="elmwood">
+      <div class="harlem">
+        <h1>register as a producer</h1>
+      </div>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+
+        <div class="highgate">
+          <%= f.text_field :username, autofocus: true, placeholder: "username", class: "huron" %>
+        </div>
+        <div class="highgate">
+          <%= f.text_field :producer_name, placeholder: "producer name", class: "huron" %>
+        </div>
+        <div class="highgate">
+          <%= f.email_field :email, placeholder: "email address", class: "huron" %>
+        </div>
+        <div class="highgate">
+          <%= f.password_field :password, autocomplete: "off", placeholder: "password", class: "huron" %>
+        </div>
+        <div class="highgate">
+          <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "confirm your password", class: "huron" %>
+        </div>
+
+        <div class="ellicott">
+          <%= f.submit "register", class: "exchange" %>
+        </div>
+      <% end %>
+      <div class="virginia">
+        <%= render "producers/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render 'partials/uni_footer' %>

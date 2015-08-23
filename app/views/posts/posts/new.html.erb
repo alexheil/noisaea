@@ -1,0 +1,31 @@
+<%= provide(:title, "New Post") %>
+<div class="buffalo">
+  <div class="delaware">
+    <div class="elmwood">
+      <div class="harlem">
+        <h1>new post</h1>
+      </div>
+      <%= form_for(@post, url: posts_path) do |f| %>
+        <div class="highgate">
+          <%= f.text_field :title, placeholder: "title", class: "huron" %>
+        </div>
+        <div class="highgate">
+          <%= f.text_field :slug, placeholder: "slug", class: "huron" %>
+        </div>
+        <div class="highgate">
+          <%= f.select :category, options_for_select(categories)%>
+        </div>
+        <div class="highgate">
+          <%= f.text_field :image, placeholder: "image", class: "huron" %>
+        </div>
+        <div class="highgate">
+          <%= f.text_area :content, placeholder: "content", class: "chippewa" %>
+        </div>
+        <div class="ellicott">
+          <%= f.submit "publish post", class: "exchange" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<%= render 'partials/uni_footer' %>

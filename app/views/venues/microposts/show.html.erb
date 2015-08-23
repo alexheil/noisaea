@@ -1,0 +1,66 @@
+<%= provide(:title, "#{@venue.venue_name} | Status #{@micropost.id}") %>
+<div class="buffalo">
+  <% if @venue.venue_profile.cover_image == "" %>
+    <div class="clinton">
+      <% if venue_signed_in? && @venue.id == current_venue.id %>
+        you do not have a cover image yet
+      <% else %>
+        <%= "#{@venue.venue_name} hasn't uploaded a cover photo yet" %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="broadway">
+      <img src="<%= @venue.venue_profile.cover_image %>" width="100%" height="auto" />
+    </div>
+  <% end %>
+  <div class="delaware">
+    <div class="hedley winspear">
+      <%= link_to @venue.venue_name, venue_path(@venue) %>
+    </div>
+
+    <div class="harlem">
+      <span class="winspear"><strong><%= "#{@venue.venue_name}" %></strong> posted <%= time_ago_in_words(@micropost.created_at) %> ago</span>
+      <% if @venue == current_venue %>
+    // <%= link_to "delete post", venue_micropost_path(@venue, @micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %></span>
+      <% end %>
+      <div class="winspear">
+        <%= @micropost.content %>
+      </div>
+
+      <div class="lisbon">
+              <a class="linden"><%= pluralize(@micropost.venue_micropost_comments.count, "comment") %></a>
+            </div>
+
+            <div class="walden">
+              <div class="minnesota">
+                <% @micropost.venue_micropost_comments.each do |comment| %>
+
+                <div class="winspear">
+                   <%= link_to Artist.find(comment.artist_id).artist_name, artist_path(Artist.find(comment.artist_id)) if comment.fan_id.nil? && comment.record_label_id.nil? && comment.venue_id.nil? && comment.producer_id.nil? %><%= link_to Fan.find(comment.fan_id).fan_name, fan_path(Fan.find(comment.fan_id)) if comment.artist_id.nil? && comment.record_label_id.nil? && comment.venue_id.nil? && comment.producer_id.nil? %><%= link_to RecordLabel.find(comment.record_label_id).label_name, record_label_path(RecordLabel.find(comment.record_label_id)) if comment.artist_id.nil? && comment.fan_id.nil? && comment.venue_id.nil? && comment.producer_id.nil? %><%= link_to Venue.find(comment.venue_id).venue_name, venue_path(Venue.find(comment.venue_id)) if comment.artist_id.nil? && comment.fan_id.nil? && comment.record_label_id.nil? && comment.producer_id.nil? %><%= link_to Producer.find(comment.producer_id).producer_name, producer_path(Producer.find(comment.producer_id)) if comment.artist_id.nil? && comment.fan_id.nil? && comment.record_label_id.nil? && comment.venue_id.nil? %> posted <%= time_ago_in_words(comment.created_at) %> ago
+                  <% if @venue == current_venue || (artist_signed_in? && current_artist.id == comment.artist_id) || (fan_signed_in? && current_fan.id == comment.fan_id) || (record_label_signed_in? && current_record_label.id == comment.record_label_id) || (venue_signed_in? && current_venue.id == comment.venue_id) || (producer_signed_in? && current_producer.id == comment.producer_id) %>
+                  // <%= link_to "delete comment", venue_micropost_comment_path(@venue, @micropost, comment), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+                  <% end %>
+                </div>
+
+                <div class="winspear">
+                  <%= comment.content %>
+                </div>
+                <% end %>
+
+                <%= form_for(VenueMicropostComment.new, url: venue_micropost_comments_path(@venue, @micropost)) do |f| %>
+                  <div class="highgate">
+                    <%= f.text_area :content, placeholder: "leave a comment", class: "court" %>
+                  </div>
+                  <div class="ellicott">
+                    <%= f.submit "comment",  class: "exchange" %>
+                  </div>
+                <% end %>
+
+              </div>
+            </div>
+
+    </div>
+
+  </div>
+</div>
+<%= render 'partials/uni_footer' %>

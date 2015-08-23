@@ -1,0 +1,50 @@
+<div class="washington">
+<footer class="buffalo kensington">
+  <div class="delaware">
+    <nav class="eggert">
+      <span><%= link_to "noisaea //", root_url, class: "seneca" %></span>
+      <ul>
+        <li><%= link_to "contact", contact_path, class: "seneca" %></li>
+        <li><%= link_to "terms of use", terms_of_use_path, class: "seneca" %></li>
+        <li><%= link_to "privacy", privacy_path, class: "seneca" %></li>
+        <li><%= link_to "about", about_path, class: "seneca" %></li>
+        <li><%= link_to "faq", faq_path, class: "seneca" %></li>
+        <li><%= link_to "copyright", copyright_path, class: "seneca" %></li>
+        <% if artist_signed_in? || fan_signed_in? || record_label_signed_in? || venue_signed_in? || producer_signed_in? %>
+        <li><%= link_to "sign out", sign_out_path, class: "seneca" %></li>
+        <% else %>
+        <li><%= link_to "sign in", sign_in_path, class: "seneca" %></li>
+        <li><%= link_to "register", register_path, class: "seneca" %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</footer>
+</div>
+
+<div class="niagara">
+<footer class="buffalo kensington">
+  <div class="delaware">
+    <nav class="grant">
+      <strong><center><%= link_to "//", root_url, class: "seneca" %></center></strong>
+      <center><strong><a id="watson" class="smith">. . .</a></strong></center>
+      <div class="madison">
+        <ul>
+          <li><strong><%= link_to "contact", contact_path, class: "seneca" %></strong></li>
+          <li><strong><%= link_to "terms of use", terms_of_use_path, class: "seneca" %></strong></li>
+          <li><strong><%= link_to "privacy", privacy_path, class: "seneca" %></strong></li>
+          <li><strong><%= link_to "about", about_path, class: "seneca" %></strong></li>
+          <li><strong><%= link_to "faq", faq_path, class: "seneca" %></strong></li>
+          <li><strong><%= link_to "copyright", copyright_path, class: "seneca" %></strong></li>
+          <% if artist_signed_in? || fan_signed_in? || record_label_signed_in? || venue_signed_in? || producer_signed_in? %>
+          <li><strong><%= link_to "sign out", sign_out_path, class: "seneca" %></strong></li>
+          <% else %>
+          <li><strong><%= link_to "sign in", sign_in_path, class: "seneca" %></strong></li>
+          <li><strong><%= link_to "register", register_path, class: "seneca" %></strong></li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</footer>
+</div>

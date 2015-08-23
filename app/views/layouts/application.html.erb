@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= full_title(yield(:title)) %></title>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+
+    <% flash.each do |message_type, message| %>
+      <% if message_type != "timedout" %>
+      <div class="alert-<%= message_type %>">
+        <div class="vulcan">
+          <%= message %>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+
+    <% if artist_signed_in? %>
+      <%=  render "artists/partials/artist_header" %>
+    <% elsif fan_signed_in? %>
+      <%= render "fans/partials/fan_header" %>
+    <% elsif record_label_signed_in? %>
+      <%= render "recordlabels/partials/record_label_header" %>
+    <% elsif venue_signed_in? %>
+      <%= render 'venues/partials/venue_header' %>
+    <% elsif producer_signed_in? %>
+      <%= render 'producers/partials/producer_header' %>
+      <% elsif buffalo_signed_in? %>
+      <%= render 'buffaloes/partials/buffalo_header' %>
+    <% end %>
+
+    <%= yield %>
+
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<%= provide(:title, "Blog") %>
+<%= render "posts/partials/post_header" %>
+<div class="buffalo">
+  <div class="delaware">
+
+    <div class="main">
+      <% if @posts.any? %>
+        <% @posts.each do |post| %>
+        <h1><%= link_to post.title, post_path(post) %></h1>
+        <div class="amherst">
+          posted by <%= Buffalo.find(post.buffalo_id).buffalo_name %>
+        </div>
+        <div class="best">
+          <%= raw(post.content.truncate(400)) %>
+        </div>
+        <div class="harlem">
+          <%= pluralize(post.post_comments.count, "comment") %> // <%= link_to "read more...", post_path(post) %>
+        </div>
+        <% end %>
+      <% else %>
+        there are no posts lol
+      <% end %>
+    </div>
+
+    <%= render "posts/partials/post_sidebar" %>
+
+  </div>
+</div>
+<%= render "partials/uni_footer" %>

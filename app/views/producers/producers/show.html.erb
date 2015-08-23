@@ -1,0 +1,199 @@
+<%= provide(:title, "#{@producer.producer_name}") %>
+<div class="buffalo">
+  <% if @producer.producer_profile.cover_image == "" %>
+    <div class="clinton">
+      <% if producer_signed_in? && @producer.id == current_producer.id %>
+        you do not have a cover image yet. <%= link_to "add one?", edit_producer_profile_path(current_producer) %>
+      <% else %>
+        <%= "#{@producer.producer_name} hasn't uploaded a cover photo yet" %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="broadway">
+      <img src="<%= @producer.producer_profile.cover_image %>" width="100%" height="auto" />
+    </div>
+  <% end %>
+  <div class="delaware">
+
+
+    <div class="main">
+      <div class="hedley">
+        <%= @producer.producer_name %>
+      </div>
+
+      <% if @producer == current_producer %>
+      <% else %>
+      <div class="niagara">
+        <div class="harlem">
+        <% if fan_signed_in? && current_fan.following_producer?(@producer) %>
+          <%= button_to "unfollow", producer_relationship_path, method: :delete, class: "exchange" %>
+        <% elsif fan_signed_in? %>
+          <%= form_for(ProducerRelationship.new, url: producer_relationships_path) do |f| %>
+            <%= hidden_field_tag :producer_id, @producer.id %>
+            <%= f.submit "follow", class: "exchange" %>
+          <% end %>
+        <% else %>
+          <%= button_to "follow", fan_session_path, class: "exchange" %>
+        <% end %>
+        </div>
+      </div>
+      <% end %>
+
+      <% if @producer == current_producer %>
+        <%= form_for(ProducerMicropost.new, url: producer_microposts_path(@producer)) do |f| %>
+          <div class="highgate">
+            <%= f.text_area :content, placeholder: "what have you been up to?", class: "court" %>
+          </div>
+          <div class="ellicott">
+            <%= f.submit "post update", class: "exchange" %>
+          </div>
+        <% end %>
+      <% end %>
+
+      <% if @producer.producer_microposts.any? %>
+        <div class="harlem">
+          <% @producer.producer_microposts.each do | micropost | %>
+          <div class="harlem">
+            <span class="winspear"><strong><%= link_to "#{@producer.producer_name}", producer_micropost_path(@producer, micropost) %></strong> posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
+                <% if @producer == current_producer %>
+               // <%= link_to "delete post", producer_micropost_path(@producer, micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %></span>
+                <% end %>
+              <div class="winspear">
+                <%= micropost.content %>
+              </div>
+
+              <div class="lisbon">
+                <a class="linden"><%= pluralize(micropost.producer_micropost_comments.count, "comment") %></a>
+              </div>
+
+              <div class="walden">
+                <div class="minnesota">
+                  <% micropost.producer_micropost_comments.each do |comment| %>
+                  <div class="northrup">
+                    <div class="winspear">
+                       <%= link_to Artist.find(comment.artist_id).artist_name, artist_path(Artist.find(comment.artist_id)) if comment.fan_id.nil? && comment.record_label_id.nil? && comment.venue_id.nil? && comment.producer_id.nil? %><%= link_to Fan.find(comment.fan_id).fan_name, fan_path(Fan.find(comment.fan_id)) if comment.artist_id.nil? && comment.record_label_id.nil? && comment.venue_id.nil? && comment.producer_id.nil? %><%= link_to RecordLabel.find(comment.record_label_id).label_name, record_label_path(RecordLabel.find(comment.record_label_id)) if comment.artist_id.nil? && comment.fan_id.nil? && comment.venue_id.nil? && comment.producer_id.nil? %><%= link_to Venue.find(comment.venue_id).venue_name, venue_path(Venue.find(comment.venue_id)) if comment.artist_id.nil? && comment.fan_id.nil? && comment.record_label_id.nil? && comment.producer_id.nil? %><%= link_to Producer.find(comment.producer_id).producer_name, producer_path(Producer.find(comment.producer_id)) if comment.artist_id.nil? && comment.fan_id.nil? && comment.record_label_id.nil? && comment.venue_id.nil? %> posted <%= time_ago_in_words(comment.created_at) %> ago
+                      <% if @producer == current_producer || (artist_signed_in? && current_artist.id == comment.artist_id) || (fan_signed_in? && current_fan.id == comment.fan_id) || (record_label_signed_in? && current_record_label.id == comment.record_label_id) || (venue_signed_in? && current_venue.id == comment.venue_id) || (producer_signed_in? && current_producer.id == comment.producer_id) %>
+                      // <%= link_to "delete comment", producer_micropost_comment_path(@producer, micropost, comment), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+                      <% end %>
+                    </div>
+
+                    <div class="winspear">
+                      <%= comment.content %>
+                    </div>
+                  </div>
+                  <% end %>
+
+                  <%= form_for(ProducerMicropostComment.new, url: producer_micropost_comments_path(@producer, micropost)) do |f| %>
+                    <div class="highgate">
+                      <%= f.text_area :content, placeholder: "leave a comment", class: "court" %>
+                    </div>
+                    <div class="ellicott">
+                      <%= f.submit "comment",  class: "exchange" %>
+                    </div>
+                  <% end %>
+
+                </div>
+              </div>
+
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
+    </div>
+
+
+    <div class="pearl">
+
+      <% if @producer == current_producer %>
+      <% else %>
+      <div class="washington">
+        <div class="lisbon">
+        <% if fan_signed_in? && current_fan.following_producer?(@producer) %>
+          <%= button_to "unfollow", producer_relationship_path, method: :delete, class: "exchange" %>
+        <% elsif fan_signed_in? %>
+          <%= form_for(ProducerRelationship.new, url: producer_relationships_path) do |f| %>
+            <%= hidden_field_tag :producer_id, @producer.id %>
+            <%= f.submit "follow", class: "exchange" %>
+          <% end %>
+        <% else %>
+          <%= button_to "follow", fan_session_path, class: "exchange" %>
+        <% end %>
+        </div>
+      </div>
+      <% end %>
+
+      <% if @producer.fans.any? %>
+        <div class="amherst">
+          <strong><%= link_to pluralize(@producer.fans.count, "fan"), producer_followers_path(@producer) %></strong>
+        </div>
+      <% else %>
+        <div class="amherst">
+          <strong>0 fans</strong>
+        </div>
+      <% end %>
+
+      <% if producer_signed_in? && @producer.id == current_producer.id && @producer.producer_profile.location == "" && @producer.producer_profile.genre == "" && @producer.producer_profile.founded && @producer.producer_profile.artists == "" && @producer.producer_profile.biography == "" && @producer.producer_profile.facebook_url == "" && @producer.producer_profile.twitter_url == "" && @producer.producer_profile.youtube_url == "" && @producer.producer_profile.website %>
+        <p class="hertel">you do not have any profile information</p>
+        <div class="jefferson">
+          <%= link_to "update your profile", edit_producer_profile_path(current_producer) %>
+        </div>
+      <% elsif @producer.producer_profile.location == "" && @producer.producer_profile.genre == "" && @producer.producer_profile.founded && @producer.producer_profile.artists == "" && @producer.producer_profile.biography == "" && @producer.producer_profile.facebook_url == "" && @producer.producer_profile.twitter_url == "" && @producer.producer_profile.youtube_url == "" && @producer.producer_profile.website %>
+        <p class="hertel"><%= "#{@producer.producer_name} does not have any profile information yet" %></p>
+      <% end %>
+      <% if @producer.producer_profile.location == "" %>
+      <% else %>
+      <p class="jefferson">location //</p>
+      <p class="fillmore"><%= @producer.producer_profile.location %></p>
+      <% end %>
+      <% if @producer.producer_profile.founded == "" %>
+      <% else %>
+      <p class="jefferson">founded //</p>
+      <p class="fillmore"><%= @producer.producer_profile.founded %></p>
+      <% end %>
+      <% if @producer.producer_profile.genre == "" %>
+      <% else %>
+      <p class="jefferson">genre //</p>
+      <p class="fillmore"><%= @producer.producer_profile.genre %></p>
+      <% end %>
+      <% if @producer.producer_profile.artists == "" %>
+      <% else %>
+      <p class="jefferson">artists //</p>
+      <p class="fillmore"><%= @producer.producer_profile.artists %></p>
+      <% end %>
+      <% if @producer.producer_profile.biography == "" %>
+      <% else %>
+      <p class="jefferson">biography //</p>
+      <p class="fillmore"><%= @producer.producer_profile.biography %></p>
+      <% end %>
+      <% if @producer.producer_profile.website == "" %>
+      <% else %>
+      <p class="fillmore"><%= link_to "#{@producer.producer_name}'s website", @producer.producer_profile.website %></p>
+      <% end %>
+      <% if @producer.producer_profile.facebook_url == "" %>
+      <% else %>
+      <p class="fillmore"><%= link_to "Facebook", @producer.producer_profile.facebook_url %></p>
+      <% end %>
+      <% if @producer.producer_profile.twitter_url == "" %>
+      <% else %>
+      <p class="fillmore"><%= link_to "Twitter", @producer.producer_profile.twitter_url %></p>
+      <% end %>
+      <% if @producer.producer_profile.youtube_url == "" %>
+      <% else %>
+      <p class="fillmore"><%= link_to "YouTube", @producer.producer_profile.youtube_url %></p>
+      <% end %>
+    </div>
+  </div>
+</div>
+<%= render "partials/uni_footer" %>
+
+<% if buffalo_signed_in? %>
+  <div class="forest">
+    <li><%= @producer.id %></li>
+    <li><%= @producer.producer_name %></li>
+    <li><%= @producer.username %></li>
+    <li><%= @producer.email %></li>
+    <li><%= @producer.sign_in_count %></li>
+    <li><%= @producer.last_sign_in_at %></li>
+  </div>
+<% end %>

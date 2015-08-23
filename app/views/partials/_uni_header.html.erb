@@ -1,0 +1,46 @@
+<div class="washington">
+<header class="buffalo ontario">
+  <div class="austin">
+    <nav class="parkside">
+      <%= link_to "nosiaea //", root_url, class: "military" %>
+      <ul>
+        <li><%= link_to "artists", artists_path, class: "depew" %></li>
+        <li><%= link_to "record labels", record_labels_path, class: "depew" %></li>
+        <li><%= link_to "venues", venues_path, class: "depew" %></li>
+        <li><%= link_to "producers", producers_path, class: "depew" %></li>
+        <% if artist_signed_in? || fan_signed_in? || record_label_signed_in? || venue_signed_in? || producer_signed_in? %>
+        <% else %>
+          <li><%= link_to "sign in", sign_in_path, class: "depew" %></li>
+          <li><%= link_to "register", register_path, class: "depew" %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>
+</div>
+
+<div class="niagara">
+<header class="buffalo">
+  <div class="austin">
+    <nav class="grant">
+      <center><h1><%= link_to "//", root_url, class: "military" %></h1></center>
+      <ul>
+        <li><strong><%= link_to "a", artists_path, class: "smith" %></strong></li>
+        <li><strong><%= link_to "r", record_labels_path, class: "smith" %></strong></li>
+        <li><strong><%= link_to "v", venues_path, class: "smith" %></strong></li>
+        <li><strong><%= link_to "p", producers_path, class: "smith" %></strong></li>
+        <% if artist_signed_in? || fan_signed_in? || record_label_signed_in? || venue_signed_in? || producer_signed_in? %>
+        <% else %>
+          <li><strong><a id="emslie" class="smith">. . .</a></strong></li>
+        <% end %>
+      </ul>
+    </nav>
+    <div class="monroe">
+      <ul>
+        <li><strong><%= link_to "sign in", sign_in_path, class: "smith" %></strong></li>
+        <li><strong><%= link_to "register", register_path, class: "smith" %></strong></li>
+      </ul>
+    </div>
+  </div>
+</header>
+</div>

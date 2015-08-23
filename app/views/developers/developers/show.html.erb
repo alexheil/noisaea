@@ -1,0 +1,67 @@
+<%= provide(:title, "#{@developer.title}") %>
+<%= render "developers/partials/developer_header" %>
+<div class="buffalo">
+  <div class="delaware">
+
+    <div class="main">
+      <h1><%= @developer.title %></h1>
+      <div class="amherst">
+        posted by <%= Buffalo.find(@developer.buffalo_id).buffalo_name %> // follow him on twitter <a href="https://twitter.com/realalexheil">here</a>.
+      </div>
+      <div class="best">
+        <%= raw(@developer.content) %>
+      </div>
+      <div class="harlem">
+        <h3>grant other people with this knowledge on...</h3>
+        <div class="amherst">
+          <a href="https://facebook.com" class="share-facebook">facebook</a> // <a href="https://twitter.com" class="share-twitter">twitter</a> // <a href="https://plus.google.com" class="share-googleplus">google+</a> // <a href="https://tumblr.com" class="share-tumblr">tumblr</a> // <a href="https://pinterest.com" class="share-pinterest">pinterest</a>
+        </div>
+      </div>
+
+      <div class="harlem">
+        <a class="linden"><%= pluralize(@developer.developer_comments.count, "comment") %>. add one?</a>
+      </div>
+
+      <div class="walden">
+        <div class="minnesota">
+          <% @developer.developer_comments.each do |comment| %>
+          <div class="northrup">
+            <div class="amherst">
+              <%= link_to Artist.find(comment.artist_id).artist_name, artist_path(Artist.find(comment.artist_id)) if comment.fan_id.nil? && comment.record_label_id.nil? && comment.venue_id.nil? && comment.producer_id.nil? %><%= link_to Fan.find(comment.fan_id).fan_name, fan_path(Fan.find(comment.fan_id)) if comment.artist_id.nil? && comment.record_label_id.nil? && comment.venue_id.nil? && comment.producer_id.nil? %><%= link_to RecordLabel.find(comment.record_label_id).label_name, record_label_path(RecordLabel.find(comment.record_label_id)) if comment.artist_id.nil? && comment.fan_id.nil? && comment.venue_id.nil? && comment.producer_id.nil? %><%= link_to Venue.find(comment.venue_id).venue_name, venue_path(Venue.find(comment.venue_id)) if comment.artist_id.nil? && comment.fan_id.nil? && comment.record_label_id.nil? && comment.producer_id.nil? %><%= link_to Producer.find(comment.producer_id).producer_name, producer_path(Producer.find(comment.producer_id)) if comment.artist_id.nil? && comment.fan_id.nil? && comment.record_label_id.nil? && comment.venue_id.nil? %> posted <%= time_ago_in_words(comment.created_at) %> ago
+              <% if (buffalo_signed_in? && @developer.buffalo_id == current_buffalo.id) || (fan_signed_in? && current_fan.id == comment.fan_id) || (record_label_signed_in? && current_record_label.id == comment.record_label_id) || (venue_signed_in? && current_venue.id == comment.venue_id) || (producer_signed_in? && current_producer.id == comment.producer_id) %>
+              // <%= link_to "delete comment", developer_comment_path(@developer, comment), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+              <% end %>
+            </div>
+
+            <div class="amherst">
+              <%= comment.content %>
+            </div>
+          </div>
+          <% end %>
+          <%= form_for(DeveloperComment.new, url: developer_comments_path(@developer)) do |f| %>
+            <div class="highgate">
+              <%= f.text_area :content, placeholder: "leave a comment", class: "court" %>
+            </div>
+            <div class="ellicott">
+              <%= f.submit "comment",  class: "exchange" %>
+            </div>
+          <% end %>
+        </div>
+
+      </div>
+
+      <div class="amherst">
+        <%= link_to "see all developer posts", developers_path %>
+      </div>
+
+    </div>
+
+    <%= render "developers/partials/developer_sidebar" %>
+
+  </div>
+</div>
+<%= render "partials/uni_footer" %>
+
+<% if buffalo_signed_in? %>
+  <%= link_to "edit", edit_developer_path %> // <%= link_to "delete", developer_path, data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+<% end %>

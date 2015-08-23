@@ -1,0 +1,51 @@
+<%= provide(:title, "#{@venue.venue_name} | Followers") %>
+<div class="buffalo">
+  <% if @venue.venue_profile.cover_image == "" %>
+    <div class="clinton">
+      <% if venue_signed_in? && @venue.id == current_venue.id %>
+        you do not have a cover image yet. <%= link_to "add one?", edit_venue_profile_path(current_venue) %>
+      <% else %>
+        <%= "#{@venue.venue_name} hasn't uploaded a cover photo yet" %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="broadway">
+      <img src="<%= @venue.venue_profile.cover_image %>" width="100%" height="auto" />
+    </div>
+  <% end %>
+  <div class="delaware">
+    <div class="winspear">
+      <h1><%= link_to @venue.venue_name, venue_path(@venue) %></h1>
+    </div>
+    <div class="amherst">
+      <strong>// <%= pluralize(@venue.fans.count, "fan") %></strong>
+    </div>
+
+    <% if @venue.fans.any? %>
+    <div class="harlem">
+        <% @venue.fans.each do |fan| %>
+          <div class="utica">
+
+            <% if fan.fan_profile.cover_image == "" %>
+              <div class="sycamore">
+                <% if fan_signed_in? && fan.id == current_fan.id %>
+                  you do not have a profile image yet
+                <% else %>
+                  <%= "#{fan.fan_name} hasn't uploaded a profile image yet" %>
+                <% end %>
+              </div>
+            <% else %>
+            <div class="genesee">
+              <img src="<%= fan.fan_profile.cover_image %>" width="100%" height="auto" />
+            </div>
+            <% end %>
+
+            <center><%= link_to fan.fan_name, fan_path(fan) %></center>
+          </div>
+        <% end %>
+    </div>
+    <% end %>
+
+  </div>
+</div>
+<%= render 'partials/uni_footer' %>

@@ -1,0 +1,29 @@
+<%= provide(:title, "Developers") %>
+<%= render "developers/partials/developer_header" %>
+<div class="buffalo">
+  <div class="delaware">
+
+    <div class="main">
+      <% if @developers.any? %>
+        <% @developers.each do |developer| %>
+        <h1><%= link_to developer.title, developer_path(developer) %></h1>
+        <div class="amherst">
+          posted by <%= Buffalo.find(developer.buffalo_id).buffalo_name %>
+        </div>
+        <div class="best">
+          <%= raw(developer.content.truncate(400)) %>
+        </div>
+        <div class="harlem">
+          <%= pluralize(developer.developer_comments.count, "comment") %> // <%= link_to "read more...", developer_path(developer) %>
+        </div>
+        <% end %>
+      <% else %>
+        there are no posts lol
+      <% end %>
+    </div>
+
+    <%= render "developers/partials/developer_sidebar" %>
+
+  </div>
+</div>
+<%= render "partials/uni_footer" %>

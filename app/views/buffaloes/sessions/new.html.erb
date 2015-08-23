@@ -1,0 +1,38 @@
+<%= render 'partials/uni_header' %>
+<div class="buffalo">
+  <div class="delaware">
+    <div class="elmwood">
+      <div class="harlem">
+        <h1>number one with hot sauce and sour cream</h1>
+      </div>
+
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="highgate">
+          <%= f.text_field :username, autofocus: true, class: "huron" %>
+        </div>
+        <div class="highgate">
+          <%= f.email_field :email, autofocus: true, class: "huron" %>
+        </div>
+        <div class="highgate">
+          <%= f.password_field :password, autocomplete: "off", class: "huron" %>
+        </div>
+        <div class="highgate">
+          <%= f.text_field :wow_auth, autofocus: true, class: "huron" %>
+        </div>
+        <% if devise_mapping.rememberable? -%>
+          <div class="highgate">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me, class: "mohawk" %>
+          </div>
+        <% end -%>
+        <div class="ellicott">
+          <%= f.submit "sign in", class: "exchange" %>
+        </div>
+      <% end %>
+      <div class="virginia">
+        <%= render "artists/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render 'partials/uni_footer' %>

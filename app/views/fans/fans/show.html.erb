@@ -1,0 +1,63 @@
+<%= provide(:title, "#{@fan.fan_name}") %>
+<div class="buffalo">
+  <% if @fan.fan_profile.cover_image == "" %>
+    <div class="clinton">
+      <% if fan_signed_in? && @fan.id == current_fan.id %>
+        you do not have a cover image yet. <%= link_to "add one?", edit_fan_profile_path(current_fan) %>
+      <% else %>
+        <%= "#{@fan.fan_name} hasn't uploaded a cover photo yet" %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="broadway">
+      <img src="<%= @fan.fan_profile.cover_image %>" width="100%" height="auto" />
+    </div>
+  <% end %>
+  <div class="delaware">
+
+
+    <div class="main">
+      <h1><%= @fan.fan_name %></h1>
+      <%= render "fans/partials/fan_feed" %>
+    </div>
+
+
+    <div class="pearl">
+      <% if fan_signed_in? && @fan.id == current_fan.id && @fan.fan_profile.location == "" && @fan.fan_profile.biography == "" && @fan.fan_profile.website == "" %>
+        <p class="hertel">you do not have any profile information</p>
+        <div class="jefferson">
+          <%= link_to "update your profile", edit_fan_profile_path(current_fan) %>
+        </div>
+      <% elsif @fan.fan_profile.location == "" && @fan.fan_profile.biography == "" && @fan.fan_profile.website == "" %>
+        <p class="hertel"><%= "#{@fan.fan_name} does not have any profile information yet" %></p>
+      <% end %>
+      <% if @fan.fan_profile.location == "" %>
+      <% else %>
+      <p class="jefferson">location //</p>
+      <p class="fillmore"><%= @fan.fan_profile.location %></p>
+      <% end %>
+      <% if @fan.fan_profile.website == "" %>
+      <% else %>
+      <p class="jefferson">website //</p>
+      <p class="fillmore"><%= link_to "#{@fan.fan_name}'s website", @fan.fan_profile.website %></p>
+      <% end %>
+      <% if @fan.fan_profile.biography == "" %>
+      <% else %>
+      <p class="jefferson">biography //</p>
+      <p class="fillmore"><%= @fan.fan_profile.biography %></p>
+      <% end %>
+    </div>
+  </div>
+</div>
+<%= render "partials/uni_footer" %>
+
+<div class="forest">
+  <% if buffalo_signed_in? %>
+    <li><%= @fan.id %></li>
+    <li><%= @fan.fan_name %></li>
+    <li><%= @fan.username %></li>
+    <li><%= @fan.email %></li>
+    <li><%= @fan.sign_in_count %></li>
+    <li><%= @fan.last_sign_in_at %></li>
+  <% end %>
+</div>

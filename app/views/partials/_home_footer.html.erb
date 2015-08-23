@@ -1,0 +1,142 @@
+<div class="washington">
+<footer class="buffalo kensington ontario">
+  <div class="delaware">
+    <nav class="william">
+      <div class="south-ogden">
+        legal //
+      </div>
+      <div><%= link_to "copyright", copyright_path %></div>
+      <div><%= link_to "privacy", privacy_path %></div>
+      <div><%= link_to "terms of use", terms_of_use_path %></div>
+    </nav>
+    <nav class="william">
+      <div class="south-ogden">
+        us //
+      </div>
+      <div><%= link_to "contact", contact_path %></div>
+      <div><%= link_to "about", about_path %></div>
+      <div><%= link_to "faq", faq_path %></div>
+      <div><%= link_to "blog", posts_path %></div>
+      <div><%= link_to "developers", developers_path %></div>
+    </nav>
+    <nav class="william">
+      <div class="south-ogden">
+        social media //
+      </div>
+      <div><%= link_to "facebook", "http://facebook.com/noisaea", :target => "_blank", class: "facebook" %></div>
+      <div><%= link_to "twitter", "http://twitter.com/noisaea", :target => "_blank", class: "twitter" %></div>
+      <div><%= link_to "YouTube", "https://www.youtube.com/channel/UCZaUpn3Lk-3Df1ixPnavlfA", :target => "_blank", class: "youtube" %></div>
+      <div><%= link_to "google+", "http://plus.google.com/noisaea", :target => "_blank", class: "googleplus" %></div>
+      <div><%= link_to "instagram", "http://instagram.com/noisaea", :target => "_blank", class: "instagram" %></div>
+      <div><%= link_to "tumblr", "http://noisaea.tumblr.com/", :target => "_blank", class: "tumblr" %></div>
+      <div><%= link_to "pinterest", "http://pinterest.com/noisaea", :target => "_blank", class: "pinterest" %></div>
+    </nav>
+    <nav class="william">
+      <div class="south-ogden">
+        you //
+      </div>
+      <% if artist_signed_in? || fan_signed_in? || record_label_signed_in? || venue_signed_in? || producer_signed_in? %>
+        <% if artist_signed_in? %>
+          <div><%= link_to "your page", artist_path(current_artist) %></div>
+        <% elsif fan_signed_in? %>
+          <div><%= link_to "your page", fan_path(current_fan) %></div>
+        <% elsif record_label_signed_in? %>
+          <div><%= link_to "your page", record_label_path(current_record_label) %></div>
+        <% elsif venue_signed_in? %>
+          <div><%= link_to "your page", venue_path(current_venue) %>
+        <% elsif producer_signed_in? %>
+          <div><%= link_to "your page", producer_path(current_producer) %>
+        <% end %>
+        <div><%= link_to "sign out", sign_out_path %></div>
+      <% else %>
+        <div><%= link_to "artist register", new_artist_registration_path %></div>
+        <div><%= link_to "artist sign in", artist_session_path %></div>
+        <div><%= link_to "fan register", new_fan_registration_path %></div>
+        <div><%= link_to "fan sign in", fan_session_path %></div>
+        <div><%= link_to "record label register", new_record_label_registration_path %></div>
+        <div><%= link_to "record label sign in", record_label_session_path %></div>
+        <div><%= link_to "venue register", new_venue_registration_path %></div>
+        <div><%= link_to "venue sign in", venue_session_path %></div>
+        <div><%= link_to "producer register", new_producer_registration_path %></div>
+        <div><%= link_to "producer sign in", producer_session_path %></div>
+      <% end %>
+    </nav>
+  </div>
+</footer>
+</div>
+
+
+<div class="niagara">
+<footer class="buffalo kensington">
+  <div class="delaware">
+    <nav class="william">
+      <div class="south-ogden">
+        <center><strong><a class="adams">legal //</a></strong></center>
+      </div>
+      <div class="madison">
+        <div><%= link_to "copyright", copyright_path, class: "smith" %></div>
+        <div><%= link_to "privacy", privacy_path, class: "smith" %></div>
+        <div><%= link_to "terms of use", terms_of_use_path, class: "smith" %></div>
+      </div>
+    </nav>
+    <nav class="william">
+      <div class="south-ogden">
+        <center><strong><a class="adams">us //</a></strong></center>
+      </div>
+      <div class="madison">
+        <div><%= link_to "contact", contact_path, class: "smith" %></div>
+        <div><%= link_to "about", about_path, class: "smith" %></div>
+        <div><%= link_to "faq", faq_path, class: "smith" %></div>
+        <div><%= link_to "blog", posts_path, class: "smith" %></div>
+        <div><%= link_to "developers", developers_path, class: "smith" %></div>
+      </div>
+    </nav>
+    <nav class="william">
+      <div class="south-ogden">
+        <center><strong><a class="adams">social media //</a></strong></center>
+      </div>
+      <div class="madison">
+        <div><%= link_to "facebook", "http://facebook.com/noisaea", :target => "_blank", class: "mfacebook" %></div>
+        <div><%= link_to "twitter", "http://twitter.com/noisaea", :target => "_blank", class: "mtwitter" %></div>
+        <div><%= link_to "YouTube", "https://www.youtube.com/channel/UCZaUpn3Lk-3Df1ixPnavlfA", :target => "_blank", class: "myoutube" %></div>
+        <div><%= link_to "google+", "http://plus.google.com/noisaea", :target => "_blank", class: "mgoogleplus" %></div>
+        <div><%= link_to "instagram", "http://instagram.com/noisaea", :target => "_blank", class: "minstagram" %></div>
+        <div><%= link_to "tumblr", "http://noisaea.tumblr.com/", :target => "_blank", class: "mtumblr" %></div>
+        <div><%= link_to "pinterest", "http://pinterest.com/noisaea", :target => "_blank", class: "mpinterest" %></div>
+      </div>
+    </nav>
+    <nav class="william">
+      <div class="south-ogden">
+        <center><strong><a class="adams">you //</a></strong></center>
+      </div>
+      <div class="madison">
+      <% if artist_signed_in? || fan_signed_in? || record_label_signed_in? || venue_signed_in? || producer_signed_in? %>
+        <% if artist_signed_in? %>
+          <div><%= link_to "your page", artist_path(current_artist), class: "smith" %></div>
+        <% elsif fan_signed_in? %>
+          <div><%= link_to "your page", fan_path(current_fan), class: "smith" %></div>
+        <% elsif record_label_signed_in? %>
+          <div><%= link_to "your page", record_label_path(current_record_label), class: "smith" %></div>
+        <% elsif venue_signed_in? %>
+          <div><%= link_to "your page", venue_path(current_venue), class: "smith" %>
+        <% elsif producer_signed_in? %>
+          <div><%= link_to "your page", producer_path(current_producer), class: "smith" %>
+        <% end %>
+        <div><%= link_to "sign out", sign_out_path, class: "smith" %></div>
+      <% else %>
+        <div><%= link_to "artist register", new_artist_registration_path, class: "smith" %></div>
+        <div><%= link_to "artist sign in", artist_session_path, class: "smith" %></div>
+        <div><%= link_to "fan register", new_fan_registration_path, class: "smith" %></div>
+        <div><%= link_to "fan sign in", fan_session_path, class: "smith" %></div>
+        <div><%= link_to "record label register", new_record_label_registration_path, class: "smith" %></div>
+        <div><%= link_to "record label sign in", record_label_session_path, class: "smith" %></div>
+        <div><%= link_to "venue register", new_venue_registration_path, class: "smith" %></div>
+        <div><%= link_to "venue sign in", venue_session_path, class: "smith" %></div>
+        <div><%= link_to "producer register", new_producer_registration_path, class: "smith" %></div>
+        <div><%= link_to "producer sign in", producer_session_path, class: "smith" %></div>
+      <% end %>
+    </div>
+    </nav>
+  </div>
+</footer>
+</div>

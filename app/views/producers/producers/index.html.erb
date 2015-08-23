@@ -1,0 +1,847 @@
+<%= provide(:title, "Discover Producers") %>
+<%= render "partials/uni_header" %>
+<div class="buffalo">
+  <div class="delaware">
+    <% if @producers.any? %>
+
+      <div class="washington">
+        <div class="highgate">
+          <div id="popular" class="porter lafayette">
+            popular
+          </div>
+          <div id="recent" class="porter">
+            recent
+          </div>
+          <div id="location" class="porter">
+            location
+          </div>
+          <div id="alternative" class="porter">
+            alternative
+          </div>
+          <div id="ambient" class="porter">
+            ambient
+          </div>
+          <div id="blues" class="porter">
+            blues
+          </div>
+          <div id="classical" class="porter">
+            classical
+          </div>
+          <div id="comedy" class="porter">
+            comedy
+          </div>
+          <div id="country" class="porter">
+            country
+          </div>
+          <div id="electronic" class="porter">
+            electronic
+          </div>
+          <div id="experimental" class="porter">
+            experimental
+          </div>
+          <div id="hip-hop-rap" class="porter">
+            hip-hop/rap
+          </div>
+          <div id="indie" class="porter">
+            indie
+          </div>
+          <div id="jazz" class="porter">
+            jazz
+          </div>
+          <div id="latino" class="porter">
+            latino
+          </div>
+          <div id="metal" class="porter">
+            metal
+          </div>
+          <div id="pop" class="porter">
+            pop
+          </div>
+          <div id="rb-soul" class="porter">
+            r&b/soul
+          </div>
+          <div id="rock" class="porter">
+            rock
+          </div>
+          <div id="singer-songwriter" class="porter">
+            singer/songwriter
+          </div>
+          <div id="soundtrack" class="porter">
+            soundtrack
+          </div>
+          <div id="world" class="porter">
+            world
+          </div>
+        </div>
+      </div>
+
+      <div class="niagara">
+        <div class="highgate">
+        <center>
+          <div id="mpopular" class="porter lafayette">
+            <strong>popular</strong>
+          </div>
+          <div id="mrecent" class="porter">
+            <strong>recent</strong>
+          </div>
+          <div id="mlocation" class="porter">
+            <strong>location</strong>
+          </div>
+          <strong><a class="porter adams">genres</a></strong>
+          <div class="grey">
+            <div id="malternative" class="porter">
+              alternative
+            </div>
+            <div id="mambient" class="porter">
+              ambient
+            </div>
+            <div id="mblues" class="porter">
+              blues
+            </div>
+            <div id="mclassical" class="porter">
+              classical
+            </div>
+            <div id="mcomedy" class="porter">
+              comedy
+            </div>
+            <div id="mcountry" class="porter">
+              country
+            </div>
+            <div id="melectronic" class="porter">
+              electronic
+            </div>
+            <div id="mexperimental" class="porter">
+              experimental
+            </div>
+            <div id="mhip-hop-rap" class="porter">
+              hip-hop/rap
+            </div>
+            <div id="mindie" class="porter">
+              indie
+            </div>
+            <div id="mjazz" class="porter">
+              jazz
+            </div>
+            <div id="mlatino" class="porter">
+              latino
+            </div>
+            <div id="mmetal" class="porter">
+              metal
+            </div>
+            <div id="mpop" class="porter">
+              pop
+            </div>
+            <div id="mrb-soul" class="porter">
+              r&b/soul
+            </div>
+            <div id="mrock" class="porter">
+              rock
+            </div>
+            <div id="msinger-songwriter" class="porter">
+              singer/songwriter
+            </div>
+            <div id="msoundtrack" class="porter">
+              soundtrack
+            </div>
+            <div id="mworld" class="porter">
+              world
+            </div>
+          </div>
+        </center>
+        </div>
+      </div>
+
+      <div id="container-popular" class="ferry">
+        <% @producers.sort_by{ |producer| -producer.fans.count }.take(10).each do |producer| %>
+          <div class="utica">
+            <% if producer.producer_profile.cover_image == "" %>
+              <div class="sycamore">
+                <% if producer_signed_in? && producer.id == current_producer.id %>
+                  you do not have a profile image yet
+                <% else %>
+                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="genesee">
+                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+              </div>
+            <% end %>
+              <div class="hertel">
+                <center><%= link_to producer.producer_name, producer_path(producer) %></center>
+              </div>
+              <div class="hertel">
+                <center><%= producer.producer_profile.genre unless producer.producer_profile.genre == "" %></center>
+              </div>
+              <div class="hertel">
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+              </div>
+              <div class="hertel">
+              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <div id="container-recent" class="ferry colvin">
+        <% @producers.order( 'id DESC' ).take(10).each do |producer| %>
+          <div class="utica">
+            <% if producer.producer_profile.cover_image == "" %>
+              <div class="sycamore">
+                <% if producer_signed_in? && producer.id == current_producer.id %>
+                  you do not have a profile image yet
+                <% else %>
+                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="genesee">
+                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+              </div>
+            <% end %>
+              <div class="hertel">
+                <center><%= link_to producer.producer_name, producer_path(producer) %></center>
+              </div>
+              <div class="hertel">
+                <center><%= producer.producer_profile.genre unless producer.producer_profile.genre == "" %></center>
+              </div>
+              <div class="hertel">
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+              </div>
+              <div class="hertel">
+              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <div id="container-location" class="ferry colvin">
+        <% if fan_signed_in? %>
+        <% @producers.each do |producer|  %>
+        <% if producer.producer_profile.location == current_fan.fan_profile.location %>
+          <div class="utica">
+            <% if producer.producer_profile.cover_image == "" %>
+              <div class="sycamore">
+                <% if producer_signed_in? && producer.id == current_producer.id %>
+                  you do not have a profile image yet
+                <% else %>
+                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="genesee">
+                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+              </div>
+            <% end %>
+              <div class="hertel">
+                <center><%= link_to producer.producer_name, producer_path(producer) %></center>
+              </div>
+              <div class="hertel">
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+              </div>
+              <div class="hertel">
+              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+            </div>
+            </div>
+          <% end %>
+        <% end %>
+        <% else %>
+          <div class="hertel">
+            <center><%= link_to "sign in", new_fan_session_path %> to view producers based on location</center>
+          </div>
+        <% end %>
+      </div>
+
+      <div id="container-alternative" class="ferry colvin">
+        <% @producers.each do |producer|  %>
+          <% if producer.producer_profile.genre == "Alternative" %>
+          <div class="utica">
+            <% if producer.producer_profile.cover_image == "" %>
+              <div class="sycamore">
+                <% if producer_signed_in? && producer.id == current_producer.id %>
+                  you do not have a profile image yet
+                <% else %>
+                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="genesee">
+                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+              </div>
+            <% end %>
+              <div class="hertel">
+                <center><%= link_to producer.producer_name, producer_path(producer) %></center>
+              </div>
+              <div class="hertel">
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+              </div>
+              <div class="hertel">
+              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+            </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div id="container-ambient" class="ferry colvin">
+        <% @producers.each do |producer|  %>
+          <% if producer.producer_profile.genre == "Ambient" %>
+          <div class="utica">
+            <% if producer.producer_profile.cover_image == "" %>
+              <div class="sycamore">
+                <% if producer_signed_in? && producer.id == current_producer.id %>
+                  you do not have a profile image yet
+                <% else %>
+                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="genesee">
+                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+              </div>
+            <% end %>
+              <div class="hertel">
+                <center><%= link_to producer.producer_name, producer_path(producer) %></center>
+              </div>
+              <div class="hertel">
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+              </div>
+              <div class="hertel">
+              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+            </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div id="container-blues" class="ferry colvin">
+        <% @producers.each do |producer|  %>
+          <% if producer.producer_profile.genre == "Blues" %>
+          <div class="utica">
+            <% if producer.producer_profile.cover_image == "" %>
+              <div class="sycamore">
+                <% if producer_signed_in? && producer.id == current_producer.id %>
+                  you do not have a profile image yet
+                <% else %>
+                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="genesee">
+                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+              </div>
+            <% end %>
+              <div class="hertel">
+                <center><%= link_to producer.producer_name, producer_path(producer) %></center>
+              </div>
+              <div class="hertel">
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+              </div>
+              <div class="hertel">
+              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+            </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div id="container-classical" class="ferry colvin">
+        <% @producers.each do |producer|  %>
+          <% if producer.producer_profile.genre == "Classical" %>
+          <div class="utica">
+            <% if producer.producer_profile.cover_image == "" %>
+              <div class="sycamore">
+                <% if producer_signed_in? && producer.id == current_producer.id %>
+                  you do not have a profile image yet
+                <% else %>
+                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="genesee">
+                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+              </div>
+            <% end %>
+              <div class="hertel">
+                <center><%= link_to producer.producer_name, producer_path(producer) %></center>
+              </div>
+              <div class="hertel">
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+              </div>
+              <div class="hertel">
+              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+            </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div id="container-comedy" class="ferry colvin">
+        <% @producers.each do |producer|  %>
+          <% if producer.producer_profile.genre == "Comedy" %>
+          <div class="utica">
+            <% if producer.producer_profile.cover_image == "" %>
+              <div class="sycamore">
+                <% if producer_signed_in? && producer.id == current_producer.id %>
+                  you do not have a profile image yet
+                <% else %>
+                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="genesee">
+                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+              </div>
+            <% end %>
+              <div class="hertel">
+                <center><%= link_to producer.producer_name, producer_path(producer) %></center>
+              </div>
+              <div class="hertel">
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+              </div>
+              <div class="hertel">
+              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+            </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div id="container-country" class="ferry colvin">
+        <% @producers.each do |producer|  %>
+          <% if producer.producer_profile.genre == "Country" %>
+          <div class="utica">
+            <% if producer.producer_profile.cover_image == "" %>
+              <div class="sycamore">
+                <% if producer_signed_in? && producer.id == current_producer.id %>
+                  you do not have a profile image yet
+                <% else %>
+                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="genesee">
+                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+              </div>
+            <% end %>
+              <div class="hertel">
+                <center><%= link_to producer.producer_name, producer_path(producer) %></center>
+              </div>
+              <div class="hertel">
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+              </div>
+              <div class="hertel">
+              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+            </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div id="container-electronic" class="ferry colvin">
+        <% @producers.each do |producer|  %>
+          <% if producer.producer_profile.genre == "Electronic" %>
+          <div class="utica">
+            <% if producer.producer_profile.cover_image == "" %>
+              <div class="sycamore">
+                <% if producer_signed_in? && producer.id == current_producer.id %>
+                  you do not have a profile image yet
+                <% else %>
+                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="genesee">
+                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+              </div>
+            <% end %>
+              <div class="hertel">
+                <center><%= link_to producer.producer_name, producer_path(producer) %></center>
+              </div>
+              <div class="hertel">
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+              </div>
+              <div class="hertel">
+              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+            </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div id="container-experimental" class="ferry colvin">
+        <% @producers.each do |producer|  %>
+          <% if producer.producer_profile.genre == "Experimental" %>
+          <div class="utica">
+            <% if producer.producer_profile.cover_image == "" %>
+              <div class="sycamore">
+                <% if producer_signed_in? && producer.id == current_producer.id %>
+                  you do not have a profile image yet
+                <% else %>
+                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="genesee">
+                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+              </div>
+            <% end %>
+              <div class="hertel">
+                <center><%= link_to producer.producer_name, producer_path(producer) %></center>
+              </div>
+              <div class="hertel">
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+              </div>
+              <div class="hertel">
+              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+            </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div id="container-hip-hop-rap" class="ferry colvin">
+        <% @producers.each do |producer|  %>
+          <% if producer.producer_profile.genre == "Hip-Hop/Rap" %>
+          <div class="utica">
+            <% if producer.producer_profile.cover_image == "" %>
+              <div class="sycamore">
+                <% if producer_signed_in? && producer.id == current_producer.id %>
+                  you do not have a profile image yet
+                <% else %>
+                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="genesee">
+                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+              </div>
+            <% end %>
+              <div class="hertel">
+                <center><%= link_to producer.producer_name, producer_path(producer) %></center>
+              </div>
+              <div class="hertel">
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+              </div>
+              <div class="hertel">
+              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+            </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div id="container-indie" class="ferry colvin">
+        <% @producers.each do |producer|  %>
+          <% if producer.producer_profile.genre == "Indie" %>
+          <div class="utica">
+            <% if producer.producer_profile.cover_image == "" %>
+              <div class="sycamore">
+                <% if producer_signed_in? && producer.id == current_producer.id %>
+                  you do not have a profile image yet
+                <% else %>
+                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="genesee">
+                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+              </div>
+            <% end %>
+              <div class="hertel">
+                <center><%= link_to producer.producer_name, producer_path(producer) %></center>
+              </div>
+              <div class="hertel">
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+              </div>
+              <div class="hertel">
+              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+            </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div id="container-jazz" class="ferry colvin">
+        <% @producers.each do |producer|  %>
+          <% if producer.producer_profile.genre == "Jazz" %>
+          <div class="utica">
+            <% if producer.producer_profile.cover_image == "" %>
+              <div class="sycamore">
+                <% if producer_signed_in? && producer.id == current_producer.id %>
+                  you do not have a profile image yet
+                <% else %>
+                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="genesee">
+                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+              </div>
+            <% end %>
+              <div class="hertel">
+                <center><%= link_to producer.producer_name, producer_path(producer) %></center>
+              </div>
+              <div class="hertel">
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+              </div>
+              <div class="hertel">
+              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+            </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div id="container-latino" class="ferry colvin">
+        <% @producers.each do |producer|  %>
+          <% if producer.producer_profile.genre == "Latino" %>
+          <div class="utica">
+            <% if producer.producer_profile.cover_image == "" %>
+              <div class="sycamore">
+                <% if producer_signed_in? && producer.id == current_producer.id %>
+                  you do not have a profile image yet
+                <% else %>
+                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="genesee">
+                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+              </div>
+            <% end %>
+              <div class="hertel">
+                <center><%= link_to producer.producer_name, producer_path(producer) %></center>
+              </div>
+              <div class="hertel">
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+              </div>
+              <div class="hertel">
+              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+            </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div id="container-metal" class="ferry colvin">
+        <% @producers.each do |producer|  %>
+          <% if producer.producer_profile.genre == "Metal" %>
+          <div class="utica">
+            <% if producer.producer_profile.cover_image == "" %>
+              <div class="sycamore">
+                <% if producer_signed_in? && producer.id == current_producer.id %>
+                  you do not have a profile image yet
+                <% else %>
+                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="genesee">
+                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+              </div>
+            <% end %>
+              <div class="hertel">
+                <center><%= link_to producer.producer_name, producer_path(producer) %></center>
+              </div>
+              <div class="hertel">
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+              </div>
+              <div class="hertel">
+              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+            </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div id="container-pop" class="ferry colvin">
+        <% @producers.each do |producer|  %>
+          <% if producer.producer_profile.genre == "Pop" %>
+          <div class="utica">
+            <% if producer.producer_profile.cover_image == "" %>
+              <div class="sycamore">
+                <% if producer_signed_in? && producer.id == current_producer.id %>
+                  you do not have a profile image yet
+                <% else %>
+                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="genesee">
+                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+              </div>
+            <% end %>
+              <div class="hertel">
+                <center><%= link_to producer.producer_name, producer_path(producer) %></center>
+              </div>
+              <div class="hertel">
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+              </div>
+              <div class="hertel">
+              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+            </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div id="container-rb-soul" class="ferry colvin">
+        <% @producers.each do |producer|  %>
+          <% if producer.producer_profile.genre == "R&B/Soul" %>
+          <div class="utica">
+            <% if producer.producer_profile.cover_image == "" %>
+              <div class="sycamore">
+                <% if producer_signed_in? && producer.id == current_producer.id %>
+                  you do not have a profile image yet
+                <% else %>
+                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="genesee">
+                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+              </div>
+            <% end %>
+              <div class="hertel">
+                <center><%= link_to producer.producer_name, producer_path(producer) %></center>
+              </div>
+              <div class="hertel">
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+              </div>
+              <div class="hertel">
+              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+            </div>
+          </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div id="container-rock" class="ferry colvin">
+        <% @producers.each do |producer|  %>
+          <% if producer.producer_profile.genre == "Rock" %>
+          <div class="utica">
+            <% if producer.producer_profile.cover_image == "" %>
+              <div class="sycamore">
+                <% if producer_signed_in? && producer.id == current_producer.id %>
+                  you do not have a profile image yet
+                <% else %>
+                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="genesee">
+                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+              </div>
+            <% end %>
+              <div class="hertel">
+                <center><%= link_to producer.producer_name, producer_path(producer) %></center>
+              </div>
+              <div class="hertel">
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+              </div>
+              <div class="hertel">
+              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+            </div>
+          </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div id="container-singer-songwriter" class="ferry colvin">
+        <% @producers.each do |producer|  %>
+          <% if producer.producer_profile.genre == "Singer/Songwriter" %>
+          <div class="utica">
+            <% if producer.producer_profile.cover_image == "" %>
+              <div class="sycamore">
+                <% if producer_signed_in? && producer.id == current_producer.id %>
+                  you do not have a profile image yet
+                <% else %>
+                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="genesee">
+                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+              </div>
+            <% end %>
+              <div class="hertel">
+                <center><%= link_to producer.producer_name, producer_path(producer) %></center>
+              </div>
+              <div class="hertel">
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+              </div>
+              <div class="hertel">
+              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+            </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div id="container-soundtrack" class="ferry colvin">
+        <% @producers.each do |producer|  %>
+          <% if producer.producer_profile.genre == "soundtrack" %>
+          <div class="utica">
+            <% if producer.producer_profile.cover_image == "" %>
+              <div class="sycamore">
+                <% if producer_signed_in? && producer.id == current_producer.id %>
+                  you do not have a profile image yet
+                <% else %>
+                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="genesee">
+                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+              </div>
+            <% end %>
+              <div class="hertel">
+                <center><%= link_to producer.producer_name, producer_path(producer) %></center>
+              </div>
+              <div class="hertel">
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+              </div>
+              <div class="hertel">
+              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+            </div>
+          </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div id="container-world" class="ferry colvin">
+        <% @producers.each do |producer|  %>
+          <% if producer.producer_profile.genre == "World" %>
+          <div class="utica">
+            <% if producer.producer_profile.cover_image == "" %>
+              <div class="sycamore">
+                <% if producer_signed_in? && producer.id == current_producer.id %>
+                  you do not have a profile image yet
+                <% else %>
+                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="genesee">
+                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+              </div>
+            <% end %>
+              <div class="hertel">
+                <center><%= link_to producer.producer_name, producer_path(producer) %></center>
+              </div>
+              <div class="hertel">
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+              </div>
+              <div class="hertel">
+              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+            </div>
+          </div>
+          <% end %>
+        <% end %>
+      </div>
+
+    <% end %>
+  </div>
+</div>
+<%= render "partials/uni_footer" %>

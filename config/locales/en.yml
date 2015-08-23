@@ -1,0 +1,147 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  activerecord:
+    attributes:
+      artist_profile:
+        location: ""
+        biography: ""
+        facebook_url: ""
+        twitter_url: ""
+        youtube_url: ""
+        itunes_url: ""
+        amazon_url: ""
+        google_play_url: ""
+        ticketfly_url: ""
+      record_label_profile:
+        location: ""
+        founded: ""
+        biography: ""
+        facebook_url: ""
+        twitter_url: ""
+        youtube_url: ""
+        itunes_url: ""
+        amazon_url: ""
+        google_play_url: ""
+        ticketfly_url: ""
+      venue_profile:
+        location: ""
+        founded: ""
+        biography: ""
+        facebook_url: ""
+        twitter_url: ""
+        youtube_url: ""
+        ticketfly_url: ""
+      producer_profile:
+        location: ""
+        founded: ""
+        biography: ""
+        facebook_url: ""
+        twitter_url: ""
+        youtube_url: ""
+    errors:
+      models:
+        artist_profile:
+          attributes:
+            location:
+              invalid: "your location must be 'city, state' for US // 'city, country' for international"
+            biography:
+              too_long: "your bio can't be more than 14,216 characters long."
+            facebook_url:
+              invalid: "that is definitely not a vaild facebook url."
+            twitter_url:
+              invalid: "that is definitely not a vaild twitter url."
+            youtube_url:
+              invalid: "that is definitely not a vaild youtube url."
+            itunes_url:
+              invalid: "that is definitely not a vaild itunes url."
+            amazon_url:
+              invalid: "that is definitely not a vaild amazon url."
+            google_play_url:
+              invalid: "that is definitely not a vaild google play url."
+            ticketfly_url:
+              invalid: "that is definitely not a vaild ticketfly url."
+        record_label_profile:
+          attributes:
+            location:
+              invalid: "your location must be 'city, state' for US // 'city, country' for international"
+            founded:
+              wrong_length: "don't you know how many digits long a year is? 4!"
+              greater_than: "you can't tell me that you started before 1900."
+              less_than_or_equal_to: "that far into the future, huh? the CIA is coming for you now, time traveller."
+              not_a_number: "whatever you just put into that founded field, it's not a number."
+            biography:
+              too_long: "your bio can't be more than 14,216 characters long."
+            facebook_url:
+              invalid: "that is definitely not a vaild facebook url."
+            twitter_url:
+              invalid: "that is definitely not a vaild twitter url."
+            youtube_url:
+              invalid: "that is definitely not a vaild youtube url."
+            itunes_url:
+              invalid: "that is definitely not a vaild itunes url."
+            amazon_url:
+              invalid: "that is definitely not a vaild amazon url."
+            google_play_url:
+              invalid: "that is definitely not a vaild google play url."
+            ticketfly_url:
+              invalid: "that is definitely not a vaild ticketfly url."
+        venue_profile:
+          attributes:
+            location:
+              invalid: "your location must be 'city, state' for US // 'city, country' for international"
+            founded:
+              wrong_length: "don't you know how many digits long a year is? 4!"
+              greater_than: "you can't tell me that you started before 1900."
+              less_than_or_equal_to: "that far into the future, huh? the CIA is coming for you now, time traveller."
+              not_a_number: "whatever you just put into that founded field, it's not a number."
+            biography:
+              too_long: "your bio can't be more than 14,216 characters long."
+            facebook_url:
+              invalid: "that is definitely not a vaild facebook url."
+            twitter_url:
+              invalid: "that is definitely not a vaild twitter url."
+            youtube_url:
+              invalid: "that is definitely not a vaild youtube url."
+            ticketfly_url:
+              invalid: "that is definitely not a vaild ticketfly url."
+        producer_profile:
+          attributes:
+            location:
+              invalid: "your location must be 'city, state' for US // 'city, country' for international"
+            founded:
+              wrong_length: "don't you know how many digits long a year is? 4!"
+              greater_than: "you can't tell me that you started before 1900."
+              less_than_or_equal_to: "that far into the future, huh? the CIA is coming for you now, time traveller."
+              not_a_number: "whatever you just put into that founded field, it's not a number."
+            biography:
+              too_long: "your bio can't be more than 14,216 characters long."
+            facebook_url:
+              invalid: "that is definitely not a vaild facebook url."
+            twitter_url:
+              invalid: "that is definitely not a vaild twitter url."
+            youtube_url:
+              invalid: "that is definitely not a vaild youtube url."
+        fan_profile:
+          attributes:
+            location:
+              invalid: "your location must be 'city, state' for US // 'city, country' for international"

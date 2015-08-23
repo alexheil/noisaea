@@ -1,0 +1,46 @@
+<%= provide(:title, "Settings | Noisaea //") %>
+<div class="buffalo">
+  <div class="delaware">
+    <div class="elmwood">
+      <div class="harlem">
+        <h1>edit your account</h1>
+      </div>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+
+        <div class="highgate">
+          <%= f.text_field :username, autofocus: true, placeholder: "username", class: "huron" %>
+        </div>
+        <div class="highgate">
+          <%= f.text_field :artist_name, placeholder: "artist name", class: "huron" %>
+        </div>
+        <div class="highgate">
+          <%= f.email_field :email, placeholder: "email address", class: "huron" %>
+        </div>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
+
+        <div class="highgate">
+          <%= f.password_field :password, autocomplete: "off", placeholder: "password", class: "huron" %>
+        </div>
+        <div class="highgate">
+          <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "confirm your password", class: "huron" %>
+        </div>
+
+        <div class="highgate">
+          <%= f.password_field :current_password, autocomplete: "off", placeholder: "current password to confirm changes", class: "huron" %>
+        </div>
+
+        <div class="ellicott">
+          <%= f.submit "update", class: "exchange" %>
+        </div>
+      <% end %>
+      <div class="franklin">
+        <%= button_to "delete my account", registration_path(resource_name), data: { confirm: " This cannot be undone. Ever..." }, method: :delete, class: "exchange" %>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render 'partials/uni_footer' %>

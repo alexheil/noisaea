@@ -1,0 +1,334 @@
+$main-color: #1DE9B6;
+$accent-color1: #A7FFEB;
+$my-black: #212121;
+$normal-font: Georgia, "Times New Roman", Times, serif;
+$fancy-font: 'Open Sans', Helvetica, arial, sans-serif;
+
+/* ******************* HOME STUFF ********************* */
+
+.grant {
+  width: 100%;
+  display: inline-block;
+  ul {
+    text-align: center;
+    li {
+      display: inline-block;
+      font-family: $fancy-font;
+      padding: 1vh 0;
+      position: relative;
+      margin-left: 5vw;
+      &:first-child {
+        margin-left: 0vw;
+      }
+    }
+  }
+}
+
+.smith {
+  color: $my-black;
+  font-family: $fancy-font;
+  &:hover {
+    color: $main-color;
+  }
+}
+
+/* ************** HEADER AND nav ******************** */
+
+.ontario {
+  background-color: $my-black;
+}
+
+.austin {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.military {
+  display: inline-block;
+  color: $main-color;
+  padding: 1vh 0;
+  font-family: $fancy-font;
+  &:hover {
+    text-decoration: none;
+    color: $accent-color1;
+  }
+}
+
+.parkside {
+  width: 100%;
+  display: inline-block;
+  ul {
+    float: right;
+    li {
+      display: inline-block;
+      font-family: $fancy-font;
+      padding: 1vh 0;
+      position: relative;
+      margin-left: 5vw;
+      &:first-child {
+        margin-left: 0vw;
+      }
+    }
+  }
+}
+
+#emslie {
+  cursor: pointer;
+}
+
+#watson {
+  cursor: pointer;
+}
+
+.adams {
+  cursor: pointer;
+  color: $my-black;
+}
+
+.starin {
+  cursor: pointer;
+}
+
+.monroe {
+  width: 50%;
+  margin: 1vh auto;
+  display: none;
+  text-align: center;
+  ul {
+    li {
+      margin: 1vh auto;
+    }
+  }
+}
+
+.madison {
+  width: 50%;
+  margin: 1vh auto;
+  display: none;
+  text-align: center;
+  color: $my-black;
+  ul {
+    li {
+      margin: 1vh 1vw;
+    }
+  }
+}
+
+.grey {
+  width: 50%;
+  margin: 1vh auto;
+  display: none;
+  text-align: center;
+  color: $my-black;
+}
+
+.taunton {
+  width: 75%;
+  margin: 1vh auto;
+  display: none;
+  text-align: center;
+  color: $my-black;
+}
+
+.lasalle {
+  font-weight: 700;
+}
+
+.depew {
+  color: $main-color;
+  font-family: $fancy-font;
+  &:hover {
+    color: $accent-color1;
+  }
+}
+
+/* ******************** FOOTER ******************** */
+
+.kensington {
+  clear: both;
+  margin-top: 5vh;
+  padding: 2vh 0;
+}
+
+.eggert {
+  width: 100%;
+  display: inline-block;
+  font-family: $fancy-font;
+  span {
+    float: left;
+  }
+  ul {
+    float: right;
+    li {
+      position: relative;
+      float: left;
+      margin: 0 1vh;
+    }
+  }
+}
+
+.seneca {
+  color: $my-black;
+  font-family: $fancy-font;
+  &:hover {
+    color: $main-color;
+  }
+}
+
+.william {
+  width: 24%;
+  margin: 1vh auto;
+  display: inline-block;
+  font-family: $fancy-font;
+  vertical-align: top;
+}
+
+.south-ogden {
+  margin-bottom: 1vh;
+  color: #fff;
+}
+
+.facebook {
+  &:hover {
+    color: #3b5998;
+  }
+}
+
+.twitter {
+  &:hover {
+    color: #00aced;
+  }
+}
+
+.youtube {
+  &:hover {
+    color: #bb0000;
+  }
+}
+
+.googleplus {
+  &:hover {
+    color: #dd4b39;
+  }
+}
+
+.instagram {
+  &:hover {
+    color: #517fa4;
+  }
+}
+
+.tumblr {
+  &:hover {
+    color: #32506d;
+  }
+}
+
+.pinterest {
+  &:hover {
+    color: #cb2027;
+  }
+}
+
+.mfacebook {
+  color: $my-black;
+  &:hover {
+    color: #3b5998;
+  }
+}
+
+.mtwitter {
+  color: $my-black;
+  &:hover {
+    color: #00aced;
+  }
+}
+
+.myoutube {
+  color: $my-black;
+  &:hover {
+    color: #bb0000;
+  }
+}
+
+.mgoogleplus {
+  color: $my-black;
+  &:hover {
+    color: #dd4b39;
+  }
+}
+
+.minstagram {
+  color: $my-black;
+  &:hover {
+    color: #517fa4;
+  }
+}
+
+.mtumblr {
+  color: $my-black;
+  &:hover {
+    color: #32506d;
+  }
+}
+
+.mpinterest {
+  color: $my-black;
+  &:hover {
+    color: #cb2027;
+  }
+}
+
+.share-facebook {
+  color: #3b5998;
+  &:hover {
+    color: $main-color;
+  }
+}
+
+.share-twitter {
+  color: #00aced;
+  &:hover {
+    color: $main-color;
+  }
+}
+
+.share-googleplus {
+  color: #dd4b39;
+  &:hover {
+    color: $main-color;
+  }
+}
+
+.share-tumblr {
+  color: #32506d;
+  &:hover {
+    color: $main-color;
+  }
+}
+
+.share-pinterest {
+  color: #cb2027;
+  &:hover {
+    color: $main-color;
+  }
+}
+
+
+/*************************** MEDIA QUERIES ************************/
+
+@media screen and (max-width: 800px) {
+
+  .william {
+    width: 49%;
+  }
+
+}
+
+@media screen and (max-width: 425px) {
+
+    .william {
+      width: 100%;
+    }
+
+}
