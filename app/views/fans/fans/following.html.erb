@@ -1,4 +1,4 @@
-<%= provide(:title, "#{@fan.fan_name} | Following") %>
+<%= provide(:title, sanitize(@fan.fan_name) + " | Following") %>
 <div class="buffalo">
   <% if @fan.fan_profile.cover_image == "" %>
     <div class="clinton">
@@ -14,8 +14,8 @@
     </div>
   <% end %>
   <div class="delaware">
-    <div class="winspear">
-      <h1><%= link_to @fan.fan_name, fan_path(@fan) %></h1>
+    <div class="winspear hedley">
+      <%= link_to @fan.fan_name, fan_path(@fan) %>
     </div>
 
     <div class="highgate">
@@ -49,7 +49,7 @@
       </div>
 
       <div id="fan-artist" class="ferry colvin">
-        <% @fan.artists.each do |artist| %>
+        <% @fan.artists.take(100).each do |artist| %>
           <div class="utica">
 
             <% if artist.artist_profile.cover_image == "" %>
@@ -66,13 +66,29 @@
             </div>
             <% end %>
 
+            <% if fan_signed_in? %>
+              <div class="winspear">
+              <% if fan_signed_in? && current_fan.following_artist?(artist) %>
+                <%= button_to "unfollow", artist_relationship_path(artist), method: :delete, class: "seventh" %>
+              <% elsif fan_signed_in? %>
+                <%= form_for(ArtistRelationship.new, url: artist_relationships_path) do |f| %>
+                  <%= hidden_field_tag :artist_id, artist.id %>
+                  <%= f.submit "follow", class: "seventh" %>
+                <% end %>
+              <% else %>
+                <%= button_to "follow", fan_session_path, class: "seventh" %>
+              <% end %>
+              </div>
+            <% end %>
+
             <center><%= link_to artist.artist_name, artist_path(artist) %></center>
+
           </div>
         <% end %>
       </div>
 
       <div id="fan-record-label" class="ferry colvin">
-        <% @fan.record_labels.each do |record_label| %>
+        <% @fan.record_labels.take(100).each do |record_label| %>
           <div class="utica">
 
             <% if record_label.record_label_profile.cover_image == "" %>
@@ -89,13 +105,28 @@
             </div>
             <% end %>
 
+            <% if fan_signed_in? %>
+              <div class="winspear">
+              <% if fan_signed_in? && current_fan.following_record_label?(record_label) %>
+                <%= button_to "unfollow", record_label_relationship_path(record_label), method: :delete, class: "seventh" %>
+              <% elsif fan_signed_in? %>
+                <%= form_for(RecordLabelRelationship.new, url: record_label_relationships_path) do |f| %>
+                  <%= hidden_field_tag :record_label_id, record_label.id %>
+                  <%= f.submit "follow", class: "seventh" %>
+                <% end %>
+              <% else %>
+                <%= button_to "follow", fan_session_path, class: "seventh" %>
+              <% end %>
+              </div>
+            <% end %>
+
             <center><%= link_to record_label.label_name, record_label_path(record_label) %></center>
           </div>
         <% end %>
       </div>
 
       <div id="fan-venue" class="ferry colvin">
-        <% @fan.venues.each do |venue| %>
+        <% @fan.venues.take(100).each do |venue| %>
           <div class="utica">
 
             <% if venue.venue_profile.cover_image == "" %>
@@ -112,13 +143,28 @@
             </div>
             <% end %>
 
+            <% if fan_signed_in? %>
+              <div class="winspear">
+              <% if fan_signed_in? && current_fan.following_venue?(venue) %>
+                <%= button_to "unfollow", venue_relationship_path(venue), method: :delete, class: "seventh" %>
+              <% elsif fan_signed_in? %>
+                <%= form_for(VenueRelationship.new, url: venue_relationships_path) do |f| %>
+                  <%= hidden_field_tag :venue_id, venue.id %>
+                  <%= f.submit "follow", class: "seventh" %>
+                <% end %>
+              <% else %>
+                <%= button_to "follow", fan_session_path, class: "seventh" %>
+              <% end %>
+              </div>
+            <% end %>
+
             <center><%= link_to venue.venue_name, venue_path(venue) %></center>
           </div>
         <% end %>
       </div>
 
       <div id="fan-producer" class="ferry colvin">
-        <% @fan.producers.each do |producer| %>
+        <% @fan.producers.take(100).each do |producer| %>
           <div class="utica">
 
             <% if producer.producer_profile.cover_image == "" %>
@@ -133,6 +179,21 @@
             <div class="genesee">
               <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
             </div>
+            <% end %>
+
+            <% if fan_signed_in? %>
+              <div class="winspear">
+              <% if fan_signed_in? && current_fan.following_producer?(producer) %>
+                <%= button_to "unfollow", producer_relationship_path(producer), method: :delete, class: "seventh" %>
+              <% elsif fan_signed_in? %>
+                <%= form_for(ProducerRelationship.new, url: producer_relationships_path) do |f| %>
+                  <%= hidden_field_tag :producer_id, producer.id %>
+                  <%= f.submit "follow", class: "seventh" %>
+                <% end %>
+              <% else %>
+                <%= button_to "follow", fan_session_path, class: "seventh" %>
+              <% end %>
+              </div>
             <% end %>
 
             <center><%= link_to producer.producer_name, producer_path(producer) %></center>

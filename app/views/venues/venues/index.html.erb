@@ -13,7 +13,11 @@
             recent
           </div>
           <div id="location" class="porter">
-            location
+            <% if fan_signed_in? %>
+              <%= current_fan.fan_profile.location.downcase %>
+            <% else %>
+              location
+            <% end %>
           </div>
         </div>
       </div>
@@ -35,7 +39,7 @@
       </div>
 
       <div id="container-popular" class="ferry">
-        <% @venues.sort_by{ |venue| -venue.fans.count }.take(10).each do |venue| %>
+        <% @venues.sort_by{ |venue| -venue.fans.count }.take(100).each do |venue| %>
           <div class="utica">
             <% if venue.venue_profile.cover_image == "" %>
               <div class="sycamore">
@@ -64,7 +68,7 @@
       </div>
 
       <div id="container-recent" class="ferry colvin">
-        <% @venues.order( 'id DESC' ).take(10).each do |venue| %>
+        <% @venues.order( 'id DESC' ).take(100).each do |venue| %>
           <div class="utica">
             <% if venue.venue_profile.cover_image == "" %>
               <div class="sycamore">

@@ -13,7 +13,11 @@
           recent
         </div>
         <div id="location" class="porter">
-          location
+          <% if fan_signed_in? %>
+            <%= current_fan.fan_profile.location.downcase %>
+          <% else %>
+            location
+          <% end %>
         </div>
         <div id="alternative" class="porter">
           alternative
@@ -217,7 +221,7 @@
 
       <div id="container-location" class="ferry colvin">
         <% if fan_signed_in? %>
-          <% @record_labels.each do |record_label|  %>
+          <% @record_labels.take(500).each do |record_label|  %>
             <% if record_label.record_label_profile.location == current_fan.fan_profile.location %>
               <div class="utica">
                 <% if record_label.record_label_profile.cover_image == "" %>
@@ -253,7 +257,7 @@
       </div>
 
       <div id="container-alternative" class="ferry colvin">
-        <% @record_labels.each do |record_label|  %>
+        <% @record_labels.take(500).each do |record_label|  %>
           <% if record_label.record_label_profile.genre == "Alternative" %>
           <div class="utica">
             <% if record_label.record_label_profile.cover_image == "" %>
@@ -284,7 +288,7 @@
       </div>
 
       <div id="container-ambient" class="ferry colvin">
-        <% @record_labels.each do |record_label|  %>
+        <% @record_labels.take(500).each do |record_label|  %>
           <% if record_label.record_label_profile.genre == "Ambient" %>
           <div class="utica">
             <% if record_label.record_label_profile.cover_image == "" %>
@@ -315,7 +319,7 @@
       </div>
 
       <div id="container-blues" class="ferry colvin">
-        <% @record_labels.each do |record_label|  %>
+        <% @record_labels.take(500).each do |record_label|  %>
           <% if record_label.record_label_profile.genre == "Blues" %>
           <div class="utica">
             <% if record_label.record_label_profile.cover_image == "" %>
@@ -346,7 +350,7 @@
       </div>
 
       <div id="container-classical" class="ferry colvin">
-        <% @record_labels.each do |record_label|  %>
+        <% @record_labels.take(500).each do |record_label|  %>
           <% if record_label.record_label_profile.genre == "Classical" %>
           <div class="utica">
             <% if record_label.record_label_profile.cover_image == "" %>
@@ -377,7 +381,7 @@
       </div>
 
       <div id="container-comedy" class="ferry colvin">
-        <% @record_labels.each do |record_label|  %>
+        <% @record_labels.take(500).each do |record_label|  %>
           <% if record_label.record_label_profile.genre == "Comedy" %>
           <div class="utica">
             <% if record_label.record_label_profile.cover_image == "" %>
@@ -408,7 +412,7 @@
       </div>
 
       <div id="container-country" class="ferry colvin">
-        <% @record_labels.each do |record_label|  %>
+        <% @record_labels.take(500).each do |record_label|  %>
           <% if record_label.record_label_profile.genre == "Country" %>
           <div class="utica">
             <% if record_label.record_label_profile.cover_image == "" %>
@@ -439,7 +443,7 @@
       </div>
 
       <div id="container-electronic" class="ferry colvin">
-        <% @record_labels.each do |record_label|  %>
+        <% @record_labels.take(500).each do |record_label|  %>
           <% if record_label.record_label_profile.genre == "Electronic" %>
           <div class="utica">
             <% if record_label.record_label_profile.cover_image == "" %>
@@ -470,7 +474,7 @@
       </div>
 
       <div id="container-experimental" class="ferry colvin">
-        <% @record_labels.each do |record_label|  %>
+        <% @record_labels.take(500).each do |record_label|  %>
           <% if record_label.record_label_profile.genre == "Experimental" %>
           <div class="utica">
             <% if record_label.record_label_profile.cover_image == "" %>
@@ -501,7 +505,7 @@
       </div>
 
       <div id="container-hip-hop-rap" class="ferry colvin">
-        <% @record_labels.each do |record_label|  %>
+        <% @record_labels.take(500).each do |record_label|  %>
           <% if record_label.record_label_profile.genre == "Hip-Hop/Rap" %>
           <div class="utica">
             <% if record_label.record_label_profile.cover_image == "" %>
@@ -532,7 +536,7 @@
       </div>
 
       <div id="container-indie" class="ferry colvin">
-        <% @record_labels.each do |record_label|  %>
+        <% @record_labels.take(500).each do |record_label|  %>
           <% if record_label.record_label_profile.genre == "Indie" %>
           <div class="utica">
             <% if record_label.record_label_profile.cover_image == "" %>
@@ -563,7 +567,7 @@
       </div>
 
       <div id="container-jazz" class="ferry colvin">
-        <% @record_labels.each do |record_label|  %>
+        <% @record_labels.take(500).each do |record_label|  %>
           <% if record_label.record_label_profile.genre == "Jazz" %>
           <div class="utica">
             <% if record_label.record_label_profile.cover_image == "" %>
@@ -594,7 +598,7 @@
       </div>
 
       <div id="container-latino" class="ferry colvin">
-        <% @record_labels.each do |record_label|  %>
+        <% @record_labels.take(500).each do |record_label|  %>
           <% if record_label.record_label_profile.genre == "Latino" %>
           <div class="utica">
             <% if record_label.record_label_profile.cover_image == "" %>
@@ -625,7 +629,7 @@
       </div>
 
       <div id="container-metal" class="ferry colvin">
-        <% @record_labels.each do |record_label|  %>
+        <% @record_labels.take(500).each do |record_label|  %>
           <% if record_label.record_label_profile.genre == "Metal" %>
           <div class="utica">
             <% if record_label.record_label_profile.cover_image == "" %>
@@ -656,7 +660,7 @@
       </div>
 
       <div id="container-pop" class="ferry colvin">
-        <% @record_labels.each do |record_label|  %>
+        <% @record_labels.take(500).each do |record_label|  %>
           <% if record_label.record_label_profile.genre == "Pop" %>
           <div class="utica">
             <% if record_label.record_label_profile.cover_image == "" %>
@@ -687,7 +691,7 @@
       </div>
 
       <div id="container-rb-soul" class="ferry colvin">
-        <% @record_labels.each do |record_label|  %>
+        <% @record_labels.take(500).each do |record_label|  %>
           <% if record_label.record_label_profile.genre == "R&B/Soul" %>
           <div class="utica">
             <% if record_label.record_label_profile.cover_image == "" %>
@@ -718,7 +722,7 @@
       </div>
 
       <div id="container-rock" class="ferry colvin">
-        <% @record_labels.each do |record_label|  %>
+        <% @record_labels.take(500).each do |record_label|  %>
           <% if record_label.record_label_profile.genre == "Rock" %>
           <div class="utica">
             <% if record_label.record_label_profile.cover_image == "" %>
@@ -749,7 +753,7 @@
       </div>
 
       <div id="container-singer-songwriter" class="ferry colvin">
-        <% @record_labels.each do |record_label|  %>
+        <% @record_labels.take(500).each do |record_label|  %>
           <% if record_label.record_label_profile.genre == "Singer/Songwriter" %>
           <div class="utica">
             <% if record_label.record_label_profile.cover_image == "" %>
@@ -780,7 +784,7 @@
       </div>
 
       <div id="container-soundtrack" class="ferry colvin">
-        <% @record_labels.each do |record_label|  %>
+        <% @record_labels.take(500).each do |record_label|  %>
           <% if record_label.record_label_profile.genre == "soundtrack" %>
           <div class="utica">
             <% if record_label.record_label_profile.cover_image == "" %>
@@ -811,7 +815,7 @@
       </div>
 
       <div id="container-world" class="ferry colvin">
-        <% @record_labels.each do |record_label|  %>
+        <% @record_labels.take(500).each do |record_label|  %>
           <% if record_label.record_label_profile.genre == "World" %>
           <div class="utica">
             <% if record_label.record_label_profile.cover_image == "" %>

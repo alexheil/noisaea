@@ -1,4 +1,4 @@
-<%= provide(:title, "#{@venue.venue_name} | Followers") %>
+<%= provide(:title, sanitize(@venue.venue_name) + " | Followers") %>
 <div class="buffalo">
   <% if @venue.venue_profile.cover_image == "" %>
     <div class="clinton">
@@ -14,8 +14,8 @@
     </div>
   <% end %>
   <div class="delaware">
-    <div class="winspear">
-      <h1><%= link_to @venue.venue_name, venue_path(@venue) %></h1>
+    <div class="winspear hedley">
+      <%= link_to @venue.venue_name, venue_path(@venue) %>
     </div>
     <div class="amherst">
       <strong>// <%= pluralize(@venue.fans.count, "fan") %></strong>
@@ -23,7 +23,7 @@
 
     <% if @venue.fans.any? %>
     <div class="harlem">
-        <% @venue.fans.each do |fan| %>
+        <% @venue.fans.take(100).each do |fan| %>
           <div class="utica">
 
             <% if fan.fan_profile.cover_image == "" %>

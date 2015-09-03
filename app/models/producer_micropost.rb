@@ -6,6 +6,8 @@ class ProducerMicropost < ActiveRecord::Base
 
   default_scope -> { order('id DESC') }
 
+  has_many :producer_micropost_votes
+
   validates :producer_id, presence: true
   validates :content, presence: true, length: { maximum: 14216 }
 

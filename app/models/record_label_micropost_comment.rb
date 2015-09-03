@@ -6,6 +6,8 @@ class RecordLabelMicropostComment < ActiveRecord::Base
   belongs_to :venue
   belongs_to :producer
 
+  has_many :record_label_micropost_comment_votes
+
   validates :record_label_micropost_id, presence: true
   validates :content, presence: true, length: { maximum: 1832 }
 

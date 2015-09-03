@@ -6,7 +6,8 @@ class ArtistMicropostComment < ActiveRecord::Base
   belongs_to :venue
   belongs_to :producer
 
+  has_many :artist_micropost_comment_votes
+
   validates :artist_micropost_id, presence: true
   validates :content, presence: true, length: { maximum: 1832 }
-
 end

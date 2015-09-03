@@ -1,4 +1,4 @@
-<%= provide(:title, "#{@record_label.label_name}") %>
+<%= provide(:title, sanitize(@record_label.label_name)) %>
 <div class="buffalo">
   <% if @record_label.record_label_profile.cover_image == "" %>
     <div class="clinton">
@@ -21,19 +21,23 @@
         <%= @record_label.label_name %>
       </div>
 
+      <% if fan_signed_in? && current_fan.following_record_label?(@record_label) %>
+        <div class="amherst">
+          you follow <%= @record_label.label_name %>
+        </div>
+      <% end %>
+
       <% if @record_label == current_record_label %>
       <% else %>
       <div class="niagara">
         <div class="harlem">
         <% if fan_signed_in? && current_fan.following_record_label?(@record_label) %>
           <%= button_to "unfollow", record_label_relationship_path, method: :delete, class: "exchange" %>
-        <% elsif fan_signed_in? %>
+        <% else %>
           <%= form_for(RecordLabelRelationship.new, url: record_label_relationships_path) do |f| %>
             <%= hidden_field_tag :record_label_id, @record_label.id %>
             <%= f.submit "follow", class: "exchange" %>
           <% end %>
-        <% else %>
-          <%= button_to "follow", fan_session_path, class: "exchange" %>
         <% end %>
         </div>
       </div>
@@ -52,8 +56,8 @@
 
       <% if @record_label.record_label_microposts.any? %>
         <div class="harlem">
-          <% @record_label.record_label_microposts.each do | micropost | %>
-          <div class="harlem">
+          <% @record_label.record_label_microposts.take(100).each do | micropost | %>
+          <div class="harlem dodge">
             <span class="winspear"><strong><%= link_to "#{@record_label.label_name}", record_label_micropost_path(@record_label, micropost) %></strong> posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
                 <% if @record_label == current_record_label %>
                // <%= link_to "delete post", record_label_micropost_path(@record_label, micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %></span>
@@ -63,12 +67,31 @@
               </div>
 
               <div class="lisbon">
-                <a class="linden"><%= pluralize(micropost.record_label_micropost_comments.count, "comment") %></a>
+
+                <% if fan_signed_in? && current_fan.record_label_micropost_voted?(micropost) %>
+                  <%= button_to "−", record_label_micropost_vote_path(micropost), method: :delete, class: "linwood" %>
+                <% elsif artist_signed_in? && current_artist.record_label_micropost_voted?(micropost) %>
+                  <%= button_to "−", record_label_micropost_vote_path(micropost), method: :delete, class: "linwood" %>
+                <% elsif record_label_signed_in? && current_record_label.record_label_micropost_voted?(micropost) %>
+                  <%= button_to "−", record_label_micropost_vote_path(micropost), method: :delete, class: "linwood" %>
+                <% elsif venue_signed_in? && current_venue.record_label_micropost_voted?(micropost) %>
+                  <%= button_to "−", record_label_micropost_vote_path(micropost), method: :delete, class: "linwood" %>
+                <% elsif producer_signed_in? && current_producer.record_label_micropost_voted?(micropost) %>
+                  <%= button_to "−", record_label_micropost_vote_path(micropost), method: :delete, class: "linwood" %>
+                <% else %>
+                  <%= form_for(RecordLabelMicropostVote.new, url: record_label_micropost_votes_path) do |f| %>
+                    <%= hidden_field_tag :record_label_micropost_id, micropost.id %>
+                    <%= f.submit "+", class: "linwood" %>
+                  <% end %>
+                <% end %>
+
+
+                <strong><%= micropost.record_label_micropost_votes.count %></strong> // <a class="linden"><%= pluralize(micropost.record_label_micropost_comments.count, "comment") %></a>
               </div>
 
               <div class="walden">
                 <div class="minnesota">
-                  <% micropost.record_label_micropost_comments.each do |comment| %>
+                  <% micropost.record_label_micropost_comments.sort_by{ |comment| -comment.record_label_micropost_comment_votes.count }.take(100).each do |comment| %>
                   <div class="northrup">
                     <div class="winspear">
                        <%= link_to Artist.find(comment.artist_id).artist_name, artist_path(Artist.find(comment.artist_id)) if comment.fan_id.nil? && comment.record_label_id.nil? && comment.venue_id.nil? && comment.producer_id.nil? %><%= link_to Fan.find(comment.fan_id).fan_name, fan_path(Fan.find(comment.fan_id)) if comment.artist_id.nil? && comment.record_label_id.nil? && comment.venue_id.nil? && comment.producer_id.nil? %><%= link_to RecordLabel.find(comment.record_label_id).label_name, record_label_path(RecordLabel.find(comment.record_label_id)) if comment.artist_id.nil? && comment.fan_id.nil? && comment.venue_id.nil? && comment.producer_id.nil? %><%= link_to Venue.find(comment.venue_id).venue_name, venue_path(Venue.find(comment.venue_id)) if comment.artist_id.nil? && comment.fan_id.nil? && comment.record_label_id.nil? && comment.producer_id.nil? %><%= link_to Producer.find(comment.producer_id).producer_name, producer_path(Producer.find(comment.producer_id)) if comment.artist_id.nil? && comment.fan_id.nil? && comment.record_label_id.nil? && comment.venue_id.nil? %> posted <%= time_ago_in_words(comment.created_at) %> ago
@@ -80,6 +103,28 @@
                     <div class="winspear">
                       <%= comment.content %>
                     </div>
+
+                    <div class="winspear">
+                      <% if fan_signed_in? && current_fan.record_label_micropost_comment_voted?(comment) %>
+                        <%= button_to "−", record_label_micropost_comment_vote_path(comment), method: :delete, class: "linwood" %>
+                      <% elsif artist_signed_in? && current_artist.record_label_micropost_comment_voted?(comment) %>
+                        <%= button_to "−", record_label_micropost_comment_vote_path(comment), method: :delete, class: "linwood" %>
+                      <% elsif record_label_signed_in? && current_record_label.record_label_micropost_comment_voted?(comment) %>
+                        <%= button_to "−", record_label_micropost_comment_vote_path(comment), method: :delete, class: "linwood" %>
+                      <% elsif venue_signed_in? && current_venue.record_label_micropost_comment_voted?(comment) %>
+                        <%= button_to "−", record_label_micropost_comment_vote_path(comment), method: :delete, class: "linwood" %>
+                      <% elsif producer_signed_in? && current_producer.record_label_micropost_comment_voted?(comment) %>
+                        <%= button_to "−", record_label_micropost_comment_vote_path(comment), method: :delete, class: "linwood" %>
+                      <% else %>
+                        <%= form_for(RecordLabelMicropostCommentVote.new, url: record_label_micropost_comment_votes_path) do |f| %>
+                          <%= hidden_field_tag :record_label_micropost_comment_id, comment.id %>
+                          <%= f.submit "+", class: "linwood" %>
+                        <% end %>
+                      <% end %>
+
+                      <strong><%= comment.record_label_micropost_comment_votes.count %></strong>
+                    </div>
+
                   </div>
                   <% end %>
 
@@ -111,13 +156,11 @@
         <div class="lisbon">
         <% if fan_signed_in? && current_fan.following_record_label?(@record_label) %>
           <%= button_to "unfollow", record_label_relationship_path, method: :delete, class: "exchange" %>
-        <% elsif fan_signed_in? %>
+        <% else fan_signed_in? %>
           <%= form_for(RecordLabelRelationship.new, url: record_label_relationships_path) do |f| %>
             <%= hidden_field_tag :record_label_id, @record_label.id %>
             <%= f.submit "follow", class: "exchange" %>
           <% end %>
-        <% else %>
-          <%= button_to "follow", fan_session_path, class: "exchange" %>
         <% end %>
         </div>
       </div>

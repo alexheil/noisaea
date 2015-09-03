@@ -1,4 +1,4 @@
-<%= provide(:title, "#{@fan.fan_name}") %>
+<%= provide(:title, sanitize(@fan.fan_name)) %>
 <div class="buffalo">
   <% if @fan.fan_profile.cover_image == "" %>
     <div class="clinton">
@@ -17,8 +17,12 @@
 
 
     <div class="main">
-      <h1><%= @fan.fan_name %></h1>
+      <div class="hedley">
+        <%= @fan.fan_name %>
+      </div>
+
       <%= render "fans/partials/fan_feed" %>
+
     </div>
 
 

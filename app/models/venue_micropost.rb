@@ -6,6 +6,8 @@ class VenueMicropost < ActiveRecord::Base
 
   default_scope -> { order('id DESC') }
 
+  has_many :venue_micropost_votes
+
   validates :venue_id, presence: true
   validates :content, presence: true, length: { maximum: 14216 }
 

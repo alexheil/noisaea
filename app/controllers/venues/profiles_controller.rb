@@ -26,7 +26,7 @@ class Venues::ProfilesController < ApplicationController
     def correct_venue
 
       @venue = current_venue
-      redirect_to venue_path(Venue.find(params[:venue_id])) if @venue != Venue.find(params[:venue_id])
+      redirect_to venue_path(Venue.friendly.find(params[:venue_id])) if @venue != Venue.friendly.find(params[:venue_id])
     end
 
     def profile_params

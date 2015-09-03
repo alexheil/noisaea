@@ -1,5 +1,5 @@
-$main-color: #1DE9B6;
-$accent-color1: #A7FFEB;
+$main-color: #673AB7;
+$accent-color1: #B39DDB;
 $my-black: #212121;
 $normal-font: Georgia, "Times New Roman", Times, serif;
 $fancy-font: 'Open Sans', Helvetica, arial, sans-serif;
@@ -35,7 +35,20 @@ $fancy-font: 'Open Sans', Helvetica, arial, sans-serif;
 /* ************** HEADER AND nav ******************** */
 
 .ontario {
+  background-color: $main-color;
+}
+
+.erie {
   background-color: $my-black;
+}
+
+.fourth {
+  box-shadow: 0 5px 5px rgba(0,0,0,0.5);
+}
+
+.dodge {
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+  padding: 1vh 1vw;
 }
 
 .austin {
@@ -45,12 +58,23 @@ $fancy-font: 'Open Sans', Helvetica, arial, sans-serif;
 
 .military {
   display: inline-block;
-  color: $main-color;
+  color: #fff;
   padding: 1vh 0;
   font-family: $fancy-font;
   &:hover {
     text-decoration: none;
-    color: $accent-color1;
+    color: $my-black;
+  }
+}
+
+.hampshire {
+  display: inline-block;
+  color: $my-black;
+  padding: 1vh 0;
+  font-family: $fancy-font;
+  &:hover {
+    text-decoration: none;
+    color: $main-color;
   }
 }
 
@@ -86,7 +110,11 @@ $fancy-font: 'Open Sans', Helvetica, arial, sans-serif;
 }
 
 .starin {
+  color: #fff;
   cursor: pointer;
+  &:hover {
+    color: $my-black;
+  }
 }
 
 .monroe {
@@ -135,10 +163,18 @@ $fancy-font: 'Open Sans', Helvetica, arial, sans-serif;
 }
 
 .depew {
-  color: $main-color;
+  color: #fff;
   font-family: $fancy-font;
   &:hover {
-    color: $accent-color1;
+    color: $my-black;
+  }
+}
+
+.leroy {
+  color: #fff;
+  font-family: $fancy-font;
+  &:hover {
+    color: $main-color;
   }
 }
 
@@ -186,45 +222,53 @@ $fancy-font: 'Open Sans', Helvetica, arial, sans-serif;
 .south-ogden {
   margin-bottom: 1vh;
   color: #fff;
+  font-weight: 700;
 }
 
 .facebook {
+  color: #fff;
   &:hover {
     color: #3b5998;
   }
 }
 
 .twitter {
+  color: #fff;
   &:hover {
     color: #00aced;
   }
 }
 
 .youtube {
+  color: #fff;
   &:hover {
     color: #bb0000;
   }
 }
 
 .googleplus {
+  color: #fff;
   &:hover {
     color: #dd4b39;
   }
 }
 
 .instagram {
+  color: #fff;
   &:hover {
     color: #517fa4;
   }
 }
 
 .tumblr {
+  color: #fff;
   &:hover {
     color: #32506d;
   }
 }
 
 .pinterest {
+  color: #fff;
   &:hover {
     color: #cb2027;
   }

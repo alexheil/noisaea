@@ -1,4 +1,4 @@
-<%= provide(:title, "#{@developer.title}") %>
+<%= provide(:title, sanitize(@developer.title)) %>
 <%= render "developers/partials/developer_header" %>
 <div class="buffalo">
   <div class="delaware">
@@ -9,7 +9,7 @@
         posted by <%= Buffalo.find(@developer.buffalo_id).buffalo_name %> // follow him on twitter <a href="https://twitter.com/realalexheil">here</a>.
       </div>
       <div class="best">
-        <%= raw(@developer.content) %>
+        <%= sanitize(@developer.content) %>
       </div>
       <div class="harlem">
         <h3>grant other people with this knowledge on...</h3>
@@ -24,7 +24,7 @@
 
       <div class="walden">
         <div class="minnesota">
-          <% @developer.developer_comments.each do |comment| %>
+          <% @developer.developer_comments.sort_by{ |comment| -comment.developer_comment_votes.count }.take(100).each do |comment| %>
           <div class="northrup">
             <div class="amherst">
               <%= link_to Artist.find(comment.artist_id).artist_name, artist_path(Artist.find(comment.artist_id)) if comment.fan_id.nil? && comment.record_label_id.nil? && comment.venue_id.nil? && comment.producer_id.nil? %><%= link_to Fan.find(comment.fan_id).fan_name, fan_path(Fan.find(comment.fan_id)) if comment.artist_id.nil? && comment.record_label_id.nil? && comment.venue_id.nil? && comment.producer_id.nil? %><%= link_to RecordLabel.find(comment.record_label_id).label_name, record_label_path(RecordLabel.find(comment.record_label_id)) if comment.artist_id.nil? && comment.fan_id.nil? && comment.venue_id.nil? && comment.producer_id.nil? %><%= link_to Venue.find(comment.venue_id).venue_name, venue_path(Venue.find(comment.venue_id)) if comment.artist_id.nil? && comment.fan_id.nil? && comment.record_label_id.nil? && comment.producer_id.nil? %><%= link_to Producer.find(comment.producer_id).producer_name, producer_path(Producer.find(comment.producer_id)) if comment.artist_id.nil? && comment.fan_id.nil? && comment.record_label_id.nil? && comment.venue_id.nil? %> posted <%= time_ago_in_words(comment.created_at) %> ago
@@ -36,6 +36,28 @@
             <div class="amherst">
               <%= comment.content %>
             </div>
+
+            <div class="amherst">
+              <% if fan_signed_in? && current_fan.developer_comment_voted?(comment) %>
+                <%= button_to "−", developer_comment_vote_path(comment), method: :delete, class: "linwood" %>
+              <% elsif artist_signed_in? && current_artist.developer_comment_voted?(comment) %>
+                <%= button_to "−", developer_comment_vote_path(comment), method: :delete, class: "linwood" %>
+              <% elsif record_label_signed_in? && current_record_label.developer_comment_voted?(comment) %>
+                <%= button_to "−", developer_comment_vote_path(comment), method: :delete, class: "linwood" %>
+              <% elsif venue_signed_in? && current_venue.developer_comment_voted?(comment) %>
+                <%= button_to "−", developer_comment_vote_path(comment), method: :delete, class: "linwood" %>
+              <% elsif producer_signed_in? && current_producer.developer_comment_voted?(comment) %>
+                <%= button_to "−", developer_comment_vote_path(comment), method: :delete, class: "linwood" %>
+              <% else %>
+                <%= form_for(DeveloperCommentVote.new, url: developer_comment_votes_path) do |f| %>
+                  <%= hidden_field_tag :developer_comment_id, comment.id %>
+                  <%= f.submit "+", class: "linwood" %>
+                <% end %>
+              <% end %>
+
+              <strong><%= comment.developer_comment_votes.count %></strong>
+            </div>
+
           </div>
           <% end %>
           <%= form_for(DeveloperComment.new, url: developer_comments_path(@developer)) do |f| %>

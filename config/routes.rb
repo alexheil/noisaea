@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   resources :artists, controller: 'artists/artists', only: [:show, :index] do
     resource :profile, controller: 'artists/profiles', only: [:edit, :update]
-    resources :microposts, controller: 'artists/microposts', only:[:create, :show, :destroy] do
+    resources :microposts, controller: 'artists/microposts', path: :status, only:[:create, :show, :destroy] do
       resources :comments, controller: 'artists/comments', only: [:create, :destroy]
     end
     get 'followers' => 'artists/artists#followers'
@@ -52,7 +52,7 @@ Rails.application.routes.draw do
 
   resources :record_labels, controller: 'recordlabels/recordlabels', only: [:show, :index] do
     resource :profile, controller: 'recordlabels/profiles', only: [:edit, :update]
-    resources :microposts, controller: 'recordlabels/microposts', only:[:create, :show, :destroy] do
+    resources :microposts, controller: 'recordlabels/microposts', path: :status, only:[:create, :show, :destroy] do
       resources :comments, controller: 'recordlabels/comments', only: [:create, :destroy]
     end
     get 'followers' => 'recordlabels/recordlabels#followers'
@@ -68,7 +68,7 @@ Rails.application.routes.draw do
 
   resources :venues, controller: 'venues/venues', only: [:show, :index] do
     resource :profile, controller: 'venues/profiles', only: [:edit, :update]
-    resources :microposts, controller: 'venues/microposts', only:[:create, :show, :destroy] do
+    resources :microposts, controller: 'venues/microposts', path: :status, only:[:create, :show, :destroy] do
       resources :comments, controller: 'venues/comments', only: [:create, :destroy]
     end
     get 'followers' => 'venues/venues#followers'
@@ -84,7 +84,7 @@ Rails.application.routes.draw do
 
   resources :producers, controller: 'producers/producers', only: [:show, :index] do
     resource :profile, controller: 'producers/profiles', only: [:edit, :update]
-    resources :microposts, controller: 'producers/microposts', only:[:create, :show, :destroy] do
+    resources :microposts, controller: 'producers/microposts', path: :status, only:[:create, :show, :destroy] do
       resources :comments, controller: 'producers/comments', only: [:create, :destroy]
     end
     get 'followers' => 'producers/producers#followers'
@@ -113,4 +113,15 @@ Rails.application.routes.draw do
   resources :venue_relationships, controller: 'venues/relationships', only: [:create, :destroy]
   resources :producer_relationships, controller: 'producers/relationships', only: [:create, :destroy]
 
+  resources :artist_micropost_votes, controller: 'artists/micropost_votes', only: [:create,:destroy]
+  resources :record_label_micropost_votes, controller: 'recordlabels/micropost_votes', only: [:create,:destroy]
+  resources :venue_micropost_votes, controller: 'venues/micropost_votes', only: [:create,:destroy]
+  resources :producer_micropost_votes, controller: 'producers/micropost_votes', only: [:create,:destroy]
+
+  resources :artist_micropost_comment_votes, controller: 'artists/comment_votes', only: [:create,:destroy]
+  resources :record_label_micropost_comment_votes, controller: 'recordlabels/comment_votes', only: [:create,:destroy]
+  resources :venue_micropost_comment_votes, controller: 'venues/comment_votes', only: [:create,:destroy]
+  resources :producer_micropost_comment_votes, controller: 'producers/comment_votes', only: [:create,:destroy]
+  resources :post_comment_votes, controller: 'posts/comment_votes', only: [:create,:destroy]
+  resources :developer_comment_votes, controller: 'developers/comment_votes', only: [:create,:destroy]
 end

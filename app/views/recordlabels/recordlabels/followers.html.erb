@@ -1,4 +1,4 @@
-<%= provide(:title, "#{@record_label.label_name} | Followers") %>
+<%= provide(:title, sanitize(@record_label.label_name) + " | Followers") %>
 <div class="buffalo">
   <% if @record_label.record_label_profile.cover_image == "" %>
     <div class="clinton">
@@ -14,8 +14,8 @@
     </div>
   <% end %>
   <div class="delaware">
-    <div class="winspear">
-      <h1><%= link_to @record_label.label_name, record_label_path(@record_label) %></h1>
+    <div class="winspear hedley">
+      <%= link_to @record_label.label_name, record_label_path(@record_label) %>
     </div>
     <div class="amherst">
       <strong>// <%= pluralize(@record_label.fans.count, "fan") %></strong>
@@ -23,7 +23,7 @@
 
     <% if @record_label.fans.any? %>
     <div class="harlem">
-        <% @record_label.fans.each do |fan| %>
+        <% @record_label.fans.take(100).each do |fan| %>
           <div class="utica">
 
             <% if fan.fan_profile.cover_image == "" %>

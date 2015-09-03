@@ -13,7 +13,11 @@
           recent
         </div>
         <div id="location" class="porter">
+        <% if fan_signed_in? %>
+          <%= current_fan.fan_profile.location.downcase %>
+        <% else %>
           location
+        <% end %>
         </div>
         <div id="alternative" class="porter">
           alternative
@@ -152,7 +156,7 @@
     </div>
 
       <div id="container-popular" class="ferry">
-        <% @artists.sort_by{ |artist| -artist.fans.count }.take(15).each do |artist| %>
+        <% @artists.sort_by{ |artist| -artist.fans.count }.take(100).each do |artist| %>
           <div class="utica">
             <% if artist.artist_profile.cover_image == "" %>
               <div class="sycamore">
@@ -184,7 +188,7 @@
       </div>
 
       <div id="container-recent" class="ferry colvin">
-        <% @artists.order( 'id DESC' ).take(10).each do |artist| %>
+        <% @artists.order( 'id DESC' ).take(100).each do |artist| %>
           <div class="utica">
             <% if artist.artist_profile.cover_image == "" %>
               <div class="sycamore">
@@ -217,8 +221,7 @@
 
       <div id="container-location" class="ferry colvin">
         <% if fan_signed_in? %>
-          <% @artists.each do |artist| %>
-            <% if artist.artist_profile.location == current_fan.fan_profile.location %>
+          <% @artists.each do |artist| if artist.artist_profile.location == current_fan.fan_profile.location %>
               <div class="utica">
                 <% if artist.artist_profile.cover_image == "" %>
                   <div class="sycamore">
@@ -253,8 +256,7 @@
       </div>
 
       <div id="container-alternative" class="ferry colvin">
-        <% @artists.each do |artist|  %>
-          <% if artist.artist_profile.genre == "Alternative" %>
+        <% @artists.take(500).each do |artist| if artist.artist_profile.genre == "Alternative" %>
           <div class="utica">
             <% if artist.artist_profile.cover_image == "" %>
               <div class="sycamore">
@@ -284,8 +286,7 @@
       </div>
 
       <div id="container-ambient" class="ferry colvin">
-        <% @artists.each do |artist|  %>
-          <% if artist.artist_profile.genre == "Ambient" %>
+        <% @artists.take(500).each do |artist| if artist.artist_profile.genre == "Ambient" %>
           <div class="utica">
             <% if artist.artist_profile.cover_image == "" %>
               <div class="sycamore">
@@ -315,8 +316,7 @@
       </div>
 
       <div id="container-blues" class="ferry colvin">
-        <% @artists.each do |artist|  %>
-          <% if artist.artist_profile.genre == "Blues" %>
+        <% @artists.take(500).each do |artist| if artist.artist_profile.genre == "Blues" %>
           <div class="utica">
             <% if artist.artist_profile.cover_image == "" %>
               <div class="sycamore">
@@ -346,8 +346,7 @@
       </div>
 
       <div id="container-classical" class="ferry colvin">
-        <% @artists.each do |artist|  %>
-          <% if artist.artist_profile.genre == "Classical" %>
+        <% @artists.take(500).each do |artist| if artist.artist_profile.genre == "Classical" %>
           <div class="utica">
             <% if artist.artist_profile.cover_image == "" %>
               <div class="sycamore">
@@ -377,8 +376,7 @@
       </div>
 
       <div id="container-comedy" class="ferry colvin">
-        <% @artists.each do |artist|  %>
-          <% if artist.artist_profile.genre == "Comedy" %>
+        <% @artists.take(500).each do |artist| if artist.artist_profile.genre == "Comedy" %>
           <div class="utica">
             <% if artist.artist_profile.cover_image == "" %>
               <div class="sycamore">
@@ -408,8 +406,7 @@
       </div>
 
       <div id="container-country" class="ferry colvin">
-        <% @artists.each do |artist|  %>
-          <% if artist.artist_profile.genre == "Country" %>
+        <% @artists.take(500).each do |artist| if artist.artist_profile.genre == "Country" %>
           <div class="utica">
             <% if artist.artist_profile.cover_image == "" %>
               <div class="sycamore">
@@ -439,8 +436,7 @@
       </div>
 
       <div id="container-electronic" class="ferry colvin">
-        <% @artists.each do |artist|  %>
-          <% if artist.artist_profile.genre == "Electronic" %>
+        <% @artists.take(500).each do |artist| if artist.artist_profile.genre == "Electronic" %>
           <div class="utica">
             <% if artist.artist_profile.cover_image == "" %>
               <div class="sycamore">
@@ -470,8 +466,7 @@
       </div>
 
       <div id="container-experimental" class="ferry colvin">
-        <% @artists.each do |artist|  %>
-          <% if artist.artist_profile.genre == "Experimental" %>
+        <% @artists.take(500).each do |artist| if artist.artist_profile.genre == "Experimental" %>
           <div class="utica">
             <% if artist.artist_profile.cover_image == "" %>
               <div class="sycamore">
@@ -501,8 +496,7 @@
       </div>
 
       <div id="container-hip-hop-rap" class="ferry colvin">
-        <% @artists.each do |artist|  %>
-          <% if artist.artist_profile.genre == "Hip-Hop/Rap" %>
+        <% @artists.take(500).each do |artist| if artist.artist_profile.genre == "Hip-Hop/Rap" %>
           <div class="utica">
             <% if artist.artist_profile.cover_image == "" %>
               <div class="sycamore">
@@ -532,8 +526,7 @@
       </div>
 
       <div id="container-indie" class="ferry colvin">
-        <% @artists.each do |artist|  %>
-          <% if artist.artist_profile.genre == "Indie" %>
+        <% @artists.take(500).each do |artist| if artist.artist_profile.genre == "Indie" %>
           <div class="utica">
             <% if artist.artist_profile.cover_image == "" %>
               <div class="sycamore">
@@ -563,8 +556,7 @@
       </div>
 
       <div id="container-jazz" class="ferry colvin">
-        <% @artists.each do |artist|  %>
-          <% if artist.artist_profile.genre == "Jazz" %>
+        <% @artists.take(500).each do |artist| if artist.artist_profile.genre == "Jazz" %>
           <div class="utica">
             <% if artist.artist_profile.cover_image == "" %>
               <div class="sycamore">
@@ -594,8 +586,7 @@
       </div>
 
       <div id="container-latino" class="ferry colvin">
-        <% @artists.each do |artist|  %>
-          <% if artist.artist_profile.genre == "Latino" %>
+        <% @artists.take(500).each do |artist| if artist.artist_profile.genre == "Latino" %>
           <div class="utica">
             <% if artist.artist_profile.cover_image == "" %>
               <div class="sycamore">
@@ -625,8 +616,7 @@
       </div>
 
       <div id="container-metal" class="ferry colvin">
-        <% @artists.each do |artist|  %>
-          <% if artist.artist_profile.genre == "Metal" %>
+        <% @artists.take(500).each do |artist| if artist.artist_profile.genre == "Metal" %>
           <div class="utica">
             <% if artist.artist_profile.cover_image == "" %>
               <div class="sycamore">
@@ -656,8 +646,7 @@
       </div>
 
       <div id="container-pop" class="ferry colvin">
-        <% @artists.each do |artist|  %>
-          <% if artist.artist_profile.genre == "Pop" %>
+        <% @artists.take(500).each do |artist| if artist.artist_profile.genre == "Pop" %>
           <div class="utica">
             <% if artist.artist_profile.cover_image == "" %>
               <div class="sycamore">
@@ -687,8 +676,7 @@
       </div>
 
       <div id="container-rb-soul" class="ferry colvin">
-        <% @artists.each do |artist|  %>
-          <% if artist.artist_profile.genre == "R&B/Soul" %>
+        <% @artists.take(500).each do |artist| if artist.artist_profile.genre == "R&B/Soul" %>
           <div class="utica">
             <% if artist.artist_profile.cover_image == "" %>
               <div class="sycamore">
@@ -718,8 +706,7 @@
       </div>
 
       <div id="container-rock" class="ferry colvin">
-        <% @artists.each do |artist|  %>
-          <% if artist.artist_profile.genre == "Rock" %>
+        <% @artists.take(500).each do |artist| if artist.artist_profile.genre == "Rock" %>
           <div class="utica">
             <% if artist.artist_profile.cover_image == "" %>
               <div class="sycamore">
@@ -749,8 +736,7 @@
       </div>
 
       <div id="container-singer-songwriter" class="ferry colvin">
-        <% @artists.each do |artist|  %>
-          <% if artist.artist_profile.genre == "Singer/Songwriter" %>
+        <% @artists.take(500).each do |artist| if artist.artist_profile.genre == "Singer/Songwriter" %>
           <div class="utica">
             <% if artist.artist_profile.cover_image == "" %>
               <div class="sycamore">
@@ -780,8 +766,7 @@
       </div>
 
       <div id="container-soundtrack" class="ferry colvin">
-        <% @artists.each do |artist|  %>
-          <% if artist.artist_profile.genre == "Soundtrack" %>
+        <% @artists.take(500).each do |artist| if artist.artist_profile.genre == "Soundtrack" %>
           <div class="utica">
             <% if artist.artist_profile.cover_image == "" %>
               <div class="sycamore">
@@ -811,8 +796,7 @@
       </div>
 
       <div id="container-world" class="ferry colvin">
-        <% @artists.each do |artist|  %>
-          <% if artist.artist_profile.genre == "World" %>
+        <% @artists.take(500).each do |artist| if artist.artist_profile.genre == "World" %>
           <div class="utica">
             <% if artist.artist_profile.cover_image == "" %>
               <div class="sycamore">

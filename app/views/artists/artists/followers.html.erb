@@ -1,4 +1,4 @@
-<%= provide(:title, "#{@artist.artist_name} | Followers") %>
+<%= provide(:title, sanitize(@artist.artist_name) + " | Followers") %>
 <div class="buffalo">
   <% if @artist.artist_profile.cover_image == "" %>
     <div class="clinton">
@@ -14,8 +14,8 @@
     </div>
   <% end %>
   <div class="delaware">
-    <div class="winspear">
-      <h1><%= link_to @artist.artist_name, artist_path(@artist) %></h1>
+    <div class="winspear hedley">
+      <%= link_to @artist.artist_name, artist_path(@artist) %>
     </div>
     <div class="amherst">
       <strong>// <%= pluralize(@artist.fans.count, "fan") %></strong>
@@ -23,7 +23,7 @@
 
     <% if @artist.fans.any? %>
     <div class="harlem">
-        <% @artist.fans.each do |fan| %>
+        <% @artist.fans.take(100).each do |fan| %>
           <div class="utica">
 
             <% if fan.fan_profile.cover_image == "" %>

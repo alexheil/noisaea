@@ -1,9 +1,9 @@
-<%= provide(:title, "Edit Post #{@post.title}") %>
+<%= provide(:title, "Edit Post #{@developer.title}") %>
 <div class="buffalo">
   <div class="delaware">
     <div class="elmwood">
       <div class="harlem">
-        <h1>edit developer</h1>
+        <h1>edit developer post // <%= @developer.title %></h1>
       </div>
       <%= form_for(@developer, url: developer_path) do |f| %>
         <div class="highgate">
@@ -22,7 +22,7 @@
           <%= f.text_area :content, placeholder: "content", class: "chippewa" %>
         </div>
         <div class="ellicott">
-          <%= f.submit "edit developer", class: "exchange" %>
+          <%= f.submit "edit post", class: "exchange" %>
         </div>
       <% end %>
     </div>
