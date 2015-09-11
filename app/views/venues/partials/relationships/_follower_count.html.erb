@@ -1,0 +1,9 @@
+<% if @venue.fans.any? %>
+  <div class="amherst">
+    <strong><%= link_to pluralize(@venue.fans.count, "fan"), venue_followers_path(@venue) %></strong>
+  </div>
+<% else %>
+  <div class="amherst">
+    <strong>0 fans</strong>
+  </div>
+<% end %>

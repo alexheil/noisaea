@@ -10,7 +10,7 @@
     </div>
   <% else %>
     <div class="broadway">
-      <img src="<%= @artist.artist_profile.cover_image %>" width="100%" height="auto" />
+      <img srcset="<%= @artist.artist_profile.cover_image %>" width="100%" height="auto" />
     </div>
   <% end %>
   <div class="delaware">
@@ -36,7 +36,7 @@
               </div>
             <% else %>
             <div class="genesee">
-              <img src="<%= fan.fan_profile.cover_image %>" width="100%" height="auto" />
+              <img srcset="<%= fan.fan_profile.cover_image %>" width="100%" height="auto" />
             </div>
             <% end %>
 

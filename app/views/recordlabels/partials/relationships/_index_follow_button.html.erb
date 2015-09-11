@@ -1,0 +1,13 @@
+<% if fan_signed_in? %>
+  <div class="winspear">
+  <% if fan_signed_in? && current_fan.following_record_label?(record_label) %>
+    <%= button_to "unfollow", record_label_relationship_path(record_label, current_fan.record_label_relationship_id(record_label)), method: :delete, remote: true, class: "seventh" %>
+  <% elsif fan_signed_in? %>
+    <%= form_for(RecordLabelRelationship.new, url: record_label_relationships_path(record_label), remote: true) do |f| %>
+      <%= f.submit "follow", class: "seventh" %>
+    <% end %>
+  <% else %>
+    <%= button_to "follow", fan_session_path, class: "seventh" %>
+  <% end %>
+  </div>
+<% end %>

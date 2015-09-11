@@ -21,7 +21,7 @@ $fancy-font: 'Open Sans', Helvetica, arial, sans-serif;
 
 .sycamore {
   width: 90%;
-  margin: 2vh auto;
+  margin: 0 auto;
   text-align: center;
   font-family: $fancy-font;
   line-height: 1.25em;
@@ -120,6 +120,7 @@ $fancy-font: 'Open Sans', Helvetica, arial, sans-serif;
   margin: 1vh 2vw 1vh 0;
   display: inline-block;
   cursor: pointer;
+  box-sizing: border-box;
   &:hover {
     border-bottom: 3px solid $main-color;
     color: $my-black;
@@ -190,6 +191,14 @@ $fancy-font: 'Open Sans', Helvetica, arial, sans-serif;
 
   .allen {
     width: 49%;
+  }
+
+  .hedley {
+    text-align: center;
+  }
+
+  #following {
+    text-align: center;
   }
 
 }

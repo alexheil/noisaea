@@ -1,0 +1,9 @@
+<% if @record_label.fans.any? %>
+  <div class="amherst">
+    <strong><%= link_to pluralize(@record_label.fans.count, "fan"), record_label_followers_path(@record_label) %></strong>
+  </div>
+<% else %>
+  <div class="amherst">
+    <strong>0 fans</strong>
+  </div>
+<% end %>

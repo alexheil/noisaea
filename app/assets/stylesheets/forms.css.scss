@@ -15,11 +15,15 @@ $fancy-font: 'Open Sans', Helvetica, arial, sans-serif;
   font-family: $fancy-font;
   font-size: 18px;
   padding: 20px;
-  border-top: none;
-  border-right: none;
-  border-left: none;
+  border-top: 3px solid #fff;
+  border-left: 3px solid #fff;
+  border-right: 3px solid #fff;
   border-bottom: 3px solid $my-black;
   display: inline-block;
+  box-sizing: border-box;
+  &:focus {
+    border: 3px solid $my-black;
+  }
 }
 
 .chippewa {
@@ -30,11 +34,15 @@ $fancy-font: 'Open Sans', Helvetica, arial, sans-serif;
   font-family: $fancy-font;
   font-size: 18px;
   padding: 20px;
-  border-top: none;
-  border-right: none;
-  border-left: none;
+  border-top: 3px solid #fff;
+  border-left: 3px solid #fff;
+  border-right: 3px solid #fff;
   border-bottom: 3px solid $my-black;
   display: inline-block;
+  box-sizing: border-box;
+  &:focus {
+    border: 3px solid $my-black;
+  }
 }
 
 select {
@@ -42,11 +50,15 @@ select {
   font-family: $fancy-font;
   font-size: 18px;
   padding: 20px;
-  border-top: none;
-  border-right: none;
-  border-left: none;
+  border-top: 3px solid #fff;
+  border-left: 3px solid #fff;
+  border-right: 3px solid #fff;
   border-bottom: 3px solid $my-black;
   display: inline-block;
+  box-sizing: border-box;
+  &:focus {
+    border: 3px solid $my-black;
+  }
 }
 
 ::-webkit-input-placeholder {
@@ -153,11 +165,15 @@ select {
   font-family: $fancy-font;
   font-size: 18px;
   padding: 20px;
-  border-top: none;
-  border-right: none;
-  border-left: none;
+  border-top: 3px solid #fff;
+  border-left: 3px solid #fff;
+  border-right: 3px solid #fff;
   border-bottom: 3px solid $my-black;
   display: inline-block;
+  box-sizing: border-box;
+  &:focus {
+    border: 3px solid $my-black;
+  }
 }
 
 #error_explanation {

@@ -1,0 +1,5 @@
+$('.follow_button').html('<%=  escape_javascript(render :partial => 'artists/partials/relationships/follow_button') %>');
+$('#following').html('<%=  escape_javascript(render :partial => 'artists/partials/relationships/following') %>');
+$('#follower_count').html('<%=  escape_javascript(render :partial => 'artists/partials/relationships/follower_count') %>');
+$('.index_follow_button_<%= @artist.id %>').html('<%=  escape_javascript(render :partial => 'artists/partials/relationships/index_follow_button', :locals => {:artist => @artist}) %>');
+$('.index_follower_count_<%= @artist.id %>').html('<%=  escape_javascript(render :partial => 'artists/partials/relationships/index_follower_count', :locals => {:artist => @artist}) %>');

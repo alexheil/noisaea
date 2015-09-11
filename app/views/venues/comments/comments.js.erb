@@ -1,0 +1,9 @@
+$('.comments_js_<%= @micropost.id %>').html('<%=  escape_javascript(render :partial => 'venues/partials/comments/index_comments', :locals => {:micropost => @micropost}) %>');
+$('.comments_form_<%= @micropost.id %>').html('<%=  escape_javascript(render :partial => 'venues/partials/comments/index_comments_form', :locals => {:micropost => @micropost}) %>');
+$('.comments_count_<%= @micropost.id %>').html('<%=  escape_javascript(render :partial => 'venues/partials/comments/index_comments_count', :locals => {:micropost => @micropost}) %>');
+$('.comments_js').html('<%=  escape_javascript(render :partial => 'venues/partials/comments/comments', :locals => {:micropost => @micropost}) %>');
+$('.comments_form').html('<%=  escape_javascript(render :partial => 'venues/partials/comments/comments_form', :locals => {:micropost => @micropost}) %>');
+$('.comments_count').html('<%=  escape_javascript(render :partial => 'venues/partials/comments/comments_count', :locals => {:micropost => @micropost}) %>');
+$('.venue_fan_comments_js_<%= @micropost.id %>').html('<%=  escape_javascript(render :partial => 'venues/partials/comments/fan_comments', :locals => {:micropost => @micropost}) %>');
+$('.venue_fan_comments_form_<%= @micropost.id %>').html('<%=  escape_javascript(render :partial => 'venues/partials/comments/fan_comments_form', :locals => {:micropost => @micropost}) %>');
+$('.venue_fan_comments_count_<%= @micropost.id %>').html('<%=  escape_javascript(render :partial => 'venues/partials/comments/index_comments_count', :locals => {:micropost => @micropost}) %>');

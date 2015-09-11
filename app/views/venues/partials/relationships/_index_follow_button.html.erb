@@ -1,0 +1,13 @@
+<% if fan_signed_in? %>
+  <div class="winspear">
+  <% if fan_signed_in? && current_fan.following_venue?(venue) %>
+    <%= button_to "unfollow", venue_relationship_path(venue, current_fan.venue_relationship_id(venue)), method: :delete, remote: true, class: "seventh" %>
+  <% elsif fan_signed_in? %>
+    <%= form_for(VenueRelationship.new, url: venue_relationships_path(venue), remote: true) do |f| %>
+      <%= f.submit "follow", class: "seventh" %>
+    <% end %>
+  <% else %>
+    <%= button_to "follow", fan_session_path, class: "seventh" %>
+  <% end %>
+  </div>
+<% end %>

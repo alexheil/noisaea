@@ -1,0 +1,9 @@
+<% if @producer.fans.any? %>
+  <div class="amherst">
+    <strong><%= link_to pluralize(@producer.fans.count, "fan"), producer_followers_path(@producer) %></strong>
+  </div>
+<% else %>
+  <div class="amherst">
+    <strong>0 fans</strong>
+  </div>
+<% end %>

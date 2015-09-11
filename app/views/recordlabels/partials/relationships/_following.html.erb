@@ -1,0 +1,5 @@
+<% if fan_signed_in? && current_fan.following_record_label?(@record_label) %>
+  <div class="amherst">
+    you follow <%= @record_label.label_name %>
+  </div>
+<% end %>

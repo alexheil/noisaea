@@ -15,7 +15,6 @@ class Artist < ActiveRecord::Base
   has_many :developer_comments, dependent: :destroy
 
   has_many :artist_micropost_votes, dependent: :destroy
-  #belongs_to :artist_micropost
   has_many :record_label_micropost_votes, dependent: :destroy
   has_many :venue_micropost_votes, dependent: :destroy
   has_many :producer_micropost_votes, dependent: :destroy
@@ -31,7 +30,7 @@ class Artist < ActiveRecord::Base
   has_many :fans, through: :artist_relationships
   belongs_to :fan
 
-  validates :username, presence: true, uniqueness: true, length: { maximum: 50 }, format: { with: /\A[\S]+\Z/i }
+  validates :username, presence: true, uniqueness: true, length: { maximum: 25 }, format: { with: /\A[a-zA-Z0-9 ]+\Z/i }
   validates :artist_name, presence: true, length: { maximum: 50 }
 
   before_save :downcase_username

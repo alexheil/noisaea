@@ -10,7 +10,7 @@
     </div>
   <% else %>
     <div class="broadway">
-      <img src="<%= @fan.fan_profile.cover_image %>" width="100%" height="auto" />
+      <img srcset="<%= @fan.fan_profile.cover_image %>" width="100%" height="auto" />
     </div>
   <% end %>
   <div class="delaware">
@@ -62,17 +62,16 @@
               </div>
             <% else %>
             <div class="genesee">
-              <img src="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
+              <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
             </div>
             <% end %>
 
             <% if fan_signed_in? %>
               <div class="winspear">
               <% if fan_signed_in? && current_fan.following_artist?(artist) %>
-                <%= button_to "unfollow", artist_relationship_path(artist), method: :delete, class: "seventh" %>
+                <%= button_to "unfollow", artist_relationship_path(artist, current_fan.artist_relationship_id(artist)), method: :delete, class: "seventh" %>
               <% elsif fan_signed_in? %>
-                <%= form_for(ArtistRelationship.new, url: artist_relationships_path) do |f| %>
-                  <%= hidden_field_tag :artist_id, artist.id %>
+                <%= form_for(ArtistRelationship.new, url: artist_relationships_path(artist)) do |f| %>
                   <%= f.submit "follow", class: "seventh" %>
                 <% end %>
               <% else %>
@@ -101,17 +100,16 @@
               </div>
             <% else %>
             <div class="genesee">
-              <img src="<%= record_label.record_label_profile.cover_image %>" width="100%" height="auto" />
+              <img srcset="<%= record_label.record_label_profile.cover_image %>" width="100%" height="auto" />
             </div>
             <% end %>
 
             <% if fan_signed_in? %>
               <div class="winspear">
               <% if fan_signed_in? && current_fan.following_record_label?(record_label) %>
-                <%= button_to "unfollow", record_label_relationship_path(record_label), method: :delete, class: "seventh" %>
+                <%= button_to "unfollow", record_label_relationship_path(record_label, current_fan.record_label_relationship_id(record_label)), method: :delete, class: "seventh" %>
               <% elsif fan_signed_in? %>
-                <%= form_for(RecordLabelRelationship.new, url: record_label_relationships_path) do |f| %>
-                  <%= hidden_field_tag :record_label_id, record_label.id %>
+                <%= form_for(RecordLabelRelationship.new, url: record_label_relationships_path(record_label)) do |f| %>
                   <%= f.submit "follow", class: "seventh" %>
                 <% end %>
               <% else %>
@@ -139,17 +137,16 @@
               </div>
             <% else %>
             <div class="genesee">
-              <img src="<%= venue.venue_profile.cover_image %>" width="100%" height="auto" />
+              <img srcset="<%= venue.venue_profile.cover_image %>" width="100%" height="auto" />
             </div>
             <% end %>
 
             <% if fan_signed_in? %>
               <div class="winspear">
               <% if fan_signed_in? && current_fan.following_venue?(venue) %>
-                <%= button_to "unfollow", venue_relationship_path(venue), method: :delete, class: "seventh" %>
+                <%= button_to "unfollow", venue_relationship_path(venue, current_fan.venue_relationship_id(venue)), method: :delete, class: "seventh" %>
               <% elsif fan_signed_in? %>
-                <%= form_for(VenueRelationship.new, url: venue_relationships_path) do |f| %>
-                  <%= hidden_field_tag :venue_id, venue.id %>
+                <%= form_for(VenueRelationship.new, url: venue_relationships_path(venue)) do |f| %>
                   <%= f.submit "follow", class: "seventh" %>
                 <% end %>
               <% else %>
@@ -177,17 +174,16 @@
               </div>
             <% else %>
             <div class="genesee">
-              <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+              <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
             </div>
             <% end %>
 
             <% if fan_signed_in? %>
               <div class="winspear">
               <% if fan_signed_in? && current_fan.following_producer?(producer) %>
-                <%= button_to "unfollow", producer_relationship_path(producer), method: :delete, class: "seventh" %>
+                <%= button_to "unfollow", producer_relationship_path(producer, current_fan.producer_relationship_id(producer)), method: :delete, class: "seventh" %>
               <% elsif fan_signed_in? %>
-                <%= form_for(ProducerRelationship.new, url: producer_relationships_path) do |f| %>
-                  <%= hidden_field_tag :producer_id, producer.id %>
+                <%= form_for(ProducerRelationship.new, url: producer_relationships_path(producer)) do |f| %>
                   <%= f.submit "follow", class: "seventh" %>
                 <% end %>
               <% else %>

@@ -1,0 +1,7 @@
+<% if fan_signed_in? && current_fan.following_producer?(@producer) %>
+  <%= button_to "unfollow", producer_relationship_path(@producer, current_fan.producer_relationship_id(@producer)), method: :delete, remote: true, class: "exchange" %>
+<% else %>
+  <%= form_for(ProducerRelationship.new,  url: producer_relationships_path(@producer), remote: true) do |f| %>
+    <%= f.submit "follow", class: "exchange" %>
+  <% end %>
+<% end %>

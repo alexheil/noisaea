@@ -10,7 +10,7 @@
     </div>
   <% else %>
     <div class="broadway">
-      <img src="<%= @venue.venue_profile.cover_image %>" width="100%" height="auto" />
+      <img srcset="<%= @venue.venue_profile.cover_image %>" width="100%" height="auto" />
     </div>
   <% end %>
   <div class="delaware">
@@ -20,24 +20,17 @@
         <%= @venue.venue_name %>
       </div>
 
-      <% if fan_signed_in? && current_fan.following_venue?(@venue) %>
-        <div class="amherst">
-          you follow <%= @venue.venue_name %>
-        </div>
-      <% end %>
+      <div id="following">
+        <%= render 'venues/partials/relationships/following' %>
+      </div>
 
       <% if @venue == current_venue %>
       <% else %>
       <div class="niagara">
         <div class="harlem">
-        <% if fan_signed_in? && current_fan.following_venue?(@venue) %>
-          <%= button_to "unfollow", venue_relationship_path, method: :delete, class: "exchange" %>
-        <% else %>
-          <%= form_for(VenueRelationship.new, url: venue_relationships_path) do |f| %>
-            <%= hidden_field_tag :venue_id, @venue.id %>
-            <%= f.submit "follow", class: "exchange" %>
-          <% end %>
-        <% end %>
+        <div class="follow_button">
+          <%= render 'venues/partials/relationships/follow_button' %>
+        </div>
         </div>
       </div>
       <% end %>
@@ -85,56 +78,21 @@
                 <% end %>
 
 
-                <strong><%= micropost.venue_micropost_votes.count %></strong> // <a class="linden"><%= pluralize(micropost.venue_micropost_comments.count, "comment") %></a>
+                <strong><%= micropost.venue_micropost_votes.count %></strong> // <a class="linden"><span class="comments_count_<%= micropost.id %>">
+                  <%= render 'venues/partials/comments/index_comments_count', :micropost => micropost %>
+                </span></a>
               </div>
 
               <div class="walden">
                 <div class="minnesota">
-                  <% micropost.venue_micropost_comments.sort_by{ |comment| -comment.venue_micropost_comment_votes.count }.take(100).each do |comment| %>
-                  <div class="northrup">
-                    <div class="winspear">
-                       <%= link_to Artist.find(comment.artist_id).artist_name, artist_path(Artist.find(comment.artist_id)) if comment.fan_id.nil? && comment.record_label_id.nil? && comment.venue_id.nil? && comment.producer_id.nil? %><%= link_to Fan.find(comment.fan_id).fan_name, fan_path(Fan.find(comment.fan_id)) if comment.artist_id.nil? && comment.record_label_id.nil? && comment.venue_id.nil? && comment.producer_id.nil? %><%= link_to RecordLabel.find(comment.record_label_id).label_name, record_label_path(RecordLabel.find(comment.record_label_id)) if comment.artist_id.nil? && comment.fan_id.nil? && comment.venue_id.nil? && comment.producer_id.nil? %><%= link_to Venue.find(comment.venue_id).venue_name, venue_path(Venue.find(comment.venue_id)) if comment.artist_id.nil? && comment.fan_id.nil? && comment.record_label_id.nil? && comment.producer_id.nil? %><%= link_to Producer.find(comment.producer_id).producer_name, producer_path(Producer.find(comment.producer_id)) if comment.artist_id.nil? && comment.fan_id.nil? && comment.record_label_id.nil? && comment.venue_id.nil? %> posted <%= time_ago_in_words(comment.created_at) %> ago
-                      <% if @venue == current_venue || (artist_signed_in? && current_artist.id == comment.artist_id) || (fan_signed_in? && current_fan.id == comment.fan_id) || (record_label_signed_in? && current_record_label.id == comment.record_label_id) || (venue_signed_in? && current_venue.id == comment.venue_id) || (producer_signed_in? && current_producer.id == comment.producer_id) %>
-                      // <%= link_to "delete comment", venue_micropost_comment_path(@venue, micropost, comment), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
-                      <% end %>
-                    </div>
 
-                    <div class="winspear">
-                      <%= comment.content %>
-                    </div>
-
-                    <div class="winspear">
-                      <% if fan_signed_in? && current_fan.venue_micropost_comment_voted?(comment) %>
-                        <%= button_to "−", venue_micropost_comment_vote_path(comment), method: :delete, class: "linwood" %>
-                      <% elsif artist_signed_in? && current_artist.venue_micropost_comment_voted?(comment) %>
-                        <%= button_to "−", venue_micropost_comment_vote_path(comment), method: :delete, class: "linwood" %>
-                      <% elsif record_label_signed_in? && current_record_label.venue_micropost_comment_voted?(comment) %>
-                        <%= button_to "−", venue_micropost_comment_vote_path(comment), method: :delete, class: "linwood" %>
-                      <% elsif venue_signed_in? && current_venue.venue_micropost_comment_voted?(comment) %>
-                        <%= button_to "−", venue_micropost_comment_vote_path(comment), method: :delete, class: "linwood" %>
-                      <% elsif producer_signed_in? && current_producer.venue_micropost_comment_voted?(comment) %>
-                        <%= button_to "−", venue_micropost_comment_vote_path(comment), method: :delete, class: "linwood" %>
-                      <% else %>
-                        <%= form_for(VenueMicropostCommentVote.new, url: venue_micropost_comment_votes_path) do |f| %>
-                          <%= hidden_field_tag :venue_micropost_comment_id, comment.id %>
-                          <%= f.submit "+", class: "linwood" %>
-                        <% end %>
-                      <% end %>
-
-                      <strong><%= comment.venue_micropost_comment_votes.count %></strong>
-                    </div>
-
+                  <div class="comments_js_<%= micropost.id %>">
+                    <%= render 'venues/partials/comments/index_comments', :micropost => micropost %>
                   </div>
-                  <% end %>
 
-                  <%= form_for(VenueMicropostComment.new, url: venue_micropost_comments_path(@venue, micropost)) do |f| %>
-                    <div class="highgate">
-                      <%= f.text_area :content, placeholder: "leave a comment", class: "court" %>
-                    </div>
-                    <div class="ellicott">
-                      <%= f.submit "comment",  class: "exchange" %>
-                    </div>
-                  <% end %>
+                  <div class="comments_form_<%= micropost.id %>">
+                    <%= render "venues/partials/comments/index_comments_form", :micropost => micropost %>
+                  </div>
 
                 </div>
               </div>
@@ -153,27 +111,16 @@
       <% else %>
       <div class="washington">
         <div class="lisbon">
-        <% if fan_signed_in? && current_fan.following_venue?(@venue) %>
-          <%= button_to "unfollow", venue_relationship_path, method: :delete, class: "exchange" %>
-        <% else %>
-          <%= form_for(VenueRelationship.new, url: venue_relationships_path) do |f| %>
-            <%= hidden_field_tag :venue_id, @venue.id %>
-            <%= f.submit "follow", class: "exchange" %>
-          <% end %>
-        <% end %>
+        <div class="follow_button">
+          <%= render 'venues/partials/relationships/follow_button' %>
+        </div>
         </div>
       </div>
       <% end %>
 
-      <% if @venue.fans.any? %>
-        <div class="amherst">
-          <strong><%= link_to pluralize(@venue.fans.count, "fan"), venue_followers_path(@venue) %></strong>
-        </div>
-      <% else %>
-        <div class="amherst">
-          <strong>0 fans</strong>
-        </div>
-      <% end %>
+      <div id="follower_count">
+        <%= render 'venues/partials/relationships/follower_count' %>
+      </div>
 
       <% if venue_signed_in? && @venue.id == current_venue.id && @venue.venue_profile.location == "" && @venue.venue_profile.founded == "" && @venue.venue_profile.biography == "" && @venue.venue_profile.facebook_url == "" && @venue.venue_profile.twitter_url == "" && @venue.venue_profile.youtube_url == "" && @venue.venue_profile.website == "" %>
         <p class="hertel">you do not have any profile information</p>

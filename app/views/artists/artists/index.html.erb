@@ -13,7 +13,7 @@
           recent
         </div>
         <div id="location" class="porter">
-        <% if fan_signed_in? %>
+        <% if fan_signed_in? && current_fan.fan_profile.location != "" %>
           <%= current_fan.fan_profile.location.downcase %>
         <% else %>
           location
@@ -168,7 +168,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -181,8 +181,15 @@
                 <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(artist.fans.count, "fan"), artist_followers_path(artist) %></center>
+                <div class="index_follower_count_<%= artist.id %>">
+                <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= artist.id %>">
+              <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
+            </div>
+
           </div>
         <% end %>
       </div>
@@ -200,7 +207,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -213,14 +220,21 @@
                 <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(artist.fans.count, "fan"), artist_followers_path(artist) %></center>
+                <div class="index_follower_count_<%= artist.id %>">
+                <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= artist.id %>">
+              <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
+            </div>
+
           </div>
         <% end %>
       </div>
 
       <div id="container-location" class="ferry colvin">
-        <% if fan_signed_in? %>
+        <% if fan_signed_in? && current_fan.fan_profile.location != "" %>
           <% @artists.each do |artist| if artist.artist_profile.location == current_fan.fan_profile.location %>
               <div class="utica">
                 <% if artist.artist_profile.cover_image == "" %>
@@ -233,7 +247,7 @@
                   </div>
                 <% else %>
                   <div class="genesee">
-                    <img src="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
+                    <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
                   </div>
                 <% end %>
                 <div class="hertel">
@@ -243,11 +257,22 @@
                   <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
                 </div>
                 <div class="hertel">
-                  <center><%= link_to pluralize(artist.fans.count, "fan"), artist_followers_path(artist) %></center>
-                </div>
+                <div class="index_follower_count_<%= artist.id %>">
+                <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
+              </div>
+            </div>
+
+            <div class="index_follow_button_<%= artist.id %>">
+              <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
+            </div>
+
               </div>
             <% end %>
           <% end %>
+        <% elsif fan_signed_in? && current_fan.fan_profile.location == "" %>
+          <div class="hertel">
+            <center>Your location is blank! Go set it on <%= link_to "your profile", edit_fan_profile_path(current_fan) %>.</center>
+          </div>
         <% else %>
           <div class="harlem">
             <center><%= link_to "sign in", new_fan_session_path %> to view artists based on location</center>
@@ -268,7 +293,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -278,8 +303,15 @@
                 <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(artist.fans.count, "fan"), artist_followers_path(artist) %></center>
+                <div class="index_follower_count_<%= artist.id %>">
+                <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= artist.id %>">
+              <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
+            </div>
+
             </div>
           <% end %>
         <% end %>
@@ -298,7 +330,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -308,8 +340,15 @@
                 <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(artist.fans.count, "fan"), artist_followers_path(artist) %></center>
+                <div class="index_follower_count_<%= artist.id %>">
+                <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= artist.id %>">
+              <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
+            </div>
+
             </div>
           <% end %>
         <% end %>
@@ -328,7 +367,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -338,8 +377,15 @@
                 <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(artist.fans.count, "fan"), artist_followers_path(artist) %></center>
+                <div class="index_follower_count_<%= artist.id %>">
+                <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= artist.id %>">
+              <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
+            </div>
+
             </div>
           <% end %>
         <% end %>
@@ -358,7 +404,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -368,8 +414,15 @@
                 <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(artist.fans.count, "fan"), artist_followers_path(artist) %></center>
+                <div class="index_follower_count_<%= artist.id %>">
+                <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= artist.id %>">
+              <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
+            </div>
+
             </div>
           <% end %>
         <% end %>
@@ -388,7 +441,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -398,8 +451,15 @@
                 <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(artist.fans.count, "fan"), artist_followers_path(artist) %></center>
+                <div class="index_follower_count_<%= artist.id %>">
+                <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= artist.id %>">
+              <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
+            </div>
+
             </div>
           <% end %>
         <% end %>
@@ -418,7 +478,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -428,8 +488,15 @@
                 <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(artist.fans.count, "fan"), artist_followers_path(artist) %></center>
+                <div class="index_follower_count_<%= artist.id %>">
+                <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= artist.id %>">
+              <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
+            </div>
+
             </div>
           <% end %>
         <% end %>
@@ -448,7 +515,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -458,8 +525,15 @@
                 <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(artist.fans.count, "fan"), artist_followers_path(artist) %></center>
+                <div class="index_follower_count_<%= artist.id %>">
+                <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= artist.id %>">
+              <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
+            </div>
+
             </div>
           <% end %>
         <% end %>
@@ -478,7 +552,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -488,8 +562,15 @@
                 <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(artist.fans.count, "fan"), artist_followers_path(artist) %></center>
+                <div class="index_follower_count_<%= artist.id %>">
+                <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= artist.id %>">
+              <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
+            </div>
+
             </div>
           <% end %>
         <% end %>
@@ -508,7 +589,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -518,8 +599,15 @@
                 <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(artist.fans.count, "fan"), artist_followers_path(artist) %></center>
+                <div class="index_follower_count_<%= artist.id %>">
+                <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= artist.id %>">
+              <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
+            </div>
+
             </div>
           <% end %>
         <% end %>
@@ -538,7 +626,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -547,9 +635,16 @@
               <div class="hertel">
                 <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
               </div>
-              <div class="hertel">
-              <center><%= link_to pluralize(artist.fans.count, "fan"), artist_followers_path(artist) %></center>
+             <div class="hertel">
+                <div class="index_follower_count_<%= artist.id %>">
+                <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= artist.id %>">
+              <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
+            </div>
+
             </div>
           <% end %>
         <% end %>
@@ -568,7 +663,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -578,8 +673,15 @@
                 <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(artist.fans.count, "fan"), artist_followers_path(artist) %></center>
+                <div class="index_follower_count_<%= artist.id %>">
+                <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= artist.id %>">
+              <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
+            </div>
+
             </div>
           <% end %>
         <% end %>
@@ -598,7 +700,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -608,8 +710,15 @@
                 <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(artist.fans.count, "fan"), artist_followers_path(artist) %></center>
+                <div class="index_follower_count_<%= artist.id %>">
+                <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= artist.id %>">
+              <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
+            </div>
+
             </div>
           <% end %>
         <% end %>
@@ -628,7 +737,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -638,8 +747,15 @@
                 <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(artist.fans.count, "fan"), artist_followers_path(artist) %></center>
+                <div class="index_follower_count_<%= artist.id %>">
+                <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= artist.id %>">
+              <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
+            </div>
+
             </div>
           <% end %>
         <% end %>
@@ -658,7 +774,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -668,8 +784,15 @@
                 <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(artist.fans.count, "fan"), artist_followers_path(artist) %></center>
+                <div class="index_follower_count_<%= artist.id %>">
+                <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= artist.id %>">
+              <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
+            </div>
+
             </div>
           <% end %>
         <% end %>
@@ -688,7 +811,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -698,8 +821,15 @@
                 <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(artist.fans.count, "fan"), artist_followers_path(artist) %></center>
+                <div class="index_follower_count_<%= artist.id %>">
+                <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= artist.id %>">
+              <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
+            </div>
+
           </div>
           <% end %>
         <% end %>
@@ -718,7 +848,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -728,8 +858,15 @@
                 <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(artist.fans.count, "fan"), artist_followers_path(artist) %></center>
+                <div class="index_follower_count_<%= artist.id %>">
+                <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= artist.id %>">
+              <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
+            </div>
+
           </div>
           <% end %>
         <% end %>
@@ -748,7 +885,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -758,8 +895,15 @@
                 <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(artist.fans.count, "fan"), artist_followers_path(artist) %></center>
+                <div class="index_follower_count_<%= artist.id %>">
+                <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= artist.id %>">
+              <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
+            </div>
+
             </div>
           <% end %>
         <% end %>
@@ -778,7 +922,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -788,8 +932,15 @@
                 <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(artist.fans.count, "fan"), artist_followers_path(artist) %></center>
+                <div class="index_follower_count_<%= artist.id %>">
+                <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= artist.id %>">
+              <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
+            </div>
+
           </div>
           <% end %>
         <% end %>
@@ -808,7 +959,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -818,8 +969,15 @@
                 <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(artist.fans.count, "fan"), artist_followers_path(artist) %></center>
+                <div class="index_follower_count_<%= artist.id %>">
+                <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= artist.id %>">
+              <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
+            </div>
+
           </div>
           <% end %>
         <% end %>

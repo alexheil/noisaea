@@ -2,7 +2,7 @@ class ArtistProfile < ActiveRecord::Base
   belongs_to :artist
 
   validates :artist_id, presence: true
-  validates :location, format: { with: /([^,]+),\s([a-zA-Z])/ }, allow_blank: true
+  validates :location, format: { with: /[A-Z][a-zA-Z]+,[ ]?[A-Z]{2}/ }, allow_blank: true
   validates :biography, length: { maximum: 14216 }, allow_blank: true
   validates :facebook_url, format: { with: /\A((http|https)?:\/\/)?(www.)?facebook.com\//i  }, allow_blank: true
   validates :twitter_url, format: { with: /\A((http|https)?:\/\/)?(www.)?twitter.com\//i }, allow_blank: true

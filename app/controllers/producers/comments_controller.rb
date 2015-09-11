@@ -5,6 +5,8 @@ class Producers::CommentsController < ApplicationController
   def create
     @comment = ProducerMicropostComment.new(comment_params)
     @comment.producer_micropost_id = ProducerMicropost.find(params[:micropost_id]).id
+    @producer = Producer.friendly.find(ProducerMicropost.find(params[:micropost_id]).producer_id)
+    @micropost = ProducerMicropost.find(params[:micropost_id])
     if artist_signed_in?
       @comment.artist_id = current_artist.id
     elsif fan_signed_in?
@@ -17,8 +19,10 @@ class Producers::CommentsController < ApplicationController
       @comment.producer_id = current_producer.id
     end
     if @comment.save
-      redirect_to (:back)
-      flash[:notice] = "you rock"
+      respond_to do |format|
+        format.html { redirect_to (:back) }
+        format.js { render :action => "comments" }
+      end
     else
       redirect_to (:back)
       flash[:alert] = "you suck."
@@ -27,8 +31,12 @@ class Producers::CommentsController < ApplicationController
 
   def destroy
     ProducerMicropostComment.find(params[:id]).destroy
-    redirect_to (:back)
-    flash[:notice] = "good riddance to that comment"
+    @producer = Producer.friendly.find(ProducerMicropost.find(params[:micropost_id]).producer_id)
+    @micropost = ProducerMicropost.find(params[:micropost_id])
+    respond_to do |format|
+      format.html { redirect_to (:back) }
+      format.js { render :action => "comments" }
+    end
   end
 
   private

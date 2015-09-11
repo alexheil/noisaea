@@ -13,7 +13,7 @@
             recent
           </div>
           <div id="location" class="porter">
-            <% if fan_signed_in? %>
+            <% if fan_signed_in? && current_fan.fan_profile.location != "" %>
               <%= current_fan.fan_profile.location.downcase %>
             <% else %>
               location
@@ -168,7 +168,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -181,8 +181,15 @@
                 <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+                <div class="index_follower_count_<%= producer.id %>">
+                <%= render "producers/partials/relationships/index_follower_count", :producer => producer %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= producer.id %>">
+              <%= render "producers/partials/relationships/index_follow_button", :producer => producer %>
+            </div>
+
           </div>
         <% end %>
       </div>
@@ -200,7 +207,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -213,42 +220,60 @@
                 <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+                <div class="index_follower_count_<%= producer.id %>">
+                <%= render "producers/partials/relationships/index_follower_count", :producer => producer %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= producer.id %>">
+              <%= render "producers/partials/relationships/index_follow_button", :producer => producer %>
+            </div>
+
           </div>
         <% end %>
       </div>
 
       <div id="container-location" class="ferry colvin">
-        <% if fan_signed_in? %>
-        <% @producers.take(500).each do |producer|  %>
-        <% if producer.producer_profile.location == current_fan.fan_profile.location %>
-          <div class="utica">
-            <% if producer.producer_profile.cover_image == "" %>
-              <div class="sycamore">
-                <% if producer_signed_in? && producer.id == current_producer.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
-                <% end %>
+        <% if fan_signed_in? && current_fan.fan_profile.location != "" %>
+          <% @producers.take(500).each do |producer|  %>
+          <% if producer.producer_profile.location == current_fan.fan_profile.location %>
+            <div class="utica">
+              <% if producer.producer_profile.cover_image == "" %>
+                <div class="sycamore">
+                  <% if producer_signed_in? && producer.id == current_producer.id %>
+                    you do not have a profile image yet
+                  <% else %>
+                    <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
+                  <% end %>
+                </div>
+              <% else %>
+                <div class="genesee">
+                  <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+                </div>
+              <% end %>
+                <div class="hertel">
+                  <center><%= link_to producer.producer_name, producer_path(producer) %></center>
+                </div>
+                <div class="hertel">
+                  <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+                </div>
+                <div class="hertel">
+                <div class="index_follower_count_<%= producer.id %>">
+                <%= render "producers/partials/relationships/index_follower_count", :producer => producer %>
               </div>
-            <% else %>
-              <div class="genesee">
-                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+            </div>
+
+            <div class="index_follow_button_<%= producer.id %>">
+              <%= render "producers/partials/relationships/index_follow_button", :producer => producer %>
+            </div>
+
               </div>
             <% end %>
-              <div class="hertel">
-                <center><%= link_to producer.producer_name, producer_path(producer) %></center>
-              </div>
-              <div class="hertel">
-                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
-              </div>
-              <div class="hertel">
-              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
-            </div>
-            </div>
           <% end %>
-        <% end %>
+        <% elsif fan_signed_in? && current_fan.fan_profile.location == "" %>
+          <div class="hertel">
+            <center>Your location is blank! Go set it on <%= link_to "your profile", edit_fan_profile_path(current_fan) %>.</center>
+          </div>
         <% else %>
           <div class="hertel">
             <center><%= link_to "sign in", new_fan_session_path %> to view producers based on location</center>
@@ -270,7 +295,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -280,8 +305,15 @@
                 <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+                <div class="index_follower_count_<%= producer.id %>">
+                <%= render "producers/partials/relationships/index_follower_count", :producer => producer %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= producer.id %>">
+              <%= render "producers/partials/relationships/index_follow_button", :producer => producer %>
+            </div>
+
             </div>
           <% end %>
         <% end %>
@@ -301,7 +333,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -311,8 +343,15 @@
                 <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+                <div class="index_follower_count_<%= producer.id %>">
+                <%= render "producers/partials/relationships/index_follower_count", :producer => producer %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= producer.id %>">
+              <%= render "producers/partials/relationships/index_follow_button", :producer => producer %>
+            </div>
+
             </div>
           <% end %>
         <% end %>
@@ -332,7 +371,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -342,8 +381,15 @@
                 <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+                <div class="index_follower_count_<%= producer.id %>">
+                <%= render "producers/partials/relationships/index_follower_count", :producer => producer %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= producer.id %>">
+              <%= render "producers/partials/relationships/index_follow_button", :producer => producer %>
+            </div>
+
             </div>
           <% end %>
         <% end %>
@@ -363,7 +409,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -373,8 +419,15 @@
                 <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+                <div class="index_follower_count_<%= producer.id %>">
+                <%= render "producers/partials/relationships/index_follower_count", :producer => producer %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= producer.id %>">
+              <%= render "producers/partials/relationships/index_follow_button", :producer => producer %>
+            </div>
+
             </div>
           <% end %>
         <% end %>
@@ -394,7 +447,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -404,8 +457,15 @@
                 <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+                <div class="index_follower_count_<%= producer.id %>">
+                <%= render "producers/partials/relationships/index_follower_count", :producer => producer %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= producer.id %>">
+              <%= render "producers/partials/relationships/index_follow_button", :producer => producer %>
+            </div>
+
             </div>
           <% end %>
         <% end %>
@@ -425,7 +485,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -435,8 +495,15 @@
                 <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+                <div class="index_follower_count_<%= producer.id %>">
+                <%= render "producers/partials/relationships/index_follower_count", :producer => producer %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= producer.id %>">
+              <%= render "producers/partials/relationships/index_follow_button", :producer => producer %>
+            </div>
+
             </div>
           <% end %>
         <% end %>
@@ -456,7 +523,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -466,8 +533,15 @@
                 <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+                <div class="index_follower_count_<%= producer.id %>">
+                <%= render "producers/partials/relationships/index_follower_count", :producer => producer %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= producer.id %>">
+              <%= render "producers/partials/relationships/index_follow_button", :producer => producer %>
+            </div>
+
             </div>
           <% end %>
         <% end %>
@@ -487,7 +561,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -497,8 +571,15 @@
                 <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+                <div class="index_follower_count_<%= producer.id %>">
+                <%= render "producers/partials/relationships/index_follower_count", :producer => producer %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= producer.id %>">
+              <%= render "producers/partials/relationships/index_follow_button", :producer => producer %>
+            </div>
+
             </div>
           <% end %>
         <% end %>
@@ -518,7 +599,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -528,8 +609,15 @@
                 <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+                <div class="index_follower_count_<%= producer.id %>">
+                <%= render "producers/partials/relationships/index_follower_count", :producer => producer %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= producer.id %>">
+              <%= render "producers/partials/relationships/index_follow_button", :producer => producer %>
+            </div>
+
             </div>
           <% end %>
         <% end %>
@@ -549,7 +637,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -559,8 +647,15 @@
                 <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+                <div class="index_follower_count_<%= producer.id %>">
+                <%= render "producers/partials/relationships/index_follower_count", :producer => producer %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= producer.id %>">
+              <%= render "producers/partials/relationships/index_follow_button", :producer => producer %>
+            </div>
+
             </div>
           <% end %>
         <% end %>
@@ -580,7 +675,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -590,8 +685,15 @@
                 <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+                <div class="index_follower_count_<%= producer.id %>">
+                <%= render "producers/partials/relationships/index_follower_count", :producer => producer %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= producer.id %>">
+              <%= render "producers/partials/relationships/index_follow_button", :producer => producer %>
+            </div>
+
             </div>
           <% end %>
         <% end %>
@@ -611,7 +713,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -621,8 +723,15 @@
                 <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+                <div class="index_follower_count_<%= producer.id %>">
+                <%= render "producers/partials/relationships/index_follower_count", :producer => producer %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= producer.id %>">
+              <%= render "producers/partials/relationships/index_follow_button", :producer => producer %>
+            </div>
+
             </div>
           <% end %>
         <% end %>
@@ -642,7 +751,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -652,8 +761,15 @@
                 <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+                <div class="index_follower_count_<%= producer.id %>">
+                <%= render "producers/partials/relationships/index_follower_count", :producer => producer %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= producer.id %>">
+              <%= render "producers/partials/relationships/index_follow_button", :producer => producer %>
+            </div>
+
             </div>
           <% end %>
         <% end %>
@@ -673,7 +789,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -683,8 +799,15 @@
                 <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+                <div class="index_follower_count_<%= producer.id %>">
+                <%= render "producers/partials/relationships/index_follower_count", :producer => producer %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= producer.id %>">
+              <%= render "producers/partials/relationships/index_follow_button", :producer => producer %>
+            </div>
+
             </div>
           <% end %>
         <% end %>
@@ -704,7 +827,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -714,8 +837,15 @@
                 <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+                <div class="index_follower_count_<%= producer.id %>">
+                <%= render "producers/partials/relationships/index_follower_count", :producer => producer %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= producer.id %>">
+              <%= render "producers/partials/relationships/index_follow_button", :producer => producer %>
+            </div>
+
           </div>
           <% end %>
         <% end %>
@@ -735,7 +865,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -745,8 +875,15 @@
                 <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+                <div class="index_follower_count_<%= producer.id %>">
+                <%= render "producers/partials/relationships/index_follower_count", :producer => producer %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= producer.id %>">
+              <%= render "producers/partials/relationships/index_follow_button", :producer => producer %>
+            </div>
+
           </div>
           <% end %>
         <% end %>
@@ -766,7 +903,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -776,8 +913,15 @@
                 <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+                <div class="index_follower_count_<%= producer.id %>">
+                <%= render "producers/partials/relationships/index_follower_count", :producer => producer %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= producer.id %>">
+              <%= render "producers/partials/relationships/index_follow_button", :producer => producer %>
+            </div>
+
             </div>
           <% end %>
         <% end %>
@@ -797,7 +941,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -807,8 +951,15 @@
                 <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+                <div class="index_follower_count_<%= producer.id %>">
+                <%= render "producers/partials/relationships/index_follower_count", :producer => producer %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= producer.id %>">
+              <%= render "producers/partials/relationships/index_follow_button", :producer => producer %>
+            </div>
+
           </div>
           <% end %>
         <% end %>
@@ -828,7 +979,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -838,8 +989,15 @@
                 <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(producer.fans.count, "fan"), producer_followers_path(producer) %></center>
+                <div class="index_follower_count_<%= producer.id %>">
+                <%= render "producers/partials/relationships/index_follower_count", :producer => producer %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= producer.id %>">
+              <%= render "producers/partials/relationships/index_follow_button", :producer => producer %>
+            </div>
+
           </div>
           <% end %>
         <% end %>

@@ -13,7 +13,7 @@
             recent
           </div>
           <div id="location" class="porter">
-            <% if fan_signed_in? %>
+            <% if fan_signed_in? && current_fan.fan_profile.location != "" %>
               <%= current_fan.fan_profile.location.downcase %>
             <% else %>
               location
@@ -51,7 +51,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= venue.venue_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= venue.venue_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -61,8 +61,15 @@
                 <center><%= venue.venue_profile.location unless venue.venue_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(venue.fans.count, "fan"), venue_followers_path(venue) %></center>
+                <div class="index_follower_count_<%= venue.id %>">
+                <%= render "venues/partials/relationships/index_follower_count", :venue => venue %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= venue.id %>">
+              <%= render "venues/partials/relationships/index_follow_button", :venue => venue %>
+            </div>
+
           </div>
         <% end %>
       </div>
@@ -80,7 +87,7 @@
               </div>
             <% else %>
               <div class="genesee">
-                <img src="<%= venue.venue_profile.cover_image %>" width="100%" height="auto" />
+                <img srcset="<%= venue.venue_profile.cover_image %>" width="100%" height="auto" />
               </div>
             <% end %>
               <div class="hertel">
@@ -90,14 +97,21 @@
                 <center><%= venue.venue_profile.location unless venue.venue_profile.location == "" %></center>
               </div>
               <div class="hertel">
-              <center><%= link_to pluralize(venue.fans.count, "fan"), venue_followers_path(venue) %></center>
+                <div class="index_follower_count_<%= venue.id %>">
+                <%= render "venues/partials/relationships/index_follower_count", :venue => venue %>
+              </div>
             </div>
+
+            <div class="index_follow_button_<%= venue.id %>">
+              <%= render "venues/partials/relationships/index_follow_button", :venue => venue %>
+            </div>
+
           </div>
         <% end %>
       </div>
 
       <div id="container-location" class="ferry colvin">
-        <% if fan_signed_in? %>
+        <% if fan_signed_in? && current_fan.fan_profile.location != "" %>
           <% @venues.each do |venue| %>
             <% if venue.venue_profile.location == current_fan.fan_profile.location %>
               <div class="utica">
@@ -111,7 +125,7 @@
                   </div>
                 <% else %>
                   <div class="genesee">
-                    <img src="<%= venue.venue_profile.cover_image %>" width="100%" height="auto" />
+                    <img srcset="<%= venue.venue_profile.cover_image %>" width="100%" height="auto" />
                   </div>
                 <% end %>
                   <div class="hertel">
@@ -121,11 +135,22 @@
                     <center><%= venue.venue_profile.location unless venue.venue_profile.location == "" %></center>
                   </div>
                   <div class="hertel">
-                  <center><%= link_to pluralize(venue.fans.count, "fan"), venue_followers_path(venue) %></center>
+                <div class="index_follower_count_<%= venue.id %>">
+                  <%= render "venues/partials/relationships/index_follower_count", :venue => venue %>
                 </div>
+              </div>
+
+              <div class="index_follow_button_<%= venue.id %>">
+                <%= render "venues/partials/relationships/index_follow_button", :venue => venue %>
+              </div>
+
               </div>
             <% end %>
           <% end %>
+        <% elsif fan_signed_in? && current_fan.fan_profile.location == "" %>
+          <div class="hertel">
+            <center>Your location is blank! Go set it on <%= link_to "your profile", edit_fan_profile_path(current_fan) %>.</center>
+          </div>
         <% else %>
           <div class="hertel">
             <center><%= link_to "sign in", new_fan_session_path %> to view venues based on location</center>

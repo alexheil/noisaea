@@ -5,6 +5,8 @@ class Recordlabels::CommentsController < ApplicationController
   def create
     @comment = RecordLabelMicropostComment.new(comment_params)
     @comment.record_label_micropost_id = RecordLabelMicropost.find(params[:micropost_id]).id
+    @record_label = RecordLabel.friendly.find(RecordLabelMicropost.find(params[:micropost_id]).record_label_id)
+    @micropost = RecordLabelMicropost.find(params[:micropost_id])
     if artist_signed_in?
       @comment.artist_id = current_artist.id
     elsif fan_signed_in?
@@ -17,8 +19,10 @@ class Recordlabels::CommentsController < ApplicationController
       @comment.producer_id = current_producer.id
     end
     if @comment.save
-      redirect_to (:back)
-      flash[:notice] = "you rock"
+      respond_to do |format|
+        format.html { redirect_to (:back) }
+        format.js { render :action => "comments" }
+      end
     else
       redirect_to (:back)
       flash[:alert] = "you suck."
@@ -27,8 +31,12 @@ class Recordlabels::CommentsController < ApplicationController
 
   def destroy
     RecordLabelMicropostComment.find(params[:id]).destroy
-    redirect_to (:back)
-    flash[:notice] = "good riddance to that comment"
+    @record_label = RecordLabel.friendly.find(RecordLabelMicropost.find(params[:micropost_id]).record_label_id)
+    @micropost = RecordLabelMicropost.find(params[:micropost_id])
+    respond_to do |format|
+      format.html { redirect_to (:back) }
+      format.js { render :action => "comments" }
+    end
   end
 
   private

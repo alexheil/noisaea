@@ -18,7 +18,7 @@ class Venues::MicropostVotesController < ApplicationController
     end
     if @vote.save
       redirect_to (:back)
-      flash[:notice] = "you rock"
+      flash[:notice] = "voted."
     else
       redirect_to (:back)
       flash[:alert] = "you suck."

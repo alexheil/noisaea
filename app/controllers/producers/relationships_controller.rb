@@ -6,16 +6,24 @@ class Producers::RelationshipsController < ApplicationController
     @relationship = ProducerRelationship.new
     @relationship.fan_id = current_fan.id
     @relationship.producer_id = Producer.friendly.find(params[:producer_id]).id
+    @producer = Producer.friendly.find(params[:producer_id])
     if @relationship.save
-      redirect_to (:back)
+      respond_to do |format|
+        format.html { redirect_to (:back) }
+        format.js { render :action => "follow_button" }
+      end
     else
       redirect_to root_url
     end
   end
 
   def destroy
-    current_fan.unfollow_producer(Producer.friendly.find(params[:id]))
-    redirect_to (:back)
+    current_fan.unfollow_producer(Producer.friendly.find(params[:producer_id]))
+    @producer = Producer.friendly.find(params[:producer_id])
+    respond_to do |format|
+      format.html { redirect_to (:back) }
+      format.js { render :action => "follow_button" }
+    end
   end
 
 end

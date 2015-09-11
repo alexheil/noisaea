@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
   resources :artists, controller: 'artists/artists', only: [:show, :index] do
     resource :profile, controller: 'artists/profiles', only: [:edit, :update]
+    resources :relationships, controller: 'artists/relationships', only: [:create, :destroy]
     resources :microposts, controller: 'artists/microposts', path: :status, only:[:create, :show, :destroy] do
       resources :comments, controller: 'artists/comments', only: [:create, :destroy]
     end
@@ -52,6 +53,7 @@ Rails.application.routes.draw do
 
   resources :record_labels, controller: 'recordlabels/recordlabels', only: [:show, :index] do
     resource :profile, controller: 'recordlabels/profiles', only: [:edit, :update]
+    resources :relationships, controller: 'recordlabels/relationships', only: [:create, :destroy]
     resources :microposts, controller: 'recordlabels/microposts', path: :status, only:[:create, :show, :destroy] do
       resources :comments, controller: 'recordlabels/comments', only: [:create, :destroy]
     end
@@ -68,6 +70,7 @@ Rails.application.routes.draw do
 
   resources :venues, controller: 'venues/venues', only: [:show, :index] do
     resource :profile, controller: 'venues/profiles', only: [:edit, :update]
+    resources :relationships, controller: 'venues/relationships', only: [:create, :destroy]
     resources :microposts, controller: 'venues/microposts', path: :status, only:[:create, :show, :destroy] do
       resources :comments, controller: 'venues/comments', only: [:create, :destroy]
     end
@@ -84,6 +87,7 @@ Rails.application.routes.draw do
 
   resources :producers, controller: 'producers/producers', only: [:show, :index] do
     resource :profile, controller: 'producers/profiles', only: [:edit, :update]
+    resources :relationships, controller: 'producers/relationships', only: [:create, :destroy]
     resources :microposts, controller: 'producers/microposts', path: :status, only:[:create, :show, :destroy] do
       resources :comments, controller: 'producers/comments', only: [:create, :destroy]
     end
@@ -107,11 +111,6 @@ Rails.application.routes.draw do
   end
 
   ###################### RELATIONSHIPS #############################
-
-  resources :artist_relationships, controller: 'artists/relationships', only: [:create, :destroy]
-  resources :record_label_relationships, controller: 'recordlabels/relationships', only: [:create, :destroy]
-  resources :venue_relationships, controller: 'venues/relationships', only: [:create, :destroy]
-  resources :producer_relationships, controller: 'producers/relationships', only: [:create, :destroy]
 
   resources :artist_micropost_votes, controller: 'artists/micropost_votes', only: [:create,:destroy]
   resources :record_label_micropost_votes, controller: 'recordlabels/micropost_votes', only: [:create,:destroy]

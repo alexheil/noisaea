@@ -9,7 +9,14 @@ $fancy-font: 'Open Sans', Helvetica, arial, sans-serif;
 .grant {
   width: 100%;
   display: inline-block;
+  h1 {
+    margin: 0;
+    padding: 0;
+  }
   ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     text-align: center;
     li {
       display: inline-block;
@@ -32,7 +39,7 @@ $fancy-font: 'Open Sans', Helvetica, arial, sans-serif;
   }
 }
 
-/* ************** HEADER AND nav ******************** */
+/* ************** HEADER AND NAV ******************** */
 
 .ontario {
   background-color: $main-color;
@@ -82,6 +89,9 @@ $fancy-font: 'Open Sans', Helvetica, arial, sans-serif;
   width: 100%;
   display: inline-block;
   ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     float: right;
     li {
       display: inline-block;
@@ -123,6 +133,9 @@ $fancy-font: 'Open Sans', Helvetica, arial, sans-serif;
   display: none;
   text-align: center;
   ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     li {
       margin: 1vh auto;
     }
@@ -136,6 +149,9 @@ $fancy-font: 'Open Sans', Helvetica, arial, sans-serif;
   text-align: center;
   color: $my-black;
   ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     li {
       margin: 1vh 1vw;
     }
@@ -192,8 +208,13 @@ $fancy-font: 'Open Sans', Helvetica, arial, sans-serif;
   font-family: $fancy-font;
   span {
     float: left;
+    margin: 0;
+    padding: 0;
   }
   ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     float: right;
     li {
       position: relative;
@@ -376,3 +397,101 @@ $fancy-font: 'Open Sans', Helvetica, arial, sans-serif;
     }
 
 }
+
+.record {
+ font-size: 1.25em;
+ display: inline-block;
+ width: 0.4em;
+ height: 0.4em;
+ border: 0.55em solid $my-black;
+ position: relative;
+ border-radius: 0.75em;
+ &:hover {
+  border: 0.55em solid $main-color;
+ }
+}
+
+.artist {
+  font-size: .5em;
+  display: inline-block;
+  height: 0.25em;
+  border: 1em solid $my-black;
+  position: relative;
+  border-radius: 1em;
+  top: -12px;
+  &:before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    right: -0.1em;
+    bottom: -2.5em;
+    border-width: 0;
+    background: $my-black;
+    width: 1em;
+    height: 2.5em;
+    -webkit-transform: rotate(15deg);
+    -moz-transform: rotate(15deg);
+    -ms-transform: rotate(15deg);
+    -o-transform: rotate(15deg);
+    }
+    &:hover {
+      border: 1em solid $main-color;
+    &:before {
+      background: $main-color;
+    }
+  }
+}
+
+.venue {
+  font-size: .5em;
+  display: inline-block;
+  height: 1.5em;
+  width: 0.9em;
+  border-top: 2em solid $my-black;
+  border-right: 1.65em solid $my-black;
+  border-left: 1.65em solid $my-black;
+  border-bottom: none;
+  position: relative;
+  &:hover {
+  border-top: 2em solid $main-color;
+  border-right: 1.65em solid $main-color;
+  border-left: 1.65em solid $main-color;
+  border-bottom: none;
+  }
+}
+
+
+.producer {
+  font-size: .5em;
+  display: inline-block;
+  height: 0;
+  width: .75em;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  border-top: 2em solid $my-black;
+  border-right: 1.65em solid $my-black;
+  border-left: 1.65em solid $my-black;
+  border-bottom: none;
+  position: relative;
+  top: 18px;
+  &:before {
+    content: "";
+    font-size: 1em;
+    display: inline-block;
+    border: 1em solid $my-black;
+    position: relative;
+    border-radius: 1.55em;
+    top: -34px;
+    right: 5px;
+  }
+  &:hover {
+    border-top: 2em solid $main-color;
+    border-right: 1.65em solid $main-color;
+    border-left: 1.65em solid $main-color;
+    border-bottom: none;
+    &:before {
+      border: 1em solid $main-color;
+    }
+  }
+}
+

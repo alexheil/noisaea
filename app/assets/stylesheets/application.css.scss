@@ -20,14 +20,9 @@ $my-black: #212121;
 $normal-font: Georgia, "Times New Roman", Times, serif;
 $fancy-font: 'Open Sans', Helvetica, Arial, sans-serif;
 
-* {
+body {
   padding: 0;
   margin: 0;
-  list-style: none;
-  box-sizing: border-box;
-}
-
-body {
   font-size: 18px;
   line-height: 1.75em;
   font-family: $normal-font;

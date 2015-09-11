@@ -36,7 +36,6 @@ class Fan < ActiveRecord::Base
   has_many :developer_comments, dependent: :destroy
 
   has_many :artist_micropost_votes, dependent: :destroy
-  #belongs_to :artist_micropost
   has_many :record_label_micropost_votes, dependent: :destroy
   has_many :venue_micropost_votes, dependent: :destroy
   has_many :producer_micropost_votes, dependent: :destroy
@@ -48,7 +47,7 @@ class Fan < ActiveRecord::Base
   has_many :post_comment_votes, dependent: :destroy
   has_many :developer_comment_votes, dependent: :destroy
 
-  validates :username, presence: true, uniqueness: true, length: { maximum: 50 }, format: { with: /\A[\S]+\Z/i }
+  validates :username, presence: true, uniqueness: true, length: { maximum: 50 }, format: { with: /\A[a-zA-Z0-9 ]+\Z/i }
   validates :fan_name, presence: true, length: { maximum: 50 }
 
   before_save :downcase_username
@@ -60,6 +59,10 @@ class Fan < ActiveRecord::Base
 
   def unfollow_artist(artist)
     ArtistRelationship.find_by(fan_id: id, artist_id: artist.id).destroy
+  end
+
+  def artist_relationship_id(artist)
+    ArtistRelationship.find_by(fan_id: id, artist_id: artist.id).id
   end
 
   def artist_micropost_voted?(artist_micropost)
@@ -86,6 +89,10 @@ class Fan < ActiveRecord::Base
     RecordLabelRelationship.find_by(fan_id: id, record_label_id: record_label.id).destroy
   end
 
+  def record_label_relationship_id(record_label)
+    RecordLabelRelationship.find_by(fan_id: id, record_label_id: record_label.id).id
+  end
+
   def record_label_micropost_voted?(record_label_micropost)
     RecordLabelMicropostVote.exists? fan_id: id, record_label_micropost_id: record_label_micropost.id
   end
@@ -110,6 +117,10 @@ class Fan < ActiveRecord::Base
     VenueRelationship.find_by(fan_id: id, venue_id: venue.id).destroy
   end
 
+  def venue_relationship_id(venue)
+    VenueRelationship.find_by(fan_id: id, venue_id: venue.id).id
+  end
+
   def venue_micropost_voted?(venue_micropost)
     VenueMicropostVote.exists? fan_id: id, venue_micropost_id: venue_micropost.id
   end
@@ -132,6 +143,10 @@ class Fan < ActiveRecord::Base
 
   def unfollow_producer(producer)
     ProducerRelationship.find_by(fan_id: id, producer_id: producer.id).destroy
+  end
+
+  def producer_relationship_id(producer)
+    ProducerRelationship.find_by(fan_id: id, producer_id: producer.id).id
   end
 
   def producer_micropost_voted?(producer_micropost)
