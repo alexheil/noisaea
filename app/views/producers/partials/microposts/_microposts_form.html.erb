@@ -1,0 +1,10 @@
+<% if @producer == current_producer %>
+  <%= form_for(ProducerMicropost.new, url: producer_microposts_path(@producer), remote: true) do |f| %>
+    <div class="highgate">
+      <%= f.text_area :content, placeholder: "what have you been up to?", class: "court" %>
+    </div>
+    <div class="ellicott">
+      <%= f.submit "post update", class: "exchange" %>
+    </div>
+  <% end %>
+<% end %>

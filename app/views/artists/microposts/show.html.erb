@@ -27,26 +27,16 @@
         <%= @micropost.content %>
       </div>
 
-      <div class="lisbon">
+      <div class="lisbon" id="lisbon">
 
-        <% if fan_signed_in? && current_fan.artist_micropost_voted?(@micropost) %>
-          <%= button_to "−", artist_micropost_vote_path, method: :delete, class: "linwood" %>
-        <% elsif artist_signed_in? && current_artist.artist_micropost_voted?(@micropost) %>
-          <%= button_to "−", artist_micropost_vote_path, method: :delete, class: "linwood" %>
-        <% elsif record_label_signed_in? && current_record_label.artist_micropost_voted?(@micropost) %>
-          <%= button_to "−", artist_micropost_vote_path, method: :delete, class: "linwood" %>
-        <% elsif venue_signed_in? && current_venue.artist_micropost_voted?(@micropost) %>
-          <%= button_to "−", artist_micropost_vote_path, method: :delete, class: "linwood" %>
-        <% elsif producer_signed_in? && current_producer.artist_micropost_voted?(@micropost) %>
-          <%= button_to "−", artist_micropost_vote_path, method: :delete, class: "linwood" %>
-        <% else %>
-          <%= form_for(ArtistMicropostVote.new, url: artist_micropost_votes_path) do |f| %>
-            <%= hidden_field_tag :artist_micropost_id, @micropost.id %>
-            <%= f.submit "+", class: "linwood" %>
-          <% end %>
-        <% end %>
+        <div class="micropost_votes">
+          <%= render 'artists/partials/microposts/micropost_votes' %>
+        </div>
 
-        <strong><%= @micropost.artist_micropost_votes.count %></strong> //
+        <span class="micropost_votes_count">
+          <%= render 'artists/partials/microposts/micropost_votes_count' %>
+        </span>
+         //
         <a class="linden"><span class="comments_count"><%= render 'artists/partials/comments/comments_count' %></span></a>
       </div>
 
@@ -56,8 +46,6 @@
           <div class="comments_js">
             <%= render 'artists/partials/comments/comments' %>
           </div>
-
-        </div>
 
         <div class="comments_form">
           <%= render 'artists/partials/comments/comments_form' %>

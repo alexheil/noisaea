@@ -3,3 +3,5 @@ $('#following').html('<%=  escape_javascript(render :partial => 'artists/partial
 $('#follower_count').html('<%=  escape_javascript(render :partial => 'artists/partials/relationships/follower_count') %>');
 $('.index_follow_button_<%= @artist.id %>').html('<%=  escape_javascript(render :partial => 'artists/partials/relationships/index_follow_button', :locals => {:artist => @artist}) %>');
 $('.index_follower_count_<%= @artist.id %>').html('<%=  escape_javascript(render :partial => 'artists/partials/relationships/index_follower_count', :locals => {:artist => @artist}) %>');
+$('.artist_following_count').html('<%=  escape_javascript(render :partial => 'artists/partials/relationships/fan_following_count') %>');
+$('.artist_follow_button_<%= @artist.id %>').html('<%=  escape_javascript(render :partial => 'artists/partials/relationships/index_follow_button', :locals => {:artist => @artist}) %>');

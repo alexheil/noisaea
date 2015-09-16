@@ -4,7 +4,10 @@ class Recordlabels::CommentVotesController < ApplicationController
 
   def create
     @vote = RecordLabelMicropostCommentVote.new
-    @vote.record_label_micropost_comment_id = RecordLabelMicropostComment.find(params[:record_label_micropost_comment_id]).id
+    @vote.record_label_micropost_comment_id = RecordLabelMicropostComment.find(params[:comment_id]).id
+    @record_label = RecordLabel.friendly.find(params[:record_label_id])
+    @micropost = RecordLabelMicropost.find(params[:micropost_id])
+    @comment = RecordLabelMicropostComment.find(params[:comment_id])
     if artist_signed_in?
       @vote.artist_id = current_artist.id
     elsif fan_signed_in?
@@ -17,8 +20,10 @@ class Recordlabels::CommentVotesController < ApplicationController
       @vote.producer_id = current_producer.id
     end
     if @vote.save
-      redirect_to (:back)
-      flash[:notice] = "voted."
+      respond_to do |format|
+        format.html { redirect_to (:back) }
+        format.js { render :action => "comment_votes" }
+      end
     else
       redirect_to (:back)
       flash[:alert] = "you suck."
@@ -26,21 +31,23 @@ class Recordlabels::CommentVotesController < ApplicationController
   end
 
   def destroy
+    @record_label = RecordLabel.friendly.find(params[:record_label_id])
+    @micropost = RecordLabelMicropost.find(params[:micropost_id])
+    @comment = RecordLabelMicropostComment.find(params[:comment_id])
     if fan_signed_in?
-      current_fan.record_label_micropost_comment_unvote(RecordLabelMicropostComment.find(params[:id]))
-      redirect_to (:back)
+      current_fan.record_label_micropost_comment_unvote(RecordLabelMicropostComment.find(params[:comment_id]))
     elsif artist_signed_in?
-      current_artist.record_label_micropost_comment_unvote(RecordLabelMicropostComment.find(params[:id]))
-      redirect_to (:back)
+      current_artist.record_label_micropost_comment_unvote(RecordLabelMicropostComment.find(params[:comment_id]))
     elsif record_label_signed_in?
-      current_record_label.record_label_micropost_comment_unvote(RecordLabelMicropostComment.find(params[:id]))
-      redirect_to (:back)
+      current_record_label.record_label_micropost_comment_unvote(RecordLabelMicropostComment.find(params[:comment_id]))
     elsif venue_signed_in?
-      current_venue.record_label_micropost_comment_unvote(RecordLabelMicropostComment.find(params[:id]))
-      redirect_to (:back)
+      current_venue.record_label_micropost_comment_unvote(RecordLabelMicropostComment.find(params[:comment_id]))
     elsif producer_signed_in?
-      current_producer.record_label_micropost_comment_unvote(RecordLabelMicropostComment.find(params[:id]))
-      redirect_to (:back)
+      current_producer.record_label_micropost_comment_unvote(RecordLabelMicropostComment.find(params[:comment_id]))
+    end
+    respond_to do |format|
+      format.html { redirect_to (:back) }
+      format.js { render :action => "comment_votes" }
     end
   end
 

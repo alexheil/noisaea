@@ -27,27 +27,17 @@
         <%= @micropost.content %>
       </div>
 
-      <div class="lisbon">
+      <div class="lisbon" id="lisbon">
 
-        <% if fan_signed_in? && current_fan.venue_micropost_voted?(@micropost) %>
-          <%= button_to "−", venue_micropost_vote_path(@micropost), method: :delete, class: "linwood" %>
-        <% elsif artist_signed_in? && current_artist.venue_micropost_voted?(@micropost) %>
-          <%= button_to "−", venue_micropost_vote_path(@micropost), method: :delete, class: "linwood" %>
-        <% elsif record_label_signed_in? && current_record_label.venue_micropost_voted?(@micropost) %>
-          <%= button_to "−", venue_micropost_vote_path(@micropost), method: :delete, class: "linwood" %>
-        <% elsif venue_signed_in? && current_venue.venue_micropost_voted?(@micropost) %>
-          <%= button_to "−", venue_micropost_vote_path(@micropost), method: :delete, class: "linwood" %>
-        <% elsif producer_signed_in? && current_producer.venue_micropost_voted?(@micropost) %>
-          <%= button_to "−", venue_micropost_vote_path(@micropost), method: :delete, class: "linwood" %>
-        <% else %>
-          <%= form_for(VenueMicropostVote.new, url: venue_micropost_votes_path) do |f| %>
-            <%= hidden_field_tag :venue_micropost_id, @micropost.id %>
-            <%= f.submit "+", class: "linwood" %>
-          <% end %>
-        <% end %>
+        <div class="micropost_votes">
+          <%= render 'venues/partials/microposts/micropost_votes' %>
+        </div>
 
-
-        <strong><%= @micropost.venue_micropost_votes.count %></strong> // <a class="linden"><span class="comments_count"><%= render 'venues/partials/comments/comments_count' %></span></a>
+        <span class="micropost_votes_count">
+          <%= render 'venues/partials/microposts/micropost_votes_count' %>
+        </span>
+         //
+         <a class="linden"><span class="comments_count"><%= render 'venues/partials/comments/comments_count' %></span></a>
       </div>
 
       <div class="walden">

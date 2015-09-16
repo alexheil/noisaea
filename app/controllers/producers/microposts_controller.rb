@@ -8,12 +8,15 @@ class Producers::MicropostsController < ApplicationController
   def create
     @micropost = ProducerMicropost.new(micropost_params)
     @micropost.producer_id = current_producer.id
+    @producer = Producer.friendly.find(params[:producer_id])
     if @micropost.save
-      flash[:notice] = "Thanks for translating your beautiful thoughts into words and posting them here!"
-      redirect_to (:back)
+      respond_to do |format|
+        format.html { redirect_to (:back) }
+        format.js { render :action => "microposts" }
+      end
     else
-      flash[:alert] = "You probably forgot to write something? Yeah, that's it!"
       redirect_to (:back)
+      flash[:alert] = "You probably forgot to write something? Yeah, that's it!"
     end
   end
 
@@ -24,7 +27,11 @@ class Producers::MicropostsController < ApplicationController
 
   def destroy
     ProducerMicropost.find(params[:id]).destroy
-    redirect_to (:back)
+    @producer = Producer.friendly.find(params[:producer_id])
+    respond_to do |format|
+      format.html { redirect_to (:back) }
+      format.js { render :action => "microposts" }
+    end
   end
 
   private

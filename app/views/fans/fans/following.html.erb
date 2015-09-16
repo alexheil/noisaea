@@ -23,28 +23,52 @@
       <div class="allen">
         <a id="fan-artist-click"><strong>artists</strong></a>
         <div class="amherst">
-          // following <%= pluralize(@fan.artists.count, "artist") %>
+          <% if fan_signed_in? && @fan == current_fan %>
+          <div class="artist_following_count">
+            <%= render 'artists/partials/relationships/fan_following_count' %>
+          </div>
+          <% else %>
+            // following <%= pluralize(@fan.artists.count, "artist") %>
+          <% end %>
         </div>
       </div>
 
       <div class="allen">
         <a id="fan-record-label-click"><strong>record labels</strong></a>
         <div class="amherst">
-          // following <%= pluralize(@fan.record_labels.count, "record label") %>
+          <% if fan_signed_in? && @fan == current_fan %>
+            <div class="record_label_following_count">
+              <%= render 'recordlabels/partials/relationships/fan_following_count' %>
+            </div>
+          <% else %>
+            // following <%= pluralize(@fan.record_labels.count, "record label") %>
+          <% end %>
         </div>
       </div>
 
       <div class="allen">
         <a id="fan-venue-click"><strong>venues</strong></a>
         <div class="amherst">
-          // following <%= pluralize(@fan.venues.count, "venue") %>
+          <% if fan_signed_in? && @fan == current_fan %>
+            <div class="venue_following_count">
+              <%= render 'venues/partials/relationships/fan_following_count' %>
+            </div>
+          <% else %>
+            // following <%= pluralize(@fan.venues.count, "venue") %>
+          <% end %>
         </div>
       </div>
 
       <div class="allen">
         <a id="fan-producer-click"><strong>producers</strong></a>
         <div class="amherst">
-          // following <%= pluralize(@fan.producers.count, "producer") %>
+          <% if fan_signed_in? && @fan == current_fan %>
+            <div class="producer_following_count">
+              <%= render 'producers/partials/relationships/fan_following_count' %>
+            </div>
+          <% else %>
+            // following <%= pluralize(@fan.producers.count, "producer") %>
+          <% end %>
         </div>
       </div>
 
@@ -66,19 +90,9 @@
             </div>
             <% end %>
 
-            <% if fan_signed_in? %>
-              <div class="winspear">
-              <% if fan_signed_in? && current_fan.following_artist?(artist) %>
-                <%= button_to "unfollow", artist_relationship_path(artist, current_fan.artist_relationship_id(artist)), method: :delete, class: "seventh" %>
-              <% elsif fan_signed_in? %>
-                <%= form_for(ArtistRelationship.new, url: artist_relationships_path(artist)) do |f| %>
-                  <%= f.submit "follow", class: "seventh" %>
-                <% end %>
-              <% else %>
-                <%= button_to "follow", fan_session_path, class: "seventh" %>
-              <% end %>
-              </div>
-            <% end %>
+            <div class="artist_follow_button_<%= artist.id %>">
+              <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
+            </div>
 
             <center><%= link_to artist.artist_name, artist_path(artist) %></center>
 
@@ -104,19 +118,9 @@
             </div>
             <% end %>
 
-            <% if fan_signed_in? %>
-              <div class="winspear">
-              <% if fan_signed_in? && current_fan.following_record_label?(record_label) %>
-                <%= button_to "unfollow", record_label_relationship_path(record_label, current_fan.record_label_relationship_id(record_label)), method: :delete, class: "seventh" %>
-              <% elsif fan_signed_in? %>
-                <%= form_for(RecordLabelRelationship.new, url: record_label_relationships_path(record_label)) do |f| %>
-                  <%= f.submit "follow", class: "seventh" %>
-                <% end %>
-              <% else %>
-                <%= button_to "follow", fan_session_path, class: "seventh" %>
-              <% end %>
-              </div>
-            <% end %>
+            <div class="record_label_follow_button_<%= record_label.id %>">
+              <%= render "recordlabels/partials/relationships/index_follow_button", :record_label => record_label %>
+            </div>
 
             <center><%= link_to record_label.label_name, record_label_path(record_label) %></center>
           </div>
@@ -141,19 +145,9 @@
             </div>
             <% end %>
 
-            <% if fan_signed_in? %>
-              <div class="winspear">
-              <% if fan_signed_in? && current_fan.following_venue?(venue) %>
-                <%= button_to "unfollow", venue_relationship_path(venue, current_fan.venue_relationship_id(venue)), method: :delete, class: "seventh" %>
-              <% elsif fan_signed_in? %>
-                <%= form_for(VenueRelationship.new, url: venue_relationships_path(venue)) do |f| %>
-                  <%= f.submit "follow", class: "seventh" %>
-                <% end %>
-              <% else %>
-                <%= button_to "follow", fan_session_path, class: "seventh" %>
-              <% end %>
-              </div>
-            <% end %>
+            <div class="venue_follow_button_<%= venue.id %>">
+              <%= render "venues/partials/relationships/index_follow_button", :venue => venue %>
+            </div>
 
             <center><%= link_to venue.venue_name, venue_path(venue) %></center>
           </div>
@@ -178,19 +172,10 @@
             </div>
             <% end %>
 
-            <% if fan_signed_in? %>
-              <div class="winspear">
-              <% if fan_signed_in? && current_fan.following_producer?(producer) %>
-                <%= button_to "unfollow", producer_relationship_path(producer, current_fan.producer_relationship_id(producer)), method: :delete, class: "seventh" %>
-              <% elsif fan_signed_in? %>
-                <%= form_for(ProducerRelationship.new, url: producer_relationships_path(producer)) do |f| %>
-                  <%= f.submit "follow", class: "seventh" %>
-                <% end %>
-              <% else %>
-                <%= button_to "follow", fan_session_path, class: "seventh" %>
-              <% end %>
-              </div>
-            <% end %>
+            <div class="producer_follow_button_<%= producer.id %>">
+              <%= render "producers/partials/relationships/index_follow_button", :producer => producer %>
+            </div>
+
 
             <center><%= link_to producer.producer_name, producer_path(producer) %></center>
           </div>

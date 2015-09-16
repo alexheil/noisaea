@@ -73,12 +73,20 @@ class Fan < ActiveRecord::Base
     ArtistMicropostVote.find_by(fan_id: id, artist_micropost_id: artist_micropost.id).destroy
   end
 
+  def artist_micropost_vote_id(artist_micropost)
+    ArtistMicropostVote.find_by(fan_id: id, artist_micropost_id: artist_micropost.id).id
+  end
+
   def artist_micropost_comment_voted?(artist_micropost_comment)
     ArtistMicropostCommentVote.exists? fan_id: id, artist_micropost_comment_id: artist_micropost_comment.id
   end
 
   def artist_micropost_comment_unvote(artist_micropost_comment)
     ArtistMicropostCommentVote.find_by(fan_id: id, artist_micropost_comment_id: artist_micropost_comment.id).destroy
+  end
+
+  def artist_micropost_comment_vote_id(artist_micropost_comment)
+    ArtistMicropostCommentVote.find_by(fan_id: id, artist_micropost_comment_id: artist_micropost_comment.id).id
   end
 
   def following_record_label?(record_label)
@@ -101,12 +109,20 @@ class Fan < ActiveRecord::Base
     RecordLabelMicropostVote.find_by(fan_id: id, record_label_micropost_id: record_label_micropost.id).destroy
   end
 
+  def record_label_micropost_vote_id(record_label_micropost)
+    RecordLabelMicropostVote.find_by(fan_id: id, record_label_micropost_id: record_label_micropost.id).id
+  end
+
   def record_label_micropost_comment_voted?(record_label_micropost_comment)
     RecordLabelMicropostCommentVote.exists? fan_id: id, record_label_micropost_comment_id: record_label_micropost_comment.id
   end
 
   def record_label_micropost_comment_unvote(record_label_micropost_comment)
     RecordLabelMicropostCommentVote.find_by(fan_id: id, record_label_micropost_comment_id: record_label_micropost_comment.id).destroy
+  end
+
+  def record_label_micropost_comment_vote_id(record_label_micropost_comment)
+    RecordLabelMicropostCommentVote.find_by(fan_id: id, record_label_micropost_comment_id: record_label_micropost_comment.id).id
   end
 
   def following_venue?(venue)
@@ -129,12 +145,20 @@ class Fan < ActiveRecord::Base
     VenueMicropostVote.find_by(fan_id: id, venue_micropost_id: venue_micropost.id).destroy
   end
 
+  def venue_micropost_vote_id(venue_micropost)
+    VenueMicropostVote.find_by(fan_id: id, venue_micropost_id: venue_micropost.id).id
+  end
+
   def venue_micropost_comment_voted?(venue_micropost_comment)
     VenueMicropostCommentVote.exists? fan_id: id, venue_micropost_comment_id: venue_micropost_comment.id
   end
 
   def venue_micropost_comment_unvote(venue_micropost_comment)
     VenueMicropostCommentVote.find_by(fan_id: id, venue_micropost_comment_id: venue_micropost_comment.id).destroy
+  end
+
+  def venue_micropost_comment_vote_id(venue_micropost_comment)
+    VenueMicropostCommentVote.find_by(fan_id: id, venue_micropost_comment_id: venue_micropost_comment.id).id
   end
 
   def following_producer?(producer)
@@ -157,12 +181,20 @@ class Fan < ActiveRecord::Base
     ProducerMicropostVote.find_by(fan_id: id, producer_micropost_id: producer_micropost.id).destroy
   end
 
+  def producer_micropost_vote_id(producer_micropost)
+    ProducerMicropostVote.find_by(fan_id: id, producer_micropost_id: producer_micropost.id).id
+  end
+
   def producer_micropost_comment_voted?(producer_micropost_comment)
     ProducerMicropostCommentVote.exists? fan_id: id, producer_micropost_comment_id: producer_micropost_comment.id
   end
 
   def producer_micropost_comment_unvote(producer_micropost_comment)
     ProducerMicropostCommentVote.find_by(fan_id: id, producer_micropost_comment_id: producer_micropost_comment.id).destroy
+  end
+
+  def producer_micropost_comment_vote_id(producer_micropost_comment)
+    ProducerMicropostCommentVote.find_by(fan_id: id, producer_micropost_comment_id: producer_micropost_comment.id).id
   end
 
   def post_comment_voted?(post_comment)

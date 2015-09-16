@@ -8,12 +8,15 @@ class Artists::MicropostsController < ApplicationController
   def create
     @micropost = ArtistMicropost.new(micropost_params)
     @micropost.artist_id = current_artist.id
+    @artist = Artist.friendly.find(params[:artist_id])
     if @micropost.save
-      flash[:notice] = "Thanks for translating your beautiful thoughts into words and posting them here!"
-      redirect_to (:back)
+      respond_to do |format|
+        format.html { redirect_to (:back) }
+        format.js { render :action => "microposts" }
+      end
     else
-      flash[:alert] = "You probably forgot to write something? Yeah, that's it!"
       redirect_to (:back)
+      flash[:alert] = "You probably forgot to write something? Yeah, that's it!"
     end
   end
 
@@ -24,7 +27,11 @@ class Artists::MicropostsController < ApplicationController
 
   def destroy
     ArtistMicropost.find(params[:id]).destroy
-    redirect_to (:back)
+    @artist = Artist.friendly.find(params[:artist_id])
+    respond_to do |format|
+      format.html { redirect_to (:back) }
+      format.js { render :action => "microposts" }
+    end
   end
 
   private

@@ -1,0 +1,5 @@
+$('.index_comment_votes_<%= @comment.id %>').html('<%=  escape_javascript(render :partial => 'recordlabels/partials/comments/index_comment_votes', :locals => {:micropost => @micropost, :comment => @comment}) %>');
+$('.index_comment_votes_count_<%= @comment.id %>').html('<%=  escape_javascript(render :partial => 'recordlabels/partials/comments/index_comment_votes_count', :locals => {:comment => @comment}) %>');
+$('.comment_votes_<%= @comment.id %>').html('<%=  escape_javascript(render :partial => 'recordlabels/partials/comments/comment_votes', :locals => {:comment => @comment}) %>');
+$('.record_label_fan_comment_votes_<%= @comment.id %>').html('<%=  escape_javascript(render :partial => 'recordlabels/partials/comments/fan_comment_votes', :locals => {:micropost => @micropost, :comment => @comment}) %>');
+$('.record_label_fan_comment_votes_count_<%= @comment.id %>').html('<%=  escape_javascript(render :partial => 'recordlabels/partials/comments/index_comment_votes_count', :locals => {:comment => @comment}) %>');

@@ -4,7 +4,10 @@ class Artists::CommentVotesController < ApplicationController
 
   def create
     @vote = ArtistMicropostCommentVote.new
-    @vote.artist_micropost_comment_id = ArtistMicropostComment.find(params[:artist_micropost_comment_id]).id
+    @vote.artist_micropost_comment_id = ArtistMicropostComment.find(params[:comment_id]).id
+    @artist = Artist.friendly.find(params[:artist_id])
+    @micropost = ArtistMicropost.find(params[:micropost_id])
+    @comment = ArtistMicropostComment.find(params[:comment_id])
     if artist_signed_in?
       @vote.artist_id = current_artist.id
     elsif fan_signed_in?
@@ -17,8 +20,10 @@ class Artists::CommentVotesController < ApplicationController
       @vote.producer_id = current_producer.id
     end
     if @vote.save
-      redirect_to (:back)
-      flash[:notice] = "voted."
+      respond_to do |format|
+        format.html { redirect_to (:back) }
+        format.js { render :action => "comment_votes" }
+      end
     else
       redirect_to (:back)
       flash[:alert] = "you suck."
@@ -26,21 +31,23 @@ class Artists::CommentVotesController < ApplicationController
   end
 
   def destroy
+    @artist = Artist.friendly.find(params[:artist_id])
+    @micropost = ArtistMicropost.find(params[:micropost_id])
+    @comment = ArtistMicropostComment.find(params[:comment_id])
     if fan_signed_in?
-      current_fan.artist_micropost_comment_unvote(ArtistMicropostComment.find(params[:id]))
-      redirect_to (:back)
+      current_fan.artist_micropost_comment_unvote(ArtistMicropostComment.find(params[:comment_id]))
     elsif artist_signed_in?
-      current_artist.artist_micropost_comment_unvote(ArtistMicropostComment.find(params[:id]))
-      redirect_to (:back)
+      current_artist.artist_micropost_comment_unvote(ArtistMicropostComment.find(params[:comment_id]))
     elsif record_label_signed_in?
-      current_record_label.artist_micropost_comment_unvote(ArtistMicropostComment.find(params[:id]))
-      redirect_to (:back)
+      current_record_label.artist_micropost_comment_unvote(ArtistMicropostComment.find(params[:comment_id]))
     elsif venue_signed_in?
-      current_venue.artist_micropost_comment_unvote(ArtistMicropostComment.find(params[:id]))
-      redirect_to (:back)
+      current_venue.artist_micropost_comment_unvote(ArtistMicropostComment.find(params[:comment_id]))
     elsif producer_signed_in?
-      current_producer.artist_micropost_comment_unvote(ArtistMicropostComment.find(params[:id]))
-      redirect_to (:back)
+      current_producer.artist_micropost_comment_unvote(ArtistMicropostComment.find(params[:comment_id]))
+    end
+    respond_to do |format|
+      format.html { redirect_to (:back) }
+      format.js { render :action => "comment_votes" }
     end
   end
 

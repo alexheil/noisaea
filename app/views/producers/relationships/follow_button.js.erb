@@ -3,3 +3,5 @@ $('#following').html('<%=  escape_javascript(render :partial => 'producers/parti
 $('#follower_count').html('<%=  escape_javascript(render :partial => 'producers/partials/relationships/follower_count') %>');
 $('.index_follow_button_<%= @producer.id %>').html('<%=  escape_javascript(render :partial => 'producers/partials/relationships/index_follow_button', :locals => {:producer => @producer}) %>');
 $('.index_follower_count_<%= @producer.id %>').html('<%=  escape_javascript(render :partial => 'producers/partials/relationships/index_follower_count', :locals => {:producer => @producer}) %>');
+$('.producer_following_count').html('<%=  escape_javascript(render :partial => 'producers/partials/relationships/fan_following_count') %>');
+$('.producer_follow_button_<%= @producer.id %>').html('<%=  escape_javascript(render :partial => 'producers/partials/relationships/index_follow_button', :locals => {:producer => @producer}) %>');

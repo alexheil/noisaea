@@ -12,24 +12,15 @@
   </div>
 
   <div class="winspear">
-    <% if fan_signed_in? && current_fan.record_label_micropost_comment_voted?(comment) %>
-      <%= button_to "−", record_label_micropost_comment_vote_path(comment), method: :delete, class: "linwood" %>
-    <% elsif artist_signed_in? && current_artist.record_label_micropost_comment_voted?(comment) %>
-      <%= button_to "−", record_label_micropost_comment_vote_path(comment), method: :delete, class: "linwood" %>
-    <% elsif record_label_signed_in? && current_record_label.record_label_micropost_comment_voted?(comment) %>
-      <%= button_to "−", record_label_micropost_comment_vote_path(comment), method: :delete, class: "linwood" %>
-    <% elsif venue_signed_in? && current_venue.record_label_micropost_comment_voted?(comment) %>
-      <%= button_to "−", record_label_micropost_comment_vote_path(comment), method: :delete, class: "linwood" %>
-    <% elsif producer_signed_in? && current_producer.record_label_micropost_comment_voted?(comment) %>
-      <%= button_to "−", record_label_micropost_comment_vote_path(comment), method: :delete, class: "linwood" %>
-    <% else %>
-      <%= form_for(RecordLabelMicropostCommentVote.new, url: record_label_micropost_comment_votes_path) do |f| %>
-        <%= hidden_field_tag :record_label_micropost_comment_id, comment.id %>
-        <%= f.submit "+", class: "linwood" %>
-      <% end %>
-    <% end %>
 
-    <strong><%= comment.record_label_micropost_comment_votes.count %></strong>
+    <div class="index_comment_votes_<%= comment.id %>">
+      <%= render 'recordlabels/partials/comments/index_comment_votes', :micropost => micropost, :comment => comment %>
+    </div>
+
+    <span class="index_comment_votes_count_<%= comment.id %>">
+      <%= render 'recordlabels/partials/comments/index_comment_votes_count',:comment => comment %>
+    </span>
+
   </div>
 
 </div>

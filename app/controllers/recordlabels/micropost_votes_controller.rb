@@ -4,7 +4,9 @@ class Recordlabels::MicropostVotesController < ApplicationController
 
   def create
     @vote = RecordLabelMicropostVote.new
-    @vote.record_label_micropost_id = RecordLabelMicropost.find(params[:record_label_micropost_id]).id
+    @vote.record_label_micropost_id = RecordLabelMicropost.find(params[:micropost_id]).id
+    @record_label = RecordLabel.friendly.find(params[:record_label_id])
+    @micropost = RecordLabelMicropost.find(params[:micropost_id])
     if artist_signed_in?
       @vote.artist_id = current_artist.id
     elsif fan_signed_in?
@@ -17,8 +19,10 @@ class Recordlabels::MicropostVotesController < ApplicationController
       @vote.producer_id = current_producer.id
     end
     if @vote.save
-      redirect_to (:back)
-      flash[:notice] = "voted."
+      respond_to do |format|
+        format.html { redirect_to (:back) }
+        format.js { render :action => "micropost_votes" }
+      end
     else
       redirect_to (:back)
       flash[:alert] = "you suck."
@@ -26,21 +30,38 @@ class Recordlabels::MicropostVotesController < ApplicationController
   end
 
   def destroy
+    @record_label = RecordLabel.friendly.find(params[:record_label_id])
+    @micropost = RecordLabelMicropost.find(params[:micropost_id])
     if fan_signed_in?
-      current_fan.record_label_micropost_unvote(RecordLabelMicropost.find(params[:id]))
-      redirect_to (:back)
+      current_fan.record_label_micropost_unvote(RecordLabelMicropost.find(params[:micropost_id]))
+      respond_to do |format|
+        format.html { redirect_to (:back) }
+        format.js { render :action => "micropost_votes" }
+      end
     elsif artist_signed_in?
-      current_artist.record_label_micropost_unvote(RecordLabelMicropost.find(params[:id]))
-      redirect_to (:back)
+      current_artist.record_label_micropost_unvote(RecordLabelMicropost.find(params[:micropost_id]))
+      respond_to do |format|
+        format.html { redirect_to (:back) }
+        format.js { render :action => "micropost_votes" }
+      end
     elsif record_label_signed_in?
-      current_record_label.record_label_micropost_unvote(RecordLabelMicropost.find(params[:id]))
-      redirect_to (:back)
+      current_record_label.record_label_micropost_unvote(RecordLabelMicropost.find(params[:micropost_id]))
+      respond_to do |format|
+        format.html { redirect_to (:back) }
+        format.js { render :action => "micropost_votes" }
+      end
     elsif venue_signed_in?
-      current_venue.record_label_micropost_unvote(RecordLabelMicropost.find(params[:id]))
-      redirect_to (:back)
+      current_venue.record_label_micropost_unvote(RecordLabelMicropost.find(params[:micropost_id]))
+      respond_to do |format|
+        format.html { redirect_to (:back) }
+        format.js { render :action => "micropost_votes" }
+      end
     elsif producer_signed_in?
-      current_producer.record_label_micropost_unvote(RecordLabelMicropost.find(params[:id]))
-      redirect_to (:back)
+      current_producer.record_label_micropost_unvote(RecordLabelMicropost.find(params[:micropost_id]))
+      respond_to do |format|
+        format.html { redirect_to (:back) }
+        format.js { render :action => "micropost_votes" }
+      end
     end
   end
 

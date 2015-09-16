@@ -36,72 +36,13 @@
       </div>
       <% end %>
 
-      <% if @producer == current_producer %>
-        <%= form_for(ProducerMicropost.new, url: producer_microposts_path(@producer)) do |f| %>
-          <div class="highgate">
-            <%= f.text_area :content, placeholder: "what have you been up to?", class: "court" %>
-          </div>
-          <div class="ellicott">
-            <%= f.submit "post update", class: "exchange" %>
-          </div>
-        <% end %>
-      <% end %>
+      <div class="microposts_form">
+        <%= render 'producers/partials/microposts/microposts_form' %>
+      </div>
 
-      <% if @producer.producer_microposts.any? %>
-        <div class="harlem">
-          <% @producer.producer_microposts.take(100).each do | micropost | %>
-          <div class="harlem dodge">
-            <span class="winspear"><strong><%= link_to "#{@producer.producer_name}", producer_micropost_path(@producer, micropost) %></strong> posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
-                <% if @producer == current_producer %>
-               // <%= link_to "delete post", producer_micropost_path(@producer, micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %></span>
-                <% end %>
-              <div class="winspear">
-                <%= micropost.content %>
-              </div>
-
-              <div class="lisbon">
-
-                <% if fan_signed_in? && current_fan.producer_micropost_voted?(micropost) %>
-                  <%= button_to "−", producer_micropost_vote_path(micropost), method: :delete, class: "linwood" %>
-                <% elsif artist_signed_in? && current_artist.producer_micropost_voted?(micropost) %>
-                  <%= button_to "−", producer_micropost_vote_path(micropost), method: :delete, class: "linwood" %>
-                <% elsif record_label_signed_in? && current_record_label.producer_micropost_voted?(micropost) %>
-                  <%= button_to "−", producer_micropost_vote_path(micropost), method: :delete, class: "linwood" %>
-                <% elsif venue_signed_in? && current_venue.producer_micropost_voted?(micropost) %>
-                  <%= button_to "−", producer_micropost_vote_path(micropost), method: :delete, class: "linwood" %>
-                <% elsif producer_signed_in? && current_producer.producer_micropost_voted?(micropost) %>
-                  <%= button_to "−", producer_micropost_vote_path(micropost), method: :delete, class: "linwood" %>
-                <% else %>
-                  <%= form_for(ProducerMicropostVote.new, url: producer_micropost_votes_path) do |f| %>
-                    <%= hidden_field_tag :producer_micropost_id, micropost.id %>
-                    <%= f.submit "+", class: "linwood" %>
-                  <% end %>
-                <% end %>
-
-
-                <strong><%= micropost.producer_micropost_votes.count %></strong> // <a class="linden"><span class="comments_count_<%= micropost.id %>">
-                  <%= render 'producers/partials/comments/index_comments_count', :micropost => micropost %>
-                </span></a>
-              </div>
-
-              <div class="walden">
-                <div class="minnesota">
-
-                  <div class="comments_js_<%= micropost.id %>">
-                    <%= render 'producers/partials/comments/index_comments', :micropost => micropost %>
-                  </div>
-
-                  <div class="comments_form_<%= micropost.id %>">
-                    <%= render "producers/partials/comments/index_comments_form", :micropost => micropost %>
-                  </div>
-
-                </div>
-              </div>
-
-            </div>
-          <% end %>
-        </div>
-      <% end %>
+      <div class="microposts_js">
+        <%= render 'producers/partials/microposts/index_microposts' %>
+      </div>
 
     </div>
 

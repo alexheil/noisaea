@@ -36,72 +36,13 @@
       </div>
       <% end %>
 
-      <% if @record_label == current_record_label %>
-        <%= form_for(RecordLabelMicropost.new, url: record_label_microposts_path(@record_label)) do |f| %>
-          <div class="highgate">
-            <%= f.text_area :content, placeholder: "what have you been up to?", class: "court" %>
-          </div>
-          <div class="ellicott">
-            <%= f.submit "post update", class: "exchange" %>
-          </div>
-        <% end %>
-      <% end %>
+      <div class="microposts_form">
+        <%= render 'recordlabels/partials/microposts/microposts_form' %>
+      </div>
 
-      <% if @record_label.record_label_microposts.any? %>
-        <div class="harlem">
-          <% @record_label.record_label_microposts.take(100).each do | micropost | %>
-          <div class="harlem dodge">
-            <span class="winspear"><strong><%= link_to "#{@record_label.label_name}", record_label_micropost_path(@record_label, micropost) %></strong> posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
-                <% if @record_label == current_record_label %>
-               // <%= link_to "delete post", record_label_micropost_path(@record_label, micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %></span>
-                <% end %>
-              <div class="winspear">
-                <%= micropost.content %>
-              </div>
-
-              <div class="lisbon">
-
-                <% if fan_signed_in? && current_fan.record_label_micropost_voted?(micropost) %>
-                  <%= button_to "−", record_label_micropost_vote_path(micropost), method: :delete, class: "linwood" %>
-                <% elsif artist_signed_in? && current_artist.record_label_micropost_voted?(micropost) %>
-                  <%= button_to "−", record_label_micropost_vote_path(micropost), method: :delete, class: "linwood" %>
-                <% elsif record_label_signed_in? && current_record_label.record_label_micropost_voted?(micropost) %>
-                  <%= button_to "−", record_label_micropost_vote_path(micropost), method: :delete, class: "linwood" %>
-                <% elsif venue_signed_in? && current_venue.record_label_micropost_voted?(micropost) %>
-                  <%= button_to "−", record_label_micropost_vote_path(micropost), method: :delete, class: "linwood" %>
-                <% elsif producer_signed_in? && current_producer.record_label_micropost_voted?(micropost) %>
-                  <%= button_to "−", record_label_micropost_vote_path(micropost), method: :delete, class: "linwood" %>
-                <% else %>
-                  <%= form_for(RecordLabelMicropostVote.new, url: record_label_micropost_votes_path) do |f| %>
-                    <%= hidden_field_tag :record_label_micropost_id, micropost.id %>
-                    <%= f.submit "+", class: "linwood" %>
-                  <% end %>
-                <% end %>
-
-
-                <strong><%= micropost.record_label_micropost_votes.count %></strong> // <a class="linden"><span class="comments_count_<%= micropost.id %>">
-                  <%= render 'recordlabels/partials/comments/index_comments_count', :micropost => micropost %>
-                </span></a>
-              </div>
-
-              <div class="walden">
-                <div class="minnesota">
-
-                  <div class="comments_js_<%= micropost.id %>">
-                    <%= render 'recordlabels/partials/comments/index_comments', :micropost => micropost %>
-                  </div>
-
-                  <div class="comments_form_<%= micropost.id %>">
-                    <%= render "recordlabels/partials/comments/index_comments_form", :micropost => micropost %>
-                  </div>
-
-                </div>
-              </div>
-
-            </div>
-          <% end %>
-        </div>
-      <% end %>
+      <div class="microposts_js">
+        <%= render 'recordlabels/partials/microposts/index_microposts' %>
+      </div>
 
     </div>
 

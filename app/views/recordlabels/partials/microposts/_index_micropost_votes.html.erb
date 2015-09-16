@@ -1,0 +1,15 @@
+<% if fan_signed_in? && current_fan.record_label_micropost_voted?(micropost) %>
+  <%= button_to "−", record_label_micropost_vote_path(@record_label, micropost, current_fan.record_label_micropost_vote_id(micropost)), method: :delete, remote: true, class: "linwood" %>
+<% elsif artist_signed_in? && current_artist.record_label_micropost_voted?(micropost) %>
+  <%= button_to "−", record_label_micropost_vote_path(@record_label, micropost, current_artist.record_label_micropost_vote_id(micropost)), method: :delete, remote: true, class: "linwood" %>
+<% elsif record_label_signed_in? && current_record_label.record_label_micropost_voted?(micropost) %>
+  <%= button_to "−", record_label_micropost_vote_path(@record_label, micropost, current_record_label.record_label_micropost_vote_id(micropost)), method: :delete, remote: true, class: "linwood" %>
+<% elsif venue_signed_in? && current_venue.record_label_micropost_voted?(micropost) %>
+  <%= button_to "−", record_label_micropost_vote_path(@record_label, micropost, current_venue.record_label_micropost_vote_id(micropost)), method: :delete, remote: true, class: "linwood" %>
+<% elsif producer_signed_in? && current_producer.record_label_micropost_voted?(micropost) %>
+  <%= button_to "−", record_label_micropost_vote_path(@record_label, micropost, current_producer.record_label_micropost_vote_id(micropost)), method: :delete, remote: true, class: "linwood" %>
+<% else %>
+  <%= form_for(RecordLabelMicropostVote.new, url: record_label_micropost_votes_path(@record_label, micropost), remote: true) do |f| %>
+    <%= f.submit "+", class: "linwood" %>
+  <% end %>
+<% end %>

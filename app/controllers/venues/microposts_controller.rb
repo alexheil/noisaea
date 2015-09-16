@@ -8,12 +8,15 @@ class Venues::MicropostsController < ApplicationController
   def create
     @micropost = VenueMicropost.new(micropost_params)
     @micropost.venue_id = current_venue.id
+    @venue = Venue.friendly.find(params[:venue_id])
     if @micropost.save
-      flash[:notice] = "Thanks for translating your beautiful thoughts into words and posting them here!"
-      redirect_to (:back)
+      respond_to do |format|
+        format.html { redirect_to (:back) }
+        format.js { render :action => "microposts" }
+      end
     else
-      flash[:alert] = "You probably forgot to write something? Yeah, that's it!"
       redirect_to (:back)
+      flash[:alert] = "You probably forgot to write something? Yeah, that's it!"
     end
   end
 
@@ -24,7 +27,11 @@ class Venues::MicropostsController < ApplicationController
 
   def destroy
     VenueMicropost.find(params[:id]).destroy
-    redirect_to (:back)
+    @venue = Venue.friendly.find(params[:venue_id])
+    respond_to do |format|
+      format.html { redirect_to (:back) }
+      format.js { render :action => "microposts" }
+    end
   end
 
   private

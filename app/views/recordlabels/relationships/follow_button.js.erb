@@ -3,3 +3,5 @@ $('#following').html('<%=  escape_javascript(render :partial => 'recordlabels/pa
 $('#follower_count').html('<%=  escape_javascript(render :partial => 'recordlabels/partials/relationships/follower_count') %>');
 $('.index_follow_button_<%= @record_label.id %>').html('<%=  escape_javascript(render :partial => 'recordlabels/partials/relationships/index_follow_button', :locals => {:record_label => @record_label}) %>');
 $('.index_follower_count_<%= @record_label.id %>').html('<%=  escape_javascript(render :partial => 'recordlabels/partials/relationships/index_follower_count', :locals => {:record_label => @record_label}) %>');
+$('.record_label_following_count').html('<%=  escape_javascript(render :partial => 'recordlabels/partials/relationships/fan_following_count') %>');
+$('.record_label_follow_button_<%= @record_label.id %>').html('<%=  escape_javascript(render :partial => 'recordlabels/partials/relationships/index_follow_button', :locals => {:record_label => @record_label}) %>');

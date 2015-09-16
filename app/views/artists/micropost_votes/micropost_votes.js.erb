@@ -1,0 +1,6 @@
+$('.index_micropost_votes_<%= @micropost.id %>').html('<%=  escape_javascript(render :partial => 'artists/partials/microposts/index_micropost_votes', :locals => {:micropost => @micropost}) %>');
+$('.index_micropost_votes_count_<%= @micropost.id %>').html('<%=  escape_javascript(render :partial => 'artists/partials/microposts/index_micropost_votes_count', :locals => {:micropost => @micropost}) %>');
+$('.micropost_votes').html('<%=  escape_javascript(render :partial => 'artists/partials/microposts/micropost_votes') %>');
+$('.micropost_votes_count').html('<%=  escape_javascript(render :partial => 'artists/partials/microposts/micropost_votes_count') %>');
+$('.artist_fan_micropost_votes_<%= @micropost.id %>').html('<%=  escape_javascript(render :partial => 'artists/partials/microposts/fan_micropost_votes', :locals => {:micropost => @micropost}) %>');
+$('.artist_fan_micropost_votes_count_<%= @micropost.id %>').html('<%=  escape_javascript(render :partial => 'artists/partials/microposts/index_micropost_votes_count', :locals => {:micropost => @micropost}) %>');
