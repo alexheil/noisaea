@@ -1,6 +1,11 @@
 class Producers::ProducersController < ApplicationController
+
   def index
-    @producers = Producer.all
+    if params[:search]
+      @producers = Producer.search(params[:search]).order("created_at DESC")
+    else
+      @producers = Producer.all
+    end
   end
 
   def show

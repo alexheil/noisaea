@@ -1,6 +1,6 @@
 <%= provide(:title, sanitize(@venue.venue_name)) %>
 <div class="buffalo">
-  <% if @venue.venue_profile.cover_image == "" %>
+  <% if @venue.venue_profile.cover_image.blank? %>
     <div class="clinton">
       <% if venue_signed_in? && @venue.id == current_venue.id %>
         you do not have a cover image yet. <%= link_to "add one?", edit_venue_profile_path(current_venue) %>
@@ -63,42 +63,42 @@
         <%= render 'venues/partials/relationships/follower_count' %>
       </div>
 
-      <% if venue_signed_in? && @venue.id == current_venue.id && @venue.venue_profile.location == "" && @venue.venue_profile.founded == "" && @venue.venue_profile.biography == "" && @venue.venue_profile.facebook_url == "" && @venue.venue_profile.twitter_url == "" && @venue.venue_profile.youtube_url == "" && @venue.venue_profile.website == "" %>
+      <% if venue_signed_in? && @venue.id == current_venue.id && @venue.venue_profile.location.blank? && @venue.venue_profile.founded.blank? && @venue.venue_profile.biography.blank? && @venue.venue_profile.facebook_url.blank? && @venue.venue_profile.twitter_url.blank? && @venue.venue_profile.youtube_url.blank? && @venue.venue_profile.website.blank? %>
         <p class="hertel">you do not have any profile information</p>
         <div class="jefferson">
           <%= link_to "update your profile", edit_venue_profile_path(current_venue) %>
         </div>
-      <% elsif @venue.venue_profile.location == "" && @venue.venue_profile.founded == "" && @venue.venue_profile.biography == "" && @venue.venue_profile.facebook_url == "" && @venue.venue_profile.twitter_url == "" && @venue.venue_profile.youtube_url == "" && @venue.venue_profile.website %>
+      <% elsif @venue.venue_profile.location.blank? && @venue.venue_profile.founded.blank? && @venue.venue_profile.biography.blank? && @venue.venue_profile.facebook_url.blank? && @venue.venue_profile.twitter_url.blank? && @venue.venue_profile.youtube_url.blank? && @venue.venue_profile.website %>
         <p class="hertel"><%= "#{@venue.venue_name} does not have any profile information yet" %></p>
       <% end %>
-      <% if @venue.venue_profile.location == "" %>
+      <% if @venue.venue_profile.location.blank? %>
       <% else %>
       <p class="jefferson">location //</p>
       <p class="fillmore"><%= @venue.venue_profile.location %></p>
       <% end %>
-      <% if @venue.venue_profile.founded == "" %>
+      <% if @venue.venue_profile.founded.blank? %>
       <% else %>
       <p class="jefferson">founded //</p>
       <p class="fillmore"><%= @venue.venue_profile.founded %></p>
       <% end %>
-      <% if @venue.venue_profile.biography == "" %>
+      <% if @venue.venue_profile.biography.blank? %>
       <% else %>
       <p class="jefferson">biography //</p>
       <p class="fillmore"><%= @venue.venue_profile.biography %></p>
       <% end %>
-      <% if @venue.venue_profile.website == "" %>
+      <% if @venue.venue_profile.website.blank? %>
       <% else %>
       <p class="fillmore"><%= link_to "Website", @venue.venue_profile.website %></p>
       <% end %>
-      <% if @venue.venue_profile.facebook_url == "" %>
+      <% if @venue.venue_profile.facebook_url.blank? %>
       <% else %>
       <p class="fillmore"><%= link_to "Facebook", @venue.venue_profile.facebook_url %></p>
       <% end %>
-      <% if @venue.venue_profile.twitter_url == "" %>
+      <% if @venue.venue_profile.twitter_url.blank? %>
       <% else %>
       <p class="fillmore"><%= link_to "Twitter", @venue.venue_profile.twitter_url %></p>
       <% end %>
-      <% if @venue.venue_profile.youtube_url == "" %>
+      <% if @venue.venue_profile.youtube_url.blank? %>
       <% else %>
       <p class="fillmore"><%= link_to "YouTube", @venue.venue_profile.youtube_url %></p>
       <% end %>

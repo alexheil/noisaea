@@ -2,6 +2,21 @@
 <%= render "partials/uni_header" %>
 <div class="buffalo">
   <div class="delaware">
+
+    <div class="washington">
+      <div class="fargo">
+        <h1>discover record labels</h1>
+      </div>
+    </div>
+    <div class="fargo">
+      <%= form_tag(record_labels_path, :method => "get") do %>
+        <div class="highgate">
+          <%= text_field_tag :search, params[:search], placeholder: "search record labels", class: "huron" %>
+        </div>
+          <%= submit_tag "search", class: "exchange", :style => "display: none;" %>
+      <% end %>
+    </div>
+
     <% if @record_labels.any? %>
 
     <div class="washington">

@@ -4,10 +4,10 @@ class Recordlabels::CommentVotesController < ApplicationController
 
   def create
     @vote = RecordLabelMicropostCommentVote.new
-    @vote.record_label_micropost_comment_id = RecordLabelMicropostComment.find(params[:comment_id]).id
     @record_label = RecordLabel.friendly.find(params[:record_label_id])
     @micropost = RecordLabelMicropost.find(params[:micropost_id])
     @comment = RecordLabelMicropostComment.find(params[:comment_id])
+    @vote.record_label_micropost_comment_id = @comment.id
     if artist_signed_in?
       @vote.artist_id = current_artist.id
     elsif fan_signed_in?
@@ -35,15 +35,15 @@ class Recordlabels::CommentVotesController < ApplicationController
     @micropost = RecordLabelMicropost.find(params[:micropost_id])
     @comment = RecordLabelMicropostComment.find(params[:comment_id])
     if fan_signed_in?
-      current_fan.record_label_micropost_comment_unvote(RecordLabelMicropostComment.find(params[:comment_id]))
+      current_fan.record_label_micropost_comment_unvote(@comment)
     elsif artist_signed_in?
-      current_artist.record_label_micropost_comment_unvote(RecordLabelMicropostComment.find(params[:comment_id]))
+      current_artist.record_label_micropost_comment_unvote(@comment)
     elsif record_label_signed_in?
-      current_record_label.record_label_micropost_comment_unvote(RecordLabelMicropostComment.find(params[:comment_id]))
+      current_record_label.record_label_micropost_comment_unvote(@comment)
     elsif venue_signed_in?
-      current_venue.record_label_micropost_comment_unvote(RecordLabelMicropostComment.find(params[:comment_id]))
+      current_venue.record_label_micropost_comment_unvote(@comment)
     elsif producer_signed_in?
-      current_producer.record_label_micropost_comment_unvote(RecordLabelMicropostComment.find(params[:comment_id]))
+      current_producer.record_label_micropost_comment_unvote(@comment)
     end
     respond_to do |format|
       format.html { redirect_to (:back) }

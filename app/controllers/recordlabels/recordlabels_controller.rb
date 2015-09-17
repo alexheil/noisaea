@@ -1,7 +1,11 @@
 class Recordlabels::RecordlabelsController < ApplicationController
 
   def index
-    @record_labels = RecordLabel.all
+    if params[:search]
+      @record_labels = RecordLabel.search(params[:search]).order("created_at DESC")
+    else
+      @record_labels = RecordLabel.all
+    end
   end
 
   def show

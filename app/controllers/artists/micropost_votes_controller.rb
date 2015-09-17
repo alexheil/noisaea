@@ -4,9 +4,9 @@ class Artists::MicropostVotesController < ApplicationController
 
   def create
     @vote = ArtistMicropostVote.new
-    @vote.artist_micropost_id = ArtistMicropost.find(params[:micropost_id]).id
     @artist = Artist.friendly.find(params[:artist_id])
     @micropost = ArtistMicropost.find(params[:micropost_id])
+    @vote.artist_micropost_id = @micropost.id
     if artist_signed_in?
       @vote.artist_id = current_artist.id
     elsif fan_signed_in?
@@ -33,36 +33,20 @@ class Artists::MicropostVotesController < ApplicationController
     @artist = Artist.friendly.find(params[:artist_id])
     @micropost = ArtistMicropost.find(params[:micropost_id])
     if fan_signed_in?
-      current_fan.artist_micropost_unvote(ArtistMicropost.find(params[:micropost_id]))
-      respond_to do |format|
-        format.html { redirect_to (:back) }
-        format.js { render :action => "micropost_votes" }
-      end
+      current_fan.artist_micropost_unvote(@micropost)
     elsif artist_signed_in?
-      current_artist.artist_micropost_unvote(ArtistMicropost.find(params[:micropost_id]))
-      respond_to do |format|
-        format.html { redirect_to (:back) }
-        format.js { render :action => "micropost_votes" }
-      end
+      current_artist.artist_micropost_unvote(@micropost)
     elsif record_label_signed_in?
-      current_record_label.artist_micropost_unvote(ArtistMicropost.find(params[:micropost_id]))
-      respond_to do |format|
-        format.html { redirect_to (:back) }
-        format.js { render :action => "micropost_votes" }
-      end
+      current_record_label.artist_micropost_unvote(@micropost)
     elsif venue_signed_in?
-      current_venue.artist_micropost_unvote(ArtistMicropost.find(params[:micropost_id]))
-      respond_to do |format|
-        format.html { redirect_to (:back) }
-        format.js { render :action => "micropost_votes" }
-      end
+      current_venue.artist_micropost_unvote(@micropost)
     elsif producer_signed_in?
-      current_producer.artist_micropost_unvote(ArtistMicropost.find(params[:micropost_id]))
-      respond_to do |format|
+      current_producer.artist_micropost_unvote(@micropost)
+    end
+    respond_to do |format|
         format.html { redirect_to (:back) }
         format.js { render :action => "micropost_votes" }
       end
-    end
   end
 
   private

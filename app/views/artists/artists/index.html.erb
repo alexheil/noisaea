@@ -2,6 +2,21 @@
 <%= render "partials/uni_header" %>
 <div class="buffalo">
   <div class="delaware">
+
+    <div class="washington">
+      <div class="fargo">
+        <h1>discover artists</h1>
+      </div>
+    </div>
+    <div class="fargo">
+      <%= form_tag(artists_path, :method => "get") do %>
+        <div class="highgate">
+          <%= text_field_tag :search, params[:search], placeholder: "search artists", class: "huron" %>
+        </div>
+          <%= submit_tag "search", class: "exchange", :style => "display: none;" %>
+      <% end %>
+    </div>
+
     <% if @artists.any? %>
 
     <div class="washington">
@@ -13,7 +28,7 @@
           recent
         </div>
         <div id="location" class="porter">
-        <% if fan_signed_in? && current_fan.fan_profile.location != "" %>
+        <% if fan_signed_in? && current_fan.fan_profile.location.present? %>
           <%= current_fan.fan_profile.location.downcase %>
         <% else %>
           location
@@ -158,7 +173,7 @@
       <div id="container-popular" class="ferry">
         <% @artists.sort_by{ |artist| -artist.fans.count }.take(100).each do |artist| %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image == "" %>
+            <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if artist_signed_in? && artist.id == current_artist.id %>
                   you do not have a profile image yet
@@ -175,10 +190,10 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.genre unless artist.artist_profile.genre == "" %></center>
+                <center><%= artist.artist_profile.genre unless artist.artist_profile.genre.blank? %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
+                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -197,7 +212,7 @@
       <div id="container-recent" class="ferry colvin">
         <% @artists.order( 'id DESC' ).take(100).each do |artist| %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image == "" %>
+            <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if artist_signed_in? && artist.id == current_artist.id %>
                   you do not have a profile image yet
@@ -214,10 +229,10 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.genre unless artist.artist_profile.genre == "" %></center>
+                <center><%= artist.artist_profile.genre unless artist.artist_profile.genre.blank? %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
+                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -237,7 +252,7 @@
         <% if fan_signed_in? && current_fan.fan_profile.location != "" %>
           <% @artists.each do |artist| if artist.artist_profile.location == current_fan.fan_profile.location %>
               <div class="utica">
-                <% if artist.artist_profile.cover_image == "" %>
+                <% if artist.artist_profile.cover_image.blank? %>
                   <div class="sycamore">
                     <% if artist_signed_in? && artist.id == current_artist.id %>
                       you do not have a profile image yet
@@ -254,7 +269,7 @@
                   <center><%= link_to artist.artist_name, artist_path(artist) %></center>
                 </div>
                 <div class="hertel">
-                  <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
+                  <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
                 </div>
                 <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -269,7 +284,7 @@
               </div>
             <% end %>
           <% end %>
-        <% elsif fan_signed_in? && current_fan.fan_profile.location == "" %>
+        <% elsif fan_signed_in? && current_fan.fan_profile.location.blank? %>
           <div class="hertel">
             <center>Your location is blank! Go set it on <%= link_to "your profile", edit_fan_profile_path(current_fan) %>.</center>
           </div>
@@ -283,7 +298,7 @@
       <div id="container-alternative" class="ferry colvin">
         <% @artists.take(500).each do |artist| if artist.artist_profile.genre == "Alternative" %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image == "" %>
+            <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if artist_signed_in? && artist.id == current_artist.id %>
                   you do not have a profile image yet
@@ -300,7 +315,7 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
+                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -320,7 +335,7 @@
       <div id="container-ambient" class="ferry colvin">
         <% @artists.take(500).each do |artist| if artist.artist_profile.genre == "Ambient" %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image == "" %>
+            <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if artist_signed_in? && artist.id == current_artist.id %>
                   you do not have a profile image yet
@@ -337,7 +352,7 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
+                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -357,7 +372,7 @@
       <div id="container-blues" class="ferry colvin">
         <% @artists.take(500).each do |artist| if artist.artist_profile.genre == "Blues" %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image == "" %>
+            <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if artist_signed_in? && artist.id == current_artist.id %>
                   you do not have a profile image yet
@@ -374,7 +389,7 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
+                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -394,7 +409,7 @@
       <div id="container-classical" class="ferry colvin">
         <% @artists.take(500).each do |artist| if artist.artist_profile.genre == "Classical" %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image == "" %>
+            <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if artist_signed_in? && artist.id == current_artist.id %>
                   you do not have a profile image yet
@@ -411,7 +426,7 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
+                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -431,7 +446,7 @@
       <div id="container-comedy" class="ferry colvin">
         <% @artists.take(500).each do |artist| if artist.artist_profile.genre == "Comedy" %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image == "" %>
+            <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if artist_signed_in? && artist.id == current_artist.id %>
                   you do not have a profile image yet
@@ -448,7 +463,7 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
+                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -468,7 +483,7 @@
       <div id="container-country" class="ferry colvin">
         <% @artists.take(500).each do |artist| if artist.artist_profile.genre == "Country" %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image == "" %>
+            <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if artist_signed_in? && artist.id == current_artist.id %>
                   you do not have a profile image yet
@@ -485,7 +500,7 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
+                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -505,7 +520,7 @@
       <div id="container-electronic" class="ferry colvin">
         <% @artists.take(500).each do |artist| if artist.artist_profile.genre == "Electronic" %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image == "" %>
+            <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if artist_signed_in? && artist.id == current_artist.id %>
                   you do not have a profile image yet
@@ -522,7 +537,7 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
+                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -542,7 +557,7 @@
       <div id="container-experimental" class="ferry colvin">
         <% @artists.take(500).each do |artist| if artist.artist_profile.genre == "Experimental" %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image == "" %>
+            <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if artist_signed_in? && artist.id == current_artist.id %>
                   you do not have a profile image yet
@@ -559,7 +574,7 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
+                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -579,7 +594,7 @@
       <div id="container-hip-hop-rap" class="ferry colvin">
         <% @artists.take(500).each do |artist| if artist.artist_profile.genre == "Hip-Hop/Rap" %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image == "" %>
+            <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if artist_signed_in? && artist.id == current_artist.id %>
                   you do not have a profile image yet
@@ -596,7 +611,7 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
+                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -616,7 +631,7 @@
       <div id="container-indie" class="ferry colvin">
         <% @artists.take(500).each do |artist| if artist.artist_profile.genre == "Indie" %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image == "" %>
+            <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if artist_signed_in? && artist.id == current_artist.id %>
                   you do not have a profile image yet
@@ -633,7 +648,7 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
+                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
               </div>
              <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -653,7 +668,7 @@
       <div id="container-jazz" class="ferry colvin">
         <% @artists.take(500).each do |artist| if artist.artist_profile.genre == "Jazz" %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image == "" %>
+            <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if artist_signed_in? && artist.id == current_artist.id %>
                   you do not have a profile image yet
@@ -670,7 +685,7 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
+                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -690,7 +705,7 @@
       <div id="container-latino" class="ferry colvin">
         <% @artists.take(500).each do |artist| if artist.artist_profile.genre == "Latino" %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image == "" %>
+            <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if artist_signed_in? && artist.id == current_artist.id %>
                   you do not have a profile image yet
@@ -707,7 +722,7 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
+                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -727,7 +742,7 @@
       <div id="container-metal" class="ferry colvin">
         <% @artists.take(500).each do |artist| if artist.artist_profile.genre == "Metal" %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image == "" %>
+            <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if artist_signed_in? && artist.id == current_artist.id %>
                   you do not have a profile image yet
@@ -744,7 +759,7 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
+                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -764,7 +779,7 @@
       <div id="container-pop" class="ferry colvin">
         <% @artists.take(500).each do |artist| if artist.artist_profile.genre == "Pop" %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image == "" %>
+            <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if artist_signed_in? && artist.id == current_artist.id %>
                   you do not have a profile image yet
@@ -781,7 +796,7 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
+                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -801,7 +816,7 @@
       <div id="container-rb-soul" class="ferry colvin">
         <% @artists.take(500).each do |artist| if artist.artist_profile.genre == "R&B/Soul" %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image == "" %>
+            <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if artist_signed_in? && artist.id == current_artist.id %>
                   you do not have a profile image yet
@@ -818,7 +833,7 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
+                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -838,7 +853,7 @@
       <div id="container-rock" class="ferry colvin">
         <% @artists.take(500).each do |artist| if artist.artist_profile.genre == "Rock" %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image == "" %>
+            <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if artist_signed_in? && artist.id == current_artist.id %>
                   you do not have a profile image yet
@@ -855,7 +870,7 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
+                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -875,7 +890,7 @@
       <div id="container-singer-songwriter" class="ferry colvin">
         <% @artists.take(500).each do |artist| if artist.artist_profile.genre == "Singer/Songwriter" %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image == "" %>
+            <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if artist_signed_in? && artist.id == current_artist.id %>
                   you do not have a profile image yet
@@ -892,7 +907,7 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
+                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -912,7 +927,7 @@
       <div id="container-soundtrack" class="ferry colvin">
         <% @artists.take(500).each do |artist| if artist.artist_profile.genre == "Soundtrack" %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image == "" %>
+            <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if artist_signed_in? && artist.id == current_artist.id %>
                   you do not have a profile image yet
@@ -929,7 +944,7 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
+                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -949,7 +964,7 @@
       <div id="container-world" class="ferry colvin">
         <% @artists.take(500).each do |artist| if artist.artist_profile.genre == "World" %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image == "" %>
+            <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if artist_signed_in? && artist.id == current_artist.id %>
                   you do not have a profile image yet
@@ -966,7 +981,7 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location == "" %></center>
+                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">

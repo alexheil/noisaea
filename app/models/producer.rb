@@ -37,6 +37,10 @@ class Producer < ActiveRecord::Base
   before_save :downcase_username
   before_save :should_generate_new_friendly_id?, if: :username_changed?
 
+  def self.search(search)
+    where("producer_name LIKE ?", "%#{search}%")
+  end
+
   def artist_micropost_voted?(artist_micropost)
     ArtistMicropostVote.exists? producer_id: id, artist_micropost_id: artist_micropost.id
   end

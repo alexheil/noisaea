@@ -19,28 +19,28 @@ class ArtistProfile < ActiveRecord::Base
 
     def smart_add_url_protocol
       unless self.facebook_url[/\Ahttp:\/\//] || self.facebook_url[/\Ahttps:\/\//]
-        self.facebook_url = "https://#{self.facebook_url}" unless facebook_url == ""
+        self.facebook_url = "https://#{self.facebook_url}" unless facebook_url.blank?
       end
       unless self.twitter_url[/\Ahttp:\/\//] || self.twitter_url[/\Ahttps:\/\//]
-        self.twitter_url = "https://#{self.twitter_url}" unless twitter_url == ""
+        self.twitter_url = "https://#{self.twitter_url}" unless twitter_ur.blank?
       end
       unless self.youtube_url[/\Ahttp:\/\//] || self.youtube_url[/\Ahttps:\/\//]
-        self.youtube_url = "https://#{self.youtube_url}" unless youtube_url == ""
+        self.youtube_url = "https://#{self.youtube_url}" unless youtube_url.blank?
       end
       unless self.itunes_url[/\Ahttp:\/\//] || self.itunes_url[/\Ahttps:\/\//]
-        self.itunes_url = "https://#{self.itunes_url}" unless itunes_url == ""
+        self.itunes_url = "https://#{self.itunes_url}" unless itunes_url.blank?
       end
       unless self.amazon_url[/\Ahttp:\/\//] || self.amazon_url[/\Ahttps:\/\//]
-        self.amazon_url = "https://#{self.amazon_url}" unless amazon_url == ""
+        self.amazon_url = "https://#{self.amazon_url}" unless amazon_url.blank?
       end
       unless self.google_play_url[/\Ahttp:\/\//] || self.google_play_url[/\Ahttps:\/\//]
-        self.google_play_url = "https://#{self.google_play_url}" unless google_play_url == ""
+        self.google_play_url = "https://#{self.google_play_url}" unless google_play_url.blank?
       end
       unless self.ticketfly_url[/\Ahttp:\/\//] || self.ticketfly_url[/\Ahttps:\/\//]
-        self.ticketfly_url = "https://#{self.ticketfly_url}" unless ticketfly_url == ""
+        self.ticketfly_url = "https://#{self.ticketfly_url}" unless ticketfly_url.blank?
       end
       unless self.website[/\Ahttp:\/\//] || self.website[/\Ahttps:\/\//]
-        self.website = "https://#{self.website}" unless website == ""
+        self.website = "https://#{self.website}" unless website.blank?
       end
     end
 

@@ -4,10 +4,10 @@ class Venues::CommentVotesController < ApplicationController
 
   def create
     @vote = VenueMicropostCommentVote.new
-    @vote.venue_micropost_comment_id = VenueMicropostComment.find(params[:comment_id]).id
     @venue = Venue.friendly.find(params[:venue_id])
     @micropost = VenueMicropost.find(params[:micropost_id])
     @comment = VenueMicropostComment.find(params[:comment_id])
+    @vote.venue_micropost_comment_id = @comment.id
     if artist_signed_in?
       @vote.artist_id = current_artist.id
     elsif fan_signed_in?
@@ -35,15 +35,15 @@ class Venues::CommentVotesController < ApplicationController
     @micropost = VenueMicropost.find(params[:micropost_id])
     @comment = VenueMicropostComment.find(params[:comment_id])
     if fan_signed_in?
-      current_fan.venue_micropost_comment_unvote(VenueMicropostComment.find(params[:comment_id]))
+      current_fan.venue_micropost_comment_unvote(@comment)
     elsif artist_signed_in?
-      current_artist.venue_micropost_comment_unvote(VenueMicropostComment.find(params[:comment_id]))
+      current_artist.venue_micropost_comment_unvote(@comment)
     elsif record_label_signed_in?
-      current_record_label.venue_micropost_comment_unvote(VenueMicropostComment.find(params[:comment_id]))
+      current_record_label.venue_micropost_comment_unvote(@comment)
     elsif venue_signed_in?
-      current_venue.venue_micropost_comment_unvote(VenueMicropostComment.find(params[:comment_id]))
+      current_venue.venue_micropost_comment_unvote(@comment)
     elsif producer_signed_in?
-      current_producer.avenue_micropost_comment_unvote(VenueMicropostComment.find(params[:comment_id]))
+      current_producer.avenue_micropost_comment_unvote(@comment)
     end
     respond_to do |format|
       format.html { redirect_to (:back) }

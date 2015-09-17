@@ -154,8 +154,11 @@ $fancy-font: 'Open Sans', Helvetica, arial, sans-serif;
   text-align: center;
 }
 
-.inline {
-  display: none;
+.fargo {
+  width: 49%;
+  display: inline-block;
+  font-family: $fancy-font;
+  vertical-align: top;
 }
 
 @media screen and (min-width: 1600px) {
@@ -191,6 +194,10 @@ $fancy-font: 'Open Sans', Helvetica, arial, sans-serif;
 
   .allen {
     width: 49%;
+  }
+
+  .fargo {
+    width: 100%;
   }
 
   .hedley {

@@ -4,9 +4,9 @@ class Producers::MicropostVotesController < ApplicationController
 
   def create
     @vote = ProducerMicropostVote.new
-    @vote.producer_micropost_id = ProducerMicropost.find(params[:micropost_id]).id
     @producer = Producer.friendly.find(params[:producer_id])
     @micropost = ProducerMicropost.find(params[:micropost_id])
+    @vote.producer_micropost_id = @micropost.id
     if artist_signed_in?
       @vote.artist_id = current_artist.id
     elsif fan_signed_in?
@@ -33,41 +33,25 @@ class Producers::MicropostVotesController < ApplicationController
     @producer = Producer.friendly.find(params[:producer_id])
     @micropost = ProducerMicropost.find(params[:micropost_id])
     if fan_signed_in?
-      current_fan.producer_micropost_unvote(ProducerMicropost.find(params[:micropost_id]))
-      respond_to do |format|
-        format.html { redirect_to (:back) }
-        format.js { render :action => "micropost_votes" }
-      end
+      current_fan.producer_micropost_unvote(@micropost)
     elsif artist_signed_in?
-      current_artist.producer_micropost_unvote(ProducerMicropost.find(params[:micropost_id]))
-      respond_to do |format|
-        format.html { redirect_to (:back) }
-        format.js { render :action => "micropost_votes" }
-      end
+      current_artist.producer_micropost_unvote(@micropost)
     elsif record_label_signed_in?
-      current_record_label.producer_micropost_unvote(ProducerMicropost.find(params[:micropost_id]))
-      respond_to do |format|
-        format.html { redirect_to (:back) }
-        format.js { render :action => "micropost_votes" }
-      end
+      current_record_label.producer_micropost_unvote(@micropost)
     elsif venue_signed_in?
-      current_venue.producer_micropost_unvote(ProducerMicropost.find(params[:micropost_id]))
-      respond_to do |format|
-        format.html { redirect_to (:back) }
-        format.js { render :action => "micropost_votes" }
-      end
+      current_venue.producer_micropost_unvote(@micropost)
     elsif producer_signed_in?
-      current_producer.producer_micropost_unvote(ProducerMicropost.find(params[:micropost_id]))
-      respond_to do |format|
-        format.html { redirect_to (:back) }
-        format.js { render :action => "micropost_votes" }
-      end
+      current_producer.producer_micropost_unvote(@micropost)
+    end
+    respond_to do |format|
+      format.html { redirect_to (:back) }
+      format.js { render :action => "micropost_votes" }
     end
   end
 
   private
 
-  def authenticate_voter
+    def authenticate_voter
       (authenticate_fan! unless artist_signed_in? || record_label_signed_in? || venue_signed_in? || producer_signed_in?)
       (authenticate_artist! unless fan_signed_in? || record_label_signed_in? || venue_signed_in? || producer_signed_in?)
       (authenticate_record_label! unless artist_signed_in? || fan_signed_in? || venue_signed_in? || producer_signed_in?)
