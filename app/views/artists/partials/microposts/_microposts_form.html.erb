@@ -3,6 +3,19 @@
     <div class="highgate">
       <%= f.text_area :content, placeholder: "what have you been up to?", class: "court" %>
     </div>
+    <div class="amherst">
+      <a class="tennyson">add a link</a> // <a class="homer">add a photo</a>
+    </div>
+    <div class="highgate">
+      <div class="virgil">
+        <%= f.text_field :link_url, placeholder: "add a link", class: "huron" %>
+      </div>
+    </div>
+    <div class="highgate">
+      <div class="lovering">
+        <%= f.text_field :photo_url, placeholder: "add a photo (url)", class: "huron" %>
+      </div>
+    </div>
     <div class="ellicott">
       <%= f.submit "post update", class: "exchange" %>
     </div>

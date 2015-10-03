@@ -4,7 +4,9 @@ class Posts::CommentVotesController < ApplicationController
 
   def create
     @vote = PostCommentVote.new
-    @vote.post_comment_id = PostComment.find(params[:post_comment_id]).id
+    @post = Post.friendly.find(params[:post_id])
+    @comment = PostComment.find(params[:comment_id])
+    @vote.post_comment_id = @comment.id
     if artist_signed_in?
       @vote.artist_id = current_artist.id
     elsif fan_signed_in?
@@ -17,8 +19,10 @@ class Posts::CommentVotesController < ApplicationController
       @vote.producer_id = current_producer.id
     end
     if @vote.save
-      redirect_to (:back)
-      flash[:notice] = "you rock"
+      respond_to do |format|
+        format.html { redirect_to (:back) }
+        format.js { render :action => "comment_votes" }
+      end
     else
       redirect_to (:back)
       flash[:alert] = "you suck."
@@ -26,21 +30,22 @@ class Posts::CommentVotesController < ApplicationController
   end
 
   def destroy
+    @post = Post.friendly.find(params[:post_id])
+    @comment = PostComment.find(params[:comment_id])
     if fan_signed_in?
-      current_fan.post_comment_unvote(PostComment.find(params[:id]))
-      redirect_to (:back)
+      current_fan.post_comment_unvote(@comment)
     elsif artist_signed_in?
-      current_artist.post_comment_unvote(PostComment.find(params[:id]))
-      redirect_to (:back)
+      current_artist.post_comment_unvote(@comment)
     elsif record_label_signed_in?
-      current_record_label.post_comment_unvote(PostComment.find(params[:id]))
-      redirect_to (:back)
+      current_record_label.post_comment_unvote(@comment)
     elsif venue_signed_in?
-      current_venue.post_comment_unvote(PostComment.find(params[:id]))
-      redirect_to (:back)
+      current_venue.post_comment_unvote(@comment)
     elsif producer_signed_in?
-      current_producer.post_comment_unvote(PostComment.find(params[:id]))
-      redirect_to (:back)
+      current_producer.post_comment_unvote(@comment)
+    end
+    respond_to do |format|
+      format.html { redirect_to (:back) }
+      format.js { render :action => "comment_votes" }
     end
   end
 

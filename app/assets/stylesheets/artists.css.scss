@@ -16,7 +16,12 @@ $fancy-font: 'Open Sans', Helvetica, arial, sans-serif;
 .broadway {
   width: 100%;
   margin: 0 auto;
-  max-height: 640px;
+  max-width: 1920px;
+  img {
+    text-align: center;
+    max-width: 1920px;
+    max-height: 640px;
+  }
 }
 
 .sycamore {
@@ -32,6 +37,14 @@ $fancy-font: 'Open Sans', Helvetica, arial, sans-serif;
   width: 95%;
   margin: 0 auto;
   max-height: 640px;
+  max-width: 1920px;
+}
+
+.lincoln {
+  width: 100%;
+  margin: 0 auto;
+  max-height: 1200px;
+  max-width: 1200px;
 }
 
 .hedley {
@@ -159,6 +172,14 @@ $fancy-font: 'Open Sans', Helvetica, arial, sans-serif;
   display: inline-block;
   font-family: $fancy-font;
   vertical-align: top;
+}
+
+.lovering {
+  display: none;
+}
+
+.virgil {
+  display: none;
 }
 
 @media screen and (min-width: 1600px) {

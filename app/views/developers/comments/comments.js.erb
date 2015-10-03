@@ -1,0 +1,3 @@
+$('.comments_js').html('<%=  escape_javascript(render :partial => 'developers/partials/comments/comments', :locals => {:developers => @developers}) %>');
+$('.comments_form').html('<%=  escape_javascript(render :partial => 'developers/partials/comments/comments_form', :locals => {:developers => @developers}) %>');
+$('.comments_count').html('<%=  escape_javascript(render :partial => 'developers/partials/comments/comments_count', :locals => {:developers => @developers}) %>');

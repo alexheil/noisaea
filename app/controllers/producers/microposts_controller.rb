@@ -51,7 +51,7 @@ class Producers::MicropostsController < ApplicationController
     end
 
     def micropost_params
-      params.require(:producer_micropost).permit(:producer_id, :content)
+      params.require(:producer_micropost).permit(:content, :link_url, :photo_url)
     end
 
 end

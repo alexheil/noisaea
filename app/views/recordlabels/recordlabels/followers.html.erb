@@ -1,6 +1,6 @@
 <%= provide(:title, sanitize(@record_label.label_name) + " | Followers") %>
 <div class="buffalo">
-  <% if @record_label.record_label_profile.cover_image == "" %>
+  <% if @record_label.record_label_profile.cover_image.blank? %>
     <div class="clinton">
       <% if record_label_signed_in? && @record_label.id == current_record_label.id %>
         you do not have a cover image yet. <%= link_to "add one?", edit_record_label_profile_path(current_record_label) %>
@@ -26,7 +26,7 @@
         <% @record_label.fans.take(100).each do |fan| %>
           <div class="utica">
 
-            <% if fan.fan_profile.cover_image == "" %>
+            <% if fan.fan_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if fan_signed_in? && fan.id == current_fan.id %>
                   you do not have a profile image yet

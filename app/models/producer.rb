@@ -41,6 +41,86 @@ class Producer < ActiveRecord::Base
     where("producer_name LIKE ?", "%#{search}%")
   end
 
+  #### GENRES ####
+
+  def self.alternative
+    Producer.joins(:producer_profile).where("producer_profiles.genre" => "Alternative")
+  end
+
+  def self.ambient
+    Producer.joins(:producer_profile).where("producer_profiles.genre" => "Ambient")
+  end
+
+  def self.blues
+    Producer.joins(:producer_profile).where("producer_profiles.genre" => "Blues")
+  end
+
+  def self.classical
+    Producer.joins(:producer_profile).where("producer_profiles.genre" => "Classical")
+  end
+
+  def self.comedy
+    Producer.joins(:producer_profile).where("producer_profiles.genre" => "Comedy")
+  end
+
+  def self.country
+    Producer.joins(:producer_profile).where("producer_profiles.genre" => "Country")
+  end
+
+  def self.electronic
+    Producer.joins(:producer_profile).where("producer_profiles.genre" => "Electronic")
+  end
+
+  def self.experimental
+    Producer.joins(:producer_profile).where("producer_profiles.genre" => "Experimental")
+  end
+
+  def self.hiphoprap
+    Producer.joins(:producer_profile).where("producer_profiles.genre" => "Hip-Hop/Rap")
+  end
+
+  def self.indie
+    Producer.joins(:producer_profile).where("producer_profiles.genre" => "Indie")
+  end
+
+  def self.jazz
+    Producer.joins(:producer_profile).where("producer_profiles.genre" => "Jazz")
+  end
+
+  def self.latino
+    Producer.joins(:producer_profile).where("producer_profiles.genre" => "Latino")
+  end
+
+  def self.metal
+    Producer.joins(:producer_profile).where("producer_profiles.genre" => "Metal")
+  end
+
+  def self.pop
+    Producer.joins(:producer_profile).where("producer_profiles.genre" => "Pop")
+  end
+
+  def self.rbsoul
+    Producer.joins(:producer_profile).where("producer_profiles.genre" => "R&B/Soul")
+  end
+
+  def self.rock
+    Producer.joins(:producer_profile).where("producer_profiles.genre" => "Rock")
+  end
+
+  def self.singersongwriter
+    Producer.joins(:producer_profile).where("producer_profiles.genre" => "Singer/Songwriter")
+  end
+
+  def self.soundtrack
+    Producer.joins(:producer_profile).where("producer_profiles.genre" => "Soundtrack")
+  end
+
+  def self.world
+    Producer.joins(:producer_profile).where("producer_profiles.genre" => "World")
+  end
+
+  #### VOTES ####
+
   def artist_micropost_voted?(artist_micropost)
     ArtistMicropostVote.exists? producer_id: id, artist_micropost_id: artist_micropost.id
   end
@@ -145,12 +225,20 @@ class Producer < ActiveRecord::Base
     PostCommentVote.find_by(producer_id: id, post_comment_id: post_comment.id).destroy
   end
 
+  def post_comment_vote_id(post_comment)
+    PostCommentVote.find_by(producer_id: id, post_comment_id: post_comment.id).id
+  end
+
   def developer_comment_voted?(developer_comment)
     DeveloperCommentVote.exists? producer_id: id, developer_comment_id: developer_comment.id
   end
 
   def developer_comment_unvote(developer_comment)
     DeveloperCommentVote.find_by(producer_id: id, developer_comment_id: developer_comment.id).destroy
+  end
+
+  def developer_comment_vote_id(developer_comment)
+    DeveloperCommentVote.find_by(producer_id: id, developer_comment_id: developer_comment.id).id
   end
 
   private

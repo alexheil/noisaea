@@ -4,7 +4,9 @@ class Developers::CommentVotesController < ApplicationController
 
   def create
     @vote = DeveloperCommentVote.new
-    @vote.developer_comment_id = DeveloperComment.find(params[:developer_comment_id]).id
+    @developer = Developer.friendly.find(params[:developer_id])
+    @comment = DeveloperComment.find(params[:comment_id])
+    @vote.developer_comment_id = @comment.id
     if artist_signed_in?
       @vote.artist_id = current_artist.id
     elsif fan_signed_in?
@@ -17,8 +19,10 @@ class Developers::CommentVotesController < ApplicationController
       @vote.producer_id = current_producer.id
     end
     if @vote.save
-      redirect_to (:back)
-      flash[:notice] = "you rock"
+      respond_to do |format|
+        format.html { redirect_to (:back) }
+        format.js { render :action => "comment_votes" }
+      end
     else
       redirect_to (:back)
       flash[:alert] = "you suck."
@@ -26,21 +30,22 @@ class Developers::CommentVotesController < ApplicationController
   end
 
   def destroy
+    @developer = Developer.friendly.find(params[:developer_id])
+    @comment = DeveloperComment.find(params[:comment_id])
     if fan_signed_in?
-      current_fan.developer_comment_unvote(DeveloperComment.find(params[:id]))
-      redirect_to (:back)
+      current_fan.developer_comment_unvote(@comment)
     elsif artist_signed_in?
-      current_artist.developer_comment_unvote(DeveloperComment.find(params[:id]))
-      redirect_to (:back)
+      current_artist.developer_comment_unvote(@comment)
     elsif record_label_signed_in?
-      current_record_label.developer_comment_unvote(DeveloperComment.find(params[:id]))
-      redirect_to (:back)
+      current_record_label.developer_comment_unvote(@comment)
     elsif venue_signed_in?
-      current_venue.developer_comment_unvote(DeveloperComment.find(params[:id]))
-      redirect_to (:back)
+      current_venue.developer_comment_unvote(@comment)
     elsif producer_signed_in?
-      current_producer.developer_comment_unvote(DeveloperComment.find(params[:id]))
-      redirect_to (:back)
+      current_producer.developer_comment_unvote(@comment)
+    end
+    respond_to do |format|
+      format.html { redirect_to (:back) }
+      format.js { render :action => "comment_votes" }
     end
   end
 

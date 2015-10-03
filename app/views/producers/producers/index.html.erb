@@ -28,7 +28,7 @@
             recent
           </div>
           <div id="location" class="porter">
-            <% if fan_signed_in? && current_fan.fan_profile.location != "" %>
+            <% if fan_signed_in? && current_fan.fan_profile.location.present? %>
               <%= current_fan.fan_profile.location.downcase %>
             <% else %>
               location
@@ -173,7 +173,7 @@
       <div id="container-popular" class="ferry">
         <% @producers.sort_by{ |producer| -producer.fans.count }.take(100).each do |producer| %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image == "" %>
+            <% if producer.producer_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if producer_signed_in? && producer.id == current_producer.id %>
                   you do not have a profile image yet
@@ -190,10 +190,10 @@
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
               <div class="hertel">
-                <center><%= producer.producer_profile.genre unless producer.producer_profile.genre == "" %></center>
+                <center><%= producer.producer_profile.genre unless producer.producer_profile.genre.blank? %></center>
               </div>
               <div class="hertel">
-                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= producer.id %>">
@@ -212,7 +212,7 @@
       <div id="container-recent" class="ferry colvin">
         <% @producers.order( 'id DESC' ).take(100).each do |producer| %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image == "" %>
+            <% if producer.producer_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if producer_signed_in? && producer.id == current_producer.id %>
                   you do not have a profile image yet
@@ -229,10 +229,10 @@
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
               <div class="hertel">
-                <center><%= producer.producer_profile.genre unless producer.producer_profile.genre == "" %></center>
+                <center><%= producer.producer_profile.genre unless producer.producer_profile.genre.blank? %></center>
               </div>
               <div class="hertel">
-                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= producer.id %>">
@@ -249,11 +249,11 @@
       </div>
 
       <div id="container-location" class="ferry colvin">
-        <% if fan_signed_in? && current_fan.fan_profile.location != "" %>
-          <% @producers.take(500).each do |producer|  %>
+        <% if fan_signed_in? && current_fan.fan_profile.location.present? %>
+          <% @producers.each do |producer|  %>
           <% if producer.producer_profile.location == current_fan.fan_profile.location %>
             <div class="utica">
-              <% if producer.producer_profile.cover_image == "" %>
+              <% if producer.producer_profile.cover_image.blank? %>
                 <div class="sycamore">
                   <% if producer_signed_in? && producer.id == current_producer.id %>
                     you do not have a profile image yet
@@ -270,7 +270,7 @@
                   <center><%= link_to producer.producer_name, producer_path(producer) %></center>
                 </div>
                 <div class="hertel">
-                  <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+                  <center><%= producer.producer_profile.location unless producer.producer_profile.location.blank? %></center>
                 </div>
                 <div class="hertel">
                 <div class="index_follower_count_<%= producer.id %>">
@@ -285,7 +285,7 @@
               </div>
             <% end %>
           <% end %>
-        <% elsif fan_signed_in? && current_fan.fan_profile.location == "" %>
+        <% elsif fan_signed_in? && current_fan.fan_profile.location.blank? %>
           <div class="hertel">
             <center>Your location is blank! Go set it on <%= link_to "your profile", edit_fan_profile_path(current_fan) %>.</center>
           </div>
@@ -297,10 +297,10 @@
       </div>
 
       <div id="container-alternative" class="ferry colvin">
-        <% @producers.take(500).each do |producer|  %>
+        <% @producers.alternative.each do |producer|  %>
           <% if producer.producer_profile.genre == "Alternative" %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image == "" %>
+            <% if producer.producer_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if producer_signed_in? && producer.id == current_producer.id %>
                   you do not have a profile image yet
@@ -317,7 +317,7 @@
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
               <div class="hertel">
-                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= producer.id %>">
@@ -335,10 +335,10 @@
       </div>
 
       <div id="container-ambient" class="ferry colvin">
-        <% @producers.take(500).each do |producer|  %>
+        <% @producers.ambient.each do |producer|  %>
           <% if producer.producer_profile.genre == "Ambient" %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image == "" %>
+            <% if producer.producer_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if producer_signed_in? && producer.id == current_producer.id %>
                   you do not have a profile image yet
@@ -355,7 +355,7 @@
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
               <div class="hertel">
-                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= producer.id %>">
@@ -373,10 +373,10 @@
       </div>
 
       <div id="container-blues" class="ferry colvin">
-        <% @producers.take(500).each do |producer|  %>
+        <% @producers.blues.each do |producer|  %>
           <% if producer.producer_profile.genre == "Blues" %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image == "" %>
+            <% if producer.producer_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if producer_signed_in? && producer.id == current_producer.id %>
                   you do not have a profile image yet
@@ -393,7 +393,7 @@
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
               <div class="hertel">
-                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= producer.id %>">
@@ -411,10 +411,10 @@
       </div>
 
       <div id="container-classical" class="ferry colvin">
-        <% @producers.take(500).each do |producer|  %>
+        <% @producers.classical.each do |producer|  %>
           <% if producer.producer_profile.genre == "Classical" %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image == "" %>
+            <% if producer.producer_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if producer_signed_in? && producer.id == current_producer.id %>
                   you do not have a profile image yet
@@ -431,7 +431,7 @@
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
               <div class="hertel">
-                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= producer.id %>">
@@ -449,10 +449,10 @@
       </div>
 
       <div id="container-comedy" class="ferry colvin">
-        <% @producers.take(500).each do |producer|  %>
+        <% @producers.comedy.each do |producer|  %>
           <% if producer.producer_profile.genre == "Comedy" %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image == "" %>
+            <% if producer.producer_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if producer_signed_in? && producer.id == current_producer.id %>
                   you do not have a profile image yet
@@ -469,7 +469,7 @@
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
               <div class="hertel">
-                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= producer.id %>">
@@ -487,10 +487,10 @@
       </div>
 
       <div id="container-country" class="ferry colvin">
-        <% @producers.take(500).each do |producer|  %>
+        <% @producers.country.each do |producer|  %>
           <% if producer.producer_profile.genre == "Country" %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image == "" %>
+            <% if producer.producer_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if producer_signed_in? && producer.id == current_producer.id %>
                   you do not have a profile image yet
@@ -507,7 +507,7 @@
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
               <div class="hertel">
-                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= producer.id %>">
@@ -525,10 +525,10 @@
       </div>
 
       <div id="container-electronic" class="ferry colvin">
-        <% @producers.take(500).each do |producer|  %>
+        <% @producers.electronic.each do |producer|  %>
           <% if producer.producer_profile.genre == "Electronic" %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image == "" %>
+            <% if producer.producer_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if producer_signed_in? && producer.id == current_producer.id %>
                   you do not have a profile image yet
@@ -545,7 +545,7 @@
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
               <div class="hertel">
-                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= producer.id %>">
@@ -563,10 +563,10 @@
       </div>
 
       <div id="container-experimental" class="ferry colvin">
-        <% @producers.take(500).each do |producer|  %>
+        <% @producers.experimental.each do |producer|  %>
           <% if producer.producer_profile.genre == "Experimental" %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image == "" %>
+            <% if producer.producer_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if producer_signed_in? && producer.id == current_producer.id %>
                   you do not have a profile image yet
@@ -583,7 +583,7 @@
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
               <div class="hertel">
-                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= producer.id %>">
@@ -601,10 +601,10 @@
       </div>
 
       <div id="container-hip-hop-rap" class="ferry colvin">
-        <% @producers.take(500).each do |producer|  %>
+        <% @producers.hiphoprap.each do |producer|  %>
           <% if producer.producer_profile.genre == "Hip-Hop/Rap" %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image == "" %>
+            <% if producer.producer_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if producer_signed_in? && producer.id == current_producer.id %>
                   you do not have a profile image yet
@@ -621,7 +621,7 @@
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
               <div class="hertel">
-                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= producer.id %>">
@@ -639,10 +639,10 @@
       </div>
 
       <div id="container-indie" class="ferry colvin">
-        <% @producers.take(500).each do |producer|  %>
+        <% @producers.indie.each do |producer|  %>
           <% if producer.producer_profile.genre == "Indie" %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image == "" %>
+            <% if producer.producer_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if producer_signed_in? && producer.id == current_producer.id %>
                   you do not have a profile image yet
@@ -659,7 +659,7 @@
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
               <div class="hertel">
-                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= producer.id %>">
@@ -677,10 +677,10 @@
       </div>
 
       <div id="container-jazz" class="ferry colvin">
-        <% @producers.take(500).each do |producer|  %>
+        <% @producers.jazz.each do |producer|  %>
           <% if producer.producer_profile.genre == "Jazz" %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image == "" %>
+            <% if producer.producer_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if producer_signed_in? && producer.id == current_producer.id %>
                   you do not have a profile image yet
@@ -697,7 +697,7 @@
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
               <div class="hertel">
-                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= producer.id %>">
@@ -715,10 +715,10 @@
       </div>
 
       <div id="container-latino" class="ferry colvin">
-        <% @producers.take(500).each do |producer|  %>
+        <% @producers.latino.each do |producer|  %>
           <% if producer.producer_profile.genre == "Latino" %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image == "" %>
+            <% if producer.producer_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if producer_signed_in? && producer.id == current_producer.id %>
                   you do not have a profile image yet
@@ -735,7 +735,7 @@
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
               <div class="hertel">
-                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= producer.id %>">
@@ -753,10 +753,10 @@
       </div>
 
       <div id="container-metal" class="ferry colvin">
-        <% @producers.take(500).each do |producer|  %>
+        <% @producers.metal.each do |producer|  %>
           <% if producer.producer_profile.genre == "Metal" %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image == "" %>
+            <% if producer.producer_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if producer_signed_in? && producer.id == current_producer.id %>
                   you do not have a profile image yet
@@ -773,7 +773,7 @@
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
               <div class="hertel">
-                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= producer.id %>">
@@ -791,10 +791,10 @@
       </div>
 
       <div id="container-pop" class="ferry colvin">
-        <% @producers.take(500).each do |producer|  %>
+        <% @producers.pop.each do |producer|  %>
           <% if producer.producer_profile.genre == "Pop" %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image == "" %>
+            <% if producer.producer_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if producer_signed_in? && producer.id == current_producer.id %>
                   you do not have a profile image yet
@@ -811,7 +811,7 @@
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
               <div class="hertel">
-                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= producer.id %>">
@@ -829,10 +829,10 @@
       </div>
 
       <div id="container-rb-soul" class="ferry colvin">
-        <% @producers.take(500).each do |producer|  %>
+        <% @producers.rbsoul.each do |producer|  %>
           <% if producer.producer_profile.genre == "R&B/Soul" %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image == "" %>
+            <% if producer.producer_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if producer_signed_in? && producer.id == current_producer.id %>
                   you do not have a profile image yet
@@ -849,7 +849,7 @@
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
               <div class="hertel">
-                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= producer.id %>">
@@ -867,10 +867,10 @@
       </div>
 
       <div id="container-rock" class="ferry colvin">
-        <% @producers.take(500).each do |producer|  %>
+        <% @producers.rock.each do |producer|  %>
           <% if producer.producer_profile.genre == "Rock" %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image == "" %>
+            <% if producer.producer_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if producer_signed_in? && producer.id == current_producer.id %>
                   you do not have a profile image yet
@@ -887,7 +887,7 @@
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
               <div class="hertel">
-                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= producer.id %>">
@@ -905,10 +905,10 @@
       </div>
 
       <div id="container-singer-songwriter" class="ferry colvin">
-        <% @producers.take(500).each do |producer|  %>
+        <% @producers.singersongwriter.each do |producer|  %>
           <% if producer.producer_profile.genre == "Singer/Songwriter" %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image == "" %>
+            <% if producer.producer_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if producer_signed_in? && producer.id == current_producer.id %>
                   you do not have a profile image yet
@@ -925,7 +925,7 @@
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
               <div class="hertel">
-                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= producer.id %>">
@@ -943,10 +943,10 @@
       </div>
 
       <div id="container-soundtrack" class="ferry colvin">
-        <% @producers.take(500).each do |producer|  %>
+        <% @producers.soundtrack.each do |producer|  %>
           <% if producer.producer_profile.genre == "soundtrack" %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image == "" %>
+            <% if producer.producer_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if producer_signed_in? && producer.id == current_producer.id %>
                   you do not have a profile image yet
@@ -963,7 +963,7 @@
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
               <div class="hertel">
-                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= producer.id %>">
@@ -981,10 +981,10 @@
       </div>
 
       <div id="container-world" class="ferry colvin">
-        <% @producers.take(500).each do |producer|  %>
+        <% @producers.world.each do |producer|  %>
           <% if producer.producer_profile.genre == "World" %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image == "" %>
+            <% if producer.producer_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if producer_signed_in? && producer.id == current_producer.id %>
                   you do not have a profile image yet
@@ -1001,7 +1001,7 @@
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
               <div class="hertel">
-                <center><%= producer.producer_profile.location unless producer.producer_profile.location == "" %></center>
+                <center><%= producer.producer_profile.location unless producer.producer_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= producer.id %>">

@@ -29,6 +29,9 @@ class StaticPagesController < ApplicationController
   def sign_in
   end
 
+  def stats
+  end
+
   private
 
   def redirect_if_signed_in

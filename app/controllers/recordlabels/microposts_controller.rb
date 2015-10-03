@@ -51,7 +51,7 @@ class Recordlabels::MicropostsController < ApplicationController
     end
 
     def micropost_params
-      params.require(:record_label_micropost).permit(:record_label_id, :content)
+      params.require(:record_label_micropost).permit(:content, :link_url, :photo_url)
     end
 
 end

@@ -51,7 +51,7 @@ class Venues::MicropostsController < ApplicationController
     end
 
     def micropost_params
-      params.require(:venue_micropost).permit(:venue_id, :content)
+      params.require(:venue_micropost).permit(:content, :link_url, :photo_url)
     end
 
 end

@@ -66,13 +66,14 @@ h4 {
 }
 
 .delaware {
-  width: 90%;
+  width: 95%;
+  max-width: 1920px;
   margin: 0 auto;
 }
 
 .main {
   margin: 2vh 0;
-  width: 77%;
+  width: 70%;
   margin-right: 2%;
   display: inline-block;
   vertical-align: top;
@@ -80,7 +81,7 @@ h4 {
 
 .pearl {
   margin: 2vh 0;
-  width: 20%;
+  width: 27%;
   display: inline-block;
   vertical-align: top;
 }
@@ -96,7 +97,7 @@ h4 {
 }
 
 .vulcan {
-  width: 90%;
+  width: 95%;
   margin: 0 auto;
   padding: 1vh 0;
   font-family: $fancy-font

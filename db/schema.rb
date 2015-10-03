@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150831003706) do
+ActiveRecord::Schema.define(version: 20150920225821) do
 
   create_table "artist_micropost_comment_votes", force: true do |t|
     t.integer  "artist_micropost_comment_id"
@@ -83,6 +83,8 @@ ActiveRecord::Schema.define(version: 20150831003706) do
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "link_url",   default: ""
+    t.string   "photo_url",  default: ""
   end
 
   add_index "artist_microposts", ["artist_id"], name: "index_artist_microposts_on_artist_id"
@@ -415,6 +417,8 @@ ActiveRecord::Schema.define(version: 20150831003706) do
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "link_url",    default: ""
+    t.string   "photo_url",   default: ""
   end
 
   add_index "producer_microposts", ["producer_id"], name: "index_producer_microposts_on_producer_id"
@@ -552,6 +556,8 @@ ActiveRecord::Schema.define(version: 20150831003706) do
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "link_url",        default: ""
+    t.string   "photo_url",       default: ""
   end
 
   add_index "record_label_microposts", ["record_label_id"], name: "index_record_label_microposts_on_record_label_id"
@@ -693,6 +699,8 @@ ActiveRecord::Schema.define(version: 20150831003706) do
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "link_url",   default: ""
+    t.string   "photo_url",  default: ""
   end
 
   add_index "venue_microposts", ["venue_id"], name: "index_venue_microposts_on_venue_id"

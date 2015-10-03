@@ -51,7 +51,7 @@ class Artists::MicropostsController < ApplicationController
     end
 
     def micropost_params
-      params.require(:artist_micropost).permit(:artist_id, :content)
+      params.require(:artist_micropost).permit(:content, :link_url, :photo_url)
     end
 
 end

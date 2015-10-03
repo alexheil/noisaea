@@ -1,0 +1,15 @@
+<% if fan_signed_in? && current_fan.post_comment_voted?(comment) %>
+  <%= button_to "−", post_comment_vote_path(@post, comment, current_fan.post_comment_vote_id(comment)), method: :delete, remote: true, class: "linwood" %>
+<% elsif artist_signed_in? && current_artist.post_comment_voted?(comment) %>
+  <%= button_to "−", post_comment_vote_path(@post, comment, current_artist.post_comment_vote_id(comment)), method: :delete, remote: true, class: "linwood" %>
+<% elsif record_label_signed_in? && current_record_label.post_comment_voted?(comment) %>
+  <%= button_to "−", post_comment_vote_path(@post, comment, current_record_label.post_comment_vote_id(comment)), method: :delete, remote: true, class: "linwood" %>
+<% elsif venue_signed_in? && current_venue.post_comment_voted?(comment) %>
+  <%= button_to "−", post_comment_vote_path(@post, comment, current_venue.post_comment_vote_id(comment)), method: :delete, remote: true, class: "linwood" %>
+<% elsif producer_signed_in? && current_producer.post_comment_voted?(comment) %>
+  <%= button_to "−", post_comment_vote_path(@post, comment, current_producer.post_comment_vote_id(comment)), method: :delete, remote: true, class: "linwood" %>
+<% else %>
+  <%= form_for(PostCommentVote.new, url: post_comment_votes_path(@post, comment), remote: true) do |f| %>
+    <%= f.submit "+", class: "linwood" %>
+  <% end %>
+<% end %>

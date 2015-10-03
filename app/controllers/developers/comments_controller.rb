@@ -5,6 +5,7 @@ class Developers::CommentsController < ApplicationController
   def create
     @comment = DeveloperComment.new(comment_params)
     @comment.developer_id = Developer.friendly.find(params[:developer_id]).id
+    @developer = Developer.friendly.find(params[:developer_id])
     if artist_signed_in?
       @comment.artist_id = current_artist.id
     elsif fan_signed_in?
@@ -17,8 +18,10 @@ class Developers::CommentsController < ApplicationController
       @comment.producer_id = current_producer.id
     end
     if @comment.save
-      redirect_to (:back)
-      flash[:notice] = "you rock"
+      respond_to do |format|
+        format.html { redirect_to (:back) }
+        format.js { render :action => "comments" }
+      end
     else
       redirect_to (:back)
       flash[:alert] = "you suck."
@@ -27,8 +30,11 @@ class Developers::CommentsController < ApplicationController
 
   def destroy
     DeveloperComment.find(params[:id]).destroy
-    redirect_to (:back)
-    flash[:notice] = "good riddance to that comment"
+    @developer = Developer.friendly.find(params[:developer_id])
+    respond_to do |format|
+      format.html { redirect_to (:back) }
+      format.js { render :action => "comments" }
+    end
   end
 
   private

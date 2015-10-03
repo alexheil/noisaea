@@ -38,6 +38,17 @@
       <div class="winspear">
         <%= micropost.content %>
       </div>
+      <% if micropost.link_url.present? %>
+      <div class="winspear">
+          <%= link_to "#{micropost.link_url.split("://").last.truncate(40)}", micropost.link_url  %>
+      </div>
+      <% end %>
+      <% if micropost.photo_url.present? %>
+      <div class="northrup lincoln">
+        <img srcset="<%= micropost.photo_url %>" width="100%" height="auto" />
+      </div>
+      <% end %>
+
       <div class="lisbon" id="lisbon">
 
         <div class="artist_fan_micropost_votes_<%= micropost.id %>">
@@ -80,6 +91,17 @@
       <div class="winspear">
         <%= micropost.content %>
       </div>
+      <% if micropost.link_url.present? %>
+      <div class="winspear">
+          <%= link_to "#{micropost.link_url.split("://").last.truncate(40)}", micropost.link_url  %>
+      </div>
+      <% end %>
+      <% if micropost.photo_url.present? %>
+      <div class="northrup lincoln">
+        <img srcset="<%= micropost.photo_url %>" width="100%" height="auto" />
+      </div>
+      <% end %>
+
       <div class="lisbon" id="lisbon">
 
         <div class="record_label_fan_micropost_votes_<%= micropost.id %>">
@@ -123,6 +145,17 @@
       <div class="winspear">
         <%= micropost.content %>
       </div>
+      <% if micropost.link_url.present? %>
+      <div class="winspear">
+          <%= link_to "#{micropost.link_url.split("://").last.truncate(40)}", micropost.link_url  %>
+      </div>
+      <% end %>
+      <% if micropost.photo_url.present? %>
+      <div class="northrup lincoln">
+        <img srcset="<%= micropost.photo_url %>" width="100%" height="auto" />
+      </div>
+      <% end %>
+
       <div class="lisbon" id="lisbon">
 
         <div class="venue_fan_micropost_votes_<%= micropost.id %>">
@@ -165,6 +198,17 @@
       <div class="winspear">
         <%= micropost.content %>
       </div>
+      <% if micropost.link_url.present? %>
+      <div class="winspear">
+          <%= link_to "#{micropost.link_url.split("://").last.truncate(40)}", micropost.link_url  %>
+      </div>
+      <% end %>
+      <% if micropost.photo_url.present? %>
+      <div class="northrup lincoln">
+        <img srcset="<%= micropost.photo_url %>" width="100%" height="auto" />
+      </div>
+      <% end %>
+
       <div class="lisbon" id="lisbon">
 
         <div class="producer_fan_micropost_votes_<%= micropost.id %>">

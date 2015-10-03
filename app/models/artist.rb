@@ -40,6 +40,86 @@ class Artist < ActiveRecord::Base
     where("artist_name LIKE ?", "%#{search}%")
   end
 
+  #### GENRES ####
+
+  def self.alternative
+    Artist.joins(:artist_profile).where("artist_profiles.genre" => "Alternative")
+  end
+
+  def self.ambient
+    Artist.joins(:artist_profile).where("artist_profiles.genre" => "Ambient")
+  end
+
+  def self.blues
+    Artist.joins(:artist_profile).where("artist_profiles.genre" => "Blues")
+  end
+
+  def self.classical
+    Artist.joins(:artist_profile).where("artist_profiles.genre" => "Classical")
+  end
+
+  def self.comedy
+    Artist.joins(:artist_profile).where("artist_profiles.genre" => "Comedy")
+  end
+
+  def self.country
+    Artist.joins(:artist_profile).where("artist_profiles.genre" => "Country")
+  end
+
+  def self.electronic
+    Artist.joins(:artist_profile).where("artist_profiles.genre" => "Electronic")
+  end
+
+  def self.experimental
+    Artist.joins(:artist_profile).where("artist_profiles.genre" => "Experimental")
+  end
+
+  def self.hiphoprap
+    Artist.joins(:artist_profile).where("artist_profiles.genre" => "Hip-Hop/Rap")
+  end
+
+  def self.indie
+    Artist.joins(:artist_profile).where("artist_profiles.genre" => "Indie")
+  end
+
+  def self.jazz
+    Artist.joins(:artist_profile).where("artist_profiles.genre" => "Jazz")
+  end
+
+  def self.latino
+    Artist.joins(:artist_profile).where("artist_profiles.genre" => "Latino")
+  end
+
+  def self.metal
+    Artist.joins(:artist_profile).where("artist_profiles.genre" => "Metal")
+  end
+
+  def self.pop
+    Artist.joins(:artist_profile).where("artist_profiles.genre" => "Pop")
+  end
+
+  def self.rbsoul
+    Artist.joins(:artist_profile).where("artist_profiles.genre" => "R&B/Soul")
+  end
+
+  def self.rock
+    Artist.joins(:artist_profile).where("artist_profiles.genre" => "Rock")
+  end
+
+  def self.singersongwriter
+    Artist.joins(:artist_profile).where("artist_profiles.genre" => "Singer/Songwriter")
+  end
+
+  def self.soundtrack
+    Artist.joins(:artist_profile).where("artist_profiles.genre" => "Soundtrack")
+  end
+
+  def self.world
+    Artist.joins(:artist_profile).where("artist_profiles.genre" => "World")
+  end
+
+  #### VOTES ####
+
   def artist_micropost_voted?(artist_micropost)
     ArtistMicropostVote.exists? artist_id: id, artist_micropost_id: artist_micropost.id
   end
@@ -144,12 +224,20 @@ class Artist < ActiveRecord::Base
     PostCommentVote.find_by(artist_id: id, post_comment_id: post_comment.id).destroy
   end
 
+  def post_comment_vote_id(post_comment)
+    PostCommentVote.find_by(artist_id: id, post_comment_id: post_comment.id).id
+  end
+
   def developer_comment_voted?(developer_comment)
     DeveloperCommentVote.exists? artist_id: id, developer_comment_id: developer_comment.id
   end
 
   def developer_comment_unvote(developer_comment)
     DeveloperCommentVote.find_by(artist_id: id, developer_comment_id: developer_comment.id).destroy
+  end
+
+  def developer_comment_vote_id(developer_comment)
+    DeveloperCommentVote.find_by(artist_id: id, developer_comment_id: developer_comment.id).id
   end
 
   private

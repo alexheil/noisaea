@@ -1,6 +1,6 @@
 <%= provide(:title, sanitize(@artist.artist_name) + " | Followers") %>
 <div class="buffalo">
-  <% if @artist.artist_profile.cover_image == "" %>
+  <% if @artist.artist_profile.cover_image.blank? %>
     <div class="clinton">
       <% if artist_signed_in? && @artist.id == current_artist.id %>
         you do not have a cover image yet. <%= link_to "add one?", edit_artist_profile_path(current_artist) %>
@@ -26,7 +26,7 @@
         <% @artist.fans.take(100).each do |fan| %>
           <div class="utica">
 
-            <% if fan.fan_profile.cover_image == "" %>
+            <% if fan.fan_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if fan_signed_in? && fan.id == current_fan.id %>
                   you do not have a profile image yet

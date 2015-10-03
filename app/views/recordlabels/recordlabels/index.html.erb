@@ -28,7 +28,7 @@
           recent
         </div>
         <div id="location" class="porter">
-          <% if fan_signed_in? && current_fan.fan_profile.location != "" %>
+          <% if fan_signed_in? && current_fan.fan_profile.location.present? %>
             <%= current_fan.fan_profile.location.downcase %>
           <% else %>
             location
@@ -173,7 +173,7 @@
       <div id="container-popular" class="ferry">
         <% @record_labels.sort_by{ |record_label| -record_label.fans.count }.take(10).each do |record_label| %>
           <div class="utica">
-            <% if record_label.record_label_profile.cover_image == "" %>
+            <% if record_label.record_label_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if record_label_signed_in? && record_label.id == current_record_label.id %>
                   you do not have a profile image yet
@@ -190,10 +190,10 @@
                 <center><%= link_to record_label.label_name, record_label_path(record_label) %></center>
               </div>
               <div class="hertel">
-                <center><%= record_label.record_label_profile.genre unless record_label.record_label_profile.genre == "" %></center>
+                <center><%= record_label.record_label_profile.genre unless record_label.record_label_profile.genre.blank? %></center>
               </div>
               <div class="hertel">
-                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location == "" %></center>
+                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= record_label.id %>">
@@ -212,7 +212,7 @@
       <div id="container-recent" class="ferry colvin">
         <% @record_labels.order( 'id DESC' ).take(10).each do |record_label| %>
           <div class="utica">
-            <% if record_label.record_label_profile.cover_image == "" %>
+            <% if record_label.record_label_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if record_label_signed_in? && record_label.id == current_record_label.id %>
                   you do not have a profile image yet
@@ -229,10 +229,10 @@
                 <center><%= link_to record_label.label_name, record_label_path(record_label) %></center>
               </div>
               <div class="hertel">
-                <center><%= record_label.record_label_profile.genre unless record_label.record_label_profile.genre == "" %></center>
+                <center><%= record_label.record_label_profile.genre unless record_label.record_label_profile.genre.blank? %></center>
               </div>
               <div class="hertel">
-                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location == "" %></center>
+                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= record_label.id %>">
@@ -249,11 +249,11 @@
       </div>
 
       <div id="container-location" class="ferry colvin">
-        <% if fan_signed_in? && current_fan.fan_profile.location != "" %>
-          <% @record_labels.take(500).each do |record_label|  %>
+        <% if fan_signed_in? && current_fan.fan_profile.location.present? %>
+          <% @record_labels.each do |record_label|  %>
             <% if record_label.record_label_profile.location == current_fan.fan_profile.location %>
               <div class="utica">
-                <% if record_label.record_label_profile.cover_image == "" %>
+                <% if record_label.record_label_profile.cover_image.blank? %>
                   <div class="sycamore">
                     <% if record_label_signed_in? && record_label.id == current_record_label.id %>
                       you do not have a profile image yet
@@ -270,7 +270,7 @@
                     <center><%= link_to record_label.label_name, record_label_path(record_label) %></center>
                   </div>
                   <div class="hertel">
-                    <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location == "" %></center>
+                    <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location.blank? %></center>
                   </div>
                   <div class="hertel">
                 <div class="index_follower_count_<%= record_label.id %>">
@@ -285,7 +285,7 @@
               </div>
             <% end %>
           <% end %>
-        <% elsif fan_signed_in? && current_fan.fan_profile.location == "" %>
+        <% elsif fan_signed_in? && current_fan.fan_profile.location.blank? %>
           <div class="hertel">
             <center>Your location is blank! Go set it on <%= link_to "your profile", edit_fan_profile_path(current_fan) %>.</center>
           </div>
@@ -297,10 +297,9 @@
       </div>
 
       <div id="container-alternative" class="ferry colvin">
-        <% @record_labels.take(500).each do |record_label|  %>
-          <% if record_label.record_label_profile.genre == "Alternative" %>
+        <% @record_labels.alternative.each do |record_label|  %>
           <div class="utica">
-            <% if record_label.record_label_profile.cover_image == "" %>
+            <% if record_label.record_label_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if record_label_signed_in? && record_label.id == current_record_label.id %>
                   you do not have a profile image yet
@@ -317,7 +316,7 @@
                 <center><%= link_to record_label.label_name, record_label_path(record_label) %></center>
               </div>
               <div class="hertel">
-                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location == "" %></center>
+                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= record_label.id %>">
@@ -330,15 +329,13 @@
             </div>
 
             </div>
-          <% end %>
         <% end %>
       </div>
 
       <div id="container-ambient" class="ferry colvin">
-        <% @record_labels.take(500).each do |record_label|  %>
-          <% if record_label.record_label_profile.genre == "Ambient" %>
+        <% @record_labels.ambient.each do |record_label|  %>
           <div class="utica">
-            <% if record_label.record_label_profile.cover_image == "" %>
+            <% if record_label.record_label_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if record_label_signed_in? && record_label.id == current_record_label.id %>
                   you do not have a profile image yet
@@ -355,7 +352,7 @@
                 <center><%= link_to record_label.label_name, record_label_path(record_label) %></center>
               </div>
               <div class="hertel">
-                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location == "" %></center>
+                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= record_label.id %>">
@@ -368,15 +365,13 @@
             </div>
 
             </div>
-          <% end %>
         <% end %>
       </div>
 
       <div id="container-blues" class="ferry colvin">
-        <% @record_labels.take(500).each do |record_label|  %>
-          <% if record_label.record_label_profile.genre == "Blues" %>
+        <% @record_labels.blues.each do |record_label|  %>
           <div class="utica">
-            <% if record_label.record_label_profile.cover_image == "" %>
+            <% if record_label.record_label_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if record_label_signed_in? && record_label.id == current_record_label.id %>
                   you do not have a profile image yet
@@ -393,7 +388,7 @@
                 <center><%= link_to record_label.label_name, record_label_path(record_label) %></center>
               </div>
               <div class="hertel">
-                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location == "" %></center>
+                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= record_label.id %>">
@@ -406,15 +401,13 @@
             </div>
 
             </div>
-          <% end %>
         <% end %>
       </div>
 
       <div id="container-classical" class="ferry colvin">
-        <% @record_labels.take(500).each do |record_label|  %>
-          <% if record_label.record_label_profile.genre == "Classical" %>
+        <% @record_labels.classical.each do |record_label|  %>
           <div class="utica">
-            <% if record_label.record_label_profile.cover_image == "" %>
+            <% if record_label.record_label_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if record_label_signed_in? && record_label.id == current_record_label.id %>
                   you do not have a profile image yet
@@ -431,7 +424,7 @@
                 <center><%= link_to record_label.label_name, record_label_path(record_label) %></center>
               </div>
               <div class="hertel">
-                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location == "" %></center>
+                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= record_label.id %>">
@@ -444,15 +437,13 @@
             </div>
 
             </div>
-          <% end %>
         <% end %>
       </div>
 
       <div id="container-comedy" class="ferry colvin">
-        <% @record_labels.take(500).each do |record_label|  %>
-          <% if record_label.record_label_profile.genre == "Comedy" %>
+        <% @record_labels.comedy.each do |record_label|  %>
           <div class="utica">
-            <% if record_label.record_label_profile.cover_image == "" %>
+            <% if record_label.record_label_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if record_label_signed_in? && record_label.id == current_record_label.id %>
                   you do not have a profile image yet
@@ -469,7 +460,7 @@
                 <center><%= link_to record_label.label_name, record_label_path(record_label) %></center>
               </div>
               <div class="hertel">
-                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location == "" %></center>
+                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= record_label.id %>">
@@ -482,15 +473,13 @@
             </div>
 
             </div>
-          <% end %>
         <% end %>
       </div>
 
       <div id="container-country" class="ferry colvin">
-        <% @record_labels.take(500).each do |record_label|  %>
-          <% if record_label.record_label_profile.genre == "Country" %>
+        <% @record_labels.country.each do |record_label|  %>
           <div class="utica">
-            <% if record_label.record_label_profile.cover_image == "" %>
+            <% if record_label.record_label_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if record_label_signed_in? && record_label.id == current_record_label.id %>
                   you do not have a profile image yet
@@ -507,7 +496,7 @@
                 <center><%= link_to record_label.label_name, record_label_path(record_label) %></center>
               </div>
               <div class="hertel">
-                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location == "" %></center>
+                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= record_label.id %>">
@@ -520,15 +509,13 @@
             </div>
 
             </div>
-          <% end %>
         <% end %>
       </div>
 
       <div id="container-electronic" class="ferry colvin">
-        <% @record_labels.take(500).each do |record_label|  %>
-          <% if record_label.record_label_profile.genre == "Electronic" %>
+        <% @record_labels.electronic.each do |record_label|  %>
           <div class="utica">
-            <% if record_label.record_label_profile.cover_image == "" %>
+            <% if record_label.record_label_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if record_label_signed_in? && record_label.id == current_record_label.id %>
                   you do not have a profile image yet
@@ -545,7 +532,7 @@
                 <center><%= link_to record_label.label_name, record_label_path(record_label) %></center>
               </div>
               <div class="hertel">
-                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location == "" %></center>
+                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= record_label.id %>">
@@ -558,15 +545,13 @@
             </div>
 
             </div>
-          <% end %>
         <% end %>
       </div>
 
       <div id="container-experimental" class="ferry colvin">
-        <% @record_labels.take(500).each do |record_label|  %>
-          <% if record_label.record_label_profile.genre == "Experimental" %>
+        <% @record_labels.experimental.each do |record_label|  %>
           <div class="utica">
-            <% if record_label.record_label_profile.cover_image == "" %>
+            <% if record_label.record_label_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if record_label_signed_in? && record_label.id == current_record_label.id %>
                   you do not have a profile image yet
@@ -583,7 +568,7 @@
                 <center><%= link_to record_label.label_name, record_label_path(record_label) %></center>
               </div>
               <div class="hertel">
-                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location == "" %></center>
+                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= record_label.id %>">
@@ -596,15 +581,13 @@
             </div>
 
             </div>
-          <% end %>
         <% end %>
       </div>
 
       <div id="container-hip-hop-rap" class="ferry colvin">
-        <% @record_labels.take(500).each do |record_label|  %>
-          <% if record_label.record_label_profile.genre == "Hip-Hop/Rap" %>
+        <% @record_labels.hiphoprap.each do |record_label|  %>
           <div class="utica">
-            <% if record_label.record_label_profile.cover_image == "" %>
+            <% if record_label.record_label_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if record_label_signed_in? && record_label.id == current_record_label.id %>
                   you do not have a profile image yet
@@ -621,7 +604,7 @@
                 <center><%= link_to record_label.label_name, record_label_path(record_label) %></center>
               </div>
               <div class="hertel">
-                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location == "" %></center>
+                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= record_label.id %>">
@@ -634,15 +617,13 @@
             </div>
 
             </div>
-          <% end %>
         <% end %>
       </div>
 
       <div id="container-indie" class="ferry colvin">
-        <% @record_labels.take(500).each do |record_label|  %>
-          <% if record_label.record_label_profile.genre == "Indie" %>
+        <% @record_labels.indie.each do |record_label|  %>
           <div class="utica">
-            <% if record_label.record_label_profile.cover_image == "" %>
+            <% if record_label.record_label_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if record_label_signed_in? && record_label.id == current_record_label.id %>
                   you do not have a profile image yet
@@ -659,7 +640,7 @@
                 <center><%= link_to record_label.label_name, record_label_path(record_label) %></center>
               </div>
               <div class="hertel">
-                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location == "" %></center>
+                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= record_label.id %>">
@@ -672,15 +653,13 @@
             </div>
 
             </div>
-          <% end %>
         <% end %>
       </div>
 
       <div id="container-jazz" class="ferry colvin">
-        <% @record_labels.take(500).each do |record_label|  %>
-          <% if record_label.record_label_profile.genre == "Jazz" %>
+        <% @record_labels.jazz.each do |record_label|  %>
           <div class="utica">
-            <% if record_label.record_label_profile.cover_image == "" %>
+            <% if record_label.record_label_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if record_label_signed_in? && record_label.id == current_record_label.id %>
                   you do not have a profile image yet
@@ -697,7 +676,7 @@
                 <center><%= link_to record_label.label_name, record_label_path(record_label) %></center>
               </div>
               <div class="hertel">
-                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location == "" %></center>
+                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= record_label.id %>">
@@ -710,15 +689,13 @@
             </div>
 
             </div>
-          <% end %>
         <% end %>
       </div>
 
       <div id="container-latino" class="ferry colvin">
-        <% @record_labels.take(500).each do |record_label|  %>
-          <% if record_label.record_label_profile.genre == "Latino" %>
+        <% @record_labels.latino.each do |record_label|  %>
           <div class="utica">
-            <% if record_label.record_label_profile.cover_image == "" %>
+            <% if record_label.record_label_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if record_label_signed_in? && record_label.id == current_record_label.id %>
                   you do not have a profile image yet
@@ -735,7 +712,7 @@
                 <center><%= link_to record_label.label_name, record_label_path(record_label) %></center>
               </div>
               <div class="hertel">
-                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location == "" %></center>
+                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= record_label.id %>">
@@ -748,15 +725,13 @@
             </div>
 
             </div>
-          <% end %>
         <% end %>
       </div>
 
       <div id="container-metal" class="ferry colvin">
-        <% @record_labels.take(500).each do |record_label|  %>
-          <% if record_label.record_label_profile.genre == "Metal" %>
+        <% @record_labels.metal.each do |record_label|  %>
           <div class="utica">
-            <% if record_label.record_label_profile.cover_image == "" %>
+            <% if record_label.record_label_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if record_label_signed_in? && record_label.id == current_record_label.id %>
                   you do not have a profile image yet
@@ -773,7 +748,7 @@
                 <center><%= link_to record_label.label_name, record_label_path(record_label) %></center>
               </div>
               <div class="hertel">
-                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location == "" %></center>
+                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= record_label.id %>">
@@ -786,15 +761,13 @@
             </div>
 
             </div>
-          <% end %>
         <% end %>
       </div>
 
       <div id="container-pop" class="ferry colvin">
-        <% @record_labels.take(500).each do |record_label|  %>
-          <% if record_label.record_label_profile.genre == "Pop" %>
+        <% @record_labels.pop.each do |record_label|  %>
           <div class="utica">
-            <% if record_label.record_label_profile.cover_image == "" %>
+            <% if record_label.record_label_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if record_label_signed_in? && record_label.id == current_record_label.id %>
                   you do not have a profile image yet
@@ -811,7 +784,7 @@
                 <center><%= link_to record_label.label_name, record_label_path(record_label) %></center>
               </div>
               <div class="hertel">
-                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location == "" %></center>
+                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= record_label.id %>">
@@ -824,15 +797,13 @@
             </div>
 
             </div>
-          <% end %>
         <% end %>
       </div>
 
       <div id="container-rb-soul" class="ferry colvin">
-        <% @record_labels.take(500).each do |record_label|  %>
-          <% if record_label.record_label_profile.genre == "R&B/Soul" %>
+        <% @record_labels.rbsoul.each do |record_label|  %>
           <div class="utica">
-            <% if record_label.record_label_profile.cover_image == "" %>
+            <% if record_label.record_label_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if record_label_signed_in? && record_label.id == current_record_label.id %>
                   you do not have a profile image yet
@@ -849,7 +820,7 @@
                 <center><%= link_to record_label.label_name, record_label_path(record_label) %></center>
               </div>
               <div class="hertel">
-                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location == "" %></center>
+                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= record_label.id %>">
@@ -862,15 +833,13 @@
             </div>
 
           </div>
-          <% end %>
         <% end %>
       </div>
 
       <div id="container-rock" class="ferry colvin">
-        <% @record_labels.take(500).each do |record_label|  %>
-          <% if record_label.record_label_profile.genre == "Rock" %>
+        <% @record_labels.rock.each do |record_label|  %>
           <div class="utica">
-            <% if record_label.record_label_profile.cover_image == "" %>
+            <% if record_label.record_label_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if record_label_signed_in? && record_label.id == current_record_label.id %>
                   you do not have a profile image yet
@@ -887,7 +856,7 @@
                 <center><%= link_to record_label.label_name, record_label_path(record_label) %></center>
               </div>
               <div class="hertel">
-                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location == "" %></center>
+                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= record_label.id %>">
@@ -900,15 +869,13 @@
             </div>
 
           </div>
-          <% end %>
         <% end %>
       </div>
 
       <div id="container-singer-songwriter" class="ferry colvin">
-        <% @record_labels.take(500).each do |record_label|  %>
-          <% if record_label.record_label_profile.genre == "Singer/Songwriter" %>
+        <% @record_labels.singersongwriter.each do |record_label|  %>
           <div class="utica">
-            <% if record_label.record_label_profile.cover_image == "" %>
+            <% if record_label.record_label_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if record_label_signed_in? && record_label.id == current_record_label.id %>
                   you do not have a profile image yet
@@ -925,7 +892,7 @@
                 <center><%= link_to record_label.label_name, record_label_path(record_label) %></center>
               </div>
               <div class="hertel">
-                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location == "" %></center>
+                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= record_label.id %>">
@@ -938,15 +905,13 @@
             </div>
 
             </div>
-          <% end %>
         <% end %>
       </div>
 
       <div id="container-soundtrack" class="ferry colvin">
-        <% @record_labels.take(500).each do |record_label|  %>
-          <% if record_label.record_label_profile.genre == "Soundtrack" %>
+        <% @record_labels.soundtrack.each do |record_label|  %>
           <div class="utica">
-            <% if record_label.record_label_profile.cover_image == "" %>
+            <% if record_label.record_label_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if record_label_signed_in? && record_label.id == current_record_label.id %>
                   you do not have a profile image yet
@@ -963,7 +928,7 @@
                 <center><%= link_to record_label.label_name, record_label_path(record_label) %></center>
               </div>
               <div class="hertel">
-                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location == "" %></center>
+                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= record_label.id %>">
@@ -976,15 +941,13 @@
             </div>
 
           </div>
-          <% end %>
         <% end %>
       </div>
 
       <div id="container-world" class="ferry colvin">
-        <% @record_labels.take(500).each do |record_label|  %>
-          <% if record_label.record_label_profile.genre == "World" %>
+        <% @record_labels.world.each do |record_label|  %>
           <div class="utica">
-            <% if record_label.record_label_profile.cover_image == "" %>
+            <% if record_label.record_label_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if record_label_signed_in? && record_label.id == current_record_label.id %>
                   you do not have a profile image yet
@@ -1001,7 +964,7 @@
                 <center><%= link_to record_label.label_name, record_label_path(record_label) %></center>
               </div>
               <div class="hertel">
-                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location == "" %></center>
+                <center><%= record_label.record_label_profile.location unless record_label.record_label_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= record_label.id %>">
@@ -1014,7 +977,6 @@
             </div>
 
           </div>
-          <% end %>
         <% end %>
       </div>
 

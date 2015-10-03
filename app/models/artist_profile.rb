@@ -4,13 +4,14 @@ class ArtistProfile < ActiveRecord::Base
   validates :artist_id, presence: true
   validates :location, format: { with: /[A-Z][a-zA-Z]+,[ ]?[A-Z]{2}/ }, allow_blank: true
   validates :biography, length: { maximum: 14216 }, allow_blank: true
-  validates :facebook_url, format: { with: /\A((http|https)?:\/\/)?(www.)?facebook.com\//i  }, allow_blank: true
-  validates :twitter_url, format: { with: /\A((http|https)?:\/\/)?(www.)?twitter.com\//i }, allow_blank: true
-  validates :youtube_url, format: { with: /\A((http|https)?:\/\/)?(www.)?youtube.com\//i }, allow_blank: true
-  validates :itunes_url, format: { with: /\A((http|https)?:\/\/)?(www.)?itunes.com\//i }, allow_blank: true
-  validates :amazon_url, format: { with: /\A((http|https)?:\/\/)?(www.)?amazon.com\//i }, allow_blank: true
-  validates :google_play_url, format: { with: /\A((http|https)?:\/\/)?(play.)google.com\//i }, allow_blank: true
-  validates :ticketfly_url, format: { with: /\A((http|https)?:\/\/)?(www.)?ticketfly.com\//i }, allow_blank: true
+  validates :facebook_url, format: { with: /\A((http|https)?:\/\/)?(www.)?facebook.com\/?/i  }, allow_blank: true
+  validates :twitter_url, format: { with: /\A((http|https)?:\/\/)?(www.)?twitter.com\/?/i }, allow_blank: true
+  validates :youtube_url, format: { with: /\A((http|https)?:\/\/)?(www.)?youtube.com\/?/i }, allow_blank: true
+  validates :itunes_url, format: { with: /\A((http|https)?:\/\/)?(www.)?itunes.com\/?/i }, allow_blank: true
+  validates :amazon_url, format: { with: /\A((http|https)?:\/\/)?(www.)?amazon.com\/?/i }, allow_blank: true
+  validates :google_play_url, format: { with: /\A((http|https)?:\/\/)?(play.)google.com\/?/i }, allow_blank: true
+  validates :ticketfly_url, format: { with: /\A((http|https)?:\/\/)?(www.)?ticketfly.com\/?/i }, allow_blank: true
+  validates :website, format: { with: /\A((http|https)?:\/\/)?(www.)?[a-zA-Z0-9]+.[a-z]+\/?/i }, allow_blank: true
 
   before_save :smart_add_url_protocol
   before_save :downcase_url
@@ -22,7 +23,7 @@ class ArtistProfile < ActiveRecord::Base
         self.facebook_url = "https://#{self.facebook_url}" unless facebook_url.blank?
       end
       unless self.twitter_url[/\Ahttp:\/\//] || self.twitter_url[/\Ahttps:\/\//]
-        self.twitter_url = "https://#{self.twitter_url}" unless twitter_ur.blank?
+        self.twitter_url = "https://#{self.twitter_url}" unless twitter_url.blank?
       end
       unless self.youtube_url[/\Ahttp:\/\//] || self.youtube_url[/\Ahttps:\/\//]
         self.youtube_url = "https://#{self.youtube_url}" unless youtube_url.blank?

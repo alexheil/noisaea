@@ -1,6 +1,6 @@
 <%= provide(:title, sanitize(@producer.producer_name)) %>
 <div class="buffalo">
-  <% if @producer.producer_profile.cover_image == "" %>
+  <% if @producer.producer_profile.cover_image.blank? %>
     <div class="clinton">
       <% if producer_signed_in? && @producer.id == current_producer.id %>
         you do not have a cover image yet. <%= link_to "add one?", edit_producer_profile_path(current_producer) %>
@@ -48,71 +48,105 @@
 
 
     <div class="pearl">
+      <div class="dodge">
 
-      <% if @producer == current_producer %>
-      <% else %>
-      <div class="washington">
-        <div class="lisbon">
-        <div class="follow_button">
-          <%= render 'producers/partials/relationships/follow_button' %>
+        <% if @producer == current_producer %>
+        <% else %>
+        <div class="washington">
+          <div class="lisbon">
+          <div class="follow_button">
+            <%= render 'producers/partials/relationships/follow_button' %>
+          </div>
+          </div>
         </div>
+        <% end %>
+
+        <div id="follower_count">
+          <%= render 'producers/partials/relationships/follower_count' %>
         </div>
-      </div>
-      <% end %>
 
-      <div id="follower_count">
-        <%= render 'producers/partials/relationships/follower_count' %>
-      </div>
-
-      <% if producer_signed_in? && @producer.id == current_producer.id && @producer.producer_profile.location == "" && @producer.producer_profile.genre == "" && @producer.producer_profile.founded && @producer.producer_profile.artists == "" && @producer.producer_profile.biography == "" && @producer.producer_profile.facebook_url == "" && @producer.producer_profile.twitter_url == "" && @producer.producer_profile.youtube_url == "" && @producer.producer_profile.website %>
-        <p class="hertel">you do not have any profile information</p>
+        <% if producer_signed_in? && @producer.id == current_producer.id && @producer.producer_profile.location.blank? && @producer.producer_profile.genre.blank? && @producer.producer_profile.founded && @producer.producer_profile.artists.blank? && @producer.producer_profile.biography.blank? && @producer.producer_profile.facebook_url.blank? && @producer.producer_profile.twitter_url.blank? && @producer.producer_profile.youtube_url.blank? && @producer.producer_profile.website %>
+          <div class="amherst">
+            you do not have any profile information
+          </div>
+          <div class="jefferson">
+            <%= link_to "update your profile", edit_producer_profile_path(current_producer) %>
+          </div>
+        <% elsif @producer.producer_profile.location.blank? && @producer.producer_profile.genre.blank? && @producer.producer_profile.founded && @producer.producer_profile.artists.blank? && @producer.producer_profile.biography.blank? && @producer.producer_profile.facebook_url.blank? && @producer.producer_profile.twitter_url.blank? && @producer.producer_profile.youtube_url.blank? && @producer.producer_profile.website %>
+          <div class="amherst">
+            <%= "#{@producer.producer_name} does not have any profile information yet" %>
+          </div>
+        <% end %>
+        <% if @producer.producer_profile.location.blank? %>
+        <% else %>
         <div class="jefferson">
-          <%= link_to "update your profile", edit_producer_profile_path(current_producer) %>
+          location //
         </div>
-      <% elsif @producer.producer_profile.location == "" && @producer.producer_profile.genre == "" && @producer.producer_profile.founded && @producer.producer_profile.artists == "" && @producer.producer_profile.biography == "" && @producer.producer_profile.facebook_url == "" && @producer.producer_profile.twitter_url == "" && @producer.producer_profile.youtube_url == "" && @producer.producer_profile.website %>
-        <p class="hertel"><%= "#{@producer.producer_name} does not have any profile information yet" %></p>
-      <% end %>
-      <% if @producer.producer_profile.location == "" %>
-      <% else %>
-      <p class="jefferson">location //</p>
-      <p class="fillmore"><%= @producer.producer_profile.location %></p>
-      <% end %>
-      <% if @producer.producer_profile.founded == "" %>
-      <% else %>
-      <p class="jefferson">founded //</p>
-      <p class="fillmore"><%= @producer.producer_profile.founded %></p>
-      <% end %>
-      <% if @producer.producer_profile.genre == "" %>
-      <% else %>
-      <p class="jefferson">genre //</p>
-      <p class="fillmore"><%= @producer.producer_profile.genre %></p>
-      <% end %>
-      <% if @producer.producer_profile.artists == "" %>
-      <% else %>
-      <p class="jefferson">artists //</p>
-      <p class="fillmore"><%= @producer.producer_profile.artists %></p>
-      <% end %>
-      <% if @producer.producer_profile.biography == "" %>
-      <% else %>
-      <p class="jefferson">biography //</p>
-      <p class="fillmore"><%= @producer.producer_profile.biography %></p>
-      <% end %>
-      <% if @producer.producer_profile.website == "" %>
-      <% else %>
-      <p class="fillmore"><%= link_to "#{@producer.producer_name}'s website", @producer.producer_profile.website %></p>
-      <% end %>
-      <% if @producer.producer_profile.facebook_url == "" %>
-      <% else %>
-      <p class="fillmore"><%= link_to "Facebook", @producer.producer_profile.facebook_url %></p>
-      <% end %>
-      <% if @producer.producer_profile.twitter_url == "" %>
-      <% else %>
-      <p class="fillmore"><%= link_to "Twitter", @producer.producer_profile.twitter_url %></p>
-      <% end %>
-      <% if @producer.producer_profile.youtube_url == "" %>
-      <% else %>
-      <p class="fillmore"><%= link_to "YouTube", @producer.producer_profile.youtube_url %></p>
-      <% end %>
+        <div class="fillmore">
+          <%= @producer.producer_profile.location %>
+        </div>
+        <% end %>
+        <% if @producer.producer_profile.founded.blank? %>
+        <% else %>
+        <div class="jefferson">
+          founded //
+        </div>
+        <div class="fillmore">
+          <%= @producer.producer_profile.founded %>
+        </div>
+        <% end %>
+        <% if @producer.producer_profile.genre.blank? %>
+        <% else %>
+        <div class="jefferson">
+          genre //
+        </div>
+        <div class="fillmore">
+          <%= @producer.producer_profile.genre %>
+        </div>
+        <% end %>
+        <% if @producer.producer_profile.artists.blank? %>
+        <% else %>
+        <div class="jefferson">
+          artists //
+        </div>
+        <div class="fillmore">
+          <%= @producer.producer_profile.artists %>
+        </div>
+        <% end %>
+        <% if @producer.producer_profile.biography.blank? %>
+        <% else %>
+        <div class="jefferson">
+          biography //
+        </div>
+        <div class="fillmore">
+          <%= @producer.producer_profile.biography %>
+        </div>
+        <% end %>
+        <% if @producer.producer_profile.website.blank? %>
+        <% else %>
+        <div class="fillmore">
+          <%= link_to "#{@producer.producer_name}'s website", @producer.producer_profile.website %>
+        </div>
+        <% end %>
+        <% if @producer.producer_profile.facebook_url.blank? %>
+        <% else %>
+        <div class="fillmore">
+          <%= link_to "Facebook", @producer.producer_profile.facebook_url %>
+        </div>
+        <% end %>
+        <% if @producer.producer_profile.twitter_url.blank? %>
+        <% else %>
+        <div class="fillmore">
+          <%= link_to "Twitter", @producer.producer_profile.twitter_url %>
+        </div>
+        <% end %>
+        <% if @producer.producer_profile.youtube_url.blank? %>
+        <% else %>
+        <div class="fillmore">
+          <%= link_to "YouTube", @producer.producer_profile.youtube_url %>
+        </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

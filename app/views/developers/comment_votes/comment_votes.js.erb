@@ -1,0 +1,2 @@
+$('.comment_votes_count_<%= @comment.id %>').html('<%=  escape_javascript(render :partial => 'developers/partials/comments/comment_votes_count', :locals => {:comment => @comment}) %>');
+$('.comment_votes_<%= @comment.id %>').html('<%=  escape_javascript(render :partial => 'developers/partials/comments/comment_votes', :locals => {:comment => @comment}) %>');

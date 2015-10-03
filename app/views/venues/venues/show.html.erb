@@ -47,61 +47,85 @@
 
 
     <div class="pearl">
+      <div class="dodge">
 
-      <% if @venue == current_venue %>
-      <% else %>
-      <div class="washington">
-        <div class="lisbon">
-        <div class="follow_button">
-          <%= render 'venues/partials/relationships/follow_button' %>
+        <% if @venue == current_venue %>
+        <% else %>
+        <div class="washington">
+          <div class="lisbon">
+          <div class="follow_button">
+            <%= render 'venues/partials/relationships/follow_button' %>
+          </div>
+          </div>
         </div>
+        <% end %>
+
+        <div id="follower_count">
+          <%= render 'venues/partials/relationships/follower_count' %>
         </div>
-      </div>
-      <% end %>
 
-      <div id="follower_count">
-        <%= render 'venues/partials/relationships/follower_count' %>
-      </div>
-
-      <% if venue_signed_in? && @venue.id == current_venue.id && @venue.venue_profile.location.blank? && @venue.venue_profile.founded.blank? && @venue.venue_profile.biography.blank? && @venue.venue_profile.facebook_url.blank? && @venue.venue_profile.twitter_url.blank? && @venue.venue_profile.youtube_url.blank? && @venue.venue_profile.website.blank? %>
-        <p class="hertel">you do not have any profile information</p>
+        <% if venue_signed_in? && @venue.id == current_venue.id && @venue.venue_profile.location.blank? && @venue.venue_profile.founded.blank? && @venue.venue_profile.biography.blank? && @venue.venue_profile.facebook_url.blank? && @venue.venue_profile.twitter_url.blank? && @venue.venue_profile.youtube_url.blank? && @venue.venue_profile.website.blank? %>
+          <div class="amherst">
+            you do not have any profile information
+          </div>
+          <div class="jefferson">
+            <%= link_to "update your profile", edit_venue_profile_path(current_venue) %>
+          </div>
+        <% elsif @venue.venue_profile.location.blank? && @venue.venue_profile.founded.blank? && @venue.venue_profile.biography.blank? && @venue.venue_profile.facebook_url.blank? && @venue.venue_profile.twitter_url.blank? && @venue.venue_profile.youtube_url.blank? && @venue.venue_profile.website %>
+          <div class="amherst"><%= "#{@venue.venue_name} does not have any profile information yet" %></div>
+        <% end %>
+        <% if @venue.venue_profile.location.blank? %>
+        <% else %>
         <div class="jefferson">
-          <%= link_to "update your profile", edit_venue_profile_path(current_venue) %>
+          location //
         </div>
-      <% elsif @venue.venue_profile.location.blank? && @venue.venue_profile.founded.blank? && @venue.venue_profile.biography.blank? && @venue.venue_profile.facebook_url.blank? && @venue.venue_profile.twitter_url.blank? && @venue.venue_profile.youtube_url.blank? && @venue.venue_profile.website %>
-        <p class="hertel"><%= "#{@venue.venue_name} does not have any profile information yet" %></p>
-      <% end %>
-      <% if @venue.venue_profile.location.blank? %>
-      <% else %>
-      <p class="jefferson">location //</p>
-      <p class="fillmore"><%= @venue.venue_profile.location %></p>
-      <% end %>
-      <% if @venue.venue_profile.founded.blank? %>
-      <% else %>
-      <p class="jefferson">founded //</p>
-      <p class="fillmore"><%= @venue.venue_profile.founded %></p>
-      <% end %>
-      <% if @venue.venue_profile.biography.blank? %>
-      <% else %>
-      <p class="jefferson">biography //</p>
-      <p class="fillmore"><%= @venue.venue_profile.biography %></p>
-      <% end %>
-      <% if @venue.venue_profile.website.blank? %>
-      <% else %>
-      <p class="fillmore"><%= link_to "Website", @venue.venue_profile.website %></p>
-      <% end %>
-      <% if @venue.venue_profile.facebook_url.blank? %>
-      <% else %>
-      <p class="fillmore"><%= link_to "Facebook", @venue.venue_profile.facebook_url %></p>
-      <% end %>
-      <% if @venue.venue_profile.twitter_url.blank? %>
-      <% else %>
-      <p class="fillmore"><%= link_to "Twitter", @venue.venue_profile.twitter_url %></p>
-      <% end %>
-      <% if @venue.venue_profile.youtube_url.blank? %>
-      <% else %>
-      <p class="fillmore"><%= link_to "YouTube", @venue.venue_profile.youtube_url %></p>
-      <% end %>
+        <div class="fillmore">
+          <%= @venue.venue_profile.location %>
+        </div>
+        <% end %>
+        <% if @venue.venue_profile.founded.blank? %>
+        <% else %>
+        <div class="jefferson">
+          founded //
+        </div>
+        <div class="fillmore">
+          <%= @venue.venue_profile.founded %>
+        </div>
+        <% end %>
+        <% if @venue.venue_profile.biography.blank? %>
+        <% else %>
+        <div class="jefferson">
+          biography //
+        </div>
+        <div class="fillmore">
+          <%= @venue.venue_profile.biography %>
+        </div>
+        <% end %>
+        <% if @venue.venue_profile.website.blank? %>
+        <% else %>
+        <div class="fillmore">
+          <%= link_to "Website", @venue.venue_profile.website %>
+        </div>
+        <% end %>
+        <% if @venue.venue_profile.facebook_url.blank? %>
+        <% else %>
+        <div class="fillmore">
+          <%= link_to "Facebook", @venue.venue_profile.facebook_url %>
+        </div>
+        <% end %>
+        <% if @venue.venue_profile.twitter_url.blank? %>
+        <% else %>
+        <div class="fillmore">
+          <%= link_to "Twitter", @venue.venue_profile.twitter_url %>
+        </div>
+        <% end %>
+        <% if @venue.venue_profile.youtube_url.blank? %>
+        <% else %>
+        <div class="fillmore">
+          <%= link_to "YouTube", @venue.venue_profile.youtube_url %>
+        </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

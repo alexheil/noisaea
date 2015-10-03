@@ -5,6 +5,7 @@ class Posts::CommentsController < ApplicationController
   def create
     @comment = PostComment.new(comment_params)
     @comment.post_id = Post.friendly.find(params[:post_id]).id
+    @post = Post.friendly.find(params[:post_id])
     if artist_signed_in?
       @comment.artist_id = current_artist.id
     elsif fan_signed_in?
@@ -17,8 +18,10 @@ class Posts::CommentsController < ApplicationController
       @comment.producer_id = current_producer.id
     end
     if @comment.save
-      redirect_to (:back)
-      flash[:notice] = "you rock"
+      respond_to do |format|
+        format.html { redirect_to (:back) }
+        format.js { render :action => "comments" }
+      end
     else
       redirect_to (:back)
       flash[:alert] = "you suck."
@@ -27,8 +30,11 @@ class Posts::CommentsController < ApplicationController
 
   def destroy
     PostComment.find(params[:id]).destroy
-    redirect_to (:back)
-    flash[:notice] = "good riddance to that comment"
+    @post = Post.friendly.find(params[:post_id])
+    respond_to do |format|
+      format.html { redirect_to (:back) }
+      format.js { render :action => "comments" }
+    end
   end
 
   private

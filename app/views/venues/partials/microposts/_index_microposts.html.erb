@@ -9,6 +9,16 @@
         <div class="winspear">
           <%= micropost.content %>
         </div>
+        <% if micropost.link_url.present? %>
+        <div class="winspear">
+            <%= link_to "#{micropost.link_url.split('/')[2]}", micropost.link_url, data: { confirm: "#{micropost.link_url} \n\nAre you sure?" } %>
+        </div>
+        <% end %>
+        <% if micropost.photo_url.present? %>
+        <div class="northrup lincoln">
+          <img srcset="<%= micropost.photo_url %>" width="100%" height="auto" />
+        </div>
+        <% end %>
 
         <div class="lisbon">
 

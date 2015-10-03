@@ -1,0 +1,89 @@
+<%= provide(:title, "Stats") %>
+<%= render "partials/uni_header" %>
+<div class="buffalo">
+  <div class="kenmore">
+    <div class="harlem">
+      <h1>super cool noisaea stats</h1>
+    </div>
+
+    <div class="highgate">
+      <h3>users</h3>
+    </div>
+
+    <div class="amherst">
+      <div><%= pluralize(Artist.count, "artist") %></div>
+      <div><%= pluralize(RecordLabel.count, "record label") %></div>
+      <div><%= pluralize(Venue.count, "venue") %></div>
+      <div><%= pluralize(Producer.count, "producer") %></div>
+      <div><%= pluralize(Fan.count, "fan") %></div>
+      <div><%= pluralize(Artist.count + RecordLabel.count + Venue.count + Producer.count + Fan.count, "total user") %></div>
+    </div>
+
+    <div class="highgate">
+      <h3>statuses</h3>
+    </div>
+
+    <div class="amherst">
+      <div><%= pluralize(ArtistMicropost.count, "artist status") %></div>
+      <div><%= pluralize(RecordLabelMicropost.count, "record label status") %></div>
+      <div><%= pluralize(VenueMicropost.count, "venue status") %></div>
+      <div><%= pluralize(ProducerMicropost.count, "producer status") %></div>
+      <div><%= pluralize(ArtistMicropost.count + RecordLabelMicropost.count + VenueMicropost.count + ProducerMicropost.count, "total status") %></div>
+    </div>
+
+    <div class="highgate">
+      <h3>comments</h3>
+    </div>
+
+    <div class="amherst">
+      <div><%= pluralize(ArtistMicropostComment.count, "comment") %> on artist statuses</div>
+      <div><%= pluralize(RecordLabelMicropostComment.count, "comment") %> on record label statuses</div>
+      <div><%= pluralize(VenueMicropostComment.count, "comment") %> on venue statuses</div>
+      <div><%= pluralize(ProducerMicropostComment.count, "comment") %> on producer statuses</div>
+      <div><%= pluralize(ArtistMicropostComment.count + RecordLabelMicropostComment.count + VenueMicropostComment.count + ProducerMicropostComment.count, "comment") %> on all statuses</div>
+    </div>
+
+    <div class="highgate">
+      <h3>status votes</h3>
+    </div>
+
+    <div class="amherst">
+      <div><%= pluralize(ArtistMicropostVote.count, "vote") %> on artist statuses</div>
+      <div><%= pluralize(RecordLabelMicropostVote.count, "vote") %>on record label statuses</div>
+      <div><%= pluralize(VenueMicropostVote.count, "vote") %> on venue statuses</div>
+      <div><%= pluralize(ProducerMicropostVote.count, "vote") %> on producer statuses</div>
+      <div><%= pluralize(ArtistMicropostVote.count + RecordLabelMicropostVote.count + VenueMicropostVote.count + ProducerMicropostVote.count, "vote") %> on all statuses</div>
+    </div>
+
+    <div class="highgate">
+      <h3>comment votes</h3>
+    </div>
+
+    <div class="amherst">
+      <div><%= pluralize(ArtistMicropostCommentVote.count, "vote") %> on artist status comments</div>
+      <div><%= pluralize(RecordLabelMicropostCommentVote.count, "vote") %> on record label status comments</div>
+      <div><%= pluralize(VenueMicropostCommentVote.count, "vote") %> on venue status comments</div>
+      <div><%= pluralize(ProducerMicropostCommentVote.count, "vote") %> on producer status comments</div>
+      <div><%= pluralize(ArtistMicropostCommentVote.count + RecordLabelMicropostCommentVote.count + VenueMicropostCommentVote.count + ProducerMicropostCommentVote.count, "vote") %> on all status comments</div>
+    </div>
+
+    <div class="amherst">
+      <div><%= pluralize(ArtistMicropostVote.count + RecordLabelMicropostVote.count + VenueMicropostVote.count + ProducerMicropostVote.count + ArtistMicropostCommentVote.count + RecordLabelMicropostCommentVote.count + VenueMicropostCommentVote.count + ProducerMicropostCommentVote.count + PostCommentVote.count + DeveloperCommentVote.count, "total vote") %> across noisaea</div>
+    </div>
+
+    <div class="highgate">
+      <h3>blog</h3>
+    </div>
+
+    <div class="amherst">
+      <div><%= pluralize(Post.count, "blog post") %></div>
+      <div><%= pluralize(PostComment.count, "comment") %> on blog posts</div>
+      <div><%= pluralize(PostCommentVote.count, "vote") %> on blog post comments</div>
+      <div><%= pluralize(Developer.count, "developer post") %></div>
+      <div><%= pluralize(DeveloperComment.count, "comment") %> on developer posts</div>
+      <div><%= pluralize(DeveloperCommentVote.count, "vote") %> on developer post comments</div>
+    </div>
+
+  </div>
+</div>
+<%= render "partials/uni_footer" %>

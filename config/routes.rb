@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'about' => 'static_pages#about'
   get 'faq' => 'static_pages#faq'
   get 'copyright' => 'static_pages#copyright'
+  get 'stats' => 'static_pages#stats'
   get 'register' => 'static_pages#register'
   get 'sign_in' => 'static_pages#sign_in'
 
@@ -115,16 +116,15 @@ Rails.application.routes.draw do
   end
 
   resources :posts, controller: 'posts/posts' do
-    resources :comments, controller: 'posts/comments', only: [:create, :destroy]
+    resources :comments, controller: 'posts/comments', only: [:create, :destroy] do
+      resources :votes, controller: 'posts/comment_votes', only: [:create,:destroy]
+    end
   end
 
   resources :developers, controller: 'developers/developers' do
-    resources :comments, controller: 'developers/comments', only: [:create, :destroy]
+    resources :comments, controller: 'developers/comments', only: [:create, :destroy] do
+      resources :votes, controller: 'developers/comment_votes', only: [:create,:destroy]
+    end
   end
-
-  ###################### RELATIONSHIPS #############################
-
-  resources :post_comment_votes, controller: 'posts/comment_votes', only: [:create,:destroy]
-  resources :developer_comment_votes, controller: 'developers/comment_votes', only: [:create,:destroy]
 
 end

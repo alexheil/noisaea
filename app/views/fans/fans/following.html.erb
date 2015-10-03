@@ -1,6 +1,6 @@
 <%= provide(:title, sanitize(@fan.fan_name) + " | Following") %>
 <div class="buffalo">
-  <% if @fan.fan_profile.cover_image == "" %>
+  <% if @fan.fan_profile.cover_image.blank? %>
     <div class="clinton">
       <% if fan_signed_in? && @fan.id == current_fan.id %>
         you do not have a cover image yet. <%= link_to "add one?", edit_fan_profile_path(current_fan) %>
@@ -76,7 +76,7 @@
         <% @fan.artists.take(100).each do |artist| %>
           <div class="utica">
 
-            <% if artist.artist_profile.cover_image == "" %>
+            <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if artist_signed_in? && artist.id == current_artist.id %>
                   you do not have a profile image yet
@@ -104,7 +104,7 @@
         <% @fan.record_labels.take(100).each do |record_label| %>
           <div class="utica">
 
-            <% if record_label.record_label_profile.cover_image == "" %>
+            <% if record_label.record_label_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if record_label_signed_in? && record_label.id == current_record_label.id %>
                   you do not have a profile image yet
@@ -131,7 +131,7 @@
         <% @fan.venues.take(100).each do |venue| %>
           <div class="utica">
 
-            <% if venue.venue_profile.cover_image == "" %>
+            <% if venue.venue_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if venue_signed_in? && venue.id == current_venue.id %>
                   you do not have a profile image yet
@@ -158,7 +158,7 @@
         <% @fan.producers.take(100).each do |producer| %>
           <div class="utica">
 
-            <% if producer.producer_profile.cover_image == "" %>
+            <% if producer.producer_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if producer_signed_in? && producer.id == current_producer.id %>
                   you do not have a profile image yet

@@ -145,12 +145,20 @@ class Venue < ActiveRecord::Base
     PostCommentVote.find_by(venue_id: id, post_comment_id: post_comment.id).destroy
   end
 
+  def post_comment_vote_id(post_comment)
+    PostCommentVote.find_by(venue_id: id, post_comment_id: post_comment.id).id
+  end
+
   def developer_comment_voted?(developer_comment)
     DeveloperCommentVote.exists? venue_id: id, developer_comment_id: developer_comment.id
   end
 
   def developer_comment_unvote(developer_comment)
     DeveloperCommentVote.find_by(venue_id: id, developer_comment_id: developer_comment.id).destroy
+  end
+
+  def developer_comment_vote_id(developer_comment)
+    DeveloperCommentVote.find_by(venue_id: id, developer_comment_id: developer_comment.id).id
   end
 
   private

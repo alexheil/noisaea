@@ -28,7 +28,7 @@
             recent
           </div>
           <div id="location" class="porter">
-            <% if fan_signed_in? && current_fan.fan_profile.location != "" %>
+            <% if fan_signed_in? && current_fan.fan_profile.location.present? %>
               <%= current_fan.fan_profile.location.downcase %>
             <% else %>
               location
@@ -56,7 +56,7 @@
       <div id="container-popular" class="ferry">
         <% @venues.sort_by{ |venue| -venue.fans.count }.take(100).each do |venue| %>
           <div class="utica">
-            <% if venue.venue_profile.cover_image == "" %>
+            <% if venue.venue_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if venue_signed_in? && venue.id == current_venue.id %>
                   you do not have a profile image yet
@@ -73,7 +73,7 @@
                 <center><%= link_to venue.venue_name, venue_path(venue) %></center>
               </div>
               <div class="hertel">
-                <center><%= venue.venue_profile.location unless venue.venue_profile.location == "" %></center>
+                <center><%= venue.venue_profile.location unless venue.venue_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= venue.id %>">
@@ -92,7 +92,7 @@
       <div id="container-recent" class="ferry colvin">
         <% @venues.order( 'id DESC' ).take(100).each do |venue| %>
           <div class="utica">
-            <% if venue.venue_profile.cover_image == "" %>
+            <% if venue.venue_profile.cover_image.blank? %>
               <div class="sycamore">
                 <% if venue_signed_in? && venue.id == current_venue.id %>
                   you do not have a profile image yet
@@ -109,7 +109,7 @@
                 <center><%= link_to venue.venue_name, venue_path(venue) %></center>
               </div>
               <div class="hertel">
-                <center><%= venue.venue_profile.location unless venue.venue_profile.location == "" %></center>
+                <center><%= venue.venue_profile.location unless venue.venue_profile.location.blank? %></center>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= venue.id %>">
@@ -126,11 +126,11 @@
       </div>
 
       <div id="container-location" class="ferry colvin">
-        <% if fan_signed_in? && current_fan.fan_profile.location != "" %>
+        <% if fan_signed_in? && current_fan.fan_profile.location.present? %>
           <% @venues.each do |venue| %>
             <% if venue.venue_profile.location == current_fan.fan_profile.location %>
               <div class="utica">
-                <% if venue.venue_profile.cover_image == "" %>
+                <% if venue.venue_profile.cover_image.blank? %>
                   <div class="sycamore">
                     <% if venue_signed_in? && venue.id == current_venue.id %>
                       you do not have a profile image yet
@@ -147,7 +147,7 @@
                     <center><%= link_to venue.venue_name, venue_path(venue) %></center>
                   </div>
                   <div class="hertel">
-                    <center><%= venue.venue_profile.location unless venue.venue_profile.location == "" %></center>
+                    <center><%= venue.venue_profile.location unless venue.venue_profile.location.blank? %></center>
                   </div>
                   <div class="hertel">
                 <div class="index_follower_count_<%= venue.id %>">
@@ -162,7 +162,7 @@
               </div>
             <% end %>
           <% end %>
-        <% elsif fan_signed_in? && current_fan.fan_profile.location == "" %>
+        <% elsif fan_signed_in? && current_fan.fan_profile.location.blank? %>
           <div class="hertel">
             <center>Your location is blank! Go set it on <%= link_to "your profile", edit_fan_profile_path(current_fan) %>.</center>
           </div>

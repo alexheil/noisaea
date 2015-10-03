@@ -1,6 +1,6 @@
 <%= provide(:title, sanitize(@record_label.label_name) + " | Status #{@micropost.id}") %>
 <div class="buffalo">
-  <% if @record_label.record_label_profile.cover_image == "" %>
+  <% if @record_label.record_label_profile.cover_image.blank? %>
     <div class="clinton">
       <% if record_label_signed_in? && @record_label.id == current_record_label.id %>
         you do not have a cover image yet
@@ -26,6 +26,16 @@
       <div class="winspear">
         <%= @micropost.content %>
       </div>
+      <% if @micropost.link_url.present? %>
+      <div class="winspear">
+          <%= link_to "#{@micropost.link_url.split('/')[2]}", @micropost.link_url, data: { confirm: "#{@micropost.link_url} \n\nAre you sure?" } %>
+      </div>
+      <% end %>
+      <% if @micropost.photo_url.present? %>
+      <div class="northrup lincoln">
+        <img srcset="<%= @micropost.photo_url %>" width="100%" height="auto" />
+      </div>
+      <% end %>
 
       <div class="lisbon" id="lisbon">
 

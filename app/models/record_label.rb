@@ -41,6 +41,86 @@ class RecordLabel < ActiveRecord::Base
     where("label_name LIKE ?", "%#{search}%")
   end
 
+  #### GENRES ####
+
+  def self.alternative
+    RecordLabel.joins(:record_label_profile).where("record_label_profiles.genre" => "Alternative")
+  end
+
+  def self.ambient
+    RecordLabel.joins(:record_label_profile).where("record_label_profiles.genre" => "Ambient")
+  end
+
+  def self.blues
+    RecordLabel.joins(:record_label_profile).where("record_label_profiles.genre" => "Blues")
+  end
+
+  def self.classical
+    RecordLabel.joins(:record_label_profile).where("record_label_profiles.genre" => "Classical")
+  end
+
+  def self.comedy
+    RecordLabel.joins(:record_label_profile).where("record_label_profiles.genre" => "Comedy")
+  end
+
+  def self.country
+    RecordLabel.joins(:record_label_profile).where("record_label_profiles.genre" => "Country")
+  end
+
+  def self.electronic
+    RecordLabel.joins(:record_label_profile).where("record_label_profiles.genre" => "Electronic")
+  end
+
+  def self.experimental
+    RecordLabel.joins(:record_label_profile).where("record_label_profiles.genre" => "Experimental")
+  end
+
+  def self.hiphoprap
+    RecordLabel.joins(:record_label_profile).where("record_label_profiles.genre" => "Hip-Hop/Rap")
+  end
+
+  def self.indie
+    RecordLabel.joins(:record_label_profile).where("record_label_profiles.genre" => "Indie")
+  end
+
+  def self.jazz
+    RecordLabel.joins(:record_label_profile).where("record_label_profiles.genre" => "Jazz")
+  end
+
+  def self.latino
+    RecordLabel.joins(:record_label_profile).where("record_label_profiles.genre" => "Latino")
+  end
+
+  def self.metal
+    RecordLabel.joins(:record_label_profile).where("record_label_profiles.genre" => "Metal")
+  end
+
+  def self.pop
+    RecordLabel.joins(:record_label_profile).where("record_label_profiles.genre" => "Pop")
+  end
+
+  def self.rbsoul
+    RecordLabel.joins(:record_label_profile).where("record_label_profiles.genre" => "R&B/Soul")
+  end
+
+  def self.rock
+    RecordLabel.joins(:record_label_profile).where("record_label_profiles.genre" => "Rock")
+  end
+
+  def self.singersongwriter
+    RecordLabel.joins(:record_label_profile).where("record_label_profiles.genre" => "Singer/Songwriter")
+  end
+
+  def self.soundtrack
+    RecordLabel.joins(:record_label_profile).where("record_label_profiles.genre" => "Soundtrack")
+  end
+
+  def self.world
+    RecordLabel.joins(:record_label_profile).where("record_label_profiles.genre" => "World")
+  end
+
+  #### VOTES ####
+
   def artist_micropost_voted?(artist_micropost)
     ArtistMicropostVote.exists? record_label_id: id, artist_micropost_id: artist_micropost.id
   end
@@ -145,12 +225,20 @@ class RecordLabel < ActiveRecord::Base
     PostCommentVote.find_by(record_label_id: id, post_comment_id: post_comment.id).destroy
   end
 
+  def post_comment_vote_id(post_comment)
+    PostCommentVote.find_by(record_label_id: id, post_comment_id: post_comment.id).id
+  end
+
   def developer_comment_voted?(developer_comment)
     DeveloperCommentVote.exists? record_label_id: id, developer_comment_id: developer_comment.id
   end
 
   def developer_comment_unvote(developer_comment)
     DeveloperCommentVote.find_by(record_label_id: id, developer_comment_id: developer_comment.id).destroy
+  end
+
+  def developer_comment_vote_id(developer_comment)
+    DeveloperCommentVote.find_by(record_label_id: id, developer_comment_id: developer_comment.id).id
   end
 
   private
