@@ -28,7 +28,7 @@
     </div>
   </div>
 
-  <div id="fan-artist" class="ferry colvin">
+  <div id="fan-artist" class="ferry">
     <% @fan.artist_microposts.take(100).each do |micropost| %>
     <div class="harlem dodge">
       <span class="winspear"><strong><%= link_to Artist.find(micropost.artist_id).artist_name, artist_path(Artist.find(micropost.artist_id)) %></strong> posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
@@ -40,7 +40,7 @@
       </div>
       <% if micropost.link_url.present? %>
       <div class="winspear">
-          <%= link_to "#{micropost.link_url.split("://").last.truncate(40)}", micropost.link_url  %>
+          <%= link_to "#{micropost.link_url.split('/')[2]}", micropost.link_url, data: { confirm: "#{micropost.link_url} \n\nAre you sure?" }, class: "sugar" %>
       </div>
       <% end %>
       <% if micropost.photo_url.present? %>
@@ -93,7 +93,7 @@
       </div>
       <% if micropost.link_url.present? %>
       <div class="winspear">
-          <%= link_to "#{micropost.link_url.split("://").last.truncate(40)}", micropost.link_url  %>
+          <%= link_to "#{micropost.link_url.split('/')[2]}", micropost.link_url, data: { confirm: "#{micropost.link_url} \n\nAre you sure?" }, class: "sugar" %>
       </div>
       <% end %>
       <% if micropost.photo_url.present? %>
@@ -147,7 +147,7 @@
       </div>
       <% if micropost.link_url.present? %>
       <div class="winspear">
-          <%= link_to "#{micropost.link_url.split("://").last.truncate(40)}", micropost.link_url  %>
+          <%= link_to "#{micropost.link_url.split('/')[2]}", micropost.link_url, data: { confirm: "#{micropost.link_url} \n\nAre you sure?" }, class: "sugar" %>
       </div>
       <% end %>
       <% if micropost.photo_url.present? %>
@@ -200,7 +200,7 @@
       </div>
       <% if micropost.link_url.present? %>
       <div class="winspear">
-          <%= link_to "#{micropost.link_url.split("://").last.truncate(40)}", micropost.link_url  %>
+          <%= link_to "#{micropost.link_url.split('/')[2]}", micropost.link_url, data: { confirm: "#{micropost.link_url} \n\nAre you sure?" }, class: "sugar" %>
       </div>
       <% end %>
       <% if micropost.photo_url.present? %>

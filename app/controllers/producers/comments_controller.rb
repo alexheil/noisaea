@@ -19,6 +19,7 @@ class Producers::CommentsController < ApplicationController
       @comment.producer_id = current_producer.id
     end
     if @comment.save
+      flash.now[:notice] = "you posted a comment on #{@producers.producers_name}'s status."
       respond_to do |format|
         format.html { redirect_to (:back) }
         format.js { render :action => "comments" }
@@ -33,6 +34,7 @@ class Producers::CommentsController < ApplicationController
     ProducerMicropostComment.find(params[:id]).destroy
     @producer = Producer.friendly.find(ProducerMicropost.find(params[:micropost_id]).producer_id)
     @micropost = ProducerMicropost.find(params[:micropost_id])
+    flash.now[:notice] = "you successfully deleted your comment."
     respond_to do |format|
       format.html { redirect_to (:back) }
       format.js { render :action => "comments" }

@@ -7,3 +7,4 @@ $('.comments_count').html('<%=  escape_javascript(render :partial => 'venues/par
 $('.venue_fan_comments_js_<%= @micropost.id %>').html('<%=  escape_javascript(render :partial => 'venues/partials/comments/fan_comments', :locals => {:micropost => @micropost}) %>');
 $('.venue_fan_comments_form_<%= @micropost.id %>').html('<%=  escape_javascript(render :partial => 'venues/partials/comments/fan_comments_form', :locals => {:micropost => @micropost}) %>');
 $('.venue_fan_comments_count_<%= @micropost.id %>').html('<%=  escape_javascript(render :partial => 'venues/partials/comments/index_comments_count', :locals => {:micropost => @micropost}) %>');
+$('.flash_js').html('<%=  escape_javascript(render :partial => 'partials/flash') %>');

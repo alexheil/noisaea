@@ -10,13 +10,14 @@ class Venues::MicropostsController < ApplicationController
     @micropost.venue_id = current_venue.id
     @venue = Venue.friendly.find(params[:venue_id])
     if @micropost.save
+      flash.now[:notice] = "your status has been posted!"
       respond_to do |format|
         format.html { redirect_to (:back) }
         format.js { render :action => "microposts" }
       end
     else
       redirect_to (:back)
-      flash[:alert] = "You probably forgot to write something? Yeah, that's it!"
+      flash[:alert] = "you probably forgot to write something? yeah, that's it!"
     end
   end
 
@@ -28,6 +29,7 @@ class Venues::MicropostsController < ApplicationController
   def destroy
     VenueMicropost.find(params[:id]).destroy
     @venue = Venue.friendly.find(params[:venue_id])
+    flas.now[:notice] = "you successfully deleted your status."
     respond_to do |format|
       format.html { redirect_to (:back) }
       format.js { render :action => "microposts" }

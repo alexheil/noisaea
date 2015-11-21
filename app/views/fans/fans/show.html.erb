@@ -46,48 +46,43 @@
 
 
     <div class="pearl">
-      <div class="dodge">
 
-        <% if fan_signed_in? && @fan.id == current_fan.id && @fan.fan_profile.location.blank? && @fan.fan_profile.biography.blank? && @fan.fan_profile.website.blank? %>
-          <div class="amherst">
-            you do not have any profile information
-          </div>
-          <div class="jefferson">
-            <%= link_to "update your profile", edit_fan_profile_path(current_fan) %>
-          </div>
-        <% elsif @fan.fan_profile.location.blank? && @fan.fan_profile.biography.blank? && @fan.fan_profile.website.blank? %>
-          <div class="amherst">
-            <%= "#{@fan.fan_name} does not have any profile information yet" %>
-          </div>
-        <% end %>
-        <% if @fan.fan_profile.location.blank? %>
-        <% else %>
+      <% if fan_signed_in? && @fan.id == current_fan.id && @fan.fan_profile.location.blank? && @fan.fan_profile.biography.blank? && @fan.fan_profile.website.blank? %>
+        <div class="amherst">
+          you do not have any profile information
+        </div>
         <div class="jefferson">
-          location //
+          <%= link_to "update your profile", edit_fan_profile_path(current_fan) %>
         </div>
-        <div class="fillmore">
-          <%= @fan.fan_profile.location %>
+      <% elsif @fan.fan_profile.location.blank? && @fan.fan_profile.biography.blank? && @fan.fan_profile.website.blank? %>
+        <div class="amherst">
+          <%= "#{@fan.fan_name} does not have any profile information yet" %>
         </div>
-        <% end %>
-        <% if @fan.fan_profile.website.blank? %>
-        <% else %>
-        <div class="jefferson">
-          website //
-        </div>
-        <div class="fillmore">
-          <%= link_to "#{@fan.fan_name}'s website", @fan.fan_profile.website %>
-        </div>
-        <% end %>
-        <% if @fan.fan_profile.biography.blank? %>
-        <% else %>
-        <div class="jefferson">
-          biography //
-        </div>
-        <div class="fillmore">
-          <%= @fan.fan_profile.biography %>
-        </div>
-        <% end %>
+      <% end %>
+      <% if @fan.fan_profile.location.present? %>
+      <div class="jefferson">
+        location //
       </div>
+      <div class="fillmore">
+        <%= @fan.fan_profile.location %>
+      </div>
+      <% end %>
+      <% if @fan.fan_profile.website.present? %>
+      <div class="jefferson">
+        website //
+      </div>
+      <div class="fillmore">
+        <%= link_to "#{@fan.fan_name}'s website", @fan.fan_profile.website %>
+      </div>
+      <% end %>
+      <% if @fan.fan_profile.biography.present? %>
+      <div class="jefferson">
+        biography //
+      </div>
+      <div class="fillmore">
+        <%= @fan.fan_profile.biography %>
+      </div>
+      <% end %>
     </div>
   </div>
 </div>

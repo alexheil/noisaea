@@ -19,6 +19,7 @@ class Recordlabels::CommentsController < ApplicationController
       @comment.producer_id = current_producer.id
     end
     if @comment.save
+      flash.now[:notice] = "you posted a comment on #{@record_label.label_name}'s status."
       respond_to do |format|
         format.html { redirect_to (:back) }
         format.js { render :action => "comments" }
@@ -33,6 +34,7 @@ class Recordlabels::CommentsController < ApplicationController
     RecordLabelMicropostComment.find(params[:id]).destroy
     @record_label = RecordLabel.friendly.find(RecordLabelMicropost.find(params[:micropost_id]).record_label_id)
     @micropost = RecordLabelMicropost.find(params[:micropost_id])
+    flash.now[:notice] = "you successfully deleted your comment."
     respond_to do |format|
       format.html { redirect_to (:back) }
       format.js { render :action => "comments" }

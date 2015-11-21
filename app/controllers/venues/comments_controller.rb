@@ -19,6 +19,7 @@ class Venues::CommentsController < ApplicationController
       @comment.producer_id = current_producer.id
     end
     if @comment.save
+      flash.now[:notice] = "you posted a comment on #{@venue.venue_name}'s status."
       respond_to do |format|
         format.html { redirect_to (:back) }
         format.js { render :action => "comments" }
@@ -33,6 +34,7 @@ class Venues::CommentsController < ApplicationController
     VenueMicropostComment.find(params[:id]).destroy
     @venue = Venue.friendly.find(VenueMicropost.find(params[:micropost_id]).venue_id)
     @micropost = VenueMicropost.find(params[:micropost_id])
+    flash.now[:notice] = "you successfully deleted your comment."
     respond_to do |format|
       format.html { redirect_to (:back) }
       format.js { render :action => "comments" }

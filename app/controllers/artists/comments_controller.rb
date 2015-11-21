@@ -19,6 +19,7 @@ class Artists::CommentsController < ApplicationController
       @comment.producer_id = current_producer.id
     end
     if @comment.save
+      flash.now[:notice] = "you posted a comment on #{@artist.artist_name}'s status."
       respond_to do |format|
         format.html { redirect_to (:back) }
         format.js { render :action => "comments" }
@@ -33,6 +34,7 @@ class Artists::CommentsController < ApplicationController
     ArtistMicropostComment.find(params[:id]).destroy
     @artist = Artist.friendly.find(ArtistMicropost.find(params[:micropost_id]).artist_id)
     @micropost = ArtistMicropost.find(params[:micropost_id])
+    flash.now[:notice] = "you successfully deleted your comment."
     respond_to do |format|
       format.html { redirect_to (:back) }
       format.js { render :action => "comments" }

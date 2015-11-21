@@ -10,15 +10,9 @@
   </head>
   <body>
 
-    <% flash.each do |message_type, message| %>
-      <% if message_type != "timedout" %>
-      <div class="alert-<%= message_type %> fourth">
-        <div class="vulcan">
-          <%= message %>
-        </div>
-      </div>
-      <% end %>
-    <% end %>
+    <div class="flash_js">
+      <%= render 'partials/flash' %>
+    </div>
 
     <% if artist_signed_in? %>
       <%=  render "artists/partials/artist_header" %>

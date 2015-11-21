@@ -48,114 +48,101 @@
 
 
     <div class="pearl">
-      <div class="dodge">
 
-        <% if @record_label == current_record_label %>
-        <% else %>
-        <div class="washington">
-          <div class="lisbon">
-          <div class="follow_button">
-            <%= render 'recordlabels/partials/relationships/follow_button' %>
-          </div>
-          </div>
+      <% if @record_label == current_record_label %>
+      <% else %>
+      <div class="washington">
+        <div class="lisbon">
+        <div class="follow_button">
+          <%= render 'recordlabels/partials/relationships/follow_button' %>
         </div>
-        <% end %>
-
-        <div id="follower_count">
-          <%= render 'recordlabels/partials/relationships/follower_count' %>
         </div>
-
-        <% if record_label_signed_in? && @record_label.id == current_record_label.id && @record_label.record_label_profile.location.blank? && @record_label.record_label_profile.founded.blank? && @record_label.record_label_profile.artists.blank? && @record_label.record_label_profile.biography.blank? && @record_label.record_label_profile.facebook_url.blank? && @record_label.record_label_profile.twitter_url.blank? && @record_label.record_label_profile.youtube_url.blank? && @record_label.record_label_profile.itunes_url.blank? && @record_label.record_label_profile.amazon_url.blank? && @record_label.record_label_profile.google_play_url.blank? && @record_label.record_label_profile.website.blank?  %>
-          <div class="amherst">
-            you do not have any profile information
-          </div>
-          <div class="jefferson">
-            <%= link_to "update your profile", edit_record_label_profile_path(current_record_label) %>
-          </div>
-        <% elsif @record_label.record_label_profile.location.blank? && @record_label.record_label_profile.founded.blank? && @record_label.record_label_profile.artists.blank? && @record_label.record_label_profile.biography.blank? && @record_label.record_label_profile.facebook_url.blank? && @record_label.record_label_profile.twitter_url.blank? && @record_label.record_label_profile.youtube_url.blank? && @record_label.record_label_profile.itunes_url.blank? && @record_label.record_label_profile.amazon_url.blank? && @record_label.record_label_profile.google_play_url.blank? && @record_label.record_label_profile.website.blank? %>
-          <div class="amherst">
-            <%= "#{@record_label.label_name} does not have any profile information yet" %>
-          </div>
-        <% end %>
-        <% if @record_label.record_label_profile.location.blank? %>
-        <% else %>
-        <div class="jefferson">
-          location //
-        </div>
-        <div class="fillmore">
-          <%= @record_label.record_label_profile.location %>
-        </div>
-        <% end %>
-        <% if @record_label.record_label_profile.founded.blank? %>
-        <% else %>
-        <div class="jefferson">
-          founded //
-        </div>
-        <div class="fillmore">
-          <%= @record_label.record_label_profile.founded %>
-        </div>
-        <% end %>
-        <% if @record_label.record_label_profile.artists.blank? %>
-        <% else %>
-        <div class="jefferson">
-          artists //
-        </div>
-        <div class="fillmore">
-          <%= @record_label.record_label_profile.artists %>
-        </div>
-        <% end %>
-        <% if @record_label.record_label_profile.biography.blank? %>
-        <% else %>
-        <div class="jefferson">
-          biography //
-        </div>
-        <div class="fillmore">
-          <%= @record_label.record_label_profile.biography %>
-        </div>
-        <% end %>
-        <% if @record_label.record_label_profile.website.blank? %>
-        <% else %>
-        <div class="fillmore">
-          <%= link_to "Website", @record_label.record_label_profile.website %>
-        </div>
-        <% end %>
-        <% if @record_label.record_label_profile.facebook_url.blank? %>
-        <% else %>
-        <div class="fillmore">
-          <%= link_to "Facebook", @record_label.record_label_profile.facebook_url %>
-        </div>
-        <% end %>
-        <% if @record_label.record_label_profile.twitter_url.blank? %>
-        <% else %>
-        <div class="fillmore">
-          <%= link_to "Twitter", @record_label.record_label_profile.twitter_url %>
-        </div>
-        <% end %>
-        <% if @record_label.record_label_profile.youtube_url.blank? %>
-        <% else %>
-        <div class="fillmore">
-          <%= link_to "YouTube", @record_label.record_label_profile.youtube_url %>
-        </div>
-        <% end %>
-        <% if @record_label.record_label_profile.itunes_url.blank? %>
-        <% else %>
-        <div class="fillmore">
-          <%= link_to "iTunes", @record_label.record_label_profile.itunes_url %>
-        </div>
-        <% end %>
-        <% if @record_label.record_label_profile.amazon_url.blank? %>
-        <% else %>
-        <div class="fillmore">
-          <%= link_to "Amazon", @record_label.record_label_profile.amazon_url %>
-        </div>
-        <% end %>
-        <% if @record_label.record_label_profile.google_play_url.blank? %>
-        <% else %>
-        <div class="fillmore">
-          <%= link_to "Google Play", @record_label.record_label_profile.google_play_url %>
-        </div>
-        <% end %>
       </div>
+      <% end %>
+
+      <div id="follower_count">
+        <%= render 'recordlabels/partials/relationships/follower_count' %>
+      </div>
+
+      <% if record_label_signed_in? && @record_label.id == current_record_label.id && @record_label.record_label_profile.location.blank? && @record_label.record_label_profile.founded.blank? && @record_label.record_label_profile.artists.blank? && @record_label.record_label_profile.biography.blank? && @record_label.record_label_profile.facebook_url.blank? && @record_label.record_label_profile.twitter_url.blank? && @record_label.record_label_profile.youtube_url.blank? && @record_label.record_label_profile.itunes_url.blank? && @record_label.record_label_profile.amazon_url.blank? && @record_label.record_label_profile.google_play_url.blank? && @record_label.record_label_profile.website.blank?  %>
+        <div class="amherst">
+          you do not have any profile information
+        </div>
+        <div class="jefferson">
+          <%= link_to "update your profile", edit_record_label_profile_path(current_record_label) %>
+        </div>
+      <% elsif @record_label.record_label_profile.location.blank? && @record_label.record_label_profile.founded.blank? && @record_label.record_label_profile.artists.blank? && @record_label.record_label_profile.biography.blank? && @record_label.record_label_profile.facebook_url.blank? && @record_label.record_label_profile.twitter_url.blank? && @record_label.record_label_profile.youtube_url.blank? && @record_label.record_label_profile.itunes_url.blank? && @record_label.record_label_profile.amazon_url.blank? && @record_label.record_label_profile.google_play_url.blank? && @record_label.record_label_profile.website.blank? %>
+        <div class="amherst">
+          <%= "#{@record_label.label_name} does not have any profile information yet" %>
+        </div>
+      <% end %>
+      <% if @record_label.record_label_profile.location.present? %>
+      <div class="jefferson">
+        location //
+      </div>
+      <div class="fillmore">
+        <%= @record_label.record_label_profile.location %>
+      </div>
+      <% end %>
+      <% if @record_label.record_label_profile.founded.present? %>
+      <div class="jefferson">
+        founded //
+      </div>
+      <div class="fillmore">
+        <%= @record_label.record_label_profile.founded %>
+      </div>
+      <% end %>
+      <% if @record_label.record_label_profile.artists.present? %>
+      <div class="jefferson">
+        artists //
+      </div>
+      <div class="fillmore">
+        <%= @record_label.record_label_profile.artists %>
+      </div>
+      <% end %>
+      <% if @record_label.record_label_profile.biography.present? %>
+      <div class="jefferson">
+        biography //
+      </div>
+      <div class="fillmore">
+        <%= @record_label.record_label_profile.biography %>
+      </div>
+      <% end %>
+      <% if @record_label.record_label_profile.website.present? %>
+      <div class="fillmore">
+        <%= link_to "Website", @record_label.record_label_profile.website %>
+      </div>
+      <% end %>
+      <% if @record_label.record_label_profile.facebook_url.present? %>
+      <div class="fillmore">
+        <%= link_to "Facebook", @record_label.record_label_profile.facebook_url %>
+      </div>
+      <% end %>
+      <% if @record_label.record_label_profile.twitter_url.present? %>
+      <div class="fillmore">
+        <%= link_to "Twitter", @record_label.record_label_profile.twitter_url %>
+      </div>
+      <% end %>
+      <% if @record_label.record_label_profile.youtube_url.present? %>
+      <div class="fillmore">
+        <%= link_to "YouTube", @record_label.record_label_profile.youtube_url %>
+      </div>
+      <% end %>
+      <% if @record_label.record_label_profile.itunes_url.present? %>
+      <div class="fillmore">
+        <%= link_to "iTunes", @record_label.record_label_profile.itunes_url %>
+      </div>
+      <% end %>
+      <% if @record_label.record_label_profile.amazon_url.present? %>
+      <div class="fillmore">
+        <%= link_to "Amazon", @record_label.record_label_profile.amazon_url %>
+      </div>
+      <% end %>
+      <% if @record_label.record_label_profile.google_play_url.present? %>
+      <div class="fillmore">
+        <%= link_to "Google Play", @record_label.record_label_profile.google_play_url %>
+      </div>
+      <% end %>
     </div>
   </div>
 </div>

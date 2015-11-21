@@ -10,13 +10,14 @@ class Producers::MicropostsController < ApplicationController
     @micropost.producer_id = current_producer.id
     @producer = Producer.friendly.find(params[:producer_id])
     if @micropost.save
+      flash.now[:notice] = "your status has been posted!"
       respond_to do |format|
         format.html { redirect_to (:back) }
         format.js { render :action => "microposts" }
       end
     else
       redirect_to (:back)
-      flash[:alert] = "You probably forgot to write something? Yeah, that's it!"
+      flash[:alert] = "you probably forgot to write something? yeah, that's it!"
     end
   end
 
@@ -28,6 +29,7 @@ class Producers::MicropostsController < ApplicationController
   def destroy
     ProducerMicropost.find(params[:id]).destroy
     @producer = Producer.friendly.find(params[:producer_id])
+    flash.now[:notice] = "you successfully deleted your status."
     respond_to do |format|
       format.html { redirect_to (:back) }
       format.js { render :action => "microposts" }

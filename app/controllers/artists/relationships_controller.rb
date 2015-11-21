@@ -8,6 +8,7 @@ class Artists::RelationshipsController < ApplicationController
     @relationship.artist_id = Artist.friendly.find(params[:artist_id]).id
     @artist = Artist.friendly.find(params[:artist_id])
     if @relationship.save
+      flash.now[:notice] = "you followed #{@artist.artist_name}!"
       respond_to do |format|
         format.html { redirect_to (:back) }
         format.js { render :action => "follow_button" }
@@ -20,6 +21,7 @@ class Artists::RelationshipsController < ApplicationController
   def destroy
     current_fan.unfollow_artist(Artist.friendly.find(params[:artist_id]))
     @artist = Artist.friendly.find(params[:artist_id])
+    flash.now[:notice] = "you unfollowed #{@artist.artist_name}!"
     respond_to do |format|
       format.html { redirect_to (:back) }
       format.js { render :action => "follow_button" }

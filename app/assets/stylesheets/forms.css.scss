@@ -1,5 +1,7 @@
 $main-color: #673AB7;
 $accent-color1: #B39DDB;
+$accent-color2: #FFCA3F;
+$accent-color3: #FFE08E;
 $my-black: #212121;
 $normal-font: Georgia, "Times New Roman", Times, serif;
 $fancy-font: 'Open Sans', Helvetica, arial, sans-serif;
@@ -87,9 +89,74 @@ select {
 }
 
 .franklin {
+  margin: 15vh 0;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  font-family: $fancy-font;
+  box-sizing: border-box;
+  &:after {
+    content: "this can never be undone!";
+    width: 36%;
+    font-size: 1.3em;
+    padding: 20px 0;
+    margin: -3vh 0;
+    display: block;
+    position: absolute;
+    border: 3px solid #F44336;
+    background-color: #F44336;
+    color: $my-black;
+    text-align: center;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: .3s;
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -o-transition: .3s;
+  }
+  &:hover{
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    &:after {
+      content: "this can never be undone!";
+      width: 36%;
+      font-size: 1.3em;
+      padding: 20px 0;
+      margin: 2vh 0;
+      display: block;
+      position: absolute;
+      border: 3px solid #F44336;
+      background-color: #F44336;
+      color: $my-black;
+      text-align: center;
+      box-sizing: border-box;
+      opacity: 1;
+      transition: .3s;
+      -webkit-transition: .3s;
+      -moz-transition: .3s;
+      -o-transition: .3s;
+    }
+  }
+}
+
+.tonawanda {
   width: 100%;
-  padding-top: 10px;
-  margin: 10vh 0;
+  padding: 20px 0;
+  text-align: center;
+  font-family: $fancy-font;
+  font-size: 1.3em;
+  background-color: #F44336;
+  border: 3px solid #F44336;
+  color: $my-black;
+  cursor: pointer;
+  box-sizing: border-box;
+  -webkit-transition: .3s;
+  -moz-transition: .3s;
+  -o-transition: .3s;
+  &:hover {
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -o-transition: .3s;
+  }
 }
 
 .exchange {
@@ -98,8 +165,8 @@ select {
   text-align: center;
   font-family: $fancy-font;
   font-size: 1.3em;
-  border: 3px solid $my-black;
-  background-color: $my-black;
+  border: 3px solid $main-color;
+  background-color: $main-color;
   color: #fff;
   cursor: pointer;
   -webkit-transition: .3s;
@@ -109,9 +176,9 @@ select {
     -webkit-transition: .3s;
     -moz-transition: .3s;
     -o-transition: .3s;
-    border: 3px solid $main-color;
-    background-color: $main-color;
-    color: #fff;
+    border: 3px solid $accent-color2;
+    background-color: $accent-color2;
+    color: $my-black;
   }
 }
 
@@ -165,7 +232,7 @@ select {
   font-family: $fancy-font;
   font-size: 18px;
   padding: 20px;
-  border-top: 3px solid #fff;
+  border-top: 3px solid $my-black;
   border-left: 3px solid #fff;
   border-right: 3px solid #fff;
   border-bottom: 3px solid $my-black;
@@ -195,12 +262,34 @@ select {
     width: 55%;
   }
 
+  .franklin {
+    &:after {
+      width: 49.5%;
+    }
+    &:hover{
+      &:after {
+        width: 49.5%;
+      }
+    }
+  }
+
 }
 
 @media screen and (max-width: 800px) {
 
   .elmwood {
     width: 100%;
+  }
+
+  .franklin {
+    &:after {
+      width: 90%;
+    }
+    &:hover{
+      &:after {
+        width: 90%;
+      }
+    }
   }
 
 }

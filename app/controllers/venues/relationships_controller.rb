@@ -8,6 +8,7 @@ class Venues::RelationshipsController < ApplicationController
     @relationship.venue_id = Venue.friendly.find(params[:venue_id]).id
     @venue = Venue.friendly.find(params[:venue_id])
     if @relationship.save
+      flash.now[:notice] = "you followed #{@venue.venue_name}!"
       respond_to do |format|
         format.html { redirect_to (:back) }
         format.js { render :action => "follow_button" }
@@ -21,6 +22,7 @@ class Venues::RelationshipsController < ApplicationController
   def destroy
     current_fan.unfollow_venue(Venue.friendly.find(params[:venue_id]))
     @venue = Venue.friendly.find(params[:venue_id])
+    flash.now[:notice] = "you unfollowed #{@venue.venue_name}!"
     respond_to do |format|
       format.html { redirect_to (:back) }
       format.js { render :action => "follow_button" }

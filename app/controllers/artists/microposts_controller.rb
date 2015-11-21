@@ -10,13 +10,14 @@ class Artists::MicropostsController < ApplicationController
     @micropost.artist_id = current_artist.id
     @artist = Artist.friendly.find(params[:artist_id])
     if @micropost.save
+      flash.now[:notice] = "your status has been posted!"
       respond_to do |format|
         format.html { redirect_to (:back) }
         format.js { render :action => "microposts" }
       end
     else
       redirect_to (:back)
-      flash[:alert] = "You probably forgot to write something? Yeah, that's it!"
+      flash[:alert] = "you probably forgot to write something? yeah, that's it!"
     end
   end
 
@@ -28,6 +29,7 @@ class Artists::MicropostsController < ApplicationController
   def destroy
     ArtistMicropost.find(params[:id]).destroy
     @artist = Artist.friendly.find(params[:artist_id])
+    flash.now[:notice] = "you successfully deleted your status."
     respond_to do |format|
       format.html { redirect_to (:back) }
       format.js { render :action => "microposts" }
