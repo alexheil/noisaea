@@ -9,6 +9,24 @@
       <%= form_for(@profile, url: artist_profile_path) do |f| %>
         <%= render 'errors/profile_errors' %>
         <div class="highgate">
+          <%= f.text_field :location, placeholder: "location (city, state / city, country)", class: "huron" %>
+        </div>
+        <div class="highgate">
+          <%= f.select :genre, options_for_select(music_genres)%>
+        </div>
+        <div class="highgate">
+          <%= f.text_field :members, placeholder: "members", class: "huron" %>
+        </div>
+        <div class="highgate">
+          <%= f.text_field :record_label, placeholder: "record label", class: "huron" %>
+        </div>
+        <div class="highgate">
+          <%= f.text_area :biography, placeholder: "biography", class: "chippewa" %>
+        </div>
+        <div class="highgate">
+          <%= f.text_field :cover_image, placeholder: "cover image url (1920 x 640px)", class: "huron" %>
+        </div>
+        <div class="highgate">
           <%= f.text_field :website, placeholder: "your website", class: "huron" %>
         </div>
         <div class="highgate">
@@ -31,27 +49,6 @@
         </div>
         <div class="highgate">
           <%= f.text_field :ticketfly_url, placeholder: "ticketfly url", class: "huron" %>
-        </div>
-        <div class="highgate">
-          <%= f.text_field :location, placeholder: "location", class: "huron" %>
-        </div>
-        <div class="highgate">
-          <%= f.select :genre, options_for_select(music_genres)%>
-        </div>
-        <div class="highgate">
-          <%= f.text_field :members, placeholder: "members", class: "huron" %>
-        </div>
-        <div class="highgate">
-          <%= f.text_field :record_label, placeholder: "record label", class: "huron" %>
-        </div>
-        <div class="highgate">
-          <%= f.text_area :biography, placeholder: "biography", class: "chippewa" %>
-        </div>
-        <div class="highgate">
-          <%= f.text_field :cover_image, placeholder: "cover image", class: "huron" %>
-        </div>
-        <div class="highgate">
-          <%= f.text_field :profile_image, placeholder: "profile image", class: "huron" %>
         </div>
         <div class="ellicott">
           <%= f.submit "update profile", class: "exchange" %>

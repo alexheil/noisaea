@@ -3,7 +3,7 @@ class ProducerProfile < ActiveRecord::Base
 
   validates :producer_id, presence: true
   validates :biography, length: { maximum: 14216 }, allow_blank: true
-  validates :location, format: { with: /[A-Z][a-zA-Z]+,[ ]?[A-Z]{2}/ }, allow_blank: true
+  validates :location, format: { with: /[A-Z][a-zA-Z]+,[ ]?[A-Z]/ }, allow_blank: true
   validates :founded, length: { is: 4 }, numericality: { less_than_or_equal_to: 2016, greater_than: 1900}, allow_blank: true
   validates :facebook_url, format: { with: /\A((http|https)?:\/\/)?(www.)?facebook.com\/?/i  }, allow_blank: true
   validates :twitter_url, format: { with: /\A((http|https)?:\/\/)?(www.)?twitter.com\/?/i }, allow_blank: true

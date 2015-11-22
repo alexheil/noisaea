@@ -15,19 +15,24 @@
   <% end %>
   <div class="delaware">
 
-    <div class="main">
+    <main class="main">
       <div class="hedley">
         <%= @artist.artist_name %>
       </div>
 
-      <div id="following">
+      <div class="following sterling">
         <%= render 'artists/partials/relationships/following' %>
       </div>
 
-      <% if @artist == current_artist %>
-      <% else %>
       <div class="niagara">
-        <div class="harlem">
+        <div class="follower_count sterling">
+          <%= render 'artists/partials/relationships/follower_count' %>
+        </div>
+      </div>
+
+      <% unless @artist == current_artist %>
+      <div class="niagara">
+        <div class="highgate">
         <div class="follow_button">
           <%= render 'artists/partials/relationships/follow_button' %>
         </div>
@@ -43,12 +48,11 @@
         <%= render 'artists/partials/microposts/index_microposts' %>
       </div>
 
-    </div>
+    </main>
 
-    <div class="pearl">
+    <aside class="pearl">
 
-      <% if @artist == current_artist %>
-      <% else %>
+      <% unless @artist == current_artist %>
       <div class="washington">
         <div class="lisbon">
           <div class="follow_button">
@@ -58,8 +62,10 @@
       </div>
       <% end %>
 
-      <div id="follower_count">
-        <%= render 'artists/partials/relationships/follower_count' %>
+      <div class="washington">
+        <div class="follower_count">
+          <%= render 'artists/partials/relationships/follower_count' %>
+        </div>
       </div>
 
       <% if artist_signed_in? && @artist.id == current_artist.id && @artist.artist_profile.location.blank? && @artist.artist_profile.genre.blank? && @artist.artist_profile.members.blank? && @artist.artist_profile.biography.blank? && @artist.artist_profile.facebook_url.blank? && @artist.artist_profile.twitter_url.blank? && @artist.artist_profile.youtube_url.blank? && @artist.artist_profile.itunes_url.blank? && @artist.artist_profile.amazon_url.blank? && @artist.artist_profile.google_play_url.blank? && @artist.artist_profile.record_label.blank? && @artist.artist_profile.website.blank? %>
@@ -149,7 +155,7 @@
         <%= link_to "Google Play", @artist.artist_profile.google_play_url %>
       </div>
       <% end %>
-    </div>
+    </aside>
   </div>
 </div>
 <%= render "partials/uni_footer" %>

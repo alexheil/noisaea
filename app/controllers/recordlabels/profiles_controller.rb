@@ -11,9 +11,11 @@ class Recordlabels::ProfilesController < ApplicationController
   def update
     @profile = @record_label.record_label_profile
     if @profile.update_attributes(profile_params)
+      flash[:notice] = "you've successfully updated your profile!"
       redirect_to current_record_label
     else
       render 'edit'
+      flash[:alert] = "you failed =/"
     end
   end
 

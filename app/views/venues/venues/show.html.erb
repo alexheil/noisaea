@@ -1,33 +1,38 @@
 <%= provide(:title, sanitize(@venue.venue_name)) %>
 <div class="buffalo">
   <% if @venue.venue_profile.cover_image.blank? %>
-    <div class="clinton">
+    <section class="clinton">
       <% if venue_signed_in? && @venue.id == current_venue.id %>
         you do not have a cover image yet. <%= link_to "add one?", edit_venue_profile_path(current_venue) %>
       <% else %>
         <%= "#{@venue.venue_name} hasn't uploaded a cover photo yet" %>
       <% end %>
-    </div>
+    </section>
   <% else %>
-    <div class="broadway">
+    <section class="broadway">
       <img srcset="<%= @venue.venue_profile.cover_image %>" width="100%" height="auto" />
-    </div>
+    </section>
   <% end %>
   <div class="delaware">
 
-    <div class="main">
+    <main class="main">
       <div class="hedley">
         <%= @venue.venue_name %>
       </div>
 
-      <div id="following">
+      <div class="following sterling">
         <%= render 'venues/partials/relationships/following' %>
       </div>
 
-      <% if @venue == current_venue %>
-      <% else %>
       <div class="niagara">
-        <div class="harlem">
+        <div class="follower_count sterling">
+          <%= render 'venues/partials/relationships/follower_count' %>
+        </div>
+      </div>
+
+      <% unless @venue == current_venue %>
+      <div class="niagara">
+        <div class="highgate">
         <div class="follow_button">
           <%= render 'venues/partials/relationships/follow_button' %>
         </div>
@@ -43,13 +48,11 @@
         <%= render 'venues/partials/microposts/index_microposts' %>
       </div>
 
-    </div>
+    </main>
 
+    <aside class="pearl">
 
-    <div class="pearl">
-
-      <% if @venue == current_venue %>
-      <% else %>
+      <% unless @venue == current_venue %>
       <div class="washington">
         <div class="lisbon">
         <div class="follow_button">
@@ -59,8 +62,10 @@
       </div>
       <% end %>
 
-      <div id="follower_count">
-        <%= render 'venues/partials/relationships/follower_count' %>
+      <div class="washington">
+        <div class="follower_count">
+          <%= render 'venues/partials/relationships/follower_count' %>
+        </div>
       </div>
 
       <% if venue_signed_in? && @venue.id == current_venue.id && @venue.venue_profile.location.blank? && @venue.venue_profile.founded.blank? && @venue.venue_profile.biography.blank? && @venue.venue_profile.facebook_url.blank? && @venue.venue_profile.twitter_url.blank? && @venue.venue_profile.youtube_url.blank? && @venue.venue_profile.website.blank? %>
@@ -117,7 +122,7 @@
         <%= link_to "YouTube", @venue.venue_profile.youtube_url %>
       </div>
       <% end %>
-    </div>
+    </aside>
   </div>
 </div>
 <%= render "partials/uni_footer" %>

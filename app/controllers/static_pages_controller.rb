@@ -32,6 +32,9 @@ class StaticPagesController < ApplicationController
   def stats
   end
 
+  def resources
+  end
+
   private
 
   def redirect_if_signed_in

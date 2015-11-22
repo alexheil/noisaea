@@ -3,6 +3,7 @@
   <head>
     <title><%= full_title(yield(:title)) %></title>
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+    <%= favicon_link_tag 'favicon.ico' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
@@ -24,8 +25,6 @@
       <%= render 'venues/partials/venue_header' %>
     <% elsif producer_signed_in? %>
       <%= render 'producers/partials/producer_header' %>
-      <% elsif buffalo_signed_in? %>
-      <%= render 'buffaloes/partials/buffalo_header' %>
     <% end %>
 
     <%= yield %>

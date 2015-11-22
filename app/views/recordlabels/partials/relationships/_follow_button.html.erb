@@ -1,7 +1,13 @@
-<% if fan_signed_in? && current_fan.following_record_label?(@record_label) %>
-  <%= button_to "unfollow", record_label_relationship_path(@record_label, current_fan.record_label_relationship_id(@record_label)), method: :delete, remote: true, class: "exchange" %>
-<% else %>
-  <%= form_for(RecordLabelRelationship.new,  url: record_label_relationships_path(@record_label), remote: true) do |f| %>
-    <%= f.submit "follow", class: "exchange" %>
+<% if fan_signed_in? %>
+  <% if fan_signed_in? && current_fan.following_record_label?(@record_label) %>
+    <%= button_to "unfollow", record_label_relationship_path(@record_label, current_fan.record_label_relationship_id(@record_label)), method: :delete, remote: true, class: "exchange" %>
+  <% else %>
+    <%= form_for(RecordLabelRelationship.new,  url: record_label_relationships_path(@record_label), remote: true) do |f| %>
+      <%= f.submit "follow", class: "exchange" %>
+    <% end %>
   <% end %>
+<% else %>
+<div class="amherst">
+  <%= link_to "sign in as a fan", fan_session_path %> to follow <%= @record_label.label_name %>
+</div>
 <% end %>

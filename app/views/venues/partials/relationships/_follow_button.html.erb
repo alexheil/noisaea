@@ -1,7 +1,13 @@
-<% if fan_signed_in? && current_fan.following_venue?(@venue) %>
-  <%= button_to "unfollow", venue_relationship_path(@venue, current_fan.venue_relationship_id(@venue)), method: :delete, remote: true, class: "exchange" %>
-<% else %>
-  <%= form_for(VenueRelationship.new,  url: venue_relationships_path(@venue), remote: true) do |f| %>
-    <%= f.submit "follow", class: "exchange" %>
+<% if fan_signed_in? %>
+  <% if fan_signed_in? && current_fan.following_venue?(@venue) %>
+    <%= button_to "unfollow", venue_relationship_path(@venue, current_fan.venue_relationship_id(@venue)), method: :delete, remote: true, class: "exchange" %>
+  <% else %>
+    <%= form_for(VenueRelationship.new,  url: venue_relationships_path(@venue), remote: true) do |f| %>
+      <%= f.submit "follow", class: "exchange" %>
+    <% end %>
   <% end %>
+<% else %>
+<div class="amherst">
+  <%= link_to "sign in as a fan", fan_session_path %> to follow <%= @venue.venue_name %>
+</div>
 <% end %>

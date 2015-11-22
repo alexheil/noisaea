@@ -11,9 +11,11 @@ class Venues::ProfilesController < ApplicationController
   def update
     @profile = @venue.venue_profile
     if @profile.update_attributes(profile_params)
+      flash[:notice] = "you've successfully updated your profile!"
       redirect_to current_venue
     else
       render 'edit'
+      flash[:alert] = "you failed =/"
     end
   end
 

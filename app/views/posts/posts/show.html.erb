@@ -3,20 +3,14 @@
 <div class="buffalo">
   <div class="delaware">
 
-    <div class="main">
+    <main class="main">
       <h1><%= @post.title %></h1>
       <div class="amherst">
         posted by <%= Buffalo.find(@post.buffalo_id).buffalo_name %> // follow him on twitter <a href="https://twitter.com/realalexheil">here</a>.
       </div>
-      <div class="best">
+      <article class="best">
         <%= sanitize(@post.content) %>
-      </div>
-      <div class="harlem">
-        <h3>grant other people with this knowledge on...</h3>
-        <div class="amherst">
-          <a href="https://facebook.com" class="share-facebook">facebook</a> // <a href="https://twitter.com" class="share-twitter">twitter</a> // <a href="https://plus.google.com" class="share-googleplus">google+</a> // <a href="https://tumblr.com" class="share-tumblr">tumblr</a> // <a href="https://pinterest.com" class="share-pinterest">pinterest</a>
-        </div>
-      </div>
+      </article>
 
       <div class="harlem">
         <a class="linden"><span class="comments_count"><%= render 'posts/partials/comments/comments_count' %></span></a>
@@ -40,7 +34,7 @@
         </div>
 
       </div>
-    </div>
+    </main>
 
     <%= render "posts/partials/post_sidebar" %>
 

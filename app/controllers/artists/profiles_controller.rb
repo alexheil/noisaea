@@ -11,9 +11,11 @@ class Artists::ProfilesController < ApplicationController
   def update
     @profile = @artist.artist_profile
     if @profile.update_attributes(profile_params)
+      flash[:notice] = "you've successfully updated your profile!"
       redirect_to current_artist
     else
       render 'edit'
+      flash[:alert] = "you failed =/"
     end
   end
 

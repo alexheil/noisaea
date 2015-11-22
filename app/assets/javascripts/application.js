@@ -15,13 +15,12 @@
 //= require turbolinks
 //= require_tree .
 
-var fadeAlert = function() {
-  $('.flash_js').delay(7000).fadeOut(500);
-};
+//var fadeAlert = function() {
+  //$('.flash_js').delay(7000).fadeOut(500);
+//};
 
-$(document).ready(fadeAlert);
-$(document).on('page:load', fadeAlert);
-
+//$(document).ready(fadeAlert);
+//$(document).on('page:load', fadeAlert);
 
 var micropostComments = function() {
   $('.microposts_js').on("click", ".linden", function() {

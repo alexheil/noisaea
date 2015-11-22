@@ -1,34 +1,38 @@
 <%= provide(:title, sanitize(@producer.producer_name)) %>
 <div class="buffalo">
   <% if @producer.producer_profile.cover_image.blank? %>
-    <div class="clinton">
+    <section class="clinton">
       <% if producer_signed_in? && @producer.id == current_producer.id %>
         you do not have a cover image yet. <%= link_to "add one?", edit_producer_profile_path(current_producer) %>
       <% else %>
         <%= "#{@producer.producer_name} hasn't uploaded a cover photo yet" %>
       <% end %>
-    </div>
+    </section>
   <% else %>
-    <div class="broadway">
+    <section class="broadway">
       <img srcset="<%= @producer.producer_profile.cover_image %>" width="100%" height="auto" />
-    </div>
+    </section>
   <% end %>
   <div class="delaware">
 
-
-    <div class="main">
+    <main class="main">
       <div class="hedley">
         <%= @producer.producer_name %>
       </div>
 
-      <div id="following">
+      <div class="following sterling">
         <%= render 'producers/partials/relationships/following' %>
       </div>
 
-      <% if @producer == current_producer %>
-      <% else %>
       <div class="niagara">
-        <div class="harlem">
+        <div class="follower_count sterling">
+          <%= render 'producers/partials/relationships/follower_count' %>
+        </div>
+      </div>
+
+      <% unless @producer == current_producer %>
+      <div class="niagara">
+        <div class="highgate">
         <div class="follow_button">
           <%= render 'producers/partials/relationships/follow_button' %>
         </div>
@@ -44,13 +48,11 @@
         <%= render 'producers/partials/microposts/index_microposts' %>
       </div>
 
-    </div>
+    </main>
 
+    <aside class="pearl">
 
-    <div class="pearl">
-
-      <% if @producer == current_producer %>
-      <% else %>
+      <% unless @producer == current_producer %>
       <div class="washington">
         <div class="lisbon">
         <div class="follow_button">
@@ -60,8 +62,10 @@
       </div>
       <% end %>
 
-      <div id="follower_count">
-        <%= render 'producers/partials/relationships/follower_count' %>
+      <div class="washington">
+        <div class="follower_count">
+          <%= render 'producers/partials/relationships/follower_count' %>
+        </div>
       </div>
 
       <% if producer_signed_in? && @producer.id == current_producer.id && @producer.producer_profile.location.blank? && @producer.producer_profile.genre.blank? && @producer.producer_profile.founded && @producer.producer_profile.artists.blank? && @producer.producer_profile.biography.blank? && @producer.producer_profile.facebook_url.blank? && @producer.producer_profile.twitter_url.blank? && @producer.producer_profile.youtube_url.blank? && @producer.producer_profile.website %>
@@ -136,7 +140,7 @@
         <%= link_to "YouTube", @producer.producer_profile.youtube_url %>
       </div>
       <% end %>
-    </div>
+    </aside>
   </div>
 </div>
 <%= render "partials/uni_footer" %>

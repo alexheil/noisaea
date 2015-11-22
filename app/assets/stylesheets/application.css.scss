@@ -96,9 +96,9 @@ h4 {
 
 .flash_js {
   width: 100%;
-  position: absolute;
+  position: relative;
   z-index: 4;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.32)
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.32);
 }
 
 .alert-notice {
@@ -123,6 +123,1061 @@ h4 {
   margin-top: 30vh;
 }
 
+/*                    ****************************** PARTIALS ****************************** */
+
+/* ******************* HOME STUFF ********************* */
+
+.grant {
+  width: 100%;
+  display: inline-block;
+  h1 {
+    margin: 0;
+    padding: 0;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    li {
+      display: inline-block;
+      font-family: $fancy-font;
+      padding: 1vh 0;
+      position: relative;
+      margin-left: 5vw;
+      &:first-child {
+        margin-left: 0vw;
+      }
+    }
+  }
+}
+
+.smith {
+  color: $my-black;
+  font-family: $fancy-font;
+  &:hover {
+    color: $main-color;
+  }
+}
+
+/* ************** HEADER AND NAV ******************** */
+
+.ontario {
+  background-color: $my-black;
+}
+
+.erie {
+  background-color: $my-black;
+}
+
+.fourth {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.32)
+}
+
+.dodge {
+  padding: 1vh 1vw;
+  border-bottom: 1px solid #cccccc;
+}
+
+.austin {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.military {
+  display: inline-block;
+  color: #fff;
+  padding: 1vh 0;
+  font-family: $fancy-font;
+  &:hover {
+    color: $main-color;
+  }
+}
+
+.hampshire {
+  display: inline-block;
+  color: $my-black;
+  padding: 1vh 0;
+  font-family: $fancy-font;
+  &:hover {
+    color: $main-color;
+  }
+}
+
+.englewood {
+  position: fixed;
+  text-align: center;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: auto;
+  height: 100%;
+  font-weight: 300;
+  background: $my-black;
+  box-shadow: 2px 0px 5px rgba(0,0,0,0.5);
+  .starin {
+    color: #fff;
+    padding: 6vh 1vw 2vh 1vw;
+    font-family: $fancy-font;
+    cursor: pointer;
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -o-transition: .3s;
+    &:hover {
+      -webkit-transition: .3s;
+      -moz-transition: .3s;
+      -o-transition: .3s;
+      color: $main-color;
+    }
+  }
+  .taunton {
+    display: none;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 1vh 5vw;
+    color: #fff;
+    li {
+      padding: 1vh 0;
+    }
+  }
+  .pine-ridge {
+    font-size: 2em;
+  }
+}
+
+.parkside {
+  width: 100%;
+  display: inline-block;
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    float: right;
+    li {
+      display: inline-block;
+      font-family: $fancy-font;
+      padding: 1vh 0;
+      position: relative;
+      margin-left: 5vw;
+      &:first-child {
+        margin-left: 0vw;
+      }
+    }
+  }
+}
+
+#emslie {
+  cursor: pointer;
+}
+
+#watson {
+  cursor: pointer;
+}
+
+.adams {
+  cursor: pointer;
+  color: $my-black;
+}
+
+.monroe {
+  width: 50%;
+  margin: 1vh auto;
+  display: none;
+  text-align: center;
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li {
+      margin: 1vh auto;
+    }
+  }
+}
+
+.madison {
+  width: 50%;
+  margin: 1vh auto;
+  display: none;
+  text-align: center;
+  color: $my-black;
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li {
+      margin: 1vh 1vw;
+    }
+  }
+}
+
+.grey {
+  width: 50%;
+  margin: 1vh auto;
+  display: none;
+  text-align: center;
+  color: $my-black;
+}
+
+.lasalle {
+  font-weight: 700;
+}
+
+.depew {
+  color: #fff;
+  font-family: $fancy-font;
+  &:hover {
+    color: $accent-color2;
+  }
+}
+
+.leroy {
+  color: #fff;
+  font-family: $fancy-font;
+  &:hover {
+    color: $main-color;
+  }
+}
+
+/* ******************** FOOTER ******************** */
+
+.kensington {
+  clear: both;
+  margin-top: 5vh;
+  padding: 2vh 0 5vh 0;
+}
+
+.eggert {
+  width: 100%;
+  display: inline-block;
+  font-family: $fancy-font;
+  span {
+    float: left;
+    margin: 0;
+    padding: 0;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    float: right;
+    li {
+      position: relative;
+      float: left;
+      margin: 0 1vh;
+    }
+  }
+}
+
+.seneca {
+  color: $my-black;
+  font-family: $fancy-font;
+  &:hover {
+    color: $main-color;
+  }
+}
+
+.william {
+  width: 24%;
+  margin: 1vh auto;
+  display: inline-block;
+  font-family: $fancy-font;
+  vertical-align: top;
+}
+
+.south-ogden {
+  font-size: 1.25em;
+  margin-bottom: 2vh;
+  color: #fff;
+  font-weight: 700;
+}
+
+.facebook {
+  color: #fff;
+  &:hover {
+    color: #3b5998;
+  }
+}
+
+.twitter {
+  color: #fff;
+  &:hover {
+    color: #00aced;
+  }
+}
+
+.youtube {
+  color: #fff;
+  &:hover {
+    color: #bb0000;
+  }
+}
+
+.googleplus {
+  color: #fff;
+  &:hover {
+    color: #dd4b39;
+  }
+}
+
+.instagram {
+  color: #fff;
+  &:hover {
+    color: #517fa4;
+  }
+}
+
+.tumblr {
+  color: #fff;
+  &:hover {
+    color: #32506d;
+  }
+}
+
+.pinterest {
+  color: #fff;
+  &:hover {
+    color: #cb2027;
+  }
+}
+
+.mfacebook {
+  color: $my-black;
+  &:hover {
+    color: #3b5998;
+  }
+}
+
+.mtwitter {
+  color: $my-black;
+  &:hover {
+    color: #00aced;
+  }
+}
+
+.myoutube {
+  color: $my-black;
+  &:hover {
+    color: #bb0000;
+  }
+}
+
+.mgoogleplus {
+  color: $my-black;
+  &:hover {
+    color: #dd4b39;
+  }
+}
+
+.minstagram {
+  color: $my-black;
+  &:hover {
+    color: #517fa4;
+  }
+}
+
+.mtumblr {
+  color: $my-black;
+  &:hover {
+    color: #32506d;
+  }
+}
+
+.mpinterest {
+  color: $my-black;
+  &:hover {
+    color: #cb2027;
+  }
+}
+
+.share-facebook {
+  color: #3b5998;
+  &:hover {
+    color: $main-color;
+  }
+}
+
+.share-twitter {
+  color: #00aced;
+  &:hover {
+    color: $main-color;
+  }
+}
+
+.share-googleplus {
+  color: #dd4b39;
+  &:hover {
+    color: $main-color;
+  }
+}
+
+.share-tumblr {
+  color: #32506d;
+  &:hover {
+    color: $main-color;
+  }
+}
+
+.share-pinterest {
+  color: #cb2027;
+  &:hover {
+    color: $main-color;
+  }
+}
+
+/*                          ****************************** USERS ****************************** */
+
+.clinton {
+  width: 90%;
+  margin: 10vh auto;
+  text-align: center;
+  font-size: 2em;
+  font-family: $fancy-font;
+  line-height: 1.25em;
+}
+
+.broadway {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1920px;
+  img {
+    text-align: center;
+    max-width: 1920px;
+    max-height: 640px;
+  }
+}
+
+.sycamore {
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+  font-family: $fancy-font;
+  line-height: 1.25em;
+  min-height: 10vh;
+}
+
+.genesee {
+  width: 95%;
+  margin: 0 auto;
+  img {
+    max-height: 85px;
+  }
+}
+
+.lincoln {
+  width: 100%;
+  margin: 0 auto;
+  max-height: 1200px;
+  max-width: 1200px;
+}
+
+.hedley {
+  font-size: 3em;
+  font-family: $fancy-font;
+  line-height: 1.25em;
+}
+
+.jefferson {
+  font-family: $fancy-font;
+  font-weight: 700;
+  margin-bottom: 1vh;
+}
+
+.fillmore {
+  font-family: $fancy-font;
+  padding-left: 1vh;
+  margin-bottom: 1vh;
+}
+
+.hertel {
+  font-family: $fancy-font;
+  margin-bottom: 1vh;
+}
+
+.amherst {
+  font-family: $fancy-font;
+  margin: 1vh 0;
+}
+
+.harlem {
+  margin: 5vh 0;
+  font-family: $fancy-font;
+}
+
+.winspear {
+  margin: 1vh 0;
+}
+
+.northrup {
+  margin: 3vh 0;
+}
+
+.highgate {
+  margin: 2vh 0;
+}
+
+.lisbon {
+  margin-bottom: 2vh;
+}
+
+.minnesota {
+  margin-bottom: 5vh;
+}
+
+.walden {
+  display: none;
+  width: 95%;
+  margin-left: 5%;
+}
+
+.linden {
+  cursor: pointer;
+}
+
+.tacoma {
+  cursor: pointer;
+}
+
+.colvin {
+  display: none;
+}
+
+.niagara {
+  display: none;
+}
+
+.washington {
+  display: inline;
+}
+
+.porter {
+  height: 45px;
+  font-family: $fancy-font;
+  margin: 1vh 2vw 1vh 0;
+  display: inline-block;
+  cursor: pointer;
+  box-sizing: border-box;
+  &:hover {
+    border-bottom: 3px solid $main-color;
+    color: $my-black;
+  }
+}
+
+.ferry {
+  margin: 2vh 0;
+  font-family: $fancy-font;
+}
+
+.lafayette {
+  cursor: auto;
+  border-bottom: 3px solid $my-black;
+}
+
+.utica {
+  width: 11.5%;
+  margin: 1vh auto;
+  display: inline-block;
+  font-family: $fancy-font;
+  vertical-align: top;
+}
+
+.allen {
+  width: 24%;
+  margin: 1vh auto;
+  display: inline-block;
+  font-family: $fancy-font;
+  vertical-align: top;
+  text-align: center;
+}
+
+.fargo {
+  width: 49%;
+  display: inline-block;
+  font-family: $fancy-font;
+  vertical-align: top;
+}
+
+.sugar {
+  color: $accent-color2;
+  &:hover {
+    color: $accent-color3;
+  }
+}
+
+.lovering {
+  display: none;
+}
+
+.virgil {
+  display: none;
+}
+
+/*                           ****************************** FORMS ****************************** */
+
+.elmwood {
+  width: 40%;
+  margin: 5vh auto;
+}
+
+.huron {
+  width: 100%;
+  font-family: $fancy-font;
+  font-size: 18px;
+  padding: 20px;
+  border-top: 3px solid #fff;
+  border-left: 3px solid #fff;
+  border-right: 3px solid #fff;
+  border-bottom: 3px solid $my-black;
+  display: inline-block;
+  box-sizing: border-box;
+  &:focus {
+    border: 3px solid $my-black;
+  }
+}
+
+.chippewa {
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  height: 25vh;
+  font-family: $fancy-font;
+  font-size: 18px;
+  padding: 20px;
+  border-top: 3px solid #fff;
+  border-left: 3px solid #fff;
+  border-right: 3px solid #fff;
+  border-bottom: 3px solid $my-black;
+  display: inline-block;
+  box-sizing: border-box;
+  &:focus {
+    border: 3px solid $my-black;
+  }
+}
+
+select {
+  width: 100%;
+  font-family: $fancy-font;
+  font-size: 18px;
+  padding: 20px;
+  border-top: 3px solid #fff;
+  border-left: 3px solid #fff;
+  border-right: 3px solid #fff;
+  border-bottom: 3px solid $my-black;
+  display: inline-block;
+  box-sizing: border-box;
+  &:focus {
+    border: 3px solid $my-black;
+  }
+}
+
+::-webkit-input-placeholder {
+  text-align: right;
+}
+
+:-moz-placeholder {
+  text-align: right;
+}
+
+::-moz-placeholder {
+  text-align: right;
+}
+
+:-ms-input-placeholder {
+  text-align: right;
+}
+
+.mohawk {
+  font-family: $fancy-font;
+}
+
+.ellicott {
+  width: 100%;
+  margin: 2vh 0;
+}
+
+.franklin {
+  margin: 15vh 0;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  font-family: $fancy-font;
+  box-sizing: border-box;
+  &:after {
+    content: "this can never be undone!";
+    width: 36%;
+    font-size: 1.3em;
+    padding: 20px 0;
+    margin: -3vh 0;
+    display: block;
+    position: absolute;
+    border: 3px solid #F44336;
+    background-color: #F44336;
+    color: $my-black;
+    text-align: center;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: .3s;
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -o-transition: .3s;
+  }
+  &:hover{
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    &:after {
+      content: "this can never be undone!";
+      width: 36%;
+      font-size: 1.3em;
+      padding: 20px 0;
+      margin: 2vh 0;
+      display: block;
+      position: absolute;
+      border: 3px solid #F44336;
+      background-color: #F44336;
+      color: $my-black;
+      text-align: center;
+      box-sizing: border-box;
+      opacity: 1;
+      transition: .3s;
+      -webkit-transition: .3s;
+      -moz-transition: .3s;
+      -o-transition: .3s;
+    }
+  }
+}
+
+.tonawanda {
+  width: 100%;
+  padding: 20px 0;
+  text-align: center;
+  font-family: $fancy-font;
+  font-size: 1.3em;
+  background-color: #F44336;
+  border: 3px solid #F44336;
+  color: $my-black;
+  cursor: pointer;
+  box-sizing: border-box;
+  -webkit-transition: .3s;
+  -moz-transition: .3s;
+  -o-transition: .3s;
+  &:hover {
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -o-transition: .3s;
+  }
+}
+
+.exchange {
+  width: 100%;
+  padding: 20px 0;
+  text-align: center;
+  font-family: $fancy-font;
+  font-size: 1.3em;
+  border: 3px solid $main-color;
+  background-color: $main-color;
+  color: #fff;
+  cursor: pointer;
+  -webkit-transition: .3s;
+  -moz-transition: .3s;
+  -o-transition: .3s;
+  &:hover {
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -o-transition: .3s;
+    border: 3px solid $accent-color2;
+    background-color: $accent-color2;
+    color: $my-black;
+  }
+}
+
+.linwood {
+  display: inline-block;
+  float: left;
+  margin-right: 5px;
+  text-align: center;
+  font-family: $fancy-font;
+  font-size: 1.2em;
+  font-weight: 700;
+  border: none;
+  background-color: #fff;
+  color: $main-color;
+  cursor: pointer;
+  &:hover {
+    color: $accent-color1;
+  }
+}
+
+.seventh {
+  width: 100%;
+  margin: 1vh auto;
+  text-align: center;
+  font-family: $fancy-font;
+  font-size: 1em;
+  border: none;
+  background-color: #fff;
+  color: $accent-color2;
+  cursor: pointer;
+  &:hover {
+    color: $accent-color3;
+  }
+}
+
+.virginia {
+  font-family: $fancy-font;
+  margin-top: 2vh;
+  margin-bottom: 4vh;
+}
+
+.michigan {
+  margin:1vh 0;
+}
+
+.court {
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  height: 15vh;
+  font-family: $fancy-font;
+  font-size: 18px;
+  padding: 20px;
+  border-top: 3px solid $my-black;
+  border-left: 3px solid #fff;
+  border-right: 3px solid #fff;
+  border-bottom: 3px solid $my-black;
+  display: inline-block;
+  box-sizing: border-box;
+  &:focus {
+    border: 3px solid $my-black;
+  }
+}
+
+#error_explanation {
+  color: #F44336;
+  font-family: $fancy-font;
+  ul {
+    margin: 1vh 0;
+    list-style: none;
+  }
+}
+
+/*                           ****************************** STATIC ****************************** */
+
+/* **************************** HOME **************** */
+
+.bailey {
+  margin: 20vh 0;
+}
+
+.delavan {
+  padding: 2vh 0;
+  font-family: $fancy-font;
+  a {
+    color: $my-black;
+  }
+}
+
+.niagara-falls {
+  text-align: center;
+  font-size: 15em;
+  line-height: 15rem;
+  a {
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -o-transition: .3s;
+    &:hover {
+      color: $main-color;
+      -webkit-transition: .3s;
+      -moz-transition: .3s;
+      -o-transition: .3s;
+    }
+  }
+}
+
+.beta {
+  font-size: 2em;
+  text-align: center;
+}
+
+/* ************************ REGISTER AND SIGN IN *************** */
+
+.tupper {
+  margin: 10vh auto;
+  font-size: 3em;
+  text-align: center;
+  font-family: $fancy-font;
+}
+
+.elm {
+  width: 48%;
+  margin: 10vh auto;
+  display: inline-block;
+  font-family: $fancy-font;
+  vertical-align: top;
+  text-align: center;
+  font-size: 3em;
+}
+
+.oak {
+  width: 32%;
+  margin: 15vh auto;
+  display: inline-block;
+  font-family: $fancy-font;
+  vertical-align: top;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.edward {
+  border-bottom: 3px solid $my-black;
+  color: $my-black;
+  padding: 3vh 0;
+  -webkit-transition: .3s;
+  -moz-transition: .3s;
+  -o-transition: .3s;
+  &:hover {
+    color: $main-color;
+    border-bottom: 3px solid $main-color;
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -o-transition: .3s;
+  }
+}
+
+/*                           ****************************** BLOG ****************************** */
+
+/* ************************* POSTS **************************** */
+
+.kenmore {
+  width: 50%;
+  margin: 2vh auto;
+}
+
+.north {
+  font-family: $fancy-font;
+  font-weight: 300;
+  font-size: 4em;
+  margin: 10vh 0 15vh 0;
+}
+
+.best {
+  font-family: $fancy-font;
+  word-break: break-word;
+  white-space: pre-line;
+  margin: 5vh 0;
+}
+
+.summer {
+  font-family: $fancy-font;
+  font-size: 1.25em;
+  margin: 2vh 0;
+}
+
+.eagle {
+  width: 100%;
+  background-color: #FFF176;
+  padding: 2vh 2vw;
+}
+
+.swan {
+  width: 100%;
+  background-color: #E0E0E0;
+  padding: 2vh 2vw;
+}
+
+@media screen and (max-width: 1600px) {
+
+  .utica {
+    width: 19%;
+  }
+
+  .broadway {
+    img {
+      max-height: calc(1600px / 3);
+    }
+  }
+
+}
+
+@media screen and (min-width: 1450px) {
+
+  .niagara-falls {
+    font-size: 10em;
+  }
+
+  .bailey {
+    margin: 17vh 0;
+  }
+
+  .north {
+    font-size: 5em;
+  }
+
+}
+
+@media screen and (max-width: 1250px) {
+
+  .niagara-falls {
+    font-size: 10em;
+  }
+
+  .bailey {
+    margin: 17vh 0;
+  }
+
+  .elmwood {
+    width: 55%;
+  }
+
+  .franklin {
+    &:after {
+      width: 49.5%;
+    }
+    &:hover{
+      &:after {
+        width: 49.5%;
+      }
+    }
+  }
+
+}
+
+@media screen and (max-width: 1000px) {
+
+  .utica {
+    width: 32%;
+  }
+
+  .broadway {
+    img {
+      max-height: calc(1000px / 3);
+    }
+  }
+
+}
+
+
+@media screen and (max-width: 975px) {
+
+  .niagara-falls {
+    font-size: 9em;
+    line-height: 12rem;
+  }
+
+  .bailey {
+    margin: 16vh 0;
+  }
+
+}
+
+@media screen and (max-width: 850px) {
+
+  .niagara-falls {
+    font-size: 8em;
+    line-height: 10rem;
+  }
+
+}
+
 @media screen and (max-width: 800px) {
 
   .main {
@@ -135,4 +1190,310 @@ h4 {
     width: 100%;
   }
 
+  .niagara-falls {
+    font-size: 7em;
+    line-height: 7rem;
+  }
+
+  .beta {
+    font-size: 1.5em;
+  }
+
+  .delavan {
+    padding: 15vh 0;
+  }
+
+  .bailey {
+    margin: 13vh 0;
+  }
+
+  .elm {
+    width: 100%;
+    margin: 10vh auto;
+  }
+
+  .oak {
+    width: 100%;
+    margin: 10vh auto;
+    font-size: 3em;
+  }
+
+  .kenmore {
+    width: 90%;
+  }
+
+  .elmwood {
+    width: 100%;
+  }
+
+  .court {
+    height: 30vh;
+  }
+
+  .franklin {
+    &:after {
+      width: 90%;
+    }
+    &:hover{
+      &:after {
+        width: 90%;
+      }
+    }
+  }
+
+  .niagara {
+    display: inline;
+  }
+
+  .washington {
+    display: none;
+  }
+
+  .broadway {
+    img {
+      max-height: calc(800px / 3);
+    }
+  }
+
+  .utica {
+    width: 49%;
+    margin: 3vh auto;
+  }
+
+  .allen {
+    width: 49%;
+  }
+
+  .fargo {
+    width: 100%;
+  }
+
+  .hedley {
+    text-align: center;
+  }
+
+  .sterling {
+    text-align: center;
+  }
+
+  .william {
+    width: 49%;
+  }
+
+  .dodge {
+    padding: 3vh 5vw;
+  }
+
+  .englewood {
+    position: relative;
+    width: 100%;
+    height: auto;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+    .starin {
+      padding: 1vh 1vw;
+    }
+    ul {
+      li {
+        padding: 0;
+      }
+    }
+    .pine-ridge {
+      font-size: 1em;
+    }
+  }
+
+}
+
+@media screen and (max-width: 675px) {
+
+  .niagara-falls {
+    font-size: 5em;
+  }
+
+  .bailey {
+    margin: 7vh 0;
+  }
+
+}
+
+@media screen and (max-width: 585px) {
+
+  .niagara-falls {
+    font-size: 4em;
+  }
+
+  .bailey {
+    margin: 6vh 0;
+  }
+
+  .north {
+    font-size: 2em;
+  }
+
+}
+
+@media screen and (max-width: 425px) {
+
+  .niagara-falls {
+    font-size: 3em;
+  }
+
+  .bailey {
+    margin: 5vh 0;
+  }
+
+  .north {
+    font-size: 1.75em;
+  }
+
+  .utica {
+    width: 100%;
+  }
+
+  .allen {
+    width: 100%;
+  }
+
+  .broadway {
+    img {
+      max-height: calc(425px / 3);
+    }
+  }
+
+  .william {
+    width: 100%;
+  }
+
+}
+
+.record {
+  font-size: 1.25em;
+  display: inline-block;
+  width: 0.4em;
+  height: 0.4em;
+  border: 0.55em solid $my-black;
+  position: relative;
+  border-radius: 0.75em;
+  -webkit-transition: 0s;
+  -moz-transition: 0s;
+  -o-transition: 0s;
+  &:hover {
+    border: 0.55em solid $main-color;
+    -webkit-transition: 0s;
+    -moz-transition: 0s;
+    -o-transition: 0s;
+  }
+}
+
+.artist {
+  font-size: .5em;
+  display: inline-block;
+  height: 0.25em;
+  border: 1em solid $my-black;
+  position: relative;
+  border-radius: 1em;
+  top: -12px;
+  -webkit-transition: 0s;
+  -moz-transition: 0s;
+  -o-transition: 0s;
+  &:before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    right: -0.1em;
+    bottom: -2.5em;
+    border-width: 0;
+    background: $my-black;
+    width: 1em;
+    height: 2.5em;
+    -webkit-transition: 0s;
+    -moz-transition: 0s;
+    -o-transition: 0s;
+    -webkit-transform: rotate(15deg);
+    -moz-transform: rotate(15deg);
+    -ms-transform: rotate(15deg);
+    -o-transform: rotate(15deg);
+    }
+    &:hover {
+      -webkit-transition: 0s;
+      -moz-transition: 0s;
+      -o-transition: 0s;
+      border: 1em solid $main-color;
+    &:before {
+      -webkit-transition: 0s;
+      -moz-transition: 0s;
+      -o-transition: 0s;
+      background: $main-color;
+    }
+  }
+}
+
+.venue {
+  font-size: .5em;
+  display: inline-block;
+  height: 1.5em;
+  width: 0.9em;
+  border-top: 2em solid $my-black;
+  border-right: 1.65em solid $my-black;
+  border-left: 1.65em solid $my-black;
+  border-bottom: none;
+  position: relative;
+  -webkit-transition: 0s;
+  -moz-transition: 0s;
+  -o-transition: 0s;
+  &:hover {
+  border-top: 2em solid $main-color;
+  border-right: 1.65em solid $main-color;
+  border-left: 1.65em solid $main-color;
+  border-bottom: none;
+  -webkit-transition: 0s;
+  -moz-transition: 0s;
+  -o-transition: 0s;
+  }
+}
+
+.producer {
+  font-size: .5em;
+  display: inline-block;
+  height: 0;
+  width: .75em;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  border-top: 2em solid $my-black;
+  border-right: 1.65em solid $my-black;
+  border-left: 1.65em solid $my-black;
+  border-bottom: none;
+  position: relative;
+  top: 18px;
+  -webkit-transition: 0s;
+  -moz-transition: 0s;
+  -o-transition: 0s;
+  &:before {
+    content: "";
+    font-size: 1em;
+    display: inline-block;
+    border: 1em solid $my-black;
+    position: relative;
+    border-radius: 1.55em;
+    top: -34px;
+    right: 5px;
+    -webkit-transition: 0s;
+    -moz-transition: 0s;
+    -o-transition: 0s;
+  }
+  &:hover {
+    border-top: 2em solid $main-color;
+    border-right: 1.65em solid $main-color;
+    border-left: 1.65em solid $main-color;
+    border-bottom: none;
+    -webkit-transition: 0s;
+    -moz-transition: 0s;
+    -o-transition: 0s;
+    &:before {
+    -webkit-transition: 0s;
+    -moz-transition: 0s;
+    -o-transition: 0s;
+      border: 1em solid $main-color;
+    }
+  }
 }

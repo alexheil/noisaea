@@ -9,7 +9,22 @@
       <%= form_for(@profile, url: record_label_profile_path) do |f| %>
         <%= render 'errors/profile_errors' %>
         <div class="highgate">
-          <%= f.text_field :website, placeholder: "your website", class: "huron" %>
+          <%= f.text_field :location, placeholder: "location (city, state / city, country)", class: "huron" %>
+        </div>
+        <div class="highgate">
+          <%= f.text_field :founded, placeholder: "year founded", class: "huron" %>
+        </div>
+        <div class="highgate">
+          <%= f.text_field :artists, placeholder: "artists you've worked with", class: "huron" %>
+        </div>
+        <div class="highgate">
+          <%= f.text_area :biography, placeholder: "biography", class: "chippewa" %>
+        </div>
+        <div class="highgate">
+          <%= f.text_field :cover_image, placeholder: "cover image url (1920 x 640px)", class: "huron" %>
+        </div>
+        <div class="highgate">
+          <%= f.text_field :website, placeholder: "your website url", class: "huron" %>
         </div>
         <div class="highgate">
           <%= f.text_field :facebook_url, placeholder: "facebook url", class: "huron" %>
@@ -28,24 +43,6 @@
         </div>
         <div class="highgate">
           <%= f.text_field :google_play_url, placeholder: "google play url", class: "huron" %>
-        </div>
-        <div class="highgate">
-          <%= f.text_field :location, placeholder: "location", class: "huron" %>
-        </div>
-        <div class="highgate">
-          <%= f.text_field :artists, placeholder: "artists", class: "huron" %>
-        </div>
-        <div class="highgate">
-          <%= f.text_field :founded, placeholder: "founded", class: "huron" %>
-        </div>
-        <div class="highgate">
-          <%= f.text_area :biography, placeholder: "biography", class: "chippewa" %>
-        </div>
-        <div class="highgate">
-          <%= f.text_field :cover_image, placeholder: "cover image", class: "huron" %>
-        </div>
-        <div class="highgate">
-          <%= f.text_field :profile_image, placeholder: "profile image", class: "huron" %>
         </div>
         <div class="ellicott">
           <%= f.submit "update profile", class: "exchange" %>

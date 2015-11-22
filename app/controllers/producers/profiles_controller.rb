@@ -12,10 +12,10 @@ class Producers::ProfilesController < ApplicationController
     @profile = @producer.producer_profile
     if @profile.update_attributes(profile_params)
       redirect_to current_producer
-      flash[:notice] = "your profile was updated!"
+      flash[:notice] = "you've successfully updated your profile!"
     else
       render 'edit'
-      flash[:notice] = "you failed =/"
+      flash[:alert] = "you failed =/"
     end
   end
 
