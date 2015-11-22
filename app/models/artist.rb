@@ -37,7 +37,7 @@ class Artist < ActiveRecord::Base
   before_save :should_generate_new_friendly_id?, if: :username_changed?
 
   def self.search(search)
-    where("artist_name LIKE ?", "%#{search}%")
+    where("artist_name iLIKE ?", "%#{search}%")
   end
 
   #### GENRES ####

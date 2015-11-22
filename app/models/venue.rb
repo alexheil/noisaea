@@ -38,7 +38,7 @@ class Venue < ActiveRecord::Base
   before_save :should_generate_new_friendly_id?, if: :username_changed?
 
   def self.search(search)
-    where("venue_name LIKE ?", "%#{search}%")
+    where("venue_name iLIKE ?", "%#{search}%")
   end
 
   def artist_micropost_voted?(artist_micropost)
