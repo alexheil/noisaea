@@ -1098,15 +1098,7 @@ select {
 
 }
 
-@media screen and (min-width: 1450px) {
-
-  .niagara-falls {
-    font-size: 10em;
-  }
-
-  .bailey {
-    margin: 17vh 0;
-  }
+@media screen and (max-width: 1450px) {
 
   .north {
     font-size: 5em;
