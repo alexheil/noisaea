@@ -29,6 +29,9 @@
           <%= f.submit "register", class: "exchange" %>
         </div>
       <% end %>
+      <div class="harlem">
+        by clicking 'register' you are agreeing to our <%= link_to 'terms of use', terms_of_use_path %> and <%= link_to 'privacy policy', privacy_path %>
+      </div>
       <div class="virginia">
         <%= render "fans/shared/links" %>
       </div>
