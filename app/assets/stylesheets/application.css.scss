@@ -69,6 +69,16 @@ h4 {
   line-height: 1.25em;
 }
 
+::selection {
+  color: #fff;
+  background: $main-color;
+}
+
+::-moz-selection {
+  color: #fff;
+  background: $main-color;
+}
+
 .buffalo {
   width: 100%;
 }
