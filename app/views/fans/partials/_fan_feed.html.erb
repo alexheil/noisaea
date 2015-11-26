@@ -80,7 +80,7 @@
       </div>
     </div>
     <% end %>
-  <% elsif fan_signed_in? && current_fan %>
+  <% elsif fan_signed_in? && @fan.id == current_fan.id %>
     <div class="harlem">
       you are not following any artists. <%= link_to 'discover some artists', artists_path %>?
     </div>
@@ -144,7 +144,7 @@
       </div>
     </div>
     <% end %>
-  <% elsif fan_signed_in? && current_fan %>
+  <% elsif fan_signed_in? && @fan.id == current_fan.id %>
     <div class="harlem">
       you are not following any record labels. <%= link_to 'discover some record labels', record_labels_path %>?
     </div>
@@ -207,7 +207,7 @@
       </div>
     </div>
     <% end %>
-  <% elsif fan_signed_in? && current_fan %>
+  <% elsif fan_signed_in? && @fan.id == current_fan.id %>
     <div class="harlem">
       you are not following any venues. <%= link_to 'discover some venues', venues_path %>?
     </div>
@@ -270,7 +270,7 @@
       </div>
     </div>
     <% end %>
-  <% elsif fan_signed_in? && current_fan %>
+  <% elsif fan_signed_in? && @fan.id == current_fan.id %>
     <div class="harlem">
       you are not following any producers. <%= link_to 'discover some producers', producers_path %>?
     </div>
