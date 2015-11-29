@@ -50,6 +50,7 @@
         <% end %>
         <div><%= link_to "sign out", sign_out_path, class: "leroy"  %></div>
       <% else %>
+        <div><%= link_to "why sign up?", why_path, class: "leroy" %></div>
         <div><%= link_to "artist register", new_artist_registration_path, class: "leroy"  %></div>
         <div><%= link_to "artist sign in", artist_session_path, class: "leroy"  %></div>
         <div><%= link_to "fan register", new_fan_registration_path, class: "leroy"  %></div>
