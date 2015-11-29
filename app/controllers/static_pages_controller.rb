@@ -29,6 +29,9 @@ class StaticPagesController < ApplicationController
   def sign_in
   end
 
+  def why
+  end
+
   def stats
   end
 
