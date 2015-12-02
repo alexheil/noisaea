@@ -127,6 +127,7 @@
         <% end %>
         <div><%= link_to "sign out", sign_out_path, class: "smith" %></div>
       <% else %>
+        <div><%= link_to "why sign up?", promote_my_music_path, class: "smith" %></div>
         <div><%= link_to "artist register", new_artist_registration_path, class: "smith" %></div>
         <div><%= link_to "artist sign in", artist_session_path, class: "smith" %></div>
         <div><%= link_to "fan register", new_fan_registration_path, class: "smith" %></div>

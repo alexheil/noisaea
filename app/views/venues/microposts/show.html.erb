@@ -28,7 +28,7 @@
       </div>
       <% if @micropost.link_url.present? %>
       <div class="winspear">
-          <%= link_to "#{@micropost.link_url.split('/')[2]}", @micropost.link_url, data: { confirm: "#{@micropost.link_url} \n\nAre you sure?" } %>
+          <%= link_to "#{@micropost.link_url.split('/')[2]}", @micropost.link_url, data: { confirm: "#{@micropost.link_url} \n\nAre you sure?" }, class: "sugar" %>
       </div>
       <% end %>
       <% if @micropost.photo_url.present? %>

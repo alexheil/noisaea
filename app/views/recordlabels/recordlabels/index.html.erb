@@ -171,7 +171,7 @@
     </div>
 
       <div id="container-popular" class="ferry">
-        <% @record_labels.sort_by{ |record_label| -record_label.fans.count }.take(10).each do |record_label| %>
+        <% @record_labels.sort_by{ |record_label| -record_label.fans.count }.take(100).each do |record_label| %>
           <div class="utica">
             <% if record_label.record_label_profile.cover_image.blank? %>
               <div class="sycamore">
@@ -210,7 +210,7 @@
       </div>
 
       <div id="container-recent" class="ferry colvin">
-        <% @record_labels.order( 'id DESC' ).take(10).each do |record_label| %>
+        <% @record_labels.order( 'id DESC' ).take(100).each do |record_label| %>
           <div class="utica">
             <% if record_label.record_label_profile.cover_image.blank? %>
               <div class="sycamore">

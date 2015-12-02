@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'faq' => 'static_pages#faq'
   get 'copyright' => 'static_pages#copyright'
   get 'stats' => 'static_pages#stats'
-  get 'promote_my_music' => 'static_pages#why'
+  get 'why' => 'static_pages#why'
   get 'register' => 'static_pages#register'
   get 'sign_in' => 'static_pages#sign_in'
 
