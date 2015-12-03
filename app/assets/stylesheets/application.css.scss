@@ -1008,6 +1008,16 @@ select {
   text-align: center;
 }
 
+.temp {
+  text-align: center;
+  a {
+    color: $main-color;
+    &:hover {
+      color: $my-black;
+    }
+  }
+}
+
 /* ************************ REGISTER AND SIGN IN *************** */
 
 .tupper {
