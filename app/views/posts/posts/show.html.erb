@@ -28,12 +28,25 @@
           </div>
 
         </div>
-
-        <div class="amherst">
-          <%= link_to "see all posts", posts_path %>
-        </div>
-
       </div>
+
+      <% if Post.exists?(@post.id + 1) %>
+        <div class="amherst">
+          < Next - <%= link_to "#{Post.find(@post.id + 1).title}", post_path(Post.find(@post.id + 1)) %>
+        </div>
+      <% else %>
+      <% end %>
+      <% if Post.exists?(@post.id - 1) %>
+        <div class="amherst">
+          <%= link_to "#{Post.find(@post.id - 1).title}", post_path(Post.find(@post.id - 1)) %> -  Previous >
+        </div>
+      <% else %>
+      <% end %>
+
+      <div class="amherst">
+        <%= link_to "see all posts", posts_path %>
+      </div>
+
     </main>
 
     <%= render "posts/partials/post_sidebar" %>

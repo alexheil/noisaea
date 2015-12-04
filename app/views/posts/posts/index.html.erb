@@ -11,7 +11,7 @@
           posted by <%= Buffalo.find(post.buffalo_id).buffalo_name %>
         </div>
         <div class="best">
-          <%= sanitize(post.content.truncate(400)) %>
+          <%= raw(post.content).split("<div").first %>
         </div>
         <div class="harlem">
           <%= pluralize(post.post_comments.count, "comment") %> // <%= link_to "read more...", post_path(post) %>

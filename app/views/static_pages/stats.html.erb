@@ -49,7 +49,7 @@
 
     <div class="amherst">
       <div><%= pluralize(ArtistMicropostVote.count, "vote") %> on artist statuses</div>
-      <div><%= pluralize(RecordLabelMicropostVote.count, "vote") %>on record label statuses</div>
+      <div><%= pluralize(RecordLabelMicropostVote.count, "vote") %> on record label statuses</div>
       <div><%= pluralize(VenueMicropostVote.count, "vote") %> on venue statuses</div>
       <div><%= pluralize(ProducerMicropostVote.count, "vote") %> on producer statuses</div>
       <div><%= pluralize(ArtistMicropostVote.count + RecordLabelMicropostVote.count + VenueMicropostVote.count + ProducerMicropostVote.count, "vote") %> on all statuses</div>

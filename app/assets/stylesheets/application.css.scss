@@ -684,6 +684,23 @@ h4 {
   border-bottom: 3px solid $my-black;
 }
 
+.w {
+  font-family: $fancy-font;
+  padding: 0 0 4vh 0;
+  .t {
+    display: inline-block;
+    padding: 0 2vw;
+    color: $my-black;
+    border-right: 3px solid #fff;
+    &:hover {
+      border-right: 3px solid $main-color;
+    }
+    &:first-child {
+      padding-left: 0;
+    }
+  }
+}
+
 .utica {
   width: 11.5%;
   margin: 1vh auto;
@@ -1084,6 +1101,9 @@ select {
   word-break: break-word;
   white-space: pre-line;
   margin: 5vh 0;
+  h3 {
+    margin: 1vh 0 -20px 0;
+  }
 }
 
 .summer {
