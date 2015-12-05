@@ -96,6 +96,14 @@
         <%= @record_label.record_label_profile.founded %>
       </div>
       <% end %>
+      <% if @record_label.record_label_profile.genre.present? %>
+      <div class="jefferson">
+        genre //
+      </div>
+      <div class="fillmore">
+        <%= @record_label.record_label_profile.genre %>
+      </div>
+      <% end %>
       <% if @record_label.record_label_profile.artists.present? %>
       <div class="jefferson">
         artists //
