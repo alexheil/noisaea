@@ -58,6 +58,14 @@ en:
         facebook_url: ""
         twitter_url: ""
         youtube_url: ""
+      artist_show:
+        month: ""
+        day: ""
+        year: ""
+        location: ""
+        description: ""
+        ticket_url: ""
+        flyer_url: ""
     errors:
       models:
         artist_profile:
@@ -127,7 +135,7 @@ en:
         producer_profile:
           attributes:
             location:
-              invalid: "your location must be 'city, state' for US // 'city, country' for international"
+              invalid: "your location must be 'city, state' for US // 'city, country' for international."
             founded:
               wrong_length: "don't you know how many digits long a year is? 4!"
               greater_than: "you can't tell me that you started before 1900."
@@ -144,4 +152,32 @@ en:
         fan_profile:
           attributes:
             location:
+              invalid: "your location must be 'city, state' for US // 'city, country' for international."
+        artist_show:
+          attributes:
+            month:
+              blank: "you need to include a year."
+              wrong_length: "2 digits for a month, not 3+ lol."
+              greater_than: "1-12, pick a month."
+              less_than_or_equal_to: "there is no 13th month despite what you may think."
+              not_a_number: "that month is not a number."
+            day:
+              blank: "you need to include a day."
+              wrong_length: "there are a maximum of 2 digits in day."
+              greater_than: "negative days?"
+              less_than_or_equal_to: "there aren't that many days in that month."
+              not_a_number: "that day is not a number."
+            year:
+              blank: "you need to include a year."
+              wrong_length: "umm... a year is 4 digits long."
+              greater_than: "sorry, but your show can't be before 2014."
+              less_than_or_equal_to: "that's crazy far into the future."
+              not_a_number: "that year is not a number."
+            location:
               invalid: "your location must be 'city, state' for US // 'city, country' for international"
+            description:
+              too_long: "your description can't be more than 14,216 characters long."
+            ticket_url:
+              invalid: "that is definitely not a vaild ticket url."
+            flyer_url:
+              invalid: "that is definitely not a vaild image url."

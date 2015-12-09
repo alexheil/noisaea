@@ -31,6 +31,7 @@ Rails.application.routes.draw do
         resources :votes, controller: 'artists/comment_votes', only: [:create,:destroy]
       end
     end
+    resources :shows, controller: 'artists/shows'
     get 'followers' => 'artists/artists#followers'
   end
 
@@ -46,6 +47,7 @@ Rails.application.routes.draw do
   resources :fans, controller: 'fans/fans', only: [:show, :index] do
     resource :profile, controller: 'fans/profiles', only: [:edit, :update]
     get 'following' => 'fans/fans#following'
+    get 'shows' => 'fans/fans#shows'
   end
 
   ####################### RECORD LABEL ##########################

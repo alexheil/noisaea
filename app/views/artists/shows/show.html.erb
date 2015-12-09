@@ -1,0 +1,89 @@
+<div class="buffalo">
+
+  <%= render 'artists/partials/artist_cover_image' %>
+
+  <div class="delaware">
+
+    <main class="main">
+
+      <ul class="w">
+        <li><%= link_to "timeline", artist_path(@artist) %></li>
+        <li class="s"><%= link_to "shows", artist_shows_path(@artist) %></li>
+      </ul>
+
+      <div class="hedley">
+        <%= @artist.artist_name %>
+      </div>
+
+      <div class="following sterling">
+        <%= render 'artists/partials/relationships/following' %>
+      </div>
+
+      <div class="niagara">
+        <div class="follower_count sterling">
+          <%= render 'artists/partials/relationships/follower_count' %>
+        </div>
+      </div>
+
+      <% unless @artist == current_artist %>
+      <div class="niagara">
+        <div class="highgate">
+        <div class="follow_button">
+          <%= render 'artists/partials/relationships/follow_button' %>
+        </div>
+        </div>
+      </div>
+      <% end %>
+
+      <div class="harlem">
+        <div class="fargo">
+          <% if @show.flyer_url.present? %>
+            <img srcset="<%= @show.flyer_url %>" width="100%" height="auto" />
+          <% else %>
+            there is no flyer for this show. <%= link_to "add one?", edit_artist_show_path(@artist, @show) if @artist == current_artist %>
+          <% end %>
+        </div>
+        <div class="fargo">
+          <div class="t">
+            <%= @show.month %>.<%= @show.day %>.<%= @show.year %>
+          </div>
+          <div class="t">
+            <%= @show.venue %>
+          </div>
+          <div class="t">
+            <%= @show.location %>
+          </div>
+          <% if @show.ticket_url.present? %>
+          <div class="harlem q">
+            <%= link_to "get tickets", @show.ticket_url, class: "exchange" %>
+          </div>
+          <% end %>
+          <% if @artist == current_artist %>
+          <div class="amherst q">
+            // <%= link_to "edit", edit_artist_show_path(@artist, @show) %> or <%= link_to "delete", artist_show_path(@artist, @show), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+          </div>
+          <% end %>
+        </div>
+        <div class="best">
+          <%= @show.description %>
+        </div>
+      </div>
+
+    </main>
+
+    <%= render 'artists/partials/artist_sidebar' %>
+
+  </div>
+</div>
+<%= render "partials/uni_footer" %>
+
+<% if buffalo_signed_in? %>
+  <div class="forest">
+    <li><%= @artist.id %></li>
+    <li><%= @artist.artist_name %></li>
+    <li><%= @artist.username %></li>
+    <li><%= @artist.email %></li>
+    <li><%= @artist.sign_in_count %></li>
+    <li><%= @artist.last_sign_in_at %></li>
+  </div>
+<% end %>

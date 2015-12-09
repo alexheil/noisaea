@@ -15,12 +15,11 @@
   <% end %>
   <div class="delaware">
 
-
     <main class="main">
 
       <ul class="w">
-        <li class="s"><%= link_to "timeline", fan_path(@fan) %></li>
-        <li><%= link_to "shows", fan_shows_path(@fan) %></li>
+        <li><%= link_to "timeline", fan_path(@fan) %></li>
+        <li class="s"><%= link_to "shows", fan_shows_path(@fan) %></li>
       </ul>
 
       <div class="hedley">
@@ -45,8 +44,69 @@
         </div>
       <% end %>
 
+      <div class="highgate">
 
-      <%= render "fans/partials/fan_feed" %>
+        <div class="allen">
+          <a id="fan-artist-click"><strong>artists</strong></a>
+          <div class="amherst">
+            // following <%= link_to pluralize(@fan.artists.count, "artist"), fan_following_path(@fan) %>
+          </div>
+        </div>
+
+        <div class="allen">
+          <a id="fan-record-label-click"><strong>record labels</strong></a>
+          <div class="amherst">
+            // following <%= link_to pluralize(@fan.record_labels.count, "record label"), fan_following_path(@fan) %>
+          </div>
+        </div>
+
+        <div class="allen">
+          <a id="fan-venue-click"><strong>venues</strong></a>
+          <div class="amherst">
+            // following <%= link_to pluralize(@fan.venues.count, "venue"), fan_following_path(@fan) %>
+          </div>
+        </div>
+
+        <div class="allen">
+          <a id="fan-producer-click"><strong>producers</strong></a>
+          <div class="amherst">
+            // following <%= link_to pluralize(@fan.producers.count, "producer"), fan_following_path(@fan) %>
+          </div>
+        </div>
+
+        <div id="fan-artist" class="ferry">
+          <% if @fan.fan_profile.location.present? %>
+          <div class="highgate">
+            shows coming to <%= @fan.fan_profile.location.split(",").first %> based on who <%= @fan.fan_name %> follows
+          </div>
+          <% if @fan.artist_shows.any? %>
+            <div class="highgate">
+            <% @fan.artist_shows.select{ |show| show.location == @fan.fan_profile.location }.each do |show| %>
+                <div class="amherst"><%= link_to Artist.find(show.artist_id).artist_name, artist_path(Artist.find(show.artist_id)) %> on <%= link_to "#{show.month}.#{show.day}.#{show.year} at #{show.venue} in #{show.location}", artist_show_path(Artist.find(show.artist_id), show) %>
+                <% if show.ticket_url.present? %>
+                   // <%= link_to "get tickets", show.ticket_url %>
+                <% end %>
+                <% if Artist.find(show.artist_id) == current_artist %>
+                  // <%= link_to "edit", edit_artist_show_path(Artist.find(show.artist_id), show) %> or <%= link_to "delete", artist_show_path(Artist.find(show.artist_id), show), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+                <% end %>
+            <% end %>
+            </div>
+          <% else %>
+            no shows coming to <%= @fan.fan_profile.location.split(",").first %>
+          <% end %>
+          <% end %>
+        </div>
+
+        <div id="fan-record-label" class="ferry colvin">
+        </div>
+
+        <div id="fan-venue" class="ferry colvin">
+        </div>
+
+        <div id="fan-producer" class="ferry colvin">
+        </div>
+
+      </div>
 
     </main>
 

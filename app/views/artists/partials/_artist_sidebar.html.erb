@@ -1,0 +1,106 @@
+<aside class="pearl">
+
+  <% unless @artist == current_artist %>
+  <div class="washington">
+    <div class="lisbon">
+      <div class="follow_button">
+        <%= render 'artists/partials/relationships/follow_button' %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+
+  <div class="washington">
+    <div class="follower_count">
+      <%= render 'artists/partials/relationships/follower_count' %>
+    </div>
+  </div>
+
+  <% if artist_signed_in? && @artist.id == current_artist.id && @artist.artist_profile.location.blank? && @artist.artist_profile.genre.blank? && @artist.artist_profile.members.blank? && @artist.artist_profile.biography.blank? && @artist.artist_profile.facebook_url.blank? && @artist.artist_profile.twitter_url.blank? && @artist.artist_profile.youtube_url.blank? && @artist.artist_profile.itunes_url.blank? && @artist.artist_profile.amazon_url.blank? && @artist.artist_profile.google_play_url.blank? && @artist.artist_profile.record_label.blank? && @artist.artist_profile.website.blank? %>
+    <div class="amherst">
+      you do not have any profile information
+    </div>
+    <div class="jefferson">
+      <%= link_to "update your profile", edit_artist_profile_path(current_artist) %>
+    </div>
+  <% elsif @artist.artist_profile.location.blank? && @artist.artist_profile.genre.blank? && @artist.artist_profile.members.blank? && @artist.artist_profile.biography.blank? && @artist.artist_profile.facebook_url.blank? && @artist.artist_profile.twitter_url.blank? && @artist.artist_profile.youtube_url.blank? && @artist.artist_profile.itunes_url.blank? && @artist.artist_profile.amazon_url.blank? && @artist.artist_profile.google_play_url.blank? && @artist.artist_profile.record_label.blank? && @artist.artist_profile.website.blank? %>
+    <div class="amherst">
+      <%= "#{@artist.artist_name} does not have any profile information yet" %>
+    </div>
+  <% end %>
+  <% if @artist.artist_profile.location.present? %>
+  <div class="jefferson">
+    location //
+  </div>
+  <div class="fillmore">
+    <%= @artist.artist_profile.location %>
+  </div>
+  <% end %>
+  <% if @artist.artist_profile.genre.present? %>
+  <div class="jefferson">
+    genre //
+  </div>
+  <div class="fillmore">
+    <%= @artist.artist_profile.genre %>
+  </div>
+  <% end %>
+  <% if @artist.artist_profile.members.present? %>
+  <div class="jefferson">
+    members //
+  </div>
+  <div class="fillmore">
+    <%= @artist.artist_profile.members %>
+  </div>
+  <% end %>
+  <% if @artist.artist_profile.record_label.present? %>
+  <div class="jefferson">
+    record label //
+  </div>
+  <div class="fillmore">
+    <%= @artist.artist_profile.record_label %>
+  </div>
+  <% end %>
+  <% if @artist.artist_profile.biography.present? %>
+  <div class="jefferson">
+    biography //
+  </div>
+  <div class="fillmore">
+    <%= @artist.artist_profile.biography %>
+  </div>
+  <% end %>
+  <% if @artist.artist_profile.website.present? %>
+  <div class="fillmore">
+    <%= link_to "Website", @artist.artist_profile.website %>
+  </div>
+  <% end %>
+  <% if @artist.artist_profile.facebook_url.present? %>
+  <div class="fillmore">
+    <%= link_to "Facebook", @artist.artist_profile.facebook_url %>
+  </div>
+  <% end %>
+  <% if @artist.artist_profile.twitter_url.present? %>
+  <div class="fillmore">
+    <%= link_to "Twitter", @artist.artist_profile.twitter_url %>
+  </div>
+  <% end %>
+  <% if @artist.artist_profile.youtube_url.present? %>
+  <div class="fillmore">
+    <%= link_to "YouTube", @artist.artist_profile.youtube_url %>
+  </div>
+  <% end %>
+  <% if @artist.artist_profile.itunes_url.present? %>
+  <div class="fillmore">
+    <%= link_to "iTunes", @artist.artist_profile.itunes_url %>
+  </div>
+  <% end %>
+  <% if @artist.artist_profile.amazon_url.present? %>
+  <div class="fillmore">
+    <%= link_to "Amazon", @artist.artist_profile.amazon_url %>
+  </div>
+  <% end %>
+  <% if @artist.artist_profile.google_play_url.present? %>
+  <div class="fillmore">
+    <%= link_to "Google Play", @artist.artist_profile.google_play_url %>
+  </div>
+  <% end %>
+</aside>

@@ -16,8 +16,8 @@
 
 $main-color: #673AB7;
 $accent-color1: #A080D7;
-$accent-color2: #FFE83F;
-$accent-color3: #FFF28D;
+$accent-color2: #4CAF50;
+$accent-color3: #A9E2AD;
 $my-black: #212121;
 $normal-font: Georgia, "Times New Roman", Times, serif;
 $fancy-font: 'Open Sans', Helvetica, Arial, sans-serif;
@@ -687,11 +687,16 @@ h4 {
 .w {
   font-family: $fancy-font;
   padding: 0 0 4vh 0;
-  .t {
+  list-style: none;
+  margin: 0;
+  li {
     display: inline-block;
-    padding: 0 2vw;
-    color: $my-black;
     border-right: 3px solid #fff;
+    padding: 1vh 0;
+    a {
+      color: $my-black;
+      padding: 1vh 2vw;
+    }
     &:hover {
       border-right: 3px solid $main-color;
     }
@@ -699,6 +704,20 @@ h4 {
       padding-left: 0;
     }
   }
+  .s {
+    border-right: 3px solid $my-black;
+  }
+}
+
+.t {
+  font-size: 2em;
+  font-family: $fancy-font;
+  margin-bottom: 2vh;
+  text-align: center;
+}
+
+.q {
+  text-align: center;
 }
 
 .utica {
@@ -913,7 +932,7 @@ select {
     -o-transition: .3s;
     border: 3px solid $accent-color2;
     background-color: $accent-color2;
-    color: $my-black;
+    color: #fff;
   }
 }
 
@@ -1116,12 +1135,14 @@ select {
   width: 100%;
   background-color: #FFF176;
   padding: 2vh 2vw;
+  box-sizing: border-box;
 }
 
 .swan {
   width: 100%;
   background-color: #E0E0E0;
   padding: 2vh 2vw;
+  box-sizing: border-box;
 }
 
 @media screen and (max-width: 1600px) {
@@ -1335,6 +1356,15 @@ select {
     }
     .pine-ridge {
       font-size: 1em;
+    }
+  }
+
+  .w {
+    text-align: center;
+    li {
+      a {
+        padding: 1vh 4vw;
+      }
     }
   }
 

@@ -1,68 +1,68 @@
 <%= provide(:title, sanitize(@artist.artist_name) + " | Status #{@micropost.id}") %>
 <div class="buffalo">
-  <% if @artist.artist_profile.cover_image.blank? %>
-    <div class="clinton">
-      <% if artist_signed_in? && @artist.id == current_artist.id %>
-        you do not have a cover image yet
-      <% else %>
-        <%= "#{@artist.artist_name} hasn't uploaded a cover photo yet" %>
-      <% end %>
-    </div>
-  <% else %>
-  <div class="broadway">
-    <img srcset="<%= @artist.artist_profile.cover_image %>" width="100%" height="auto" />
-  </div>
-  <% end %>
+
+  <%= render 'artists/partials/artist_cover_image' %>
+
   <div class="delaware">
-    <div class="hedley winspear">
-      <%= link_to @artist.artist_name, artist_path(@artist) %>
-    </div>
 
-    <div class="harlem">
-      <span class="winspear"><strong><%= "#{@artist.artist_name}" %></strong> posted <%= time_ago_in_words(@micropost.created_at) %> ago</span>
-      <% if @artist == current_artist %>
-    // <%= link_to "delete post", artist_micropost_path(@artist, @micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %></span>
-      <% end %>
-      <div class="winspear">
-        <%= @micropost.content %>
-      </div>
-      <% if @micropost.link_url.present? %>
-      <div class="winspear">
-          <%= link_to "#{@micropost.link_url.split('/')[2]}", @micropost.link_url, data: { confirm: "#{@micropost.link_url} \n\nAre you sure?" } %>
-      </div>
-      <% end %>
-      <% if @micropost.photo_url.present? %>
-      <div class="northrup lincoln">
-        <img srcset="<%= @micropost.photo_url %>" width="100%" height="auto" />
-      </div>
-      <% end %>
+    <main class="main">
 
-      <div class="lisbon" id="lisbon">
+      <ul class="w">
+        <li class="s"><%= link_to "timeline", artist_path(@artist) %></li>
+        <li><%= link_to "shows", artist_shows_path(@artist) %></li>
+      </ul>
 
-        <div class="micropost_votes">
-          <%= render 'artists/partials/microposts/micropost_votes' %>
+      <div class="hedley">
+        <%= link_to @artist.artist_name, artist_path(@artist) %>
+      </div>
+
+      <div class="harlem">
+        <span class="winspear"><strong><%= "#{@artist.artist_name}" %></strong> posted <%= time_ago_in_words(@micropost.created_at) %> ago</span>
+        <% if @artist == current_artist %>
+      // <%= link_to "delete post", artist_micropost_path(@artist, @micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %></span>
+        <% end %>
+        <div class="winspear">
+          <%= @micropost.content %>
         </div>
+        <% if @micropost.link_url.present? %>
+        <div class="winspear">
+            <%= link_to "#{@micropost.link_url.split('/')[2]}", @micropost.link_url, data: { confirm: "#{@micropost.link_url} \n\nAre you sure?" } %>
+        </div>
+        <% end %>
+        <% if @micropost.photo_url.present? %>
+        <div class="northrup lincoln">
+          <img srcset="<%= @micropost.photo_url %>" width="100%" height="auto" />
+        </div>
+        <% end %>
 
-        <span class="micropost_votes_count">
-          <%= render 'artists/partials/microposts/micropost_votes_count' %>
-        </span>
-         //
-        <a class="linden"><span class="comments_count"><%= render 'artists/partials/comments/comments_count' %></span></a>
-      </div>
+        <div class="lisbon" id="lisbon">
 
-      <div class="walden">
-        <div class="minnesota">
-
-          <div class="comments_js">
-            <%= render 'artists/partials/comments/comments' %>
+          <div class="micropost_votes">
+            <%= render 'artists/partials/microposts/micropost_votes' %>
           </div>
 
-        <div class="comments_form">
-          <%= render 'artists/partials/comments/comments_form' %>
+          <span class="micropost_votes_count">
+            <%= render 'artists/partials/microposts/micropost_votes_count' %>
+          </span>
+           //
+          <a class="linden"><span class="comments_count"><%= render 'artists/partials/comments/comments_count' %></span></a>
         </div>
 
+        <div class="walden">
+          <div class="minnesota">
+
+            <div class="comments_js">
+              <%= render 'artists/partials/comments/comments' %>
+            </div>
+
+          <div class="comments_form">
+            <%= render 'artists/partials/comments/comments_form' %>
+          </div>
+
+        </div>
       </div>
-    </div>
+
+    </main>
 
   </div>
 </div>

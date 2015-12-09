@@ -1,0 +1,13 @@
+<% if @artist.artist_profile.cover_image.blank? %>
+  <div class="clinton">
+    <% if @artist == current_artist %>
+      you do not have a cover image yet
+    <% else %>
+      <%= "#{@artist.artist_name} hasn't uploaded a cover photo yet" %>
+    <% end %>
+  </div>
+<% else %>
+<div class="broadway">
+  <img srcset="<%= @artist.artist_profile.cover_image %>" width="100%" height="auto" />
+</div>
+<% end %>
