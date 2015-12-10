@@ -15,9 +15,9 @@
  */
 
 $main-color: #673AB7;
-$accent-color1: #A080D7;
+$accent-color1: #D1C4E9;
 $accent-color2: #4CAF50;
-$accent-color3: #A9E2AD;
+$accent-color3: #C8E6C9;
 $my-black: #212121;
 $normal-font: Georgia, "Times New Roman", Times, serif;
 $fancy-font: 'Open Sans', Helvetica, Arial, sans-serif;
@@ -684,7 +684,7 @@ h4 {
   border-bottom: 3px solid $my-black;
 }
 
-.w {
+.carolina {
   font-family: $fancy-font;
   padding: 0 0 4vh 0;
   list-style: none;
@@ -704,19 +704,18 @@ h4 {
       padding-left: 0;
     }
   }
-  .s {
+  .jersey {
     border-right: 3px solid $my-black;
   }
 }
 
-.t {
+.vermont {
   font-size: 2em;
   font-family: $fancy-font;
-  margin-bottom: 2vh;
-  text-align: center;
+  margin-bottom: 5vh;
 }
 
-.q {
+.busti {
   text-align: center;
 }
 
@@ -835,6 +834,13 @@ select {
 
 .mohawk {
   font-family: $fancy-font;
+}
+
+.maryland {
+  width: 32%;
+  margin: 2vh 0;
+  display: inline-block;
+  vertical-align: top;
 }
 
 .ellicott {
@@ -1359,13 +1365,17 @@ select {
     }
   }
 
-  .w {
+  .carolina {
     text-align: center;
     li {
       a {
         padding: 1vh 4vw;
       }
     }
+  }
+
+  .vermont {
+    margin: 4vh 0;
   }
 
 }

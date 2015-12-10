@@ -6,9 +6,9 @@
 
     <main class="main">
 
-      <ul class="w">
+      <ul class="carolina">
         <li><%= link_to "timeline", artist_path(@artist) %></li>
-        <li class="s"><%= link_to "shows", artist_shows_path(@artist) %></li>
+        <li class="jersey"><%= link_to "shows", artist_shows_path(@artist) %></li>
       </ul>
 
       <div class="hedley">
@@ -36,30 +36,31 @@
       <% end %>
 
       <div class="harlem">
+        <% if @show.flyer_url.present? %>
         <div class="fargo">
-          <% if @show.flyer_url.present? %>
             <img srcset="<%= @show.flyer_url %>" width="100%" height="auto" />
-          <% else %>
-            there is no flyer for this show. <%= link_to "add one?", edit_artist_show_path(@artist, @show) if @artist == current_artist %>
-          <% end %>
         </div>
         <div class="fargo">
-          <div class="t">
+          <div class="vermont busti">
             <%= @show.month %>.<%= @show.day %>.<%= @show.year %>
           </div>
-          <div class="t">
-            <%= @show.venue %>
+          <div class="vermont busti">
+            <% if Venue.exists?(:venue_name => "#{@show.venue}") %>
+              <%= link_to @show.venue, venue_path(Venue.where(:venue_name => "#{@show.venue}").first) %>
+            <% else %>
+              <%= @show.venue %>
+            <% end %>
           </div>
-          <div class="t">
+          <div class="vermont busti">
             <%= @show.location %>
           </div>
           <% if @show.ticket_url.present? %>
-          <div class="harlem q">
+          <div class="harlem busti">
             <%= link_to "get tickets", @show.ticket_url, class: "exchange" %>
           </div>
           <% end %>
           <% if @artist == current_artist %>
-          <div class="amherst q">
+          <div class="amherst busti">
             // <%= link_to "edit", edit_artist_show_path(@artist, @show) %> or <%= link_to "delete", artist_show_path(@artist, @show), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
           </div>
           <% end %>
@@ -67,6 +68,34 @@
         <div class="best">
           <%= @show.description %>
         </div>
+        <% else %>
+          <div class="vermont">
+            <%= @show.month %>.<%= @show.day %>.<%= @show.year %>
+          </div>
+          <div class="vermont">
+            <% if Venue.exists?(:venue_name => "#{@show.venue}") %>
+              <%= link_to @show.venue, venue_path(Venue.where(:venue_name => "#{@show.venue}").first) %>
+            <% else %>
+              <%= @show.venue %>
+            <% end %>
+          </div>
+          <div class="vermont">
+            <%= @show.location %>
+          </div>
+          <% if @show.ticket_url.present? %>
+          <div class="harlem">
+            <%= link_to "get tickets", @show.ticket_url, class: "exchange" %>
+          </div>
+          <% end %>
+          <% if @artist == current_artist %>
+          <div class="amherst">
+            // <%= link_to "edit", edit_artist_show_path(@artist, @show) %> or <%= link_to "delete", artist_show_path(@artist, @show), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+          </div>
+          <% end %>
+        <div class="best">
+          <%= @show.description %>
+        </div>
+        <% end %>
       </div>
 
     </main>

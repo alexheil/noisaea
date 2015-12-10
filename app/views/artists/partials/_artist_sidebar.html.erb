@@ -57,7 +57,11 @@
     record label //
   </div>
   <div class="fillmore">
-    <%= @artist.artist_profile.record_label %>
+    <% if RecordLabel.exists?(:label_name => "#{@artist.artist_profile.record_label}") %>
+      <%= link_to @artist.artist_profile.record_label, record_label_path(RecordLabel.where(:label_name => "#{@artist.artist_profile.record_label}").first) %>
+    <% else %>
+      <%= @artist.artist_profile.record_label %>
+    <% end %>
   </div>
   <% end %>
   <% if @artist.artist_profile.biography.present? %>

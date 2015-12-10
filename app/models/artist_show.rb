@@ -14,17 +14,28 @@ class ArtistShow < ActiveRecord::Base
   validates :flyer_url, format: { with: /\A(http|https):\/\/|[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,6}(:[0-9]{1,5})?(\/.*)?\z/ix }, allow_blank: true
 
   before_save :smart_add_url_protocol
-  before_save :correct_calender_time
+  before_save :february_time
+  before_save :smart_calender
   #before_save :ticketfly_affiliate_link
 
   private
 
-    def correct_calender_time
+    def february_time
       if self.month == 2 && self.year == 2016
         self.day <= 29
       elsif self.month == 2
         self.day <= 28
-      elsif self.month == 4 || 6 || 9 || 11
+      end
+    end
+
+    def smart_calender
+      if self.month == 4
+        self.day <= 30
+      elsif self.month == 6
+        self.day <= 30
+      elsif self.month == 9
+        self.day <= 30
+      elsif self.month == 11
         self.day <= 30
       end
     end
