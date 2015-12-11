@@ -36,15 +36,18 @@
       <% end %>
 
       <% if @artist == current_artist %>
-        <div class="harlem">
-          <%= link_to "add a show", new_artist_show_path(@artist), class: "exchange" %>
+        <div class="harlem vermont">
+          <%= link_to "add a show", new_artist_show_path(@artist), class: "sugar" %>
         </div>
       <% end %>
 
       <% if @artist.artist_shows.any? %>
         <div class="harlem">
         <% @artist.artist_shows.each do |show| %>
-          <div class="amherst"><%= link_to "#{show.month}.#{show.day}.#{show.year} at #{show.venue} in #{show.location}", artist_show_path(@artist, show) %> // <%= link_to "get tickets", show.ticket_url if show.ticket_url.present? %>
+          <div class="amherst"><%= link_to "#{show.month}.#{show.day}.#{show.year} at #{show.venue} in #{show.location}", artist_show_path(@artist, show) %>
+            <% if show.ticket_url.present? %>
+              // <%= link_to "get tickets", show.ticket_url, class: "sugar" %>
+            <% end %>
             <% if @artist == current_artist %>
               // <%= link_to "edit", edit_artist_show_path(@artist, show) %> or <%= link_to "delete", artist_show_path(@artist, show), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
             <% end %>
