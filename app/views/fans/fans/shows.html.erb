@@ -84,7 +84,7 @@
             <% @fan.artist_shows.select{ |show| show.location == @fan.fan_profile.location }.each do |show| %>
                 <div class="amherst"><%= link_to Artist.find(show.artist_id).artist_name, artist_path(Artist.find(show.artist_id)) %> on <%= link_to "#{show.month}.#{show.day}.#{show.year} at #{show.venue} in #{show.location}", artist_show_path(Artist.find(show.artist_id), show) %>
                 <% if show.ticket_url.present? %>
-                   // <%= link_to "get tickets", show.ticket_url %>
+                   // <%= link_to "get tickets", show.ticket_url, class: "sugar" %>
                 <% end %>
                 <% if Artist.find(show.artist_id) == current_artist %>
                   // <%= link_to "edit", edit_artist_show_path(Artist.find(show.artist_id), show) %> or <%= link_to "delete", artist_show_path(Artist.find(show.artist_id), show), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
