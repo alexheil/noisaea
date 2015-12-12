@@ -53,4 +53,12 @@
       </div>
     <% end %>
   </div>
+<% else %>
+  <div class="harlem">
+    <% if @artist == current_artist %>
+      you don't have any posts.
+    <% else %>
+      <%= @aritst.artist_name %> does not have any posts.
+    <% end %>
+  </div>
 <% end %>
