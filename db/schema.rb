@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151212025445) do
+ActiveRecord::Schema.define(version: 20151213044338) do
 
   create_table "artist_micropost_comment_votes", force: true do |t|
     t.integer  "artist_micropost_comment_id"
@@ -766,6 +766,23 @@ ActiveRecord::Schema.define(version: 20151212025445) do
   add_index "venue_relationships", ["fan_id", "venue_id"], name: "index_venue_relationships_on_fan_id_and_venue_id", unique: true
   add_index "venue_relationships", ["fan_id"], name: "index_venue_relationships_on_fan_id"
   add_index "venue_relationships", ["venue_id"], name: "index_venue_relationships_on_venue_id"
+
+  create_table "venue_shows", force: true do |t|
+    t.integer  "venue_id"
+    t.string   "artist"
+    t.integer  "month"
+    t.integer  "day"
+    t.integer  "year"
+    t.string   "show_venue"
+    t.string   "location"
+    t.text     "description"
+    t.string   "ticket_url"
+    t.string   "flyer_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "venue_shows", ["venue_id"], name: "index_venue_shows_on_venue_id"
 
   create_table "venues", force: true do |t|
     t.string   "venue_name",             default: "", null: false

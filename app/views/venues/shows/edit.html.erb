@@ -6,9 +6,12 @@
         <h1>edit the show on <%= @show.month %>.<%= @show.day %>.<%= @show.year %> at <%= @show.venue %> in <%= @show.location %></h1>
       </div>
 
-      <%= form_for(@show, url: artist_show_path) do |f| %>
-        <%= f.hidden_field :artist_id %>
+      <%= form_for(@show, url: venue_show_path) do |f| %>
+        <%= f.hidden_field :venue_id %>
         <%= render 'errors/show_errors' %>
+        <div class="highgate">
+          <%= f.text_field :artist, placeholder: "artist", class: "huron" %>
+        </div>
         <div class="maryland">
           <%= f.text_field :month, placeholder: "month", class: "huron" %>
         </div>
@@ -22,7 +25,7 @@
           <%= f.text_field :location, placeholder: "location (city, state / city, country)", class: "huron" %>
         </div>
         <div class="highgate">
-          <%= f.text_field :venue, placeholder: "venue", class: "huron" %>
+          <%= f.text_field :show_venue, placeholder: "venue", class: "huron" %>
         </div>
         <div class="highgate">
           <%= f.text_field :ticket_url, placeholder: "ticket url", class: "huron" %>

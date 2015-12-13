@@ -88,6 +88,7 @@ Rails.application.routes.draw do
         resources :votes, controller: 'venues/comment_votes', only: [:create,:destroy]
       end
     end
+    resources :shows, controller: 'venues/shows'
     get 'followers' => 'venues/venues#followers'
   end
 

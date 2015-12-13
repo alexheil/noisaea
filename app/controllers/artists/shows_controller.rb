@@ -2,7 +2,7 @@ class Artists::ShowsController < ApplicationController
 
   before_action :authenticate_artist!, except: [:index, :show]
   before_action :correct_artist, except: [:index, :show, :edit, :update, :destroy]
-  before_action :set_artist, except: :index
+  before_action :set_artist, except: [:index, :show]
   before_action :correct_show_artist, only: [:edit, :update, :destroy]
 
   def index

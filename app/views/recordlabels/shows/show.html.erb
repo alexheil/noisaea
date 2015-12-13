@@ -43,18 +43,22 @@
           </div>
           <div class="fargo">
             <div class="vermont busti">
+            <% if Artist.exists?(:artist_name => "#{@show.artist}") %>
+              <%= link_to @show.artist, artist_path(Artist.where(:artist_name => "#{@show.artist}").first) %>
+            <% else %>
               <%= @show.artist %>
-            </div>
+            <% end %>
+          </div>
             <div class="vermont busti">
               <%= @show.month %>.<%= @show.day %>.<%= @show.year %>
             </div>
             <div class="vermont busti">
-              <% if Artist.exists?(:artist_name => "#{@show.artist}") %>
-                <%= link_to @show.artist, artist_path(Artist.where(:artist_name => "#{@show.artist}").first) %>
+              <% if Venue.exists?(:venue_name => "#{@show.venue}") %>
+                <%= link_to @show.venue, venue_path(Venue.where(:venue_name => "#{@show.venue}").first) %>
               <% else %>
-                <%= @show.artist %>
+                <%= @show.venue %>
               <% end %>
-            </div>
+              </div>
             <div class="vermont busti">
               <%= @show.location %>
             </div>

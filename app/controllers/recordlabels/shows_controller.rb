@@ -2,7 +2,7 @@ class Recordlabels::ShowsController < ApplicationController
 
   before_action :authenticate_record_label!, except: [:index, :show]
   before_action :correct_record_label, except: [:index, :show, :edit, :update, :destroy]
-  before_action :set_record_label, except: :index
+  before_action :set_record_label, except: [:index, :show]
   before_action :correct_show_record_label, only: [:edit, :update, :destroy]
 
   def index

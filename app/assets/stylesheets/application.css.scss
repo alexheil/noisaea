@@ -738,6 +738,15 @@ h4 {
   text-align: center;
 }
 
+.ogden {
+  width: 32%;
+  margin: 1vh auto;
+  display: inline-block;
+  font-family: $fancy-font;
+  vertical-align: top;
+  text-align: center;
+}
+
 .fargo {
   width: 49%;
   display: inline-block;
@@ -1245,6 +1254,10 @@ select {
 
 @media screen and (max-width: 800px) {
 
+  .delaware {
+    width: 96%;
+  }
+
   .main {
     width: 100%;
     margin-right: 0;
@@ -1326,6 +1339,10 @@ select {
   }
 
   .allen {
+    width: 49%;
+  }
+
+  .ogden {
     width: 49%;
   }
 
@@ -1433,6 +1450,10 @@ select {
   }
 
   .allen {
+    width: 100%;
+  }
+
+  .ogden {
     width: 100%;
   }
 

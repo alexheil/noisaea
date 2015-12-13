@@ -19,7 +19,6 @@ class Venue < ActiveRecord::Base
   belongs_to :fan
 
   has_many :artist_micropost_votes, dependent: :destroy
-  #belongs_to :artist_micropost
   has_many :record_label_micropost_votes, dependent: :destroy
   has_many :venue_micropost_votes, dependent: :destroy
   has_many :producer_micropost_votes, dependent: :destroy
@@ -30,6 +29,8 @@ class Venue < ActiveRecord::Base
   has_many :producer_micropost_comment_votes, dependent: :destroy
   has_many :post_comment_votes, dependent: :destroy
   has_many :developer_comment_votes, dependent: :destroy
+
+  has_many :venue_shows, dependent: :destroy
 
   validates :username, presence: true, uniqueness: true, length: { maximum: 50 }, format: { with: /\A[a-zA-Z0-9 ]+\Z/i }
   validates :venue_name, presence: true, length: { maximum: 50 }

@@ -19,7 +19,6 @@ class RecordLabel < ActiveRecord::Base
   belongs_to :fan
 
   has_many :artist_micropost_votes, dependent: :destroy
-  #belongs_to :artist_micropost
   has_many :record_label_micropost_votes, dependent: :destroy
   has_many :venue_micropost_votes, dependent: :destroy
   has_many :producer_micropost_votes, dependent: :destroy

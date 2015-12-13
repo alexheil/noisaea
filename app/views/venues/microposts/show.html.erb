@@ -1,72 +1,70 @@
 <%= provide(:title, sanitize(@venue.venue_name) + " | Status #{@micropost.id}") %>
 <div class="buffalo">
-  <% if @venue.venue_profile.cover_image.blank? %>
-    <div class="clinton">
-      <% if venue_signed_in? && @venue.id == current_venue.id %>
-        you do not have a cover image yet
-      <% else %>
-        <%= "#{@venue.venue_name} hasn't uploaded a cover photo yet" %>
-      <% end %>
-    </div>
-  <% else %>
-    <div class="broadway">
-      <img srcset="<%= @venue.venue_profile.cover_image %>" width="100%" height="auto" />
-    </div>
-  <% end %>
+
+  <%= render 'venues/partials/venue_cover_image' %>
+
   <div class="delaware">
-    <div class="hedley winspear">
-      <%= link_to @venue.venue_name, venue_path(@venue) %>
-    </div>
 
-    <div class="harlem">
-      <span class="winspear"><strong><%= "#{@venue.venue_name}" %></strong> posted <%= time_ago_in_words(@micropost.created_at) %> ago</span>
-      <% if @venue == current_venue %>
-    // <%= link_to "delete post", venue_micropost_path(@venue, @micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %></span>
-      <% end %>
-      <div class="winspear">
-        <%= @micropost.content %>
-      </div>
-      <% if @micropost.link_url.present? %>
-      <div class="winspear">
-          <%= link_to "#{@micropost.link_url.split('/')[2]}", @micropost.link_url, data: { confirm: "#{@micropost.link_url} \n\nAre you sure?" }, class: "sugar" %>
-      </div>
-      <% end %>
-      <% if @micropost.photo_url.present? %>
-      <div class="northrup lincoln">
-        <img srcset="<%= @micropost.photo_url %>" width="100%" height="auto" />
-      </div>
-      <% end %>
+    <main class="main">
 
-      <div class="lisbon" id="lisbon">
+      <ul class="carolina">
+        <li class="jersey"><%= link_to "timeline", venue_path(@venue) %></li>
+        <li><%= link_to "shows", venue_shows_path(@venue) %></li>
+      </ul>
 
-        <div class="micropost_votes">
-          <%= render 'venues/partials/microposts/micropost_votes' %>
+      <div class="hedley">
+        <%= link_to @venue.venue_name, venue_path(@venue) %>
+      </div>
+
+      <div class="harlem">
+        <span class="winspear"><strong><%= "#{@venue.venue_name}" %></strong> posted <%= time_ago_in_words(@micropost.created_at) %> ago</span>
+        <% if @venue == current_venue %>
+      // <%= link_to "delete post", venue_micropost_path(@venue, @micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %></span>
+        <% end %>
+        <div class="winspear">
+          <%= @micropost.content %>
         </div>
+        <% if @micropost.link_url.present? %>
+        <div class="winspear">
+            <%= link_to "#{@micropost.link_url.split('/')[2]}", @micropost.link_url, data: { confirm: "#{@micropost.link_url} \n\nAre you sure?" }, class: "sugar" %>
+        </div>
+        <% end %>
+        <% if @micropost.photo_url.present? %>
+        <div class="northrup lincoln">
+          <img srcset="<%= @micropost.photo_url %>" width="100%" height="auto" />
+        </div>
+        <% end %>
 
-        <span class="micropost_votes_count">
-          <%= render 'venues/partials/microposts/micropost_votes_count' %>
-        </span>
-         //
-         <a class="linden"><span class="comments_count"><%= render 'venues/partials/comments/comments_count' %></span></a>
-      </div>
+        <div class="lisbon" id="lisbon">
 
-      <div class="walden">
-        <div class="minnesota">
-
-          <div class="comments_js">
-            <%= render 'venues/partials/comments/comments' %>
+          <div class="micropost_votes">
+            <%= render 'venues/partials/microposts/micropost_votes' %>
           </div>
 
+          <span class="micropost_votes_count">
+            <%= render 'venues/partials/microposts/micropost_votes_count' %>
+          </span>
+           //
+           <a class="linden"><span class="comments_count"><%= render 'venues/partials/comments/comments_count' %></span></a>
         </div>
 
-        <div class="comments_form">
-          <%= render 'venues/partials/comments/comments_form' %>
+        <div class="walden">
+          <div class="minnesota">
+
+            <div class="comments_js">
+              <%= render 'venues/partials/comments/comments' %>
+            </div>
+
+          </div>
+
+          <div class="comments_form">
+            <%= render 'venues/partials/comments/comments_form' %>
+          </div>
+
+          </div>
         </div>
 
-        </div>
-      </div>
-
-    </div>
+    </main>
 
   </div>
 </div>

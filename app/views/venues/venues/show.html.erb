@@ -1,21 +1,17 @@
 <%= provide(:title, sanitize(@venue.venue_name)) %>
 <div class="buffalo">
-  <% if @venue.venue_profile.cover_image.blank? %>
-    <section class="clinton">
-      <% if venue_signed_in? && @venue.id == current_venue.id %>
-        you do not have a cover image yet. <%= link_to "add one?", edit_venue_profile_path(current_venue) %>
-      <% else %>
-        <%= "#{@venue.venue_name} hasn't uploaded a cover photo yet" %>
-      <% end %>
-    </section>
-  <% else %>
-    <section class="broadway">
-      <img srcset="<%= @venue.venue_profile.cover_image %>" width="100%" height="auto" />
-    </section>
-  <% end %>
+
+  <%= render 'venues/partials/venue_cover_image' %>
+
   <div class="delaware">
 
     <main class="main">
+
+      <ul class="carolina">
+        <li class="jersey"><%= link_to "timeline", venue_path(@venue) %></li>
+        <li><%= link_to "shows", venue_shows_path(@venue) %></li>
+      </ul>
+
       <div class="hedley">
         <%= @venue.venue_name %>
       </div>
@@ -50,79 +46,8 @@
 
     </main>
 
-    <aside class="pearl">
+    <%= render 'venues/partials/venue_sidebar' %>
 
-      <% unless @venue == current_venue %>
-      <div class="washington">
-        <div class="lisbon">
-        <div class="follow_button">
-          <%= render 'venues/partials/relationships/follow_button' %>
-        </div>
-        </div>
-      </div>
-      <% end %>
-
-      <div class="washington">
-        <div class="follower_count">
-          <%= render 'venues/partials/relationships/follower_count' %>
-        </div>
-      </div>
-
-      <% if venue_signed_in? && @venue.id == current_venue.id && @venue.venue_profile.location.blank? && @venue.venue_profile.founded.blank? && @venue.venue_profile.biography.blank? && @venue.venue_profile.facebook_url.blank? && @venue.venue_profile.twitter_url.blank? && @venue.venue_profile.youtube_url.blank? && @venue.venue_profile.website.blank? %>
-        <div class="amherst">
-          you do not have any profile information
-        </div>
-        <div class="jefferson">
-          <%= link_to "update your profile", edit_venue_profile_path(current_venue) %>
-        </div>
-      <% elsif @venue.venue_profile.location.blank? && @venue.venue_profile.founded.blank? && @venue.venue_profile.biography.blank? && @venue.venue_profile.facebook_url.blank? && @venue.venue_profile.twitter_url.blank? && @venue.venue_profile.youtube_url.blank? && @venue.venue_profile.website %>
-        <div class="amherst"><%= "#{@venue.venue_name} does not have any profile information yet" %></div>
-      <% end %>
-      <% if @venue.venue_profile.location.present? %>
-      <div class="jefferson">
-        location //
-      </div>
-      <div class="fillmore">
-        <%= @venue.venue_profile.location %>
-      </div>
-      <% end %>
-      <% if @venue.venue_profile.founded.present? %>
-      <div class="jefferson">
-        founded //
-      </div>
-      <div class="fillmore">
-        <%= @venue.venue_profile.founded %>
-      </div>
-      <% end %>
-      <% if @venue.venue_profile.biography.present? %>
-      <div class="jefferson">
-        biography //
-      </div>
-      <div class="fillmore">
-        <%= @venue.venue_profile.biography %>
-      </div>
-      <% end %>
-      <% if @venue.venue_profile.website.present? %>
-      <div class="fillmore">
-        <%= link_to "Website", @venue.venue_profile.website %>
-      </div>
-      <% end %>
-      <% if @venue.venue_profile.facebook_url.present? %>
-      <div class="fillmore">
-        <%= link_to "Facebook", @venue.venue_profile.facebook_url %>
-      </div>
-      <% end %>
-      <% if @venue.venue_profile.twitter_url.present? %>
-      <div class="fillmore">
-        <%= link_to "Twitter", @venue.venue_profile.twitter_url %>
-      </div>
-      <% end %>
-      <% if @venue.venue_profile.youtube_url.present? %>
-      <div class="fillmore">
-        <%= link_to "YouTube", @venue.venue_profile.youtube_url %>
-      </div>
-      <% end %>
-    </aside>
   </div>
 </div>
 <%= render "partials/uni_footer" %>

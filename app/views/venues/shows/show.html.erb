@@ -1,0 +1,119 @@
+<%= provide(:title, sanitize(@venue.venue_name) + " | Show #{@show.id}") %>
+<div class="buffalo">
+
+  <%= render 'venues/partials/venue_cover_image' %>
+
+  <div class="delaware">
+
+    <main class="main">
+
+      <ul class="carolina">
+        <li><%= link_to "timeline", venue_path(@venue) %></li>
+        <li class="jersey"><%= link_to "shows", venue_shows_path(@venue) %></li>
+      </ul>
+
+      <div class="hedley">
+        <%= @venue.venue_name %>
+      </div>
+
+      <div class="following sterling">
+        <%= render 'venues/partials/relationships/following' %>
+      </div>
+
+      <div class="niagara">
+        <div class="follower_count sterling">
+          <%= render 'venues/partials/relationships/follower_count' %>
+        </div>
+      </div>
+
+      <% unless @venue == current_venue %>
+      <div class="niagara">
+        <div class="highgate">
+        <div class="follow_button">
+          <%= render 'venues/partials/relationships/follow_button' %>
+        </div>
+        </div>
+      </div>
+      <% end %>
+
+      <div class="harlem">
+        <% if @show.flyer_url.present? %>
+        <div class="fargo">
+            <img srcset="<%= @show.flyer_url %>" width="100%" height="auto" />
+        </div>
+        <div class="fargo">
+          <div class="vermont busti">
+            <% if Artist.exists?(:artist_name => "#{@show.artist}") %>
+              <%= link_to @show.artist, artist_path(Artist.where(:artist_name => "#{@show.artist}").first) %>
+            <% else %>
+              <%= @show.artist %>
+            <% end %>
+          </div>
+          <div class="vermont busti">
+            <%= @show.month %>.<%= @show.day %>.<%= @show.year %>
+          </div>
+          <div class="vermont busti">
+            <% if Venue.exists?(:venue_name => "#{@show.show_venue}") %>
+              <%= link_to @show.show_venue, venue_path(Venue.where(:venue_name => "#{@show.show_venue}").first) %>
+            <% else %>
+              <%= @show.show_venue %>
+            <% end %>
+          </div>
+          <div class="vermont busti">
+            <%= @show.location %>
+          </div>
+          <% if @show.ticket_url.present? %>
+          <div class="vermont busti">
+            <%= link_to "get tickets", @show.ticket_url, class: "sugar" %>
+          </div>
+          <% end %>
+          <% if @venue == current_venue %>
+          <div class="amherst busti">
+            // <%= link_to "edit", edit_venue_show_path(@venue, @show) %> or <%= link_to "delete", venue_show_path(@venue, @show), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+          </div>
+          <% end %>
+        </div>
+        <% else %>
+          <div class="vermont">
+            <% if Artist.exists?(:artist_name => "#{@show.artist}") %>
+              <%= link_to @show.artist, artist_path(Artist.where(:artist_name => "#{@show.artist}").first) %>
+            <% else %>
+              <%= @show.artist %>
+            <% end %>
+          </div>
+          <div class="vermont">
+            <%= @show.month %>.<%= @show.day %>.<%= @show.year %>
+          </div>
+          <div class="vermont">
+            <% if Venue.exists?(:venue_name => "#{@show.show_venue}") %>
+              <%= link_to @show.show_venue, venue_path(Venue.where(:venue_name => "#{@show.show_venue}").first) %>
+            <% else %>
+              <%= @show.show_venue %>
+            <% end %>
+          </div>
+          <div class="vermont">
+            <%= @show.location %>
+          </div>
+          <% if @show.ticket_url.present? %>
+          <div class="harlem">
+            <%= link_to "get tickets", @show.ticket_url, class: "sugar" %>
+          </div>
+          <% end %>
+          <% if @venue == current_venue %>
+          <div class="amherst">
+            // <%= link_to "edit", edit_venue_show_path(@venue, @show) %> or <%= link_to "delete", venue_show_path(@venue, @show), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+          </div>
+          <% end %>
+        <% end %>
+        <div class="best">
+          <%= @show.description %>
+        </div>
+      </div>
+
+    </main>
+
+    <%= render 'venues/partials/venue_sidebar' %>
+
+  </div>
+</div>
+<%= render "partials/uni_footer" %>
