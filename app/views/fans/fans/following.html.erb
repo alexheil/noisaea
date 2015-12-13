@@ -1,18 +1,8 @@
 <%= provide(:title, sanitize(@fan.fan_name) + " | Following") %>
 <div class="buffalo">
-  <% if @fan.fan_profile.cover_image.blank? %>
-    <div class="clinton">
-      <% if fan_signed_in? && @fan.id == current_fan.id %>
-        you do not have a cover image yet. <%= link_to "add one?", edit_fan_profile_path(current_fan) %>
-      <% else %>
-        <%= "#{@fan.fan_name} hasn't uploaded a cover photo yet" %>
-      <% end %>
-    </div>
-  <% else %>
-    <div class="broadway">
-      <img srcset="<%= @fan.fan_profile.cover_image %>" width="100%" height="auto" />
-    </div>
-  <% end %>
+
+  <%= render 'fans/partials/fan_cover_image' %>
+
   <div class="delaware">
     <div class="winspear hedley">
       <%= link_to @fan.fan_name, fan_path(@fan) %>
