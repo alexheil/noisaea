@@ -1,0 +1,13 @@
+<% if @record_label.record_label_profile.cover_image.blank? %>
+  <section class="clinton">
+    <% if record_label_signed_in? && @record_label.id == current_record_label.id %>
+      you do not have a cover image yet. <%= link_to "add one?", edit_record_label_profile_path(current_record_label) %>
+    <% else %>
+      <%= "#{@record_label.label_name} hasn't uploaded a cover photo yet" %>
+    <% end %>
+  </section>
+<% else %>
+  <section class="broadway">
+    <img srcset="<%= @record_label.record_label_profile.cover_image %>" width="100%" height="auto" />
+  </section>
+<% end %>

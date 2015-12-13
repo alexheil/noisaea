@@ -1,0 +1,47 @@
+<%= provide(:title, "Add A Show") %>
+<div class="buffalo">
+  <div class="delaware">
+    <div class="elmwood">
+      <div class="harlem">
+        <h1>add a show</h1>
+      </div>
+
+      <%= form_for(@show, url: record_label_shows_path) do |f| %>
+        <%= f.hidden_field :record_label_id %>
+        <%= render 'errors/show_errors' %>
+        <div class="highgate">
+          <%= f.text_field :artist, placeholder: "artist", class: "huron" %>
+        </div>
+        <div class="maryland">
+          <%= f.text_field :month, placeholder: "month", class: "huron" %>
+        </div>
+        <div class="maryland">
+          <%= f.text_field :day, placeholder: "day", class: "huron" %>
+        </div>
+        <div class="maryland">
+          <%= f.text_field :year, placeholder: "year", class: "huron" %>
+        </div>
+        <div class="highgate">
+          <%= f.text_field :location, placeholder: "location (city, state / city, country)", class: "huron" %>
+        </div>
+        <div class="highgate">
+          <%= f.text_field :venue, placeholder: "venue", class: "huron" %>
+        </div>
+        <div class="highgate">
+          <%= f.text_field :ticket_url, placeholder: "ticket url", class: "huron" %>
+        </div>
+        <div class="highgate">
+          <%= f.text_field :flyer_url, placeholder: "flyer url", class: "huron" %>
+        </div>
+        <div class="highgate">
+          <%= f.text_area :description, placeholder: "description", class: "chippewa" %>
+        </div>
+        <div class="ellicott">
+          <%= f.submit "add show", class: "exchange" %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+<%= render 'partials/uni_footer' %>

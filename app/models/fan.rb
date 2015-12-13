@@ -48,6 +48,7 @@ class Fan < ActiveRecord::Base
   has_many :developer_comment_votes, dependent: :destroy
 
   has_many :artist_shows, through: :artists
+  has_many :record_label_shows, through: :record_labels
 
   validates :username, presence: true, uniqueness: true, length: { maximum: 50 }, format: { with: /\A[a-zA-Z0-9 ]+\Z/i }
   validates :fan_name, presence: true, length: { maximum: 50 }

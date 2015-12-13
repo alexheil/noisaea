@@ -1,3 +1,4 @@
+<%= provide(:title, sanitize(@artist.artist_name) + " | Show #{@show.id}") %>
 <div class="buffalo">
 
   <%= render 'artists/partials/artist_cover_image' %>
@@ -65,9 +66,6 @@
           </div>
           <% end %>
         </div>
-        <div class="best">
-          <%= @show.description %>
-        </div>
         <% else %>
           <div class="vermont">
             <%= @show.month %>.<%= @show.day %>.<%= @show.year %>
@@ -84,7 +82,7 @@
           </div>
           <% if @show.ticket_url.present? %>
           <div class="harlem">
-            <%= link_to "get tickets", @show.ticket_url, class: "exchange" %>
+            <%= link_to "get tickets", @show.ticket_url, class: "sugar" %>
           </div>
           <% end %>
           <% if @artist == current_artist %>
@@ -92,10 +90,10 @@
             // <%= link_to "edit", edit_artist_show_path(@artist, @show) %> or <%= link_to "delete", artist_show_path(@artist, @show), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
           </div>
           <% end %>
+        <% end %>
         <div class="best">
           <%= @show.description %>
         </div>
-        <% end %>
       </div>
 
     </main>
@@ -105,14 +103,3 @@
   </div>
 </div>
 <%= render "partials/uni_footer" %>
-
-<% if buffalo_signed_in? %>
-  <div class="forest">
-    <li><%= @artist.id %></li>
-    <li><%= @artist.artist_name %></li>
-    <li><%= @artist.username %></li>
-    <li><%= @artist.email %></li>
-    <li><%= @artist.sign_in_count %></li>
-    <li><%= @artist.last_sign_in_at %></li>
-  </div>
-<% end %>

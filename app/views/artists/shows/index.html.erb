@@ -1,3 +1,4 @@
+<%= provide(:title, sanitize(@artist.artist_name) + " | Shows") %>
 <div class="buffalo">
 
   <%= render 'artists/partials/artist_cover_image' %>
@@ -71,14 +72,3 @@
   </div>
 </div>
 <%= render "partials/uni_footer" %>
-
-<% if buffalo_signed_in? %>
-  <div class="forest">
-    <li><%= @artist.id %></li>
-    <li><%= @artist.artist_name %></li>
-    <li><%= @artist.username %></li>
-    <li><%= @artist.email %></li>
-    <li><%= @artist.sign_in_count %></li>
-    <li><%= @artist.last_sign_in_at %></li>
-  </div>
-<% end %>

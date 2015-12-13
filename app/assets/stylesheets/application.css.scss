@@ -289,6 +289,9 @@ h4 {
 .adams {
   cursor: pointer;
   color: $my-black;
+  &:hover {
+    color: $main-color;
+  }
 }
 
 .monroe {
@@ -307,7 +310,6 @@ h4 {
 }
 
 .madison {
-  width: 50%;
   margin: 1vh auto;
   display: none;
   text-align: center;
@@ -1341,6 +1343,10 @@ select {
 
   .william {
     width: 49%;
+  }
+
+  .south-ogden {
+    text-align: center;
   }
 
   .dodge {

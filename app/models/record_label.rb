@@ -31,6 +31,8 @@ class RecordLabel < ActiveRecord::Base
   has_many :post_comment_votes, dependent: :destroy
   has_many :developer_comment_votes, dependent: :destroy
 
+  has_many :record_label_shows, dependent: :destroy
+
   validates :username, presence: true, uniqueness: true, length: { maximum: 50 }, format: { with: /\A[a-zA-Z0-9 ]+\Z/i }
   validates :label_name, presence: true, length: { maximum: 50 }
 

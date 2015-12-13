@@ -25,7 +25,7 @@ class Artists::ShowsController < ApplicationController
       flash[:notice] = "you've successfully added a show!"
     else
       render 'new'
-      flash[:alert] = "you've failed!"
+      flash.now[:alert] = "you've failed!"
     end
   end
 
@@ -40,14 +40,14 @@ class Artists::ShowsController < ApplicationController
       flash[:notice] = "you've successfully updated your show!"
     else
       render 'edit'
-      flash[:alert] = "you've failed!"
+      flash.now[:alert] = "you've failed!"
     end
   end
 
   def destroy
     @show = ArtistShow.find(params[:id])
     @show.destroy
-    redirect_to artist_shows_path(@artist, @show)
+    redirect_to artist_shows_path(@artist)
   end
 
   private

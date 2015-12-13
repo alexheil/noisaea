@@ -1,21 +1,17 @@
 <%= provide(:title, sanitize(@record_label.label_name)) %>
 <div class="buffalo">
-  <% if @record_label.record_label_profile.cover_image.blank? %>
-    <section class="clinton">
-      <% if record_label_signed_in? && @record_label.id == current_record_label.id %>
-        you do not have a cover image yet. <%= link_to "add one?", edit_record_label_profile_path(current_record_label) %>
-      <% else %>
-        <%= "#{@record_label.label_name} hasn't uploaded a cover photo yet" %>
-      <% end %>
-    </section>
-  <% else %>
-    <section class="broadway">
-      <img srcset="<%= @record_label.record_label_profile.cover_image %>" width="100%" height="auto" />
-    </section>
-  <% end %>
+
+  <%= render 'recordlabels/partials/record_label_cover_image' %>
+
   <div class="delaware">
 
     <main class="main">
+
+      <ul class="carolina">
+        <li class="jersey"><%= link_to "timeline", record_label_path(@record_label) %></li>
+        <li><%= link_to "shows", record_label_shows_path(@record_label) %></li>
+      </ul>
+
       <div class="hedley">
         <%= @record_label.label_name %>
       </div>
@@ -50,112 +46,8 @@
 
     </main>
 
-    <diasidev class="pearl">
+    <%= render 'recordlabels/partials/record_label_sidebar' %>
 
-      <% unless @record_label == current_record_label %>
-      <div class="washington">
-        <div class="lisbon">
-        <div class="follow_button">
-          <%= render 'recordlabels/partials/relationships/follow_button' %>
-        </div>
-        </div>
-      </div>
-      <% end %>
-
-      <div class="washington">
-        <div class="follower_count">
-          <%= render 'recordlabels/partials/relationships/follower_count' %>
-        </div>
-      </div>
-
-      <% if record_label_signed_in? && @record_label.id == current_record_label.id && @record_label.record_label_profile.location.blank? && @record_label.record_label_profile.founded.blank? && @record_label.record_label_profile.artists.blank? && @record_label.record_label_profile.biography.blank? && @record_label.record_label_profile.facebook_url.blank? && @record_label.record_label_profile.twitter_url.blank? && @record_label.record_label_profile.youtube_url.blank? && @record_label.record_label_profile.itunes_url.blank? && @record_label.record_label_profile.amazon_url.blank? && @record_label.record_label_profile.google_play_url.blank? && @record_label.record_label_profile.website.blank?  %>
-        <div class="amherst">
-          you do not have any profile information
-        </div>
-        <div class="jefferson">
-          <%= link_to "update your profile", edit_record_label_profile_path(current_record_label) %>
-        </div>
-      <% elsif @record_label.record_label_profile.location.blank? && @record_label.record_label_profile.founded.blank? && @record_label.record_label_profile.artists.blank? && @record_label.record_label_profile.biography.blank? && @record_label.record_label_profile.facebook_url.blank? && @record_label.record_label_profile.twitter_url.blank? && @record_label.record_label_profile.youtube_url.blank? && @record_label.record_label_profile.itunes_url.blank? && @record_label.record_label_profile.amazon_url.blank? && @record_label.record_label_profile.google_play_url.blank? && @record_label.record_label_profile.website.blank? %>
-        <div class="amherst">
-          <%= "#{@record_label.label_name} does not have any profile information yet" %>
-        </div>
-      <% end %>
-      <% if @record_label.record_label_profile.location.present? %>
-      <div class="jefferson">
-        location //
-      </div>
-      <div class="fillmore">
-        <%= @record_label.record_label_profile.location %>
-      </div>
-      <% end %>
-      <% if @record_label.record_label_profile.founded.present? %>
-      <div class="jefferson">
-        founded //
-      </div>
-      <div class="fillmore">
-        <%= @record_label.record_label_profile.founded %>
-      </div>
-      <% end %>
-      <% if @record_label.record_label_profile.genre.present? %>
-      <div class="jefferson">
-        genre //
-      </div>
-      <div class="fillmore">
-        <%= @record_label.record_label_profile.genre %>
-      </div>
-      <% end %>
-      <% if @record_label.record_label_profile.artists.present? %>
-      <div class="jefferson">
-        artists //
-      </div>
-      <div class="fillmore">
-        <%= @record_label.record_label_profile.artists %>
-      </div>
-      <% end %>
-      <% if @record_label.record_label_profile.biography.present? %>
-      <div class="jefferson">
-        biography //
-      </div>
-      <div class="fillmore">
-        <%= @record_label.record_label_profile.biography %>
-      </div>
-      <% end %>
-      <% if @record_label.record_label_profile.website.present? %>
-      <div class="fillmore">
-        <%= link_to "Website", @record_label.record_label_profile.website %>
-      </div>
-      <% end %>
-      <% if @record_label.record_label_profile.facebook_url.present? %>
-      <div class="fillmore">
-        <%= link_to "Facebook", @record_label.record_label_profile.facebook_url %>
-      </div>
-      <% end %>
-      <% if @record_label.record_label_profile.twitter_url.present? %>
-      <div class="fillmore">
-        <%= link_to "Twitter", @record_label.record_label_profile.twitter_url %>
-      </div>
-      <% end %>
-      <% if @record_label.record_label_profile.youtube_url.present? %>
-      <div class="fillmore">
-        <%= link_to "YouTube", @record_label.record_label_profile.youtube_url %>
-      </div>
-      <% end %>
-      <% if @record_label.record_label_profile.itunes_url.present? %>
-      <div class="fillmore">
-        <%= link_to "iTunes", @record_label.record_label_profile.itunes_url %>
-      </div>
-      <% end %>
-      <% if @record_label.record_label_profile.amazon_url.present? %>
-      <div class="fillmore">
-        <%= link_to "Amazon", @record_label.record_label_profile.amazon_url %>
-      </div>
-      <% end %>
-      <% if @record_label.record_label_profile.google_play_url.present? %>
-      <div class="fillmore">
-        <%= link_to "Google Play", @record_label.record_label_profile.google_play_url %>
-      </div>
-      <% end %>
-    </aside>
   </div>
 </div>
 <%= render "partials/uni_footer" %>

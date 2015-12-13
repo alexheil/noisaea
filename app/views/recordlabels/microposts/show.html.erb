@@ -1,54 +1,52 @@
 <%= provide(:title, sanitize(@record_label.label_name) + " | Status #{@micropost.id}") %>
 <div class="buffalo">
-  <% if @record_label.record_label_profile.cover_image.blank? %>
-    <div class="clinton">
-      <% if record_label_signed_in? && @record_label.id == current_record_label.id %>
-        you do not have a cover image yet
-      <% else %>
-        <%= "#{@record_label.label_name} hasn't uploaded a cover photo yet" %>
-      <% end %>
-    </div>
-  <% else %>
-    <div class="broadway">
-      <img srcset="<%= @record_label.record_label_profile.cover_image %>" width="100%" height="auto" />
-    </div>
-  <% end %>
+
+  <%= render 'recordlabels/partials/record_label_cover_image' %>
+
   <div class="delaware">
-    <div class="hedley winspear">
-      <%= link_to @record_label.label_name, record_label_path(@record_label) %>
-    </div>
 
-    <div class="harlem">
-      <span class="winspear"><strong><%= "#{@record_label.label_name}" %></strong> posted <%= time_ago_in_words(@micropost.created_at) %> ago</span>
-      <% if @record_label == current_record_label %>
-    // <%= link_to "delete post", record_label_micropost_path(@record_label, @micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %></span>
-      <% end %>
-      <div class="winspear">
-        <%= @micropost.content %>
-      </div>
-      <% if @micropost.link_url.present? %>
-      <div class="winspear">
-          <%= link_to "#{@micropost.link_url.split('/')[2]}", @micropost.link_url, data: { confirm: "#{@micropost.link_url} \n\nAre you sure?" }, class: "sugar" %>
-      </div>
-      <% end %>
-      <% if @micropost.photo_url.present? %>
-      <div class="northrup lincoln">
-        <img srcset="<%= @micropost.photo_url %>" width="100%" height="auto" />
-      </div>
-      <% end %>
+    <main class="main">
 
-      <div class="lisbon" id="lisbon">
+      <ul class="carolina">
+        <li class="jersey"><%= link_to "timeline", record_label_path(@record_label) %></li>
+        <li><%= link_to "shows", record_label_shows_path(@record_label) %></li>
+      </ul>
 
-        <div class="micropost_votes">
-          <%= render 'recordlabels/partials/microposts/micropost_votes' %>
+      <div class="hedley winspear">
+        <%= link_to @record_label.label_name, record_label_path(@record_label) %>
+      </div>
+
+      <div class="harlem">
+        <span class="winspear"><strong><%= "#{@record_label.label_name}" %></strong> posted <%= time_ago_in_words(@micropost.created_at) %> ago</span>
+        <% if @record_label == current_record_label %>
+      // <%= link_to "delete post", record_label_micropost_path(@record_label, @micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %></span>
+        <% end %>
+        <div class="winspear">
+          <%= @micropost.content %>
         </div>
+        <% if @micropost.link_url.present? %>
+        <div class="winspear">
+            <%= link_to "#{@micropost.link_url.split('/')[2]}", @micropost.link_url, data: { confirm: "#{@micropost.link_url} \n\nAre you sure?" }, class: "sugar" %>
+        </div>
+        <% end %>
+        <% if @micropost.photo_url.present? %>
+        <div class="northrup lincoln">
+          <img srcset="<%= @micropost.photo_url %>" width="100%" height="auto" />
+        </div>
+        <% end %>
 
-        <span class="micropost_votes_count">
-          <%= render 'recordlabels/partials/microposts/micropost_votes_count' %>
-        </span>
-         //
-         <a class="linden"><span class="comments_count"><%= render 'recordlabels/partials/comments/comments_count' %></span></a>
-      </div>
+        <div class="lisbon" id="lisbon">
+
+          <div class="micropost_votes">
+            <%= render 'recordlabels/partials/microposts/micropost_votes' %>
+          </div>
+
+          <span class="micropost_votes_count">
+            <%= render 'recordlabels/partials/microposts/micropost_votes_count' %>
+          </span>
+           //
+           <a class="linden"><span class="comments_count"><%= render 'recordlabels/partials/comments/comments_count' %></span></a>
+        </div>
 
         <div class="walden">
           <div class="minnesota">
@@ -66,8 +64,7 @@
         </div>
       </div>
 
-
-    </div>
+    </main>
 
   </div>
 </div>
