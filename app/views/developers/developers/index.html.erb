@@ -6,12 +6,15 @@
     <div class="main">
       <% if @developers.any? %>
         <% @developers.each do |developer| %>
+        <div class="highgate">
+          <img srcset="<%= developer.image %>" width="100%" height="auto" />
+        </div>
         <h1><%= link_to developer.title, developer_path(developer) %></h1>
         <div class="amherst">
           posted by <%= Buffalo.find(developer.buffalo_id).buffalo_name %>
         </div>
         <div class="best">
-          <%= sanitize(developer.content.truncate(400)) %>
+          <%= sanitize(developer.content).split("<h3>").first %>
         </div>
         <div class="harlem">
           <%= pluralize(developer.developer_comments.count, "comment") %> // <%= link_to "read more...", developer_path(developer) %>

@@ -4,6 +4,9 @@
   <div class="delaware">
 
     <main class="main">
+      <div class="highgate">
+        <img srcset="<%= @post.image %>" width="100%" height="auto" />
+      </div>
       <h1><%= @post.title %></h1>
       <div class="amherst">
         posted by <%= Buffalo.find(@post.buffalo_id).buffalo_name %> // follow him on twitter <a href="https://twitter.com/realalexheil">here</a>.

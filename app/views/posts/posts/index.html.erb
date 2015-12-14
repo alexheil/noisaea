@@ -6,12 +6,15 @@
     <div class="main">
       <% if @posts.any? %>
         <% @posts.each do |post| %>
+        <div class="highgate">
+          <img srcset="<%= post.image %>" width="100%" height="auto" />
+        </div>
         <h1><%= link_to post.title, post_path(post) %></h1>
         <div class="amherst">
           posted by <%= Buffalo.find(post.buffalo_id).buffalo_name %>
         </div>
         <div class="best">
-          <%= raw(post.content).split("<h3>").first %>
+          <%= sanitize(post.content).split("<h3>").first %>
         </div>
         <div class="harlem">
           <%= pluralize(post.post_comments.count, "comment") %> // <%= link_to "read more...", post_path(post) %>
