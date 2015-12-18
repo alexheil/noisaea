@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151213044338) do
+ActiveRecord::Schema.define(version: 20151217012322) do
 
   create_table "artist_micropost_comment_votes", force: true do |t|
     t.integer  "artist_micropost_comment_id"
@@ -138,6 +138,18 @@ ActiveRecord::Schema.define(version: 20151213044338) do
   end
 
   add_index "artist_shows", ["artist_id"], name: "index_artist_shows_on_artist_id"
+
+  create_table "artist_videos", force: true do |t|
+    t.integer  "artist_id"
+    t.string   "title"
+    t.text     "description"
+    t.string   "youtube_url"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "artist_videos", ["artist_id"], name: "index_artist_videos_on_artist_id"
 
   create_table "artists", force: true do |t|
     t.string   "artist_name",            default: "", null: false

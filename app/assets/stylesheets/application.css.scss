@@ -715,6 +715,7 @@ h4 {
   font-size: 2em;
   font-family: $fancy-font;
   margin-bottom: 5vh;
+  line-height: 1.15em;
 }
 
 .busti {
@@ -767,6 +768,21 @@ h4 {
 
 .virgil {
   display: none;
+}
+
+.plymouth {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 35px;
+    height: 0;
+    overflow: hidden;
+  iframe {
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 /*                           ****************************** FORMS ****************************** */

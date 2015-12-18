@@ -1,0 +1,109 @@
+<%= provide(:title, sanitize(@fan.fan_name)) %>
+<div class="buffalo">
+
+  <%= render 'fans/partials/fan_cover_image' %>
+
+  <div class="delaware">
+
+    <main class="main">
+
+      <ul class="carolina">
+        <li><%= link_to "timeline", fan_path(@fan) %></li>
+        <li><%= link_to "shows", fan_shows_path(@fan) %></li>
+        <li class="jersey"><%= link_to "videos", fan_videos_path(@fan) %></li>
+      </ul>
+
+      <div class="hedley">
+        <%= @fan.fan_name %>
+      </div>
+
+      <% if artist_signed_in? && @fan.following_artist?(current_artist) %>
+        <div class="amherst">
+          <%= @fan.fan_name %> follows you
+        </div>
+      <% elsif record_label_signed_in? && @fan.following_record_label?(current_record_label) %>
+        <div class="amherst">
+          <%= @fan.fan_name %> follows you
+        </div>
+      <% elsif venue_signed_in? && @fan.following_venue?(current_venue) %>
+        <div class="amherst">
+          <%= @fan.fan_name %> follows you
+        </div>
+      <% elsif producer_signed_in? && @fan.following_producer?(current_producer) %>
+        <div class="amherst">
+          <%= @fan.fan_name %> follows you
+        </div>
+      <% end %>
+
+      <div class="highgate">
+
+        <div class="allen">
+          <a id="fan-artist-click"><strong>artists</strong></a>
+          <div class="amherst">
+            // following <%= link_to pluralize(@fan.artists.count, "artist"), fan_following_path(@fan) %>
+          </div>
+        </div>
+
+        <div class="allen">
+          <a id="fan-record-label-click"><strong>record labels</strong></a>
+          <div class="amherst">
+            // following <%= link_to pluralize(@fan.record_labels.count, "record label"), fan_following_path(@fan) %>
+          </div>
+        </div>
+
+        <div class="allen">
+          <a id="fan-venue-click"><strong>venues</strong></a>
+          <div class="amherst">
+            // following <%= link_to pluralize(@fan.venues.count, "venue"), fan_following_path(@fan) %>
+          </div>
+        </div>
+
+        <div class="allen">
+          <a id="fan-producer-click"><strong>producers</strong></a>
+          <div class="amherst">
+            // following <%= link_to pluralize(@fan.producers.count, "producer"), fan_following_path(@fan) %>
+          </div>
+        </div>
+
+        <div id="fan-artist" class="ferry">
+        <% if @fan.artist_videos.any? %>
+          <% @fan.artist_videos.each do |video| %>
+            <div class="winspear">
+              <%= link_to Artist.find(video.artist_id).artist_name, artist_path(Artist.find(video.artist_id)) %> posted <%= link_to video.title, artist_video_path(Artist.find(video.artist_id), video) %> <%= time_ago_in_words(video.created_at) %> ago
+            </div>
+            <div class="minnesota plymouth">
+              <%= embed(video.youtube_url) %>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="harlem">
+            <% if @fan == current_fan %>
+              you do not have any videos. <%= link_to "find some artists to follow.", artists_path %>
+            <% else %>
+              <%= @fan.fan_name %> does not have any videos.
+            <% end %>
+          </div>
+        <% end %>
+        </div>
+
+        <div id="fan-record-label" class="ferry colvin">
+
+        </div>
+
+        <div id="fan-venue" class="ferry colvin">
+
+        </div>
+
+        <div id="fan-producer" class="ferry colvin">
+
+        </div>
+
+      </div>
+
+    </main>
+
+    <%= render 'fans/partials/fan_sidebar' %>
+
+  </div>
+</div>
+<%= render "partials/uni_footer" %>

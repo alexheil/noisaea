@@ -3,6 +3,7 @@
   <ul class="taunton pine-ridge">
     <li><%= link_to "dashboard", current_artist, class: "military" %></li>
     <li><%= link_to "shows", artist_shows_path(current_artist), class: "depew" %></li>
+    <li><%= link_to "videos", artist_videos_path(current_artist), class: "depew" %></li>
     <li><%= link_to "profile", edit_artist_profile_path(current_artist), class: "depew" %></li>
     <li><%= link_to "settings", edit_artist_registration_path, class: "depew" %></li>
     <li><%= link_to "sign out", sign_out_path, class: "depew" %></li>

@@ -1,4 +1,4 @@
-<%= provide(:title, sanitize(@artist.artist_name) + " | Shows") %>
+<%= provide(:title, sanitize(@artist.artist_name) + " | Videos") %>
 <div class="buffalo">
 
   <%= render 'artists/partials/artist_cover_image' %>
@@ -9,8 +9,8 @@
 
       <ul class="carolina">
         <li><%= link_to "timeline", artist_path(@artist) %></li>
-        <li class="jersey"><%= link_to "shows", artist_shows_path(@artist) %></li>
-        <li><%= link_to "videos", artist_videos_path(@artist) %></li>
+        <li><%= link_to "shows", artist_shows_path(@artist) %></li>
+        <li class="jersey"><%= link_to "videos", artist_videos_path(@artist) %></li>
       </ul>
 
       <div class="hedley">
@@ -39,29 +39,25 @@
 
       <% if @artist == current_artist %>
         <div class="harlem vermont">
-          <%= link_to "add a show", new_artist_show_path(@artist), class: "sugar" %>
+          <%= link_to "add a video", new_artist_video_path(@artist), class: "sugar" %>
         </div>
       <% end %>
 
-      <% if @artist.artist_shows.any? %>
-        <div class="harlem">
-        <% @artist.artist_shows.each do |show| %>
-          <div class="amherst"><%= link_to "#{show.month}.#{show.day}.#{show.year} at #{show.venue} in #{show.location}", artist_show_path(@artist, show) %>
-            <% if show.ticket_url.present? %>
-              // <%= link_to "get tickets", show.ticket_url, class: "sugar" %>
-            <% end %>
-            <% if @artist == current_artist %>
-              // <%= link_to "edit", edit_artist_show_path(@artist, show) %> or <%= link_to "delete", artist_show_path(@artist, show), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
-            <% end %>
+      <% if @artist.artist_videos.any? %>
+        <% @artist.artist_videos.each do |video| %>
+          <div class="harlem vermont">
+            <%= link_to video.title, artist_video_path(@artist, video) %>
+          </div>
+          <div class="harlem plymouth">
+            <%= embed(video.youtube_url) %>
           </div>
         <% end %>
-        </div>
       <% else %>
         <div class="harlem">
           <% if @artist == current_artist %>
-            you do not have any shows. <%= link_to "add one?", new_artist_show_path(@artist) %>
+            you do not have any videos. <%= link_to "add one?", new_artist_video_path(@artist) %>
           <% else %>
-            <%= @artist.artist_name %> does not have any shows.
+            <%= @artist.artist_name %> does not have any videos.
           <% end %>
         </div>
       <% end %>

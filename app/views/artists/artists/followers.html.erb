@@ -1,18 +1,8 @@
 <%= provide(:title, sanitize(@artist.artist_name) + " | Followers") %>
 <div class="buffalo">
-  <% if @artist.artist_profile.cover_image.blank? %>
-    <div class="clinton">
-      <% if artist_signed_in? && @artist.id == current_artist.id %>
-        you do not have a cover image yet. <%= link_to "add one?", edit_artist_profile_path(current_artist) %>
-      <% else %>
-        <%= "#{@artist.artist_name} hasn't uploaded a cover photo yet" %>
-      <% end %>
-    </div>
-  <% else %>
-    <div class="broadway">
-      <img srcset="<%= @artist.artist_profile.cover_image %>" width="100%" height="auto" />
-    </div>
-  <% end %>
+
+  <%= render 'artists/partials/artist_cover_image' %>
+
   <div class="delaware">
     <div class="winspear hedley">
       <%= link_to @artist.artist_name, artist_path(@artist) %>

@@ -16,4 +16,8 @@ class Fans::FansController < ApplicationController
     @fan = Fan.friendly.find(params[:fan_id])
   end
 
+  def videos
+    @fan = Fan.friendly.find(params[:fan_id])
+  end
+
 end

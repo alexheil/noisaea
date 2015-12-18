@@ -32,6 +32,7 @@ Rails.application.routes.draw do
       end
     end
     resources :shows, controller: 'artists/shows'
+    resources :videos, controller: 'artists/videos'
     get 'followers' => 'artists/artists#followers'
   end
 
@@ -48,6 +49,7 @@ Rails.application.routes.draw do
     resource :profile, controller: 'fans/profiles', only: [:edit, :update]
     get 'following' => 'fans/fans#following'
     get 'shows' => 'fans/fans#shows'
+    get 'videos' => 'fans/fans#videos'
   end
 
   ####################### RECORD LABEL ##########################

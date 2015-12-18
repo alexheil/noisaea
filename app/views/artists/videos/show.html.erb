@@ -1,4 +1,4 @@
-<%= provide(:title, sanitize(@artist.artist_name)) %>
+<%= provide(:title, sanitize(@artist.artist_name) + " | #{@video.title}") %>
 <div class="buffalo">
 
   <%= render 'artists/partials/artist_cover_image' %>
@@ -8,9 +8,9 @@
     <main class="main">
 
       <ul class="carolina">
-        <li class="jersey"><%= link_to "timeline", artist_path(@artist) %></li>
+        <li><%= link_to "timeline", artist_path(@artist) %></li>
         <li><%= link_to "shows", artist_shows_path(@artist) %></li>
-        <li><%= link_to "videos", artist_videos_path(@artist) %></li>
+        <li class="jersey"><%= link_to "videos", artist_videos_path(@artist) %></li>
       </ul>
 
       <div class="hedley">
@@ -37,12 +37,16 @@
       </div>
       <% end %>
 
-      <div class="microposts_form">
-        <%= render 'artists/partials/microposts/microposts_form' %>
-      </div>
-
-      <div class="microposts_js">
-        <%= render 'artists/partials/microposts/index_microposts' %>
+      <div class="amherst">
+        <div class="harlem vermont">
+          <%= link_to @video.title, artist_video_path(@artist, @video) %>
+        </div>
+        <div class="harlem plymouth">
+          <%= embed(@video.youtube_url) %>
+        </div>
+        <div class="best">
+          <%= @video.description %>
+        </div>
       </div>
 
     </main>
@@ -52,17 +56,3 @@
   </div>
 </div>
 <%= render "partials/uni_footer" %>
-
-<% if buffalo_signed_in? %>
-  <div class="forest">
-    <li><%= @artist.id %></li>
-    <li><%= @artist.artist_name %></li>
-    <li><%= @artist.username %></li>
-    <li><%= @artist.email %></li>
-    <li><%= @artist.sign_in_count %></li>
-    <li><%= @artist.last_sign_in_at %></li>
-  </div>
-<% end %>
-
-
-
