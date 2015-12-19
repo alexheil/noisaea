@@ -99,7 +99,7 @@
         <% else %>
           <div class="harlem">
             <% if @fan == current_fan %>
-              you do not have any videos. <%= link_to "find some artists to follow.", record_labels_path %>
+              you do not have any videos. <%= link_to "find some record labels to follow.", record_labels_path %>
             <% else %>
               <%= @fan.fan_name %> does not have any videos.
             <% end %>
