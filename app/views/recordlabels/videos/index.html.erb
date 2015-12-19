@@ -1,0 +1,71 @@
+<%= provide(:title, sanitize(@record_label.label_name) + " | Videos") %>
+<div class="buffalo">
+
+  <%= render 'recordlabels/partials/record_label_cover_image' %>
+
+  <div class="delaware">
+
+    <main class="main">
+
+      <ul class="carolina">
+        <li><%= link_to "timeline", record_label_path(@record_label) %></li>
+        <li><%= link_to "shows", record_label_shows_path(@record_label) %></li>
+        <li class="jersey"><%= link_to "videos", record_label_videos_path(@record_label) %></li>
+      </ul>
+
+      <div class="hedley">
+        <%= @record_label.label_name %>
+      </div>
+
+      <div class="following sterling">
+        <%= render 'recordlabels/partials/relationships/following' %>
+      </div>
+
+      <div class="niagara">
+        <div class="follower_count sterling">
+          <%= render 'recordlabels/partials/relationships/follower_count' %>
+        </div>
+      </div>
+
+      <% unless @record_label == current_record_label %>
+      <div class="niagara">
+        <div class="highgate">
+        <div class="follow_button">
+          <%= render 'recordlabels/partials/relationships/follow_button' %>
+        </div>
+        </div>
+      </div>
+      <% end %>
+
+      <% if @record_label == current_record_label %>
+        <div class="harlem vermont">
+          <%= link_to "add a video", new_record_label_video_path(@record_label), class: "sugar" %>
+        </div>
+      <% end %>
+
+      <% if @record_label.record_label_videos.any? %>
+        <% @record_label.record_label_videos.each do |video| %>
+          <div class="harlem vermont">
+            <%= link_to video.title, record_label_video_path(@record_label, video) %>
+          </div>
+          <div class="harlem plymouth">
+            <%= embed(video.youtube_url) %>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="harlem">
+          <% if @record_label == current_record_label %>
+            you do not have any videos. <%= link_to "add one?", new_record_label_video_path(@record_label) %>
+          <% else %>
+            <%= @record_label.label_name %> does not have any videos.
+          <% end %>
+        </div>
+      <% end %>
+
+    </main>
+
+    <%= render 'recordlabels/partials/record_label_sidebar' %>
+
+  </div>
+</div>
+<%= render "partials/uni_footer" %>

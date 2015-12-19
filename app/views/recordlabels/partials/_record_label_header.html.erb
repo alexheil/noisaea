@@ -3,6 +3,7 @@
   <ul class="taunton pine-ridge">
     <li><%= link_to "dashboard", current_record_label, class: "military" %></li>
     <li><%= link_to "shows", record_label_shows_path(current_record_label), class: "depew" %></li>
+    <li><%= link_to "videos", record_label_videos_path(current_record_label), class: "depew" %></li>
     <li><%= link_to "profile", edit_record_label_profile_path(current_record_label), class: "depew" %></li>
     <li><%= link_to "settings", edit_record_label_registration_path, class: "depew" %></li>
     <li><%= link_to "sign out", sign_out_path, class: "depew" %></li>

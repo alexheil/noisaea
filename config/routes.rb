@@ -70,6 +70,7 @@ Rails.application.routes.draw do
       end
     end
     resources :shows, controller: 'recordlabels/shows'
+    resources :videos, controller: 'recordlabels/videos'
     get 'followers' => 'recordlabels/recordlabels#followers'
   end
 

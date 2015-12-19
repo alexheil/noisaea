@@ -1,4 +1,4 @@
-<%= provide(:title, sanitize(@record_label.label_name)) %>
+<%= provide(:title, sanitize(@record_label.label_name) + " | #{@video.title}") %>
 <div class="buffalo">
 
   <%= render 'recordlabels/partials/record_label_cover_image' %>
@@ -8,9 +8,9 @@
     <main class="main">
 
       <ul class="carolina">
-        <li class="jersey"><%= link_to "timeline", record_label_path(@record_label) %></li>
+        <li><%= link_to "timeline", record_label_path(@record_label) %></li>
         <li><%= link_to "shows", record_label_shows_path(@record_label) %></li>
-        <li><%= link_to "videos", record_label_videos_path(@record_label) %></li>
+        <li class="jersey"><%= link_to "videos", record_label_videos_path(@record_label) %></li>
       </ul>
 
       <div class="hedley">
@@ -37,12 +37,16 @@
       </div>
       <% end %>
 
-      <div class="microposts_form">
-        <%= render 'recordlabels/partials/microposts/microposts_form' %>
-      </div>
-
-      <div class="microposts_js">
-        <%= render 'recordlabels/partials/microposts/index_microposts' %>
+      <div class="amherst">
+        <div class="harlem vermont">
+          <%= link_to @video.title, record_label_video_path(@record_label, @video) %>
+        </div>
+        <div class="harlem plymouth">
+          <%= embed(@video.youtube_url) %>
+        </div>
+        <div class="best">
+          <%= @video.description %>
+        </div>
       </div>
 
     </main>
@@ -52,14 +56,3 @@
   </div>
 </div>
 <%= render "partials/uni_footer" %>
-
-<% if buffalo_signed_in? %>
-  <div class="forest">
-    <li><%= @record_label.id %></li>
-    <li><%= @record_label.label_name %></li>
-    <li><%= @record_label.username %></li>
-    <li><%= @record_label.email %></li>
-    <li><%= @record_label.sign_in_count %></li>
-    <li><%= @record_label.last_sign_in_at %></li>
-  </div>
-<% end %>
