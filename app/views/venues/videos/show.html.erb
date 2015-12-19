@@ -41,6 +41,11 @@
         <div class="harlem vermont">
           <%= link_to @video.title, venue_video_path(@venue, @video) %>
         </div>
+        <% if @venue == current_venue %>
+        <div class="amherst">
+          // <%= link_to "edit", edit_venue_video_path(@venue, @video) %> or <%= link_to "delete", venue_video_path(@venue, @video), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+        </div>
+        <% end %>
         <div class="harlem plymouth">
           <%= embed(@video.youtube_url) %>
         </div>

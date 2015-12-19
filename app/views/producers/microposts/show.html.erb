@@ -1,72 +1,70 @@
 <%= provide(:title, sanitize(@producer.producer_name) + " | Status #{@micropost.id}") %>
 <div class="buffalo">
-  <% if @producer.producer_profile.cover_image.blank? %>
-    <div class="clinton">
-      <% if producer_signed_in? && @producer.id == current_producer.id %>
-        you do not have a cover image yet
-      <% else %>
-        <%= "#{@producer.producer_name} hasn't uploaded a cover photo yet" %>
-      <% end %>
-    </div>
-  <% else %>
-  <div class="broadway">
-    <img srcset="<%= @producer.producer_profile.cover_image %>" width="100%" height="auto" />
-  </div>
-  <% end %>
+
+  <%= render 'producers/partials/producer_cover_image' %>
+
   <div class="delaware">
-    <div class="hedley winspear">
-      <%= link_to @producer.producer_name, producer_path(@producer) %>
-    </div>
 
-    <div class="harlem">
-      <span class="winspear"><strong><%= "#{@producer.producer_name}" %></strong> posted <%= time_ago_in_words(@micropost.created_at) %> ago</span>
-      <% if @producer == current_producer %>
-    // <%= link_to "delete post", producer_micropost_path(@producer, @micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %></span>
-      <% end %>
-      <div class="winspear">
-        <%= @micropost.content %>
-      </div>
-      <% if @micropost.link_url.present? %>
-      <div class="winspear">
-          <%= link_to "#{@micropost.link_url.split('/')[2]}", @micropost.link_url, data: { confirm: "#{@micropost.link_url} \n\nAre you sure?" }, class: "sugar" %>
-      </div>
-      <% end %>
-      <% if @micropost.photo_url.present? %>
-      <div class="northrup lincoln">
-        <img srcset="<%= @micropost.photo_url %>" width="100%" height="auto" />
-      </div>
-      <% end %>
+    <main class="main">
 
-      <div class="lisbon" id="lisbon">
+      <ul class="carolina">
+        <li class="jersey"><%= link_to "timeline", producer_path(@producer) %></li>
+        <li><%= link_to "videos", producer_videos_path(@producer) %></li>
+      </ul>
 
-        <div class="micropost_votes">
-          <%= render 'producers/partials/microposts/micropost_votes' %>
+      <div class="hedley">
+        <%= link_to @producer.producer_name, producer_path(@producer) %>
+      </div>
+
+      <div class="harlem">
+        <span class="winspear"><strong><%= "#{@producer.producer_name}" %></strong> posted <%= time_ago_in_words(@micropost.created_at) %> ago</span>
+        <% if @producer == current_producer %>
+      // <%= link_to "delete post", producer_micropost_path(@producer, @micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %></span>
+        <% end %>
+        <div class="winspear">
+          <%= @micropost.content %>
         </div>
+        <% if @micropost.link_url.present? %>
+        <div class="winspear">
+            <%= link_to "#{@micropost.link_url.split('/')[2]}", @micropost.link_url, data: { confirm: "#{@micropost.link_url} \n\nAre you sure?" }, class: "sugar" %>
+        </div>
+        <% end %>
+        <% if @micropost.photo_url.present? %>
+        <div class="northrup lincoln">
+          <img srcset="<%= @micropost.photo_url %>" width="100%" height="auto" />
+        </div>
+        <% end %>
 
-        <span class="micropost_votes_count">
-          <%= render 'producers/partials/microposts/micropost_votes_count' %>
-        </span>
-         //
-         <a class="linden"><span class="comments_count"><%= render 'producers/partials/comments/comments_count' %></span></a>
-      </div>
+        <div class="lisbon" id="lisbon">
 
-      <div class="walden">
-        <div class="minnesota">
-
-          <div class="comments_js">
-            <%= render 'producers/partials/comments/comments' %>
+          <div class="micropost_votes">
+            <%= render 'producers/partials/microposts/micropost_votes' %>
           </div>
 
+          <span class="micropost_votes_count">
+            <%= render 'producers/partials/microposts/micropost_votes_count' %>
+          </span>
+           //
+           <a class="linden"><span class="comments_count"><%= render 'producers/partials/comments/comments_count' %></span></a>
         </div>
 
-        <div class="comments_form">
-          <%= render 'producers/partials/comments/comments_form' %>
+        <div class="walden">
+          <div class="minnesota">
+
+            <div class="comments_js">
+              <%= render 'producers/partials/comments/comments' %>
+            </div>
+
+          </div>
+
+          <div class="comments_form">
+            <%= render 'producers/partials/comments/comments_form' %>
+          </div>
+
+          </div>
         </div>
 
-        </div>
-      </div>
-
-    </div>
+      </main>
 
   </div>
 </div>

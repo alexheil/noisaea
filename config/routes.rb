@@ -113,6 +113,7 @@ Rails.application.routes.draw do
         resources :votes, controller: 'producers/comment_votes', only: [:create,:destroy]
       end
     end
+    resources :videos, controller: 'producers/videos'
     get 'followers' => 'producers/producers#followers'
   end
 

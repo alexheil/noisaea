@@ -41,6 +41,11 @@
         <div class="harlem vermont">
           <%= link_to @video.title, record_label_video_path(@record_label, @video) %>
         </div>
+        <% if @record_label == current_record_label %>
+          <div class="amherst">
+            // <%= link_to "edit", edit_record_label_video_path(@record_label, @video) %> or <%= link_to "delete", record_label_video_path(@record_label, @video), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+          </div>
+          <% end %>
         <div class="harlem plymouth">
           <%= embed(@video.youtube_url) %>
         </div>

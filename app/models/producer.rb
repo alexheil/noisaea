@@ -30,6 +30,8 @@ class Producer < ActiveRecord::Base
   has_many :post_comment_votes, dependent: :destroy
   has_many :developer_comment_votes, dependent: :destroy
 
+  has_many :producer_videos, dependent: :destroy
+
   validates :username, presence: true, uniqueness: true, length: { maximum: 50 }, format: { with: /\A[a-zA-Z0-9 ]+\Z/i }
   validates :artist_name, presence: true, length: { maximum: 50 }
 

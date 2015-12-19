@@ -129,7 +129,24 @@
         </div>
 
         <div id="fan-producer" class="ferry colvin">
-
+          <% if @fan.producer_videos.any? %>
+          <% @fan.producer_videos.each do |video| %>
+            <div class="winspear">
+              <%= link_to Producer.find(video.producer_id).producer_name, producer_path(Producer.find(video.producer_id)) %> posted <%= link_to video.title, producer_video_path(Producer.find(video.producer_id), video) %> <%= time_ago_in_words(video.created_at) %> ago
+            </div>
+            <div class="minnesota plymouth">
+              <%= embed(video.youtube_url) %>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="harlem">
+            <% if @fan == current_fan %>
+              you do not have any videos. <%= link_to "find some producers to follow.", producers_path %>
+            <% else %>
+              <%= @fan.fan_name %> does not have any videos.
+            <% end %>
+          </div>
+        <% end %>
         </div>
 
       </div>

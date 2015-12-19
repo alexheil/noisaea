@@ -41,6 +41,11 @@
         <div class="harlem vermont">
           <%= link_to @video.title, artist_video_path(@artist, @video) %>
         </div>
+        <% if @artist == current_artist %>
+        <div class="amherst">
+          // <%= link_to "edit", edit_artist_video_path(@artist, @video) %> or <%= link_to "delete", artist_video_path(@artist, @video), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+        </div>
+        <% end %>
         <div class="harlem plymouth">
           <%= embed(@video.youtube_url) %>
         </div>

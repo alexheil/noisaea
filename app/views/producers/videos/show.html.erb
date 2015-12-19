@@ -1,4 +1,4 @@
-<%= provide(:title, sanitize(@producer.producer_name)) %>
+<%= provide(:title, sanitize(@producer.producer_name) + " | #{@video.title}") %>
 <div class="buffalo">
 
   <%= render 'producers/partials/producer_cover_image' %>
@@ -8,8 +8,8 @@
     <main class="main">
 
       <ul class="carolina">
-        <li class="jersey"><%= link_to "timeline", producer_path(@producer) %></li>
-        <li><%= link_to "videos", producer_videos_path(@producer) %></li>
+        <li><%= link_to "timeline", producer_path(@producer) %></li>
+        <li class="jersey"><%= link_to "videos", producer_videos_path(@producer) %></li>
       </ul>
 
       <div class="hedley">
@@ -36,12 +36,21 @@
       </div>
       <% end %>
 
-      <div class="microposts_form">
-        <%= render 'producers/partials/microposts/microposts_form' %>
-      </div>
-
-      <div class="microposts_js">
-        <%= render 'producers/partials/microposts/index_microposts' %>
+      <div class="amherst">
+        <div class="harlem vermont">
+          <%= link_to @video.title, producer_video_path(@producer, @video) %>
+        </div>
+        <% if @producer == current_producer %>
+        <div class="amherst">
+          // <%= link_to "edit", edit_producer_video_path(@producer, @video) %> or <%= link_to "delete", producer_video_path(@producer, @video), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+        </div>
+        <% end %>
+        <div class="harlem plymouth">
+          <%= embed(@video.youtube_url) %>
+        </div>
+        <div class="best">
+          <%= @video.description %>
+        </div>
       </div>
 
     </main>
@@ -51,14 +60,3 @@
   </div>
 </div>
 <%= render "partials/uni_footer" %>
-
-<% if buffalo_signed_in? %>
-  <div class="forest">
-    <li><%= @producer.id %></li>
-    <li><%= @producer.producer_name %></li>
-    <li><%= @producer.username %></li>
-    <li><%= @producer.email %></li>
-    <li><%= @producer.sign_in_count %></li>
-    <li><%= @producer.last_sign_in_at %></li>
-  </div>
-<% end %>

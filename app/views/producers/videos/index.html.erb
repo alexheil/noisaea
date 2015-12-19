@@ -1,0 +1,75 @@
+<%= provide(:title, sanitize(@producer.producer_name) + " | Videos") %>
+<div class="buffalo">
+
+  <%= render 'producers/partials/producer_cover_image' %>
+
+  <div class="delaware">
+
+    <main class="main">
+
+      <ul class="carolina">
+        <li><%= link_to "timeline", producer_path(@producer) %></li>
+        <li class="jersey"><%= link_to "videos", producer_videos_path(@producer) %></li>
+      </ul>
+
+      <div class="hedley">
+        <%= @producer.producer_name %>
+      </div>
+
+      <div class="following sterling">
+        <%= render 'producers/partials/relationships/following' %>
+      </div>
+
+      <div class="niagara">
+        <div class="follower_count sterling">
+          <%= render 'producers/partials/relationships/follower_count' %>
+        </div>
+      </div>
+
+      <% unless @producer == current_producer %>
+      <div class="niagara">
+        <div class="highgate">
+        <div class="follow_button">
+          <%= render 'producers/partials/relationships/follow_button' %>
+        </div>
+        </div>
+      </div>
+      <% end %>
+
+      <% if @producer == current_producer %>
+        <div class="harlem vermont">
+          <%= link_to "add a video", new_producer_video_path(@producer), class: "sugar" %>
+        </div>
+      <% end %>
+
+      <% if @producer.producer_videos.any? %>
+        <% @producer.producer_videos.each do |video| %>
+          <div class="harlem vermont">
+            <%= link_to video.title, producer_video_path(@producer, video) %>
+          </div>
+          <% if @producer == current_producer %>
+          <div class="amherst">
+            // <%= link_to "edit", edit_producer_video_path(@producer, video) %> or <%= link_to "delete", producer_video_path(@producer, video), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+          </div>
+          <% end %>
+          <div class="harlem plymouth">
+            <%= embed(video.youtube_url) %>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="harlem">
+          <% if @producer == current_producer %>
+            you do not have any videos. <%= link_to "add one?", new_producer_video_path(@producer) %>
+          <% else %>
+            <%= @producer.producer_name %> does not have any videos.
+          <% end %>
+        </div>
+      <% end %>
+
+    </main>
+
+    <%= render 'producers/partials/producer_sidebar' %>
+
+  </div>
+</div>
+<%= render "partials/uni_footer" %>

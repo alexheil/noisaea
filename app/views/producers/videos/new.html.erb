@@ -1,0 +1,29 @@
+<%= provide(:title, "Add A Video") %>
+<div class="buffalo">
+  <div class="delaware">
+    <div class="elmwood">
+      <div class="harlem">
+        <h1>add a video</h1>
+      </div>
+
+      <%= form_for(@video, url: producer_videos_path) do |f| %>
+        <%= f.hidden_field :producer_id %>
+        <%= render 'errors/video_errors' %>
+        <div class="highgate">
+          <%= f.text_field :title, placeholder: "title", class: "huron" %>
+        </div>
+        <div class="highgate">
+          <%= f.text_field :youtube_url, placeholder: "youtube url", class: "huron" %>
+        </div>
+        <div class="highgate">
+          <%= f.text_area :description, placeholder: "description", class: "chippewa" %>
+        </div>
+        <div class="ellicott">
+          <%= f.submit "add video", class: "exchange" %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+<%= render 'partials/uni_footer' %>
