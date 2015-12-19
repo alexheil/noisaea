@@ -32,6 +32,8 @@ class Venue < ActiveRecord::Base
 
   has_many :venue_shows, dependent: :destroy
 
+  has_many :venue_videos, dependent: :destroy
+
   validates :username, presence: true, uniqueness: true, length: { maximum: 50 }, format: { with: /\A[a-zA-Z0-9 ]+\Z/i }
   validates :venue_name, presence: true, length: { maximum: 50 }
 

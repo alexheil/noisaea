@@ -22,7 +22,7 @@ class Recordlabels::VideosController < ApplicationController
     @video = @record_label.record_label_videos.build(video_params)
     if @video.save
       redirect_to record_label_videos_path(@record_label)
-      flash[:notice] = "you've successfully added a show!"
+      flash[:notice] = "you've successfully added a video!"
     else
       render 'new'
       flash.now[:alert] = "you've failed!"
@@ -36,8 +36,8 @@ class Recordlabels::VideosController < ApplicationController
   def update
     @video = RecordLabelVideo.friendly.find(params[:id])
     if @video.update_attributes(video_params)
-      redirect_to record_label_show_path(@record_label, @show)
-      flash[:notice] = "you've successfully updated your show!"
+      redirect_to record_label_video_path(@record_label, @show)
+      flash[:notice] = "you've successfully updated your video!"
     else
       render 'edit'
       flash.now[:alert] = "you've failed!"

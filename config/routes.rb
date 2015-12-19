@@ -92,6 +92,7 @@ Rails.application.routes.draw do
       end
     end
     resources :shows, controller: 'venues/shows'
+    resources :videos, controller: 'venues/videos'
     get 'followers' => 'venues/venues#followers'
   end
 

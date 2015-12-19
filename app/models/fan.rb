@@ -53,6 +53,7 @@ class Fan < ActiveRecord::Base
 
   has_many :artist_videos, through: :artists
   has_many :record_label_videos, through: :record_labels
+  has_many :venue_videos, through: :venues
 
   validates :username, presence: true, uniqueness: true, length: { maximum: 50 }, format: { with: /\A[a-zA-Z0-9 ]+\Z/i }
   validates :fan_name, presence: true, length: { maximum: 50 }

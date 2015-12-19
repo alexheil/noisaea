@@ -1,0 +1,71 @@
+<%= provide(:title, sanitize(@venue.venue_name) + " | Videos") %>
+<div class="buffalo">
+
+  <%= render 'venues/partials/venue_cover_image' %>
+
+  <div class="delaware">
+
+    <main class="main">
+
+      <ul class="carolina">
+        <li><%= link_to "timeline", venue_path(@venue) %></li>
+        <li><%= link_to "shows", venue_shows_path(@venue) %></li>
+        <li class="jersey"><%= link_to "videos", venue_videos_path(@venue) %></li>
+      </ul>
+
+      <div class="hedley">
+        <%= @venue.venue_name %>
+      </div>
+
+      <div class="following sterling">
+        <%= render 'venues/partials/relationships/following' %>
+      </div>
+
+      <div class="niagara">
+        <div class="follower_count sterling">
+          <%= render 'venues/partials/relationships/follower_count' %>
+        </div>
+      </div>
+
+      <% unless @venue == current_venue %>
+      <div class="niagara">
+        <div class="highgate">
+        <div class="follow_button">
+          <%= render 'venues/partials/relationships/follow_button' %>
+        </div>
+        </div>
+      </div>
+      <% end %>
+
+      <% if @venue == current_venue %>
+        <div class="harlem vermont">
+          <%= link_to "add a video", new_venue_video_path(@venue), class: "sugar" %>
+        </div>
+      <% end %>
+
+      <% if @venue.venue_videos.any? %>
+        <% @venue.venue_videos.each do |video| %>
+          <div class="harlem vermont">
+            <%= link_to video.title, venue_video_path(@venue, video) %>
+          </div>
+          <div class="harlem plymouth">
+            <%= embed(video.youtube_url) %>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="harlem">
+          <% if @venue == current_venue %>
+            you do not have any videos. <%= link_to "add one?", new_venue_video_path(@venue) %>
+          <% else %>
+            <%= @venue.venue_name %> does not have any videos.
+          <% end %>
+        </div>
+      <% end %>
+
+    </main>
+
+    <%= render 'venues/partials/venue_sidebar' %>
+
+  </div>
+</div>
+<%= render "partials/uni_footer" %>

@@ -1,4 +1,4 @@
-<%= provide(:title, sanitize(@venue.venue_name)) %>
+<%= provide(:title, sanitize(@venue.venue_name) + " | #{@video.title}") %>
 <div class="buffalo">
 
   <%= render 'venues/partials/venue_cover_image' %>
@@ -8,9 +8,9 @@
     <main class="main">
 
       <ul class="carolina">
-        <li class="jersey"><%= link_to "timeline", venue_path(@venue) %></li>
+        <li><%= link_to "timeline", venue_path(@venue) %></li>
         <li><%= link_to "shows", venue_shows_path(@venue) %></li>
-        <li><%= link_to "videos", venue_videos_path(@venue) %></li>
+        <li class="jersey"><%= link_to "videos", venue_videos_path(@venue) %></li>
       </ul>
 
       <div class="hedley">
@@ -37,12 +37,16 @@
       </div>
       <% end %>
 
-      <div class="microposts_form">
-        <%= render 'venues/partials/microposts/microposts_form' %>
-      </div>
-
-      <div class="microposts_js">
-        <%= render 'venues/partials/microposts/index_microposts' %>
+      <div class="amherst">
+        <div class="harlem vermont">
+          <%= link_to @video.title, venue_video_path(@venue, @video) %>
+        </div>
+        <div class="harlem plymouth">
+          <%= embed(@video.youtube_url) %>
+        </div>
+        <div class="best">
+          <%= @video.description %>
+        </div>
       </div>
 
     </main>
@@ -52,14 +56,3 @@
   </div>
 </div>
 <%= render "partials/uni_footer" %>
-
-<% if buffalo_signed_in? %>
-  <div class="forest">
-    <li><%= @venue.id %></li>
-    <li><%= @venue.venue_name %></li>
-    <li><%= @venue.username %></li>
-    <li><%= @venue.email %></li>
-    <li><%= @venue.sign_in_count %></li>
-    <li><%= @venue.last_sign_in_at %></li>
-  </div>
-<% end %>

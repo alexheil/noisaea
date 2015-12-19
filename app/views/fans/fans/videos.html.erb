@@ -90,7 +90,7 @@
         <% if @fan.record_label_videos.any? %>
           <% @fan.record_label_videos.each do |video| %>
             <div class="winspear">
-              <%= link_to RecordLabel.find(video.record_label_id).label_name, artist_path(RecordLabel.find(video.record_label_id)) %> posted <%= link_to video.title, record_label_video_path(RecordLabel.find(video.record_label_id), video) %> <%= time_ago_in_words(video.created_at) %> ago
+              <%= link_to RecordLabel.find(video.record_label_id).label_name, record_label_path(RecordLabel.find(video.record_label_id)) %> posted <%= link_to video.title, record_label_video_path(RecordLabel.find(video.record_label_id), video) %> <%= time_ago_in_words(video.created_at) %> ago
             </div>
             <div class="minnesota plymouth">
               <%= embed(video.youtube_url) %>
@@ -108,7 +108,24 @@
         </div>
 
         <div id="fan-venue" class="ferry colvin">
-
+          <% if @fan.venue_videos.any? %>
+          <% @fan.venue_videos.each do |video| %>
+            <div class="winspear">
+              <%= link_to Venue.find(video.venue_id).venue_name, venue_path(Venue.find(video.venue_id)) %> posted <%= link_to video.title, venue_video_path(Venue.find(video.venue_id), video) %> <%= time_ago_in_words(video.created_at) %> ago
+            </div>
+            <div class="minnesota plymouth">
+              <%= embed(video.youtube_url) %>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="harlem">
+            <% if @fan == current_fan %>
+              you do not have any videos. <%= link_to "find some venues to follow.", record_labels_path %>
+            <% else %>
+              <%= @fan.fan_name %> does not have any videos.
+            <% end %>
+          </div>
+        <% end %>
         </div>
 
         <div id="fan-producer" class="ferry colvin">
