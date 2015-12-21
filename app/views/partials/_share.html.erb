@@ -4,5 +4,8 @@
 </script>
 <a class="share-facebook" href="javascript:fbshareCurrentPage()" target="_blank" alt="Share on Facebook">Facebook</a>
  //
-<a href="https://twitter.com/share" class="share-twitter" data-via="noisaea" target="_blank">Twitter</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<script language="javascript">
+    function tweetCurrentPage()
+    { window.open("https://twitter.com/share?url="+escape(window.location.href)+"&text="+document.title, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false; }
+</script>
+<a class="share-twitter" href="javascript:tweetCurrentPage()" target="_blank" alt="Share on Twitter">Twitter</a>
