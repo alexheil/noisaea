@@ -15,6 +15,13 @@
         <%= sanitize(@developer.content) %>
       </article>
 
+      <h3>
+        grant others with this knowledge on...
+      </h3>
+      <div class="amherst">
+        <%= render 'partials/share' %>
+      </div>
+
       <div class="harlem">
         <a class="linden"><span class="comments_count"><%= render 'developers/partials/comments/comments_count' %></span></a>
       </div>
