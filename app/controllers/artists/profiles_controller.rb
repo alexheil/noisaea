@@ -28,6 +28,7 @@ class Artists::ProfilesController < ApplicationController
     def correct_artist
       @artist = current_artist
       redirect_to artist_path(Artist.friendly.find(params[:artist_id])) if @artist != Artist.friendly.find(params[:artist_id])
+      flash[:alert] = "this is not your profile."
     end
 
     def profile_params

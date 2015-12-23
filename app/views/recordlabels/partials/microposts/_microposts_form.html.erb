@@ -1,5 +1,6 @@
 <% if @record_label == current_record_label %>
   <%= form_for(RecordLabelMicropost.new, url: record_label_microposts_path(@record_label), remote: true) do |f| %>
+    <%= f.hidden_field :record_label_id %>
     <div class="highgate">
       <%= f.text_area :content, placeholder: "what have you been up to?", class: "court" %>
     </div>

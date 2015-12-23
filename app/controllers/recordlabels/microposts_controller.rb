@@ -6,8 +6,7 @@ class Recordlabels::MicropostsController < ApplicationController
   before_action :correct_micropost_record_label, only: :destroy
 
   def create
-    @micropost = RecordLabelMicropost.new(micropost_params)
-    @micropost.record_label_id = current_record_label.id
+    @micropost = @record_label.record_label_microposts.build(micropost_params)
     @record_label = RecordLabel.friendly.find(params[:record_label_id])
     if @micropost.save
       flash.now[:notice] = "your status has been posted!"

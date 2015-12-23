@@ -26,9 +26,9 @@ class Recordlabels::ProfilesController < ApplicationController
     end
 
     def correct_record_label
-
       @record_label = current_record_label
       redirect_to record_label_path(RecordLabel.friendly.find(params[:record_label_id])) if @record_label != RecordLabel.friendly.find(params[:record_label_id])
+      flash[:alert] = "this is not your profile."
     end
 
     def profile_params

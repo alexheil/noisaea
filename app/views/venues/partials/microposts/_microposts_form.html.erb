@@ -1,5 +1,6 @@
 <% if @venue == current_venue %>
   <%= form_for(VenueMicropost.new, url: venue_microposts_path(@venue), remote: true) do |f| %>
+    <%= f.hidden_field :venue_id %>
     <div class="highgate">
       <%= f.text_area :content, placeholder: "what have you been up to?", class: "court" %>
     </div>

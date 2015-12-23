@@ -1,13 +1,12 @@
 class Artists::MicropostsController < ApplicationController
 
   before_action :authenticate_artist!, except: :show
-  before_action :set_artist
+  before_action :set_artist, except: :show
   before_action :correct_artist, only: :create
   before_action :correct_micropost_artist, only: :destroy
 
   def create
-    @micropost = ArtistMicropost.new(micropost_params)
-    @micropost.artist_id = current_artist.id
+    @micropost = @artist.artist_microposts.build(micropost_params)
     @artist = Artist.friendly.find(params[:artist_id])
     if @micropost.save
       flash.now[:notice] = "your status has been posted!"

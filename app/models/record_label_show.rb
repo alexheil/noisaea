@@ -8,7 +8,8 @@ class RecordLabelShow < ActiveRecord::Base
   validates :month, presence: true, length: { maximum: 2 }, numericality: { less_than_or_equal_to: 12, greater_than: 0}
   validates :day, presence: true, length: { maximum: 2 }, numericality: { less_than_or_equal_to: 31, greater_than: 0 }
   validates :year, presence: true, length: { is: 4 }, numericality: { less_than_or_equal_to: 2017, greater_than: 2014}
-  validates :location, format: { with: /[A-Z][a-zA-Z]+,[ ][A-Z]/ }, allow_blank: true
+  validates :venue, presence: true, length: { maximum: 120 }
+  validates :location, presence: true, format: { with: /[A-Z][a-zA-Z]+,[ ][A-Z]/ }
   validates :description, length: { maximum: 14216 }, allow_blank: true
   validates :ticket_url, format: { with: /\A(http|https):\/\/|[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,6}(:[0-9]{1,5})?(\/.*)?\z/ix }, allow_blank: true
   validates :flyer_url, format: { with: /\A(http|https):\/\/|[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,6}(:[0-9]{1,5})?(\/.*)?\z/ix }, allow_blank: true

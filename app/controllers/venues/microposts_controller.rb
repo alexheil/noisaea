@@ -6,8 +6,7 @@ class Venues::MicropostsController < ApplicationController
   before_action :correct_micropost_venue, only: :destroy
 
   def create
-    @micropost = VenueMicropost.new(micropost_params)
-    @micropost.venue_id = current_venue.id
+    @micropost = @venue.venue_microposts.build(micropost_params)
     @venue = Venue.friendly.find(params[:venue_id])
     if @micropost.save
       flash.now[:notice] = "your status has been posted!"

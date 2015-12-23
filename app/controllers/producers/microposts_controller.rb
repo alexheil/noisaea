@@ -6,8 +6,7 @@ class Producers::MicropostsController < ApplicationController
   before_action :correct_micropost_producer, only: :destroy
 
   def create
-    @micropost = ProducerMicropost.new(micropost_params)
-    @micropost.producer_id = current_producer.id
+    @micropost = @producer.producer_microposts.build(micropost_params)
     @producer = Producer.friendly.find(params[:producer_id])
     if @micropost.save
       flash.now[:notice] = "your status has been posted!"
