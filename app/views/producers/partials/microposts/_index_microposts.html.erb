@@ -53,4 +53,12 @@
       </div>
     <% end %>
   </div>
+<% else %>
+  <div class="harlem">
+    <% if @producer == current_producer %>
+      you don't have any posts.
+    <% else %>
+      <%= @producer.producer_name %> does not have any posts.
+    <% end %>
+  </div>
 <% end %>

@@ -1056,9 +1056,6 @@ select {
 .delavan {
   padding: 2vh 0;
   font-family: $fancy-font;
-  a {
-    color: $my-black;
-  }
 }
 
 .niagara-falls {
@@ -1070,7 +1067,7 @@ select {
     -moz-transition: .3s;
     -o-transition: .3s;
     &:hover {
-      color: $main-color;
+      color: $my-black;
       -webkit-transition: .3s;
       -moz-transition: .3s;
       -o-transition: .3s;

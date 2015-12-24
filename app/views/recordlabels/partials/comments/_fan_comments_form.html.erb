@@ -4,7 +4,7 @@
     <%= f.text_area :content, placeholder: "leave a comment", class: "court" %>
   </div>
   <div class="ellicott">
-    <%= f.submit "comment",  class: "exchange" %>
+    <%= f.submit "comment", data: { disable_with: 'posting...' },  class: "exchange" %>
   </div>
   <% end %>
 <% else %>

@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="ellicott">
-      <%= f.submit "post update", class: "exchange" %>
+      <%= f.submit "post update", data: { disable_with: 'posting...' }, class: "exchange" %>
     </div>
   <% end %>
 <% end %>

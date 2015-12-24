@@ -51,4 +51,12 @@
       </div>
     <% end %>
   </div>
+<% else %>
+  <div class="harlem">
+    <% if @record_label == current_record_label %>
+      you don't have any posts.
+    <% else %>
+      <%= @record_label.label_name %> does not have any posts.
+    <% end %>
+  </div>
 <% end %>

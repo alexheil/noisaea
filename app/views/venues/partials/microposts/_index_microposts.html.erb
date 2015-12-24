@@ -51,4 +51,12 @@
       </div>
     <% end %>
   </div>
+<% else %>
+  <div class="harlem">
+    <% if @venue == current_venue %>
+      you don't have any posts.
+    <% else %>
+      <%= @venue.venue_name %> does not have any posts.
+    <% end %>
+  </div>
 <% end %>

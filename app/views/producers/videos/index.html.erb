@@ -44,16 +44,16 @@
 
       <% if @producer.producer_videos.any? %>
         <% @producer.producer_videos.each do |video| %>
-          <div class="harlem vermont">
-            <%= link_to video.title, producer_video_path(@producer, video) %>
-          </div>
-          <% if @producer == current_producer %>
-          <div class="amherst">
-            // <%= link_to "edit", edit_producer_video_path(@producer, video) %> or <%= link_to "delete", producer_video_path(@producer, video), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
-          </div>
-          <% end %>
-          <div class="harlem plymouth">
-            <%= embed(video.youtube_url) %>
+          <div class="harlem">
+            <div class="plymouth">
+              <%= embed(video.youtube_url) %>
+            </div>
+            <div class="highgate">
+              <%= link_to video.title, producer_video_path(@producer, video) %>
+              <% if @producer == current_producer %>
+                  // <%= link_to "edit", edit_producer_video_path(@producer, video) %> or <%= link_to "delete", producer_video_path(@producer, video), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+              <% end %>
+            </div>
           </div>
         <% end %>
       <% else %>

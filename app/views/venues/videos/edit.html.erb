@@ -19,7 +19,7 @@
           <%= f.text_area :description, placeholder: "description", class: "chippewa" %>
         </div>
         <div class="ellicott">
-          <%= f.submit "update video", class: "exchange" %>
+          <%= f.submit "update video", data: { disable_with: 'updating...' }, class: "exchange" %>
         </div>
       <% end %>
 
