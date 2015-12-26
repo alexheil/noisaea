@@ -1,5 +1,13 @@
 <nav class="englewood">
   <div class="starin pine-ridge">//</div>
+  <div class="hide">
+    <ul class="pine-ridge">
+      <li><%= link_to "d", current_venue, class: "military" %></li>
+      <li><%= link_to "s", venue_shows_path(current_venue), class: "depew" %></li>
+      <li><%= link_to "v", venue_videos_path(current_venue), class: "depew" %></li>
+      <li><%= link_to "p", edit_venue_profile_path(current_venue), class: "depew" %></li>
+    </ul>
+  </div>
   <ul class="taunton pine-ridge">
     <li><%= link_to "dashboard", current_venue, class: "military" %></li>
     <li><%= link_to "shows", venue_shows_path(current_venue), class: "depew" %></li>

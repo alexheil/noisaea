@@ -257,6 +257,12 @@ h4 {
   }
 }
 
+.hide {
+  ul {
+    padding: 1vh 1vw;
+  }
+}
+
 .parkside {
   width: 100%;
   display: inline-block;
@@ -1075,11 +1081,6 @@ select {
   }
 }
 
-.beta {
-  font-size: 2em;
-  text-align: center;
-}
-
 .temp {
   text-align: center;
   font-size: 1.5em;
@@ -1295,10 +1296,6 @@ select {
   .niagara-falls {
     font-size: 7em;
     line-height: 7rem;
-  }
-
-  .beta {
-    font-size: 1.5em;
   }
 
   .delavan {

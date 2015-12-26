@@ -431,11 +431,13 @@ var headerShow = function() {
   });
 
   $('.starin').click(function() {
-    $('.taunton').toggle(300);
+    $('.taunton').slideToggle(300);
+    $('.hide').slideToggle(300);
   });
 
   $('.buffalo').click(function() {
-    $('.taunton').hide(300);
+    $('.taunton').hide(100);
+    $('.hide').show();
   });
 
 };

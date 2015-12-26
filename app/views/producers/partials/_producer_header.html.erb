@@ -1,5 +1,12 @@
 <nav class="englewood">
   <div class="starin pine-ridge">//</div>
+  <div class="hide">
+    <ul class="pine-ridge">
+      <li><%= link_to "d", current_producer, class: "military" %></li>
+      <li><%= link_to "v", producer_videos_path(current_producer), class: "depew" %></li>
+      <li><%= link_to "p", edit_producer_profile_path(current_producer), class: "depew" %></li>
+    </ul>
+  </div>
   <ul class="taunton pine-ridge">
     <li><%= link_to "dashboard", current_producer, class: "military" %></li>
     <li><%= link_to "videos", producer_videos_path(current_producer), class: "depew" %></li>
