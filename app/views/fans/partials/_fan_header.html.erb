@@ -1,5 +1,14 @@
 <nav class="englewood">
   <div class="starin pine-ridge">//</div>
+  <div class="hide">
+    <ul class="pine-ridge">
+      <li><%= link_to "d", current_fan, class: "military" %></li>
+      <li><%= link_to "s", fan_shows_path(current_fan), class: "depew" %></li>
+      <li><%= link_to "v", fan_videos_path(current_fan), class: "depew" %></li>
+      <li><%= link_to "f", fan_following_path(current_fan), class: "depew" %></li>
+      <li><%= link_to "p", edit_fan_profile_path(current_fan), class: "depew" %></li>
+    </ul>
+  </div>
   <ul class="taunton pine-ridge">
     <li><%= link_to "dashboard", current_fan, class: "military" %></li>
     <li><%= link_to "shows", fan_shows_path(current_fan), class: "depew" %></li>

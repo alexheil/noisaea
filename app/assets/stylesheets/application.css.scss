@@ -1409,6 +1409,15 @@ select {
     }
   }
 
+  .hide {
+    ul {
+      display:none;
+      li {
+        display: none;
+      }
+    }
+  }
+
   .carolina {
     text-align: center;
     li {

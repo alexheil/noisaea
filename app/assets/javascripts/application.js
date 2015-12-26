@@ -431,12 +431,12 @@ var headerShow = function() {
   });
 
   $('.starin').click(function() {
-    $('.taunton').slideToggle(300);
-    $('.hide').slideToggle(300);
+    $('.taunton').toggle(300);
+    $('.hide').toggle();
   });
 
   $('.buffalo').click(function() {
-    $('.taunton').hide(100);
+    $('.taunton').hide(300);
     $('.hide').show();
   });
 
