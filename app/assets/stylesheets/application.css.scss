@@ -72,6 +72,7 @@ h4 {
 ::selection {
   color: #fff;
   background: $main-color;
+  border: 3px solid $my-black;
 }
 
 ::-moz-selection {
@@ -1331,11 +1332,11 @@ select {
 
   .franklin {
     &:after {
-      width: 90%;
+      width: 96%;
     }
     &:hover{
       &:after {
-        width: 90%;
+        width: 96%;
       }
     }
   }

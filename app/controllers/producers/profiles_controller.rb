@@ -26,9 +26,11 @@ class Producers::ProfilesController < ApplicationController
     end
 
     def correct_producer
-      @producer = current_producer
-      redirect_to producer_path(Producer.friendly.find(params[:producer_id])) if @producer != Producer.friendly.find(params[:producer_id])
-      flash[:alert] = "this is not your profile."
+      @producer = Producer.friendly.find(params[:producer_id])
+      if current_producer != @producer
+        redirect_to producer_path(@producer)
+        flash[:alert] = "this is not your profile."
+      end
     end
 
     def profile_params

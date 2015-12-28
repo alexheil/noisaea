@@ -26,9 +26,11 @@ class Venues::ProfilesController < ApplicationController
     end
 
     def correct_venue
-      @venue = current_venue
-      redirect_to venue_path(Venue.friendly.find(params[:venue_id])) if @venue != Venue.friendly.find(params[:venue_id])
-      flash[:alert] = "this is not your profile."
+      @venue = Venue.friendly.find(params[:venue_id])
+      if current_venue != @venue
+        redirect_to venue_path(@venue)
+        flash[:alert] = "this is not your profile."
+      end
     end
 
     def profile_params

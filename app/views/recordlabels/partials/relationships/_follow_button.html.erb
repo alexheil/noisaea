@@ -1,9 +1,9 @@
 <% if fan_signed_in? %>
   <% if fan_signed_in? && current_fan.following_record_label?(@record_label) %>
-    <%= button_to "unfollow", record_label_relationship_path(@record_label, current_fan.record_label_relationship_id(@record_label)), method: :delete, remote: true, class: "exchange" %>
+    <%= button_to "unfollow", record_label_relationship_path(@record_label, current_fan.record_label_relationship_id(@record_label)), method: :delete, remote: true, data: { disable_with: 'unfollowing...' }, class: "exchange" %>
   <% else %>
     <%= form_for(RecordLabelRelationship.new,  url: record_label_relationships_path(@record_label), remote: true) do |f| %>
-      <%= f.submit "follow", class: "exchange" %>
+      <%= f.submit "follow", data: { disable_with: 'following...' }, class: "exchange" %>
     <% end %>
   <% end %>
 <% else %>

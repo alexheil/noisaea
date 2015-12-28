@@ -1,10 +1,10 @@
 <% if fan_signed_in? %>
   <div class="winspear">
   <% if fan_signed_in? && current_fan.following_artist?(artist) %>
-    <%= button_to "unfollow", artist_relationship_path(artist, current_fan.artist_relationship_id(artist)), method: :delete, remote: true, class: "seventh" %>
+    <%= button_to "unfollow", artist_relationship_path(artist, current_fan.artist_relationship_id(artist)), method: :delete, remote: true, data: { disable_with: 'unfollowing...' }, class: "seventh" %>
   <% else %>
     <%= form_for(ArtistRelationship.new, url: artist_relationships_path(artist), remote: true) do |f| %>
-      <%= f.submit "follow", class: "seventh" %>
+      <%= f.submit "follow", data: { disable_with: 'following...' }, class: "seventh" %>
     <% end %>
   <% end %>
   </div>
