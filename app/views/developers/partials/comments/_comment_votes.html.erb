@@ -1,15 +1,15 @@
 <% if fan_signed_in? && current_fan.developer_comment_voted?(comment) %>
-  <%= button_to "−", developer_comment_vote_path(@developer, comment, current_fan.developer_comment_vote_id(comment)), method: :delete, remote: true, class: "linwood" %>
+  <%= button_to "−", developer_comment_vote_path(@developer, comment, current_fan.developer_comment_vote_id(comment)), method: :delete, remote: true, data: { disable_with: '...' }, class: "linwood" %>
 <% elsif artist_signed_in? && current_artist.developer_comment_voted?(comment) %>
-  <%= button_to "−", developer_comment_vote_path(@developer, comment, current_artist.developer_comment_vote_id(comment)), method: :delete, remote: true, class: "linwood" %>
+  <%= button_to "−", developer_comment_vote_path(@developer, comment, current_artist.developer_comment_vote_id(comment)), method: :delete, remote: true, data: { disable_with: '...' }, class: "linwood" %>
 <% elsif record_label_signed_in? && current_record_label.developer_comment_voted?(comment) %>
-  <%= button_to "−", developer_comment_vote_path(@developer, comment, current_record_label.developer_comment_vote_id(comment)), method: :delete, remote: true, class: "linwood" %>
+  <%= button_to "−", developer_comment_vote_path(@developer, comment, current_record_label.developer_comment_vote_id(comment)), method: :delete, remote: true, data: { disable_with: '...' }, class: "linwood" %>
 <% elsif venue_signed_in? && current_venue.developer_comment_voted?(comment) %>
-  <%= button_to "−", developer_comment_vote_path(@developer, comment, current_venue.developer_comment_vote_id(comment)), method: :delete, remote: true, class: "linwood" %>
+  <%= button_to "−", developer_comment_vote_path(@developer, comment, current_venue.developer_comment_vote_id(comment)), method: :delete, remote: true, data: { disable_with: '...' }, class: "linwood" %>
 <% elsif producer_signed_in? && current_producer.developer_comment_voted?(comment) %>
-  <%= button_to "−", developer_comment_vote_path(@developer, comment, current_producer.developer_comment_vote_id(comment)), method: :delete, remote: true, class: "linwood" %>
+  <%= button_to "−", developer_comment_vote_path(@developer, comment, current_producer.developer_comment_vote_id(comment)), method: :delete, remote: true, data: { disable_with: '...' }, class: "linwood" %>
 <% else %>
   <%= form_for(DeveloperCommentVote.new, url: developer_comment_votes_path(@developer, comment), remote: true) do |f| %>
-    <%= f.submit "+", class: "linwood" %>
+    <%= f.submit "+", data: { disable_with: '...' }, class: "linwood" %>
   <% end %>
 <% end %>

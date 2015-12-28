@@ -46,7 +46,7 @@
       <% if @record_label.record_label_shows.any? %>
         <div class="harlem">
         <% @record_label.record_label_shows.each do |show| %>
-          <div class="amherst">
+          <div class="highgate">
             <% if Artist.exists?(:artist_name => "#{show.artist}") %>
               <%= link_to show.artist, artist_path(Artist.where(:artist_name => "#{show.artist}").first) %>
             <% else %>
