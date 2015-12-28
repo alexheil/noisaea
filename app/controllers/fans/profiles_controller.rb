@@ -26,9 +26,9 @@ class Fans::ProfilesController < ApplicationController
     end
 
     def correct_fan
-      @fan = current_fan
-      if @fan != Fan.friendly.find(params[:fan_id])
-        redirect_to fan_path(Fan.friendly.find(params[:fan_id]))
+      @fan = Fan.friendly.find(params[:fan_id])
+      if current_fan != @fan
+        redirect_to fan_path(@fan)
         flash[:alert] = "this is not your profile."
       end
     end

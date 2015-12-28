@@ -72,7 +72,6 @@ h4 {
 ::selection {
   color: #fff;
   background: $main-color;
-  border: 3px solid $my-black;
 }
 
 ::-moz-selection {
@@ -258,7 +257,7 @@ h4 {
   }
 }
 
-.hide {
+.crescent {
   ul {
     padding: 1vh 1vw;
   }
@@ -1410,7 +1409,7 @@ select {
     }
   }
 
-  .hide {
+  .crescent {
     ul {
       display:none;
       li {

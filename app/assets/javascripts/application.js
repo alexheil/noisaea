@@ -432,12 +432,12 @@ var headerShow = function() {
 
   $('.starin').click(function() {
     $('.taunton').toggle(300);
-    $('.hide').toggle();
+    $('.crescent').toggle();
   });
 
   $('.buffalo').click(function() {
     $('.taunton').hide(300);
-    $('.hide').show();
+    $('.crescent').show();
   });
 
 };
