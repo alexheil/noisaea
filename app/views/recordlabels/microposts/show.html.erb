@@ -18,10 +18,12 @@
       </div>
 
       <div class="harlem">
-        <span class="winspear"><strong><%= "#{@record_label.label_name}" %></strong> posted <%= time_ago_in_words(@micropost.created_at) %> ago</span>
-        <% if @record_label == current_record_label %>
-      // <%= link_to "delete post", record_label_micropost_path(@record_label, @micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %></span>
-        <% end %>
+        <div class="winspear">
+          <strong><%= "#{@record_label.label_name}" %></strong> <span class="posted">posted <%= time_ago_in_words(@micropost.created_at) %> ago</span>
+          <% if @record_label == current_record_label %>
+           // <%= link_to "delete post", record_label_micropost_path(@record_label, @micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+          <% end %>
+        </div>
         <div class="winspear">
           <%= @micropost.content %>
         </div>

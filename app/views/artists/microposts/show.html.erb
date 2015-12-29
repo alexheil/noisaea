@@ -18,9 +18,11 @@
       </div>
 
       <div class="harlem">
-        <span class="winspear"><strong><%= "#{@artist.artist_name}" %></strong> posted <%= time_ago_in_words(@micropost.created_at) %> ago</span>
+        <div class="winspear">
+          <strong><%= "#{@artist.artist_name}" %></strong> <span class="posted">posted <%= time_ago_in_words(@micropost.created_at) %> ago</span>
         <% if @artist == current_artist %>
-      // <%= link_to "delete post", artist_micropost_path(@artist, @micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %></span>
+          // <%= link_to "delete post", artist_micropost_path(@artist, @micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+        </div>
         <% end %>
         <div class="winspear">
           <%= @micropost.content %>

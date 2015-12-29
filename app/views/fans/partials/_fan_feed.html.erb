@@ -32,10 +32,12 @@
   <% if @fan.artists.any? %>
     <% @fan.artist_microposts.take(100).each do |micropost| %>
     <div class="harlem dodge">
-      <span class="winspear"><strong><%= link_to Artist.find(micropost.artist_id).artist_name, artist_path(Artist.find(micropost.artist_id)) %></strong> posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
+      <div class="winspear">
+        <strong><%= link_to Artist.find(micropost.artist_id).artist_name, artist_path(Artist.find(micropost.artist_id)) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
         <% if Artist.find(micropost.artist_id) == current_artist %>
-       // <%= link_to "delete post", artist_micropost_path(Artist.find(micropost.artist_id), micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %></span>
+         // <%= link_to "delete post", artist_micropost_path(Artist.find(micropost.artist_id), micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
         <% end %>
+      </div>
       <div class="winspear">
         <%= micropost.content %>
       </div>
@@ -95,10 +97,12 @@
     <% if @fan.record_labels.any? %>
     <% @fan.record_label_microposts.take(100).each do |micropost| %>
     <div class="harlem dodge">
-      <span class="winspear"><strong><%= link_to RecordLabel.find(micropost.record_label_id).label_name, record_label_path(RecordLabel.find(micropost.record_label_id)) %></strong> posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
+      <div class="winspear">
+        <strong><%= link_to RecordLabel.find(micropost.record_label_id).label_name, record_label_path(RecordLabel.find(micropost.record_label_id)) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
         <% if RecordLabel.find(micropost.record_label_id) == current_record_label %>
-       // <%= link_to "delete post", record_label_micropost_path(RecordLabel.find(micropost.record_label_id), micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %></span>
+         // <%= link_to "delete post", record_label_micropost_path(RecordLabel.find(micropost.record_label_id), micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
         <% end %>
+      </div>
       <div class="winspear">
         <%= micropost.content %>
       </div>
@@ -159,10 +163,12 @@
     <% if @fan.venues.any? %>
     <% @fan.venue_microposts.take(100).each do |micropost| %>
     <div class="harlem dodge">
-      <span class="winspear"><strong><%= link_to Venue.find(micropost.venue_id).venue_name, venue_path(Venue.find(micropost.venue_id)) %></strong> posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
+      <div class="winspear">
+        <strong><%= link_to Venue.find(micropost.venue_id).venue_name, venue_path(Venue.find(micropost.venue_id)) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
         <% if Venue.find(micropost.venue_id) == current_venue %>
-       // <%= link_to "delete post", venue_micropost_path(Venue.find(micropost.venue_id), micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %></span>
+         // <%= link_to "delete post", venue_micropost_path(Venue.find(micropost.venue_id), micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
         <% end %>
+      </div>
       <div class="winspear">
         <%= micropost.content %>
       </div>
@@ -222,10 +228,12 @@
     <% if @fan.producers.any? %>
     <% @fan.producer_microposts.take(100).each do |micropost| %>
     <div class="harlem dodge">
-      <span class="winspear"><strong><%= link_to Producer.find(micropost.producer_id).producer_name, producer_path(Producer.find(micropost.producer_id)) %></strong> posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
+      <div class="winspear">
+        <strong><%= link_to Producer.find(micropost.producer_id).producer_name, producer_path(Producer.find(micropost.producer_id)) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
         <% if Producer.find(micropost.producer_id) == current_producer %>
-       // <%= link_to "delete post", producer_micropost_path(Producer.find(micropost.producer_id), micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %></span>
+         // <%= link_to "delete post", producer_micropost_path(Producer.find(micropost.producer_id), micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
         <% end %>
+      </div>
       <div class="winspear">
         <%= micropost.content %>
       </div>

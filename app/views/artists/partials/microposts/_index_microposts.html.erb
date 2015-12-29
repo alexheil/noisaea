@@ -1,11 +1,13 @@
 <% if @artist.artist_microposts.any? %>
   <div class="harlem">
     <% @artist.artist_microposts.take(100).each do | micropost | %>
-    <div class="harlem dodge">
-      <span class="winspear"><strong><%= link_to "#{@artist.artist_name}", artist_micropost_path(@artist, micropost) %></strong> posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
+      <div class="harlem dodge">
+        <div class="winspear">
+          <strong><%= link_to "#{@artist.artist_name}", artist_micropost_path(@artist, micropost) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
           <% if @artist == current_artist %>
-         // <%= link_to "delete post", artist_micropost_path(@artist, micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete, remote: true %></span>
+           // <%= link_to "delete post", artist_micropost_path(@artist, micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete, remote: true %>
           <% end %>
+        </div>
         <div class="winspear">
           <%= micropost.content %>
         </div>

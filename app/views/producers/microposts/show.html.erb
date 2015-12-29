@@ -17,10 +17,12 @@
       </div>
 
       <div class="harlem">
-        <span class="winspear"><strong><%= "#{@producer.producer_name}" %></strong> posted <%= time_ago_in_words(@micropost.created_at) %> ago</span>
-        <% if @producer == current_producer %>
-      // <%= link_to "delete post", producer_micropost_path(@producer, @micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %></span>
-        <% end %>
+        <div class="winspear">
+          <strong><%= "#{@producer.producer_name}" %></strong> <span class="posted">posted <%= time_ago_in_words(@micropost.created_at) %> ago</span>
+          <% if @producer == current_producer %>
+           // <%= link_to "delete post", producer_micropost_path(@producer, @micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+          <% end %>
+        </div>
         <div class="winspear">
           <%= @micropost.content %>
         </div>
