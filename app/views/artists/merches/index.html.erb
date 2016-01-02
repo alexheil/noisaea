@@ -60,6 +60,14 @@
           </div>
         </div>
         <% end %>
+      <% else %>
+        <div class="harlem">
+          <% if @artist == current_artist %>
+            you do not have any merch. <%= link_to "add some?", new_artist_merch_path(@artist) %>
+          <% else %>
+            <%= @artist.artist_name %> does not have any merch.
+          <% end %>
+        </div>
       <% end %>
 
     </main>
