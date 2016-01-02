@@ -10,11 +10,8 @@ class CreateArtistMerches < ActiveRecord::Migration
       t.integer :total_price
       t.string :currency
       t.integer :quantity
-      t.string :options
       t.string :merch_url
       t.string :image_url
-      t.text :return_policy
-      t.text :shipping_info
       t.string :slug
 
       t.timestamps
