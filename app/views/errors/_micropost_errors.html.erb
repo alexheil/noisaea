@@ -1,0 +1,10 @@
+<% if ArtistMicropost.new.errors.any? %>
+<div id="error_explanation">
+    <h2><%= pluralize(ArtistMicropost.new.errors.count, "error") %> prevented this item from being saved:</h2>
+  <ul>
+  <% ArtistMicropost.new.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+</div>
+<% end %>

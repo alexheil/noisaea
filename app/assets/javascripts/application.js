@@ -444,3 +444,31 @@ var headerShow = function() {
 
 $(document).ready(headerShow);
 $(document).on('page:load', headerShow);
+
+var merchLightbox = function() {
+
+  $('#ghost').click(function() {
+    $('#back').show();
+    $('#front').show();
+    $('#close').show();
+  });
+
+  $('#back').click(function() {
+    $('#back').hide();
+    $('#front').hide();
+  });
+
+  $('#front').click(function() {
+    $('#back').hide();
+    $('#front').hide();
+  });
+
+  $('.lightbox-image').click(function() {
+    $('#back').hide();
+    $('#front').hide();
+  });
+
+};
+
+$(document).ready(merchLightbox);
+$(document).on('page:load', merchLightbox);

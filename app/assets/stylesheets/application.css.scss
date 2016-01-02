@@ -27,7 +27,7 @@ body {
   margin: 0;
   font-size: 18px;
   line-height: 1.75em;
-  font-family: $normal-font;
+  font-family: $fancy-font;
 }
 
 .posted {
@@ -570,6 +570,23 @@ h4 {
   }
 }
 
+.loretta {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1920px;
+  &:hover {
+    background: $my-black;
+  }
+  img {
+    text-align: center;
+    max-width: 1920px;
+    max-height: 640px;
+    &:hover {
+      opacity: .75;
+    }
+  }
+}
+
 .sycamore {
   width: 90%;
   margin: 0 auto;
@@ -749,6 +766,15 @@ h4 {
   text-align: center;
 }
 
+.bryant {
+  width: 32%;
+  margin: 1vh auto;
+  display: inline-block;
+  font-family: $fancy-font;
+  vertical-align: top;
+  text-align: center;
+}
+
 .ogden {
   width: 32%;
   margin: 1vh auto;
@@ -792,6 +818,85 @@ h4 {
     left: 0;
     width: 100%;
     height: 100%;
+  }
+}
+
+#front {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 1001;
+  display: none;
+  .lightbox-image {
+    width: 73vh;
+    margin: 5vh auto;
+  }
+}
+
+#back {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #212121;
+  filter: alpha(opacity=75);
+  -moz-opacity: 0.75;
+  -khtml-opacity: 0.75;
+  opacity: 0.75;
+  z-index: 1000;
+  display: none;
+}
+
+#ghost {
+  cursor: pointer;
+}
+
+#close {
+  display: block;
+  width:50px;
+  height:50px;
+  box-sizing: border-box;
+  background: white;
+  color: black;
+  text-decoration: none;
+  position: absolute;
+  z-index: 1001;
+  cursor: pointer;
+  -webkit-transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  &:before {
+    content: "";
+    display: block;
+    height: 30px;
+    width: 1px;
+    z-index: 1001;
+    background: black;
+    position: absolute;
+    left: 26px;
+    top:10px;
+    -webkit-transform:rotate(45deg);
+    -moz-transform:rotate(45deg);
+    -o-transform:rotate(45deg);
+    transform:rotate(45deg);
+  }
+  &:after {
+    content: "";
+    display: block;
+    height: 30px;
+    width: 1px;
+    z-index: 1001;
+    background: black;
+    position: absolute;
+    left: 26px;
+    top:10px;
+    -webkit-transform:rotate(-45deg);
+    -moz-transform:rotate(-45deg);
+    -o-transform:rotate(-45deg);
+    transform:rotate(-45deg);
   }
 }
 
@@ -841,7 +946,7 @@ select {
   width: 100%;
   font-family: $fancy-font;
   font-size: 18px;
-  padding: 20px;
+  padding: 19px;
   border-top: 3px solid #fff;
   border-left: 3px solid #fff;
   border-right: 3px solid #fff;
@@ -875,6 +980,13 @@ select {
 
 .maryland {
   width: 32%;
+  margin: 2vh 0;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.m {
+  width: 49%;
   margin: 2vh 0;
   display: inline-block;
   vertical-align: top;
@@ -1283,10 +1395,6 @@ select {
 
 @media screen and (max-width: 800px) {
 
-  .delaware {
-    width: 96%;
-  }
-
   .main {
     width: 100%;
     margin-right: 0;
@@ -1367,6 +1475,10 @@ select {
     width: 49%;
   }
 
+  .bryant {
+    width: 49%;
+  }
+
   .ogden {
     width: 49%;
   }
@@ -1389,10 +1501,6 @@ select {
 
   .south-ogden {
     text-align: center;
-  }
-
-  .dodge {
-    padding: 3vh 5vw;
   }
 
   .englewood {
@@ -1437,6 +1545,13 @@ select {
 
   .north {
     font-size: 3em;
+  }
+
+  #front {
+    .hi {
+      width: 60vh;
+      margin: 3vh auto;
+    }
   }
 
 }
@@ -1488,6 +1603,10 @@ select {
   }
 
   .allen {
+    width: 100%;
+  }
+
+  .bryant {
     width: 100%;
   }
 

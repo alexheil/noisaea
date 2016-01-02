@@ -1,4 +1,4 @@
-<%= provide(:title, sanitize(@artist.artist_name) + " | #{@video.title}") %>
+<%= provide(:title, sanitize(@artist.artist_name) + " | Merch") %>
 <div class="buffalo">
 
   <%= render 'artists/partials/artist_cover_image' %>
@@ -9,9 +9,9 @@
 
       <ul class="carolina">
         <li><%= link_to "timeline", artist_path(@artist) %></li>
-        <li><%= link_to "merch", artist_merches_path(@artist) %></li>
+        <li class="jersey"><%= link_to "merch", artist_merches_path(@artist) %></li>
         <li><%= link_to "shows", artist_shows_path(@artist) %></li>
-        <li class="jersey"><%= link_to "videos", artist_videos_path(@artist) %></li>
+        <li><%= link_to "videos", artist_videos_path(@artist) %></li>
       </ul>
 
       <div class="hedley">
@@ -38,22 +38,29 @@
       </div>
       <% end %>
 
-      <div class="amherst">
-        <div class="harlem">
-          <div class="plymouth">
-            <%= embed(@video.youtube_url) %>
+      <% if @artist == current_artist %>
+        <div class="harlem vermont">
+          <%= link_to "add merch", new_artist_merch_path(@artist), class: "sugar" %>
+        </div>
+      <% end %>
+
+      <% if @artist.artist_merches.any? %>
+        <% @artist.artist_merches.each do |merch| %>
+        <div class="bryant">
+          <% if merch.image_url.present? %>
+          <div class="highgate loretta">
+            <%= link_to image_tag("#{merch.image_url}", :width => "100%"), artist_merch_path(@artist, merch) %>
           </div>
-          <div class="highgate">
-            <%= @video.title %>
-            <% if @artist == current_artist %>
-              // <%= link_to "edit", edit_artist_video_path(@artist, @video) %> or <%= link_to "delete", artist_video_path(@artist, @video), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
-            <% end %>
+          <% end %>
+          <div class="amherst">
+            <%= link_to merch.title, artist_merch_path(@artist, merch) %>
+          </div>
+          <div class="amherst">
+            <%= merch.total_price %> <%= merch.currency %>
           </div>
         </div>
-        <div class="best">
-          <%= @video.description %>
-        </div>
-      </div>
+        <% end %>
+      <% end %>
 
     </main>
 

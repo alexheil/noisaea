@@ -1,0 +1,113 @@
+<%= provide(:title, sanitize(@artist.artist_name) + " | " + sanitize(@merch.title)) %>
+<div class="buffalo">
+
+  <%= render 'artists/partials/artist_cover_image' %>
+
+  <div class="delaware">
+
+    <main class="main">
+
+      <ul class="carolina">
+        <li><%= link_to "timeline", artist_path(@artist) %></li>
+        <li class="jersey"><%= link_to "merch", artist_merches_path(@artist) %></li>
+        <li><%= link_to "shows", artist_shows_path(@artist) %></li>
+        <li><%= link_to "videos", artist_videos_path(@artist) %></li>
+      </ul>
+
+      <div class="hedley">
+        <%= @artist.artist_name %>
+      </div>
+
+      <div class="following sterling">
+        <%= render 'artists/partials/relationships/following' %>
+      </div>
+
+      <div class="niagara">
+        <div class="follower_count sterling">
+          <%= render 'artists/partials/relationships/follower_count' %>
+        </div>
+      </div>
+
+      <% unless @artist == current_artist %>
+      <div class="niagara">
+        <div class="highgate">
+        <div class="follow_button">
+          <%= render 'artists/partials/relationships/follow_button' %>
+        </div>
+        </div>
+      </div>
+      <% end %>
+
+      <div class="harlem">
+        <% if @merch.image_url.present? %>
+          <div class="fargo">
+            <div id="ghost">
+              <img srcset="<%= @merch.image_url %>" width="100%" height="auto" />
+            </div>
+          </div>
+          <div class="fargo">
+            <div class="vermont busti">
+              <%= @merch.title %>
+            </div>
+            <div class="summer busti">
+              <%= @merch.category %>
+            </div>
+            <div class="summer busti">
+              <span class="posted">base price //</span> <%= @merch.base_price %> <%= @merch.currency %>
+            </div>
+            <% if @merch.shipping_price.present? %>
+            <div class="summer busti">
+              <span class="posted">shipping price //</span> <%= @merch.shipping_price %> <%= @merch.currency %>
+            </div>
+            <% end %>
+            <div class="summer busti">
+              <span class="posted">total price //</span> <%= @merch.total_price %> <%= @merch.currency %>
+            </div>
+            <div class="vermont busti">
+              <%= link_to "get this!", @merch.merch_url, class: "sugar" %>
+            </div>
+          </div>
+        <% else %>
+          <div class="vermont">
+            <%= @merch.title %>
+          </div>
+          <div class="summer">
+            <%= @merch.category %>
+          </div>
+          <div class="summer">
+            <span class="posted">base price //</span> <%= @merch.base_price %> <%= @merch.currency %>
+          </div>
+          <% if @merch.shipping_price.present? %>
+          <div class="summer">
+            <span class="posted">shipping price //</span> <%= @merch.shipping_price %> <%= @merch.currency %>
+          </div>
+          <% end %>
+          <div class="summer">
+            <span class="posted">total price //</span> <%= @merch.total_price %> <%= @merch.currency %>
+          </div>
+          <div class="vermont">
+            <%= link_to "get this!", @merch.merch_url, class: "sugar" %>
+          </div>
+        <% end %>
+        <div class="best">
+          <%= @merch.description %>
+        </div>
+      </div>
+
+    </main>
+
+    <%= render 'artists/partials/artist_sidebar' %>
+
+  </div>
+</div>
+<%= render "partials/uni_footer" %>
+
+<% if @merch.image_url.present? %>
+  <div id="back"></div>
+  <div id="front">
+    <div class="lightbox-image">
+    <div id="close"></div>
+      <img srcset="<%= @merch.image_url %>" width="100%" height="auto" />
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,47 @@
+<%= provide(:title, "Edit A Show") %>
+<div class="buffalo">
+  <div class="delaware">
+    <div class="elmwood">
+      <div class="harlem">
+        <h1>edit <%= @merch.title %></h1>
+      </div>
+
+      <%= form_for(@merch, url: artist_merch_path) do |f| %>
+        <%= f.hidden_field :artist_id %>
+        <%= render 'errors/merch_errors' %>
+        <div class="highgate">
+          <%= f.text_field :title, placeholder: "title", class: "huron" %>
+        </div>
+        <div class="m">
+          <%= f.select :category, options_for_select(category_select)%>
+        </div>
+        <div class="m">
+          <%= f.text_field :quantity, placeholder: "quantity", class: "huron" %>
+        </div>
+        <div class="maryland">
+          <%= f.text_field :base_price, placeholder: "base price", class: "huron" %>
+        </div>
+        <div class="maryland">
+          <%= f.text_field :shipping_price, placeholder: "shipping price", class: "huron" %>
+        </div>
+        <div class="maryland">
+          <%= f.select :currency, options_for_select(currency_select)%>
+        </div>
+        <div class="highgate">
+          <%= f.text_field :merch_url, placeholder: "merch url", class: "huron" %>
+        </div>
+        <div class="highgate">
+          <%= f.text_field :image_url, placeholder: "image url", class: "huron" %>
+        </div>
+        <div class="highgate">
+          <%= f.text_area :description, placeholder: "description", class: "chippewa" %>
+        </div>
+        <div class="ellicott">
+          <%= f.submit "edit merch", data: { disable_with: 'posting...' }, class: "exchange" %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+<%= render 'partials/uni_footer' %>

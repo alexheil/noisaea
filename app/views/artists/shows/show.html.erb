@@ -9,6 +9,7 @@
 
       <ul class="carolina">
         <li><%= link_to "timeline", artist_path(@artist) %></li>
+        <li><%= link_to "merch", artist_merches_path(@artist) %></li>
         <li class="jersey"><%= link_to "shows", artist_shows_path(@artist) %></li>
         <li><%= link_to "videos", artist_videos_path(@artist) %></li>
       </ul>
@@ -40,7 +41,7 @@
       <div class="harlem">
         <% if @show.flyer_url.present? %>
         <div class="fargo">
-            <img srcset="<%= @show.flyer_url %>" width="100%" height="auto" />
+          <img srcset="<%= @show.flyer_url %>" width="100%" height="auto" />
         </div>
         <div class="fargo">
           <div class="vermont busti">
@@ -82,7 +83,7 @@
             <%= @show.location %>
           </div>
           <% if @show.ticket_url.present? %>
-          <div class="harlem">
+          <div class="vermont">
             <%= link_to "get tickets", @show.ticket_url, class: "sugar" %>
           </div>
           <% end %>

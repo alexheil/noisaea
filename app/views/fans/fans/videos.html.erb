@@ -1,4 +1,4 @@
-<%= provide(:title, sanitize(@fan.fan_name)) %>
+<%= provide(:title, sanitize(@fan.fan_name) + " | Videos") %>
 <div class="buffalo">
 
   <%= render 'fans/partials/fan_cover_image' %>
@@ -9,6 +9,7 @@
 
       <ul class="carolina">
         <li><%= link_to "timeline", fan_path(@fan) %></li>
+        <li><%= link_to "merch", fan_merch_path(@fan) %></li>
         <li><%= link_to "shows", fan_shows_path(@fan) %></li>
         <li class="jersey"><%= link_to "videos", fan_videos_path(@fan) %></li>
       </ul>

@@ -20,4 +20,8 @@ class Fans::FansController < ApplicationController
     @fan = Fan.friendly.find(params[:fan_id])
   end
 
+  def merch
+    @fan = Fan.friendly.find(params[:fan_id])
+  end
+
 end

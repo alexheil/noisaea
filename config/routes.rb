@@ -31,6 +31,7 @@ Rails.application.routes.draw do
         resources :votes, controller: 'artists/comment_votes', only: [:create,:destroy]
       end
     end
+    resources :merches, controller: 'artists/merches', path: :merch
     resources :shows, controller: 'artists/shows'
     resources :videos, controller: 'artists/videos'
     get 'followers' => 'artists/artists#followers'
@@ -48,6 +49,7 @@ Rails.application.routes.draw do
   resources :fans, controller: 'fans/fans', only: [:show, :index] do
     resource :profile, controller: 'fans/profiles', only: [:edit, :update]
     get 'following' => 'fans/fans#following'
+    get 'merch' => 'fans/fans#merch'
     get 'shows' => 'fans/fans#shows'
     get 'videos' => 'fans/fans#videos'
   end

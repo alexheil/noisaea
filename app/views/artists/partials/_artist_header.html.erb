@@ -3,6 +3,7 @@
   <div class="crescent">
     <ul class="pine-ridge">
       <li><%= link_to "d", current_artist, class: "military" %></li>
+      <li><%= link_to "m", artist_merches_path(current_artist), class: "depew" %></li>
       <li><%= link_to "s", artist_shows_path(current_artist), class: "depew" %></li>
       <li><%= link_to "v", artist_videos_path(current_artist), class: "depew" %></li>
       <li><%= link_to "p", edit_artist_profile_path(current_artist), class: "depew" %></li>
@@ -10,6 +11,7 @@
   </div>
   <ul class="taunton pine-ridge">
     <li><%= link_to "dashboard", current_artist, class: "military" %></li>
+    <li><%= link_to "merch", artist_merches_path(current_artist), class: "depew" %></li>
     <li><%= link_to "shows", artist_shows_path(current_artist), class: "depew" %></li>
     <li><%= link_to "videos", artist_videos_path(current_artist), class: "depew" %></li>
     <li><%= link_to "profile", edit_artist_profile_path(current_artist), class: "depew" %></li>

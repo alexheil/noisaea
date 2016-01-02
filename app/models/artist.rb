@@ -30,6 +30,8 @@ class Artist < ActiveRecord::Base
 
   has_many :artist_videos, dependent: :destroy
 
+  has_many :artist_merches, dependent: :destroy
+
   has_many :artist_relationships, dependent: :destroy
   has_many :fans, through: :artist_relationships
   belongs_to :fan

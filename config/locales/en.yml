@@ -101,6 +101,16 @@ en:
         title: ""
         youtube_url: ""
         description: ""
+      artist_merch:
+        title: ""
+        category: ""
+        description: ""
+        base_price: ""
+        shipping_price: ""
+        quantity: ""
+        currency: ""
+        merch_url: ""
+        image_url: ""
     errors:
       models:
         artist_profile:
@@ -288,7 +298,7 @@ en:
             title:
               blank: "you need to include a video title."
             youtube_url:
-              blank: "you need to include a youtube url."
+              blank: "you need to include a YouTube url."
               invalid: "that is not a vaild YouTube url."
             description:
               too_long: "your description can't be more than 14,216 characters long."
@@ -297,7 +307,7 @@ en:
             title:
               blank: "you need to include a video title."
             youtube_url:
-              blank: "you need to include a youtube url."
+              blank: "you need to include a YouTube url."
               invalid: "that is not a vaild YouTube url."
             description:
               too_long: "your description can't be more than 14,216 characters long."
@@ -306,7 +316,7 @@ en:
             title:
               blank: "you need to include a video title."
             youtube_url:
-              blank: "you need to include a youtube url."
+              blank: "you need to include a YouTube url."
               invalid: "that is not a vaild YouTube url."
             description:
               too_long: "your description can't be more than 14,216 characters long."
@@ -315,7 +325,35 @@ en:
             title:
               blank: "you need to include a video title."
             youtube_url:
-              blank: "you need to include a youtube url."
+              blank: "you need to include a YouTube url."
               invalid: "that is not a vaild YouTube url."
             description:
               too_long: "your description can't be more than 14,216 characters long."
+        artist_merch:
+          attributes:
+            title:
+              blank: "you need to include a title for your item."
+            category:
+              blank: "you must include a category."
+            description:
+              too_long: "your description can't be more than 14,216 characters long."
+            base_price:
+              blank: "you must include a base price."
+              wrong_length: "I doubt your base price is more than 999,999."
+              greater_than: "your base price needs to be higher than 0."
+              not_a_number: "base price is not a number."
+            shipping_price:
+              wrong_length: "I doubt your shipping price is more than 999,999."
+              greater_than: "your shipping price needs to be higher than 0."
+              not_a_number: "that shipping price is not a number."
+            quantity:
+              blank: "you must include a quantity."
+              greater_than: "your quantity needs to be higher than 0."
+              not_a_number: " your quantity is not a number."
+            currency:
+              blank: "you must include a valid currency."
+            merch_url:
+              blank: "you must include a link to your merch."
+              invalid: "that is definitely not a vaild url."
+            image_url:
+              invalid: "that is not a vaild image url."

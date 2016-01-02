@@ -11,7 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151219175956) do
+ActiveRecord::Schema.define(version: 20151229012344) do
+
+  create_table "artist_merches", force: true do |t|
+    t.integer  "artist_id"
+    t.string   "title"
+    t.text     "description"
+    t.string   "category"
+    t.integer  "base_price"
+    t.integer  "shipping_price"
+    t.integer  "total_price"
+    t.string   "currency"
+    t.integer  "quantity"
+    t.string   "options"
+    t.string   "merch_url"
+    t.string   "image_url"
+    t.text     "return_policy"
+    t.text     "shipping_info"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "artist_merches", ["artist_id"], name: "index_artist_merches_on_artist_id"
 
   create_table "artist_micropost_comment_votes", force: true do |t|
     t.integer  "artist_micropost_comment_id"
