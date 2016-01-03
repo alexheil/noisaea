@@ -89,10 +89,10 @@
     </div>
 
     <div class="amherst">
-      <div><%= pluralize(ArtistShow.count, "artist status") %></div>
-      <div><%= pluralize(RecordLabelShow.count, "record label status") %></div>
-      <div><%= pluralize(VenueShow.count, "venue status") %></div>
-      <div><%= pluralize(ArtistShow.count + RecordLabelShow.count + VenueShow.count + ProducerShow.count, "total status") %></div>
+      <div><%= pluralize(ArtistShow.count, "artist shows") %></div>
+      <div><%= pluralize(RecordLabelShow.count, "record label shows") %></div>
+      <div><%= pluralize(VenueShow.count, "venue shows") %></div>
+      <div><%= pluralize(ArtistShow.count + RecordLabelShow.count + VenueShow.count, "total shows") %></div>
     </div>
 
     <div class="highgate">
@@ -100,11 +100,11 @@
     </div>
 
     <div class="amherst">
-      <div><%= pluralize(ArtistVideo.count, "artist status") %></div>
-      <div><%= pluralize(RecordLabelVideo.count, "record label status") %></div>
-      <div><%= pluralize(VenueVideo.count, "venue status") %></div>
-      <div><%= pluralize(ProducerVideo.count, "producer status") %></div>
-      <div><%= pluralize(ArtistVideo.count + RecordLabelVideo.count + VenueVideo.count + ProducerVideo.count, "total status") %></div>
+      <div><%= pluralize(ArtistVideo.count, "artist videos") %></div>
+      <div><%= pluralize(RecordLabelVideo.count, "record label videos") %></div>
+      <div><%= pluralize(VenueVideo.count, "venue videos") %></div>
+      <div><%= pluralize(ProducerVideo.count, "producer videos") %></div>
+      <div><%= pluralize(ArtistVideo.count + RecordLabelVideo.count + VenueVideo.count + ProducerVideo.count, "total videos") %></div>
     </div>
 
 
