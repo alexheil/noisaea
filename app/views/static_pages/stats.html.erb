@@ -84,6 +84,30 @@
       <div><%= pluralize(DeveloperCommentVote.count, "vote") %> on developer post comments</div>
     </div>
 
+    <div class="highgate">
+      <h3>shows</h3>
+    </div>
+
+    <div class="amherst">
+      <div><%= pluralize(ArtistShow.count, "artist status") %></div>
+      <div><%= pluralize(RecordLabelShow.count, "record label status") %></div>
+      <div><%= pluralize(VenueShow.count, "venue status") %></div>
+      <div><%= pluralize(ArtistShow.count + RecordLabelShow.count + VenueShow.count + ProducerShow.count, "total status") %></div>
+    </div>
+
+    <div class="highgate">
+      <h3>videos</h3>
+    </div>
+
+    <div class="amherst">
+      <div><%= pluralize(ArtistVideo.count, "artist status") %></div>
+      <div><%= pluralize(RecordLabelVideo.count, "record label status") %></div>
+      <div><%= pluralize(VenueVideo.count, "venue status") %></div>
+      <div><%= pluralize(ProducerVideo.count, "producer status") %></div>
+      <div><%= pluralize(ArtistVideo.count + RecordLabelVideo.count + VenueVideo.count + ProducerVideo.count, "total status") %></div>
+    </div>
+
+
   </div>
 </div>
 <%= render "partials/uni_footer" %>

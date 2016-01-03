@@ -447,7 +447,7 @@ $(document).on('page:load', headerShow);
 
 var merchLightbox = function() {
 
-  $('#ghost').click(function() {
+  $('#riley').click(function() {
     $('#back').show();
     $('#front').show();
     $('#close').show();

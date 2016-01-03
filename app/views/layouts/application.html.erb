@@ -7,9 +7,9 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
-    <%= render 'partials/statcounter' %>
-    <%= render 'partials/shim' %>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
+    <%= render 'partials/shim' %>
+    <%= render 'partials/statcounter' %>
   </head>
   <body>
 
@@ -18,7 +18,7 @@
     </div>
 
     <% if artist_signed_in? %>
-      <%=  render "artists/partials/artist_header" %>
+      <%= render "artists/partials/artist_header" %>
     <% elsif fan_signed_in? %>
       <%= render "fans/partials/fan_header" %>
     <% elsif record_label_signed_in? %>
