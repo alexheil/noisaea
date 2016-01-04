@@ -17,8 +17,8 @@
     <div class="winspear hedley">
       <%= link_to @producer.producer_name, producer_path(@producer) %>
     </div>
-    <div class="amherst">
-      <strong>// <%= pluralize(@producer.fans.count, "fan") %></strong>
+    <div class="amherst sterling">
+      // <%= pluralize(@producer.fans.count, "fan") %>
     </div>
 
     <% if @producer.fans.any? %>

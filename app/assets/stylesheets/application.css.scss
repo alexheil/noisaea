@@ -749,6 +749,10 @@ h4 {
   text-align: center;
 }
 
+.columbus {
+  text-align: left;
+}
+
 .utica {
   width: 11.5%;
   margin: 1vh auto;
@@ -1504,16 +1508,9 @@ select {
   }
 
   .englewood {
+    height: auto;
     .starin {
       padding: 1vh 1vw;
-    }
-    ul {
-      li {
-        padding: 0;
-      }
-    }
-    .pine-ridge {
-      font-size: 1em;
     }
   }
 

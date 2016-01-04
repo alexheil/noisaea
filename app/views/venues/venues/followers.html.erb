@@ -17,8 +17,8 @@
     <div class="winspear hedley">
       <%= link_to @venue.venue_name, venue_path(@venue) %>
     </div>
-    <div class="amherst">
-      <strong>// <%= pluralize(@venue.fans.count, "fan") %></strong>
+    <div class="amherst sterling">
+      // <%= pluralize(@venue.fans.count, "fan") %>
     </div>
 
     <% if @venue.fans.any? %>

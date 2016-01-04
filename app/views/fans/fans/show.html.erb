@@ -19,23 +19,7 @@
         <%= @fan.fan_name %>
       </div>
 
-      <% if artist_signed_in? && @fan.following_artist?(current_artist) %>
-        <div class="amherst">
-          <%= @fan.fan_name %> follows you
-        </div>
-      <% elsif record_label_signed_in? && @fan.following_record_label?(current_record_label) %>
-        <div class="amherst">
-          <%= @fan.fan_name %> follows you
-        </div>
-      <% elsif venue_signed_in? && @fan.following_venue?(current_venue) %>
-        <div class="amherst">
-          <%= @fan.fan_name %> follows you
-        </div>
-      <% elsif producer_signed_in? && @fan.following_producer?(current_producer) %>
-        <div class="amherst">
-          <%= @fan.fan_name %> follows you
-        </div>
-      <% end %>
+      <%= render 'fans/partials/fan_follows_you' %>
 
       <%= render "fans/partials/fan_feed" %>
 

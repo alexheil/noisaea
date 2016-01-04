@@ -7,8 +7,8 @@
     <div class="winspear hedley">
       <%= link_to @artist.artist_name, artist_path(@artist) %>
     </div>
-    <div class="amherst">
-      <strong>// <%= pluralize(@artist.fans.count, "fan") %></strong>
+    <div class="amherst sterling">
+      // <%= pluralize(@artist.fans.count, "fan") %>
     </div>
 
     <% if @artist.fans.any? %>

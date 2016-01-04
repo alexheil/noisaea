@@ -17,8 +17,8 @@
     <div class="winspear hedley">
       <%= link_to @record_label.label_name, record_label_path(@record_label) %>
     </div>
-    <div class="amherst">
-      <strong>// <%= pluralize(@record_label.fans.count, "fan") %></strong>
+    <div class="amherst sterling">
+      // <%= pluralize(@record_label.fans.count, "fan") %>
     </div>
 
     <% if @record_label.fans.any? %>

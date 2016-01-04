@@ -18,23 +18,7 @@
         <%= @fan.fan_name %>
       </div>
 
-      <% if artist_signed_in? && @fan.following_artist?(current_artist) %>
-        <div class="amherst">
-          <%= @fan.fan_name %> follows you
-        </div>
-      <% elsif record_label_signed_in? && @fan.following_record_label?(current_record_label) %>
-        <div class="amherst">
-          <%= @fan.fan_name %> follows you
-        </div>
-      <% elsif venue_signed_in? && @fan.following_venue?(current_venue) %>
-        <div class="amherst">
-          <%= @fan.fan_name %> follows you
-        </div>
-      <% elsif producer_signed_in? && @fan.following_producer?(current_producer) %>
-        <div class="amherst">
-          <%= @fan.fan_name %> follows you
-        </div>
-      <% end %>
+      <%= render 'fans/partials/fan_follows_you' %>
 
       <div class="highgate">
 
@@ -67,31 +51,65 @@
         </div>
 
         <div id="fan-artist" class="ferry">
-        <% if @fan.artist_merches.any? %>
-          <% @fan.artist_merches.each do |merch| %>
-            <div class="bryant">
-              <% if merch.image_url.present? %>
-              <div class="highgate loretta">
-                <%= link_to image_tag("#{merch.image_url}", :width => "100%"), artist_merch_path(Artist.find(merch.artist_id), merch) %>
-              </div>
-              <% end %>
-              <div class="amherst">
-                <%= link_to merch.title, artist_merch_path(Artist.find(merch.artist_id), merch) %>
-              </div>
-              <div class="amherst">
-                <%= merch.total_price %> <%= merch.currency %>
-              </div>
+    <% if @fan.artist_merches.any? %>
+      <div class="harlem">
+        <% @fan.artist_merches.each do |merch| %>
+        <div class="amherst dodge">
+          <div class="allen">
+            <div class="highgate columbus">
+              <%= link_to Artist.find(merch.artist_id).artist_name, artist_path(Artist.find(merch.artist_id)) %> <span class="posted">posted <%= time_ago_in_words(merch.created_at) %> ago</span>
             </div>
-          <% end %>
-        <% else %>
-          <div class="harlem">
-            <% if @fan == current_fan %>
-              you do not have any merch. <%= link_to "find some artists to follow.", artists_path %>
+            <% if merch.image_url.present? %>
+            <div class="highgate loretta">
+              <%= link_to image_tag("#{merch.image_url}", :width => "100%"), artist_merch_path(Artist.find(merch.artist_id), merch) %>
+            </div>
             <% else %>
-              <%= @fan.fan_name %> does not have any merch.
+              <% if Artist.find(merch.artist_id) == current_artist %>
+                you do not have an image for this item. <%= link_to "add one?", edit_artist_merch_path(Artist.find(merch.artist_id), merch) %>
+              <% else %>
+                <%= Artist.find(merch.artist_id).artist_name %> does not have an image for <%= merch.title %>.
+              <% end %>
             <% end %>
           </div>
+          <div class="allen">
+            <div class="summer">
+              <%= link_to merch.title, artist_merch_path(Artist.find(merch.artist_id), merch) %>
+            </div>
+            <div class="summer">
+              <%= merch.category %>
+            </div>
+            <div class="summer">
+              <%= merch.quantity %> left
+            </div>
+          </div>
+          <div class="allen">
+            <div class="summer">
+              <span class="posted">base price //</span> <%= merch.base_price %> <%= merch.currency %>
+            </div>
+            <div class="summer">
+              <span class="posted">shipping price //</span> <%= merch.shipping_price %> <%= merch.currency %>
+            </div>
+            <div class="summer">
+              <span class="posted">total price //</span> <%= merch.total_price %> <%= merch.currency %>
+            </div>
+          </div>
+          <div class="allen">
+            <div class=" vermont amherst">
+              <%= link_to "get this?", merch.merch_url, class: "sugar" %>
+            </div>
+          </div>
+        </div>
         <% end %>
+      </div>
+      <% else %>
+        <div class="harlem">
+          <% if Artist.find(merch.artist_id) == current_artist %>
+            you do not have any merch. <%= link_to "add some?", new_artist_merch_path(Artist.find(merch.artist_id)) %>
+          <% else %>
+            <%= Artist.find(merch.artist_id).artist_name %> does not have any merch.
+          <% end %>
+        </div>
+      <% end %>
         </div>
 
         <div id="fan-record-label" class="ferry colvin">

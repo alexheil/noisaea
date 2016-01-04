@@ -45,21 +45,52 @@
       <% end %>
 
       <% if @artist.artist_merches.any? %>
+      <div class="harlem">
         <% @artist.artist_merches.each do |merch| %>
-        <div class="bryant">
-          <% if merch.image_url.present? %>
-          <div class="highgate loretta">
-            <%= link_to image_tag("#{merch.image_url}", :width => "100%"), artist_merch_path(@artist, merch) %>
+        <div class="amherst dodge">
+          <div class="allen">
+            <% if merch.image_url.present? %>
+            <div class="highgate loretta">
+              <%= link_to image_tag("#{merch.image_url}", :width => "100%"), artist_merch_path(@artist, merch) %>
+            </div>
+            <% else %>
+              <% if @artist == current_artist %>
+                you do not have an image for this item. <%= link_to "add one?", edit_artist_merch_path(@artist, merch) %>
+              <% else %>
+                <%= @artist.artist_name %> does not have an image for <%= merch.title %>.
+              <% end %>
+            <% end %>
           </div>
-          <% end %>
-          <div class="amherst">
-            <%= link_to merch.title, artist_merch_path(@artist, merch) %>
+          <div class="allen">
+            <div class="summer">
+              <%= link_to merch.title, artist_merch_path(@artist, merch) %>
+            </div>
+            <div class="summer">
+              <%= merch.category %>
+            </div>
+            <div class="summer">
+              <%= merch.quantity %> left
+            </div>
           </div>
-          <div class="amherst">
-            <%= merch.total_price %> <%= merch.currency %>
+          <div class="allen">
+            <div class="summer">
+              <span class="posted">base price //</span> <%= merch.base_price %> <%= merch.currency %>
+            </div>
+            <div class="summer">
+              <span class="posted">shipping price //</span> <%= merch.shipping_price %> <%= merch.currency %>
+            </div>
+            <div class="summer">
+              <span class="posted">total price //</span> <%= merch.total_price %> <%= merch.currency %>
+            </div>
+          </div>
+          <div class="allen">
+            <div class=" vermont amherst">
+              <%= link_to "get this?", merch.merch_url, class: "sugar" %>
+            </div>
           </div>
         </div>
         <% end %>
+      </div>
       <% else %>
         <div class="harlem">
           <% if @artist == current_artist %>
