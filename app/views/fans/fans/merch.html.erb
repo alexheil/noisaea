@@ -103,10 +103,10 @@
       </div>
       <% else %>
         <div class="harlem">
-          <% if Artist.find(merch.artist_id) == current_artist %>
-            you do not have any merch. <%= link_to "add some?", new_artist_merch_path(Artist.find(merch.artist_id)) %>
+          <% if @fan == current_fan %>
+            none of your artists have any merch. <%= link_to "discover some artists?", artists_path %>
           <% else %>
-            <%= Artist.find(merch.artist_id).artist_name %> does not have any merch.
+            <%= @fan.fan_name %>'s artists do not have any merch.
           <% end %>
         </div>
       <% end %>
