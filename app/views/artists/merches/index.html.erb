@@ -60,6 +60,9 @@
                 <%= @artist.artist_name %> does not have an image for <%= merch.title %>.
               <% end %>
             <% end %>
+            <% if @artist == current_artist %>
+              // <%= link_to "edit", edit_artist_merch_path(@artist, merch) %> or <%= link_to "delete", artist_merch_path(@artist, merch), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+            <% end %>
           </div>
           <div class="allen">
             <div class="summer">

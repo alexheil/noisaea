@@ -88,6 +88,9 @@
           <div class="vermont">
             <%= link_to "get this!", @merch.merch_url, class: "sugar" %>
           </div>
+          <% if @artist == current_artist %>
+            // <%= link_to "edit", edit_artist_merch_path(@artist, merch) %> or <%= link_to "delete", artist_merch_path(@artist, merch), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+          <% end %>
         <% end %>
         <div class="best">
           <%= @merch.description %>
