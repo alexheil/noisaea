@@ -47,7 +47,7 @@
       <% if @artist.artist_shows.any? %>
         <div class="harlem">
         <% @artist.artist_shows.each do |show| %>
-          <div class="highgate">
+          <div class="dodge ashland">
             <%= link_to "#{show.month}.#{show.day}.#{show.year} at #{show.venue} in #{show.location}", artist_show_path(@artist, show) %>
             <% if show.ticket_url.present? %>
               // <%= link_to "get tickets", show.ticket_url, class: "sugar" %>

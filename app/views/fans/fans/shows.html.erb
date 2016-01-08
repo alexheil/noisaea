@@ -52,7 +52,7 @@
           <% if @fan.artist_shows.any? %>
             <div class="highgate">
             <% @fan.artist_shows.select{ |show| show.location == @fan.fan_profile.location }.each do |show| %>
-              <div class="highgate">
+              <div class="dodge ashland">
                 <%= link_to Artist.find(show.artist_id).artist_name, artist_path(Artist.find(show.artist_id)) %> on <%= link_to "#{show.month}.#{show.day}.#{show.year} at #{show.venue} in #{show.location}", artist_show_path(Artist.find(show.artist_id), show) %>
                 <% if show.ticket_url.present? %>
                    // <%= link_to "get tickets", show.ticket_url, class: "sugar" %>
@@ -74,7 +74,7 @@
           <% if @fan.record_label_shows.any? %>
             <div class="highgate">
             <% @fan.record_label_shows.select{ |show| show.location == @fan.fan_profile.location }.each do |show| %>
-              <div class="highgate">
+              <div class="dodge ashland">
               <% if Artist.exists?(:artist_name => "#{show.artist}") %>
                 <%= link_to show.artist, artist_path(Artist.where(:artist_name => "#{show.artist}").first) %>
               <% else %>
@@ -101,7 +101,7 @@
           <% if @fan.venue_shows.any? %>
             <div class="highgate">
             <% @fan.venue_shows.select{ |show| show.location == @fan.fan_profile.location }.each do |show| %>
-              <div class="highgate">
+              <div class="dodge ashland">
                 <% if Artist.exists?(:artist_name => "#{show.artist}") %>
                   <%= link_to show.artist, artist_path(Artist.where(:artist_name => "#{show.artist}").first) %>
                 <% else %>
