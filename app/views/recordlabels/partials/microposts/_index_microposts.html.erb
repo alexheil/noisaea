@@ -1,7 +1,7 @@
 <% if @record_label.record_label_microposts.any? %>
   <div class="harlem">
     <% @record_label.record_label_microposts.take(100).each do | micropost | %>
-      <div class="harlem dodge">
+      <div class="auburn dodge">
         <div class="winspear">
           <strong><%= link_to "#{@record_label.label_name}", record_label_micropost_path(@record_label, micropost) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
           <% if @record_label == current_record_label %>

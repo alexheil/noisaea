@@ -31,7 +31,7 @@
   <div id="fan-artist" class="ferry">
   <% if @fan.artists.any? %>
     <% @fan.artist_microposts.take(100).each do |micropost| %>
-    <div class="harlem dodge">
+    <div class="auburn dodge">
       <div class="winspear">
         <strong><%= link_to Artist.find(micropost.artist_id).artist_name, artist_path(Artist.find(micropost.artist_id)) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
         <% if Artist.find(micropost.artist_id) == current_artist %>
@@ -96,7 +96,7 @@
   <div id="fan-record-label" class="ferry colvin">
     <% if @fan.record_labels.any? %>
     <% @fan.record_label_microposts.take(100).each do |micropost| %>
-    <div class="harlem dodge">
+    <div class="auburn dodge">
       <div class="winspear">
         <strong><%= link_to RecordLabel.find(micropost.record_label_id).label_name, record_label_path(RecordLabel.find(micropost.record_label_id)) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
         <% if RecordLabel.find(micropost.record_label_id) == current_record_label %>
@@ -162,7 +162,7 @@
   <div id="fan-venue" class="ferry colvin">
     <% if @fan.venues.any? %>
     <% @fan.venue_microposts.take(100).each do |micropost| %>
-    <div class="harlem dodge">
+    <div class="auburn dodge">
       <div class="winspear">
         <strong><%= link_to Venue.find(micropost.venue_id).venue_name, venue_path(Venue.find(micropost.venue_id)) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
         <% if Venue.find(micropost.venue_id) == current_venue %>
@@ -227,7 +227,7 @@
   <div id="fan-producer" class="ferry colvin">
     <% if @fan.producers.any? %>
     <% @fan.producer_microposts.take(100).each do |micropost| %>
-    <div class="harlem dodge">
+    <div class="auburn dodge">
       <div class="winspear">
         <strong><%= link_to Producer.find(micropost.producer_id).producer_name, producer_path(Producer.find(micropost.producer_id)) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
         <% if Producer.find(micropost.producer_id) == current_producer %>

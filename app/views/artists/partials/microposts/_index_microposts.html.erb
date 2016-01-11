@@ -1,7 +1,7 @@
 <% if @artist.artist_microposts.any? %>
   <div class="harlem">
     <% @artist.artist_microposts.take(100).each do | micropost | %>
-      <div class="harlem dodge">
+      <div class="auburn dodge">
         <div class="winspear">
           <strong><%= link_to "#{@artist.artist_name}", artist_micropost_path(@artist, micropost) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
           <% if @artist == current_artist %>
