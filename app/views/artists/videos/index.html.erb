@@ -46,11 +46,11 @@
 
       <% if @artist.artist_videos.any? %>
         <% @artist.artist_videos.each do |video| %>
-          <div class="harlem">
+          <div class="harlem dodge">
             <div class="plymouth">
               <%= embed(video.youtube_url) %>
             </div>
-            <div class="highgate">
+            <div class="ashland">
               <%= link_to video.title, artist_video_path(@artist, video) %>
               <% if @artist == current_artist %>
                 // <%= link_to "edit", edit_artist_video_path(@artist, video) %> or <%= link_to "delete", artist_video_path(@artist, video), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
