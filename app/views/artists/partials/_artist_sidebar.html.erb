@@ -16,14 +16,14 @@
     </div>
   </div>
 
-  <% if artist_signed_in? && @artist.id == current_artist.id && @artist.artist_profile.location.blank? && @artist.artist_profile.genre.blank? && @artist.artist_profile.members.blank? && @artist.artist_profile.biography.blank? && @artist.artist_profile.facebook_url.blank? && @artist.artist_profile.twitter_url.blank? && @artist.artist_profile.youtube_url.blank? && @artist.artist_profile.itunes_url.blank? && @artist.artist_profile.amazon_url.blank? && @artist.artist_profile.google_play_url.blank? && @artist.artist_profile.record_label.blank? && @artist.artist_profile.website.blank? %>
+  <% if artist_signed_in? && @artist.id == current_artist.id && @artist.artist_profile.location.blank? && @artist.artist_profile.genre.blank? && @artist.artist_profile.members.blank? && @artist.artist_profile.biography.blank? && @artist.artist_profile.facebook_url.blank? && @artist.artist_profile.twitter_url.blank? && @artist.artist_profile.youtube_url.blank? && @artist.artist_profile.itunes_url.blank? && @artist.artist_profile.amazon_url.blank? && @artist.artist_profile.google_play_url.blank? && @artist.artist_profile.record_label.blank? && @artist.artist_profile.website.blank? && @artist.artist_profile.ticketfly_url.blank? %>
     <div class="amherst">
       you do not have any profile information
     </div>
     <div class="jefferson">
       <%= link_to "update your profile", edit_artist_profile_path(current_artist) %>
     </div>
-  <% elsif @artist.artist_profile.location.blank? && @artist.artist_profile.genre.blank? && @artist.artist_profile.members.blank? && @artist.artist_profile.biography.blank? && @artist.artist_profile.facebook_url.blank? && @artist.artist_profile.twitter_url.blank? && @artist.artist_profile.youtube_url.blank? && @artist.artist_profile.itunes_url.blank? && @artist.artist_profile.amazon_url.blank? && @artist.artist_profile.google_play_url.blank? && @artist.artist_profile.record_label.blank? && @artist.artist_profile.website.blank? %>
+  <% elsif @artist.artist_profile.location.blank? && @artist.artist_profile.genre.blank? && @artist.artist_profile.members.blank? && @artist.artist_profile.biography.blank? && @artist.artist_profile.facebook_url.blank? && @artist.artist_profile.twitter_url.blank? && @artist.artist_profile.youtube_url.blank? && @artist.artist_profile.itunes_url.blank? && @artist.artist_profile.amazon_url.blank? && @artist.artist_profile.google_play_url.blank? && @artist.artist_profile.record_label.blank? && @artist.artist_profile.website.blank? && @artist.artist_profile.ticketfly_url.blank? %>
     <div class="amherst">
       <%= "#{@artist.artist_name} does not have any profile information yet" %>
     </div>
@@ -79,32 +79,37 @@
   <% end %>
   <% if @artist.artist_profile.facebook_url.present? %>
   <div class="fillmore">
-    <%= link_to "Facebook", @artist.artist_profile.facebook_url %>
+    <%= link_to "Facebook", @artist.artist_profile.facebook_url, class: "sfacebook" %>
   </div>
   <% end %>
   <% if @artist.artist_profile.twitter_url.present? %>
   <div class="fillmore">
-    <%= link_to "Twitter", @artist.artist_profile.twitter_url %>
+    <%= link_to "Twitter", @artist.artist_profile.twitter_url, class: "stwitter" %>
   </div>
   <% end %>
   <% if @artist.artist_profile.youtube_url.present? %>
   <div class="fillmore">
-    <%= link_to "YouTube", @artist.artist_profile.youtube_url %>
+    <%= link_to "YouTube", @artist.artist_profile.youtube_url, class: "syoutube" %>
   </div>
   <% end %>
   <% if @artist.artist_profile.itunes_url.present? %>
   <div class="fillmore">
-    <%= link_to "iTunes", @artist.artist_profile.itunes_url %>
+    <%= link_to "iTunes", @artist.artist_profile.itunes_url, class: "situnes" %>
   </div>
   <% end %>
   <% if @artist.artist_profile.amazon_url.present? %>
   <div class="fillmore">
-    <%= link_to "Amazon", @artist.artist_profile.amazon_url %>
+    <%= link_to "Amazon", @artist.artist_profile.amazon_url, class: "samazon" %>
   </div>
   <% end %>
   <% if @artist.artist_profile.google_play_url.present? %>
   <div class="fillmore">
-    <%= link_to "Google Play", @artist.artist_profile.google_play_url %>
+    <%= link_to "Google Play", @artist.artist_profile.google_play_url, class: "sgoogleplay" %>
+  </div>
+  <% end %>
+  <% if @artist.artist_profile.ticketfly_url.present? %>
+  <div class="fillmore">
+    <%= link_to "Ticketfly", @artist.artist_profile.ticketfly_url, class: "sticketfly" %>
   </div>
   <% end %>
 </aside>

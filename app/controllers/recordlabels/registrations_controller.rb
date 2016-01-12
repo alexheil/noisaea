@@ -40,7 +40,7 @@ class Recordlabels::RegistrationsController < Devise::RegistrationsController
   private
 
     def profile_params
-      params.permit(:biography, :location, :genre, :artists, :founded, :website, :facebook_url, :twitter_url, :youtube_url, :itunes_url, :amazon_url, :google_play_url, :cover_image, :profile_image)
+      params.permit(:biography, :location, :genre, :artists, :founded, :website, :facebook_url, :twitter_url, :youtube_url, :itunes_url, :amazon_url, :google_play_url, :ticketfly_url, :cover_image, :profile_image)
     end
 
 

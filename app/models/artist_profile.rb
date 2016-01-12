@@ -7,7 +7,7 @@ class ArtistProfile < ActiveRecord::Base
   validates :facebook_url, format: { with: /\A((http|https)?:\/\/)?(www.)?facebook.com\/?/i  }, allow_blank: true
   validates :twitter_url, format: { with: /\A((http|https)?:\/\/)?(www.)?twitter.com\/?/i }, allow_blank: true
   validates :youtube_url, format: { with: /\A((http|https)?:\/\/)?(www.)?youtube.com\/?/i }, allow_blank: true
-  validates :itunes_url, format: { with: /\A((http|https)?:\/\/)?(www.)?itunes.com\/?/i }, allow_blank: true
+  validates :itunes_url, format: { with: /\A((http|https)?:\/\/)?(www.)?itunes.apple.com\/?/i }, allow_blank: true
   validates :amazon_url, format: { with: /\A((http|https)?:\/\/)?(www.)?amazon.com\/?/i }, allow_blank: true
   validates :google_play_url, format: { with: /\A((http|https)?:\/\/)?(play.)google.com\/?/i }, allow_blank: true
   validates :ticketfly_url, format: { with: /\A((http|https)?:\/\/)?(www.)?ticketfly.com\/?/i }, allow_blank: true

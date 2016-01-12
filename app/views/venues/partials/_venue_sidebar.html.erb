@@ -16,14 +16,14 @@
     </div>
   </div>
 
-  <% if venue_signed_in? && @venue.id == current_venue.id && @venue.venue_profile.location.blank? && @venue.venue_profile.founded.blank? && @venue.venue_profile.biography.blank? && @venue.venue_profile.facebook_url.blank? && @venue.venue_profile.twitter_url.blank? && @venue.venue_profile.youtube_url.blank? && @venue.venue_profile.website.blank? %>
+  <% if venue_signed_in? && @venue.id == current_venue.id && @venue.venue_profile.location.blank? && @venue.venue_profile.founded.blank? && @venue.venue_profile.biography.blank? && @venue.venue_profile.facebook_url.blank? && @venue.venue_profile.twitter_url.blank? && @venue.venue_profile.youtube_url.blank? && @venue.venue_profile.website.blank? && @venue.venue_profile.ticketfly_url.blank? %>
     <div class="amherst">
       you do not have any profile information
     </div>
     <div class="jefferson">
       <%= link_to "update your profile", edit_venue_profile_path(current_venue) %>
     </div>
-  <% elsif @venue.venue_profile.location.blank? && @venue.venue_profile.founded.blank? && @venue.venue_profile.biography.blank? && @venue.venue_profile.facebook_url.blank? && @venue.venue_profile.twitter_url.blank? && @venue.venue_profile.youtube_url.blank? && @venue.venue_profile.website %>
+  <% elsif @venue.venue_profile.location.blank? && @venue.venue_profile.founded.blank? && @venue.venue_profile.biography.blank? && @venue.venue_profile.facebook_url.blank? && @venue.venue_profile.twitter_url.blank? && @venue.venue_profile.youtube_url.blank? && @venue.venue_profile.website.blank? && @venue.venue_profile.ticketfly_url.blank? %>
     <div class="amherst"><%= "#{@venue.venue_name} does not have any profile information yet" %></div>
   <% end %>
   <% if @venue.venue_profile.location.present? %>
@@ -57,17 +57,22 @@
   <% end %>
   <% if @venue.venue_profile.facebook_url.present? %>
   <div class="fillmore">
-    <%= link_to "Facebook", @venue.venue_profile.facebook_url %>
+    <%= link_to "Facebook", @venue.venue_profile.facebook_url, class: "sfacebook" %>
   </div>
   <% end %>
   <% if @venue.venue_profile.twitter_url.present? %>
   <div class="fillmore">
-    <%= link_to "Twitter", @venue.venue_profile.twitter_url %>
+    <%= link_to "Twitter", @venue.venue_profile.twitter_url, class: "stwitter" %>
   </div>
   <% end %>
   <% if @venue.venue_profile.youtube_url.present? %>
   <div class="fillmore">
-    <%= link_to "YouTube", @venue.venue_profile.youtube_url %>
+    <%= link_to "YouTube", @venue.venue_profile.youtube_url, class: "syoutube" %>
+  </div>
+  <% end %>
+  <% if @venue.venue_profile.ticketfly_url.present? %>
+  <div class="fillmore">
+    <%= link_to "Ticketfly", @venue.venue_profile.ticketfly_url, class: "sticketfly" %>
   </div>
   <% end %>
 </aside>

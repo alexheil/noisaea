@@ -424,7 +424,7 @@ h4 {
 .twitter {
   color: #fff;
   &:hover {
-    color: #00aced;
+    color: #55acee;
   }
 }
 
@@ -473,7 +473,7 @@ h4 {
 .mtwitter {
   color: $my-black;
   &:hover {
-    color: #00aced;
+    color: #55acee;
   }
 }
 
@@ -512,36 +512,57 @@ h4 {
   }
 }
 
-.share-facebook {
+.sfacebook {
   color: #3b5998;
   &:hover {
     color: $main-color;
   }
 }
 
-.share-twitter {
-  color: #00aced;
+.stwitter {
+  color: #55acee;
   &:hover {
     color: $main-color;
   }
 }
 
-.share-googleplus {
+.sgoogleplus {
   color: #dd4b39;
   &:hover {
     color: $main-color;
   }
 }
 
-.share-tumblr {
-  color: #32506d;
+.syoutube {
+  color: #bb0000;
   &:hover {
     color: $main-color;
   }
 }
 
-.share-pinterest {
-  color: #cb2027;
+.situnes {
+  color: #5fc9f8;
+  &:hover {
+    color: $main-color;
+  }
+}
+
+.samazon {
+  color: #ff9900;
+  &:hover {
+    color: $main-color;
+  }
+}
+
+.sgoogleplay {
+  color: #4285f4;
+  &:hover {
+    color: $main-color;
+  }
+}
+
+.sticketfly {
+  color: #00aeef;
   &:hover {
     color: $main-color;
   }

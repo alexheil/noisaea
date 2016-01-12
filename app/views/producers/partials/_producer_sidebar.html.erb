@@ -75,17 +75,17 @@
   <% end %>
   <% if @producer.producer_profile.facebook_url.present? %>
   <div class="fillmore">
-    <%= link_to "Facebook", @producer.producer_profile.facebook_url %>
+    <%= link_to "Facebook", @producer.producer_profile.facebook_url, class: "sfacebook" %>
   </div>
   <% end %>
   <% if @producer.producer_profile.twitter_url.present? %>
   <div class="fillmore">
-    <%= link_to "Twitter", @producer.producer_profile.twitter_url %>
+    <%= link_to "Twitter", @producer.producer_profile.twitter_url, class: "stwitter" %>
   </div>
   <% end %>
   <% if @producer.producer_profile.youtube_url.present? %>
   <div class="fillmore">
-    <%= link_to "YouTube", @producer.producer_profile.youtube_url %>
+    <%= link_to "YouTube", @producer.producer_profile.youtube_url, class: "syoutube" %>
   </div>
   <% end %>
 </aside>
