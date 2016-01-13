@@ -1,5 +1,5 @@
 class ArtistMailer < ApplicationMailer
-  default from: 'notifications@noisaea.com'
+  default from: 'noisaea-notifications@noisaea.com'
 
   def follow_email(artist)
     @artist = artist
