@@ -1,6 +1,6 @@
 <h1>Hey <%= @artist.artist_name %>,</h1>
 <p>You just got a new fan on <%= link_to "Noisaea", root_url %>!</p>
 <p>That brings you up to <%= pluralize(@artist.fans.count, "fan") %>!</p>
-<p>Time to interact with your new fan, <%= @url %>.</p>
+<p>Time to interact with your new fan, <%= link_to @artist.artist_name, artist_url(@artist) %>.</p>
 <p>Sincerely,</p>
 <p><%= link_to "Noisaea", root_url %></p>

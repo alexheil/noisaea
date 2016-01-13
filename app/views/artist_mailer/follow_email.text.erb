@@ -4,7 +4,7 @@ You just got a new fan on <%= link_to "Noisaea", root_url %>!
 
 That brings you up to <%= pluralize(@artist.fans.count, "fan") %>!
 
-Time to interact with your new fan, <%= link_to @artist.artist_name, artist_path(@artist) %>.
+Time to interact with your new fan, <%= link_to @artist.artist_name, artist_url(@artist) %>.
 
 Sincerely,
 
