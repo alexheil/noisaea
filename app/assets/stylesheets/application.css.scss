@@ -594,14 +594,17 @@ h4 {
   width: 100%;
   margin: 0 auto;
   max-width: 1920px;
-  &:hover {
-    background: $my-black;
-  }
   img {
     text-align: center;
     max-width: 1920px;
     max-height: 640px;
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -o-transition: .3s;
     &:hover {
+      -webkit-transition: .3s;
+      -moz-transition: .3s;
+      -o-transition: .3s;
       opacity: .75;
     }
   }
@@ -1141,7 +1144,13 @@ select {
   background-color: #fff;
   color: $main-color;
   cursor: pointer;
+  -webkit-transition: .3s;
+  -moz-transition: .3s;
+  -o-transition: .3s;
   &:hover {
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -o-transition: .3s;
     color: $accent-color1;
   }
 }

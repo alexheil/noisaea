@@ -1,0 +1,12 @@
+Hey <%= @artist.artist_name %>,
+
+You just got a new comment on your status:
+
+<%= @micropost.content %>
+
+You can see the comment here: <%= link_to "The sweet comment", artist_micropost_url(@artist, @micropost) %>.
+
+Sincerely,
+
+<%= link_to "Noisaea", root_url %>
+

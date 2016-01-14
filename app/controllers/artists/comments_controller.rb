@@ -20,6 +20,7 @@ class Artists::CommentsController < ApplicationController
     end
     if @comment.save
       flash.now[:notice] = "you posted a comment on #{@artist.artist_name}'s status."
+      ArtistMailer.comment_email(@artist, @micropost).deliver
       respond_to do |format|
         format.html { redirect_to (:back) }
         format.js { render :action => "comments" }

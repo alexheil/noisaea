@@ -6,4 +6,10 @@ class ArtistMailer < ApplicationMailer
     mail(to: @artist.email, subject: 'You\'ve got a new fan | Noisaea')
   end
 
+  def comment_email(artist, artist_micropost)
+    @artist = artist
+    @micropost = artist_micropost
+    mail(to: @artist.email, subject: 'You\'ve got a new comment | Noisaea')
+  end
+
 end
