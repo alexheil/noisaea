@@ -1,6 +1,6 @@
 <h1>Hey <%= @artist.artist_name %>,</h1>
 <p>You just got a new comment on your status:</p>
-<p><%= @micropost.content %></p>
-<blockquote>You can see the comment here: <%= link_to "The sweet comment", artist_micropost_url(@artist, @micropost) %>.</blockquote>
+<blockquote><%= @micropost.content %></blockquote>
+<p>You can see the comment here: <%= link_to "The sweet comment", artist_micropost_url(@artist, @micropost) %>.</p>
 <p>Sincerely,</p>
 <p><%= link_to "Noisaea", root_url %></p>
