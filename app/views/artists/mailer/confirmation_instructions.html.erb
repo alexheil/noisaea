@@ -1,5 +1,5 @@
-<p>Welcome <%= @email %>!</p>
+<p>Welcome <%= @resource.artist_name %>!</p>
 
-<p>You can confirm your account email through the link below:</p>
+<p>Before you can start reaping the treasurous rewards of Noisaea, you must first confirm you own this email address by clicking the link below:</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p><%= link_to "I confirm I own #{@resource.email}!", confirmation_url(@resource, confirmation_token: @token) %></p>
