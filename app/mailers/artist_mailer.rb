@@ -12,4 +12,9 @@ class ArtistMailer < ApplicationMailer
     mail(to: @artist.email, subject: 'You\'ve got a new comment | Noisaea')
   end
 
+  def twentyfour_mailer
+    @artist = artist
+    mail(to: @artist.email, subject: 'Post something on Noisaea!')
+  end
+
 end
