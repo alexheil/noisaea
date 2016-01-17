@@ -1,6 +1,8 @@
 Hey <%= @artist.artist_name %>,
 
-You just got a new fan on <%= link_to "Noisaea", root_url %>!
+A mysterious figure has appeared...
+
+Oh wait, that's just your new fan on <%= link_to "Noisaea", root_url %>!
 
 That brings you up to <%= pluralize(@artist.fans.count, "fan") %>!
 
