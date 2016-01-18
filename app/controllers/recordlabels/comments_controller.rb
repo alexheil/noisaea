@@ -20,6 +20,7 @@ class Recordlabels::CommentsController < ApplicationController
     end
     if @comment.save
       flash.now[:notice] = "you posted a comment on #{@record_label.label_name}'s status."
+      RecordLabelMailer.comment_email(@record_label, @micropost).deliver
       respond_to do |format|
         format.html { redirect_to (:back) }
         format.js { render :action => "comments" }

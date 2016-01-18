@@ -9,6 +9,7 @@ class Recordlabels::RelationshipsController < ApplicationController
     @record_label = RecordLabel.friendly.find(params[:record_label_id])
     if @relationship.save
       flash.now[:notice] = "you followed #{@record_label.label_name}!"
+      RecordLabelMailer.follow_email(@record_label).deliver
       respond_to do |format|
         format.html { redirect_to (:back) }
         format.js { render :action => "follow_button" }

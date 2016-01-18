@@ -1,0 +1,7 @@
+<h1>noisaea //</h1>
+<p>Hey <%= @record_label.label_name %>,</p>
+<p>Someone just translated their thoughts into words on your status:</p>
+<blockquote class="noisaea-quote"><%= @micropost.content %></blockquote>
+<p>You can see the comment here: <%= link_to "The sweet comment", record_label_micropost_url(@record_label, @micropost) %>.</p>
+<p>Sincerely,</p>
+<p><%= link_to "Noisaea", root_url %></p>

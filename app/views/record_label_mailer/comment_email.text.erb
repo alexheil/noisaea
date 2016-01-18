@@ -1,0 +1,12 @@
+Hey <%= @record_label.label_name %>,
+
+Someone just translated their thoughts into words on your status:
+
+<%= @micropost.content %>
+
+You can see the comment here: <%= link_to "The sweet comment", record_label_micropost_url(@record_label, @micropost) %>.
+
+Sincerely,
+
+<%= link_to "Noisaea", root_url %>
+
