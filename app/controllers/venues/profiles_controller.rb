@@ -34,7 +34,7 @@ class Venues::ProfilesController < ApplicationController
     end
 
     def profile_params
-      params.require(:venue_profile).permit(:biography, :location, :founded, :facebook_url, :twitter_url, :youtube_url, :ticketfly_url, :cover_image, :profile_image)
+      params.require(:venue_profile).permit(:biography, :location, :founded, :website, :facebook_url, :twitter_url, :youtube_url, :ticketfly_url, :cover_image, :profile_image)
     end
 
 end

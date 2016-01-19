@@ -20,6 +20,7 @@ class Venues::CommentsController < ApplicationController
     end
     if @comment.save
       flash.now[:notice] = "you posted a comment on #{@venue.venue_name}'s status."
+      VenueMailer.comment_email(@venue, @micropost).deliver
       respond_to do |format|
         format.html { redirect_to (:back) }
         format.js { render :action => "comments" }

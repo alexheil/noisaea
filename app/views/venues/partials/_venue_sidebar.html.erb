@@ -57,22 +57,22 @@
   <% end %>
   <% if @venue.venue_profile.facebook_url.present? %>
   <div class="fillmore">
-    <%= link_to "Facebook", @venue.venue_profile.facebook_url, class: "sfacebook" %>
+    <%= link_to "Facebook", @venue.venue_profile.facebook_url, :target => "_blank", class: "sfacebook" %>
   </div>
   <% end %>
   <% if @venue.venue_profile.twitter_url.present? %>
   <div class="fillmore">
-    <%= link_to "Twitter", @venue.venue_profile.twitter_url, class: "stwitter" %>
+    <%= link_to "Twitter", @venue.venue_profile.twitter_url, :target => "_blank", class: "stwitter" %>
   </div>
   <% end %>
   <% if @venue.venue_profile.youtube_url.present? %>
   <div class="fillmore">
-    <%= link_to "YouTube", @venue.venue_profile.youtube_url, class: "syoutube" %>
+    <%= link_to "YouTube", @venue.venue_profile.youtube_url, :target => "_blank", class: "syoutube" %>
   </div>
   <% end %>
   <% if @venue.venue_profile.ticketfly_url.present? %>
   <div class="fillmore">
-    <%= link_to "Ticketfly", @venue.venue_profile.ticketfly_url, class: "sticketfly" %>
+    <%= link_to "Ticketfly", @venue.venue_profile.ticketfly_url, :target => "_blank", class: "sticketfly" %>
   </div>
   <% end %>
 </aside>

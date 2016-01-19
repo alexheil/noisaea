@@ -1,0 +1,12 @@
+Hey <%= @producer.producer_name %>,
+
+Someone just translated their thoughts into words on your status:
+
+<%= @micropost.content %>
+
+You can see the comment here: <%= link_to "The sweet comment", producer_micropost_url(@producer, @micropost) %>.
+
+Sincerely,
+
+<%= link_to "Noisaea", root_url %>
+

@@ -1,0 +1,13 @@
+Hey <%= @producer.producer_name %>,
+
+A mysterious figure has appeared...
+
+Oh wait, that's just your new fan on <%= link_to "Noisaea", root_url %>!
+
+That brings you up to <%= pluralize(@producer.fans.count, "fan") %>!
+
+Time to interact with your new fan, <%= link_to @producer.producer_name, producer_url(@producer) %>.
+
+Sincerely,
+
+<%= link_to "Noisaea", root_url %>

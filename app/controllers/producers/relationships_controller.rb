@@ -9,6 +9,7 @@ class Producers::RelationshipsController < ApplicationController
     @producer = Producer.friendly.find(params[:producer_id])
     if @relationship.save
       flash.now[:notice] = "you followed #{@producer.producer_name}!"
+      ProducerMailer.follow_email(@producer).deliver
       respond_to do |format|
         format.html { redirect_to (:back) }
         format.js { render :action => "follow_button" }

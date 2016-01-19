@@ -25,7 +25,7 @@
     website //
   </div>
   <div class="fillmore">
-    <%= link_to "#{@fan.fan_name}'s website", @fan.fan_profile.website %>
+    <%= link_to "#{@fan.fan_name}'s website", :target => "_blank", @fan.fan_profile.website %>
   </div>
   <% end %>
   <% if @fan.fan_profile.biography.present? %>

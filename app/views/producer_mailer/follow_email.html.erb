@@ -1,0 +1,8 @@
+<h1>noisaea //</h1>
+<p>Hey <%= @producer.producer_name %>,</p>
+<p>A mysterious figure has appeared...</p>
+<p>Oh wait, that's just your new fan on <%= link_to "Noisaea", root_url %>!</p>
+<p>That brings you up to <%= pluralize(@producer.fans.count, "fan") %>!</p>
+<p>Time to interact with your new fan, <%= link_to @producer.producer_name, producer_url(@producer) %>.</p>
+<p>Sincerely,</p>
+<p><%= link_to "Noisaea", root_url %></p>

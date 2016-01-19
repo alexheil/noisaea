@@ -9,6 +9,7 @@ class Venues::RelationshipsController < ApplicationController
     @venue = Venue.friendly.find(params[:venue_id])
     if @relationship.save
       flash.now[:notice] = "you followed #{@venue.venue_name}!"
+      VenueMailer.follow_email(@venue).deliver
       respond_to do |format|
         format.html { redirect_to (:back) }
         format.js { render :action => "follow_button" }

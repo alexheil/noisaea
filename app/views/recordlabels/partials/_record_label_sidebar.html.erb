@@ -75,37 +75,37 @@
   <% end %>
   <% if @record_label.record_label_profile.facebook_url.present? %>
   <div class="fillmore">
-    <%= link_to "Facebook", @record_label.record_label_profile.facebook_url, class: "sfacebook" %>
+    <%= link_to "Facebook", @record_label.record_label_profile.facebook_url, :target => "_blank", class: "sfacebook" %>
   </div>
   <% end %>
   <% if @record_label.record_label_profile.twitter_url.present? %>
   <div class="fillmore">
-    <%= link_to "Twitter", @record_label.record_label_profile.twitter_url, class: "stwitter" %>
+    <%= link_to "Twitter", @record_label.record_label_profile.twitter_url, :target => "_blank", class: "stwitter" %>
   </div>
   <% end %>
   <% if @record_label.record_label_profile.youtube_url.present? %>
   <div class="fillmore">
-    <%= link_to "YouTube", @record_label.record_label_profile.youtube_url, class: "syoutube" %>
+    <%= link_to "YouTube", @record_label.record_label_profile.youtube_url, :target => "_blank", class: "syoutube" %>
   </div>
   <% end %>
   <% if @record_label.record_label_profile.itunes_url.present? %>
   <div class="fillmore">
-    <%= link_to "iTunes", @record_label.record_label_profile.itunes_url, class: "situnes" %>
+    <%= link_to "iTunes", @record_label.record_label_profile.itunes_url, :target => "_blank", class: "situnes" %>
   </div>
   <% end %>
   <% if @record_label.record_label_profile.amazon_url.present? %>
   <div class="fillmore">
-    <%= link_to "Amazon", @record_label.record_label_profile.amazon_url, class: "samazon" %>
+    <%= link_to "Amazon", @record_label.record_label_profile.amazon_url, :target => "_blank", class: "samazon" %>
   </div>
   <% end %>
   <% if @record_label.record_label_profile.google_play_url.present? %>
   <div class="fillmore">
-    <%= link_to "Google Play", @record_label.record_label_profile.google_play_url, class: "sgoogleplay" %>
+    <%= link_to "Google Play", @record_label.record_label_profile.google_play_url, :target => "_blank", class: "sgoogleplay" %>
   </div>
   <% end %>
   <% if @record_label.record_label_profile.ticketfly_url.present? %>
   <div class="fillmore">
-    <%= link_to "Ticketfly", @record_label.record_label_profile.ticketfly_url, class: "sticketfly" %>
+    <%= link_to "Ticketfly", @record_label.record_label_profile.ticketfly_url, :target => "_blank", class: "sticketfly" %>
   </div>
   <% end %>
 </aside>

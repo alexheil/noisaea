@@ -1,0 +1,7 @@
+<h1>noisaea //</h1>
+<p>Hey <%= @producer.producer_name %>,</p>
+<p>Someone just translated their thoughts into words on your status:</p>
+<blockquote class="noisaea-quote"><%= @micropost.content %></blockquote>
+<p>You can see the comment here: <%= link_to "The sweet comment", producer_micropost_url(@producer, @micropost) %>.</p>
+<p>Sincerely,</p>
+<p><%= link_to "Noisaea", root_url %></p>

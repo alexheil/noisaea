@@ -19,7 +19,8 @@ class Producers::CommentsController < ApplicationController
       @comment.producer_id = current_producer.id
     end
     if @comment.save
-      flash.now[:notice] = "you posted a comment on #{@producers.producers_name}'s status."
+      flash.now[:notice] = "you posted a comment on #{@producer.producer_name}'s status."
+      ProducerMailer.comment_email(@producer, @micropost).deliver
       respond_to do |format|
         format.html { redirect_to (:back) }
         format.js { render :action => "comments" }
