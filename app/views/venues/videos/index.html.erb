@@ -45,11 +45,11 @@
 
       <% if @venue.venue_videos.any? %>
         <% @venue.venue_videos.each do |video| %>
-          <div class="harlem dodge">
+          <div class="ogden">
             <div class="plymouth">
               <%= embed(video.youtube_url) %>
             </div>
-            <div class="ashland">
+            <div class="auburn">
               <%= link_to video.title, venue_video_path(@venue, video) %>
               <% if @venue == current_venue %>
                 // <%= link_to "edit", edit_venue_video_path(@venue, video) %> or <%= link_to "delete", venue_video_path(@venue, video), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>

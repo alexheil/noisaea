@@ -44,11 +44,11 @@
 
       <% if @producer.producer_videos.any? %>
         <% @producer.producer_videos.each do |video| %>
-          <div class="harlem dodge">
+          <div class="ogden">
             <div class="plymouth">
               <%= embed(video.youtube_url) %>
             </div>
-            <div class="ashland">
+            <div class="auburn">
               <%= link_to video.title, producer_video_path(@producer, video) %>
               <% if @producer == current_producer %>
                   // <%= link_to "edit", edit_producer_video_path(@producer, video) %> or <%= link_to "delete", producer_video_path(@producer, video), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>

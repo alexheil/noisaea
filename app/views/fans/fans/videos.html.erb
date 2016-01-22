@@ -53,11 +53,11 @@
         <div id="fan-artist" class="ferry">
         <% if @fan.artist_videos.any? %>
           <% @fan.artist_videos.each do |video| %>
-            <div class="harlem dodge">
+            <div class="ogden">
               <div class="plymouth">
                 <%= embed(video.youtube_url) %>
               </div>
-              <div class="ashland">
+              <div class="auburn">
                 <%= link_to Artist.find(video.artist_id).artist_name, artist_path(Artist.find(video.artist_id)) %> <span class="posted">posted</span> <%= link_to video.title, artist_video_path(Artist.find(video.artist_id), video) %> <span class="posted"><%= time_ago_in_words(video.created_at) %> ago</span>
               </div>
             </div>
@@ -76,11 +76,11 @@
         <div id="fan-record-label" class="ferry colvin">
         <% if @fan.record_label_videos.any? %>
           <% @fan.record_label_videos.each do |video| %>
-            <div class="harlem dodge">
+            <div class="ogden">
               <div class="plymouth">
                 <%= embed(video.youtube_url) %>
               </div>
-              <div class="ashland">
+              <div class="auburn">
                 <%= link_to RecordLabel.find(video.record_label_id).label_name, record_label_path(RecordLabel.find(video.record_label_id)) %> <span class="posted">posted</span> <%= link_to video.title, record_label_video_path(RecordLabel.find(video.record_label_id), video) %> <span class="posted"><%= time_ago_in_words(video.created_at) %> ago</span>
               </div>
             </div>
@@ -99,11 +99,11 @@
         <div id="fan-venue" class="ferry colvin">
           <% if @fan.venue_videos.any? %>
           <% @fan.venue_videos.each do |video| %>
-            <div class="harlem dodge">
+            <div class="ogden">
               <div class="plymouth">
                 <%= embed(video.youtube_url) %>
               </div>
-              <div class="ashland">
+              <div class="auburn">
                 <%= link_to Venue.find(video.venue_id).venue_name, venue_path(Venue.find(video.venue_id)) %> <span class="posted">posted</span> <%= link_to video.title, venue_video_path(Venue.find(video.venue_id), video) %> <span class="posted"><%= time_ago_in_words(video.created_at) %> ago</span>
               </div>
             </div>
@@ -122,11 +122,11 @@
         <div id="fan-producer" class="ferry colvin">
           <% if @fan.producer_videos.any? %>
           <% @fan.producer_videos.each do |video| %>
-            <div class="harlem dodge">
+            <div class="ogden">
               <div class="plymouth">
                 <%= embed(video.youtube_url) %>
               </div>
-              <div class="ashland">
+              <div class="auburn">
                 <%= link_to Producer.find(video.producer_id).producer_name, producer_path(Producer.find(video.producer_id)) %> <span class="posted">posted</span> <%= link_to video.title, producer_video_path(Producer.find(video.producer_id), video) %> <span class="posted"><%= time_ago_in_words(video.created_at) %> ago</span>
               </div>
             </div>
