@@ -1,4 +1,4 @@
-<%= provide(:title, sanitize(@venue.venue_name) + " | #{@video.title}") %>
+<%= provide(:title, sanitize(@venue.venue_name) + " | " + sanitize(@video.title)) %>
 <div class="buffalo">
 
   <%= render 'venues/partials/venue_cover_image' %>

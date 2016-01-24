@@ -744,6 +744,12 @@ h4 {
   border-bottom: 3px solid $my-black;
 }
 
+.bird {
+  font-size: 2em;
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  margin: 3vh 0;
+}
+
 .carolina {
   font-family: $fancy-font;
   padding: 0 0 4vh 0;
@@ -769,6 +775,33 @@ h4 {
   }
 }
 
+.potomac {
+  font-family: $fancy-font;
+  font-size: 1.5em;
+  padding: 0;
+  list-style: none;
+  margin: 2vh 0;
+  li {
+    display: inline-block;
+    border-bottom: 3px solid #fff;
+    padding: 1vh 0 2vh 0;
+    margin: 0 2vw;
+    a {
+      color: $my-black;
+      padding: 1vh 0;
+    }
+    &:hover {
+      border-bottom: 3px solid $main-color;
+    }
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+  .jersey {
+    border-bottom: 3px solid $my-black;
+  }
+}
+
 .vermont {
   font-size: 2em;
   font-family: $fancy-font;
@@ -782,6 +815,10 @@ h4 {
 
 .columbus {
   text-align: left;
+}
+
+.blaine {
+  padding: 0 .25vw;
 }
 
 .utica {
@@ -1575,6 +1612,10 @@ select {
         padding: 1vh 4vw;
       }
     }
+  }
+
+  .potomac {
+    text-align: center;
   }
 
   .vermont {

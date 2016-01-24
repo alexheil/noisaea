@@ -1,4 +1,4 @@
-<%= provide(:title, sanitize(@producer.producer_name) + " | #{@video.title}") %>
+<%= provide(:title, sanitize(@producer.producer_name) + " | " + sanitize(@video.title)) %>
 <div class="buffalo">
 
   <%= render 'producers/partials/producer_cover_image' %>

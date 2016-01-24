@@ -16,6 +16,18 @@ class Artists::ArtistsController < ApplicationController
     @artist = Artist.friendly.find(params[:artist_id])
   end
 
+  def merch
+    @merch = ArtistMerch.all
+  end
+
+  def shows
+    @shows = ArtistShow.all
+  end
+
+  def videos
+    @videos = ArtistVideo.all
+  end
+
   def run
     @artist = Artist.friendly.find(params[:id])
     if Time.now.utc >= @artist.created_at + 24.hours && @artist.artist_microposts.empty?

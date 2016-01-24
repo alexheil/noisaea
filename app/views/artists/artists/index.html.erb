@@ -5,7 +5,9 @@
 
     <div class="washington">
       <div class="fargo">
-        <h1>discover artists</h1>
+        <div class="bird">
+          discover artists
+        </div>
       </div>
     </div>
     <div class="fargo">
@@ -16,6 +18,13 @@
           <%= submit_tag "search", class: "exchange", :style => "display: none;" %>
       <% end %>
     </div>
+
+    <ul class="potomac">
+      <li class="jersey"><%= link_to "artists", artists_path %></li>
+      <li><%= link_to "merch", index_artist_merch_path %></li>
+      <li><%= link_to "shows", index_artist_shows_path %></li>
+      <li><%= link_to "videos", index_artist_videos_path %></li>
+    </ul>
 
     <% if @artists.any? %>
 

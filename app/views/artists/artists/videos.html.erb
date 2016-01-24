@@ -1,0 +1,166 @@
+<%= provide(:title, "Discover Artist Videos") %>
+<%= render "partials/uni_header" %>
+<div class="buffalo">
+  <div class="delaware">
+
+    <div class="washington">
+      <div class="fargo">
+        <div class="bird">
+          discover artist videos
+        </div>
+      </div>
+    </div>
+    <div class="fargo">
+      <%= form_tag(artists_path, :method => "get") do %>
+        <div class="highgate">
+          <%= text_field_tag :search, params[:search], placeholder: "search artists", class: "huron" %>
+        </div>
+          <%= submit_tag "search", class: "exchange", :style => "display: none;" %>
+      <% end %>
+    </div>
+
+    <ul class="potomac">
+      <li><%= link_to "artists", artists_path %></li>
+      <li><%= link_to "merch", index_artist_merch_path %></li>
+      <li><%= link_to "shows", index_artist_shows_path %></li>
+      <li class="jersey"><%= link_to "videos", index_artist_videos_path %></li>
+    </ul>
+
+    <% if @videos.any? %>
+
+    <div class="washington">
+      <div class="highgate">
+        <div id="popular" class="porter lafayette">
+          popular
+        </div>
+        <div id="recent" class="porter">
+          recent
+        </div>
+        <div id="location" class="porter">
+        <% if fan_signed_in? && current_fan.fan_profile.location.present? %>
+          <%= current_fan.fan_profile.location.downcase %>
+        <% else %>
+          location
+        <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="niagara">
+      <div class="highgate">
+      <center>
+        <div id="mpopular" class="porter lafayette">
+          <strong>popular</strong>
+        </div>
+        <div id="mrecent" class="porter">
+          <strong>recent</strong>
+        </div>
+        <div id="mlocation" class="porter">
+          <strong>location</strong>
+        </div>
+      </center>
+      </div>
+    </div>
+
+    <div id="container-popular" class="ferry">
+      <% @videos.take(100).each do |video| %>
+        <div class="utica">
+          <div class="plymouth">
+            <%= embed(video.youtube_url) %>
+          </div>
+          <div class="amherst busti">
+            <%= link_to Artist.friendly.find(video.artist_id).artist_name, artist_path(Artist.friendly.find(video.artist_id)) %>
+          </div>
+          <div class="hertel busti blaine">
+            <%= link_to video.title, artist_video_path(Artist.friendly.find(video.artist_id), video), class: "sugar" %>
+          </div>
+          <div class="hertel busti">
+            <%= Artist.friendly.find(video.artist_id).artist_profile.location unless Artist.friendly.find(video.artist_id).artist_profile.location.blank? %>
+          </div>
+          <div class="hertel">
+            <div class="index_follower_count_<%= Artist.friendly.find(video.artist_id).id %>">
+              <%= render "artists/partials/relationships/index_follower_count", :artist => Artist.friendly.find(video.artist_id) %>
+            </div>
+          </div>
+
+          <div class="index_follow_button_<%= Artist.friendly.find(video.artist_id).id %>">
+            <%= render "artists/partials/relationships/index_follow_button", :artist => Artist.friendly.find(video.artist_id) %>
+          </div>
+
+        </div>
+      <% end %>
+    </div>
+
+    <div id="container-recent" class="ferry colvin">
+      <% @videos.order( 'id DESC' ).take(100).each do |video| %>
+        <div class="utica">
+          <div class="plymouth">
+            <%= embed(video.youtube_url) %>
+          </div>
+          <div class="amherst busti">
+            <center><%= link_to Artist.friendly.find(video.artist_id).artist_name, artist_path(Artist.friendly.find(video.artist_id)) %></center>
+          </div>
+          <div class="hertel busti gang">
+            <%= link_to video.title, artist_video_path(Artist.friendly.find(video.artist_id), video), class: "sugar" %>
+          </div>
+          <div class="hertel busti">
+            <%= Artist.friendly.find(video.artist_id).artist_profile.location unless Artist.friendly.find(video.artist_id).artist_profile.location.blank? %>
+          </div>
+          <div class="hertel">
+            <div class="index_follower_count_<%= Artist.friendly.find(video.artist_id).id %>">
+              <%= render "artists/partials/relationships/index_follower_count", :artist => Artist.friendly.find(video.artist_id) %>
+            </div>
+          </div>
+
+          <div class="index_follow_button_<%= Artist.friendly.find(video.artist_id).id %>">
+            <%= render "artists/partials/relationships/index_follow_button", :artist => Artist.friendly.find(video.artist_id) %>
+          </div>
+
+        </div>
+      <% end %>
+    </div>
+
+    <div id="container-location" class="ferry colvin">
+      <% if fan_signed_in? && current_fan.fan_profile.location.present? %>
+        <% @videos.each do |video| if Artist.friendly.find(video.artist_id).artist_profile.location == current_fan.fan_profile.location %>
+        <div class="utica">
+          <div class="plymouth">
+            <%= embed(video.youtube_url) %>
+          </div>
+          <div class="amherst busti">
+            <center><%= link_to Artist.friendly.find(video.artist_id).artist_name, artist_path(Artist.friendly.find(video.artist_id)) %></center>
+          </div>
+          <div class="hertel busti gang">
+            <%= link_to video.title, artist_video_path(Artist.friendly.find(video.artist_id), video), class: "sugar" %>
+          </div>
+          <div class="hertel busti">
+            <%= Artist.friendly.find(video.artist_id).artist_profile.location unless Artist.friendly.find(video.artist_id).artist_profile.location.blank? %>
+          </div>
+          <div class="hertel">
+            <div class="index_follower_count_<%= Artist.friendly.find(video.artist_id).id %>">
+              <%= render "artists/partials/relationships/index_follower_count", :artist => Artist.friendly.find(video.artist_id) %>
+            </div>
+          </div>
+
+          <div class="index_follow_button_<%= Artist.friendly.find(video.artist_id).id %>">
+            <%= render "artists/partials/relationships/index_follow_button", :artist => Artist.friendly.find(video.artist_id) %>
+          </div>
+
+        </div>
+        <% end %>
+        <% end %>
+      <% elsif fan_signed_in? && current_fan.fan_profile.location.blank? %>
+        <div class="hertel">
+          <center>Your location is blank! Go set it on <%= link_to "your profile", edit_fan_profile_path(current_fan) %>.</center>
+        </div>
+      <% else %>
+        <div class="harlem">
+          <center><%= link_to "sign in", new_fan_session_path %> to view artists based on location</center>
+        </div>
+      <% end %>
+    </div>
+
+    <% end %>
+  </div>
+</div>
+<%= render "partials/uni_footer" %>

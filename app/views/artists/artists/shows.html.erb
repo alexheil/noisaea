@@ -1,0 +1,120 @@
+<%= provide(:title, "Discover Artist Shows") %>
+<%= render "partials/uni_header" %>
+<div class="buffalo">
+  <div class="delaware">
+
+    <div class="washington">
+      <div class="fargo">
+        <div class="bird">
+          discover artist shows
+        </div>
+      </div>
+    </div>
+    <div class="fargo">
+      <%= form_tag(artists_path, :method => "get") do %>
+        <div class="highgate">
+          <%= text_field_tag :search, params[:search], placeholder: "search artists", class: "huron" %>
+        </div>
+          <%= submit_tag "search", class: "exchange", :style => "display: none;" %>
+      <% end %>
+    </div>
+
+    <ul class="potomac">
+      <li><%= link_to "artists", artists_path %></li>
+      <li><%= link_to "merch", index_artist_merch_path %></li>
+      <li class="jersey"><%= link_to "shows", index_artist_shows_path %></li>
+      <li><%= link_to "videos", index_artist_videos_path %></li>
+    </ul>
+
+    <% if @shows.any? %>
+
+    <div class="washington">
+      <div class="highgate">
+        <div id="popular" class="porter lafayette">
+          popular
+        </div>
+        <div id="recent" class="porter">
+          recent
+        </div>
+        <div id="location" class="porter">
+        <% if fan_signed_in? && current_fan.fan_profile.location.present? %>
+          <%= current_fan.fan_profile.location.downcase %>
+        <% else %>
+          location
+        <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="niagara">
+      <div class="highgate">
+      <center>
+        <div id="mpopular" class="porter lafayette">
+          <strong>popular</strong>
+        </div>
+        <div id="mrecent" class="porter">
+          <strong>recent</strong>
+        </div>
+        <div id="mlocation" class="porter">
+          <strong>location</strong>
+        </div>
+      </center>
+      </div>
+    </div>
+
+    <div id="container-popular" class="ferry">
+      <% @shows.take(100).each do |show| %>
+      <div class="dodge ashland">
+        <%= link_to Artist.find(show.artist_id).artist_name, artist_path(Artist.find(show.artist_id)) %> on <%= link_to "#{show.month}.#{show.day}.#{show.year} at #{show.venue} in #{show.location}", artist_show_path(Artist.find(show.artist_id), show) %>
+        <% if show.ticket_url.present? %>
+           // <%= link_to "get tickets", show.ticket_url, class: "sugar" %>
+        <% end %>
+        <% if Artist.find(show.artist_id) == current_artist %>
+          // <%= link_to "edit", edit_artist_show_path(Artist.find(show.artist_id), show) %> or <%= link_to "delete", artist_show_path(Artist.find(show.artist_id), show), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+
+    <div id="container-recent" class="ferry colvin">
+      <% @shows.order( 'id DESC' ).take(100).each do |show| %>
+        <div class="dodge ashland">
+        <%= link_to Artist.find(show.artist_id).artist_name, artist_path(Artist.find(show.artist_id)) %> on <%= link_to "#{show.month}.#{show.day}.#{show.year} at #{show.venue} in #{show.location}", artist_show_path(Artist.find(show.artist_id), show) %>
+        <% if show.ticket_url.present? %>
+           // <%= link_to "get tickets", show.ticket_url, class: "sugar" %>
+        <% end %>
+        <% if Artist.find(show.artist_id) == current_artist %>
+          // <%= link_to "edit", edit_artist_show_path(Artist.find(show.artist_id), show) %> or <%= link_to "delete", artist_show_path(Artist.find(show.artist_id), show), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+
+    <div id="container-location" class="ferry colvin">
+      <% if fan_signed_in? && current_fan.fan_profile.location.present? %>
+        <% @shows.select{ |show| show.location == current_fan.fan_profile.location }.each do |show| %>
+        <div class="dodge ashland">
+          <%= link_to Artist.find(show.artist_id).artist_name, artist_path(Artist.find(show.artist_id)) %> on <%= link_to "#{show.month}.#{show.day}.#{show.year} at #{show.venue} in #{show.location}", artist_show_path(Artist.find(show.artist_id), show) %>
+          <% if show.ticket_url.present? %>
+             // <%= link_to "get tickets", show.ticket_url, class: "sugar" %>
+          <% end %>
+          <% if Artist.find(show.artist_id) == current_artist %>
+            // <%= link_to "edit", edit_artist_show_path(Artist.find(show.artist_id), show) %> or <%= link_to "delete", artist_show_path(Artist.find(show.artist_id), show), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+          <% end %>
+        </div>
+        <% end %>
+      <% elsif fan_signed_in? && current_fan.fan_profile.location.blank? %>
+        <div class="hertel">
+          <center>Your location is blank! Go set it on <%= link_to "your profile", edit_fan_profile_path(current_fan) %>.</center>
+        </div>
+      <% else %>
+        <div class="harlem">
+          <center><%= link_to "sign in", new_fan_session_path %> to view artists based on location</center>
+        </div>
+      <% end %>
+    </div>
+
+    <% end %>
+  </div>
+</div>
+<%= render "partials/uni_footer" %>

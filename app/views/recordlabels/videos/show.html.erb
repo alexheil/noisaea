@@ -1,4 +1,4 @@
-<%= provide(:title, sanitize(@record_label.label_name) + " | #{@video.title}") %>
+<%= provide(:title, sanitize(@record_label.label_name) + " | " + sanitize(@video.title)) %>
 <div class="buffalo">
 
   <%= render 'recordlabels/partials/record_label_cover_image' %>
