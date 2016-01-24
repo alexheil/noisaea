@@ -101,14 +101,76 @@
 
     <div id="container-recent" class="ferry colvin">
       <% @merch.order( 'id DESC' ).take(100).each do |merch| %>
+        <div class="utica">
+          <% if merch.image_url.present? %>
+          <div class="loretta">
+            <%= link_to image_tag("#{merch.image_url}", :width => "100%"), artist_merch_path(Artist.find(merch.artist_id), merch) %>
+          </div>
+          <% else %>
+            <% if Artist.find(merch.artist_id) == current_artist %>
+              you do not have an image for this item. <%= link_to "add one?", edit_artist_merch_path(Artist.find(merch.artist_id), merch) %>
+            <% else %>
+              <%= Artist.find(merch.artist_id).artist_name %> does not have an image for <%= merch.title %>.
+            <% end %>
+          <% end %>
+          <div class="amherst busti">
+            <%= link_to Artist.friendly.find(merch.artist_id).artist_name, artist_path(Artist.friendly.find(merch.artist_id)) %>
+          </div>
+          <div class="hertel busti blaine">
+            <%= link_to merch.title, artist_merch_path(Artist.friendly.find(merch.artist_id), merch), class: "sugar" %>
+          </div>
+          <div class="hertel busti">
+            <%= Artist.friendly.find(merch.artist_id).artist_profile.location unless Artist.friendly.find(merch.artist_id).artist_profile.location.blank? %>
+          </div>
+          <div class="hertel">
+            <div class="index_follower_count_<%= Artist.friendly.find(merch.artist_id).id %>">
+              <%= render "artists/partials/relationships/index_follower_count", :artist => Artist.friendly.find(merch.artist_id) %>
+            </div>
+          </div>
 
+          <div class="index_follow_button_<%= Artist.friendly.find(merch.artist_id).id %>">
+            <%= render "artists/partials/relationships/index_follow_button", :artist => Artist.friendly.find(merch.artist_id) %>
+          </div>
+
+        </div>
       <% end %>
     </div>
 
     <div id="container-location" class="ferry colvin">
       <% if fan_signed_in? && current_fan.fan_profile.location.present? %>
         <% @merch.each do |merch| if Artist.friendly.find(merch.artist_id).artist_profile.location == current_fan.fan_profile.location %>
+        <div class="utica">
+          <% if merch.image_url.present? %>
+          <div class="loretta">
+            <%= link_to image_tag("#{merch.image_url}", :width => "100%"), artist_merch_path(Artist.find(merch.artist_id), merch) %>
+          </div>
+          <% else %>
+            <% if Artist.find(merch.artist_id) == current_artist %>
+              you do not have an image for this item. <%= link_to "add one?", edit_artist_merch_path(Artist.find(merch.artist_id), merch) %>
+            <% else %>
+              <%= Artist.find(merch.artist_id).artist_name %> does not have an image for <%= merch.title %>.
+            <% end %>
+          <% end %>
+          <div class="amherst busti">
+            <%= link_to Artist.friendly.find(merch.artist_id).artist_name, artist_path(Artist.friendly.find(merch.artist_id)) %>
+          </div>
+          <div class="hertel busti blaine">
+            <%= link_to merch.title, artist_merch_path(Artist.friendly.find(merch.artist_id), merch), class: "sugar" %>
+          </div>
+          <div class="hertel busti">
+            <%= Artist.friendly.find(merch.artist_id).artist_profile.location unless Artist.friendly.find(merch.artist_id).artist_profile.location.blank? %>
+          </div>
+          <div class="hertel">
+            <div class="index_follower_count_<%= Artist.friendly.find(merch.artist_id).id %>">
+              <%= render "artists/partials/relationships/index_follower_count", :artist => Artist.friendly.find(merch.artist_id) %>
+            </div>
+          </div>
 
+          <div class="index_follow_button_<%= Artist.friendly.find(merch.artist_id).id %>">
+            <%= render "artists/partials/relationships/index_follow_button", :artist => Artist.friendly.find(merch.artist_id) %>
+          </div>
+
+        </div>
         <% end %>
         <% end %>
       <% elsif fan_signed_in? && current_fan.fan_profile.location.blank? %>
