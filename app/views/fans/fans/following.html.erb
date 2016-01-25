@@ -4,9 +4,8 @@
   <%= render 'fans/partials/fan_cover_image' %>
 
   <div class="delaware">
-    <div class="winspear hedley">
-      <%= link_to @fan.fan_name, fan_path(@fan) %>
-    </div>
+
+    <%= render 'fans/partials/fan_name' %>
 
     <%= render 'fans/partials/fan_follows_you' %>
 

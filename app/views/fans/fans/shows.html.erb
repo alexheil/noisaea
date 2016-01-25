@@ -14,9 +14,7 @@
         <li><%= link_to "videos", fan_videos_path(@fan) %></li>
       </ul>
 
-      <div class="hedley">
-        <%= @fan.fan_name %>
-      </div>
+      <%= render 'fans/partials/fan_name' %>
 
       <%= render 'fans/partials/fan_follows_you' %>
 
