@@ -14,29 +14,7 @@
         <li><%= link_to "videos", artist_videos_path(@artist) %></li>
       </ul>
 
-      <div class="hedley">
-        <%= @artist.artist_name %>
-      </div>
-
-      <div class="following sterling">
-        <%= render 'artists/partials/relationships/following' %>
-      </div>
-
-      <div class="niagara">
-        <div class="follower_count sterling">
-          <%= render 'artists/partials/relationships/follower_count' %>
-        </div>
-      </div>
-
-      <% unless @artist == current_artist %>
-      <div class="niagara">
-        <div class="highgate">
-        <div class="follow_button">
-          <%= render 'artists/partials/relationships/follow_button' %>
-        </div>
-        </div>
-      </div>
-      <% end %>
+      <%= render 'artists/partials/artist_name' %>
 
       <div class="harlem">
         <% if @show.flyer_url.present? %>

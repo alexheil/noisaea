@@ -578,6 +578,18 @@ h4 {
   line-height: 1.25em;
 }
 
+.northland {
+  padding: 28vw 5% 4vh 5%;
+  font-size: 5em;
+  font-weight: 100;
+  color: #fff;
+  background: rgba(0,0,0,0.5);
+}
+
+.lakeview {
+  font-size: .5em;
+}
+
 .broadway {
   width: 100%;
   margin: 0 auto;
@@ -1413,6 +1425,10 @@ select {
     font-size: 13.25em;
   }
 
+  .northland {
+    padding: 25vw 5% 4vh 5%;
+  }
+
 }
 
 @media screen and (max-width: 1250px) {
@@ -1466,6 +1482,10 @@ select {
 
   .bailey {
     margin: 16vh 0;
+  }
+
+  .northland {
+    padding: 24vw 5% 4vh 5%;
   }
 
 }

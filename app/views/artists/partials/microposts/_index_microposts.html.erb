@@ -1,60 +1,58 @@
 <% if @artist.artist_microposts.any? %>
-  <div class="harlem">
-    <% @artist.artist_microposts.take(100).each do | micropost | %>
-      <div class="auburn dodge">
-        <div class="winspear">
-          <strong><%= link_to "#{@artist.artist_name}", artist_micropost_path(@artist, micropost) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
-          <% if @artist == current_artist %>
-           // <%= link_to "delete post", artist_micropost_path(@artist, micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete, remote: true %>
-          <% end %>
-        </div>
-        <div class="winspear">
-          <%= micropost.content %>
-        </div>
-        <% if micropost.link_url.present? %>
-        <div class="winspear">
-            <%= link_to "#{micropost.link_url.split('/')[2]}", micropost.link_url, data: { confirm: "#{micropost.link_url} \n\nAre you sure?" }, class: "sugar" %>
-        </div>
+  <% @artist.artist_microposts.take(100).each do | micropost | %>
+    <div class="auburn dodge">
+      <div class="winspear">
+        <strong><%= link_to "#{@artist.artist_name}", artist_micropost_path(@artist, micropost) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
+        <% if @artist == current_artist %>
+         // <%= link_to "delete post", artist_micropost_path(@artist, micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete, remote: true %>
         <% end %>
-        <% if micropost.photo_url.present? %>
-        <div class="northrup lincoln">
-          <img srcset="<%= micropost.photo_url %>" width="100%" height="auto" />
+      </div>
+      <div class="winspear">
+        <%= micropost.content %>
+      </div>
+      <% if micropost.link_url.present? %>
+      <div class="winspear">
+          <%= link_to "#{micropost.link_url.split('/')[2]}", micropost.link_url, data: { confirm: "#{micropost.link_url} \n\nAre you sure?" }, class: "sugar" %>
+      </div>
+      <% end %>
+      <% if micropost.photo_url.present? %>
+      <div class="northrup lincoln">
+        <img srcset="<%= micropost.photo_url %>" width="100%" height="auto" />
+      </div>
+      <% end %>
+
+      <div class="lisbon">
+
+        <div class="index_micropost_votes_<%= micropost.id %>">
+          <%= render 'artists/partials/microposts/index_micropost_votes', :micropost => micropost %>
         </div>
-        <% end %>
 
-        <div class="lisbon">
-
-          <div class="index_micropost_votes_<%= micropost.id %>">
-            <%= render 'artists/partials/microposts/index_micropost_votes', :micropost => micropost %>
-          </div>
-
-          <span class="index_micropost_votes_count_<%= micropost.id %>">
-            <%= render 'artists/partials/microposts/index_micropost_votes_count', :micropost => micropost %>
-          </span>
-           // <a class="linden">
-          <span class="comments_count_<%= micropost.id %>">
-            <%= render 'artists/partials/comments/index_comments_count', :micropost => micropost %>
-          </span></a>
-
-        </div>
-
-        <div class="walden">
-          <div class="minnesota">
-
-            <div class="comments_js_<%= micropost.id %>">
-              <%= render 'artists/partials/comments/index_comments', :micropost => micropost %>
-            </div>
-
-            <div class="comments_form_<%= micropost.id %>">
-              <%= render "artists/partials/comments/index_comments_form", :micropost => micropost %>
-            </div>
-
-          </div>
-        </div>
+        <span class="index_micropost_votes_count_<%= micropost.id %>">
+          <%= render 'artists/partials/microposts/index_micropost_votes_count', :micropost => micropost %>
+        </span>
+         // <a class="linden">
+        <span class="comments_count_<%= micropost.id %>">
+          <%= render 'artists/partials/comments/index_comments_count', :micropost => micropost %>
+        </span></a>
 
       </div>
-    <% end %>
-  </div>
+
+      <div class="walden">
+        <div class="minnesota">
+
+          <div class="comments_js_<%= micropost.id %>">
+            <%= render 'artists/partials/comments/index_comments', :micropost => micropost %>
+          </div>
+
+          <div class="comments_form_<%= micropost.id %>">
+            <%= render "artists/partials/comments/index_comments_form", :micropost => micropost %>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  <% end %>
 <% else %>
   <div class="harlem">
     <% if @artist == current_artist %>

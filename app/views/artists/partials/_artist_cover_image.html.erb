@@ -7,7 +7,16 @@
     <% end %>
   </div>
 <% else %>
-<div class="broadway">
-  <img srcset="<%= @artist.artist_profile.cover_image %>" width="100%" height="auto" />
+<div class="washington">
+  <div style="background: url('<%= @artist.artist_profile.cover_image %>') no-repeat fixed; background-size: 100%;" class="broadway">
+    <div class="northland">
+      <%= @artist.artist_name %> <span class="lakeview">// <%= pluralize(@artist.fans.count, "fan") %>
+    </div>
+  </div>
+</div>
+<div class="niagara">
+  <div class="broadway">
+    <img src="<%= @artist.artist_profile.cover_image %>" width="100%" height="auto'" />
+  </div>
 </div>
 <% end %>
