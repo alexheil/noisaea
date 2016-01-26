@@ -1,0 +1,27 @@
+<div class="niagara">
+  <div class="hedley">
+    <%= @producer.producer_name %>
+  </div>
+</div>
+
+<div class="niagara">
+  <div class="following sterling">
+    <%= render 'producers/partials/relationships/following' %>
+  </div>
+</div>
+
+<div class="niagara">
+  <div class="follower_count sterling">
+    <%= render 'producers/partials/relationships/follower_count' %>
+  </div>
+</div>
+
+<% unless @producer == current_producer %>
+<div class="niagara">
+  <div class="highgate busti">
+  <div class="follow_button">
+    <%= render 'producers/partials/relationships/follow_button' %>
+  </div>
+  </div>
+</div>
+<% end %>

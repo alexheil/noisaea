@@ -1,13 +1,22 @@
 <% if @venue.venue_profile.cover_image.blank? %>
   <div class="clinton">
-    <% if venue_signed_in? && @venue.id == current_venue.id %>
+    <% if @venue == current_venue %>
       you do not have a cover image yet
     <% else %>
       <%= "#{@venue.venue_name} hasn't uploaded a cover photo yet" %>
     <% end %>
   </div>
 <% else %>
-  <div class="broadway">
-    <img srcset="<%= @venue.venue_profile.cover_image %>" width="100%" height="auto" />
+<div class="washington">
+  <div style="background: url('<%= @venue.venue_profile.cover_image %>') no-repeat fixed; background-size: 100%;" class="broadway">
+    <div class="northland">
+      <%= @venue.venue_name %> <span class="lakeview">// <%= pluralize(@venue.fans.count, "fan") %>
+    </div>
   </div>
+</div>
+<div class="niagara">
+  <div class="broadway">
+    <img src="<%= @venue.venue_profile.cover_image %>" width="100%" height="auto'" />
+  </div>
+</div>
 <% end %>

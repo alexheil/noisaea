@@ -13,29 +13,7 @@
         <li class="jersey"><%= link_to "videos", venue_videos_path(@venue) %></li>
       </ul>
 
-      <div class="hedley">
-        <%= @venue.venue_name %>
-      </div>
-
-      <div class="following sterling">
-        <%= render 'venues/partials/relationships/following' %>
-      </div>
-
-      <div class="niagara">
-        <div class="follower_count sterling">
-          <%= render 'venues/partials/relationships/follower_count' %>
-        </div>
-      </div>
-
-      <% unless @venue == current_venue %>
-      <div class="niagara">
-        <div class="highgate">
-        <div class="follow_button">
-          <%= render 'venues/partials/relationships/follow_button' %>
-        </div>
-        </div>
-      </div>
-      <% end %>
+      <%= render 'venues/partials/venue_name' %>
 
       <div class="amherst">
         <div class="harlem">

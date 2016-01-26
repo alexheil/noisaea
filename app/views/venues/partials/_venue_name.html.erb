@@ -1,0 +1,27 @@
+<div class="niagara">
+  <div class="hedley">
+    <%= @venue.venue_name %>
+  </div>
+</div>
+
+<div class="niagara">
+  <div class="following sterling">
+    <%= render 'venues/partials/relationships/following' %>
+  </div>
+</div>
+
+<div class="niagara">
+  <div class="follower_count sterling">
+    <%= render 'venues/partials/relationships/follower_count' %>
+  </div>
+</div>
+
+<% unless @venue == current_venue %>
+<div class="niagara">
+  <div class="highgate busti">
+  <div class="follow_button">
+    <%= render 'venues/partials/relationships/follow_button' %>
+  </div>
+  </div>
+</div>
+<% end %>

@@ -1,18 +1,8 @@
 <%= provide(:title, sanitize(@producer.producer_name) + " | Followers") %>
 <div class="buffalo">
-    <% if @producer.producer_profile.cover_image.blank? %>
-      <div class="clinton">
-        <% if producer_signed_in? && @producer.id == current_producer.id %>
-          you do not have a cover image yet. <%= link_to "add one?", edit_producer_profile_path(current_producer) %>
-        <% else %>
-          <%= "#{@producer.producer_name} hasn't uploaded a cover photo yet" %>
-        <% end %>
-      </div>
-    <% else %>
-      <div class="broadway">
-        <img srcset="<%= @producer.producer_profile.cover_image %>" width="100%" height="auto" />
-      </div>
-    <% end %>
+
+  <%= render 'producers/partials/producer_cover_image' %>
+
   <div class="delaware">
     <div class="winspear hedley">
       <%= link_to @producer.producer_name, producer_path(@producer) %>

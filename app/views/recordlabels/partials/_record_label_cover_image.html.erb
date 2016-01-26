@@ -1,13 +1,22 @@
 <% if @record_label.record_label_profile.cover_image.blank? %>
-  <section class="clinton">
-    <% if record_label_signed_in? && @record_label.id == current_record_label.id %>
-      you do not have a cover image yet. <%= link_to "add one?", edit_record_label_profile_path(current_record_label) %>
+  <div class="clinton">
+    <% if @record_label == current_record_label %>
+      you do not have a cover image yet
     <% else %>
-      <%= "#{@record_label.label_name} hasn't uploaded a cover photo yet" %>
+      <%= "#{@record_label.record_label_name} hasn't uploaded a cover photo yet" %>
     <% end %>
-  </section>
+  </div>
 <% else %>
-  <section class="broadway">
-    <img srcset="<%= @record_label.record_label_profile.cover_image %>" width="100%" height="auto" />
-  </section>
+<div class="washington">
+  <div style="background: url('<%= @record_label.record_label_profile.cover_image %>') no-repeat fixed; background-size: 100%;" class="broadway">
+    <div class="northland">
+      <%= @record_label.label_name %> <span class="lakeview">// <%= pluralize(@record_label.fans.count, "fan") %>
+    </div>
+  </div>
+</div>
+<div class="niagara">
+  <div class="broadway">
+    <img src="<%= @record_label.record_label_profile.cover_image %>" width="100%" height="auto'" />
+  </div>
+</div>
 <% end %>

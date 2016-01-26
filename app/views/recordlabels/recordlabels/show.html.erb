@@ -13,29 +13,7 @@
         <li><%= link_to "videos", record_label_videos_path(@record_label) %></li>
       </ul>
 
-      <div class="hedley">
-        <%= @record_label.label_name %>
-      </div>
-
-      <div class="following sterling">
-        <%= render 'recordlabels/partials/relationships/following' %>
-      </div>
-
-      <div class="niagara">
-        <div class="follower_count sterling">
-          <%= render 'recordlabels/partials/relationships/follower_count' %>
-        </div>
-      </div>
-
-      <% unless @record_label == current_record_label %>
-      <div class="niagara">
-        <div class="highgate">
-        <div class="follow_button">
-          <%= render 'recordlabels/partials/relationships/follow_button' %>
-        </div>
-        </div>
-      </div>
-      <% end %>
+      <%= render 'recordlabels/partials/record_label_name' %>
 
       <div class="microposts_form">
         <%= render 'recordlabels/partials/microposts/microposts_form' %>
