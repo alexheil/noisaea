@@ -1,0 +1,254 @@
+<%= provide(:title, "Artists Timeline") %>
+<%= render "partials/uni_header" %>
+<div class="buffalo">
+  <div class="delaware">
+
+    <div class="washington">
+      <div class="fargo">
+        <div class="bird">
+          artists timeline
+        </div>
+      </div>
+    </div>
+    <div class="fargo">
+      <%= form_tag(artists_path, :method => "get") do %>
+        <div class="highgate">
+          <%= text_field_tag :search, params[:search], placeholder: "search artists", class: "huron" %>
+        </div>
+          <%= submit_tag "search", class: "exchange", :style => "display: none;" %>
+      <% end %>
+    </div>
+
+    <ul class="potomac">
+      <li><%= link_to "artists", artists_path %></li>
+      <li class="jersey"><%= link_to "timeline", index_artist_microposts_path %></li>
+      <li><%= link_to "merch", index_artist_merch_path %></li>
+      <li><%= link_to "shows", index_artist_shows_path %></li>
+      <li><%= link_to "videos", index_artist_videos_path %></li>
+    </ul>
+
+    <% if @microposts.any? %>
+
+    <div class="washington">
+      <div class="highgate">
+        <div id="popular" class="porter lafayette">
+          popular
+        </div>
+        <div id="recent" class="porter">
+          recent
+        </div>
+        <div id="location" class="porter">
+        <% if fan_signed_in? && current_fan.fan_profile.location.present? %>
+          <%= current_fan.fan_profile.location.downcase %>
+        <% else %>
+          location
+        <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="niagara">
+      <div class="highgate">
+      <center>
+        <div id="mpopular" class="porter lafayette">
+          <strong>popular</strong>
+        </div>
+        <div id="mrecent" class="porter">
+          <strong>recent</strong>
+        </div>
+        <div id="mlocation" class="porter">
+          <strong>location</strong>
+        </div>
+      </center>
+      </div>
+    </div>
+
+    <div id="container-popular" class="ferry">
+      <% @microposts.sort_by{ |micropost| -micropost.artist_micropost_votes.count }.take(100).each do |micropost| %>
+
+        <div class="auburn dodge">
+          <div class="winspear">
+            <strong><%= link_to Artist.find(micropost.artist_id).artist_name, artist_path(Artist.find(micropost.artist_id)) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago <%= "from " + Artist.friendly.find(micropost.artist_id).artist_profile.location unless Artist.friendly.find(micropost.artist_id).artist_profile.location.blank? %></span>
+            <% if Artist.find(micropost.artist_id) == current_artist %>
+             // <%= link_to "delete post", artist_micropost_path(Artist.find(micropost.artist_id), micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+            <% end %>
+          </div>
+          <div class="winspear">
+            <%= micropost.content %>
+          </div>
+          <% if micropost.link_url.present? %>
+          <div class="winspear">
+              <%= link_to "#{micropost.link_url.split('/')[2]}", micropost.link_url, data: { confirm: "#{micropost.link_url} \n\nAre you sure?" }, class: "sugar" %>
+          </div>
+          <% end %>
+          <% if micropost.photo_url.present? %>
+          <div class="northrup lincoln">
+            <img srcset="<%= micropost.photo_url %>" width="100%" height="auto" />
+          </div>
+          <% end %>
+
+          <div class="lisbon" id="lisbon">
+
+            <div class="artist_fan_micropost_votes_<%= micropost.id %>">
+              <%= render 'artists/partials/microposts/fan_micropost_votes', :micropost => micropost %>
+            </div>
+
+            <span class="artist_fan_micropost_votes_count_<%= micropost.id %>">
+              <%= render 'artists/partials/microposts/index_micropost_votes_count', :micropost => micropost %>
+            </span>
+
+               // <a class="linden"><span class="artist_fan_comments_count_<%= micropost.id %>">
+              <%= render 'artists/partials/comments/index_comments_count', :micropost => micropost %>
+            </span></a>
+          </div>
+
+          <div class="walden">
+            <div class="minnesota">
+
+              <div class="artist_fan_comments_js_<%= micropost.id %>">
+                <%= render 'artists/partials/comments/fan_comments', :micropost => micropost %>
+              </div>
+
+              <div class="artist_fan_comments_form_<%= micropost.id %>">
+                <%= render "artists/partials/comments/fan_comments_form", :micropost => micropost %>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      <% end %>
+    </div>
+
+    <div id="container-recent" class="ferry colvin">
+      <% @microposts.order( 'id DESC' ).take(100).each do |micropost| %>
+
+        <div class="auburn dodge">
+          <div class="winspear">
+            <strong><%= link_to Artist.find(micropost.artist_id).artist_name, artist_path(Artist.find(micropost.artist_id)) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago <%= "from " + Artist.friendly.find(micropost.artist_id).artist_profile.location unless Artist.friendly.find(micropost.artist_id).artist_profile.location.blank? %></span>
+            <% if Artist.find(micropost.artist_id) == current_artist %>
+             // <%= link_to "delete post", artist_micropost_path(Artist.find(micropost.artist_id), micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+            <% end %>
+          </div>
+          <div class="winspear">
+            <%= micropost.content %>
+          </div>
+          <% if micropost.link_url.present? %>
+          <div class="winspear">
+              <%= link_to "#{micropost.link_url.split('/')[2]}", micropost.link_url, data: { confirm: "#{micropost.link_url} \n\nAre you sure?" }, class: "sugar" %>
+          </div>
+          <% end %>
+          <% if micropost.photo_url.present? %>
+          <div class="northrup lincoln">
+            <img srcset="<%= micropost.photo_url %>" width="100%" height="auto" />
+          </div>
+          <% end %>
+
+          <div class="lisbon" id="lisbon">
+
+            <div class="artist_fan_micropost_votes_<%= micropost.id %>">
+              <%= render 'artists/partials/microposts/fan_micropost_votes', :micropost => micropost %>
+            </div>
+
+            <span class="artist_fan_micropost_votes_count_<%= micropost.id %>">
+              <%= render 'artists/partials/microposts/index_micropost_votes_count', :micropost => micropost %>
+            </span>
+
+               // <a class="linden"><span class="artist_fan_comments_count_<%= micropost.id %>">
+              <%= render 'artists/partials/comments/index_comments_count', :micropost => micropost %>
+            </span></a>
+          </div>
+
+          <div class="walden">
+            <div class="minnesota">
+
+              <div class="artist_fan_comments_js_<%= micropost.id %>">
+                <%= render 'artists/partials/comments/fan_comments', :micropost => micropost %>
+              </div>
+
+              <div class="artist_fan_comments_form_<%= micropost.id %>">
+                <%= render "artists/partials/comments/fan_comments_form", :micropost => micropost %>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      <% end %>
+    </div>
+
+    <div id="container-location" class="ferry colvin">
+      <% if fan_signed_in? && current_fan.fan_profile.location.present? %>
+        <% @microposts.each do |micropost| if Artist.friendly.find(micropost.artist_id).artist_profile.location == current_fan.fan_profile.location %>
+
+        <div class="auburn dodge">
+          <div class="winspear">
+            <strong><%= link_to Artist.find(micropost.artist_id).artist_name, artist_path(Artist.find(micropost.artist_id)) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago <%= "from " + Artist.friendly.find(micropost.artist_id).artist_profile.location unless Artist.friendly.find(micropost.artist_id).artist_profile.location.blank? %></span>
+            <% if Artist.find(micropost.artist_id) == current_artist %>
+             // <%= link_to "delete post", artist_micropost_path(Artist.find(micropost.artist_id), micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+            <% end %>
+          </div>
+          <div class="winspear">
+            <%= micropost.content %>
+          </div>
+          <% if micropost.link_url.present? %>
+          <div class="winspear">
+              <%= link_to "#{micropost.link_url.split('/')[2]}", micropost.link_url, data: { confirm: "#{micropost.link_url} \n\nAre you sure?" }, class: "sugar" %>
+          </div>
+          <% end %>
+          <% if micropost.photo_url.present? %>
+          <div class="northrup lincoln">
+            <img srcset="<%= micropost.photo_url %>" width="100%" height="auto" />
+          </div>
+          <% end %>
+
+          <div class="lisbon" id="lisbon">
+
+            <div class="artist_fan_micropost_votes_<%= micropost.id %>">
+              <%= render 'artists/partials/microposts/fan_micropost_votes', :micropost => micropost %>
+            </div>
+
+            <span class="artist_fan_micropost_votes_count_<%= micropost.id %>">
+              <%= render 'artists/partials/microposts/index_micropost_votes_count', :micropost => micropost %>
+            </span>
+
+               // <a class="linden"><span class="artist_fan_comments_count_<%= micropost.id %>">
+              <%= render 'artists/partials/comments/index_comments_count', :micropost => micropost %>
+            </span></a>
+          </div>
+
+          <div class="walden">
+            <div class="minnesota">
+
+              <div class="artist_fan_comments_js_<%= micropost.id %>">
+                <%= render 'artists/partials/comments/fan_comments', :micropost => micropost %>
+              </div>
+
+              <div class="artist_fan_comments_form_<%= micropost.id %>">
+                <%= render "artists/partials/comments/fan_comments_form", :micropost => micropost %>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <% end %>
+        <% end %>
+      <% elsif fan_signed_in? && current_fan.fan_profile.location.blank? %>
+        <div class="hertel">
+          <center>Your location is blank! Go set it on <%= link_to "your profile", edit_fan_profile_path(current_fan) %>.</center>
+        </div>
+      <% else %>
+        <div class="harlem">
+          <center><%= link_to "sign in", new_fan_session_path %> to view artists based on location</center>
+        </div>
+      <% end %>
+    </div>
+
+    <% end %>
+  </div>
+</div>
+<%= render "partials/uni_footer" %>

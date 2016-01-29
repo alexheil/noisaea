@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     get 'followers' => 'artists/artists#followers'
   end
 
+  get 'index_artist_microposts' => 'artists/artists#microposts', path: :artist_timeline
   get 'index_artist_merch' => 'artists/artists#merch', path: :artist_merch
   get 'index_artist_shows' => 'artists/artists#shows', path: :artist_shows
   get 'index_artist_videos' => 'artists/artists#videos', path: :artist_videos

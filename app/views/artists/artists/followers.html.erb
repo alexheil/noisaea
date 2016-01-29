@@ -4,12 +4,6 @@
   <%= render 'artists/partials/artist_cover_image' %>
 
   <div class="delaware">
-    <div class="winspear hedley">
-      <%= link_to @artist.artist_name, artist_path(@artist) %>
-    </div>
-    <div class="amherst sterling">
-      // <%= pluralize(@artist.fans.count, "fan") %>
-    </div>
 
     <% if @artist.fans.any? %>
     <div class="harlem">
@@ -30,7 +24,9 @@
           </div>
           <% end %>
 
-          <center><%= link_to fan.fan_name, fan_path(fan) %></center>
+          <div class="busti">
+            <%= link_to fan.fan_name, fan_path(fan) %>
+          </div>
         </div>
       <% end %>
     </div>
