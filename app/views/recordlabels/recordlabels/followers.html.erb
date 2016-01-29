@@ -1,25 +1,11 @@
 <%= provide(:title, sanitize(@record_label.label_name) + " | Followers") %>
 <div class="buffalo">
-  <% if @record_label.record_label_profile.cover_image.blank? %>
-    <div class="clinton">
-      <% if record_label_signed_in? && @record_label.id == current_record_label.id %>
-        you do not have a cover image yet. <%= link_to "add one?", edit_record_label_profile_path(current_record_label) %>
-      <% else %>
-        <%= "#{@record_label.label_name} hasn't uploaded a cover photo yet" %>
-      <% end %>
-    </div>
-  <% else %>
-    <div class="broadway">
-      <img srcset="<%= @record_label.record_label_profile.cover_image %>" width="100%" height="auto" />
-    </div>
-  <% end %>
+
+  <%= render 'recordlabels/partials/record_label_cover_image' %>
+
   <div class="delaware">
-    <div class="winspear hedley">
-      <%= link_to @record_label.label_name, record_label_path(@record_label) %>
-    </div>
-    <div class="amherst sterling">
-      // <%= pluralize(@record_label.fans.count, "fan") %>
-    </div>
+
+    <%= render 'recordlabels/partials/record_label_name' %>
 
     <% if @record_label.fans.any? %>
     <div class="harlem">

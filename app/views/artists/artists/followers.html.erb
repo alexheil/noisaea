@@ -5,6 +5,8 @@
 
   <div class="delaware">
 
+    <%= render 'artists/partials/artist_name' %>
+
     <% if @artist.fans.any? %>
     <div class="harlem">
       <% @artist.fans.take(100).each do |fan| %>

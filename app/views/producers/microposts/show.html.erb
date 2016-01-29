@@ -12,9 +12,7 @@
         <li><%= link_to "videos", producer_videos_path(@producer) %></li>
       </ul>
 
-      <div class="hedley">
-        <%= link_to @producer.producer_name, producer_path(@producer) %>
-      </div>
+      <%= render 'producers/partials/producer_name' %>
 
       <div class="harlem">
         <div class="winspear">

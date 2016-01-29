@@ -4,12 +4,8 @@
   <%= render 'venues/partials/venue_cover_image' %>
 
   <div class="delaware">
-    <div class="winspear hedley">
-      <%= link_to @venue.venue_name, venue_path(@venue) %>
-    </div>
-    <div class="amherst sterling">
-      // <%= pluralize(@venue.fans.count, "fan") %>
-    </div>
+
+    <%= render 'venues/partials/venue_name' %>
 
     <% if @venue.fans.any? %>
     <div class="harlem">

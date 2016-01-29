@@ -13,9 +13,7 @@
         <li><%= link_to "videos", venue_videos_path(@venue) %></li>
       </ul>
 
-      <div class="hedley">
-        <%= link_to @venue.venue_name, venue_path(@venue) %>
-      </div>
+      <%= render 'venues/partials/venue_name' %>
 
       <div class="harlem">
         <div class="winspear">

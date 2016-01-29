@@ -14,9 +14,7 @@
         <li><%= link_to "videos", artist_videos_path(@artist) %></li>
       </ul>
 
-      <div class="hedley">
-        <%= link_to @artist.artist_name, artist_path(@artist) %>
-      </div>
+      <%= render 'artists/partials/artist_name' %>
 
       <div class="harlem">
         <div class="winspear">

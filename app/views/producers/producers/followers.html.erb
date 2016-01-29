@@ -4,12 +4,8 @@
   <%= render 'producers/partials/producer_cover_image' %>
 
   <div class="delaware">
-    <div class="winspear hedley">
-      <%= link_to @producer.producer_name, producer_path(@producer) %>
-    </div>
-    <div class="amherst sterling">
-      // <%= pluralize(@producer.fans.count, "fan") %>
-    </div>
+
+    <%= render 'producers/partials/producer_name' %>
 
     <% if @producer.fans.any? %>
     <div class="harlem">
