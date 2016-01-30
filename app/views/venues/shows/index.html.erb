@@ -24,7 +24,7 @@
       <% if @venue.venue_shows.any? %>
         <div class="harlem">
         <% @venue.venue_shows.each do |show| %>
-          <div class="dodge ashland">
+          <div class="dodge ashland auburn">
             <% if Artist.exists?(:artist_name => "#{show.artist}") %>
               <%= link_to show.artist, artist_path(Artist.where(:artist_name => "#{show.artist}").first) %>
             <% else %>

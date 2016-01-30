@@ -65,13 +65,13 @@
 
     <div id="container-popular" class="ferry">
       <% @shows.take(100).each do |show| %>
-      <div class="dodge ashland">
-        <%= link_to Artist.find(show.artist_id).artist_name, artist_path(Artist.find(show.artist_id)) %> on <%= link_to "#{show.month}.#{show.day}.#{show.year} at #{show.venue} in #{show.location}", artist_show_path(Artist.find(show.artist_id), show) %>
+      <div class="dodge ashland auburn">
+        <%= link_to show.artist.artist_name, artist_path(show.artist) %> on <%= link_to "#{show.month}.#{show.day}.#{show.year} at #{show.venue} in #{show.location}", artist_show_path(show.artist, show) %>
         <% if show.ticket_url.present? %>
            // <%= link_to "get tickets", show.ticket_url, class: "sugar" %>
         <% end %>
-        <% if Artist.find(show.artist_id) == current_artist %>
-          // <%= link_to "edit", edit_artist_show_path(Artist.find(show.artist_id), show) %> or <%= link_to "delete", artist_show_path(Artist.find(show.artist_id), show), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+        <% if show.artist == current_artist %>
+          // <%= link_to "edit", edit_artist_show_path(show.artist, show) %> or <%= link_to "delete", artist_show_path(show.artist, show), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
         <% end %>
       </div>
       <% end %>
@@ -79,13 +79,13 @@
 
     <div id="container-recent" class="ferry colvin">
       <% @shows.order( 'id DESC' ).take(100).each do |show| %>
-        <div class="dodge ashland">
-        <%= link_to Artist.find(show.artist_id).artist_name, artist_path(Artist.find(show.artist_id)) %> on <%= link_to "#{show.month}.#{show.day}.#{show.year} at #{show.venue} in #{show.location}", artist_show_path(Artist.find(show.artist_id), show) %>
+        <div class="dodge ashland auburn">
+        <%= link_to show.artist.artist_name, artist_path(show.artist) %> on <%= link_to "#{show.month}.#{show.day}.#{show.year} at #{show.venue} in #{show.location}", artist_show_path(show.artist, show) %>
         <% if show.ticket_url.present? %>
            // <%= link_to "get tickets", show.ticket_url, class: "sugar" %>
         <% end %>
-        <% if Artist.find(show.artist_id) == current_artist %>
-          // <%= link_to "edit", edit_artist_show_path(Artist.find(show.artist_id), show) %> or <%= link_to "delete", artist_show_path(Artist.find(show.artist_id), show), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+        <% if show.artist == current_artist %>
+          // <%= link_to "edit", edit_artist_show_path(show.artist, show) %> or <%= link_to "delete", artist_show_path(show.artist, show), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
         <% end %>
       </div>
       <% end %>
@@ -94,13 +94,13 @@
     <div id="container-location" class="ferry colvin">
       <% if fan_signed_in? && current_fan.fan_profile.location.present? %>
         <% @shows.select{ |show| show.location == current_fan.fan_profile.location }.each do |show| %>
-        <div class="dodge ashland">
-          <%= link_to Artist.find(show.artist_id).artist_name, artist_path(Artist.find(show.artist_id)) %> on <%= link_to "#{show.month}.#{show.day}.#{show.year} at #{show.venue} in #{show.location}", artist_show_path(Artist.find(show.artist_id), show) %>
+        <div class="dodge ashland auburn">
+          <%= link_to show.artist.artist_name, artist_path(show.artist) %> on <%= link_to "#{show.month}.#{show.day}.#{show.year} at #{show.venue} in #{show.location}", artist_show_path(show.artist, show) %>
           <% if show.ticket_url.present? %>
              // <%= link_to "get tickets", show.ticket_url, class: "sugar" %>
           <% end %>
-          <% if Artist.find(show.artist_id) == current_artist %>
-            // <%= link_to "edit", edit_artist_show_path(Artist.find(show.artist_id), show) %> or <%= link_to "delete", artist_show_path(Artist.find(show.artist_id), show), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+          <% if show.artist == current_artist %>
+            // <%= link_to "edit", edit_artist_show_path(show.artist, show) %> or <%= link_to "delete", artist_show_path(show.artist, show), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
           <% end %>
         </div>
         <% end %>

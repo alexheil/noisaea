@@ -70,22 +70,22 @@
             <%= embed(video.youtube_url) %>
           </div>
           <div class="amherst busti">
-            <%= link_to Artist.friendly.find(video.artist_id).artist_name, artist_path(Artist.friendly.find(video.artist_id)) %>
+            <%= link_to video.artist.artist_name, artist_path(video.artist) %>
           </div>
           <div class="hertel busti blaine">
-            <%= link_to video.title, artist_video_path(Artist.friendly.find(video.artist_id), video), class: "sugar" %>
+            <%= link_to video.title, artist_video_path(video.artist, video), class: "sugar" %>
           </div>
           <div class="hertel busti">
-            <%= Artist.friendly.find(video.artist_id).artist_profile.location unless Artist.friendly.find(video.artist_id).artist_profile.location.blank? %>
+            <%= video.artist.artist_profile.location unless video.artist.artist_profile.location.blank? %>
           </div>
           <div class="hertel">
-            <div class="index_follower_count_<%= Artist.friendly.find(video.artist_id).id %>">
-              <%= render "artists/partials/relationships/index_follower_count", :artist => Artist.friendly.find(video.artist_id) %>
+            <div class="index_follower_count_<%= video.artist.id %>">
+              <%= render "artists/partials/relationships/index_follower_count", :artist => video.artist %>
             </div>
           </div>
 
-          <div class="index_follow_button_<%= Artist.friendly.find(video.artist_id).id %>">
-            <%= render "artists/partials/relationships/index_follow_button", :artist => Artist.friendly.find(video.artist_id) %>
+          <div class="index_follow_button_<%= video.artist.id %>">
+            <%= render "artists/partials/relationships/index_follow_button", :artist => video.artist %>
           </div>
 
         </div>
@@ -99,22 +99,22 @@
             <%= embed(video.youtube_url) %>
           </div>
           <div class="amherst busti">
-            <center><%= link_to Artist.friendly.find(video.artist_id).artist_name, artist_path(Artist.friendly.find(video.artist_id)) %></center>
+            <center><%= link_to video.artist.artist_name, artist_path(video.artist) %></center>
           </div>
           <div class="hertel busti blaine">
-            <%= link_to video.title, artist_video_path(Artist.friendly.find(video.artist_id), video), class: "sugar" %>
+            <%= link_to video.title, artist_video_path(video.artist, video), class: "sugar" %>
           </div>
           <div class="hertel busti">
-            <%= Artist.friendly.find(video.artist_id).artist_profile.location unless Artist.friendly.find(video.artist_id).artist_profile.location.blank? %>
+            <%= video.artist.artist_profile.location unless video.artist.artist_profile.location.blank? %>
           </div>
           <div class="hertel">
-            <div class="index_follower_count_<%= Artist.friendly.find(video.artist_id).id %>">
-              <%= render "artists/partials/relationships/index_follower_count", :artist => Artist.friendly.find(video.artist_id) %>
+            <div class="index_follower_count_<%= video.artist.id %>">
+              <%= render "artists/partials/relationships/index_follower_count", :artist => video.artist %>
             </div>
           </div>
 
-          <div class="index_follow_button_<%= Artist.friendly.find(video.artist_id).id %>">
-            <%= render "artists/partials/relationships/index_follow_button", :artist => Artist.friendly.find(video.artist_id) %>
+          <div class="index_follow_button_<%= video.artist.id %>">
+            <%= render "artists/partials/relationships/index_follow_button", :artist => video.artist %>
           </div>
 
         </div>
@@ -123,28 +123,28 @@
 
     <div id="container-location" class="ferry colvin">
       <% if fan_signed_in? && current_fan.fan_profile.location.present? %>
-        <% @videos.each do |video| if Artist.friendly.find(video.artist_id).artist_profile.location == current_fan.fan_profile.location %>
+        <% @videos.each do |video| if video.artist.artist_profile.location == current_fan.fan_profile.location %>
         <div class="utica">
           <div class="plymouth">
             <%= embed(video.youtube_url) %>
           </div>
           <div class="amherst busti">
-            <center><%= link_to Artist.friendly.find(video.artist_id).artist_name, artist_path(Artist.friendly.find(video.artist_id)) %></center>
+            <center><%= link_to video.artist.artist_name, artist_path(video.artist) %></center>
           </div>
           <div class="hertel busti blaine">
-            <%= link_to video.title, artist_video_path(Artist.friendly.find(video.artist_id), video), class: "sugar" %>
+            <%= link_to video.title, artist_video_path(video.artist, video), class: "sugar" %>
           </div>
           <div class="hertel busti">
-            <%= Artist.friendly.find(video.artist_id).artist_profile.location unless Artist.friendly.find(video.artist_id).artist_profile.location.blank? %>
+            <%= video.artist.artist_profile.location unless video.artist.artist_profile.location.blank? %>
           </div>
           <div class="hertel">
-            <div class="index_follower_count_<%= Artist.friendly.find(video.artist_id).id %>">
-              <%= render "artists/partials/relationships/index_follower_count", :artist => Artist.friendly.find(video.artist_id) %>
+            <div class="index_follower_count_<%= video.artist.id %>">
+              <%= render "artists/partials/relationships/index_follower_count", :artist => video.artist %>
             </div>
           </div>
 
-          <div class="index_follow_button_<%= Artist.friendly.find(video.artist_id).id %>">
-            <%= render "artists/partials/relationships/index_follow_button", :artist => Artist.friendly.find(video.artist_id) %>
+          <div class="index_follow_button_<%= video.artist.id %>">
+            <%= render "artists/partials/relationships/index_follow_button", :artist => video.artist %>
           </div>
 
         </div>

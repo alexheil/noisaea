@@ -68,9 +68,9 @@
 
         <div class="auburn dodge">
           <div class="winspear">
-            <strong><%= link_to Artist.find(micropost.artist_id).artist_name, artist_path(Artist.find(micropost.artist_id)) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago <%= "from " + Artist.friendly.find(micropost.artist_id).artist_profile.location unless Artist.friendly.find(micropost.artist_id).artist_profile.location.blank? %></span>
-            <% if Artist.find(micropost.artist_id) == current_artist %>
-             // <%= link_to "delete post", artist_micropost_path(Artist.find(micropost.artist_id), micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+            <strong><%= link_to micropost.artist.artist_name, artist_path(micropost.artist) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago <%= "from " + micropost.artist.artist_profile.location unless micropost.artist.artist_profile.location.blank? %></span>
+            <% if micropost.artist == current_artist %>
+             // <%= link_to "delete post", artist_micropost_path(micropost.artist, micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
             <% end %>
           </div>
           <div class="winspear">
@@ -126,9 +126,9 @@
 
         <div class="auburn dodge">
           <div class="winspear">
-            <strong><%= link_to Artist.find(micropost.artist_id).artist_name, artist_path(Artist.find(micropost.artist_id)) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago <%= "from " + Artist.friendly.find(micropost.artist_id).artist_profile.location unless Artist.friendly.find(micropost.artist_id).artist_profile.location.blank? %></span>
-            <% if Artist.find(micropost.artist_id) == current_artist %>
-             // <%= link_to "delete post", artist_micropost_path(Artist.find(micropost.artist_id), micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+            <strong><%= link_to micropost.artist.artist_name, artist_path(micropost.artist) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago <%= "from " + micropost.artist.artist_profile.location unless micropost.artist.artist_profile.location.blank? %></span>
+            <% if micropost.artist == current_artist %>
+             // <%= link_to "delete post", artist_micropost_path(micropost.artist, micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
             <% end %>
           </div>
           <div class="winspear">
@@ -181,13 +181,13 @@
 
     <div id="container-location" class="ferry colvin">
       <% if fan_signed_in? && current_fan.fan_profile.location.present? %>
-        <% @microposts.each do |micropost| if Artist.friendly.find(micropost.artist_id).artist_profile.location == current_fan.fan_profile.location %>
+        <% @microposts.each do |micropost| if micropost.artist.artist_profile.location == current_fan.fan_profile.location %>
 
         <div class="auburn dodge">
           <div class="winspear">
-            <strong><%= link_to Artist.find(micropost.artist_id).artist_name, artist_path(Artist.find(micropost.artist_id)) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago <%= "from " + Artist.friendly.find(micropost.artist_id).artist_profile.location unless Artist.friendly.find(micropost.artist_id).artist_profile.location.blank? %></span>
-            <% if Artist.find(micropost.artist_id) == current_artist %>
-             // <%= link_to "delete post", artist_micropost_path(Artist.find(micropost.artist_id), micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+            <strong><%= link_to micropost.artist, artist_path(micropost.artist) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago <%= "from " + micropost.artist.artist_profile.location unless micropost.artist.artist_profile.location.blank? %></span>
+            <% if micropost.artist == current_artist %>
+             // <%= link_to "delete post", artist_micropost_path(micropost.artist, micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
             <% end %>
           </div>
           <div class="winspear">

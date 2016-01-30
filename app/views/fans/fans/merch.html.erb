@@ -52,26 +52,26 @@
     <% if @fan.artist_merches.any? %>
       <div class="harlem">
         <% @fan.artist_merches.each do |merch| %>
-        <div class="amherst dodge">
+        <div class="auburn dodge">
           <div class="allen">
             <div class="highgate columbus">
-              <%= link_to Artist.find(merch.artist_id).artist_name, artist_path(Artist.find(merch.artist_id)) %> <span class="posted">posted <%= time_ago_in_words(merch.created_at) %> ago</span>
+              <%= link_to merch.artist.artist_name, artist_path(merch.artist) %> <span class="posted">posted <%= time_ago_in_words(merch.created_at) %> ago</span>
             </div>
             <% if merch.image_url.present? %>
             <div class="highgate loretta">
-              <%= link_to image_tag("#{merch.image_url}", :width => "100%"), artist_merch_path(Artist.find(merch.artist_id), merch) %>
+              <%= link_to image_tag("#{merch.image_url}", :width => "100%"), artist_merch_path(merch.artist, merch) %>
             </div>
             <% else %>
-              <% if Artist.find(merch.artist_id) == current_artist %>
-                you do not have an image for this item. <%= link_to "add one?", edit_artist_merch_path(Artist.find(merch.artist_id), merch) %>
+              <% if merch.artist == current_artist %>
+                you do not have an image for this item. <%= link_to "add one?", edit_artist_merch_path(merch.artist, merch) %>
               <% else %>
-                <%= Artist.find(merch.artist_id).artist_name %> does not have an image for <%= merch.title %>.
+                <%= merch.artist.artist_name %> does not have an image for <%= merch.title %>.
               <% end %>
             <% end %>
           </div>
           <div class="allen">
             <div class="summer">
-              <%= link_to merch.title, artist_merch_path(Artist.find(merch.artist_id), merch) %>
+              <%= link_to merch.title, artist_merch_path(merch.artist, merch) %>
             </div>
             <div class="summer">
               <%= merch.category %>

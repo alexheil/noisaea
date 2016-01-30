@@ -32,12 +32,5 @@ class Artists::ArtistsController < ApplicationController
     @microposts = ArtistMicropost.all
   end
 
-  def run
-    @artist = Artist.friendly.find(params[:id])
-    if Time.now.utc >= @artist.created_at + 24.hours && @artist.artist_microposts.empty?
-      ArtistMailer.twentyfour_email(@artist).deliver
-    end
-  end
-
 end
 

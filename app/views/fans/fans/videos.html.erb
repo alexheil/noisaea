@@ -56,7 +56,7 @@
                 <%= embed(video.youtube_url) %>
               </div>
               <div class="auburn">
-                <%= link_to Artist.find(video.artist_id).artist_name, artist_path(Artist.find(video.artist_id)) %> <span class="posted">posted</span> <%= link_to video.title, artist_video_path(Artist.find(video.artist_id), video) %> <span class="posted"><%= time_ago_in_words(video.created_at) %> ago</span>
+                <%= link_to video.artist.artist_name, artist_path(video.artist) %> <span class="posted">posted</span> <%= link_to video.title, artist_video_path(video.artist, video) %> <span class="posted"><%= time_ago_in_words(video.created_at) %> ago</span>
               </div>
             </div>
           <% end %>
@@ -79,7 +79,7 @@
                 <%= embed(video.youtube_url) %>
               </div>
               <div class="auburn">
-                <%= link_to RecordLabel.find(video.record_label_id).label_name, record_label_path(RecordLabel.find(video.record_label_id)) %> <span class="posted">posted</span> <%= link_to video.title, record_label_video_path(RecordLabel.find(video.record_label_id), video) %> <span class="posted"><%= time_ago_in_words(video.created_at) %> ago</span>
+                <%= link_to video.record_label.label_name, record_label_path(video.record_label) %> <span class="posted">posted</span> <%= link_to video.title, record_label_video_path(video.record_label, video) %> <span class="posted"><%= time_ago_in_words(video.created_at) %> ago</span>
               </div>
             </div>
           <% end %>
@@ -102,7 +102,7 @@
                 <%= embed(video.youtube_url) %>
               </div>
               <div class="auburn">
-                <%= link_to Venue.find(video.venue_id).venue_name, venue_path(Venue.find(video.venue_id)) %> <span class="posted">posted</span> <%= link_to video.title, venue_video_path(Venue.find(video.venue_id), video) %> <span class="posted"><%= time_ago_in_words(video.created_at) %> ago</span>
+                <%= link_to video.venue.venue_name, venue_path(video.venue) %> <span class="posted">posted</span> <%= link_to video.title, venue_video_path(video.venue, video) %> <span class="posted"><%= time_ago_in_words(video.created_at) %> ago</span>
               </div>
             </div>
           <% end %>
@@ -125,7 +125,7 @@
                 <%= embed(video.youtube_url) %>
               </div>
               <div class="auburn">
-                <%= link_to Producer.find(video.producer_id).producer_name, producer_path(Producer.find(video.producer_id)) %> <span class="posted">posted</span> <%= link_to video.title, producer_video_path(Producer.find(video.producer_id), video) %> <span class="posted"><%= time_ago_in_words(video.created_at) %> ago</span>
+                <%= link_to video.producer.producer_name, producer_path(video.producer) %> <span class="posted">posted</span> <%= link_to video.title, producer_video_path(video.producer, video) %> <span class="posted"><%= time_ago_in_words(video.created_at) %> ago</span>
               </div>
             </div>
           <% end %>

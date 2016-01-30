@@ -1,15 +1,15 @@
 <% if fan_signed_in? && current_fan.record_label_micropost_comment_voted?(comment) %>
-  <%= button_to "−", record_label_micropost_comment_vote_path(RecordLabel.find(micropost.record_label_id), micropost, comment, current_fan.record_label_micropost_comment_vote_id(comment)), method: :delete, remote: true, data: { disable_with: '...' }, class: "linwood" %>
+  <%= button_to "−", record_label_micropost_comment_vote_path(micropost.record_label, micropost, comment, current_fan.record_label_micropost_comment_vote_id(comment)), method: :delete, remote: true, data: { disable_with: '...' }, class: "linwood" %>
 <% elsif artist_signed_in? && current_artist.record_label_micropost_comment_voted?(comment) %>
-  <%= button_to "−", record_label_micropost_comment_vote_path(RecordLabel.find(micropost.record_label_id), micropost, comment, current_artist.record_label_micropost_comment_vote_id(comment)), method: :delete, remote: true, data: { disable_with: '...' }, class: "linwood" %>
+  <%= button_to "−", record_label_micropost_comment_vote_path(micropost.record_label, micropost, comment, current_artist.record_label_micropost_comment_vote_id(comment)), method: :delete, remote: true, data: { disable_with: '...' }, class: "linwood" %>
 <% elsif record_label_signed_in? && current_record_label.record_label_micropost_comment_voted?(comment) %>
-  <%= button_to "−", record_label_micropost_comment_vote_path(RecordLabel.find(micropost.record_label_id), micropost, comment, current_record_label.record_label_micropost_comment_vote_id(comment)), method: :delete, remote: true, data: { disable_with: '...' }, class: "linwood" %>
+  <%= button_to "−", record_label_micropost_comment_vote_path(micropost.record_label, micropost, comment, current_record_label.record_label_micropost_comment_vote_id(comment)), method: :delete, remote: true, data: { disable_with: '...' }, class: "linwood" %>
 <% elsif venue_signed_in? && current_venue.record_label_micropost_comment_voted?(comment) %>
-  <%= button_to "−", record_label_micropost_comment_vote_path(RecordLabel.find(micropost.record_label_id), micropost, comment, current_venue.record_label_micropost_comment_vote_id(comment)), method: :delete, remote: true, data: { disable_with: '...' }, class: "linwood" %>
+  <%= button_to "−", record_label_micropost_comment_vote_path(micropost.record_label, micropost, comment, current_venue.record_label_micropost_comment_vote_id(comment)), method: :delete, remote: true, data: { disable_with: '...' }, class: "linwood" %>
 <% elsif producer_signed_in? && current_producer.record_label_micropost_comment_voted?(comment) %>
-  <%= button_to "−", record_label_micropost_comment_vote_path(RecordLabel.find(micropost.record_label_id), micropost, comment, current_producer.record_label_micropost_comment_vote_id(comment)), method: :delete, remote: true, data: { disable_with: '...' }, class: "linwood" %>
+  <%= button_to "−", record_label_micropost_comment_vote_path(micropost.record_label, micropost, comment, current_producer.record_label_micropost_comment_vote_id(comment)), method: :delete, remote: true, data: { disable_with: '...' }, class: "linwood" %>
 <% else %>
-  <%= form_for(RecordLabelMicropostCommentVote.new, url: record_label_micropost_comment_votes_path(RecordLabel.find(micropost.record_label_id), micropost, comment), remote: true) do |f| %>
+  <%= form_for(RecordLabelMicropostCommentVote.new, url: record_label_micropost_comment_votes_path(micropost.record_label, micropost, comment), remote: true) do |f| %>
     <%= f.submit "+", data: { disable_with: '...' }, class: "linwood" %>
   <% end %>
 <% end %>

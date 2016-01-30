@@ -1,15 +1,15 @@
 <% if fan_signed_in? && current_fan.producer_micropost_voted?(micropost) %>
-  <%= button_to "−", producer_micropost_vote_path(Producer.find(micropost.producer_id), micropost, current_fan.producer_micropost_vote_id(micropost)), method: :delete, remote: true, data: { disable_with: '...' }, class: "linwood" %>
+  <%= button_to "−", producer_micropost_vote_path(micropost.producer, micropost, current_fan.producer_micropost_vote_id(micropost)), method: :delete, remote: true, data: { disable_with: '...' }, class: "linwood" %>
 <% elsif artist_signed_in? && current_artist.producer_micropost_voted?(micropost) %>
-  <%= button_to "−", producer_micropost_vote_path(Producer.find(micropost.producer_id), micropost, current_artist.producer_micropost_vote_id(micropost)), method: :delete, remote: true, data: { disable_with: '...' }, class: "linwood" %>
+  <%= button_to "−", producer_micropost_vote_path(micropost.producer, micropost, current_artist.producer_micropost_vote_id(micropost)), method: :delete, remote: true, data: { disable_with: '...' }, class: "linwood" %>
 <% elsif record_label_signed_in? && current_record_label.producer_micropost_voted?(micropost) %>
-  <%= button_to "−", producer_micropost_vote_path(Producer.find(micropost.producer_id), micropost, current_record_label.producer_micropost_vote_id(micropost)), method: :delete, remote: true, data: { disable_with: '...' }, class: "linwood" %>
+  <%= button_to "−", producer_micropost_vote_path(micropost.producer, micropost, current_record_label.producer_micropost_vote_id(micropost)), method: :delete, remote: true, data: { disable_with: '...' }, class: "linwood" %>
 <% elsif venue_signed_in? && current_venue.producer_micropost_voted?(micropost) %>
-  <%= button_to "−", producer_micropost_vote_path(Producer.find(micropost.producer_id), micropost, current_venue.producer_micropost_vote_id(micropost)), method: :delete, remote: true, data: { disable_with: '...' }, class: "linwood" %>
+  <%= button_to "−", producer_micropost_vote_path(micropost.producer, micropost, current_venue.producer_micropost_vote_id(micropost)), method: :delete, remote: true, data: { disable_with: '...' }, class: "linwood" %>
 <% elsif producer_signed_in? && current_producer.producer_micropost_voted?(micropost) %>
-  <%= button_to "−", producer_micropost_vote_path(Producer.find(micropost.producer_id), micropost, current_producer.producer_micropost_vote_id(micropost)), method: :delete, remote: true, data: { disable_with: '...' }, class: "linwood" %>
+  <%= button_to "−", producer_micropost_vote_path(micropost.producer, micropost, current_producer.producer_micropost_vote_id(micropost)), method: :delete, remote: true, data: { disable_with: '...' }, class: "linwood" %>
 <% else %>
-  <%= form_for(ProducerMicropostVote.new, url: producer_micropost_votes_path(Producer.find(micropost.producer_id), micropost), remote: true) do |f| %>
+  <%= form_for(ProducerMicropostVote.new, url: producer_micropost_votes_path(micropost.producer, micropost), remote: true) do |f| %>
     <%= f.submit "+", data: { disable_with: '...' }, class: "linwood" %>
   <% end %>
 <% end %>
