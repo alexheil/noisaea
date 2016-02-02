@@ -188,8 +188,8 @@ h4 {
 }
 
 .dodge {
-  border-left: 1px solid #fff;
-  border-right: 1px solid #fff;
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
   border-bottom: 1px solid #ccc;
   -webkit-transition: .3s;
   -moz-transition: .3s;
@@ -1014,9 +1014,9 @@ h4 {
   font-family: $fancy-font;
   font-size: 18px;
   padding: 20px;
-  border-top: 3px solid #fff;
-  border-left: 3px solid #fff;
-  border-right: 3px solid #fff;
+  border-top: 3px solid transparent;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
   border-bottom: 3px solid $my-black;
   display: inline-block;
   box-sizing: border-box;
@@ -1033,9 +1033,9 @@ h4 {
   font-family: $fancy-font;
   font-size: 18px;
   padding: 20px;
-  border-top: 3px solid #fff;
-  border-left: 3px solid #fff;
-  border-right: 3px solid #fff;
+  border-top: 3px solid transparent;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
   border-bottom: 3px solid $my-black;
   display: inline-block;
   box-sizing: border-box;
@@ -1049,9 +1049,9 @@ select {
   font-family: $fancy-font;
   font-size: 18px;
   padding: 19px;
-  border-top: 3px solid #fff;
-  border-left: 3px solid #fff;
-  border-right: 3px solid #fff;
+  border-top: 3px solid transparent;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
   border-bottom: 3px solid $my-black;
   display: inline-block;
   box-sizing: border-box;
@@ -1178,8 +1178,8 @@ select {
   font-size: 1.3em;
   font-weight: 300;
   border: 3px solid $main-color;
-  background-color: $main-color;
-  color: #fff;
+  background-color: transparent;
+  color: $main-color;
   cursor: pointer;
   -webkit-transition: .3s;
   -moz-transition: .3s;
@@ -1188,8 +1188,7 @@ select {
     -webkit-transition: .3s;
     -moz-transition: .3s;
     -o-transition: .3s;
-    border: 3px solid $accent-color2;
-    background-color: $accent-color2;
+    background-color: $main-color;
     color: #fff;
   }
 }
