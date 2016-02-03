@@ -1,0 +1,92 @@
+<%= provide(:title, sanitize(@artist.artist_name) + " | Albums") %>
+<div class="buffalo">
+
+  <%= render 'artists/partials/artist_cover_image' %>
+
+  <div class="delaware">
+
+    <main class="main">
+
+      <ul class="carolina">
+        <li><%= link_to "timeline", artist_path(@artist) %></li>
+        <li class="jersey"><%= link_to "music", artist_albums_path(@artist) %></li>
+        <li><%= link_to "merch", artist_merches_path(@artist) %></li>
+        <li><%= link_to "shows", artist_shows_path(@artist) %></li>
+        <li><%= link_to "videos", artist_videos_path(@artist) %></li>
+      </ul>
+
+      <%= render 'artists/partials/artist_name' %>
+
+      <% if @artist == current_artist %>
+        <div class="harlem vermont">
+          <%= link_to "add a album", new_artist_album_path(@artist), class: "sugar" %>
+        </div>
+      <% end %>
+
+      <% if @artist.artist_albums.any? %>
+        <% @artist.artist_albums.each do |album| %>
+
+
+
+        <div class="auburn dodge">
+          <div class="ogden">
+            <% if album.cover_art_url.present? %>
+            <div class="highgate loretta">
+              <%= link_to image_tag("#{album.cover_art_url}", :width => "100%"), artist_merch_path(@artist, album) %>
+            </div>
+            <% else %>
+              <% if @artist == current_artist %>
+                you do not have an image for this item. <%= link_to "add one?", edit_artist_album_path(@artist, album) %>
+              <% else %>
+                <%= @artist.artist_name %> does not have an image for <%= album.title %>.
+              <% end %>
+            <% end %>
+            <% if @artist == current_artist %>
+              // <%= link_to "edit", edit_artist_album_path(@artist, album) %> or <%= link_to "delete", artist_merch_path(@artist, album), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+            <% end %>
+          </div>
+          <div class="ogden">
+            <div class="summer">
+              <%= link_to album.title, artist_album_path(@artist, album) %>
+            </div>
+            <div class="summer">
+              <span class="posted">price //</span> <%= album.price %> <%= album.currency %>
+            </div>
+            <div class="amherst">
+              <%= album.month %>.<%= album.day %>.<%= album.year %>
+            </div>
+          </div>
+          <div class="ogden">
+            <div class="bryant">
+              <%= link_to "get this?", album.album_url, class: "sugar" %>
+            </div>
+            <div class="posted">
+              from
+            </div>
+            <div class="amherst">
+              <%= album.album_url.split('/')[2] %>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <% end %>
+      <% else %>
+        <div class="harlem">
+          <% if @artist == current_artist %>
+            you do not have any albums. <%= link_to "add one?", new_artist_album_path(@artist) %>
+          <% else %>
+            <%= @artist.artist_name %> does not have any albums.
+          <% end %>
+        </div>
+      <% end %>
+
+    </main>
+
+    <%= render 'artists/partials/artist_sidebar' %>
+
+  </div>
+</div>
+<%= render "partials/uni_footer" %>

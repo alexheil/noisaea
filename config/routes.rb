@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     resources :merches, controller: 'artists/merches', path: :merch
     resources :shows, controller: 'artists/shows'
     resources :videos, controller: 'artists/videos'
+    resources :albums, controller: 'artists/albums'
     get 'followers' => 'artists/artists#followers'
   end
 

@@ -1,0 +1,47 @@
+<%= provide(:title, "Add An Album") %>
+<div class="buffalo">
+  <div class="delaware">
+    <div class="elmwood">
+      <div class="harlem">
+        <h1>add an album</h1>
+      </div>
+
+      <%= form_for(@album, url: artist_albums_path) do |f| %>
+        <%= f.hidden_field :artist_id %>
+        <%= render 'errors/album_errors' %>
+        <div class="highgate">
+          <%= f.text_field :title, placeholder: "album name", class: "huron" %>
+        </div>
+        <div class="maryland">
+          <%= f.text_field :month, placeholder: "month", class: "huron" %>
+        </div>
+        <div class="maryland">
+          <%= f.text_field :day, placeholder: "day", class: "huron" %>
+        </div>
+        <div class="maryland">
+          <%= f.text_field :year, placeholder: "year", class: "huron" %>
+        </div>
+        <div class="hudson">
+          <%= f.text_field :price, placeholder: "price (if any)", class: "huron" %>
+        </div>
+        <div class="hudson">
+          <%= f.select :currency, options_for_select(currency_select)%>
+        </div>
+        <div class="highgate">
+          <%= f.text_field :album_url, placeholder: "album url", class: "huron" %>
+        </div>
+        <div class="highgate">
+          <%= f.text_field :cover_art_url, placeholder: "cover art url", class: "huron" %>
+        </div>
+        <div class="highgate">
+          <%= f.text_area :description, placeholder: "description", class: "chippewa" %>
+        </div>
+        <div class="ellicott">
+          <%= f.submit "add album", data: { disable_with: 'posting...' }, class: "exchange" %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+<%= render 'partials/uni_footer' %>

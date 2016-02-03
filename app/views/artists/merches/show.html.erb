@@ -9,6 +9,7 @@
 
       <ul class="carolina">
         <li><%= link_to "timeline", artist_path(@artist) %></li>
+        <li><%= link_to "music", artist_albums_path(@artist) %></li>
         <li class="jersey"><%= link_to "merch", artist_merches_path(@artist) %></li>
         <li><%= link_to "shows", artist_shows_path(@artist) %></li>
         <li><%= link_to "videos", artist_videos_path(@artist) %></li>
@@ -67,7 +68,7 @@
             <%= link_to "get this!", @merch.merch_url, class: "sugar" %>
           </div>
           <% if @artist == current_artist %>
-            // <%= link_to "edit", edit_artist_merch_path(@artist, merch) %> or <%= link_to "delete", artist_merch_path(@artist, merch), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+            // <%= link_to "edit", edit_artist_merch_path(@artist, @merch) %> or <%= link_to "delete", artist_merch_path(@artist, @merch), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
           <% end %>
         <% end %>
         <div class="best">

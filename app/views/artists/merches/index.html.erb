@@ -9,6 +9,7 @@
 
       <ul class="carolina">
         <li><%= link_to "timeline", artist_path(@artist) %></li>
+        <li><%= link_to "music", artist_albums_path(@artist) %></li>
         <li class="jersey"><%= link_to "merch", artist_merches_path(@artist) %></li>
         <li><%= link_to "shows", artist_shows_path(@artist) %></li>
         <li><%= link_to "videos", artist_videos_path(@artist) %></li>
@@ -65,7 +66,7 @@
             </div>
           </div>
           <div class="allen">
-            <div class=" vermont amherst">
+            <div class=" bryant">
               <%= link_to "get this?", merch.merch_url, class: "sugar" %>
             </div>
           </div>

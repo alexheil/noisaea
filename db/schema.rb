@@ -11,7 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151229012344) do
+ActiveRecord::Schema.define(version: 20160202011727) do
+
+  create_table "artist_albums", force: true do |t|
+    t.integer  "artist_id"
+    t.string   "title"
+    t.text     "description"
+    t.integer  "month"
+    t.integer  "day"
+    t.integer  "year"
+    t.integer  "price"
+    t.string   "currency"
+    t.string   "album_url"
+    t.string   "cover_art_url"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "artist_albums", ["artist_id"], name: "index_artist_albums_on_artist_id"
 
   create_table "artist_merches", force: true do |t|
     t.integer  "artist_id"

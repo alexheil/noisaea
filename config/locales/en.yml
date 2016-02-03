@@ -111,6 +111,16 @@ en:
         currency: ""
         merch_url: ""
         image_url: ""
+      artist_album:
+        title: ""
+        description: ""
+        month: ""
+        day: ""
+        year: ""
+        price: ""
+        currency: ""
+        album_url: ""
+        cover_art_url: ""
     errors:
       models:
         artist_profile:
@@ -357,3 +367,43 @@ en:
               invalid: "that is definitely not a vaild url."
             image_url:
               invalid: "that is not a vaild image url."
+        artist_album:
+          attributes:
+            title:
+              blank: "you need to include a title for your album."
+            description:
+              too_long: "your description can't be more than 14,216 characters long."
+            month:
+              blank: "you need to include a month."
+              wrong_length: "2 digits for a month, not 3+ lol."
+              greater_than: "1-12, pick a month."
+              less_than_or_equal_to: "there is no 13th month despite what you may think."
+              not_a_number: "that month is not a number."
+            day:
+              blank: "you need to include a day."
+              wrong_length: "there are a maximum of 2 digits in day."
+              greater_than: "negative days?"
+              less_than_or_equal_to: "there aren't that many days in that month."
+              not_a_number: "that day is not a number."
+            year:
+              blank: "you need to include a year."
+              wrong_length: "umm... a year is 4 digits long."
+              greater_than: "sorry, but your show can't be before 2014."
+              less_than_or_equal_to: "that's crazy far into the future."
+              not_a_number: "that year is not a number."
+            price:
+              blank: "you must include a price."
+              wrong_length: "I doubt your price is more than 999,999."
+              greater_than: "your price can't be negative."
+              not_a_number: "that price is not a number."
+            currency:
+              blank: "you must include a valid currency."
+            album_url:
+              blank: "you must include a link to your album."
+              invalid: "that is definitely not a vaild url."
+            cover_art_url:
+              blank: "you must include a link to your album."
+              invalid: "that is definitely not a vaild url."
+
+
+
