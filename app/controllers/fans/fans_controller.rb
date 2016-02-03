@@ -12,6 +12,10 @@ class Fans::FansController < ApplicationController
     @fan = Fan.friendly.find(params[:fan_id])
   end
 
+  def music
+    @fan = Fan.friendly.find(params[:fan_id])
+  end
+
   def shows
     @fan = Fan.friendly.find(params[:fan_id])
   end

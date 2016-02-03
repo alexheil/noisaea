@@ -58,7 +58,7 @@ class Fan < ActiveRecord::Base
 
   has_many :artist_merches, through: :artists
 
-  has_many :artist_albums
+  has_many :artist_albums, through: :artists
 
   validates :username, presence: true, uniqueness: true, length: { maximum: 50 }, format: { with: /\A[a-zA-Z0-9 ]+\Z/i }
   validates :fan_name, presence: true, length: { maximum: 50 }

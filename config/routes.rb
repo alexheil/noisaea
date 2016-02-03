@@ -54,6 +54,7 @@ Rails.application.routes.draw do
   resources :fans, controller: 'fans/fans', only: [:show, :index] do
     resource :profile, controller: 'fans/profiles', only: [:edit, :update]
     get 'following' => 'fans/fans#following'
+    get 'music' => 'fans/fans#music'
     get 'merch' => 'fans/fans#merch'
     get 'shows' => 'fans/fans#shows'
     get 'videos' => 'fans/fans#videos'
