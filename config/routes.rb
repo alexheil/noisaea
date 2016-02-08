@@ -25,16 +25,19 @@ Rails.application.routes.draw do
   resources :artists, controller: 'artists/artists', only: [:show, :index] do
     resource :profile, controller: 'artists/profiles', only: [:edit, :update]
     resources :relationships, controller: 'artists/relationships', only: [:create, :destroy]
+    resources :notifications, controller: 'artists/notifications', only: [:index, :update]
     resources :microposts, controller: 'artists/microposts', path: :status, only:[:create, :show, :destroy] do
       resources :votes, controller: 'artists/micropost_votes', only: [:create,:destroy]
       resources :comments, controller: 'artists/comments', only: [:create, :destroy] do
         resources :votes, controller: 'artists/comment_votes', only: [:create,:destroy]
       end
     end
+    resources :albums, controller: 'artists/albums' do
+      resources :tracks, controller: 'artists/tracks', except: :index
+    end
     resources :merches, controller: 'artists/merches', path: :merch
     resources :shows, controller: 'artists/shows'
     resources :videos, controller: 'artists/videos'
-    resources :albums, controller: 'artists/albums'
     get 'followers' => 'artists/artists#followers'
   end
 

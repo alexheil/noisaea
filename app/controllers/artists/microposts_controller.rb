@@ -1,7 +1,7 @@
 class Artists::MicropostsController < ApplicationController
 
   before_action :authenticate_artist!, except: :show
-  before_action :set_artist, except: :show
+  before_action :set_artist, except: [:show]
   before_action :correct_artist, only: :create
   before_action :correct_micropost_artist, only: :destroy
 

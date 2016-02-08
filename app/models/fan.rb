@@ -7,6 +7,8 @@ class Fan < ActiveRecord::Base
 
   has_one :fan_profile, dependent: :destroy
 
+  has_many :artist_notifications, dependent: :destroy
+
   has_many :artist_relationships, dependent: :destroy
   has_many :artists, through: :artist_relationships
   belongs_to :artist

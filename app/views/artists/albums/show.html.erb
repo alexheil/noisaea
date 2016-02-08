@@ -20,6 +20,12 @@
       <div class="amherst">
         <div class="harlem">
 
+          <% if @artist == current_artist %>
+            <div class="harlem vermont">
+              <%= link_to "add a track", new_artist_album_track_path(@artist, @album), class: "sugar" %>
+            </div>
+          <% end %>
+
           <div class="fargo">
             <div id="riley">
               <img srcset="<%= @album.cover_art_url %>" width="100%" height="auto" />
@@ -29,7 +35,7 @@
             <div class="vermont busti">
               <%= @album.title %>
             </div>
-            <div class="bryant busti">
+            <div class="bryant highgate busti">
               <span class="posted">price //</span> <%= @album.price %> <%= @album.currency %>
             </div>
             <div class="vermont busti">
@@ -47,6 +53,57 @@
           <% end %>
 
         </div>
+
+        <% if @album.artist_tracks.any? %>
+          <% @album.artist_tracks.take(1).each do |track| %>
+
+          <div class="busti">
+            <div class="track-title">
+              <%= track.number %> - <%= track.title %>
+            </div>
+          </div>
+
+          <audio id="music" preload="true">
+              <source src="<%= track.track_url %>"></source>
+          </audio>
+          <div class="audioplayer">
+            <div id="pButton" class="play" alt="play"></div>
+            <div class="timeline-container">
+              <div id="current_time">00:00</div>
+              <div id="timeline">
+                    <div id="playhead"></div>
+              </div>
+              <div id="total_duration">00:00</div>
+            </div>
+          </div>
+
+          <% end %>
+        <% end %>
+
+        <% if @album.artist_tracks.any? %>
+          <% @album.artist_tracks.each do |track| %>
+
+            <div class="dodge ashland auburn">
+              <span class="artist-track-title track-indv tacoma"><%= track.number %> - <%= track.title %></span><span class="track-details posted amherst"> - <%= link_to "details", artist_album_track_path(@artist, @album, track) %></span>
+              <div class="hide"><%= track.track_url %></div>
+              <% if track.lyrics.present? %>
+                <div class="show-lyrics">
+                  <a class="hide-lyrics posted tacoma">
+                    hide lyrics
+                  </a>
+                  <a class="toggle-lyrics posted tacoma">
+                    show lyrics
+                  </a>
+                  <div class="lyrics posted best">
+                    <%= track.lyrics %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+
+
         <div class="best">
           <%= @album.description %>
         </div>

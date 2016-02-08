@@ -20,6 +20,7 @@ class Artists::CommentsController < ApplicationController
     end
     if @comment.save
       flash.now[:notice] = "you posted a comment on #{@artist.artist_name}'s status."
+      create_notification(@micropost, @comment)
       ArtistMailer.comment_email(@artist, @micropost).deliver
       respond_to do |format|
         format.html { redirect_to (:back) }
@@ -43,6 +44,41 @@ class Artists::CommentsController < ApplicationController
   end
 
   private
+
+    def create_notification(artist_micropost, artist_micropost_comment)
+      if artist_signed_in?
+        return if artist_micropost.artist_id == current_artist.id
+        ArtistNotification.create(artist_id: artist_micropost.artist_id,
+          notifier_artist_id: current_artist.id,
+          artist_micropost_id: artist_micropost.id,
+          artist_micropost_comment_id: artist_micropost_comment.id,
+          notice_type: 'comment')
+      elsif fan_signed_in?
+        ArtistNotification.create(artist_id: artist_micropost.artist_id,
+          notifier_fan_id: current_fan.id,
+          artist_micropost_id: artist_micropost.id,
+          artist_micropost_comment_id: artist_micropost_comment.id,
+          notice_type: 'comment')
+      elsif record_label_signed_in?
+        ArtistNotification.create(artist_id: artist_micropost.artist_id,
+          notifier_record_label_id: current_record_label.id,
+          artist_micropost_id: artist_micropost.id,
+          artist_micropost_comment_id: artist_micropost_comment.id,
+          notice_type: 'comment')
+      elsif venue_signed_in?
+        ArtistNotification.create(artist_id: artist_micropost.artist_id,
+          notifier_venue_id: current_venue.id,
+          artist_micropost_id: artist_micropost.id,
+          artist_micropost_comment_id: artist_micropost_comment.id,
+          notice_type: 'comment')
+      elsif producer_signed_in?
+        ArtistNotification.create(artist_id: artist_micropost.artist_id,
+          notifier_producer_id: current_producer.id,
+          artist_micropost_id: artist_micropost.id,
+          artist_micropost_comment_id: artist_micropost_comment.id,
+          notice_type: 'comment')
+      end
+    end
 
     def authenticate_commenter
       (authenticate_fan! unless artist_signed_in? || record_label_signed_in? || venue_signed_in? || producer_signed_in?)

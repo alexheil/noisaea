@@ -1,0 +1,33 @@
+<% if @artist.artist_notifications.where(read: false).any? %>
+<div class="minnesota">
+  <% @artist.artist_notifications.where(read: false).each do |notification| %>
+  <div class="dodge norwood auburn">
+    <%= link_to Artist.friendly.find(notification.notifier_artist_id).artist_name, artist_path(Artist.friendly.find(notification.notifier_artist_id)) if notification.notifier_artist_id.present? %><%= link_to Fan.friendly.find(notification.notifier_fan_id).fan_name, fan_path(Fan.friendly.find(notification.notifier_fan_id)) if notification.notifier_fan_id.present? %><%= link_to RecordLabel.friendly.find(notification.notifier_record_label_id).label_name, record_label_path(RecordLabel.friendly.find(notification.notifier_record_label_id)) if notification.notifier_record_label_id.present? %><%= link_to Venue.friendly.find(notification.notifier_venue_id).venue_name, venue_path(Venue.friendly.find(notification.notifier_venue_id)) if notification.notifier_venue_id.present? %><%= link_to Producer.friendly.find(notification.notifier_producer_id).producer_name, producer_path(Producer.friendly.find(notification.notifier_producer_id)) if notification.notifier_producer_id.present? %>
+    <% if notification.artist_micropost_id.present? && notification.artist_micropost_comment_id.present? %>
+      <%= notification.notice_type %>ed  on your status <%= notification.artist_micropost.content.truncate(40) %>".
+    <% elsif notification.artist_micropost_id.present? && notification.artist_micropost_vote_id.present? %>
+      <%= notification.notice_type %>d  on your status "<%= notification.artist_micropost.content.truncate(40) %>".
+    <% elsif notification.artist_relationship_id.present? %>
+     <%= notification.notice_type %>ed you!
+    <% end %> <span class="posted"><%= time_ago_in_words(notification.created_at) %> ago.</span>
+    <%= form_for(notification, url: artist_notification_path(@artist, notification), remote: true) do |f| %>
+      <%= f.submit "mark read", class: "normal" %>
+    <% end %>
+  </div>
+  <% end %>
+</div>
+<% end %>
+<% if @artist.artist_notifications.where(read: true).any? %>
+  <% @artist.artist_notifications.where(read: true).each do |notification| %>
+  <div class="dodge auburn">
+    <%= link_to Artist.friendly.find(notification.notifier_artist_id).artist_name, artist_path(Artist.friendly.find(notification.notifier_artist_id)) if notification.notifier_artist_id.present? %><%= link_to Fan.friendly.find(notification.notifier_fan_id).fan_name, fan_path(Fan.friendly.find(notification.notifier_fan_id)) if notification.notifier_fan_id.present? %><%= link_to RecordLabel.friendly.find(notification.notifier_record_label_id).label_name, record_label_path(RecordLabel.friendly.find(notification.notifier_record_label_id)) if notification.notifier_record_label_id.present? %><%= link_to Venue.friendly.find(notification.notifier_venue_id).venue_name, venue_path(Venue.friendly.find(notification.notifier_venue_id)) if notification.notifier_venue_id.present? %><%= link_to Producer.friendly.find(notification.notifier_producer_id).producer_name, producer_path(Producer.friendly.find(notification.notifier_producer_id)) if notification.notifier_producer_id.present? %>
+    <% if notification.artist_micropost_id.present? && notification.artist_micropost_comment_id.present? %>
+      <%= notification.notice_type %>ed  on your status "<%= notification.artist_micropost.content.truncate(40) %>".
+    <% elsif notification.artist_micropost_id.present? && notification.artist_micropost_vote_id.present? %>
+      <%= notification.notice_type %>d  on your status "<%= notification.artist_micropost.content.truncate(40) %>".
+    <% elsif notification.artist_relationship_id.present? %>
+     <%= notification.notice_type %>ed you!
+    <% end %> <span class="posted"><%= time_ago_in_words(notification.created_at) %> ago.</span>
+  </div>
+  <% end %>
+<% end %>

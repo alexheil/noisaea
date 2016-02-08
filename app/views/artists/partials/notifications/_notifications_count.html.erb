@@ -1,0 +1,1 @@
+<%= link_to "notifications (#{current_artist.artist_notifications.where(read: false).count})", artist_notifications_path(current_artist), class: "depew" %>

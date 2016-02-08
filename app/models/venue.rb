@@ -6,6 +6,9 @@ class Venue < ActiveRecord::Base
  #:omniauthable
 
   has_one :venue_profile, dependent: :destroy
+
+  has_many :artist_notifications, dependent: :destroy
+
   has_many :venue_microposts, dependent: :destroy
   has_many :artist_micropost_comments, dependent: :destroy
   has_many :record_label_micropost_comments, dependent: :destroy

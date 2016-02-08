@@ -19,7 +19,7 @@
 
       <% if @artist == current_artist %>
         <div class="harlem vermont">
-          <%= link_to "add a album", new_artist_album_path(@artist), class: "sugar" %>
+          <%= link_to "add an album", new_artist_album_path(@artist), class: "sugar" %>
         </div>
       <% end %>
 
@@ -32,7 +32,7 @@
           <div class="ogden">
             <% if album.cover_art_url.present? %>
             <div class="highgate loretta">
-              <%= link_to image_tag("#{album.cover_art_url}", :width => "100%"), artist_merch_path(@artist, album) %>
+              <%= link_to image_tag("#{album.cover_art_url}", :width => "100%"), artist_album_path(@artist, album) %>
             </div>
             <% else %>
               <% if @artist == current_artist %>
@@ -42,7 +42,7 @@
               <% end %>
             <% end %>
             <% if @artist == current_artist %>
-              // <%= link_to "edit", edit_artist_album_path(@artist, album) %> or <%= link_to "delete", artist_merch_path(@artist, album), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+              // <%= link_to "edit", edit_artist_album_path(@artist, album) %> or <%= link_to "delete", artist_album_path(@artist, album), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
             <% end %>
           </div>
           <div class="ogden">
@@ -60,7 +60,7 @@
             </div>
           </div>
           <div class="ogden">
-            <div class="bryant">
+            <div class="bryant highgate">
               <%= link_to "get this?", album.album_url, class: "sugar" %>
             </div>
             <div class="posted">

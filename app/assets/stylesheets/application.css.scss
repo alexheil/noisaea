@@ -273,6 +273,12 @@ h4 {
   .pine-ridge {
     font-size: 2em;
   }
+  .fifteenth {
+    font-size: 1em;
+    li {
+      padding: 0;
+    }
+  }
 }
 
 .crescent {
@@ -867,7 +873,6 @@ h4 {
 .bryant {
   font-size: 1.25em;
   font-family: "Roboto", Helvetica, Arial, sans-serif;
-  margin: 2vh 0;
 }
 
 .ogden {
@@ -997,6 +1002,129 @@ h4 {
 
 .posted {
   font-size: .75em;
+}
+
+/*                            *********************************** TRACKS *********************** */
+
+audio {
+  height: 0px;
+}
+
+.audioplayer{
+  width: 85%;
+  height: 10vh;
+  margin: 0 auto 5vh auto;
+}
+
+.timeline-container {
+  width: 90%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.track-title {
+  font-size: 2em;
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  margin-bottom: 2vh;
+  line-height: 1.15em;
+}
+
+#pButton{
+  border: none;
+  background: rgba(0, 0, 0, 0);
+  display: inline-block;
+}
+
+.play {
+  width: 7%;
+  font-family: $fancy-font;
+  font-size: 7em;
+  display: inline-block;
+  line-height: 10px;
+  cursor: pointer;
+  &:after {
+    content: "\203A";
+  }
+}
+
+.pause {
+  width: 7%;
+  font-family: $fancy-font;
+  font-size: 3em;
+  display: inline-block;
+  line-height: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  &:after {
+    content: "| |";
+  }
+}
+
+#timeline{
+  width: 80%;
+  height: 5px;
+  margin-bottom: 4px;
+  display: inline-block;
+  background: rgba(0, 0, 0, 1);
+}
+
+#playhead{
+  width: 25px;
+  height: 15px;
+  margin-top: -5px;
+  background: rgba(0, 0, 0, 1);
+}
+
+#total_duration {
+  font-family: $fancy-font;
+  display: inline-block;
+}
+
+#current_time {
+  font-family: $fancy-font;
+  display: inline-block;
+}
+
+.show-lyrics {
+  display: none;
+}
+
+.hide {
+  display: none;
+}
+
+.track-details {
+  display: none;
+}
+
+.hide-lyrics {
+  display: none;
+}
+
+/*                           ****************************** NOTIFICATIONS ****************** */
+
+.norwood {
+  background: #BBDEFB;
+}
+
+.normal {
+  padding: 0;
+  font-size: 1em;
+  font-family: $fancy-font;
+  font-weight: 300;
+  border: none;
+  background-color: transparent;
+  color: $accent-color2;
+  cursor: pointer;
+  -webkit-transition: .3s;
+  -moz-transition: .3s;
+  -o-transition: .3s;
+  &:hover {
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -o-transition: .3s;
+    color: $accent-color3;
+  }
 }
 
 /*                           ****************************** FORMS ****************************** */
@@ -1468,6 +1596,22 @@ select {
     }
   }
 
+  .timeline-container {
+    width: 87%;
+  }
+
+  .play {
+    width: 10%;
+  }
+
+  .pause {
+    width: 10%;
+  }
+
+  #timeline{
+    width: 75%;
+  }
+
 }
 
 @media screen and (max-width: 1000px) {
@@ -1508,6 +1652,10 @@ select {
     font-size: 8em;
     line-height: 10rem;
   }
+
+    #timeline{
+      width: 70%;
+    }
 
 }
 
@@ -1593,10 +1741,6 @@ select {
     width: 49%;
   }
 
-  .bryant {
-    width: 49%;
-  }
-
   .ogden {
     width: 49%;
   }
@@ -1665,6 +1809,30 @@ select {
     }
   }
 
+  .audioplayer{
+    width: 100%;
+  }
+
+  .timeline-container {
+    width: 90%;
+  }
+
+  .play {
+    width: 7%;
+  }
+
+  .pause {
+    width: 7%;
+  }
+
+  #timeline{
+    width: 80%;
+  }
+
+  .play {
+    font-size: 6em;
+  }
+
 }
 
 @media screen and (max-width: 675px) {
@@ -1675,6 +1843,22 @@ select {
 
   .bailey {
     margin: 7vh 0;
+  }
+
+  .timeline-container {
+    width: 87%;
+  }
+
+  .play {
+    width: 10%;
+  }
+
+  .pause {
+    width: 10%;
+  }
+
+  #timeline{
+    width: 75%;
   }
 
 }
@@ -1691,6 +1875,26 @@ select {
 
   .north {
     font-size: 2em;
+  }
+
+  #timeline{
+    width: 70%;
+  }
+
+}
+
+@media screen and (max-width: 500px) {
+
+  .timeline-container{
+    width: 85%;
+  }
+
+  .play {
+    width: 13%;
+  }
+
+  .pause {
+    width: 13%;
   }
 
 }
@@ -1717,10 +1921,6 @@ select {
     width: 100%;
   }
 
-  .bryant {
-    width: 100%;
-  }
-
   .ogden {
     width: 100%;
   }
@@ -1733,6 +1933,22 @@ select {
 
   .william {
     width: 100%;
+  }
+
+  #timeline{
+    width: 62%;
+  }
+
+  .timeline-container{
+    width: 80%;
+  }
+
+  .play {
+    width: 17%;
+  }
+
+  .pause {
+    width: 17%;
   }
 
 }

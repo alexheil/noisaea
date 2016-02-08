@@ -1,11 +1,13 @@
 class ArtistAlbum < ActiveRecord::Base
   extend FriendlyId
-  friendly_id :title, use: :slugged
+  friendly_id :slug_candidates, use: :slugged
 
   default_scope -> { order('year DESC', 'month DESC', 'day DESC') }
 
   belongs_to :artist
   belongs_to :fan
+
+  has_many :artist_tracks, dependent: :destroy
 
   validates :artist_id, presence: true
   validates :title, presence: true
@@ -15,14 +17,23 @@ class ArtistAlbum < ActiveRecord::Base
   validates :month, presence: true, length: { maximum: 2 }, numericality: { less_than_or_equal_to: 12, greater_than: 0}
   validates :day, presence: true, length: { maximum: 2 }, numericality: { less_than_or_equal_to: 31, greater_than: 0 }
   validates :year, presence: true, length: { is: 4 }, numericality: { less_than_or_equal_to: 2017, greater_than: 1950}
-  validates :album_url, format: { with: /\A((http|https)?:\/\/)?(www.)?[a-zA-Z0-9]+.[a-z]+\/?/i }
-  validates :cover_art_url, format: { with: /\A((http|https)?:\/\/)?(www.)?[a-zA-Z0-9]+.[a-z]+\/?/i }
+  validates :album_url, format: { with: /\A((http|https)?:\/\/)?(www.)?[a-zA-Z0-9]+.[a-z]+\/?/i }, allow_blank: true
+  validates :cover_art_url, presence: true, format: { with: /\A((http|https)?:\/\/)?(www.)?[a-zA-Z0-9]+.[a-z]+\/?/i }
 
   before_save :smart_add_url_protocol
   before_save :february_time
   before_save :smart_calender
+  before_save :should_generate_new_friendly_id?, if: :title_changed?
 
   private
+
+    def should_generate_new_friendly_id?
+      title_changed?
+    end
+
+    def slug_candidates
+      [:title, [:artist_id, :title]]
+    end
 
     def february_time
       if self.month == 2 && self.year == 2016

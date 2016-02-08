@@ -6,6 +6,9 @@ class Producer < ActiveRecord::Base
  #:omniauthable
 
   has_one :producer_profile, dependent: :destroy
+
+  has_many :artist_notifications, dependent: :destroy
+
   has_many :producer_microposts, dependent: :destroy
   has_many :artist_micropost_comments, dependent: :destroy
   has_many :record_label_micropost_comments, dependent: :destroy

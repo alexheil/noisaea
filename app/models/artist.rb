@@ -6,6 +6,9 @@ class Artist < ActiveRecord::Base
          #and :omniauthable
 
   has_one :artist_profile, dependent: :destroy
+
+  has_many :artist_notifications, dependent: :destroy
+
   has_many :artist_microposts, dependent: :destroy
   has_many :artist_micropost_comments, dependent: :destroy
   has_many :record_label_micropost_comments, dependent: :destroy
@@ -32,7 +35,8 @@ class Artist < ActiveRecord::Base
 
   has_many :artist_merches, dependent: :destroy
 
-  has_many :artist_albums
+  has_many :artist_albums, dependent: :destroy
+  has_many :artist_tracks, through: :artist_albums
 
   has_many :artist_relationships, dependent: :destroy
   has_many :fans, through: :artist_relationships

@@ -1,0 +1,26 @@
+<%= provide(:title, sanitize(@artist.artist_name) + " | Shows") %>
+<div class="buffalo">
+
+  <%= render 'artists/partials/artist_cover_image' %>
+
+  <div class="delaware">
+
+    <main class="main">
+
+      <%= render 'artists/partials/artist_name' %>
+
+      <div class="highgate vermont">
+        notifications // <span class="notifications_count_page posted"><%= render 'artists/partials/notifications/notifications_count_page' %></span>
+      </div>
+
+      <div class="notifications_js">
+        <%= render 'artists/partials/notifications/notifications_js' %>
+      </div>
+
+    </main>
+
+    <%= render 'artists/partials/artist_sidebar' %>
+
+  </div>
+</div>
+<%= render "partials/uni_footer" %>

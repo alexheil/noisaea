@@ -18,8 +18,13 @@ class ArtistMerch < ActiveRecord::Base
   validates :image_url, format: { with: /\A(http|https):\/\/|[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,6}(:[0-9]{1,5})?(\/.*)?\z/ix }, allow_blank: true
 
   before_save :total_price_calculator
+  before_save :should_generate_new_friendly_id?, if: :title_changed?
 
   private
+
+    def should_generate_new_friendly_id?
+      title_changed?
+    end
 
     def total_price_calculator
       self.total_price = base_price + shipping_price

@@ -6,6 +6,9 @@ class RecordLabel < ActiveRecord::Base
  #:omniauthable
 
   has_one :record_label_profile, dependent: :destroy
+
+  has_many :artist_notifications, dependent: :destroy
+
   has_many :record_label_microposts, dependent: :destroy
   has_many :artist_micropost_comments, dependent: :destroy
   has_many :record_label_micropost_comments, dependent: :destroy

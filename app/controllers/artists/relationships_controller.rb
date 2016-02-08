@@ -9,6 +9,7 @@ class Artists::RelationshipsController < ApplicationController
     @artist = Artist.friendly.find(params[:artist_id])
     if @relationship.save
       flash.now[:notice] = "you followed #{@artist.artist_name}!"
+      create_notification(@relationship)
       ArtistMailer.follow_email(@artist).deliver
       respond_to do |format|
         format.html { redirect_to (:back) }
@@ -28,5 +29,14 @@ class Artists::RelationshipsController < ApplicationController
       format.js { render :action => "follow_button" }
     end
   end
+
+  private
+
+    def create_notification(artist_relationship)
+      ArtistNotification.create(artist_id: artist_relationship.artist_id,
+        notifier_fan_id: current_fan.id,
+        artist_relationship_id: artist_relationship.id,
+        notice_type: 'follow')
+    end
 
 end

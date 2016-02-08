@@ -121,6 +121,13 @@ en:
         currency: ""
         album_url: ""
         cover_art_url: ""
+      artist_track:
+        title: ""
+        number: ""
+        price: ""
+        currency: ""
+        track_url: ""
+        lyrics: ""
     errors:
       models:
         artist_profile:
@@ -388,7 +395,7 @@ en:
             year:
               blank: "you need to include a year."
               wrong_length: "umm... a year is 4 digits long."
-              greater_than: "sorry, but your show can't be before 2014."
+              greater_than: "sorry, but your album can't be before 1950."
               less_than_or_equal_to: "that's crazy far into the future."
               not_a_number: "that year is not a number."
             price:
@@ -399,11 +406,35 @@ en:
             currency:
               blank: "you must include a valid currency."
             album_url:
-              blank: "you must include a link to your album."
               invalid: "that is definitely not a vaild url."
             cover_art_url:
-              blank: "you must include a link to your album."
+              blank: "you must include a link for your album art."
               invalid: "that is definitely not a vaild url."
+        artist_track:
+          attributes:
+            title:
+              taken: "that track already belongs to this album."
+              blank: "you need to include a track title."
+              too_long: "your track title is too long. Keep it under 150 characters."
+            number:
+              taken: "that track number already exists for this album."
+              blank: "you need to include a track number."
+              too_long: "one or two digits allowed for your track number. I hope you understand."
+              greater_than: "your track number has to be over zero, bruh."
+              not_a_number: "that track number is defintely not a number."
+              less_than_or_equal_to: "correct me if I'm wrong, but there is no way there are over 100 songs on this album."
+            lyrics:
+              too_long: "I think you put too many words in those lyrics"
+            price:
+              blank: "you must include a price."
+              wrong_length: "I doubt your price is more than 999,999."
+              greater_than: "your price can't be negative."
+              not_a_number: "that price is not a number."
+            currency:
+              blank: "you must include a valid currency."
+            track_url:
+              blank: "you must include a link to your track."
+              invalid: "that track link is definitely not a vaild url."
 
 
 

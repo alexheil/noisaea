@@ -1,0 +1,93 @@
+<%= provide(:title, sanitize(@artist.artist_name) + " | " + sanitize(@album.title)) %>
+<div class="buffalo">
+
+  <%= render 'artists/partials/artist_cover_image' %>
+
+  <div class="delaware">
+
+    <main class="main">
+
+      <ul class="carolina">
+        <li><%= link_to "timeline", artist_path(@artist) %></li>
+        <li class="jersey"><%= link_to "music", artist_albums_path(@artist) %></li>
+        <li><%= link_to "merch", artist_merches_path(@artist) %></li>
+        <li><%= link_to "shows", artist_shows_path(@artist) %></li>
+        <li><%= link_to "videos", artist_videos_path(@artist) %></li>
+      </ul>
+
+      <%= render 'artists/partials/artist_name' %>
+
+      <div class="amherst">
+        <div class="harlem">
+
+          <div class="fargo">
+            <div id="riley">
+              <img srcset="<%= @album.cover_art_url %>" width="100%" height="auto" />
+            </div>
+          </div>
+          <div class="fargo">
+            <div class="vermont busti">
+              <%= @track.title %>
+              <div class="lakeview amherst busti">
+                from
+                <div class="amherst">
+                  <%= @album.title %>
+                </div>
+              </div>
+            </div>
+            <div class="bryant highgate busti">
+              <span class="posted">price //</span> <%= @track.price %> <%= @track.currency %>
+            </div>
+          </div>
+          <% if @artist == current_artist %>
+            // <%= link_to "edit", edit_artist_album_track_path(@artist, @album, @track) %> or <%= link_to "delete", artist_album_track_path(@artist, @album, @track), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+          <% end %>
+
+        </div>
+
+        <div class="busti">
+          <div class="track-title">
+            <%= @track.number %> - <%= @track.title %>
+          </div>
+        </div>
+
+        <audio id="music" preload="true">
+            <source src="<%= @track.track_url %>"></source>
+        </audio>
+        <div class="audioplayer">
+          <div id="pButton" class="play" alt="play"></div>
+          <div class="timeline-container">
+            <div id="current_time">00:00</div>
+            <div id="timeline">
+                  <div id="playhead"></div>
+            </div>
+            <div id="total_duration">00:00</div>
+          </div>
+        </div>
+
+
+        <% if @track.lyrics.present? %>
+        <div class="ashland">
+          lyrics //
+        </div>
+        <div class="best">
+          <%= @track.lyrics %>
+        </div>
+        <% end %>
+      </div>
+
+    </main>
+
+    <%= render 'artists/partials/artist_sidebar' %>
+
+  </div>
+</div>
+<%= render "partials/uni_footer" %>
+
+<div id="back"></div>
+<div id="front">
+  <div class="lightbox-image">
+  <div id="close"></div>
+    <img srcset="<%= @album.cover_art_url %>" width="100%" height="auto" />
+  </div>
+</div>
