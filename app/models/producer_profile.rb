@@ -9,6 +9,7 @@ class ProducerProfile < ActiveRecord::Base
   validates :twitter_url, format: { with: /\A((http|https)?:\/\/)?(www.)?twitter.com\/?/i }, allow_blank: true
   validates :youtube_url, format: { with: /\A((http|https)?:\/\/)?(www.)?youtube.com\/?/i }, allow_blank: true
   validates :website, format: { with: /\A((http|https)?:\/\/)?(www.)?[a-zA-Z0-9]+.[a-z]+\/?/i }, allow_blank: true
+  validates :letlyrics_url, format: { with: /\A((http|https)?:\/\/)?(www.)?letlyrics.com\/?/i }, allow_blank: true
 
   before_save :smart_add_url_protocol
   before_save :downcase_url
@@ -28,6 +29,9 @@ class ProducerProfile < ActiveRecord::Base
       unless self.website[/\Ahttp:\/\//] || self.website[/\Ahttps:\/\//]
         self.website = "https://#{self.website}" unless website.blank?
       end
+      unless self.letlyrics_url[/\Ahttp:\/\//] || self.letlyrics_url[/\Ahttps:\/\//]
+        self.letlyrics_url = "https://#{self.letlyrics_url}" unless letlyrics_url.blank?
+      end
     end
 
     def downcase_url
@@ -35,6 +39,7 @@ class ProducerProfile < ActiveRecord::Base
       self.twitter_url = twitter_url.downcase
       self.youtube_url = youtube_url.downcase
       self.website = website.downcase
+      self.letlyrics_url = letlyrics_url.downcase
     end
 
 end

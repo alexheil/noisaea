@@ -21,7 +21,7 @@ class Artists::CommentsController < ApplicationController
     if @comment.save
       flash.now[:notice] = "you posted a comment on #{@artist.artist_name}'s status."
       create_notification(@micropost, @comment)
-      ArtistMailer.comment_email(@artist, @micropost).deliver
+      send_comment_email
       respond_to do |format|
         format.html { redirect_to (:back) }
         format.js { render :action => "comments" }
@@ -44,6 +44,11 @@ class Artists::CommentsController < ApplicationController
   end
 
   private
+
+    def send_comment_email
+      return if @artist.id == current_artist.id
+      ArtistMailer.comment_email(@artist, @micropost).deliver_now unless @artist.comment_email == false
+    end
 
     def create_notification(artist_micropost, artist_micropost_comment)
       if artist_signed_in?

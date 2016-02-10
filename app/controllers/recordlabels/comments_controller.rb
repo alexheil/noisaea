@@ -20,7 +20,7 @@ class Recordlabels::CommentsController < ApplicationController
     end
     if @comment.save
       flash.now[:notice] = "you posted a comment on #{@record_label.label_name}'s status."
-      RecordLabelMailer.comment_email(@record_label, @micropost).deliver
+      send_comment_email
       respond_to do |format|
         format.html { redirect_to (:back) }
         format.js { render :action => "comments" }
@@ -43,6 +43,11 @@ class Recordlabels::CommentsController < ApplicationController
   end
 
   private
+
+    def send_comment_email
+      return if @record_label.id == current_record_label.id
+      RecordLabelMailer.comment_email(@record_label, @micropost).deliver_now unless @record_label.comment_email == false
+    end
 
     def authenticate_commenter
       (authenticate_fan! unless artist_signed_in? || record_label_signed_in? || venue_signed_in? || producer_signed_in?)

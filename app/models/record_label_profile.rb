@@ -13,6 +13,7 @@ class RecordLabelProfile < ActiveRecord::Base
   validates :google_play_url, format: { with: /\A((http|https)?:\/\/)?(play.)google.com\/?/i }, allow_blank: true
   validates :ticketfly_url, format: { with: /\A((http|https)?:\/\/)?(www.)?ticketfly.com\/?/i }, allow_blank: true
   validates :website, format: { with: /\A((http|https)?:\/\/)?(www.)?[a-zA-Z0-9]+.[a-z]+\/?/i }, allow_blank: true
+  validates :letlyrics_url, format: { with: /\A((http|https)?:\/\/)?(www.)?letlyrics.com\/?/i }, allow_blank: true
 
   before_save :smart_add_url_protocol
   before_save :downcase_url
@@ -44,6 +45,9 @@ class RecordLabelProfile < ActiveRecord::Base
       unless self.website[/\Ahttp:\/\//] || self.website[/\Ahttps:\/\//]
         self.website = "https://#{self.website}" unless website.blank?
       end
+      unless self.letlyrics_url[/\Ahttp:\/\//] || self.letlyrics_url[/\Ahttps:\/\//]
+        self.letlyrics_url = "https://#{self.letlyrics_url}" unless letlyrics_url.blank?
+      end
     end
 
     def downcase_url
@@ -55,6 +59,7 @@ class RecordLabelProfile < ActiveRecord::Base
       self.google_play_url = google_play_url.downcase
       self.ticketfly_url = ticketfly_url.downcase
       self.website = website.downcase
+      self.letlyrics_url = letlyrics_url.downcase
     end
 
 end

@@ -20,7 +20,7 @@ class Producers::CommentsController < ApplicationController
     end
     if @comment.save
       flash.now[:notice] = "you posted a comment on #{@producer.producer_name}'s status."
-      ProducerMailer.comment_email(@producer, @micropost).deliver
+      send_comment_email
       respond_to do |format|
         format.html { redirect_to (:back) }
         format.js { render :action => "comments" }
@@ -43,6 +43,11 @@ class Producers::CommentsController < ApplicationController
   end
 
   private
+
+    def send_comment_email
+      return if @producer.id == current_producer.id
+      ProducerMailer.comment_email(@producer, @micropost).deliver_now unless @producer.comment_email == false
+    end
 
     def authenticate_commenter
       (authenticate_fan! unless artist_signed_in? || record_label_signed_in? || venue_signed_in? || producer_signed_in?)

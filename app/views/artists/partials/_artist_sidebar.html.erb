@@ -16,14 +16,14 @@
     </div>
   </div>
 
-  <% if artist_signed_in? && @artist.id == current_artist.id && @artist.artist_profile.location.blank? && @artist.artist_profile.genre.blank? && @artist.artist_profile.members.blank? && @artist.artist_profile.biography.blank? && @artist.artist_profile.facebook_url.blank? && @artist.artist_profile.twitter_url.blank? && @artist.artist_profile.youtube_url.blank? && @artist.artist_profile.itunes_url.blank? && @artist.artist_profile.amazon_url.blank? && @artist.artist_profile.google_play_url.blank? && @artist.artist_profile.record_label.blank? && @artist.artist_profile.website.blank? && @artist.artist_profile.ticketfly_url.blank? %>
+  <% if artist_signed_in? && @artist.id == current_artist.id && @artist.artist_profile.location.blank? && @artist.artist_profile.genre.blank? && @artist.artist_profile.members.blank? && @artist.artist_profile.biography.blank? && @artist.artist_profile.facebook_url.blank? && @artist.artist_profile.twitter_url.blank? && @artist.artist_profile.youtube_url.blank? && @artist.artist_profile.itunes_url.blank? && @artist.artist_profile.amazon_url.blank? && @artist.artist_profile.google_play_url.blank? && @artist.artist_profile.record_label.blank? && @artist.artist_profile.website.blank? && @artist.artist_profile.ticketfly_url.blank? && @artist.artist_profile.letlyrics_url.blank? %>
     <div class="amherst">
       you do not have any profile information
     </div>
     <div class="jefferson">
       <%= link_to "update your profile", edit_artist_profile_path(current_artist) %>
     </div>
-  <% elsif @artist.artist_profile.location.blank? && @artist.artist_profile.genre.blank? && @artist.artist_profile.members.blank? && @artist.artist_profile.biography.blank? && @artist.artist_profile.facebook_url.blank? && @artist.artist_profile.twitter_url.blank? && @artist.artist_profile.youtube_url.blank? && @artist.artist_profile.itunes_url.blank? && @artist.artist_profile.amazon_url.blank? && @artist.artist_profile.google_play_url.blank? && @artist.artist_profile.record_label.blank? && @artist.artist_profile.website.blank? && @artist.artist_profile.ticketfly_url.blank? %>
+  <% elsif @artist.artist_profile.location.blank? && @artist.artist_profile.genre.blank? && @artist.artist_profile.members.blank? && @artist.artist_profile.biography.blank? && @artist.artist_profile.facebook_url.blank? && @artist.artist_profile.twitter_url.blank? && @artist.artist_profile.youtube_url.blank? && @artist.artist_profile.itunes_url.blank? && @artist.artist_profile.amazon_url.blank? && @artist.artist_profile.google_play_url.blank? && @artist.artist_profile.record_label.blank? && @artist.artist_profile.website.blank? && @artist.artist_profile.ticketfly_url.blank? && @artist.artist_profile.letlyrics_url.blank? %>
     <div class="amherst">
       <%= "#{@artist.artist_name} does not have any profile information yet" %>
     </div>
@@ -110,6 +110,11 @@
   <% if @artist.artist_profile.ticketfly_url.present? %>
   <div class="fillmore">
     <%= link_to "Ticketfly", @artist.artist_profile.ticketfly_url, :target => "_blank", class: "sticketfly" %>
+  </div>
+  <% end %>
+  <% if @artist.artist_profile.letlyrics_url.present? %>
+  <div class="fillmore">
+    <%= link_to "let:lyrics", @artist.artist_profile.letlyrics_url, :target => "_blank", class: "sletlyrics" %>
   </div>
   <% end %>
 </aside>

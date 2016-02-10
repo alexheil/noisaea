@@ -587,6 +587,13 @@ h4 {
   }
 }
 
+.sletlyrics {
+  color: #4caf50;
+  &:hover {
+    color: $main-color;
+  }
+}
+
 /*                          ****************************** USERS ****************************** */
 
 .clinton {
@@ -1240,7 +1247,7 @@ select {
     position: absolute;
     border: 3px solid #F44336;
     background-color: #F44336;
-    color: $my-black;
+    color: #fff;
     text-align: center;
     box-sizing: border-box;
     opacity: 0;
@@ -1262,7 +1269,7 @@ select {
       position: absolute;
       border: 3px solid #F44336;
       background-color: #F44336;
-      color: $my-black;
+      color: #fff;
       text-align: center;
       box-sizing: border-box;
       opacity: 1;
@@ -1280,15 +1287,18 @@ select {
   text-align: center;
   font-family: $fancy-font;
   font-size: 1.3em;
-  background-color: #F44336;
+  background-color: #fff;
   border: 3px solid #F44336;
-  color: $my-black;
+  color: #F44336;
   cursor: pointer;
   box-sizing: border-box;
   -webkit-transition: .3s;
   -moz-transition: .3s;
   -o-transition: .3s;
+  font-weight: 300;
   &:hover {
+    background-color: #F44336;
+    color: #fff;
     -webkit-transition: .3s;
     -moz-transition: .3s;
     -o-transition: .3s;
@@ -1436,18 +1446,7 @@ select {
 }
 
 .temp {
-  text-align: center;
   font-size: 1.5em;
-  margin-top: 8vh;
-  a {
-    color: #fff;
-    padding: 2vh 2vw;
-    background: $main-color;
-    &:hover {
-      color: #fff;
-      background:$accent-color2;
-    }
-  }
 }
 
 /* ************************ REGISTER AND SIGN IN *************** */

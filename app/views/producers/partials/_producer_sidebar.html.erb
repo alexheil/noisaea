@@ -16,14 +16,14 @@
     </div>
   </div>
 
-  <% if producer_signed_in? && @producer.id == current_producer.id && @producer.producer_profile.location.blank? && @producer.producer_profile.genre.blank? && @producer.producer_profile.founded && @producer.producer_profile.artists.blank? && @producer.producer_profile.biography.blank? && @producer.producer_profile.facebook_url.blank? && @producer.producer_profile.twitter_url.blank? && @producer.producer_profile.youtube_url.blank? && @producer.producer_profile.website.blank? %>
+  <% if producer_signed_in? && @producer.id == current_producer.id && @producer.producer_profile.location.blank? && @producer.producer_profile.genre.blank? && @producer.producer_profile.founded && @producer.producer_profile.artists.blank? && @producer.producer_profile.biography.blank? && @producer.producer_profile.facebook_url.blank? && @producer.producer_profile.twitter_url.blank? && @producer.producer_profile.youtube_url.blank? && @producer.producer_profile.website.blank? && @producer.producer_profile.letlyrics_url.blank? %>
     <div class="amherst">
       you do not have any profile information
     </div>
     <div class="jefferson">
       <%= link_to "update your profile", edit_producer_profile_path(current_producer) %>
     </div>
-  <% elsif @producer.producer_profile.location.blank? && @producer.producer_profile.genre.blank? && @producer.producer_profile.founded && @producer.producer_profile.artists.blank? && @producer.producer_profile.biography.blank? && @producer.producer_profile.facebook_url.blank? && @producer.producer_profile.twitter_url.blank? && @producer.producer_profile.youtube_url.blank? && @producer.producer_profile.website.blank? %>
+  <% elsif @producer.producer_profile.location.blank? && @producer.producer_profile.genre.blank? && @producer.producer_profile.founded && @producer.producer_profile.artists.blank? && @producer.producer_profile.biography.blank? && @producer.producer_profile.facebook_url.blank? && @producer.producer_profile.twitter_url.blank? && @producer.producer_profile.youtube_url.blank? && @producer.producer_profile.website.blank? && @producer.producer_profile.letlyrics_url.blank? %>
     <div class="amherst">
       <%= "#{@producer.producer_name} does not have any profile information yet" %>
     </div>
@@ -86,6 +86,11 @@
   <% if @producer.producer_profile.youtube_url.present? %>
   <div class="fillmore">
     <%= link_to "YouTube", @producer.producer_profile.youtube_url, :target => "_blank", class: "syoutube" %>
+  </div>
+  <% end %>
+  <% if @producer.producer_profile.letlyrics_url.present? %>
+  <div class="fillmore">
+    <%= link_to "YouTube", @producer.producer_profile.letlyrics_url, :target => "_blank", class: "sletlyrics" %>
   </div>
   <% end %>
 </aside>

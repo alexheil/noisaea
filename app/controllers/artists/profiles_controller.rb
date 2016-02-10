@@ -34,7 +34,7 @@ class Artists::ProfilesController < ApplicationController
     end
 
     def profile_params
-      params.require(:artist_profile).permit(:biography, :location, :genre, :members, :website, :facebook_url, :twitter_url, :youtube_url, :itunes_url, :amazon_url, :google_play_url, :ticketfly_url, :record_label, :cover_image, :profile_image)
+      params.require(:artist_profile).permit(:biography, :location, :genre, :members, :website, :facebook_url, :twitter_url, :youtube_url, :itunes_url, :amazon_url, :google_play_url, :ticketfly_url, :letlyrics_url, :record_label, :cover_image, :profile_image)
     end
 
 end

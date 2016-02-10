@@ -10,7 +10,7 @@ class Artists::RelationshipsController < ApplicationController
     if @relationship.save
       flash.now[:notice] = "you followed #{@artist.artist_name}!"
       create_notification(@relationship)
-      ArtistMailer.follow_email(@artist).deliver
+      ArtistMailer.follow_email(@artist).deliver_now unless @artist.follow_email == false
       respond_to do |format|
         format.html { redirect_to (:back) }
         format.js { render :action => "follow_button" }

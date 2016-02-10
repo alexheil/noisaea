@@ -34,7 +34,7 @@ class Producers::ProfilesController < ApplicationController
     end
 
     def profile_params
-      params.require(:producer_profile).permit(:biography, :location, :genre, :artists, :founded, :facebook_url, :twitter_url, :youtube_url, :website, :cover_image, :profile_image)
+      params.require(:producer_profile).permit(:biography, :location, :genre, :artists, :founded, :facebook_url, :twitter_url, :youtube_url, :website, :letlyrics_url, :cover_image, :profile_image)
     end
 
 end

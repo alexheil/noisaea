@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160207014301) do
+ActiveRecord::Schema.define(version: 20160209235559) do
 
   create_table "artist_albums", force: :cascade do |t|
     t.integer  "artist_id"
@@ -173,6 +173,7 @@ ActiveRecord::Schema.define(version: 20160207014301) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "website",         limit: 255, default: ""
+    t.string   "letlyrics_url",               default: ""
   end
 
   add_index "artist_profiles", ["artist_id"], name: "index_artist_profiles_on_artist_id", unique: true
@@ -235,14 +236,14 @@ ActiveRecord::Schema.define(version: 20160207014301) do
   add_index "artist_videos", ["artist_id"], name: "index_artist_videos_on_artist_id"
 
   create_table "artists", force: :cascade do |t|
-    t.string   "artist_name",            limit: 255, default: "", null: false
-    t.string   "username",               limit: 255, default: "", null: false
-    t.string   "email",                  limit: 255, default: "", null: false
-    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "artist_name",            limit: 255, default: "",   null: false
+    t.string   "username",               limit: 255, default: "",   null: false
+    t.string   "email",                  limit: 255, default: "",   null: false
+    t.string   "encrypted_password",     limit: 255, default: "",   null: false
     t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                      default: 0,  null: false
+    t.integer  "sign_in_count",                      default: 0,    null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip",     limit: 255
@@ -251,12 +252,14 @@ ActiveRecord::Schema.define(version: 20160207014301) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email",      limit: 255
-    t.integer  "failed_attempts",                    default: 0,  null: false
+    t.integer  "failed_attempts",                    default: 0,    null: false
     t.string   "unlock_token",           limit: 255
     t.datetime "locked_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug",                   limit: 255
+    t.boolean  "comment_email",                      default: true
+    t.boolean  "follow_email",                       default: true
   end
 
   add_index "artists", ["artist_name"], name: "index_artists_on_artist_name"
@@ -549,6 +552,7 @@ ActiveRecord::Schema.define(version: 20160207014301) do
     t.string   "profile_image", limit: 255, default: ""
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "letlyrics_url",             default: ""
   end
 
   add_index "producer_profiles", ["producer_id"], name: "index_producer_profiles_on_producer_id", unique: true
@@ -577,14 +581,14 @@ ActiveRecord::Schema.define(version: 20160207014301) do
   add_index "producer_videos", ["producer_id"], name: "index_producer_videos_on_producer_id"
 
   create_table "producers", force: :cascade do |t|
-    t.string   "producer_name",          limit: 255, default: "", null: false
-    t.string   "username",               limit: 255, default: "", null: false
-    t.string   "email",                  limit: 255, default: "", null: false
-    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "producer_name",          limit: 255, default: "",   null: false
+    t.string   "username",               limit: 255, default: "",   null: false
+    t.string   "email",                  limit: 255, default: "",   null: false
+    t.string   "encrypted_password",     limit: 255, default: "",   null: false
     t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                      default: 0,  null: false
+    t.integer  "sign_in_count",                      default: 0,    null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip",     limit: 255
@@ -593,12 +597,14 @@ ActiveRecord::Schema.define(version: 20160207014301) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email",      limit: 255
-    t.integer  "failed_attempts",                    default: 0,  null: false
+    t.integer  "failed_attempts",                    default: 0,    null: false
     t.string   "unlock_token",           limit: 255
     t.datetime "locked_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug",                   limit: 255
+    t.boolean  "comment_email",                      default: true
+    t.boolean  "follow_email",                       default: true
   end
 
   add_index "producers", ["confirmation_token"], name: "index_producers_on_confirmation_token", unique: true
@@ -704,6 +710,7 @@ ActiveRecord::Schema.define(version: 20160207014301) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "website",         limit: 255, default: ""
+    t.string   "letlyrics_url",               default: ""
   end
 
   add_index "record_label_profiles", ["record_label_id"], name: "index_record_label_profiles_on_record_label_id", unique: true
@@ -749,14 +756,14 @@ ActiveRecord::Schema.define(version: 20160207014301) do
   add_index "record_label_videos", ["record_label_id"], name: "index_record_label_videos_on_record_label_id"
 
   create_table "record_labels", force: :cascade do |t|
-    t.string   "label_name",             limit: 255, default: "", null: false
-    t.string   "username",               limit: 255, default: "", null: false
-    t.string   "email",                  limit: 255, default: "", null: false
-    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "label_name",             limit: 255, default: "",   null: false
+    t.string   "username",               limit: 255, default: "",   null: false
+    t.string   "email",                  limit: 255, default: "",   null: false
+    t.string   "encrypted_password",     limit: 255, default: "",   null: false
     t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                      default: 0,  null: false
+    t.integer  "sign_in_count",                      default: 0,    null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip",     limit: 255
@@ -765,12 +772,14 @@ ActiveRecord::Schema.define(version: 20160207014301) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email",      limit: 255
-    t.integer  "failed_attempts",                    default: 0,  null: false
+    t.integer  "failed_attempts",                    default: 0,    null: false
     t.string   "unlock_token",           limit: 255
     t.datetime "locked_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug",                   limit: 255
+    t.boolean  "comment_email",                      default: true
+    t.boolean  "follow_email",                       default: true
   end
 
   add_index "record_labels", ["confirmation_token"], name: "index_record_labels_on_confirmation_token", unique: true
@@ -871,6 +880,7 @@ ActiveRecord::Schema.define(version: 20160207014301) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "website",       limit: 255, default: ""
+    t.string   "letlyrics_url",             default: ""
   end
 
   add_index "venue_profiles", ["venue_id"], name: "index_venue_profiles_on_venue_id", unique: true
@@ -916,14 +926,14 @@ ActiveRecord::Schema.define(version: 20160207014301) do
   add_index "venue_videos", ["venue_id"], name: "index_venue_videos_on_venue_id"
 
   create_table "venues", force: :cascade do |t|
-    t.string   "venue_name",             limit: 255, default: "", null: false
-    t.string   "username",               limit: 255, default: "", null: false
-    t.string   "email",                  limit: 255, default: "", null: false
-    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "venue_name",             limit: 255, default: "",   null: false
+    t.string   "username",               limit: 255, default: "",   null: false
+    t.string   "email",                  limit: 255, default: "",   null: false
+    t.string   "encrypted_password",     limit: 255, default: "",   null: false
     t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                      default: 0,  null: false
+    t.integer  "sign_in_count",                      default: 0,    null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip",     limit: 255
@@ -932,12 +942,14 @@ ActiveRecord::Schema.define(version: 20160207014301) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email",      limit: 255
-    t.integer  "failed_attempts",                    default: 0,  null: false
+    t.integer  "failed_attempts",                    default: 0,    null: false
     t.string   "unlock_token",           limit: 255
     t.datetime "locked_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug",                   limit: 255
+    t.boolean  "comment_email",                      default: true
+    t.boolean  "follow_email",                       default: true
   end
 
   add_index "venues", ["confirmation_token"], name: "index_venues_on_confirmation_token", unique: true

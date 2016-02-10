@@ -20,7 +20,7 @@ class Venues::CommentsController < ApplicationController
     end
     if @comment.save
       flash.now[:notice] = "you posted a comment on #{@venue.venue_name}'s status."
-      VenueMailer.comment_email(@venue, @micropost).deliver
+      send_comment_email
       respond_to do |format|
         format.html { redirect_to (:back) }
         format.js { render :action => "comments" }
@@ -43,6 +43,11 @@ class Venues::CommentsController < ApplicationController
   end
 
   private
+
+    def send_comment_email
+      return if @venue.id == current_venue.id
+      VenueMailer.comment_email(@venue, @micropost).deliver_now unless @venue.follow_email == false
+    end
 
     def authenticate_commenter
       (authenticate_fan! unless artist_signed_in? || record_label_signed_in? || venue_signed_in? || producer_signed_in?)
