@@ -17,7 +17,7 @@
       <% end %>
     </div>
 
-    <% if @record_labels.any? %>
+    <% if @record_labels.present? %>
 
     <div class="washington">
       <div class="highgate">
@@ -980,6 +980,10 @@
         <% end %>
       </div>
 
+    <% else %>
+    <div class="highgate">
+      there are no record labels containing the term(s) "<%= params[:search] %>". <%= link_to "discover other record labels?", record_labels_path %>
+    </div>
     <% end %>
   </div>
 </div>

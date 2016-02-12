@@ -17,7 +17,7 @@
       <% end %>
     </div>
 
-    <% if @producers.any? %>
+    <% if @producers.present? %>
 
       <div class="washington">
         <div class="highgate">
@@ -1018,6 +1018,9 @@
         <% end %>
       </div>
 
+    <% else %>
+    <div class="highgate">
+      there are no producers containing the term(s) "<%= params[:search] %>". <%= link_to "discover other producers?", producers_path %>
     <% end %>
   </div>
 </div>

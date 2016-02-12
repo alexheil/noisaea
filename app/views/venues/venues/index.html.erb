@@ -17,7 +17,7 @@
       <% end %>
     </div>
 
-    <% if @venues.any? %>
+    <% if @venues.present? %>
 
       <div class="washington">
         <div class="highgate">
@@ -173,6 +173,10 @@
         <% end %>
       </div>
 
+    <% else %>
+    <div class="highgate">
+      there are no venues containing the term(s) "<%= params[:search] %>". <%= link_to "discover other venues?", venues_path %>
+    </div>
     <% end %>
   </div>
 </div>

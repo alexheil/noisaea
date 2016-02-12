@@ -27,7 +27,7 @@
       <li><%= link_to "videos", index_artist_videos_path %></li>
     </ul>
 
-    <% if @artists.any? %>
+    <% if @artists.present? %>
 
     <div class="washington">
       <div class="highgate">
@@ -989,6 +989,10 @@
         <% end %>
       </div>
 
+    <% else %>
+    <div class="highgate">
+      there are no artists containing the term(s) "<%= params[:search] %>". <%= link_to "discover other artists?", artists_path %>
+    </div>
     <% end %>
   </div>
 </div>
