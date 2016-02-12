@@ -34,7 +34,7 @@ class Fans::ProfilesController < ApplicationController
     end
 
     def profile_params
-      params.require(:fan_profile).permit(:biography, :location, :website, :cover_image, :profile_image)
+      params.require(:fan_profile).permit(:biography, :location, :website, :theme_color, :cover_image, :profile_image)
     end
 
 end

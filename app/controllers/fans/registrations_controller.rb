@@ -41,7 +41,7 @@ class Fans::RegistrationsController < Devise::RegistrationsController
   private
 
     def profile_params
-      params.permit(:biography, :location, :website, :cover_image, :profile_image)
+      params.permit(:biography, :location, :website, :theme_color, :cover_image, :profile_image)
     end
 
   # protected

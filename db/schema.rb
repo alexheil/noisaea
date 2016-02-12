@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160209235559) do
+ActiveRecord::Schema.define(version: 20160211235500) do
 
   create_table "artist_albums", force: :cascade do |t|
     t.integer  "artist_id"
@@ -174,6 +174,7 @@ ActiveRecord::Schema.define(version: 20160209235559) do
     t.datetime "updated_at"
     t.string   "website",         limit: 255, default: ""
     t.string   "letlyrics_url",               default: ""
+    t.string   "theme_color",                 default: ""
   end
 
   add_index "artist_profiles", ["artist_id"], name: "index_artist_profiles_on_artist_id", unique: true
@@ -370,6 +371,7 @@ ActiveRecord::Schema.define(version: 20160209235559) do
     t.string   "profile_image", limit: 255, default: ""
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "theme_color",               default: ""
   end
 
   add_index "fan_profiles", ["fan_id"], name: "index_fan_profiles_on_fan_id", unique: true
@@ -553,6 +555,7 @@ ActiveRecord::Schema.define(version: 20160209235559) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "letlyrics_url",             default: ""
+    t.string   "theme_color",               default: ""
   end
 
   add_index "producer_profiles", ["producer_id"], name: "index_producer_profiles_on_producer_id", unique: true
@@ -711,6 +714,7 @@ ActiveRecord::Schema.define(version: 20160209235559) do
     t.datetime "updated_at"
     t.string   "website",         limit: 255, default: ""
     t.string   "letlyrics_url",               default: ""
+    t.string   "theme_color",                 default: ""
   end
 
   add_index "record_label_profiles", ["record_label_id"], name: "index_record_label_profiles_on_record_label_id", unique: true
@@ -881,6 +885,7 @@ ActiveRecord::Schema.define(version: 20160209235559) do
     t.datetime "updated_at"
     t.string   "website",       limit: 255, default: ""
     t.string   "letlyrics_url",             default: ""
+    t.string   "theme_color",               default: ""
   end
 
   add_index "venue_profiles", ["venue_id"], name: "index_venue_profiles_on_venue_id", unique: true

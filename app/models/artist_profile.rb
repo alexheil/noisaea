@@ -13,9 +13,11 @@ class ArtistProfile < ActiveRecord::Base
   validates :ticketfly_url, format: { with: /\A((http|https)?:\/\/)?(www.)?ticketfly.com\/?/i }, allow_blank: true
   validates :website, format: { with: /\A((http|https)?:\/\/)?(www.)?[a-zA-Z0-9]+.[a-z]+\/?/i }, allow_blank: true
   validates :letlyrics_url, format: { with: /\A((http|https)?:\/\/)?(www.)?letlyrics.com\/?/i }, allow_blank: true
+  validates :theme_color, format: { with: /(#)?[a-f0-9]{6}/i }, allow_blank: true
 
   before_save :smart_add_url_protocol
   before_save :downcase_url
+  before_save :add_pound_to_hex
 
   protected
 
@@ -46,6 +48,12 @@ class ArtistProfile < ActiveRecord::Base
       end
       unless self.letlyrics_url[/\Ahttp:\/\//] || self.letlyrics_url[/\Ahttps:\/\//]
         self.letlyrics_url = "https://#{self.letlyrics_url}" unless letlyrics_url.blank?
+      end
+    end
+
+    def add_pound_to_hex
+      unless self.theme_color.starts_with?('#')
+        self.theme_color = "##{self.theme_color}" unless theme_color.blank?
       end
     end
 

@@ -10,11 +10,19 @@ class VenueProfile < ActiveRecord::Base
   validates :youtube_url, format: { with: /\A((http|https)?:\/\/)?(www.)?youtube.com\/?/i }, allow_blank: true
   validates :ticketfly_url, format: { with: /\A((http|https)?:\/\/)?(www.)?ticketfly.com\/?/i }, allow_blank: true
   validates :website, format: { with: /\A((http|https)?:\/\/)?(www.)?[a-zA-Z0-9]+.[a-z]+\/?/i }, allow_blank: true
+  validates :theme_color, format: { with: /(#)?[a-f0-9]{6}/i }, allow_blank: true
 
   before_save :smart_add_url_protocol
   before_save :downcase_url
+  before_save :add_pound_to_hex
 
   protected
+
+    def add_pound_to_hex
+      unless self.theme_color.starts_with?('#')
+        self.theme_color = "##{self.theme_color}" unless theme_color.blank?
+      end
+    end
 
     def smart_add_url_protocol
       unless self.facebook_url[/\Ahttp:\/\//] || self.facebook_url[/\Ahttps:\/\//]

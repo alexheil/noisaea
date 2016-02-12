@@ -1,0 +1,143 @@
+<% if @artist && @artist.artist_profile.present? && @artist.artist_profile.theme_color.present? && @artist.artist_profile.theme_color != "#673AB7" %>
+  <meta name="theme-color" content="<%= @artist.artist_profile.theme_color %>" />
+<% elsif @record_label && @record_label.record_label_profile.present? && @record_label.record_label_profile.theme_color.present? && @record_label.record_label_profile.theme_color != "#673AB7" %>
+  <meta name="theme-color" content="<%= @record_label.record_label_profile.theme_color %>" />
+<% elsif @venue && @venue.venue_profile.present? && @venue.venue_profile.theme_color.present? && @venue.venue_profile.theme_color != "#673AB7" %>
+  <meta name="theme-color" content="<%= @venue.venue_profile.theme_color %>" />
+<% elsif @producer && @producer.producer_profile.present? && @producer.producer_profile.theme_color.present? && @producer.producer_profile.theme_color != "#673AB7" %>
+  <meta name="theme-color" content="<%= @producer.producer_profile.theme_color %>" />
+<% elsif @fan && @fan.fan_profile.present? && @fan.fan_profile.theme_color.present? && @fan.fan_profile.theme_color != "#673AB7" %>
+  <meta name="theme-color" content="<%= @fan.fan_profile.theme_color %>" />
+<% else %>
+  <meta name="theme-color" content="#673ab7" />
+<% end %>
+
+<% if @artist && @artist.artist_profile.present? && @artist.artist_profile.theme_color.present? && @artist.artist_profile.theme_color != "#673AB7" %>
+  <style>
+  a {
+    color: <%= @artist.artist_profile.theme_color %>;
+  }
+  a:hover {
+    color: #212121;
+  }
+  .linwood {
+    color: <%= @artist.artist_profile.theme_color %>;
+  }
+  .linwood:hover {
+    color: #212121;
+  }
+  .exchange {
+    border: 3px solid <%= @artist.artist_profile.theme_color %>;
+    color: <%= @artist.artist_profile.theme_color %>;
+  }
+  .exchange:hover {
+    background: <%= @artist.artist_profile.theme_color %>;
+  }
+  .carolina li:hover {
+    border-right: 3px solid <%= @artist.artist_profile.theme_color %>;
+  }
+  </style>
+<% elsif @record_label && @record_label.record_label_profile.present? && @record_label.record_label_profile.theme_color.present? && @record_label.record_label_profile.theme_color != "#673AB7" %>
+  <style>
+  a {
+    color: <%= @record_label.record_label_profile.theme_color %>;
+  }
+  a:hover {
+    color: #212121;
+  }
+  .linwood {
+    color: <%= @record_label.record_label_profile.theme_color %>;
+  }
+  .linwood:hover {
+    color: #212121;
+  }
+  .exchange {
+    border: 3px solid <%= @record_label.record_label_profile.theme_color %>;
+    color: <%= @record_label.record_label_profile.theme_color %>;
+  }
+  .exchange:hover {
+    background: <%= @record_label.record_label_profile.theme_color %>;
+  }
+  .carolina li:hover {
+    border-right: 3px solid <%= @record_label.record_label_profile.theme_color %>;
+  }
+  </style>
+<% elsif @venue && @venue.venue_profile.present? && @venue.venue_profile.theme_color.present? && @venue.venue_profile.theme_color != "#673AB7" %>
+  <style>
+  a {
+    color: <%= @venue.venue_profile.theme_color %>;
+  }
+  a:hover {
+    color: #212121;
+  }
+  .linwood {
+    color: <%= @venue.venue_profile.theme_color %>;
+  }
+  .linwood:hover {
+    color: #212121;
+  }
+  .exchange {
+    border: 3px solid <%= @venue.venue_profile.theme_color %>;
+    color: <%= @venue.venue_profile.theme_color %>;
+  }
+  .exchange:hover {
+    background: <%= @venue.venue_profile.theme_color %>;
+  }
+  .carolina li:hover {
+    border-right: 3px solid <%= @venue.venue_profile.theme_color %>;
+  }
+  </style>
+<% elsif @producer && @producer.producer_profile.present? && @producer.producer_profile.theme_color.present? && @producer.producer_profile.theme_color != "#673AB7" %>
+  <style>
+  a {
+    color: <%= @producer.producer_profile.theme_color %>;
+  }
+  a:hover {
+    color: #212121;
+  }
+  .linwood {
+    color: <%= @producer.producer_profile.theme_color %>;
+  }
+  .linwood:hover {
+    color: #212121;
+  }
+  .exchange {
+    border: 3px solid <%= @producer.producer_profile.theme_color %>;
+    color: <%= @producer.producer_profile.theme_color %>;
+  }
+  .exchange:hover {
+    background: <%= @producer.producer_profile.theme_color %>;
+  }
+  .carolina li:hover {
+    border-right: 3px solid <%= @producer.producer_profile.theme_color %>;
+  }
+  </style>
+<% elsif @fan && @fan.fan_profile.present? && @fan.fan_profile.theme_color.present? && @fan.fan_profile.theme_color != "#673AB7" %>
+  <style>
+  a {
+    color: <%= @fan.fan_profile.theme_color %>;
+  }
+  a:hover {
+    color: #212121;
+  }
+  .linwood {
+    color: <%= @fan.fan_profile.theme_color %>;
+  }
+  .linwood:hover {
+    color: #212121;
+  }
+  .exchange {
+    border: 3px solid <%= @fan.fan_profile.theme_color %>;
+    color: <%= @fan.fan_profile.theme_color %>;
+  }
+  .exchange:hover {
+    background: <%= @fan.fan_profile.theme_color %>;
+  }
+  .carolina li:hover {
+    border-right: 3px solid <%= @fan.fan_profile.theme_color %>;
+  }
+  ::selection {
+    background: <%= @fan.fan_profile.theme_color %>;
+  }
+  </style>
+<% end %>

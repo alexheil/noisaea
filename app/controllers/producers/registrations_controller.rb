@@ -40,7 +40,7 @@ class Producers::RegistrationsController < Devise::RegistrationsController
   private
 
     def profile_params
-      params.permit(:biography, :location, :genre, :artists, :website, :facebook_url, :twitter_url, :youtube_url, :letlyrics_url, :cover_image, :profile_image)
+      params.permit(:biography, :location, :genre, :artists, :website, :facebook_url, :twitter_url, :youtube_url, :letlyrics_url, :theme_color, :cover_image, :profile_image)
     end
 
   # protected
