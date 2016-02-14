@@ -1,6 +1,9 @@
 <% if @record_label.fans.any? %>
   <div class="amherst">
-    <strong><%= link_to pluralize(@record_label.fans.count, "fan"), record_label_followers_path(@record_label) %></strong>
+    <%= link_to pluralize(@record_label.fans.count, "fan"), record_label_followers_path(@record_label) %>
+    <div class="posted">
+      <%= link_to pluralize(@record_label.fans.where("current_sign_in_at > ?", 30.days.ago).count, "active fan"), record_label_followers_path(@record_label) %>
+    </div>
   </div>
 <% else %>
   <div class="amherst">

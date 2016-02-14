@@ -1,6 +1,9 @@
 <% if @venue.fans.any? %>
   <div class="amherst">
-    <strong><%= link_to pluralize(@venue.fans.count, "fan"), venue_followers_path(@venue) %></strong>
+    <%= link_to pluralize(@venue.fans.count, "fan"), venue_followers_path(@venue) %>
+    <div class="posted">
+      <%= link_to pluralize(@venue.fans.where("current_sign_in_at > ?", 30.days.ago).count, "active fan"), venue_followers_path(@venue) %>
+    </div>
   </div>
 <% else %>
   <div class="amherst">

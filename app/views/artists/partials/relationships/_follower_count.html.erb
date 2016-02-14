@@ -1,7 +1,10 @@
 <% if @artist.fans.any? %>
   <div class="amherst">
-    <strong><%= link_to pluralize(@artist.fans.count, "fan"), artist_followers_path(@artist) %></strong>
-  </div>
+    <%= link_to pluralize(@artist.fans.count, "fan"), artist_followers_path(@artist) %>
+    <div class="posted">
+        <%= link_to pluralize(@artist.fans.where("current_sign_in_at > ?", 30.days.ago).count, "active fan"), artist_followers_path(@artist) %>
+    </div>
+   </div>
 <% else %>
   <div class="amherst">
     <strong>0 fans</strong>
