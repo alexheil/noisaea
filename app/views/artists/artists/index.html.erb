@@ -182,6 +182,7 @@
 
       <div id="container-popular" class="ferry">
         <% @artists.sort_by{ |artist| -artist.fans.count }.take(100).each do |artist| %>
+        <% cache artist do %>
           <div class="utica">
             <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
@@ -217,10 +218,12 @@
 
           </div>
         <% end %>
+        <% end %>
       </div>
 
       <div id="container-recent" class="ferry colvin">
         <% @artists.order( 'id DESC' ).take(100).each do |artist| %>
+        <% cache artist do %>
           <div class="utica">
             <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
@@ -255,12 +258,14 @@
             </div>
 
           </div>
+        <% end %>
         <% end %>
       </div>
 
       <div id="container-location" class="ferry colvin">
         <% if fan_signed_in? && current_fan.fan_profile.location.present? %>
           <% @artists.each do |artist| if artist.artist_profile.location == current_fan.fan_profile.location %>
+          <% cache artist do %>
               <div class="utica">
                 <% if artist.artist_profile.cover_image.blank? %>
                   <div class="sycamore">
@@ -292,6 +297,7 @@
             </div>
 
               </div>
+              <% end %>
             <% end %>
           <% end %>
         <% elsif fan_signed_in? && current_fan.fan_profile.location.blank? %>
@@ -307,6 +313,7 @@
 
       <div id="container-alternative" class="ferry colvin">
         <% @artists.alternative.each do |artist| %>
+        <% cache artist do %>
           <div class="utica">
             <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
@@ -338,11 +345,13 @@
             </div>
 
             </div>
+        <% end %>
         <% end %>
       </div>
 
       <div id="container-ambient" class="ferry colvin">
         <% @artists.ambient.each do |artist| %>
+        <% cache artist do %>
           <div class="utica">
             <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
@@ -374,11 +383,13 @@
             </div>
 
             </div>
+        <% end %>
         <% end %>
       </div>
 
       <div id="container-blues" class="ferry colvin">
         <% @artists.blues.each do |artist| %>
+        <% cache artist do %>
           <div class="utica">
             <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
@@ -410,11 +421,13 @@
             </div>
 
             </div>
+        <% end %>
         <% end %>
       </div>
 
       <div id="container-classical" class="ferry colvin">
         <% @artists.classical.each do |artist| %>
+        <% cache artist do %>
           <div class="utica">
             <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
@@ -446,11 +459,13 @@
             </div>
 
             </div>
+        <% end %>
         <% end %>
       </div>
 
       <div id="container-comedy" class="ferry colvin">
         <% @artists.comedy.each do |artist| %>
+        <% cache artist do %>
           <div class="utica">
             <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
@@ -482,11 +497,13 @@
             </div>
 
             </div>
+        <% end %>
         <% end %>
       </div>
 
       <div id="container-country" class="ferry colvin">
         <% @artists.country.each do |artist| %>
+        <% cache artist do %>
           <div class="utica">
             <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
@@ -518,11 +535,13 @@
             </div>
 
             </div>
+        <% end %>
         <% end %>
       </div>
 
       <div id="container-electronic" class="ferry colvin">
         <% @artists.electronic.each do |artist| %>
+        <% cache artist do %>
           <div class="utica">
             <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
@@ -554,11 +573,13 @@
             </div>
 
             </div>
+        <% end %>
         <% end %>
       </div>
 
       <div id="container-experimental" class="ferry colvin">
         <% @artists.experimental.each do |artist| %>
+        <% cache artist do %>
           <div class="utica">
             <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
@@ -590,11 +611,13 @@
             </div>
 
             </div>
+        <% end %>
         <% end %>
       </div>
 
       <div id="container-hip-hop-rap" class="ferry colvin">
         <% @artists.hiphoprap.each do |artist| %>
+        <% cache artist do %>
           <div class="utica">
             <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
@@ -627,10 +650,12 @@
 
             </div>
         <% end %>
+        <% end %>
       </div>
 
       <div id="container-indie" class="ferry colvin">
         <% @artists.indie.each do |artist| %>
+        <% cache artist do %>
           <div class="utica">
             <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
@@ -663,10 +688,12 @@
 
             </div>
         <% end %>
+        <% end %>
       </div>
 
       <div id="container-jazz" class="ferry colvin">
         <% @artists.jazz.each do |artist| %>
+        <% cache artist do %>
           <div class="utica">
             <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
@@ -698,11 +725,13 @@
             </div>
 
             </div>
+        <% end %>
         <% end %>
       </div>
 
       <div id="container-latino" class="ferry colvin">
         <% @artists.latino.each do |artist| %>
+        <% cache artist do %>
           <div class="utica">
             <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
@@ -735,10 +764,12 @@
 
             </div>
         <% end %>
+        <% end %>
       </div>
 
       <div id="container-metal" class="ferry colvin">
         <% @artists.metal.each do |artist| %>
+        <% cache artist do %>
           <div class="utica">
             <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
@@ -770,6 +801,7 @@
             </div>
 
             </div>
+        <% end %>
         <% end %>
       </div>
 
@@ -811,6 +843,7 @@
 
       <div id="container-rb-soul" class="ferry colvin">
         <% @artists.rbsoul.each do |artist| %>
+        <% cache artist do %>
           <div class="utica">
             <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
@@ -842,11 +875,13 @@
             </div>
 
           </div>
+        <% end %>
         <% end %>
       </div>
 
       <div id="container-rock" class="ferry colvin">
         <% @artists.rock.each do |artist| %>
+        <% cache artist do %>
           <div class="utica">
             <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
@@ -878,11 +913,13 @@
             </div>
 
           </div>
+        <% end %>
         <% end %>
       </div>
 
       <div id="container-singer-songwriter" class="ferry colvin">
         <% @artists.singersongwriter.each do |artist| %>
+        <% cache artist do %>
           <div class="utica">
             <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
@@ -914,11 +951,13 @@
             </div>
 
             </div>
+        <% end %>
         <% end %>
       </div>
 
       <div id="container-soundtrack" class="ferry colvin">
         <% @artists.soundtrack.each do |artist| %>
+        <% cache artist do %>
           <div class="utica">
             <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
@@ -951,10 +990,12 @@
 
           </div>
         <% end %>
+        <% end %>
       </div>
 
       <div id="container-world" class="ferry colvin">
         <% @artists.world.each do |artist| %>
+        <% cache artist do %>
           <div class="utica">
             <% if artist.artist_profile.cover_image.blank? %>
               <div class="sycamore">
@@ -986,6 +1027,7 @@
             </div>
 
           </div>
+        <% end %>
         <% end %>
       </div>
 
