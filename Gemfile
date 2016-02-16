@@ -16,7 +16,7 @@ gem 'coffee-script-source', '1.8.0'
 # gem 'therubyracer',  platforms: :ruby
 gem 'friendly_id', '~> 5.1.0'
 gem 'paperclip', "~> 4.3"
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'
 
 
 gem 'devise'
