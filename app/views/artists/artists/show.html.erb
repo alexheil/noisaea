@@ -46,4 +46,4 @@
 
 
 
-<%= image_tag @artist.artist_profile.cover_img.url(:perfect) %>
+<img srcset="<%= @artist.artist_profile.cover_img.url(:perfect) %>" width="100%" height="auto'" />
