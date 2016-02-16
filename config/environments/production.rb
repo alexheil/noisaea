@@ -90,6 +90,8 @@ Rails.application.configure do
     :enable_starttls_auto => true
   }
 
+  Paperclip.options[:command_path] = 'C:\ImageMagick'
+
   config.paperclip_defaults = {
     :storage => :s3,
     :s3_credentials => {
