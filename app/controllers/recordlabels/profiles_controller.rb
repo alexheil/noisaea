@@ -34,7 +34,7 @@ class Recordlabels::ProfilesController < ApplicationController
     end
 
     def profile_params
-      params.require(:record_label_profile).permit(:biography, :location, :genre, :artists, :founded, :website, :facebook_url, :twitter_url, :youtube_url, :itunes_url, :amazon_url, :google_play_url, :ticketfly_url, :letlyrics_url, :theme_color, :cover_image, :profile_image)
+      params.require(:record_label_profile).permit(:biography, :location, :genre, :artists, :founded, :website, :facebook_url, :twitter_url, :youtube_url, :itunes_url, :amazon_url, :google_play_url, :ticketfly_url, :letlyrics_url, :theme_color, :cover_image, :profile_image, :cover_img, :profile_img, :cover_img, :profile_img)
     end
 
 end

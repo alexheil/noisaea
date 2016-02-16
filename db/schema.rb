@@ -11,41 +11,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160211235500) do
+ActiveRecord::Schema.define(version: 20160216011402) do
 
   create_table "artist_albums", force: :cascade do |t|
     t.integer  "artist_id"
-    t.string   "title",         limit: 255
+    t.string   "title",                  limit: 255
     t.text     "description"
     t.integer  "month"
     t.integer  "day"
     t.integer  "year"
     t.integer  "price"
-    t.string   "currency",      limit: 255
-    t.string   "album_url",     limit: 255
-    t.string   "cover_art_url", limit: 255
-    t.string   "slug",          limit: 255
+    t.string   "currency",               limit: 255
+    t.string   "album_url",              limit: 255
+    t.string   "cover_art_url",          limit: 255
+    t.string   "slug",                   limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "cover_img_file_name"
+    t.string   "cover_img_content_type"
+    t.integer  "cover_img_file_size"
+    t.datetime "cover_img_updated_at"
   end
 
   add_index "artist_albums", ["artist_id"], name: "index_artist_albums_on_artist_id"
 
   create_table "artist_merches", force: :cascade do |t|
     t.integer  "artist_id"
-    t.string   "title",          limit: 255
+    t.string   "title",                 limit: 255
     t.text     "description"
-    t.string   "category",       limit: 255
+    t.string   "category",              limit: 255
     t.integer  "base_price"
     t.integer  "shipping_price"
     t.integer  "total_price"
-    t.string   "currency",       limit: 255
+    t.string   "currency",              limit: 255
     t.integer  "quantity"
-    t.string   "merch_url",      limit: 255
-    t.string   "image_url",      limit: 255
-    t.string   "slug",           limit: 255
+    t.string   "merch_url",             limit: 255
+    t.string   "image_url",             limit: 255
+    t.string   "slug",                  limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "item_img_file_name"
+    t.string   "item_img_content_type"
+    t.integer  "item_img_file_size"
+    t.datetime "item_img_updated_at"
   end
 
   add_index "artist_merches", ["artist_id"], name: "index_artist_merches_on_artist_id"
@@ -156,25 +164,33 @@ ActiveRecord::Schema.define(version: 20160211235500) do
 
   create_table "artist_profiles", force: :cascade do |t|
     t.integer  "artist_id"
-    t.text     "biography",                   default: ""
-    t.string   "genre",           limit: 255, default: ""
-    t.string   "location",        limit: 255, default: ""
-    t.string   "members",         limit: 255, default: ""
-    t.string   "facebook_url",    limit: 255, default: ""
-    t.string   "twitter_url",     limit: 255, default: ""
-    t.string   "youtube_url",     limit: 255, default: ""
-    t.string   "itunes_url",      limit: 255, default: ""
-    t.string   "amazon_url",      limit: 255, default: ""
-    t.string   "google_play_url", limit: 255, default: ""
-    t.string   "ticketfly_url",   limit: 255, default: ""
-    t.string   "record_label",    limit: 255, default: ""
-    t.string   "cover_image",     limit: 255, default: ""
-    t.string   "profile_image",   limit: 255, default: ""
+    t.text     "biography",                            default: ""
+    t.string   "genre",                    limit: 255, default: ""
+    t.string   "location",                 limit: 255, default: ""
+    t.string   "members",                  limit: 255, default: ""
+    t.string   "facebook_url",             limit: 255, default: ""
+    t.string   "twitter_url",              limit: 255, default: ""
+    t.string   "youtube_url",              limit: 255, default: ""
+    t.string   "itunes_url",               limit: 255, default: ""
+    t.string   "amazon_url",               limit: 255, default: ""
+    t.string   "google_play_url",          limit: 255, default: ""
+    t.string   "ticketfly_url",            limit: 255, default: ""
+    t.string   "record_label",             limit: 255, default: ""
+    t.string   "cover_image",              limit: 255, default: ""
+    t.string   "profile_image",            limit: 255, default: ""
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "website",         limit: 255, default: ""
-    t.string   "letlyrics_url",               default: ""
-    t.string   "theme_color",                 default: ""
+    t.string   "website",                  limit: 255, default: ""
+    t.string   "letlyrics_url",                        default: ""
+    t.string   "theme_color",                          default: ""
+    t.string   "cover_img_file_name"
+    t.string   "cover_img_content_type"
+    t.integer  "cover_img_file_size"
+    t.datetime "cover_img_updated_at"
+    t.string   "profile_img_file_name"
+    t.string   "profile_img_content_type"
+    t.integer  "profile_img_file_size"
+    t.datetime "profile_img_updated_at"
   end
 
   add_index "artist_profiles", ["artist_id"], name: "index_artist_profiles_on_artist_id", unique: true
@@ -195,13 +211,17 @@ ActiveRecord::Schema.define(version: 20160211235500) do
     t.integer  "month"
     t.integer  "day"
     t.integer  "year"
-    t.string   "venue",       limit: 255
-    t.string   "location",    limit: 255
+    t.string   "venue",                  limit: 255
+    t.string   "location",               limit: 255
     t.text     "description"
-    t.string   "ticket_url",  limit: 255
-    t.string   "flyer_url",   limit: 255
+    t.string   "ticket_url",             limit: 255
+    t.string   "flyer_url",              limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "flyer_img_file_name"
+    t.string   "flyer_img_content_type"
+    t.integer  "flyer_img_file_size"
+    t.datetime "flyer_img_updated_at"
   end
 
   add_index "artist_shows", ["artist_id"], name: "index_artist_shows_on_artist_id"
@@ -364,14 +384,22 @@ ActiveRecord::Schema.define(version: 20160211235500) do
 
   create_table "fan_profiles", force: :cascade do |t|
     t.integer  "fan_id"
-    t.text     "biography",                 default: ""
-    t.string   "location",      limit: 255, default: ""
-    t.string   "website",       limit: 255, default: ""
-    t.string   "cover_image",   limit: 255, default: ""
-    t.string   "profile_image", limit: 255, default: ""
+    t.text     "biography",                            default: ""
+    t.string   "location",                 limit: 255, default: ""
+    t.string   "website",                  limit: 255, default: ""
+    t.string   "cover_image",              limit: 255, default: ""
+    t.string   "profile_image",            limit: 255, default: ""
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "theme_color",               default: ""
+    t.string   "theme_color",                          default: ""
+    t.string   "cover_img_file_name"
+    t.string   "cover_img_content_type"
+    t.integer  "cover_img_file_size"
+    t.datetime "cover_img_updated_at"
+    t.string   "profile_img_file_name"
+    t.string   "profile_img_content_type"
+    t.integer  "profile_img_file_size"
+    t.datetime "profile_img_updated_at"
   end
 
   add_index "fan_profiles", ["fan_id"], name: "index_fan_profiles_on_fan_id", unique: true
@@ -541,21 +569,29 @@ ActiveRecord::Schema.define(version: 20160211235500) do
 
   create_table "producer_profiles", force: :cascade do |t|
     t.integer  "producer_id"
-    t.text     "biography",                 default: ""
-    t.text     "artists",                   default: ""
-    t.string   "genre",         limit: 255, default: ""
-    t.string   "location",      limit: 255, default: ""
-    t.string   "founded",       limit: 255, default: ""
-    t.string   "website",       limit: 255, default: ""
-    t.string   "facebook_url",  limit: 255, default: ""
-    t.string   "twitter_url",   limit: 255, default: ""
-    t.string   "youtube_url",   limit: 255, default: ""
-    t.string   "cover_image",   limit: 255, default: ""
-    t.string   "profile_image", limit: 255, default: ""
+    t.text     "biography",                            default: ""
+    t.text     "artists",                              default: ""
+    t.string   "genre",                    limit: 255, default: ""
+    t.string   "location",                 limit: 255, default: ""
+    t.string   "founded",                  limit: 255, default: ""
+    t.string   "website",                  limit: 255, default: ""
+    t.string   "facebook_url",             limit: 255, default: ""
+    t.string   "twitter_url",              limit: 255, default: ""
+    t.string   "youtube_url",              limit: 255, default: ""
+    t.string   "cover_image",              limit: 255, default: ""
+    t.string   "profile_image",            limit: 255, default: ""
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "letlyrics_url",             default: ""
-    t.string   "theme_color",               default: ""
+    t.string   "letlyrics_url",                        default: ""
+    t.string   "theme_color",                          default: ""
+    t.string   "cover_img_file_name"
+    t.string   "cover_img_content_type"
+    t.integer  "cover_img_file_size"
+    t.datetime "cover_img_updated_at"
+    t.string   "profile_img_file_name"
+    t.string   "profile_img_content_type"
+    t.integer  "profile_img_file_size"
+    t.datetime "profile_img_updated_at"
   end
 
   add_index "producer_profiles", ["producer_id"], name: "index_producer_profiles_on_producer_id", unique: true
@@ -696,25 +732,33 @@ ActiveRecord::Schema.define(version: 20160211235500) do
 
   create_table "record_label_profiles", force: :cascade do |t|
     t.integer  "record_label_id"
-    t.text     "biography",                   default: ""
-    t.text     "artists",                     default: ""
-    t.string   "genre",           limit: 255, default: ""
-    t.string   "location",        limit: 255, default: ""
-    t.string   "founded",         limit: 255, default: ""
-    t.string   "facebook_url",    limit: 255, default: ""
-    t.string   "twitter_url",     limit: 255, default: ""
-    t.string   "youtube_url",     limit: 255, default: ""
-    t.string   "itunes_url",      limit: 255, default: ""
-    t.string   "amazon_url",      limit: 255, default: ""
-    t.string   "google_play_url", limit: 255, default: ""
-    t.string   "ticketfly_url",   limit: 255, default: ""
-    t.string   "cover_image",     limit: 255, default: ""
-    t.string   "profile_image",   limit: 255, default: ""
+    t.text     "biography",                            default: ""
+    t.text     "artists",                              default: ""
+    t.string   "genre",                    limit: 255, default: ""
+    t.string   "location",                 limit: 255, default: ""
+    t.string   "founded",                  limit: 255, default: ""
+    t.string   "facebook_url",             limit: 255, default: ""
+    t.string   "twitter_url",              limit: 255, default: ""
+    t.string   "youtube_url",              limit: 255, default: ""
+    t.string   "itunes_url",               limit: 255, default: ""
+    t.string   "amazon_url",               limit: 255, default: ""
+    t.string   "google_play_url",          limit: 255, default: ""
+    t.string   "ticketfly_url",            limit: 255, default: ""
+    t.string   "cover_image",              limit: 255, default: ""
+    t.string   "profile_image",            limit: 255, default: ""
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "website",         limit: 255, default: ""
-    t.string   "letlyrics_url",               default: ""
-    t.string   "theme_color",                 default: ""
+    t.string   "website",                  limit: 255, default: ""
+    t.string   "letlyrics_url",                        default: ""
+    t.string   "theme_color",                          default: ""
+    t.string   "cover_img_file_name"
+    t.string   "cover_img_content_type"
+    t.integer  "cover_img_file_size"
+    t.datetime "cover_img_updated_at"
+    t.string   "profile_img_file_name"
+    t.string   "profile_img_content_type"
+    t.integer  "profile_img_file_size"
+    t.datetime "profile_img_updated_at"
   end
 
   add_index "record_label_profiles", ["record_label_id"], name: "index_record_label_profiles_on_record_label_id", unique: true
@@ -732,17 +776,21 @@ ActiveRecord::Schema.define(version: 20160211235500) do
 
   create_table "record_label_shows", force: :cascade do |t|
     t.integer  "record_label_id"
-    t.string   "artist",          limit: 255
+    t.string   "artist",                 limit: 255
     t.integer  "month"
     t.integer  "day"
     t.integer  "year"
-    t.string   "venue",           limit: 255
-    t.string   "location",        limit: 255
+    t.string   "venue",                  limit: 255
+    t.string   "location",               limit: 255
     t.text     "description"
-    t.string   "ticket_url",      limit: 255
-    t.string   "flyer_url",       limit: 255
+    t.string   "ticket_url",             limit: 255
+    t.string   "flyer_url",              limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "flyer_img_file_name"
+    t.string   "flyer_img_content_type"
+    t.integer  "flyer_img_file_size"
+    t.datetime "flyer_img_updated_at"
   end
 
   add_index "record_label_shows", ["record_label_id"], name: "index_record_label_shows_on_record_label_id"
@@ -872,20 +920,28 @@ ActiveRecord::Schema.define(version: 20160211235500) do
 
   create_table "venue_profiles", force: :cascade do |t|
     t.integer  "venue_id"
-    t.text     "biography",                 default: ""
-    t.string   "location",      limit: 255, default: ""
-    t.string   "founded",       limit: 255, default: ""
-    t.string   "facebook_url",  limit: 255, default: ""
-    t.string   "twitter_url",   limit: 255, default: ""
-    t.string   "youtube_url",   limit: 255, default: ""
-    t.string   "ticketfly_url", limit: 255, default: ""
-    t.string   "cover_image",   limit: 255, default: ""
-    t.string   "profile_image", limit: 255, default: ""
+    t.text     "biography",                            default: ""
+    t.string   "location",                 limit: 255, default: ""
+    t.string   "founded",                  limit: 255, default: ""
+    t.string   "facebook_url",             limit: 255, default: ""
+    t.string   "twitter_url",              limit: 255, default: ""
+    t.string   "youtube_url",              limit: 255, default: ""
+    t.string   "ticketfly_url",            limit: 255, default: ""
+    t.string   "cover_image",              limit: 255, default: ""
+    t.string   "profile_image",            limit: 255, default: ""
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "website",       limit: 255, default: ""
-    t.string   "letlyrics_url",             default: ""
-    t.string   "theme_color",               default: ""
+    t.string   "website",                  limit: 255, default: ""
+    t.string   "letlyrics_url",                        default: ""
+    t.string   "theme_color",                          default: ""
+    t.string   "cover_img_file_name"
+    t.string   "cover_img_content_type"
+    t.integer  "cover_img_file_size"
+    t.datetime "cover_img_updated_at"
+    t.string   "profile_img_file_name"
+    t.string   "profile_img_content_type"
+    t.integer  "profile_img_file_size"
+    t.datetime "profile_img_updated_at"
   end
 
   add_index "venue_profiles", ["venue_id"], name: "index_venue_profiles_on_venue_id", unique: true
@@ -903,17 +959,21 @@ ActiveRecord::Schema.define(version: 20160211235500) do
 
   create_table "venue_shows", force: :cascade do |t|
     t.integer  "venue_id"
-    t.string   "artist",      limit: 255
+    t.string   "artist",                 limit: 255
     t.integer  "month"
     t.integer  "day"
     t.integer  "year"
-    t.string   "show_venue",  limit: 255
-    t.string   "location",    limit: 255
+    t.string   "show_venue",             limit: 255
+    t.string   "location",               limit: 255
     t.text     "description"
-    t.string   "ticket_url",  limit: 255
-    t.string   "flyer_url",   limit: 255
+    t.string   "ticket_url",             limit: 255
+    t.string   "flyer_url",              limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "flyer_img_file_name"
+    t.string   "flyer_img_content_type"
+    t.integer  "flyer_img_file_size"
+    t.datetime "flyer_img_updated_at"
   end
 
   add_index "venue_shows", ["venue_id"], name: "index_venue_shows_on_venue_id"
