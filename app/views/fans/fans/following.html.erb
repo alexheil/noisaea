@@ -67,7 +67,7 @@
         <% @fan.artists.take(100).each do |artist| %>
           <div class="utica">
 
-            <%= render 'artists/partials/artist_profile_image' %>
+            <%= render 'artists/partials/artist_profile_image', :artist => artist %>
 
             <div class="artist_follow_button_<%= artist.id %>">
               <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
