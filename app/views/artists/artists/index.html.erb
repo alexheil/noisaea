@@ -184,30 +184,18 @@
         <% @artists.sort_by{ |artist| -artist.fans.count }.take(100).each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if artist_signed_in? && artist.id == current_artist.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{artist.artist_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
-              <div class="hertel">
-                <center><%= link_to artist.artist_name, artist_path(artist) %></center>
-              </div>
-              <div class="hertel">
-                <center><%= artist.artist_profile.genre unless artist.artist_profile.genre.blank? %></center>
-              </div>
-              <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
-              </div>
-              <div class="hertel">
-                <div class="index_follower_count_<%= artist.id %>">
+            <%= render 'artists/partials/artist_profile_image' %>
+            <div class="hertel">
+              <center><%= link_to artist.artist_name, artist_path(artist) %></center>
+            </div>
+            <div class="hertel">
+              <center><%= artist.artist_profile.genre unless artist.artist_profile.genre.blank? %></center>
+            </div>
+            <div class="hertel">
+              <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
+            </div>
+            <div class="hertel">
+              <div class="index_follower_count_<%= artist.id %>">
                 <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
               </div>
             </div>
@@ -225,19 +213,7 @@
         <% @artists.order( 'id DESC' ).take(100).each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if artist_signed_in? && artist.id == current_artist.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{artist.artist_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+            <%= render 'artists/partials/artist_profile_image' %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
@@ -267,19 +243,7 @@
           <% @artists.each do |artist| if artist.artist_profile.location == current_fan.fan_profile.location %>
           <% cache artist do %>
               <div class="utica">
-                <% if artist.artist_profile.cover_image.blank? %>
-                  <div class="sycamore">
-                    <% if artist_signed_in? && artist.id == current_artist.id %>
-                      you do not have a profile image yet
-                    <% else %>
-                      <%= "#{artist.artist_name} hasn't uploaded a profile image yet" %>
-                    <% end %>
-                  </div>
-                <% else %>
-                  <div class="genesee">
-                    <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
-                  </div>
-                <% end %>
+                <%= render 'artists/partials/artist_profile_image' %>
                 <div class="hertel">
                   <center><%= link_to artist.artist_name, artist_path(artist) %></center>
                 </div>
@@ -315,19 +279,7 @@
         <% @artists.alternative.each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if artist_signed_in? && artist.id == current_artist.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{artist.artist_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+            <%= render 'artists/partials/artist_profile_image' %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
@@ -353,19 +305,7 @@
         <% @artists.ambient.each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if artist_signed_in? && artist.id == current_artist.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{artist.artist_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+            <%= render 'artists/partials/artist_profile_image' %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
@@ -391,19 +331,7 @@
         <% @artists.blues.each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if artist_signed_in? && artist.id == current_artist.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{artist.artist_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+            <%= render 'artists/partials/artist_profile_image' %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
@@ -429,19 +357,7 @@
         <% @artists.classical.each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if artist_signed_in? && artist.id == current_artist.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{artist.artist_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+            <%= render 'artists/partials/artist_profile_image' %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
@@ -467,19 +383,7 @@
         <% @artists.comedy.each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if artist_signed_in? && artist.id == current_artist.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{artist.artist_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+            <%= render 'artists/partials/artist_profile_image' %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
@@ -505,19 +409,7 @@
         <% @artists.country.each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if artist_signed_in? && artist.id == current_artist.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{artist.artist_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+            <%= render 'artists/partials/artist_profile_image' %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
@@ -543,19 +435,7 @@
         <% @artists.electronic.each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if artist_signed_in? && artist.id == current_artist.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{artist.artist_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+            <%= render 'artists/partials/artist_profile_image' %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
@@ -581,19 +461,7 @@
         <% @artists.experimental.each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if artist_signed_in? && artist.id == current_artist.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{artist.artist_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+            <%= render 'artists/partials/artist_profile_image' %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
@@ -619,19 +487,7 @@
         <% @artists.hiphoprap.each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if artist_signed_in? && artist.id == current_artist.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{artist.artist_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+            <%= render 'artists/partials/artist_profile_image' %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
@@ -657,19 +513,7 @@
         <% @artists.indie.each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if artist_signed_in? && artist.id == current_artist.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{artist.artist_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+            <%= render 'artists/partials/artist_profile_image' %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
@@ -695,19 +539,7 @@
         <% @artists.jazz.each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if artist_signed_in? && artist.id == current_artist.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{artist.artist_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+            <%= render 'artists/partials/artist_profile_image' %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
@@ -733,19 +565,7 @@
         <% @artists.latino.each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if artist_signed_in? && artist.id == current_artist.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{artist.artist_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+            <%= render 'artists/partials/artist_profile_image' %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
@@ -771,19 +591,7 @@
         <% @artists.metal.each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if artist_signed_in? && artist.id == current_artist.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{artist.artist_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+            <%= render 'artists/partials/artist_profile_image' %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
@@ -808,19 +616,7 @@
       <div id="container-pop" class="ferry colvin">
         <% @artists.pop.each do |artist| %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if artist_signed_in? && artist.id == current_artist.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{artist.artist_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+            <%= render 'artists/partials/artist_profile_image' %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
@@ -845,19 +641,7 @@
         <% @artists.rbsoul.each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if artist_signed_in? && artist.id == current_artist.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{artist.artist_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+           <%= render 'artists/partials/artist_profile_image' %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
@@ -883,19 +667,7 @@
         <% @artists.rock.each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if artist_signed_in? && artist.id == current_artist.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{artist.artist_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+            <%= render 'artists/partials/artist_profile_image' %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
@@ -921,19 +693,7 @@
         <% @artists.singersongwriter.each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if artist_signed_in? && artist.id == current_artist.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{artist.artist_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+           <%= render 'artists/partials/artist_profile_image' %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
@@ -959,19 +719,7 @@
         <% @artists.soundtrack.each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if artist_signed_in? && artist.id == current_artist.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{artist.artist_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+            <%= render 'artists/partials/artist_profile_image' %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
@@ -997,19 +745,7 @@
         <% @artists.world.each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-            <% if artist.artist_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if artist_signed_in? && artist.id == current_artist.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{artist.artist_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+            <%= render 'artists/partials/artist_profile_image' %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>

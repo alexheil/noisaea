@@ -67,19 +67,7 @@
         <% @fan.artists.take(100).each do |artist| %>
           <div class="utica">
 
-            <% if artist.artist_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if artist_signed_in? && artist.id == current_artist.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{artist.artist_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-            <div class="genesee">
-              <img srcset="<%= artist.artist_profile.cover_image %>" width="100%" height="auto" />
-            </div>
-            <% end %>
+            <%= render 'artists/partials/artist_profile_image' %>
 
             <div class="artist_follow_button_<%= artist.id %>">
               <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
