@@ -8,7 +8,7 @@
   </div>
 <% else %>
 <div class="washington">
-  <div style="background: url('<%= @artist.artist_profile.cover_img_file_name.url(:perfect) %>') no-repeat fixed; background-size: 100%;" class="broadway">
+  <div style="background: url('<%= @artist.artist_profile.cover_img.url(:perfect) %>') no-repeat fixed; background-size: 100%;" class="broadway">
     <div class="northland">
       <%= @artist.artist_name %> <span class="lakeview">// <%= pluralize(@artist.fans.count, "fan") %>
     </div>
@@ -16,7 +16,7 @@
 </div>
 <div class="niagara">
   <div class="broadway">
-    <img src="<%= @artist.artist_profile.cover_img_file_name.url(:perfect) %>" width="100%" height="auto'" />
+    <img src="<%= @artist.artist_profile.cover_img.url(:perfect) %>" width="100%" height="auto'" />
   </div>
 </div>
 <% end %>
