@@ -184,7 +184,7 @@
         <% @artists.sort_by{ |artist| -artist.fans.count }.take(100).each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-            <%= render 'artists/partials/artist_profile_image' %>
+            <%= render 'artists/partials/artist_profile_image', :artist => artist %>
             <div class="hertel">
               <center><%= link_to artist.artist_name, artist_path(artist) %></center>
             </div>
@@ -213,7 +213,7 @@
         <% @artists.order( 'id DESC' ).take(100).each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-            <%= render 'artists/partials/artist_profile_image' %>
+            <%= render 'artists/partials/artist_profile_image', :artist => artist %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
@@ -243,7 +243,7 @@
           <% @artists.each do |artist| if artist.artist_profile.location == current_fan.fan_profile.location %>
           <% cache artist do %>
               <div class="utica">
-                <%= render 'artists/partials/artist_profile_image' %>
+                <%= render 'artists/partials/artist_profile_image', :artist => artist %>
                 <div class="hertel">
                   <center><%= link_to artist.artist_name, artist_path(artist) %></center>
                 </div>
@@ -279,7 +279,7 @@
         <% @artists.alternative.each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-            <%= render 'artists/partials/artist_profile_image' %>
+            <%= render 'artists/partials/artist_profile_image', :artist => artist %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
@@ -305,7 +305,7 @@
         <% @artists.ambient.each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-            <%= render 'artists/partials/artist_profile_image' %>
+            <%= render 'artists/partials/artist_profile_image', :artist => artist %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
@@ -331,7 +331,7 @@
         <% @artists.blues.each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-            <%= render 'artists/partials/artist_profile_image' %>
+            <%= render 'artists/partials/artist_profile_image', :artist => artist %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
@@ -357,7 +357,7 @@
         <% @artists.classical.each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-            <%= render 'artists/partials/artist_profile_image' %>
+            <%= render 'artists/partials/artist_profile_image', :artist => artist %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
@@ -383,7 +383,7 @@
         <% @artists.comedy.each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-            <%= render 'artists/partials/artist_profile_image' %>
+            <%= render 'artists/partials/artist_profile_image', :artist => artist %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
@@ -409,7 +409,7 @@
         <% @artists.country.each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-            <%= render 'artists/partials/artist_profile_image' %>
+            <%= render 'artists/partials/artist_profile_image', :artist => artist %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
@@ -435,7 +435,7 @@
         <% @artists.electronic.each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-            <%= render 'artists/partials/artist_profile_image' %>
+            <%= render 'artists/partials/artist_profile_image', :artist => artist %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
@@ -461,7 +461,7 @@
         <% @artists.experimental.each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-            <%= render 'artists/partials/artist_profile_image' %>
+            <%= render 'artists/partials/artist_profile_image', :artist => artist %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
@@ -487,7 +487,7 @@
         <% @artists.hiphoprap.each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-            <%= render 'artists/partials/artist_profile_image' %>
+            <%= render 'artists/partials/artist_profile_image', :artist => artist %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
@@ -513,7 +513,7 @@
         <% @artists.indie.each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-            <%= render 'artists/partials/artist_profile_image' %>
+            <%= render 'artists/partials/artist_profile_image', :artist => artist %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
@@ -539,7 +539,7 @@
         <% @artists.jazz.each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-            <%= render 'artists/partials/artist_profile_image' %>
+            <%= render 'artists/partials/artist_profile_image', :artist => artist %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
@@ -565,7 +565,7 @@
         <% @artists.latino.each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-            <%= render 'artists/partials/artist_profile_image' %>
+            <%= render 'artists/partials/artist_profile_image', :artist => artist %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
@@ -591,7 +591,7 @@
         <% @artists.metal.each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-            <%= render 'artists/partials/artist_profile_image' %>
+            <%= render 'artists/partials/artist_profile_image', :artist => artist %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
@@ -616,7 +616,7 @@
       <div id="container-pop" class="ferry colvin">
         <% @artists.pop.each do |artist| %>
           <div class="utica">
-            <%= render 'artists/partials/artist_profile_image' %>
+            <%= render 'artists/partials/artist_profile_image', :artist => artist %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
@@ -641,7 +641,7 @@
         <% @artists.rbsoul.each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-           <%= render 'artists/partials/artist_profile_image' %>
+           <%= render 'artists/partials/artist_profile_image', :artist => artist %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
@@ -667,7 +667,7 @@
         <% @artists.rock.each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-            <%= render 'artists/partials/artist_profile_image' %>
+            <%= render 'artists/partials/artist_profile_image', :artist => artist %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
@@ -693,7 +693,7 @@
         <% @artists.singersongwriter.each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-           <%= render 'artists/partials/artist_profile_image' %>
+           <%= render 'artists/partials/artist_profile_image', :artist => artist %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
@@ -719,7 +719,7 @@
         <% @artists.soundtrack.each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-            <%= render 'artists/partials/artist_profile_image' %>
+            <%= render 'artists/partials/artist_profile_image', :artist => artist %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
@@ -745,7 +745,7 @@
         <% @artists.world.each do |artist| %>
         <% cache artist do %>
           <div class="utica">
-            <%= render 'artists/partials/artist_profile_image' %>
+            <%= render 'artists/partials/artist_profile_image', :artist => artist %>
               <div class="hertel">
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
