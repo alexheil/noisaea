@@ -173,19 +173,7 @@
       <div id="container-popular" class="ferry">
         <% @producers.sort_by{ |producer| -producer.fans.count }.take(100).each do |producer| %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if producer_signed_in? && producer.id == current_producer.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+            <%= render 'producers/partials/producer_profile_image', :producer => producer %>
               <div class="hertel">
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
@@ -212,19 +200,7 @@
       <div id="container-recent" class="ferry colvin">
         <% @producers.order( 'id DESC' ).take(100).each do |producer| %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if producer_signed_in? && producer.id == current_producer.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+            <%= render 'producers/partials/producer_profile_image', :producer => producer %>
               <div class="hertel">
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
@@ -253,19 +229,7 @@
           <% @producers.each do |producer|  %>
           <% if producer.producer_profile.location == current_fan.fan_profile.location %>
             <div class="utica">
-              <% if producer.producer_profile.cover_image.blank? %>
-                <div class="sycamore">
-                  <% if producer_signed_in? && producer.id == current_producer.id %>
-                    you do not have a profile image yet
-                  <% else %>
-                    <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
-                  <% end %>
-                </div>
-              <% else %>
-                <div class="genesee">
-                  <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
-                </div>
-              <% end %>
+              <%= render 'producers/partials/producer_profile_image', :producer => producer %>
                 <div class="hertel">
                   <center><%= link_to producer.producer_name, producer_path(producer) %></center>
                 </div>
@@ -300,19 +264,7 @@
         <% @producers.alternative.each do |producer|  %>
           <% if producer.producer_profile.genre == "Alternative" %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if producer_signed_in? && producer.id == current_producer.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+            <%= render 'producers/partials/producer_profile_image', :producer => producer %>
               <div class="hertel">
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
@@ -338,19 +290,7 @@
         <% @producers.ambient.each do |producer|  %>
           <% if producer.producer_profile.genre == "Ambient" %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if producer_signed_in? && producer.id == current_producer.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+            <%= render 'producers/partials/producer_profile_image', :producer => producer %>
               <div class="hertel">
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
@@ -376,19 +316,7 @@
         <% @producers.blues.each do |producer|  %>
           <% if producer.producer_profile.genre == "Blues" %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if producer_signed_in? && producer.id == current_producer.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+           <%= render 'producers/partials/producer_profile_image', :producer => producer %>
               <div class="hertel">
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
@@ -414,19 +342,7 @@
         <% @producers.classical.each do |producer|  %>
           <% if producer.producer_profile.genre == "Classical" %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if producer_signed_in? && producer.id == current_producer.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+            <%= render 'producers/partials/producer_profile_image', :producer => producer %>
               <div class="hertel">
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
@@ -452,19 +368,7 @@
         <% @producers.comedy.each do |producer|  %>
           <% if producer.producer_profile.genre == "Comedy" %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if producer_signed_in? && producer.id == current_producer.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+            <%= render 'producers/partials/producer_profile_image', :producer => producer %>
               <div class="hertel">
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
@@ -490,19 +394,7 @@
         <% @producers.country.each do |producer|  %>
           <% if producer.producer_profile.genre == "Country" %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if producer_signed_in? && producer.id == current_producer.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+            <%= render 'producers/partials/producer_profile_image', :producer => producer %>
               <div class="hertel">
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
@@ -528,19 +420,7 @@
         <% @producers.electronic.each do |producer|  %>
           <% if producer.producer_profile.genre == "Electronic" %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if producer_signed_in? && producer.id == current_producer.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+            <%= render 'producers/partials/producer_profile_image', :producer => producer %>
               <div class="hertel">
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
@@ -566,19 +446,7 @@
         <% @producers.experimental.each do |producer|  %>
           <% if producer.producer_profile.genre == "Experimental" %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if producer_signed_in? && producer.id == current_producer.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+            <%= render 'producers/partials/producer_profile_image', :producer => producer %>
               <div class="hertel">
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
@@ -604,19 +472,7 @@
         <% @producers.hiphoprap.each do |producer|  %>
           <% if producer.producer_profile.genre == "Hip-Hop/Rap" %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if producer_signed_in? && producer.id == current_producer.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+            <%= render 'producers/partials/producer_profile_image', :producer => producer %>
               <div class="hertel">
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
@@ -642,19 +498,7 @@
         <% @producers.indie.each do |producer|  %>
           <% if producer.producer_profile.genre == "Indie" %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if producer_signed_in? && producer.id == current_producer.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+            <%= render 'producers/partials/producer_profile_image', :producer => producer %>
               <div class="hertel">
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
@@ -680,19 +524,7 @@
         <% @producers.jazz.each do |producer|  %>
           <% if producer.producer_profile.genre == "Jazz" %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if producer_signed_in? && producer.id == current_producer.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+            <%= render 'producers/partials/producer_profile_image', :producer => producer %>
               <div class="hertel">
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
@@ -718,19 +550,7 @@
         <% @producers.latino.each do |producer|  %>
           <% if producer.producer_profile.genre == "Latino" %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if producer_signed_in? && producer.id == current_producer.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+            <%= render 'producers/partials/producer_profile_image', :producer => producer %>
               <div class="hertel">
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
@@ -756,19 +576,7 @@
         <% @producers.metal.each do |producer|  %>
           <% if producer.producer_profile.genre == "Metal" %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if producer_signed_in? && producer.id == current_producer.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+            <%= render 'producers/partials/producer_profile_image', :producer => producer %>
               <div class="hertel">
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
@@ -794,19 +602,7 @@
         <% @producers.pop.each do |producer|  %>
           <% if producer.producer_profile.genre == "Pop" %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if producer_signed_in? && producer.id == current_producer.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+            <%= render 'producers/partials/producer_profile_image', :producer => producer %>
               <div class="hertel">
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
@@ -832,19 +628,7 @@
         <% @producers.rbsoul.each do |producer|  %>
           <% if producer.producer_profile.genre == "R&B/Soul" %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if producer_signed_in? && producer.id == current_producer.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+            <%= render 'producers/partials/producer_profile_image', :producer => producer %>
               <div class="hertel">
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
@@ -870,19 +654,7 @@
         <% @producers.rock.each do |producer|  %>
           <% if producer.producer_profile.genre == "Rock" %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if producer_signed_in? && producer.id == current_producer.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+            <%= render 'producers/partials/producer_profile_image', :producer => producer %>
               <div class="hertel">
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
@@ -908,19 +680,7 @@
         <% @producers.singersongwriter.each do |producer|  %>
           <% if producer.producer_profile.genre == "Singer/Songwriter" %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if producer_signed_in? && producer.id == current_producer.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+            <%= render 'producers/partials/producer_profile_image', :producer => producer %>
               <div class="hertel">
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
@@ -946,19 +706,7 @@
         <% @producers.soundtrack.each do |producer|  %>
           <% if producer.producer_profile.genre == "soundtrack" %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if producer_signed_in? && producer.id == current_producer.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+           <%= render 'producers/partials/producer_profile_image', :producer => producer %>
               <div class="hertel">
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>
@@ -984,19 +732,7 @@
         <% @producers.world.each do |producer|  %>
           <% if producer.producer_profile.genre == "World" %>
           <div class="utica">
-            <% if producer.producer_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if producer_signed_in? && producer.id == current_producer.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="genesee">
-                <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
-              </div>
-            <% end %>
+            <%= render 'producers/partials/producer_profile_image', :producer => producer %>
               <div class="hertel">
                 <center><%= link_to producer.producer_name, producer_path(producer) %></center>
               </div>

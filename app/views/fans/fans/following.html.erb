@@ -83,19 +83,7 @@
         <% @fan.record_labels.take(100).each do |record_label| %>
           <div class="utica">
 
-            <% if record_label.record_label_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if record_label_signed_in? && record_label.id == current_record_label.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{record_label.label_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-            <div class="genesee">
-              <img srcset="<%= record_label.record_label_profile.cover_image %>" width="100%" height="auto" />
-            </div>
-            <% end %>
+            <%= render 'recordlabels/partials/record_label_profile_image', :record_label => record_label %>
 
             <div class="record_label_follow_button_<%= record_label.id %>">
               <%= render "recordlabels/partials/relationships/index_follow_button", :record_label => record_label %>
@@ -110,19 +98,7 @@
         <% @fan.venues.take(100).each do |venue| %>
           <div class="utica">
 
-            <% if venue.venue_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if venue_signed_in? && venue.id == current_venue.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{venue.venue_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-            <div class="genesee">
-              <img srcset="<%= venue.venue_profile.cover_image %>" width="100%" height="auto" />
-            </div>
-            <% end %>
+            <%= render 'venues/partials/venue_profile_image', :venue => venue %>
 
             <div class="venue_follow_button_<%= venue.id %>">
               <%= render "venues/partials/relationships/index_follow_button", :venue => venue %>
@@ -137,19 +113,7 @@
         <% @fan.producers.take(100).each do |producer| %>
           <div class="utica">
 
-            <% if producer.producer_profile.cover_image.blank? %>
-              <div class="sycamore">
-                <% if producer_signed_in? && producer.id == current_producer.id %>
-                  you do not have a profile image yet
-                <% else %>
-                  <%= "#{producer.producer_name} hasn't uploaded a profile image yet" %>
-                <% end %>
-              </div>
-            <% else %>
-            <div class="genesee">
-              <img srcset="<%= producer.producer_profile.cover_image %>" width="100%" height="auto" />
-            </div>
-            <% end %>
+            <%= render 'producers/partials/producer_profile_image', :producer => producer %>
 
             <div class="producer_follow_button_<%= producer.id %>">
               <%= render "producers/partials/relationships/index_follow_button", :producer => producer %>

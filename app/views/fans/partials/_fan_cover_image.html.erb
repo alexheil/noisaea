@@ -1,4 +1,4 @@
-<% if @fan.fan_profile.cover_image.blank? %>
+<% if @fan.fan_profile.cover_img_file_name.blank? %>
   <div class="clinton">
     <% if @fan == current_fan %>
       you do not have a cover image yet
@@ -8,7 +8,7 @@
   </div>
 <% else %>
 <div class="washington">
-  <div style="background: url('<%= @fan.fan_profile.cover_image %>') no-repeat fixed; background-size: 100%;" class="broadway">
+  <div style="background: url('<%= @fan.fan_profile.cover_img.url(:small) %>') no-repeat fixed; background-size: 100%;" class="broadway">
     <div class="northland">
       <%= @fan.fan_name %> <span class="lakeview">
     </div>
@@ -16,7 +16,7 @@
 </div>
 <div class="niagara">
   <div class="broadway">
-    <img src="<%= @fan.fan_profile.cover_image %>" width="100%" height="auto'" />
+    <img src="<%= @fan.fan_profile.cover_img.url(:small) %>" width="100%" height="auto'" />
   </div>
 </div>
 <% end %>

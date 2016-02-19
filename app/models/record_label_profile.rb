@@ -1,6 +1,12 @@
 class RecordLabelProfile < ActiveRecord::Base
   belongs_to :record_label
 
+  has_attached_file :cover_img, styles: { perfect: "1920x640#", small: "800x266#" }
+  has_attached_file :profile_img, styles: { perfect: "382x382#" }
+
+  validates_attachment_content_type :cover_img, content_type: /\Aimage\/.*\Z/
+  validates_attachment_content_type :profile_img, content_type: /\Aimage\/.*\Z/
+
   validates :record_label_id, presence: true
   validates :biography, length: { maximum: 14216 }, allow_blank: true
   validates :location, format: { with: /[A-Z][a-zA-Z]+,[ ]?[A-Z]/ }, allow_blank: true
