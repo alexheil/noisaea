@@ -12,19 +12,7 @@
       <% @artist.fans.take(100).each do |fan| %>
         <div class="utica">
 
-          <% if fan.fan_profile.cover_image.blank? %>
-            <div class="sycamore">
-              <% if fan_signed_in? && fan.id == current_fan.id %>
-                you do not have a profile image yet
-              <% else %>
-                <%= "#{fan.fan_name} hasn't uploaded a profile image yet" %>
-              <% end %>
-            </div>
-          <% else %>
-          <div class="genesee">
-            <img srcset="<%= fan.fan_profile.cover_image %>" width="100%" height="auto" />
-          </div>
-          <% end %>
+          <%= render 'fans/partials/fan_profile_image', :fan => fan %>
 
           <div class="busti">
             <%= link_to fan.fan_name, fan_path(fan) %>
