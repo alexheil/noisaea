@@ -63,9 +63,6 @@ class ArtistAlbum < ActiveRecord::Base
       unless self.album_url[/\Ahttp:\/\//] || self.album_url[/\Ahttps:\/\//]
         self.album_url = "https://#{self.album_url}" unless self.album_url == ""
       end
-      unless self.cover_art_url[/\Ahttp:\/\//] || self.cover_art_url[/\Ahttps:\/\//]
-        self.cover_art_url = "https://#{self.cover_art_url}" unless self.cover_art_url.blank?
-      end
     end
 
 end
