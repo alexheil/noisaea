@@ -21,7 +21,7 @@
         <% if @merch.item_img_file_name.present? %>
           <div class="fargo">
             <div id="riley">
-              <img srcset="<%= @merch.item_img.url(:small) %>" width="100%" height="auto" />
+              <img srcset="<%= @merch.item_img.url(:perfect) %>" width="100%" height="auto" />
             </div>
           </div>
           <div class="fargo">
@@ -84,12 +84,12 @@
 </div>
 <%= render "partials/uni_footer" %>
 
-<% if @merch.image_url.present? %>
+<% if @merch.item_img_file_name.present? %>
   <div id="back"></div>
   <div id="front">
     <div class="lightbox-image">
     <div id="close"></div>
-      <img srcset="<%= @merch.item_img %>" width="100%" height="auto" />
+      <img srcset="<%= @merch.item_img.url(:perfect) %>" width="100%" height="auto" />
     </div>
   </div>
 <% end %>
