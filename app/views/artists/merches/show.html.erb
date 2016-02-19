@@ -67,9 +67,9 @@
           <div class="vermont">
             <%= link_to "get this!", @merch.merch_url, class: "sugar" %>
           </div>
-          <% if @artist == current_artist %>
-            // <%= link_to "edit", edit_artist_merch_path(@artist, @merch) %> or <%= link_to "delete", artist_merch_path(@artist, @merch), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
-          <% end %>
+        <% end %>
+        <% if @artist == current_artist %>
+          // <%= link_to "edit", edit_artist_merch_path(@artist, @merch) %> or <%= link_to "delete", artist_merch_path(@artist, @merch), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
         <% end %>
         <div class="best">
           <%= @merch.description %>
@@ -89,7 +89,7 @@
   <div id="front">
     <div class="lightbox-image">
     <div id="close"></div>
-      <img srcset="<%= @merch.image_url %>" width="100%" height="auto" />
+      <img srcset="<%= @merch.item_img %>" width="100%" height="auto" />
     </div>
   </div>
 <% end %>
