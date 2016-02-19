@@ -54,7 +54,7 @@
           <%= f.text_field :letlyrics_url, placeholder: "let:lyrics url", class: "huron" %>
         </div>
         <div class="ellicott">
-          <%= f.submit "update profile", class: "exchange" %>
+          <%= f.submit "update profile", data: { disable_with: 'updating...' }, class: "exchange" %>
         </div>
       <% end %>
 
