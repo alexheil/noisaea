@@ -30,8 +30,11 @@
         <div class="highgate">
           <%= f.text_field :album_url, placeholder: "album url", class: "huron" %>
         </div>
+        <div class="highgate temp">
+          cover art: <span class="posted">1500x1500</span>
+        </div>
         <div class="highgate">
-          <%= f.text_field :cover_art_url, placeholder: "cover art url", class: "huron" %>
+          <%= f.file_field :cover_img %>
         </div>
         <div class="highgate">
           <%= f.text_area :description, placeholder: "description", class: "chippewa" %>

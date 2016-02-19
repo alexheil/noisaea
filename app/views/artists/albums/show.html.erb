@@ -27,9 +27,17 @@
           <% end %>
 
           <div class="fargo">
-            <div id="riley">
-              <img srcset="<%= @album.cover_art_url %>" width="100%" height="auto" />
-            </div>
+            <% if @album.cover_img_file_name.present? %>
+              <div id="riley">
+                <img srcset="<%= @album.cover_img.url(:perfect) %>" width="100%" height="auto" />
+              </div>
+            <% else %>
+              <% if @artist == current_artist %>
+                you do not have an image for this album. <%= link_to "add one?", edit_artist_album_path(@artist, @album) %>
+              <% else %>
+                <%= @artist.artist_name %> does not have an image for <%= @album.title %>.
+              <% end %>
+            <% end %>
           </div>
           <div class="fargo">
             <div class="vermont busti">

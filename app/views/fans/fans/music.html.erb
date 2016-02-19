@@ -58,9 +58,20 @@
                 <div class="highgate columbus">
                   <%= link_to album.artist.artist_name, artist_path(album.artist) %> <span class="posted">posted <%= time_ago_in_words(album.created_at) %> ago</span>
                 </div>
+                <% if album.cover_img_file_name.present? %>
                 <div class="highgate loretta">
-                  <%= link_to image_tag("#{album.cover_art_url}", :width => "100%"), artist_album_path(album.artist, album) %>
+                  <%= link_to image_tag("#{album.cover_img.url(:small)}", :width => "100%"), artist_album_path(album.artist, album) %>
                 </div>
+                <% else %>
+                  <% if album.artist == current_artist %>
+                    you do not have an image for this album. <%= link_to "add one?", edit_artist_album_path(@artist, album) %>
+                  <% else %>
+                    <%= album.artist.artist_name %> does not have an image for <%= album.title %>.
+                  <% end %>
+                <% end %>
+                <% if album.artist == current_artist %>
+                  // <%= link_to "edit", edit_artist_album_path(album.artist, album) %> or <%= link_to "delete", artist_album_path(album.artist, album), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+                <% end %>
               </div>
               <div class="ogden">
                 <div class="summer">

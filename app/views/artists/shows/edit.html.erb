@@ -27,8 +27,11 @@
         <div class="highgate">
           <%= f.text_field :ticket_url, placeholder: "ticket url", class: "huron" %>
         </div>
+        <div class="highgate temp">
+          flyer image: <span class="posted">1200x2000</span>
+        </div>
         <div class="highgate">
-          <%= f.text_field :flyer_url, placeholder: "flyer url", class: "huron" %>
+          <%= f.file_field :flyer_img %>
         </div>
         <div class="highgate">
           <%= f.text_area :description, placeholder: "description", class: "chippewa" %>

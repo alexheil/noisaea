@@ -67,7 +67,7 @@ class Recordlabels::ShowsController < ApplicationController
     end
 
     def show_params
-      params.require(:record_label_show).permit(:record_label_id, :artist, :month, :day, :year, :location, :venue, :description, :ticket_url, :flyer_url)
+      params.require(:record_label_show).permit(:record_label_id, :artist, :month, :day, :year, :location, :venue, :description, :ticket_url, :flyer_url, :flyer_img)
     end
 
 end

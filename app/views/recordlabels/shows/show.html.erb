@@ -16,9 +16,11 @@
       <%= render 'recordlabels/partials/record_label_name' %>
 
       <div class="harlem">
-        <% if @show.flyer_url.present? %>
+        <% if @show.flyer_img_file_name.present? %>
           <div class="fargo">
-              <img srcset="<%= @show.flyer_url %>" width="100%" height="auto" />
+            <div id="riley">
+              <img srcset="<%= @show.flyer_img.url(:perfect) %>" width="100%" height="auto" />
+            <div>
           </div>
           <div class="fargo">
             <div class="vermont busti">
@@ -96,3 +98,13 @@
   </div>
 </div>
 <%= render "partials/uni_footer" %>
+
+<% if @show.flyer_img_file_name.present? %>
+  <div id="back"></div>
+  <div id="front">
+    <div class="lightbox-image">
+    <div id="close"></div>
+      <img srcset="<%= @show.flyer_img.url(:perfect) %>" width="100%" height="auto" />
+    </div>
+  </div>
+<% end %>

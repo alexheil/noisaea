@@ -30,13 +30,13 @@
 
         <div class="auburn dodge">
           <div class="ogden">
-            <% if album.cover_art_url.present? %>
+            <% if album.cover_img_file_name.present? %>
             <div class="highgate loretta">
-              <%= link_to image_tag("#{album.cover_art_url}", :width => "100%"), artist_album_path(@artist, album) %>
+              <%= link_to image_tag("#{album.cover_img.url(:small)}", :width => "100%"), artist_album_path(@artist, album) %>
             </div>
             <% else %>
               <% if @artist == current_artist %>
-                you do not have an image for this item. <%= link_to "add one?", edit_artist_album_path(@artist, album) %>
+                you do not have an image for this album. <%= link_to "add one?", edit_artist_album_path(@artist, album) %>
               <% else %>
                 <%= @artist.artist_name %> does not have an image for <%= album.title %>.
               <% end %>

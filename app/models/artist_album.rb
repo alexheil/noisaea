@@ -9,6 +9,10 @@ class ArtistAlbum < ActiveRecord::Base
 
   has_many :artist_tracks, dependent: :destroy
 
+  has_attached_file :cover_img, styles: { perfect: "1500x1500#", small: "382x382#" }
+
+  validates_attachment_content_type :cover_img, content_type: /\Aimage\/.*\Z/
+
   validates :artist_id, presence: true
   validates :title, presence: true
   validates :description, length: { maximum: 14216 }, allow_blank: true
@@ -18,7 +22,7 @@ class ArtistAlbum < ActiveRecord::Base
   validates :day, presence: true, length: { maximum: 2 }, numericality: { less_than_or_equal_to: 31, greater_than: 0 }
   validates :year, presence: true, length: { is: 4 }, numericality: { less_than_or_equal_to: 2017, greater_than: 1950}
   validates :album_url, format: { with: /\A((http|https)?:\/\/)?(www.)?[a-zA-Z0-9]+.[a-z]+\/?/i }, allow_blank: true
-  validates :cover_art_url, presence: true, format: { with: /\A((http|https)?:\/\/)?(www.)?[a-zA-Z0-9]+.[a-z]+\/?/i }
+  validates :cover_art_url, format: { with: /\A((http|https)?:\/\/)?(www.)?[a-zA-Z0-9]+.[a-z]+\/?/i }, allow_blank: true
 
   before_save :smart_add_url_protocol
   before_save :february_time

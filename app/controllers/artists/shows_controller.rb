@@ -67,7 +67,7 @@ class Artists::ShowsController < ApplicationController
     end
 
     def show_params
-      params.require(:artist_show).permit(:artist_id, :month, :day, :year, :location, :venue, :description, :ticket_url, :flyer_url)
+      params.require(:artist_show).permit(:artist_id, :month, :day, :year, :location, :venue, :description, :ticket_url, :flyer_url, :flyer_img)
     end
 
 end

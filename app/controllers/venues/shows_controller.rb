@@ -67,7 +67,7 @@ class Venues::ShowsController < ApplicationController
     end
 
     def show_params
-      params.require(:venue_show).permit(:venue_id, :artist, :month, :day, :year, :location, :show_venue, :description, :ticket_url, :flyer_url)
+      params.require(:venue_show).permit(:venue_id, :artist, :month, :day, :year, :location, :show_venue, :description, :ticket_url, :flyer_url, :flyer_img)
     end
 
 end
