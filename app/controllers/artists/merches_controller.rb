@@ -67,7 +67,7 @@ class Artists::MerchesController < ApplicationController
     end
 
     def merch_params
-      params.require(:artist_merch).permit(:artist_id, :title, :description, :category, :base_price, :shipping_price, :currency, :total_price, :quantity, :options, :merch_url, :image_url, :return_policy, :shipping_info, :slug)
+      params.require(:artist_merch).permit(:artist_id, :title, :description, :category, :base_price, :shipping_price, :currency, :total_price, :quantity, :options, :merch_url, :image_url, :item_img, :return_policy, :shipping_info, :slug)
     end
 
 end
