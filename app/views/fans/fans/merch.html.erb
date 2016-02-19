@@ -58,9 +58,9 @@
                 <div class="highgate columbus">
                   <%= link_to merch.artist.artist_name, artist_path(merch.artist) %> <span class="posted">posted <%= time_ago_in_words(merch.created_at) %> ago</span>
                 </div>
-                <% if merch.image_url.present? %>
+                <% if merch.item_img_file_name.present? %>
                 <div class="highgate loretta">
-                  <%= link_to image_tag("#{merch.image_url}", :width => "100%"), artist_merch_path(merch.artist, merch) %>
+                  <%= link_to image_tag("#{merch.item_img.url(:small)}", :width => "100%"), artist_merch_path(merch.artist, merch) %>
                 </div>
                 <% else %>
                   <% if merch.artist == current_artist %>

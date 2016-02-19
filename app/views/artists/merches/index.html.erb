@@ -28,9 +28,9 @@
         <% @artist.artist_merches.each do |merch| %>
         <div class="auburn dodge">
           <div class="allen">
-            <% if merch.image_url.present? %>
+            <% if merch.item_img_file_name.present? %>
             <div class="highgate loretta">
-              <%= link_to image_tag("#{merch.image_url}", :width => "100%"), artist_merch_path(@artist, merch) %>
+              <%= link_to image_tag("#{merch.item_img.url(:small)}", :width => "100%"), artist_merch_path(@artist, merch) %>
             </div>
             <% else %>
               <% if @artist == current_artist %>

@@ -226,7 +226,7 @@
 
       <div id="container-location" class="ferry colvin">
         <% if fan_signed_in? && current_fan.fan_profile.location.present? %>
-          <% @record_labels.each do |record_label|  %>
+          <% @record_labels.each do |record_label| if record_label.record_label_profile.location == current_fan.fan_profile.location %>
             <div class="utica">
               <%= render 'recordlabels/partials/record_label_profile_image', :record_label => record_label %>
               <div class="hertel">

@@ -2,6 +2,10 @@ class ArtistMerch < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: :slugged
 
+  has_attached_file :item_img, styles: { perfect: "1000x1000#", small: "382x382#" }
+
+  validates_attachment_content_type :item_img, content_type: /\Aimage\/.*\Z/
+
   belongs_to :artist
   belongs_to :fan
 

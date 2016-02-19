@@ -30,8 +30,11 @@
         <div class="highgate">
           <%= f.text_field :merch_url, placeholder: "merch url", class: "huron" %>
         </div>
+        <div class="highgate temp">
+          merch image: <span class="posted">1000x1000</span>
+        </div>
         <div class="highgate">
-          <%= f.text_field :image_url, placeholder: "image url", class: "huron" %>
+          <%= f.file_field :item_img %>
         </div>
         <div class="highgate">
           <%= f.text_area :description, placeholder: "description", class: "chippewa" %>

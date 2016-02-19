@@ -66,9 +66,9 @@
     <div id="container-popular" class="ferry">
       <% @merch.take(100).each do |merch| %>
         <div class="utica">
-          <% if merch.image_url.present? %>
+          <% if merch.item_img_file_name.present? %>
           <div class="loretta">
-            <%= link_to image_tag("#{merch.image_url}", :width => "100%"), artist_merch_path(merch.artist, merch) %>
+            <%= link_to image_tag("#{merch.item_img.url(:small)}", :width => "100%"), artist_merch_path(merch.artist, merch) %>
           </div>
           <% else %>
             <% if merch.artist == current_artist %>
@@ -103,9 +103,9 @@
     <div id="container-recent" class="ferry colvin">
       <% @merch.order( 'id DESC' ).take(100).each do |merch| %>
         <div class="utica">
-          <% if merch.image_url.present? %>
+          <% if merch.item_img_file_name.present? %>
           <div class="loretta">
-            <%= link_to image_tag("#{merch.image_url}", :width => "100%"), artist_merch_path(merch.artist, merch) %>
+            <%= link_to image_tag("#{merch.item_img.url(:small)}", :width => "100%"), artist_merch_path(merch.artist, merch) %>
           </div>
           <% else %>
             <% if merch.artist == current_artist %>
@@ -141,9 +141,9 @@
       <% if fan_signed_in? && current_fan.fan_profile.location.present? %>
         <% @merch.each do |merch| if merch.artist.artist_profile.location == current_fan.fan_profile.location %>
         <div class="utica">
-          <% if merch.image_url.present? %>
+          <% if merch.item_img_file_name.present? %>
           <div class="loretta">
-            <%= link_to image_tag("#{merch.image_url}", :width => "100%"), artist_merch_path(merch.artist, merch) %>
+            <%= link_to image_tag("#{merch.item_img.url(:small)}", :width => "100%"), artist_merch_path(merch.artist, merch) %>
           </div>
           <% else %>
             <% if merch.artist == current_artist %>

@@ -18,10 +18,10 @@
       <%= render 'artists/partials/artist_name' %>
 
       <div class="harlem">
-        <% if @merch.image_url.present? %>
+        <% if @merch.item_img_file_name.present? %>
           <div class="fargo">
             <div id="riley">
-              <img srcset="<%= @merch.image_url %>" width="100%" height="auto" />
+              <img srcset="<%= @merch.item_img.url(:small) %>" width="100%" height="auto" />
             </div>
           </div>
           <div class="fargo">
