@@ -48,6 +48,12 @@ class Artist < ActiveRecord::Base
   before_save :downcase_username
   before_save :should_generate_new_friendly_id?, if: :username_changed?
 
+  def lazy_mailer
+    if Time.now.utc >= Artist.created_at + 24.hours && Artist.artist_microposts.empty?
+      ArtistMailer.twentyfour_email(artist).deliver_now
+    end
+  end
+
   def self.search(search)
     where("artist_name iLIKE ?", "%#{search}%")
   end
