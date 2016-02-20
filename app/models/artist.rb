@@ -50,7 +50,7 @@ class Artist < ActiveRecord::Base
 
   def lazy_mailer
     if Time.now.utc >= artist.created_at + 24.hours && artist.artist_microposts.empty?
-      ArtistMailer.twentyfour_email(artist).deliver
+      ArtistMailer.twentyfour_email(artist).deliver_now
     end
   end
 
