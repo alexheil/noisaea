@@ -1594,6 +1594,55 @@ select {
   box-sizing: border-box;
 }
 
+.code {
+  background: #212121;
+  white-space: initial;
+  .code-top {
+    background: #ccc;
+    font-style: italic;
+    padding: 1vh 2vw;
+  }
+  .type {
+    color: #fff;
+    font-family: Consolas, Monaco, 'Andale Mono', monospace;
+    word-break: normal;
+    line-height: 1.5;
+    overflow: auto;
+    padding: 1vh 2vw;
+    white-space: pre;
+    .white {
+      color: #fff;
+    }
+    .darkblue {
+      color: #07133A;
+    }
+    .lightblue {
+      color: #7986AC;
+    }
+    .blue {
+      color: #2F4073;
+    }
+    .darkgreen {
+      color: #004400;
+    }
+    .lightgreen {
+      color: #87CC87;
+    }
+    .green {
+      color: #2D882D;
+    }
+    .red {
+      color: #AA3939;
+    }
+    .yellow {
+      color: #AAA939;
+    }
+    .orange {
+      color: #AA6C39;
+    }
+  }
+}
+
 @media screen and (max-width: 1600px) {
 
   .utica {
