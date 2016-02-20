@@ -1,7 +1,7 @@
 desc "Heroku scheduler tasks"
 task :artist_notifications_cleanup => :environment do
   puts "Delete all old artist notifications."
-  Artists::NotificationsController.notification_cleanup
+  ArtistNotification.notification_cleanup
   puts "Artist notifications deleted!"
 end
 task :artist_lazy_mailer => :environment do

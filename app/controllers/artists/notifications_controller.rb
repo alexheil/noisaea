@@ -21,12 +21,6 @@ class Artists::NotificationsController < ApplicationController
     end
   end
 
-  def notification_cleanup
-    ArtistNotification.where(read: true).where("updated_at > ?", 3.days.ago).find_each do |notification|
-      notification.destroy
-    end
-  end
-
   private
 
     def set_artist
