@@ -49,8 +49,8 @@ class Artist < ActiveRecord::Base
   before_save :should_generate_new_friendly_id?, if: :username_changed?
 
   def lazy_mailer
-    if Time.now.utc >= Artist.created_at + 24.hours && Artist.artist_microposts.empty?
-      ArtistMailer.twentyfour_email(Artist).deliver_now
+    if Time.now.utc >= artist.created_at + 24.hours && artist.artist_microposts.empty?
+      ArtistMailer.twentyfour_email(artist).deliver
     end
   end
 

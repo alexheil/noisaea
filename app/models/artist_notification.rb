@@ -15,7 +15,7 @@ class ArtistNotification < ActiveRecord::Base
   validates :notice_type, presence: true
 
   def cleanup
-    ArtistNotification.where(read: true && "updated_at > ?", 3.days.ago).destroy
+    artist_notification.where(read: true && "updated_at > ?", 3.days.ago).destroy
   end
 
 end
