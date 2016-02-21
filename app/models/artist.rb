@@ -49,10 +49,12 @@ class Artist < ActiveRecord::Base
   before_save :should_generate_new_friendly_id?, if: :username_changed?
 
   def self.lazy_mailer
-    Artist.where("created_at < ?", 24.hours.ago).where(self.artist_microposts.blank?).find_each do |artist|
+    Artist.where("created_at < ?", 24.hours.ago).includes(:artist_microposts).where( :artist_microposts => { :artist_id => nil } ).find_each do |artist|
       ArtistMailer.lazy_email(artist).deliver_now
     end
   end
+
+  includes(:microposts).where( :microposts => { :user_id => nil } )
 
   def self.search(search)
     where("artist_name iLIKE ?", "%#{search}%")
