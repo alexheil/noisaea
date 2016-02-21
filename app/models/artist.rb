@@ -50,7 +50,7 @@ class Artist < ActiveRecord::Base
 
   def self.lazy_mailer
     Artist.where("created_at > ?", 24.hours.ago).where(Artist.artist_microposts.blank?).find_each do |artist|
-      ArtistMailer.twentyfour_mailer(artist).deliver_now
+      ArtistMailer.lazy_email(artist).deliver_now
     end
   end
 

@@ -12,7 +12,7 @@ class ArtistMailer < ApplicationMailer
     mail(to: @artist.email, subject: 'You\'ve got a new comment! | Noisaea')
   end
 
-  def twentyfour_mailer(artist)
+  def lazy_email(artist)
     @artist = artist
     mail(to: @artist.email, subject: 'What\'s up?! Your timeline is empty... | Noisaea')
   end
