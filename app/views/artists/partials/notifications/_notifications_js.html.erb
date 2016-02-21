@@ -27,7 +27,7 @@
       <%= notification.notice_type %>d  on your status "<%= notification.artist_micropost.content.truncate(40) %>".
     <% elsif notification.artist_relationship_id.present? %>
      <%= notification.notice_type %>ed you!
-    <% end %> <span class="posted"><%= time_ago_in_words(notification.created_at) %> ago.</span>
+    <% end %> <span class="posted"><%= time_ago_in_words(notification.created_at) %> ago.</span><%= notification.updated_at %>
   </div>
   <% end %>
 <% end %>
