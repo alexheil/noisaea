@@ -48,8 +48,10 @@ class Artist < ActiveRecord::Base
   before_save :downcase_username
   before_save :should_generate_new_friendly_id?, if: :username_changed?
 
-  def lazy_mailer
-
+  def self.lazy_mailer
+    Artist.where("created_at > ?", 24.hours.ago).where(Artist.artist_microposts.blank?).find_each do |artist|
+      ArtistMailer.twentyfour_mailer(artist).deliver_now
+    end
   end
 
   def self.search(search)
