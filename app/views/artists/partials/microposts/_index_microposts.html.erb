@@ -1,5 +1,5 @@
-<% if @artist.artist_microposts.any? %>
-  <% @artist.artist_microposts.take(100).each do | micropost | %>
+<% if @microposts.any? %>
+  <% @microposts.each do | micropost | %>
     <div class="auburn dodge">
       <div class="winspear">
         <strong><%= link_to "#{@artist.artist_name}", artist_micropost_path(@artist, micropost) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
@@ -52,7 +52,11 @@
       </div>
 
     </div>
+
   <% end %>
+
+  <%= paginate @microposts, :window => 2 %>
+
 <% else %>
   <div class="harlem">
     <% if @artist == current_artist %>

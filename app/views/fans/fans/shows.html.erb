@@ -48,9 +48,9 @@
 
         <div id="fan-artist" class="ferry">
           <% if @fan.fan_profile.location.present? %>
-          <% if @fan.artist_shows.any? %>
+          <% if @artist_shows.any? %>
             <div class="highgate">
-            <% @fan.artist_shows.select{ |show| show.location == @fan.fan_profile.location }.each do |show| %>
+            <% @artist_shows.select{ |show| show.location == @fan.fan_profile.location }.each do |show| %>
               <div class="dodge ashland auburn">
                 <%= link_to show.artist.artist_name, artist_path(show.artist) %> on <%= link_to "#{show.month}.#{show.day}.#{show.year} at #{show.venue} in #{show.location}", artist_show_path(show.artist, show) %>
                 <% if show.ticket_url.present? %>
@@ -62,6 +62,9 @@
               </div>
             <% end %>
             </div>
+
+            <%= paginate @artist_shows, :window => 2 %>
+
           <% else %>
             no shows coming to <%= @fan.fan_profile.location.split(",").first %>
           <% end %>
@@ -70,9 +73,9 @@
 
         <div id="fan-record-label" class="ferry colvin">
           <% if @fan.fan_profile.location.present? %>
-          <% if @fan.record_label_shows.any? %>
+          <% if @record_label_shows.any? %>
             <div class="highgate">
-            <% @fan.record_label_shows.select{ |show| show.location == @fan.fan_profile.location }.each do |show| %>
+            <% @record_label_shows.select{ |show| show.location == @fan.fan_profile.location }.take(25).each do |show| %>
               <div class="dodge ashland auburn">
               <% if Artist.exists?(:artist_name => "#{show.artist}") %>
                 <%= link_to show.artist, artist_path(Artist.where(:artist_name => "#{show.artist}").first) %>
@@ -97,9 +100,9 @@
 
         <div id="fan-venue" class="ferry colvin">
           <% if @fan.fan_profile.location.present? %>
-          <% if @fan.venue_shows.any? %>
+          <% if @venue_shows.any? %>
             <div class="highgate">
-            <% @fan.venue_shows.select{ |show| show.location == @fan.fan_profile.location }.each do |show| %>
+            <% @venue_shows.select{ |show| show.location == @fan.fan_profile.location }.take(25).each do |show| %>
               <div class="dodge ashland auburn">
                 <% if Artist.exists?(:artist_name => "#{show.artist}") %>
                   <%= link_to show.artist, artist_path(Artist.where(:artist_name => "#{show.artist}").first) %>

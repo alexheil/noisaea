@@ -1064,6 +1064,28 @@ h4 {
   font-size: .75em;
 }
 
+.pagination {
+  margin: 5vh 0 0 0;
+  display: inline-block;
+  font-size: 1.25em;
+  .page {
+    padding: 1vh 1vw;
+    border-left: 1px solid #ccc;
+  }
+  .current {
+    font-weight: 700;
+  }
+  .first {
+    padding: 1vh 2vw;
+  }
+  .last {
+    padding: 1vh 2vw;
+  }
+  .gap {
+    display: none;
+  }
+}
+
 /*                            *********************************** TRACKS *********************** */
 
 audio {

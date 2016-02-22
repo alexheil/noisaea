@@ -64,7 +64,7 @@
     </div>
 
     <div id="container-popular" class="ferry">
-      <% @shows.take(100).each do |show| %>
+      <% @shows.each do |show| %>
       <div class="dodge ashland auburn">
         <%= link_to show.artist.artist_name, artist_path(show.artist) %> on <%= link_to "#{show.month}.#{show.day}.#{show.year} at #{show.venue} in #{show.location}", artist_show_path(show.artist, show) %>
         <% if show.ticket_url.present? %>
@@ -78,7 +78,7 @@
     </div>
 
     <div id="container-recent" class="ferry colvin">
-      <% @shows.order( 'id DESC' ).take(100).each do |show| %>
+      <% @shows.order( 'id DESC' ).each do |show| %>
         <div class="dodge ashland auburn">
         <%= link_to show.artist.artist_name, artist_path(show.artist) %> on <%= link_to "#{show.month}.#{show.day}.#{show.year} at #{show.venue} in #{show.location}", artist_show_path(show.artist, show) %>
         <% if show.ticket_url.present? %>
@@ -114,6 +114,8 @@
         </div>
       <% end %>
     </div>
+
+    <%= paginate @shows, :window => 2 %>
 
     <% end %>
   </div>

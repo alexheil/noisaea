@@ -50,9 +50,9 @@
         </div>
 
         <div id="fan-artist" class="ferry">
-        <% if @fan.artist_albums.any? %>
+        <% if @artist_albums.any? %>
           <div class="harlem">
-            <% @fan.artist_albums.sort_by{ |album| -album.id }.each do |album| %>
+            <% @artist_albums.sort_by{ |album| -album.id }.each do |album| %>
             <div class="auburn dodge">
               <div class="ogden">
                 <div class="highgate columbus">
@@ -64,7 +64,7 @@
                 </div>
                 <% else %>
                   <% if album.artist == current_artist %>
-                    you do not have an image for this album. <%= link_to "add one?", edit_artist_album_path(@artist, album) %>
+                    you do not have an image for this album. <%= link_to "add one?", edit_artist_album_path(album.artist, album) %>
                   <% else %>
                     <%= album.artist.artist_name %> does not have an image for <%= album.title %>.
                   <% end %>
@@ -101,6 +101,9 @@
             </div>
             <% end %>
           </div>
+
+          <%= paginate @artist_albums, :window => 2 %>
+
         <% else %>
           <div class="harlem">
             <% if @fan == current_fan %>

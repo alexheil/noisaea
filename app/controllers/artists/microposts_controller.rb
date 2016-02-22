@@ -8,6 +8,7 @@ class Artists::MicropostsController < ApplicationController
   def create
     @micropost = @artist.artist_microposts.build(micropost_params)
     @artist = Artist.friendly.find(params[:artist_id])
+    @microposts = @artist.artist_microposts.page params[:page]
     if @micropost.save
       flash.now[:notice] = "your status has been posted!"
       respond_to do |format|

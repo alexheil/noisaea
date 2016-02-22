@@ -181,7 +181,7 @@
     </div>
 
       <div id="container-popular" class="ferry">
-        <% @artists.sort_by{ |artist| -artist.fans.count }.take(100).each do |artist| %>
+        <% @artists.sort_by{ |artist| -artist.fans.count }.each do |artist| %>
         <% cache artist do %>
           <div class="utica">
             <%= render 'artists/partials/artist_profile_image', :artist => artist %>
@@ -210,7 +210,7 @@
       </div>
 
       <div id="container-recent" class="ferry colvin">
-        <% @artists.order( 'id DESC' ).take(100).each do |artist| %>
+        <% @artists.order( 'id DESC' ).each do |artist| %>
         <% cache artist do %>
           <div class="utica">
             <%= render 'artists/partials/artist_profile_image', :artist => artist %>
@@ -767,11 +767,14 @@
         <% end %>
       </div>
 
+    <%= paginate @artists, :window => 2 %>
+
     <% else %>
     <div class="highgate">
       there are no artists containing the term(s) "<%= params[:search] %>". <%= link_to "discover other artists?", artists_path %>
     </div>
     <% end %>
+
   </div>
 </div>
 <%= render "partials/uni_footer" %>

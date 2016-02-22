@@ -50,8 +50,8 @@
         </div>
 
         <div id="fan-artist" class="ferry">
-        <% if @fan.artist_videos.any? %>
-          <% @fan.artist_videos.each do |video| %>
+        <% if @artist_videos.any? %>
+          <% @artist_videos.each do |video| %>
             <div class="ogden">
               <div class="plymouth">
                 <%= embed(video.youtube_url) %>
@@ -61,6 +61,9 @@
               </div>
             </div>
           <% end %>
+
+          <%= paginate @artist_videos, :window => 2 %>
+
         <% else %>
           <div class="harlem">
             <% if @fan == current_fan %>
@@ -73,8 +76,8 @@
         </div>
 
         <div id="fan-record-label" class="ferry colvin">
-        <% if @fan.record_label_videos.any? %>
-          <% @fan.record_label_videos.each do |video| %>
+        <% if @record_label_videos.any? %>
+          <% @record_label_videos.take(25).each do |video| %>
             <div class="ogden">
               <div class="plymouth">
                 <%= embed(video.youtube_url) %>
@@ -96,8 +99,8 @@
         </div>
 
         <div id="fan-venue" class="ferry colvin">
-          <% if @fan.venue_videos.any? %>
-          <% @fan.venue_videos.each do |video| %>
+          <% if @venue_videos.any? %>
+          <% @venue_videos.take(25).each do |video| %>
             <div class="ogden">
               <div class="plymouth">
                 <%= embed(video.youtube_url) %>
@@ -119,8 +122,8 @@
         </div>
 
         <div id="fan-producer" class="ferry colvin">
-          <% if @fan.producer_videos.any? %>
-          <% @fan.producer_videos.each do |video| %>
+          <% if @producer_videos.any? %>
+          <% @producer_videos.take(25).each do |video| %>
             <div class="ogden">
               <div class="plymouth">
                 <%= embed(video.youtube_url) %>

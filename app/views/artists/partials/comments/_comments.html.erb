@@ -1,4 +1,4 @@
-<% @micropost.artist_micropost_comments.sort_by{ |comment| -comment.artist_micropost_comment_votes.count }.take(100).each do |comment| %>
+<% @micropost.artist_micropost_comments.sort_by{ |comment| -comment.artist_micropost_comment_votes.count }.take(15).each do |comment| %>
 <div class="northrup">
   <div class="winspear">
     <%= link_to comment.artist.artist_name, artist_path(comment.artist) if comment.artist.present? %><%= link_to comment.fan.fan_name, fan_path(comment.fan) if comment.fan.present? %><%= link_to comment.record_label.label_name, record_label_path(comment.record_label) if comment.record_label.present? %><%= link_to comment.venue.venue_name, venue_path(comment.venue) if comment.venue.present? %><%= link_to comment.producer.producer_name, producer_path(comment.producer) if comment.producer.present? %> <span class="posted">posted <%= time_ago_in_words(comment.created_at) %> ago</span>

@@ -7,9 +7,9 @@
 
     <%= render 'artists/partials/artist_name' %>
 
-    <% if @artist.fans.any? %>
+    <% if @followers.any? %>
     <div class="harlem">
-      <% @artist.fans.take(100).each do |fan| %>
+      <% @followers.each do |fan| %>
         <div class="utica">
 
           <%= render 'fans/partials/fan_profile_image', :fan => fan %>
@@ -21,6 +21,8 @@
       <% end %>
     </div>
     <% end %>
+
+    <%= paginate @followers, :window => 2 %>
 
   </div>
 </div>

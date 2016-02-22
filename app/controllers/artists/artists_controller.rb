@@ -4,32 +4,34 @@ class Artists::ArtistsController < ApplicationController
     if params[:search]
       @artists = Artist.search(params[:search]).order("created_at DESC")
     else
-      @artists = Artist.all
+      @artists = Artist.page params[:page]
     end
   end
 
   def show
     @artist = Artist.friendly.find(params[:id])
+    @microposts = @artist.artist_microposts.page params[:page]
   end
 
   def followers
     @artist = Artist.friendly.find(params[:artist_id])
+    @followers = @artist.fans.page params[:page]
   end
 
   def merch
-    @merch = ArtistMerch.all
+    @merch = ArtistMerch.page params[:page]
   end
 
   def shows
-    @shows = ArtistShow.all
+    @shows = ArtistShow.page params[:page]
   end
 
   def videos
-    @videos = ArtistVideo.all
+    @videos = ArtistVideo.page params[:page]
   end
 
   def microposts
-    @microposts = ArtistMicropost.all
+    @microposts = ArtistMicropost.page params[:page]
   end
 
 end

@@ -50,9 +50,9 @@
         </div>
 
         <div id="fan-artist" class="ferry">
-        <% if @fan.artist_merches.any? %>
+        <% if @artist_merch.any? %>
           <div class="harlem">
-            <% @fan.artist_merches.each do |merch| %>
+            <% @artist_merch.each do |merch| %>
             <div class="auburn dodge">
               <div class="allen">
                 <div class="highgate columbus">
@@ -100,6 +100,9 @@
             </div>
             <% end %>
           </div>
+
+          <%= paginate @artist_merch, :window => 2 %>
+
         <% else %>
           <div class="harlem">
             <% if @fan == current_fan %>

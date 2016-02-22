@@ -5,10 +5,12 @@ class Artists::NotificationsController < ApplicationController
   before_action :set_artist
 
   def index
+    @notifications = @artist.artist_notifications
   end
 
   def update
     @notification = ArtistNotification.find(params[:id])
+    @notifications = @artist.artist_notifications
     if @notification.update_attributes(read: true)
       flash.now[:notice] = "marked read"
       respond_to do |format|

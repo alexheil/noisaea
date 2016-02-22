@@ -64,7 +64,7 @@
     </div>
 
     <div id="container-popular" class="ferry">
-      <% @videos.take(100).each do |video| %>
+      <% @videos.each do |video| %>
         <div class="utica">
           <div class="plymouth">
             <%= embed(video.youtube_url) %>
@@ -93,7 +93,7 @@
     </div>
 
     <div id="container-recent" class="ferry colvin">
-      <% @videos.order( 'id DESC' ).take(100).each do |video| %>
+      <% @videos.order( 'id DESC' ).each do |video| %>
         <div class="utica">
           <div class="plymouth">
             <%= embed(video.youtube_url) %>
@@ -160,6 +160,8 @@
         </div>
       <% end %>
     </div>
+
+    <%= paginate @videos, :window => 2 %>
 
     <% end %>
   </div>
