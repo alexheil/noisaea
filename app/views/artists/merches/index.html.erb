@@ -23,9 +23,9 @@
         </div>
       <% end %>
 
-      <% if @artist.artist_merches.any? %>
+      <% if @merch.any? %>
       <div class="harlem">
-        <% @artist.artist_merches.each do |merch| %>
+        <% @merch.each do |merch| %>
         <div class="auburn dodge">
           <div class="allen">
             <% if merch.item_img_file_name.present? %>
@@ -73,6 +73,9 @@
         </div>
         <% end %>
       </div>
+
+      <%= paginate @merch, :window => 2 %>
+
       <% else %>
         <div class="harlem">
           <% if @artist == current_artist %>

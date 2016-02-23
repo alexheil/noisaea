@@ -7,6 +7,7 @@ class Recordlabels::ShowsController < ApplicationController
 
   def index
     @record_label = RecordLabel.friendly.find(params[:record_label_id])
+    @shows = @record_label.record_label_shows.page params[:page]
   end
 
   def show

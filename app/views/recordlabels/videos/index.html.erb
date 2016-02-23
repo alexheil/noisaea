@@ -21,8 +21,8 @@
         </div>
       <% end %>
 
-      <% if @record_label.record_label_videos.any? %>
-        <% @record_label.record_label_videos.each do |video| %>
+      <% if @videos.any? %>
+        <% @videos.each do |video| %>
           <div class="ogden">
             <div class="plymouth">
               <%= embed(video.youtube_url) %>
@@ -35,6 +35,9 @@
             </div>
           </div>
         <% end %>
+
+        <div><%= paginate @videos, :window => 2 %></div>
+
       <% else %>
         <div class="harlem">
           <% if @record_label == current_record_label %>

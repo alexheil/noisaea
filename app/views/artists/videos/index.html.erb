@@ -23,8 +23,8 @@
         </div>
       <% end %>
 
-      <% if @artist.artist_videos.any? %>
-        <% @artist.artist_videos.each do |video| %>
+      <% if @videos.any? %>
+        <% @videos.each do |video| %>
           <div class="ogden">
             <div class="plymouth">
               <%= embed(video.youtube_url) %>
@@ -37,6 +37,9 @@
             </div>
           </div>
         <% end %>
+
+        <div><%= paginate @videos, :window => 2 %></div>
+
       <% else %>
         <div class="harlem">
           <% if @artist == current_artist %>

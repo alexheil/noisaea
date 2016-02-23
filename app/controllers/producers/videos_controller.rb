@@ -7,6 +7,7 @@ class Producers::VideosController < ApplicationController
 
   def index
     @producer = Producer.friendly.find(params[:producer_id])
+    @videos = @producer.producer_videos.page params[:page]
   end
 
   def show

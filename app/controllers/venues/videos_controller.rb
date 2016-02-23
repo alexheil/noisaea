@@ -7,6 +7,7 @@ class Venues::VideosController < ApplicationController
 
   def index
     @venue = Venue.friendly.find(params[:venue_id])
+    @videos = @venue.venue_videos.page params[:page]
   end
 
   def show

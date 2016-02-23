@@ -21,9 +21,9 @@
         </div>
       <% end %>
 
-      <% if @record_label.record_label_shows.any? %>
+      <% if @shows.any? %>
         <div class="harlem">
-        <% @record_label.record_label_shows.each do |show| %>
+        <% @shows.each do |show| %>
           <div class="dodge ashland auburn">
             <% if Artist.exists?(:artist_name => "#{show.artist}") %>
               <%= link_to show.artist, artist_path(Artist.where(:artist_name => "#{show.artist}").first) %>
@@ -40,6 +40,9 @@
           </div>
         <% end %>
         </div>
+
+        <%= paginate @shows, :window => 2 %>
+
       <% else %>
         <div class="harlem">
           <% if @record_label == current_record_label %>

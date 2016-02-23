@@ -37,6 +37,9 @@
           </div>
         <% end %>
         </div>
+
+        <%= paginate @shows, :window => 2 %>
+
       <% else %>
         <div class="harlem">
           <% if @artist == current_artist %>

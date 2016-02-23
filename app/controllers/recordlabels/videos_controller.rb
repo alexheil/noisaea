@@ -7,6 +7,7 @@ class Recordlabels::VideosController < ApplicationController
 
   def index
     @record_label = RecordLabel.friendly.find(params[:record_label_id])
+    @videos = @record_label.record_label_videos.page params[:page]
   end
 
   def show

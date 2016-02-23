@@ -7,6 +7,7 @@ class Artists::ShowsController < ApplicationController
 
   def index
     @artist = Artist.friendly.find(params[:artist_id])
+    @shows = @artist.artist_shows.page params[:page]
   end
 
   def show

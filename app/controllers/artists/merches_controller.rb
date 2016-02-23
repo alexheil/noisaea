@@ -7,6 +7,7 @@ class Artists::MerchesController < ApplicationController
 
   def index
     @artist = Artist.friendly.find(params[:artist_id])
+    @merch = @artist.artist_merches.page params[:page]
   end
 
   def show
