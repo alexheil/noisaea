@@ -50,7 +50,7 @@ class Artist < ActiveRecord::Base
 
   def self.lazy_mailer
     Artist.includes(:artist_microposts).where( :artist_microposts => { :artist_id => nil } ).find_each do |artist|
-      ArtistMailer.lazy_email(artist).deliver_now
+      ArtistMailer.lazy_email(artist).deliver_now unless artist.created_at < 2.days.ago
     end
   end
 
