@@ -69,8 +69,14 @@ class Fan < ActiveRecord::Base
   before_save :should_generate_new_friendly_id?, if: :username_changed?
 
   def self.lazy_mailer
-    Fan.includes(:fan_profile).where( :fan_profile => { :cover_img_file_name => nil } ).find_each do |fan|
+    Fan.joins(:fan_profile).where( :fan_profile => { :cover_img_file_name => nil } ).find_each do |fan|
       FanMailer.lazy_email(fan).deliver_now unless fan.created_at < 2.days.ago
+    end
+  end
+
+  def self.follow_mailer
+    Fan.includes(:artist_relationships).where( :artist_relationships => { :fan_id => nil } ).find_each do |fan|
+      FanMailer.follow_email(fan).deliver_now unless fan.created_at < 2.days.ago
     end
   end
 

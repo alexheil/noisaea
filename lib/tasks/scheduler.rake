@@ -14,3 +14,8 @@ task :fan_lazy_mailer => :environment do
   Fan.lazy_mailer
   puts "Lazy fan email sent!"
 end
+task :fan_follow_mailer => :environment do
+  puts "Send email to lazy fans."
+  Fan.follow_mailer
+  puts "Lazy fan email sent!"
+end
