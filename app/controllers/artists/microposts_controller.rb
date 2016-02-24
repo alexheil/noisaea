@@ -29,6 +29,7 @@ class Artists::MicropostsController < ApplicationController
   def destroy
     ArtistMicropost.find(params[:id]).destroy
     @artist = Artist.friendly.find(params[:artist_id])
+    @microposts = @artist.artist_microposts.page params[:page]
     flash.now[:notice] = "you successfully deleted your status."
     respond_to do |format|
       format.html { redirect_to (:back) }

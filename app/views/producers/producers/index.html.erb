@@ -171,7 +171,7 @@
       </div>
 
       <div id="container-popular" class="ferry">
-        <% @producers.sort_by{ |producer| -producer.fans.count }.take(100).each do |producer| %>
+        <% @producers.sort_by{ |producer| -producer.fans.count }.each do |producer| %>
           <div class="utica">
             <%= render 'producers/partials/producer_profile_image', :producer => producer %>
               <div class="hertel">
@@ -198,7 +198,7 @@
       </div>
 
       <div id="container-recent" class="ferry colvin">
-        <% @producers.order( 'id DESC' ).take(100).each do |producer| %>
+        <% @producers.order( 'id DESC' ).each do |producer| %>
           <div class="utica">
             <%= render 'producers/partials/producer_profile_image', :producer => producer %>
               <div class="hertel">
@@ -753,6 +753,8 @@
           <% end %>
         <% end %>
       </div>
+
+      <%= paginate @producers, :window => 2 %>
 
     <% else %>
     <div class="highgate">

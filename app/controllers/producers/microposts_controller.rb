@@ -8,6 +8,7 @@ class Producers::MicropostsController < ApplicationController
   def create
     @micropost = @producer.producer_microposts.build(micropost_params)
     @producer = Producer.friendly.find(params[:producer_id])
+    @microposts = @producer.producer_microposts.page params[:page]
     if @micropost.save
       flash.now[:notice] = "your status has been posted!"
       respond_to do |format|
@@ -28,6 +29,7 @@ class Producers::MicropostsController < ApplicationController
   def destroy
     ProducerMicropost.find(params[:id]).destroy
     @producer = Producer.friendly.find(params[:producer_id])
+    @microposts = @producer.producer_microposts.page params[:page]
     flash.now[:notice] = "you successfully deleted your status."
     respond_to do |format|
       format.html { redirect_to (:back) }

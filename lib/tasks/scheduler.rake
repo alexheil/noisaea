@@ -9,3 +9,8 @@ task :artist_lazy_mailer => :environment do
   Artist.lazy_mailer
   puts "Artist email sent!"
 end
+task :fan_lazy_mailer => :environment do
+  puts "Send email to lazy fans."
+  Fan.lazy_mailer
+  puts "Lazy fan email sent!"
+end

@@ -2,6 +2,8 @@ class Artist < ActiveRecord::Base
   extend FriendlyId
   friendly_id :username, use: :slugged
 
+  paginates_per 3
+
   devise :database_authenticatable, :registerable,:recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable, :timeoutable
          #and :omniauthable
 
@@ -53,8 +55,6 @@ class Artist < ActiveRecord::Base
       ArtistMailer.lazy_email(artist).deliver_now unless artist.created_at < 2.days.ago
     end
   end
-
-  includes(:microposts).where( :microposts => { :user_id => nil } )
 
   def self.search(search)
     where("artist_name iLIKE ?", "%#{search}%")

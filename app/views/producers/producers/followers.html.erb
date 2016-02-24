@@ -7,20 +7,22 @@
 
     <%= render 'producers/partials/producer_name' %>
 
-    <% if @producer.fans.any? %>
+    <% if @followers.any? %>
     <div class="harlem">
-        <% @producer.fans.take(100).each do |fan| %>
-          <div class="utica">
+      <% @followers.each do |fan| %>
+        <div class="utica">
 
-            <%= render 'fans/partials/fan_profile_image', :fan => fan %>
+          <%= render 'fans/partials/fan_profile_image', :fan => fan %>
 
-            <div class="busti">
-              <%= link_to fan.fan_name, fan_path(fan) %>
-            </div>
+          <div class="busti">
+            <%= link_to fan.fan_name, fan_path(fan) %>
           </div>
-        <% end %>
+        </div>
+      <% end %>
     </div>
     <% end %>
+
+    <%= paginate @followers, :window => 2 %>
 
   </div>
 </div>

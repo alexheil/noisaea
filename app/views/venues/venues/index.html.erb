@@ -54,7 +54,7 @@
       </div>
 
       <div id="container-popular" class="ferry">
-        <% @venues.sort_by{ |venue| -venue.fans.count }.take(100).each do |venue| %>
+        <% @venues.sort_by{ |venue| -venue.fans.count }.each do |venue| %>
           <div class="utica">
             <%= render 'venues/partials/venue_profile_image', :venue => venue %>
               <div class="hertel">
@@ -78,7 +78,7 @@
       </div>
 
       <div id="container-recent" class="ferry colvin">
-        <% @venues.order( 'id DESC' ).take(100).each do |venue| %>
+        <% @venues.order( 'id DESC' ).each do |venue| %>
           <div class="utica">
             <%= render 'venues/partials/venue_profile_image', :venue => venue %>
               <div class="hertel">
@@ -136,6 +136,8 @@
           </div>
         <% end %>
       </div>
+
+      <%= paginate @venues, :window => 2 %>
 
     <% else %>
     <div class="highgate">

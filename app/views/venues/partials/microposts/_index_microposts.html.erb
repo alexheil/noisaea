@@ -1,5 +1,5 @@
-<% if @venue.venue_microposts.any? %>
-  <% @venue.venue_microposts.take(100).each do | micropost | %>
+<% if @microposts.any? %>
+  <% @microposts.take(100).each do | micropost | %>
     <div class="auburn dodge">
       <div class="winspear">
         <strong><%= link_to "#{@venue.venue_name}", venue_micropost_path(@venue, micropost) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
@@ -51,6 +51,9 @@
 
     </div>
   <% end %>
+
+  <%= paginate @microposts, :window => 2 %>
+
 <% else %>
   <div class="harlem">
     <% if @venue == current_venue %>

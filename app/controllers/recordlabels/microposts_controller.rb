@@ -8,6 +8,7 @@ class Recordlabels::MicropostsController < ApplicationController
   def create
     @micropost = @record_label.record_label_microposts.build(micropost_params)
     @record_label = RecordLabel.friendly.find(params[:record_label_id])
+    @microposts = @record_label.record_label_microposts.page params[:page]
     if @micropost.save
       flash.now[:notice] = "your status has been posted!"
       respond_to do |format|
@@ -28,6 +29,7 @@ class Recordlabels::MicropostsController < ApplicationController
   def destroy
     RecordLabelMicropost.find(params[:id]).destroy
     @record_label = RecordLabel.friendly.find(params[:record_label_id])
+    @microposts = @record_label.record_label_microposts.page params[:page]
     flash.now[:notice] = "you successfully deleted your status."
     respond_to do |format|
       format.html { redirect_to (:back) }
