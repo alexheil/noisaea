@@ -70,7 +70,7 @@ class Fan < ActiveRecord::Base
 
   def self.lazy_mailer
     Fan.includes(:fan_profile).where("fan_profiles.cover_img_file_name" => nil).find_each do |fan|
-      FanMailer.lazy_email(fan).deliver_now unless fan.created_at < 2.days.ago
+      FanMailer.lazy_email(fan).deliver_now unless fan.created_at > 2.days.ago
     end
   end
 
