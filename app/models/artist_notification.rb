@@ -16,7 +16,7 @@ class ArtistNotification < ActiveRecord::Base
 
   def self.notification_cleanup
     ArtistNotification.where(read: true).find_each do |notification|
-      notification.destroy unless notification.updated_at < 3.days.ago
+      notification.destroy unless notification.updated_at > 3.days.ago
     end
   end
 
