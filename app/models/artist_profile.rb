@@ -2,7 +2,7 @@ class ArtistProfile < ActiveRecord::Base
   belongs_to :artist
 
   has_attached_file :cover_img, styles: { perfect: "1920x640#", small: "800x266#" }
-  has_attached_file :profile_img, styles: { perfect: "382x382#", small: "160x160#" }
+  has_attached_file :profile_img, styles: { perfect: "200x200#" }
 
   validates_attachment_content_type :cover_img, content_type: /\Aimage\/.*\Z/
   validates_attachment_content_type :profile_img, content_type: /\Aimage\/.*\Z/
