@@ -910,7 +910,7 @@ h4 {
 }
 
 .utica {
-  width: 11.5%;
+  width: 9.5%;
   margin: 1vh auto;
   display: inline-block;
   font-family: $fancy-font;
@@ -1691,7 +1691,7 @@ select {
 @media screen and (max-width: 1600px) {
 
   .utica {
-    width: 19%;
+    width: 12%;
   }
 
   .broadway {
@@ -1764,7 +1764,7 @@ select {
 @media screen and (max-width: 1000px) {
 
   .utica {
-    width: 32%;
+    width: 19%;
   }
 
   .broadway {
@@ -1877,6 +1877,10 @@ select {
     img {
       max-height: calc(800px / 3);
     }
+  }
+
+  .utica {
+    width: 24%;
   }
 
   .allen {
@@ -2069,7 +2073,7 @@ select {
   }
 
   .utica {
-    width: 49%;
+    width: 32%;
     margin: 3vh 0;
   }
 
