@@ -1087,7 +1087,7 @@ h4 {
 }
 
 .highland {
-  width: 15%;
+  width: 10%;
   display: inline-block;
   vertical-align: top;
 }
@@ -1974,9 +1974,12 @@ select {
     font-size: 6em;
   }
 
+  .highland {
+    width: 15%;
+  }
+
   .anderson {
     font-weight: 700;
-    line-height: 1em;
     font-size: 1em;
   }
 
