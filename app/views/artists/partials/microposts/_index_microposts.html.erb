@@ -2,30 +2,30 @@
   <% @microposts.each do | micropost | %>
     <div class="auburn dodge">
 
-    <% if @artist.artist_profile.profile_img_file_name.blank? %>
-      <div class="winspear">
-        <strong><%= link_to "#{@artist.artist_name}", artist_micropost_path(@artist, micropost) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
-        <% if @artist == current_artist %>
-         // <%= link_to "delete post", artist_micropost_path(@artist, micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete, remote: true %>
-        <% end %>
-      </div>
-    <% else %>
-      <div class="left">
-        <div class="genesee">
-          <img srcset="<%= @artist.artist_profile.profile_img.url(:perfect) %>" width="100%" height="auto" />
+      <% if @artist.artist_profile.profile_img_file_name.blank? %>
+        <div class="winspear">
+          <strong><%= link_to "#{@artist.artist_name}", artist_micropost_path(@artist, micropost) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
+          <% if @artist == current_artist %>
+           // <%= link_to "delete post", artist_micropost_path(@artist, micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete, remote: true %>
+          <% end %>
         </div>
-      </div>
-      <div class="right">
-        <div class="name">
-          <%= link_to "#{@artist.artist_name}", artist_micropost_path(@artist, micropost) %>
+      <% else %>
+        <div class="highland">
+          <div class="genesee">
+            <img srcset="<%= @artist.artist_profile.profile_img.url(:small) %>" width="100%" height="auto" />
+          </div>
         </div>
-        <div class="posted">
-          posted <%= time_ago_in_words(micropost.created_at) %> ago
+        <div class="lexington">
+          <div class="anderson">
+            <%= link_to "#{@artist.artist_name}", artist_micropost_path(@artist, micropost) %>
+          </div>
+          <div class="posted">
+            posted <%= time_ago_in_words(micropost.created_at) %> ago
+          </div>
+          <% if @artist == current_artist %>
+           // <%= link_to "delete post", artist_micropost_path(@artist, micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete, remote: true %>
+          <% end %>
         </div>
-        <% if @artist == current_artist %>
-         // <%= link_to "delete post", artist_micropost_path(@artist, micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete, remote: true %>
-        <% end %>
-      </div>
       <% end %>
 
       <div class="winspear">

@@ -1086,21 +1086,21 @@ h4 {
   }
 }
 
-.left {
+.highland {
   width: 15%;
   display: inline-block;
   vertical-align: top;
 }
 
-.right {
+.lexington {
   width: 83%;
   display: inline-block;
   vertical-align: top;
 }
 
-.name {
-  font-weight: 700;
+.anderson {
   line-height: 1em;
+  font-size: 1.50em;
 }
 
 /*                            *********************************** TRACKS *********************** */
@@ -1972,6 +1972,12 @@ select {
 
   .play {
     font-size: 6em;
+  }
+
+  .anderson {
+    font-weight: 700;
+    line-height: 1em;
+    font-size: 1em;
   }
 
 }

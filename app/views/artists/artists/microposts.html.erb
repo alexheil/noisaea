@@ -67,12 +67,35 @@
       <% @microposts.sort_by{ |micropost| -micropost.artist_micropost_votes.count }.each do |micropost| %>
 
         <div class="auburn dodge">
-          <div class="winspear">
-            <strong><%= link_to micropost.artist.artist_name, artist_path(micropost.artist) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago <%= "from " + micropost.artist.artist_profile.location unless micropost.artist.artist_profile.location.blank? %></span>
-            <% if micropost.artist == current_artist %>
-             // <%= link_to "delete post", artist_micropost_path(micropost.artist, micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
-            <% end %>
-          </div>
+
+
+          <% if micropost.artist.artist_profile.profile_img_file_name.blank? %>
+            <div class="winspear">
+              <strong><%= link_to "#{micropost.artist.artist_name}", artist_micropost_path(micropost.artist, micropost) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
+              <% if micropost.artist == current_artist %>
+               // <%= link_to "delete post", artist_micropost_path(micropost.artist, micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete, remote: true %>
+              <% end %>
+            </div>
+          <% else %>
+            <div class="highland">
+              <div class="genesee">
+                <img srcset="<%= micropost.artist.artist_profile.profile_img.url(:small) %>" width="100%" height="auto" />
+              </div>
+            </div>
+            <div class="lexington">
+              <div class="anderson">
+                <%= link_to "#{micropost.artist.artist_name}", artist_micropost_path(micropost.artist, micropost) %>
+              </div>
+              <div class="posted">
+                posted <%= time_ago_in_words(micropost.created_at) %> ago
+              </div>
+              <% if micropost.artist == current_artist %>
+               // <%= link_to "delete post", artist_micropost_path(micropost.artist, micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete, remote: true %>
+              <% end %>
+            </div>
+          <% end %>
+
+
           <div class="winspear">
             <%= micropost.content %>
           </div>
@@ -125,12 +148,33 @@
       <% @microposts.order( 'id DESC' ).each do |micropost| %>
 
         <div class="auburn dodge">
-          <div class="winspear">
-            <strong><%= link_to micropost.artist.artist_name, artist_path(micropost.artist) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago <%= "from " + micropost.artist.artist_profile.location unless micropost.artist.artist_profile.location.blank? %></span>
-            <% if micropost.artist == current_artist %>
-             // <%= link_to "delete post", artist_micropost_path(micropost.artist, micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
-            <% end %>
-          </div>
+
+          <% if micropost.artist.artist_profile.profile_img_file_name.blank? %>
+            <div class="winspear">
+              <strong><%= link_to "#{micropost.artist.artist_name}", artist_micropost_path(micropost.artist, micropost) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
+              <% if micropost.artist == current_artist %>
+               // <%= link_to "delete post", artist_micropost_path(micropost.artist, micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete, remote: true %>
+              <% end %>
+            </div>
+          <% else %>
+            <div class="highland">
+              <div class="genesee">
+                <img srcset="<%= micropost.artist.artist_profile.profile_img.url(:small) %>" width="100%" height="auto" />
+              </div>
+            </div>
+            <div class="lexington">
+              <div class="anderson">
+                <%= link_to "#{micropost.artist.artist_name}", artist_micropost_path(micropost.artist, micropost) %>
+              </div>
+              <div class="posted">
+                posted <%= time_ago_in_words(micropost.created_at) %> ago
+              </div>
+              <% if micropost.artist == current_artist %>
+               // <%= link_to "delete post", artist_micropost_path(micropost.artist, micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete, remote: true %>
+              <% end %>
+            </div>
+          <% end %>
+
           <div class="winspear">
             <%= micropost.content %>
           </div>
@@ -184,12 +228,33 @@
         <% @microposts.each do |micropost| if micropost.artist.artist_profile.location == current_fan.fan_profile.location %>
 
         <div class="auburn dodge">
-          <div class="winspear">
-            <strong><%= link_to micropost.artist, artist_path(micropost.artist) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago <%= "from " + micropost.artist.artist_profile.location unless micropost.artist.artist_profile.location.blank? %></span>
-            <% if micropost.artist == current_artist %>
-             // <%= link_to "delete post", artist_micropost_path(micropost.artist, micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
-            <% end %>
-          </div>
+
+          <% if micropost.artist.artist_profile.profile_img_file_name.blank? %>
+            <div class="winspear">
+              <strong><%= link_to "#{micropost.artist.artist_name}", artist_micropost_path(micropost.artist, micropost) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
+              <% if micropost.artist == current_artist %>
+               // <%= link_to "delete post", artist_micropost_path(micropost.artist, micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete, remote: true %>
+              <% end %>
+            </div>
+          <% else %>
+            <div class="highland">
+              <div class="genesee">
+                <img srcset="<%= micropost.artist.artist_profile.profile_img.url(:small) %>" width="100%" height="auto" />
+              </div>
+            </div>
+            <div class="lexington">
+              <div class="anderson">
+                <%= link_to "#{micropost.artist.artist_name}", artist_micropost_path(micropost.artist, micropost) %>
+              </div>
+              <div class="posted">
+                posted <%= time_ago_in_words(micropost.created_at) %> ago
+              </div>
+              <% if micropost.artist == current_artist %>
+               // <%= link_to "delete post", artist_micropost_path(micropost.artist, micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete, remote: true %>
+              <% end %>
+            </div>
+          <% end %>
+
           <div class="winspear">
             <%= micropost.content %>
           </div>
