@@ -1086,6 +1086,23 @@ h4 {
   }
 }
 
+.left {
+  width: 15%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.right {
+  width: 83%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.name {
+  font-weight: 700;
+  line-height: 1em;
+}
+
 /*                            *********************************** TRACKS *********************** */
 
 audio {
