@@ -1,32 +1,32 @@
 <% if @microposts.any? %>
   <% @microposts.each do | micropost | %>
-  <div class="auburn dodge">
+    <div class="auburn dodge">
 
-    <% if @producer.producer_profile.profile_img_file_name.blank? %>
-      <div class="winspear">
-        <strong><%= link_to "#{@producer.producer_name}", producer_micropost_path(@producer, micropost) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
-        <% if @producer == current_producer %>
-         // <%= link_to "delete post", producer_micropost_path(@producer, micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete, remote: true %>
-        <% end %>
-      </div>
-    <% else %>
-      <div class="highland">
-        <div class="genesee">
-          <img srcset="<%= @producer.producer_profile.profile_img.url(:perfect) %>" width="100%" height="auto" />
+      <% if @producer.producer_profile.profile_img_file_name.blank? %>
+        <div class="winspear">
+          <strong><%= link_to "#{@producer.producer_name}", producer_micropost_path(@producer, micropost) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
+          <% if @producer == current_producer %>
+           // <%= link_to "delete post", producer_micropost_path(@producer, micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete, remote: true %>
+          <% end %>
         </div>
-      </div>
-      <div class="lexington">
-        <div class="anderson">
-          <%= link_to "#{@producer.producer_name}", producer_micropost_path(@producer, micropost) %>
+      <% else %>
+        <div class="highland">
+          <div class="genesee">
+            <img srcset="<%= @producer.producer_profile.profile_img.url(:perfect) %>" width="100%" height="auto" />
+          </div>
         </div>
-        <div class="posted">
-          posted <%= time_ago_in_words(micropost.created_at) %> ago
+        <div class="lexington">
+          <div class="anderson">
+            <%= link_to "#{@producer.producer_name}", producer_micropost_path(@producer, micropost) %>
+          </div>
+          <div class="posted">
+            posted <%= time_ago_in_words(micropost.created_at) %> ago
+          </div>
+          <% if @producer == current_producer %>
+           // <%= link_to "delete post", producer_micropost_path(@producer, micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete, remote: true %>
+          <% end %>
         </div>
-        <% if @producer == current_producer %>
-         // <%= link_to "delete post", producer_micropost_path(@producer, micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete, remote: true %>
-        <% end %>
-      </div>
-    <% end %>
+      <% end %>
 
       <div class="winspear">
         <%= micropost.content %>
