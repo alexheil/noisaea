@@ -2,8 +2,8 @@ class Fan < ActiveRecord::Base
   extend FriendlyId
   friendly_id :username, use: :slugged
 
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable, :timeoutable
- #:omniauthable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :timeoutable
+ #:omniauthable, :confirmable, :lockable
 
   has_one :fan_profile, dependent: :destroy
 
