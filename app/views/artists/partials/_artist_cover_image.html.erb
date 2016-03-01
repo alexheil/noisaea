@@ -10,7 +10,7 @@
 <div class="washington">
   <div style="background: url('<%= @artist.artist_profile.cover_img.url(:small) %>') no-repeat fixed; background-size: 100%;" class="broadway">
     <div class="northland">
-      <%= @artist.artist_name %> <span class="lakeview">// <%= pluralize(@artist.fans.count, "fan") %>
+      <%= @artist.artist_name %> <span class="cover_fan_count"><%= render 'artists/partials/relationships/cover_fan_count' %></span>
     </div>
   </div>
 </div>

@@ -10,7 +10,7 @@
 <div class="washington">
   <div style="background: url('<%= @producer.producer_profile.cover_img.url(:small) %>') no-repeat fixed; background-size: 100%;" class="broadway">
     <div class="northland">
-      <%= @producer.producer_name %> <span class="lakeview">// <%= pluralize(@producer.fans.count, "fan") %>
+      <%= @producer.producer_name %> <span class="cover_fan_count"><%= render 'paroducers/partials/relationships/cover_fan_count' %></span>
     </div>
   </div>
 </div>

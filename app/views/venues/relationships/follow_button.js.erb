@@ -5,4 +5,5 @@ $('.index_follow_button_<%= @venue.id %>').html('<%=  escape_javascript(render :
 $('.index_follower_count_<%= @venue.id %>').html('<%=  escape_javascript(render :partial => 'venues/partials/relationships/index_follower_count', :locals => {:venue => @venue}) %>');
 $('.venue_following_count').html('<%=  escape_javascript(render :partial => 'venues/partials/relationships/fan_following_count') %>');
 $('.venue_follow_button_<%= @venue.id %>').html('<%=  escape_javascript(render :partial => 'venues/partials/relationships/index_follow_button', :locals => {:venue => @venue}) %>');
+$('.cover_fan_count').html('<%=  escape_javascript(render :partial => 'venues/partials/relationships/cover_fan_count') %>');
 $('.flash_js').html('<%=  escape_javascript(render :partial => 'partials/flash') %>');
