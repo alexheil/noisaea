@@ -24,6 +24,7 @@ class ArtistProfile < ActiveRecord::Base
   before_save :smart_add_url_protocol
   before_save :downcase_url
   before_save :add_pound_to_hex
+  before_save :blank_genre
 
   protected
 
@@ -60,6 +61,12 @@ class ArtistProfile < ActiveRecord::Base
     def add_pound_to_hex
       unless self.theme_color.starts_with?('#')
         self.theme_color = "##{self.theme_color}" unless theme_color.blank?
+      end
+    end
+
+    def blank_genre
+      if self.genre == "select genre"
+        self.genre = ""
       end
     end
 

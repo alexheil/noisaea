@@ -21,6 +21,7 @@ class ProducerProfile < ActiveRecord::Base
   before_save :smart_add_url_protocol
   before_save :downcase_url
   before_save :add_pound_to_hex
+  before_save :blank_genre
 
   protected
 
@@ -45,6 +46,12 @@ class ProducerProfile < ActiveRecord::Base
       end
       unless self.letlyrics_url[/\Ahttp:\/\//] || self.letlyrics_url[/\Ahttps:\/\//]
         self.letlyrics_url = "https://#{self.letlyrics_url}" unless letlyrics_url.blank?
+      end
+    end
+
+    def blank_genre
+      if self.genre == "select genre"
+        self.genre = ""
       end
     end
 
