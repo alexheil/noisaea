@@ -264,7 +264,7 @@ h4 {
   color: $main-color;
   &:hover {
     background: $main-color;
-    color: #ffffff;
+    color: #fff;
   }
 }
 
@@ -428,7 +428,7 @@ h4 {
   color: #666666;
   font-family: $fancy-font;
   &:hover {
-    color: $main-color;
+    color: #fff;
   }
 }
 
@@ -1544,6 +1544,7 @@ select {
   font-size: 15em;
   line-height: 15rem;
   font-weight: 400;
+  text-shadow: 1px 0px 0px #fff;
   a {
     -webkit-transition: .3s ease-in-out;
     -moz-transition: .3s ease-in-out;
@@ -1555,6 +1556,22 @@ select {
       -o-transition: .3s ease-in-out;
     }
   }
+}
+
+.wehrle {
+  padding: 1vh 1vw;
+  border: 3px solid #fff;
+  color: #fff;
+  &:hover {
+    background: rgba(103, 58, 183, 0.75);
+    border: 3px solid $main-color;
+    color: #fff;
+  }
+}
+
+.kings {
+  margin-top: -10px;
+  font-size: 1.25em;
 }
 
 .temp {
