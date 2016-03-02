@@ -10,7 +10,7 @@
         <% if artist_signed_in? || fan_signed_in? || record_label_signed_in? || venue_signed_in? || producer_signed_in? %>
         <% else %>
         <li><%= link_to "sign in", sign_in_path, class: "smith" %></li>
-        <li><%= link_to "register", register_path, class: "smith" %></li>
+        <li><%= link_to "register", register_path, class: "prospect" %></li>
         <% end %>
       </ul>
     </nav>

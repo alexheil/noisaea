@@ -2,7 +2,7 @@
 <header class="buffalo ontario fourth">
   <div class="delaware">
     <nav class="parkside">
-      <%= link_to "nosiaea //", root_url, class: "military", alt: 'noisaea' %>
+      <%= link_to "noisaea //", root_url, class: "military", alt: 'noisaea' %>
       <ul>
         <li><%= link_to "artists", artists_path, class: "depew" %></li>
         <li><%= link_to "record labels", record_labels_path, class: "depew" %></li>
@@ -11,7 +11,7 @@
         <% if artist_signed_in? || fan_signed_in? || record_label_signed_in? || venue_signed_in? || producer_signed_in? %>
         <% else %>
           <li><%= link_to "sign in", sign_in_path, class: "depew" %></li>
-          <li><%= link_to "register", register_path, class: "depew" %></li>
+          <li><%= link_to "register", register_path, class: "prospect" %></li>
         <% end %>
       </ul>
     </nav>
@@ -25,20 +25,20 @@
     <nav class="grant">
       <center><h1><%= link_to "//", root_url, class: "hampshire" %></h1></center>
       <ul>
-        <li><strong><%= link_to "a", artists_path, class: "smith" %></strong></li>
-        <li><strong><%= link_to "r", record_labels_path, class: "smith" %></strong></li>
-        <li><strong><%= link_to "v", venues_path, class: "smith" %></strong></li>
-        <li><strong><%= link_to "p", producers_path, class: "smith" %></strong></li>
+        <li><strong><%= link_to "a", artists_path, class: "seneca" %></strong></li>
+        <li><strong><%= link_to "r", record_labels_path, class: "seneca" %></strong></li>
+        <li><strong><%= link_to "v", venues_path, class: "seneca" %></strong></li>
+        <li><strong><%= link_to "p", producers_path, class: "seneca" %></strong></li>
         <% if artist_signed_in? || fan_signed_in? || record_label_signed_in? || venue_signed_in? || producer_signed_in? %>
         <% else %>
-          <li><strong><a id="emslie" class="smith">. . .</a></strong></li>
+          <li><strong><a id="emslie" class="seneca">. . .</a></strong></li>
         <% end %>
       </ul>
     </nav>
     <div class="monroe">
       <ul>
-        <li><%= link_to "sign in", sign_in_path, class: "smith" %></li>
-        <li><%= link_to "register", register_path, class: "smith" %></li>
+        <li><%= link_to "sign in", sign_in_path, class: "seneca" %></li>
+        <li><%= link_to "register", register_path, class: "seneca" %></li>
       </ul>
     </div>
   </div>

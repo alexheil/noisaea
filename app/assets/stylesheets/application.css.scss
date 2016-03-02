@@ -180,6 +180,7 @@ h4 {
 .grant {
   width: 100%;
   display: inline-block;
+  padding: 1vh 0;
   h1 {
     margin: 0;
     padding: 0;
@@ -203,7 +204,7 @@ h4 {
 }
 
 .smith {
-  color: $my-black;
+  color: #fff;
   font-family: $fancy-font;
   &:hover {
     color: $main-color;
@@ -248,11 +249,22 @@ h4 {
 
 .military {
   display: inline-block;
+  font-size: 1.75em;
   color: #fff;
   padding: 1vh 0;
   font-family: $fancy-font;
   &:hover {
     color: $main-color;
+  }
+}
+
+.prospect {
+  padding: 1vh 1vw;
+  border: 3px solid $main-color;
+  color: $main-color;
+  &:hover {
+    background: $main-color;
+    color: #ffffff;
   }
 }
 
@@ -327,6 +339,7 @@ h4 {
 .parkside {
   width: 100%;
   display: inline-block;
+  padding: 1vh 0;
   ul {
     list-style: none;
     margin: 0;
@@ -337,7 +350,7 @@ h4 {
       font-family: $fancy-font;
       padding: 1vh 0;
       position: relative;
-      margin-left: 5vw;
+      margin-left: 3vw;
       &:first-child {
         margin-left: 0vw;
       }
@@ -412,7 +425,7 @@ h4 {
 }
 
 .leroy {
-  color: #fff;
+  color: #666666;
   font-family: $fancy-font;
   &:hover {
     color: $main-color;
@@ -427,6 +440,9 @@ h4 {
   padding: 2vh 0 5vh 0;
   .adams {
     color: #fff;
+    &:hover {
+      color: $main-color;
+    }
   }
   .smith {
     color: #fff;
@@ -479,56 +495,54 @@ h4 {
 }
 
 .south-ogden {
-  font-size: 1.25em;
-  margin-bottom: 2vh;
   color: #fff;
   font-weight: 400;
 }
 
 .facebook {
-  color: #fff;
+  color: #666666;
   &:hover {
     color: #3b5998;
   }
 }
 
 .twitter {
-  color: #fff;
+  color: #666666;
   &:hover {
     color: #55acee;
   }
 }
 
 .youtube {
-  color: #fff;
+  color: #666666;
   &:hover {
     color: #bb0000;
   }
 }
 
 .googleplus {
-  color: #fff;
+  color: #666666;
   &:hover {
     color: #dd4b39;
   }
 }
 
 .instagram {
-  color: #fff;
+  color: #666666;
   &:hover {
     color: #517fa4;
   }
 }
 
 .tumblr {
-  color: #fff;
+  color: #666666;
   &:hover {
     color: #32506d;
   }
 }
 
 .pinterest {
-  color: #fff;
+  color: #666666;
   &:hover {
     color: #cb2027;
   }
@@ -1536,8 +1550,6 @@ select {
     -o-transition: .3s ease-in-out;
     &:hover {
       color: $my-black;
-      filter: opacity(0);
-      -webkit-filter: opacity(0);
       -webkit-transition: .3s ease-in-out;
       -moz-transition: .3s ease-in-out;
       -o-transition: .3s ease-in-out;
