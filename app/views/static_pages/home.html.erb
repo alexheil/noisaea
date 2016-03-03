@@ -3,25 +3,33 @@
 <%= render 'partials/home_header' %>
 
 <div class="buffalo">
-  <div class="bailey">
-    <div class="delaware">
-      <div class="delavan">
+  <div class="delaware">
+    <div class="bailey">
 
-
-        <div class="niagara-falls">
-          <%= link_to 'noisaea //', why_path %>
-        </div>
-        <div class="kings busti white">
-          Noisaea is the universal spot for the music industry, tying together music, media, events, and shop.
-        </div>
-        <div class="harlem busti">
-          <%= link_to "find out more?", why_path, class: "wehrle" %>
-        </div>
-
-
+      <div class="niagara-falls">
+        <%= link_to 'noisaea //', why_path %>
       </div>
+      <div class="kings busti white">
+        Noisaea is the universal spot for the music industry, tying together music, media, events, and shop.
+      </div>
+      <div class="harlem busti">
+        <%= link_to "find out more?", why_path, class: "wehrle" %>
+      </div>
+
     </div>
   </div>
+
+  <div class="busti a">
+    <div class="delaware b">
+      <%= form_tag(artists_path, :method => "get") do %>
+        <div class="highgate">
+          <%= text_field_tag :search, params[:search], placeholder: "discover artists", class: "d" %><%= submit_tag "search", class: "e" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+
 </div>
 
 <%= render 'partials/home_footer' %>

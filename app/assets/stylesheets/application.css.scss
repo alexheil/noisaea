@@ -304,6 +304,9 @@ h4 {
       color: $main-color;
     }
   }
+  .military {
+    font-size: 1em;
+  }
   .taunton {
     display: none;
     img{
@@ -436,7 +439,6 @@ h4 {
 
 .kensington {
   clear: both;
-  margin-top: 5vh;
   padding: 2vh 0 5vh 0;
   .adams {
     color: #fff;
@@ -450,6 +452,10 @@ h4 {
       color: $main-color;
     }
   }
+}
+
+.claremont {
+  margin-top: 8vh;
 }
 
 .eggert {
@@ -1539,11 +1545,83 @@ select {
   font-family: $fancy-font;
 }
 
+.a {
+  width: 100%;
+  background: rgba(0,0,0,.5);
+  color: #fff;
+}
+
+.b {
+  padding: 5vh 0;
+}
+
+.c {
+  width: 100%;
+  background: #fff;
+  color: $my-black;
+}
+
+.d {
+  width: 70%;
+  font-family: $fancy-font;
+  font-size: 1.5em;
+  padding: 1vh 1vw;
+  font-weight: 300;
+  border-top: 3px solid #fff;
+  border-left: 3px solid #fff;
+  border-right: 3px solid #fff;
+  border-bottom: 3px solid #fff;
+  display: inline-block;
+  box-sizing: border-box;
+}
+.e {
+  width: 30%;
+  font-family: $fancy-font;
+  font-size: 1.5em;
+  padding: 1vh 1vw;
+  font-weight: 300;
+  text-align: center;
+  background: transparent;
+  border-top: 3px solid #fff;
+  border-left: 3px solid #fff;
+  border-right: 3px solid #fff;
+  border-bottom: 3px solid #fff;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  box-sizing: border-box;
+  -webkit-transition: .3s;
+  -moz-transition: .3s;
+  -o-transition: .3s;
+  &:hover {
+    border: 3px solid $main-color;
+    background: $main-color;
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -o-transition: .3s;
+  }
+}
+
+.f {
+  width: 30%;
+  display: inline-block;
+  vertical-align: top;
+  padding: 0 1%;
+}
+
+.g {
+  text-align: center;
+  font-weight: 400;
+  color: #fff;
+  font-size: 2em;
+  padding: 20vh 0;
+}
+
 .niagara-falls {
   text-align: center;
   font-size: 15em;
-  line-height: 15rem;
   font-weight: 400;
+  line-height: 1em;
   text-shadow: 1px 0px 0px #fff;
   a {
     -webkit-transition: .3s ease-in-out;
@@ -1563,7 +1641,7 @@ select {
   border: 3px solid #fff;
   color: #fff;
   &:hover {
-    background: rgba(103, 58, 183, 0.75);
+    background: $main-color;
     border: 3px solid $main-color;
     color: #fff;
   }
@@ -1810,7 +1888,6 @@ select {
 
   .niagara-falls {
     font-size: 9em;
-    line-height: 12rem;
   }
 
   .bailey {
@@ -1827,7 +1904,6 @@ select {
 
   .niagara-falls {
     font-size: 8em;
-    line-height: 10rem;
   }
 
     #timeline{
@@ -1850,7 +1926,6 @@ select {
 
   .niagara-falls {
     font-size: 7em;
-    line-height: 7rem;
   }
 
   .delavan {
