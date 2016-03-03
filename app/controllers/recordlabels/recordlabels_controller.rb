@@ -2,7 +2,7 @@ class Recordlabels::RecordlabelsController < ApplicationController
 
   def index
     if params[:search]
-      @record_labels = RecordLabel.search(params[:search]).order("created_at DESC")
+      @record_labels = RecordLabel.search(params[:search]).order("created_at DESC").page params[:page]
     else
       @record_labels = RecordLabel.all.page params[:page]
     end

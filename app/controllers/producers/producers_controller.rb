@@ -2,7 +2,7 @@ class Producers::ProducersController < ApplicationController
 
   def index
     if params[:search]
-      @producers = Producer.search(params[:search]).order("created_at DESC")
+      @producers = Producer.search(params[:search]).order("created_at DESC").page params[:page]
     else
       @producers = Producer.all.page params[:page]
     end
