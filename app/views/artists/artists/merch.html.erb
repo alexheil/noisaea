@@ -84,7 +84,7 @@
             <%= link_to merch.title, artist_merch_path(merch.artist, merch), class: "sugar" %>
           </div>
           <div class="hertel busti">
-            <%= merch.artist.artist_profile.location unless merch.artist.artist_profile.location.blank? %>
+            <span class="gray"><%= merch.artist.artist_profile.location unless merch.artist.artist_profile.location.blank? %></span>
           </div>
           <div class="hertel">
             <div class="index_follower_count_<%= merch.artist.id %>">
@@ -121,7 +121,7 @@
             <%= link_to merch.title, artist_merch_path(merch.artist, merch), class: "sugar" %>
           </div>
           <div class="hertel busti">
-            <%= merch.artist.artist_profile.location unless merch.artist.artist_profile.location.blank? %>
+            <span class="gray"><%= merch.artist.artist_profile.location unless merch.artist.artist_profile.location.blank? %></span>
           </div>
           <div class="hertel">
             <div class="index_follower_count_<%= merch.artist.id %>">
@@ -159,7 +159,7 @@
             <%= link_to merch.title, artist_merch_path(merch.artist, merch), class: "sugar" %>
           </div>
           <div class="hertel busti">
-            <%= merch.artist.artist_profile.location unless merch.artist.artist_profile.location.blank? %>
+            <span class="gray"><%= merch.artist.artist_profile.location unless merch.artist.artist_profile.location.blank? %></span>
           </div>
           <div class="hertel">
             <div class="index_follower_count_<%= merch.artist.id %>">

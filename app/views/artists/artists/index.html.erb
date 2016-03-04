@@ -117,7 +117,7 @@
           <strong>location</strong>
         </div>
         <strong><a class="porter adams">genres</a></strong>
-        <div class="grey">
+        <div class="gray">
           <div id="malternative" class="porter">
             alternative
           </div>
@@ -188,10 +188,10 @@
               <center><%= link_to artist.artist_name, artist_path(artist) %></center>
             </div>
             <div class="hertel">
-              <center><%= artist.artist_profile.genre unless artist.artist_profile.genre.blank? %></center>
+              <span class="gray"><center><%= artist.artist_profile.genre unless artist.artist_profile.genre.blank? %></center></span>
             </div>
             <div class="hertel">
-              <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
+              <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
             </div>
             <div class="hertel">
               <div class="index_follower_count_<%= artist.id %>">
@@ -215,10 +215,10 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.genre unless artist.artist_profile.genre.blank? %></center>
+                <span class="gray"><center><%= artist.artist_profile.genre unless artist.artist_profile.genre.blank? %></center></span>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
+                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -243,7 +243,7 @@
                   <center><%= link_to artist.artist_name, artist_path(artist) %></center>
                 </div>
                 <div class="hertel">
-                  <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
+                  <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
                 </div>
                 <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -277,7 +277,7 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
+                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -301,7 +301,7 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
+                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -325,7 +325,7 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
+                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -349,7 +349,7 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
+                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -373,7 +373,7 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
+                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -397,7 +397,7 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
+                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -421,7 +421,7 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
+                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -445,7 +445,7 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
+                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -469,7 +469,7 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
+                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -493,7 +493,7 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
+                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
               </div>
              <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -517,7 +517,7 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
+                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -541,7 +541,7 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
+                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -565,7 +565,7 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
+                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -589,7 +589,7 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
+                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -613,7 +613,7 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
+                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -637,7 +637,7 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
+                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -661,7 +661,7 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
+                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -685,7 +685,7 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
+                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
@@ -709,7 +709,7 @@
                 <center><%= link_to artist.artist_name, artist_path(artist) %></center>
               </div>
               <div class="hertel">
-                <center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center>
+                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
               </div>
               <div class="hertel">
                 <div class="index_follower_count_<%= artist.id %>">
