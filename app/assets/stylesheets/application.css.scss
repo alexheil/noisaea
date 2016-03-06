@@ -309,9 +309,6 @@ h4 {
   }
   .taunton {
     display: none;
-    img{
-      width: auto;
-    }
   }
   ul {
     list-style: none;
@@ -1773,7 +1770,6 @@ select {
 }
 
 .kings {
-  margin-top: -10px;
   font-size: 1.25em;
 }
 
@@ -2148,6 +2144,91 @@ select {
     }
   }
 
+  .test {
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.85);
+    ul {
+      margin: 10vh 0;
+    }
+  }
+
+  #closemenu {
+  display: block;
+  width:50px;
+  height:50px;
+  box-sizing: border-box;
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+  margin: 0 auto;
+  z-index: 1001;
+  cursor: pointer;
+  -webkit-transition: .3s ease-in-out;
+  -moz-transition: .3s ease-in-out;
+  -o-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+  &:hover {
+    color: $main-color;
+      -webkit-transition: .3s ease-in-out;
+      -moz-transition: .3s ease-in-out;
+      -o-transition: .3s ease-in-out;
+      transition: .3s ease-in-out;
+    &:after {
+      background: $main-color;
+      -webkit-transition: .3s ease-in-out;
+      -moz-transition: .3s ease-in-out;
+      -o-transition: .3s ease-in-out;
+      transition: .3s ease-in-out;
+    }
+    &:before {
+      background: $main-color;
+      -webkit-transition: .3s ease-in-out;
+      -moz-transition: .3s ease-in-out;
+      -o-transition: .3s ease-in-out;
+      transition: .3s ease-in-out;
+    }
+  }
+  &:before {
+    content: "";
+    display: block;
+    height: 30px;
+    width: 3px;
+    z-index: 1001;
+    background: #fff;
+    position: absolute;
+    left: 26px;
+    top:10px;
+    -webkit-transform:rotate(45deg);
+    -moz-transform:rotate(45deg);
+    -o-transform:rotate(45deg);
+    transform:rotate(45deg);
+    -webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+  }
+  &:after {
+    content: "";
+    display: block;
+    height: 30px;
+    width: 3px;
+    z-index: 1001;
+    background: #fff;
+    position: absolute;
+    left: 26px;
+    top:10px;
+    -webkit-transform:rotate(-45deg);
+    -moz-transform:rotate(-45deg);
+    -o-transform:rotate(-45deg);
+    transform:rotate(-45deg);
+    -webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+  }
+}
+
   .crescent {
     ul {
       display:none;
@@ -2185,7 +2266,7 @@ select {
     }
   }
 
-  .audioplayer{
+  .audioplayer {
     width: 100%;
   }
 
@@ -2201,7 +2282,7 @@ select {
     width: 7%;
   }
 
-  #timeline{
+  #timeline {
     width: 80%;
   }
 
