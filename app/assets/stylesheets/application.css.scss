@@ -361,10 +361,6 @@ h4 {
   }
 }
 
-#emslie {
-  cursor: pointer;
-}
-
 #watson {
   cursor: pointer;
   color: $my-black;
@@ -378,24 +374,8 @@ h4 {
   }
 }
 
-.monroe {
-  width: 50%;
-  margin: 1vh auto;
-  display: none;
-  text-align: center;
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    li {
-      margin: 1vh auto;
-    }
-  }
-}
-
 .madison {
   margin: 1vh auto;
-  display: none;
   text-align: center;
   color: $my-black;
   ul {
@@ -415,8 +395,6 @@ h4 {
     width: 25%;
     display: inline-block;
     vertical-align: top;
-    border-right: 1px solid #fff;
-    border-bottom: 1px solid #fff;
     text-align: center;
     padding: 1vh 0 0 0;
     box-sizing: border-box;
@@ -427,7 +405,6 @@ h4 {
       border-left: 0px;
     }
     &:hover {
-      background: $my-black;
       color: $main-color;
       svg {
         fill: $main-color;
@@ -452,8 +429,6 @@ h4 {
     width: 20%;
     display: inline-block;
     vertical-align: top;
-    border-right: 1px solid $my-black;
-    border-bottom: 1px solid $my-black;
     text-align: center;
     padding: 1vh 0 0 0;
     box-sizing: border-box;
@@ -464,7 +439,6 @@ h4 {
       border-left: 0px;
     }
     &:hover {
-      background: $my-black;
       color: $main-color;
       svg {
         fill: $main-color;
@@ -494,8 +468,6 @@ h4 {
     width: 50%;
     display: inline-block;
     vertical-align: top;
-    border-right: 1px solid #fff;
-    border-bottom: 1px solid #fff;
     text-align: center;
     padding: 1vh 0;
     color: #fff;
@@ -507,7 +479,6 @@ h4 {
       border-left: 0px;
     }
     &:hover {
-      background: $my-black;
       color: $main-color;
       -webkit-transition: .3s;
       -moz-transition: .3s;
@@ -523,8 +494,6 @@ h4 {
     width: 50%;
     display: inline-block;
     vertical-align: top;
-    border-right: 1px solid $my-black;
-    border-bottom: 1px solid $my-black;
     text-align: center;
     padding: 1vh 0;
     color: $my-black;
@@ -533,7 +502,6 @@ h4 {
       border-left: 0px;
     }
     &:hover {
-      background: $my-black;
       color: $main-color;
       -webkit-transition: .3s;
       -moz-transition: .3s;
