@@ -7,7 +7,9 @@
     <% end %>
   </div>
 <% else %>
-  <div class="loretta">
-    <img srcset="<%= venue.venue_profile.profile_img.url(:perfect) %>" width="100%" height="auto" />
-  </div>
+  <%= link_to venue_path(venue) do %>
+    <div class="loretta">
+      <img srcset="<%= venue.venue_profile.profile_img.url(:perfect) %>" width="100%" height="auto" />
+    </div>
+  <% end %>
 <% end %>

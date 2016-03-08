@@ -7,7 +7,9 @@
     <% end %>
   </div>
 <% else %>
-  <div class="loretta">
-    <img srcset="<%= artist.artist_profile.profile_img.url(:perfect) %>" width="100%" height="auto" />
-  </div>
+  <%= link_to artist_path(artist) do %>
+    <div class="loretta">
+      <img srcset="<%= artist.artist_profile.profile_img.url(:perfect) %>" width="100%" height="auto" />
+    </div>
+  <% end %>
 <% end %>

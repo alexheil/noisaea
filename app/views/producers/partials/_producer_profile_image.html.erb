@@ -7,7 +7,9 @@
     <% end %>
   </div>
 <% else %>
-  <div class="loretta">
-    <img srcset="<%= producer.producer_profile.profile_img.url(:perfect) %>" width="100%" height="auto" />
-  </div>
+  <%= link_to producer_path(producer) do %>
+    <div class="loretta">
+      <img srcset="<%= producer.producer_profile.profile_img.url(:perfect) %>" width="100%" height="auto" />
+    </div>
+  <% end %>
 <% end %>

@@ -7,7 +7,9 @@
     <% end %>
   </div>
 <% else %>
-<div class="loretta">
-  <img srcset="<%= fan.fan_profile.profile_img.url(:perfect) %>" width="100%" height="auto" />
-</div>
+  <%= link_to fan_path(fan) do %>
+    <div class="loretta">
+      <img srcset="<%= fan.fan_profile.profile_img.url(:perfect) %>" width="100%" height="auto" />
+    </div>
+  <% end %>
 <% end %>
