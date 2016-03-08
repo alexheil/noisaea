@@ -14,7 +14,7 @@
   <% end %>
   <% if @fan.fan_profile.location.present? %>
   <div class="jefferson">
-    location //
+    location
   </div>
   <div class="fillmore">
     <%= @fan.fan_profile.location %>
@@ -22,7 +22,7 @@
   <% end %>
   <% if @fan.fan_profile.website.present? %>
   <div class="jefferson">
-    website //
+    website
   </div>
   <div class="fillmore">
     <%= link_to "#{@fan.fan_name}'s website", @fan.fan_profile.website, :target => "_blank" %>
@@ -30,7 +30,7 @@
   <% end %>
   <% if @fan.fan_profile.biography.present? %>
   <div class="jefferson">
-    biography //
+    biography
   </div>
   <div class="fillmore">
     <%= @fan.fan_profile.biography %>

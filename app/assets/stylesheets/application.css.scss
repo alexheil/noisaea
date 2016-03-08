@@ -1612,17 +1612,21 @@ select {
   font-family: $fancy-font;
   font-size: 18px;
   padding: 20px;
-  border-top: 3px solid $my-black;
-  border-left: 3px solid transparent;
-  border-right: 3px solid transparent;
-  border-bottom: 3px solid $my-black;
+  border: 3px solid $my-black;
   background: transparent;
   display: inline-block;
   box-sizing: border-box;
   &:focus {
-    border: 3px solid $my-black;
     background: #fff;
   }
+}
+
+.tennyson {
+  cursor:pointer;
+}
+
+.homer {
+  cursor:pointer;
 }
 
 #error_explanation {

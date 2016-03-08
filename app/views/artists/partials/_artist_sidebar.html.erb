@@ -30,7 +30,7 @@
   <% end %>
   <% if @artist.artist_profile.location.present? %>
   <div class="jefferson">
-    location //
+    location
   </div>
   <div class="fillmore">
     <%= @artist.artist_profile.location %>
@@ -38,7 +38,7 @@
   <% end %>
   <% if @artist.artist_profile.genre.present? %>
   <div class="jefferson">
-    genre //
+    genre
   </div>
   <div class="fillmore">
     <%= @artist.artist_profile.genre %>
@@ -46,7 +46,7 @@
   <% end %>
   <% if @artist.artist_profile.members.present? %>
   <div class="jefferson">
-    members //
+    members
   </div>
   <div class="fillmore">
     <%= @artist.artist_profile.members %>
@@ -54,7 +54,7 @@
   <% end %>
   <% if @artist.artist_profile.record_label.present? %>
   <div class="jefferson">
-    record label //
+    record label
   </div>
   <div class="fillmore">
     <% if RecordLabel.exists?(:label_name => "#{@artist.artist_profile.record_label}") %>
@@ -66,7 +66,7 @@
   <% end %>
   <% if @artist.artist_profile.biography.present? %>
   <div class="jefferson">
-    biography //
+    biography
   </div>
   <div class="fillmore">
     <%= @artist.artist_profile.biography %>

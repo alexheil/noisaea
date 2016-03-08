@@ -6,7 +6,7 @@
       <div class="harlem">
         <h1>resend unlock instructions</h1>
       </div>
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
         <%= devise_error_messages! %>
 
         <div class="highgate">
