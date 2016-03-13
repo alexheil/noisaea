@@ -46,7 +46,7 @@ class Artists::CommentsController < ApplicationController
   private
 
     def send_comment_email
-      return if @artist.id == current_artist.id
+      return if artist_signed_in? && @artist.id == current_artist.id
       ArtistMailer.comment_email(@artist, @micropost).deliver_now unless @artist.comment_email == false
     end
 

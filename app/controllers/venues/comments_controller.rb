@@ -45,7 +45,7 @@ class Venues::CommentsController < ApplicationController
   private
 
     def send_comment_email
-      return if @venue.id == current_venue.id
+      return if venue_signed_in? && @venue.id == current_venue.id
       VenueMailer.comment_email(@venue, @micropost).deliver_now unless @venue.follow_email == false
     end
 

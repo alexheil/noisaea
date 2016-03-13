@@ -45,7 +45,7 @@ class Recordlabels::CommentsController < ApplicationController
   private
 
     def send_comment_email
-      return if @record_label.id == current_record_label.id
+      return if record_label_signed_in? && @record_label.id == current_record_label.id
       RecordLabelMailer.comment_email(@record_label, @micropost).deliver_now unless @record_label.comment_email == false
     end
 

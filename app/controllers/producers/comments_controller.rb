@@ -45,7 +45,7 @@ class Producers::CommentsController < ApplicationController
   private
 
     def send_comment_email
-      return if @producer.id == current_producer.id
+      return if producer_signed_in? && @producer.id == current_producer.id
       ProducerMailer.comment_email(@producer, @micropost).deliver_now unless @producer.comment_email == false
     end
 
