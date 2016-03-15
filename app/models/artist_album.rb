@@ -11,7 +11,7 @@ class ArtistAlbum < ActiveRecord::Base
 
   has_attached_file :cover_img, styles: { perfect: "1500x1500#", small: "382x382#" }
 
-  validates_attachment_content_type :cover_img, content_type: { content_type: ["image/jpeg", "image/jpg", "image/png"] }
+  validates_attachment_content_type :cover_img, content_type: /\Aimage\/.*\Z/
 
   validates :artist_id, presence: true
   validates :title, presence: true
