@@ -1629,6 +1629,78 @@ select {
   cursor:pointer;
 }
 
+.plus {
+  padding: 1vh 1vw;
+  margin: 2vh 0;
+  text-align: center;
+  border: 3px solid $accent-color2;
+  color: $accent-color2;
+  font-size: 1.25em;
+  cursor: pointer;
+  -webkit-transition: .3s;
+  -moz-transition: .3s;
+  -o-transition: .3s;
+  &:hover {
+    background: $accent-color2;
+    color: #fff;
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -o-transition: .3s;
+  }
+}
+
+#plus1 {
+  display: none;
+}
+
+#show_field2 {
+  display: none;
+}
+
+#plus2 {
+  display: none;
+}
+
+#show_field3 {
+  display: none;
+}
+
+#plus3 {
+  display: none;
+}
+
+#show_field4 {
+  display: none;
+}
+
+#plus4 {
+  display: none;
+}
+
+#show_field5 {
+  display: none;
+}
+
+#plus5 {
+  display: none;
+}
+
+#show_field6 {
+  display: none;
+}
+
+#plus6 {
+  display: none;
+}
+
+#show_field7 {
+  display: none;
+}
+
+#show_field8 {
+  display: none;
+}
+
 #error_explanation {
   color: #F44336;
   font-family: $fancy-font;
@@ -1779,6 +1851,10 @@ select {
 
 .temp {
   font-size: 1.5em;
+}
+
+.sanders {
+  font-size: 1.75em;
 }
 
 /* ************************ REGISTER AND SIGN IN *************** */

@@ -431,6 +431,54 @@ var headerShow = function() {
 $(document).ready(headerShow);
 $(document).on('page:load', headerShow);
 
+var showArtists = function() {
+
+  $('#plus').click(function() {
+    $(this).hide();
+    $('#plus1').show();
+    $('#show_field2').show(300);
+  });
+
+  $('#plus1').click(function() {
+    $(this).hide();
+    $('#plus2').show();
+    $('#show_field3').show(300);
+  });
+
+  $('#plus2').click(function() {
+    $(this).hide();
+    $('#plus3').show();
+    $('#show_field4').show(300);
+  });
+
+  $('#plus3').click(function() {
+    $(this).hide();
+    $('#plus4').show();
+    $('#show_field5').show(300);
+  });
+
+  $('#plus4').click(function() {
+    $(this).hide();
+    $('#plus5').show();
+    $('#show_field6').show(300);
+  });
+
+  $('#plus5').click(function() {
+    $(this).hide();
+    $('#plus6').show();
+    $('#show_field7').show(300);
+  });
+
+  $('#plus6').click(function() {
+    $(this).hide(100);
+    $('#show_field8').show(300);
+  });
+
+};
+
+$(document).ready(showArtists);
+$(document).on('page:load', showArtists);
+
 var merchLightbox = function() {
 
   $('#riley').click(function() {

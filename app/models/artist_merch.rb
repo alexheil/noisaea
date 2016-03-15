@@ -4,7 +4,7 @@ class ArtistMerch < ActiveRecord::Base
 
   has_attached_file :item_img, styles: { perfect: "1000x1000#", small: "382x382#" }
 
-  validates_attachment_content_type :item_img, content_type: /\Aimage\/.*\Z/
+  validates_attachment_content_type :item_img, content_type: { content_type: ["image/jpeg", "image/jpg", "image/png"] }
 
   belongs_to :artist
   belongs_to :fan

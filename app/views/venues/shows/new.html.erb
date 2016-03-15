@@ -9,9 +9,6 @@
       <%= form_for(@show, url: venue_shows_path) do |f| %>
         <%= f.hidden_field :venue_id %>
         <%= render 'errors/show_errors' %>
-        <div class="highgate">
-          <%= f.text_field :artist, placeholder: "artist", class: "huron" %>
-        </div>
         <div class="maryland">
           <%= f.text_field :month, placeholder: "month", class: "huron" %>
         </div>
@@ -30,6 +27,53 @@
         <div class="highgate">
           <%= f.file_field :flyer_img %>
         </div>
+
+        <div id="show_field1" class="highgate">
+          <%= f.text_field :headline_artist, placeholder: "headline artist", class: "huron" %>
+        </div>
+        <div id="plus" class="plus">
+          add artist
+        </div>
+        <div id="show_field2" class="highgate">
+          <%= f.text_field :support_artist1, placeholder: "support artist 1 (optional)", class: "huron" %>
+        </div>
+        <div id="plus1" class="plus">
+          add artist
+        </div>
+        <div id="show_field3" class="highgate">
+          <%= f.text_field :support_artist2, placeholder: "support artist 2 (optional)", class: "huron" %>
+        </div>
+        <div id="plus2" class="plus">
+          add artist
+        </div>
+        <div id="show_field4" class="highgate">
+          <%= f.text_field :support_artist3, placeholder: "support artist 3 (optional)", class: "huron" %>
+        </div>
+        <div id="plus3" class="plus">
+          add artist
+        </div>
+        <div id="show_field5" class="highgate">
+          <%= f.text_field :support_artist4, placeholder: "support artist 4 (optional)", class: "huron" %>
+        </div>
+        <div id="plus4" class="plus">
+          add artist
+        </div>
+        <div id="show_field6" class="highgate">
+          <%= f.text_field :support_artist5, placeholder: "support artist 5 (optional)", class: "huron" %>
+        </div>
+        <div id="plus5" class="plus">
+          add artist
+        </div>
+        <div id="show_field7" class="highgate">
+          <%= f.text_field :support_artist6, placeholder: "support artist 6 (optional)", class: "huron" %>
+        </div>
+        <div id="plus6" class="plus">
+          add artist
+        </div>
+        <div id="show_field8" class="highgate">
+          <%= f.text_field :support_artist7, placeholder: "support artist 7 (optional)", class: "huron" %>
+        </div>
+
         <div class="highgate">
           <%= f.text_area :description, placeholder: "description", class: "chippewa" %>
         </div>

@@ -24,10 +24,10 @@
         </div>
         <div class="fargo">
           <div class="vermont busti">
-            <% if Artist.exists?(:artist_name => "#{@show.artist}") %>
-              <%= link_to @show.artist, artist_path(Artist.where(:artist_name => "#{@show.artist}").first) %>
+            <% if Artist.exists?(:artist_name => "#{@show.headline_artist}") %>
+              <%= link_to @show.headline_artist, artist_path(Artist.where(:artist_name => "#{@show.headline_artist}").first) %>
             <% else %>
-              <%= @show.artist %>
+              <%= @show.headline_artist %>
             <% end %>
           </div>
           <div class="vermont busti">
@@ -56,10 +56,10 @@
         </div>
         <% else %>
           <div class="vermont">
-            <% if Artist.exists?(:artist_name => "#{@show.artist}") %>
-              <%= link_to @show.artist, artist_path(Artist.where(:artist_name => "#{@show.artist}").first) %>
+            <% if Artist.exists?(:artist_name => "#{@show.headline_artist}") %>
+              <%= link_to @show.headline_artist, artist_path(Artist.where(:artist_name => "#{@show.headline_artist}").first) %>
             <% else %>
-              <%= @show.artist %>
+              <%= @show.headline_artist %>
             <% end %>
           </div>
           <div class="vermont">
@@ -86,6 +86,71 @@
           </div>
           <% end %>
         <% end %>
+
+        <% if @show.support_artist1.present? %>
+          <div class="amherst kings">
+            <% if Artist.exists?(:artist_name => "#{@show.support_artist1}") %>
+              <%= link_to @show.support_artist1, artist_path(Artist.where(:artist_name => "#{@show.support_artist1}").first) %>
+            <% else %>
+              <%= @show.support_artist1 %>
+            <% end %>
+          </div>
+        <% end %>
+        <% if @show.support_artist2.present? %>
+          <div class="amherst kings">
+            <% if Artist.exists?(:artist_name => "#{@show.support_artist2}") %>
+              <%= link_to @show.support_artist2, artist_path(Artist.where(:artist_name => "#{@show.support_artist2}").first) %>
+            <% else %>
+              <%= @show.support_artist2 %>
+            <% end %>
+          </div>
+        <% end %>
+        <% if @show.support_artist3.present? %>
+          <div class="amherst kings">
+            <% if Artist.exists?(:artist_name => "#{@show.support_artist3}") %>
+              <%= link_to @show.support_artist3, artist_path(Artist.where(:artist_name => "#{@show.support_artist3}").first) %>
+            <% else %>
+              <%= @show.support_artist3 %>
+            <% end %>
+          </div>
+        <% end %>
+        <% if @show.support_artist4.present? %>
+          <div class="amherst kings">
+            <% if Artist.exists?(:artist_name => "#{@show.support_artist4}") %>
+              <%= link_to @show.support_artist4, artist_path(Artist.where(:artist_name => "#{@show.support_artist4}").first) %>
+            <% else %>
+              <%= @show.support_artist4 %>
+            <% end %>
+          </div>
+        <% end %>
+        <% if @show.support_artist5.present? %>
+          <div class="amherst kings">
+            <% if Artist.exists?(:artist_name => "#{@show.support_artist5}") %>
+              <%= link_to @show.support_artist5, artist_path(Artist.where(:artist_name => "#{@show.support_artist5}").first) %>
+            <% else %>
+              <%= @show.support_artist5 %>
+            <% end %>
+          </div>
+        <% end %>
+        <% if @show.support_artist6.present? %>
+          <div class="amherst kings">
+            <% if Artist.exists?(:artist_name => "#{@show.support_artist6}") %>
+              <%= link_to @show.support_artist6, artist_path(Artist.where(:artist_name => "#{@show.support_artist6}").first) %>
+            <% else %>
+              <%= @show.support_artist6 %>
+            <% end %>
+          </div>
+        <% end %>
+        <% if @show.support_artist7.present? %>
+          <div class="amherst kings">
+            <% if Artist.exists?(:artist_name => "#{@show.support_artist7}") %>
+              <%= link_to @show.support_artist7, artist_path(Artist.where(:artist_name => "#{@show.support_artist7}").first) %>
+            <% else %>
+              <%= @show.support_artist7 %>
+            <% end %>
+          </div>
+        <% end %>
+
         <div class="best">
           <%= @show.description %>
         </div>

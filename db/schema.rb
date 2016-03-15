@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160216011402) do
+ActiveRecord::Schema.define(version: 20160314034451) do
 
   create_table "artist_albums", force: :cascade do |t|
     t.integer  "artist_id"
@@ -222,6 +222,14 @@ ActiveRecord::Schema.define(version: 20160216011402) do
     t.string   "flyer_img_content_type"
     t.integer  "flyer_img_file_size"
     t.datetime "flyer_img_updated_at"
+    t.string   "headline_artist",                    default: ""
+    t.string   "support_artist1",                    default: ""
+    t.string   "support_artist2",                    default: ""
+    t.string   "support_artist3",                    default: ""
+    t.string   "support_artist4",                    default: ""
+    t.string   "support_artist5",                    default: ""
+    t.string   "support_artist6",                    default: ""
+    t.string   "support_artist7",                    default: ""
   end
 
   add_index "artist_shows", ["artist_id"], name: "index_artist_shows_on_artist_id"
@@ -791,6 +799,14 @@ ActiveRecord::Schema.define(version: 20160216011402) do
     t.string   "flyer_img_content_type"
     t.integer  "flyer_img_file_size"
     t.datetime "flyer_img_updated_at"
+    t.string   "headline_artist",                    default: ""
+    t.string   "support_artist1",                    default: ""
+    t.string   "support_artist2",                    default: ""
+    t.string   "support_artist3",                    default: ""
+    t.string   "support_artist4",                    default: ""
+    t.string   "support_artist5",                    default: ""
+    t.string   "support_artist6",                    default: ""
+    t.string   "support_artist7",                    default: ""
   end
 
   add_index "record_label_shows", ["record_label_id"], name: "index_record_label_shows_on_record_label_id"
@@ -974,6 +990,14 @@ ActiveRecord::Schema.define(version: 20160216011402) do
     t.string   "flyer_img_content_type"
     t.integer  "flyer_img_file_size"
     t.datetime "flyer_img_updated_at"
+    t.string   "headline_artist",                    default: ""
+    t.string   "support_artist1",                    default: ""
+    t.string   "support_artist2",                    default: ""
+    t.string   "support_artist3",                    default: ""
+    t.string   "support_artist4",                    default: ""
+    t.string   "support_artist5",                    default: ""
+    t.string   "support_artist6",                    default: ""
+    t.string   "support_artist7",                    default: ""
   end
 
   add_index "venue_shows", ["venue_id"], name: "index_venue_shows_on_venue_id"

@@ -2,11 +2,11 @@ class RecordLabelShow < ActiveRecord::Base
   belongs_to :record_label
   belongs_to :fan
 
-  default_scope -> { order(:year, :month, :day) }
+  default_scope -> { order('year DESC', 'month DESC', 'day DESC') }
 
   has_attached_file :flyer_img, styles: { perfect: "1200x2000>" }
 
-  validates_attachment_content_type :flyer_img, content_type: /\Aimage\/.*\Z/
+  validates_attachment_content_type :flyer_img, content_type: { content_type: ["image/jpeg", "image/jpg", "image/png"] }
 
   validates :record_label_id, presence: true
   validates :month, presence: true, length: { maximum: 2 }, numericality: { less_than_or_equal_to: 12, greater_than: 0}
@@ -17,6 +17,7 @@ class RecordLabelShow < ActiveRecord::Base
   validates :description, length: { maximum: 14216 }, allow_blank: true
   validates :ticket_url, format: { with: /\A(http|https):\/\/|[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,6}(:[0-9]{1,5})?(\/.*)?\z/ix }, allow_blank: true
   validates :flyer_url, format: { with: /\A(http|https):\/\/|[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,6}(:[0-9]{1,5})?(\/.*)?\z/ix }, allow_blank: true
+  validates :headline_artist, presence: true
 
   before_save :smart_add_url_protocol
   before_save :february_time

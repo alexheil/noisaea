@@ -25,10 +25,10 @@
         <div class="harlem">
         <% @shows.each do |show| %>
           <div class="dodge ashland auburn">
-            <% if Artist.exists?(:artist_name => "#{show.artist}") %>
-              <%= link_to show.artist, artist_path(Artist.where(:artist_name => "#{show.artist}").first) %>
+            <% if Artist.exists?(:artist_name => "#{show.headline_artist}") %>
+              <%= link_to show.headline_artist, artist_path(Artist.where(:artist_name => "#{show.headline_artist}").first) %>
             <% else %>
-              <%= show.artist %>
+              <%= show.headline_artist %>
             <% end %>
              on <%= link_to "#{show.month}.#{show.day}.#{show.year} at #{show.venue} in #{show.location}", record_label_show_path(@record_label, show) %>
             <% if show.ticket_url.present? %>
