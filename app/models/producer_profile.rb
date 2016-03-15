@@ -4,8 +4,8 @@ class ProducerProfile < ActiveRecord::Base
   has_attached_file :cover_img, styles: { perfect: "1920x640#", small: "800x266#" }
   has_attached_file :profile_img, styles: { perfect: "150x150#" }
 
-  validates_attachment_content_type :cover_img, content_type: { content_type: ["image/jpeg", "image/jpg", "image/png"] }
-  validates_attachment_content_type :profile_img, content_type: { content_type: ["image/jpeg", "image/jpg", "image/png"] }
+  validates_attachment_content_type :cover_img, content_type: /\Aimage\/.*\Z/
+  validates_attachment_content_type :profile_img, content_type: /\Aimage\/.*\Z/
 
   validates :producer_id, presence: true
   validates :biography, length: { maximum: 14216 }, allow_blank: true

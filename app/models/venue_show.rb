@@ -6,7 +6,7 @@ class VenueShow < ActiveRecord::Base
 
   has_attached_file :flyer_img, styles: { perfect: "1200x2000>" }
 
-  validates_attachment_content_type :flyer_img, content_type: { content_type: ["image/jpeg", "image/jpg", "image/png"] }
+  validates_attachment_content_type :flyer_img, content_type: /\Aimage\/.*\Z/
 
   validates :venue_id, presence: true
   validates :month, presence: true, length: { maximum: 2 }, numericality: { less_than_or_equal_to: 12, greater_than: 0}
