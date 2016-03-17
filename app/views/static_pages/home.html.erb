@@ -6,11 +6,11 @@
   <div class="delaware">
     <div class="bailey">
 
-      <div class="niagara-falls">
-        <%= link_to 'noisaea //', why_path %>
+      <div class="large highgate busti white">
+        the universal spot for the music industry
       </div>
-      <div class="kings busti white">
-        Noisaea is the universal spot for the music industry, tying together music, media, events, and shop.
+      <div class="busti white">
+        music - media - events - shop.
       </div>
       <div class="harlem busti">
         <%= link_to "find out more?", why_path, class: "wehrle" %>
@@ -28,6 +28,167 @@
       <% end %>
     </div>
   </div>
+
+  <% unless fan_signed_in? || artist_signed_in?|| record_label_signed_in? || venue_signed_in? || producer_signed_in? %>
+
+  <div class="c">
+    <div class="delaware">
+      <div class="g">
+        artists - record labels - venues - producers
+      </div>
+      <div class="k">
+        <div class="h">
+          <img src="http://i.imgur.com/d8Q2ocW.jpgv" width="100%" height="auto" />
+        </div>
+        <div class="i">
+          <div class="j">
+            <div class="temp">
+              posts
+            </div>
+            <div class="highgate">
+              Post content including text, links, and images to your fanbase. Don't worry, your posts will be in ALL of your fan’s feeds without having to pay
+            </div>
+            <div class="northrup">
+              <%= link_to 'make a post', register_path, class: "prospect" %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="k">
+        <div class="i">
+          <div class="j">
+            <div class="temp">
+              music
+            </div>
+            <div class="highgate">
+              Add albums and tracks to your music page. Tracks can be played right along side their lyrics. Fans will be able to purchase full albums for a set price or their own price.
+            </div>
+            <div class="northrup">
+              <%= link_to 'start adding tracks', register_path, class: "prospect" %>
+            </div>
+          </div>
+        </div>
+        <div class="h">
+          <img src="http://i.imgur.com/VK9Mvtl.jpg" width="100%" height="auto" />
+        </div>
+      </div>
+      <div class="k">
+        <div class="h">
+          <img src="http://i.imgur.com/oJhBcyu.jpg" width="100%" height="auto" />
+        </div>
+        <div class="i">
+          <div class="j">
+            <div class="temp">
+              shows
+            </div>
+            <div class="highgate">
+              List all of your upcoming events by date and be able to sell tickets to each.
+            </div>
+            <div class="northrup">
+              <%= link_to 'list your shows', register_path, class: "prospect" %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="k">
+        <div class="i">
+          <div class="j">
+            <div class="temp">
+              videos
+            </div>
+            <div class="highgate">
+              Post music videos, live shows, studio updates, and tour videos. Without that terrible autoplay feature.
+            </div>
+            <div class="northrup">
+              <%= link_to 'post a video', register_path, class: "prospect" %>
+            </div>
+          </div>
+        </div>
+        <div class="h">
+          <img src="http://i.imgur.com/DgpqHRl.jpg" width="100%" height="auto" />
+        </div>
+      </div>
+      <div class="k">
+        <div class="h">
+          <img src="http://i.imgur.com/kXSipbl.jpg" width="100%" height="auto" />
+        </div>
+        <div class="i">
+          <div class="j">
+            <div class="temp">
+              merch
+            </div>
+            <div class="highgate">
+              Display and sell your shirts, CDs, hoodies, flags, wristbands, records, anything on your page's storefront.
+            </div>
+            <div class="northrup">
+              <%= link_to 'open merch store', register_path, class: "prospect" %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="g">
+        fans
+      </div>
+      <div class="k">
+        <div class="h">
+          <img src="http://i.imgur.com/6BhBX4l.jpg" width="100%" height="auto" />
+        </div>
+        <div class="i">
+          <div class="j">
+            <div class="temp">
+              discover
+            </div>
+            <div class="highgate">
+              Find new music that you've never heard before. You never know when you might discover your next favorite arist.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="k">
+        <div class="i">
+          <div class="j">
+            <div class="temp">
+              fan feed
+            </div>
+            <div class="highgate">
+              You feed will be categorized by artist, record label, venue, and producer, and subcategorized by posts, music, merch, shows, and videos.
+            </div>
+          </div>
+        </div>
+        <div class="h">
+          <img src="http://i.imgur.com/UdFUanK.jpg" width="100%" height="auto" />
+        </div>
+      </div>
+
+
+      <div class="g">
+        register as a fan
+      </div>
+      <div class="l">
+        <%= form_for(Fan.new, url: fan_registration_path) do |f| %>
+
+        <div class="m">
+          <%= f.text_field :fan_name, placeholder: "your name", class: "huron" %>
+        </div>
+        <div class="m">
+          <%= f.email_field :email, placeholder: "email address", class: "huron" %>
+        </div>
+        <div class="m">
+          <%= f.password_field :password, autocomplete: "off", placeholder: "password", class: "huron" %>
+        </div>
+
+        <div class="m">
+          <%= f.submit "register", class: "exchange" %>
+        </div>
+      <% end %>
+      </div>
+
+      <% end %>
+
+    </div>
+  </div>
+
 
 </div>
 

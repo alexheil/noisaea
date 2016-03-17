@@ -62,11 +62,13 @@ class Fan < ActiveRecord::Base
 
   has_many :artist_albums, through: :artists
 
-  validates :username, presence: true, uniqueness: true, length: { maximum: 50 }, format: { with: /\A[a-zA-Z0-9 ]+\Z/i }
+  validates :username, presence: true, uniqueness: true, length: { maximum: 50 }, format: { with: /\A[a-zA-Z0-9 ]+\Z/i }, allow_blank: true
   validates :fan_name, presence: true, length: { maximum: 50 }
 
   before_save :downcase_username
+  before_save :create_username
   before_save :should_generate_new_friendly_id?, if: :username_changed?
+  before_save :slug_create
 
   def self.lazy_mailer
     Fan.includes(:fan_profile).where("fan_profiles.cover_img_file_name" => nil).find_each do |fan|
@@ -256,6 +258,16 @@ class Fan < ActiveRecord::Base
 
     def downcase_username
       self.username = username.downcase
+    end
+
+    def create_username
+      if username.blank?
+        self.username = fan_name.gsub(/\s+/, "")
+      end
+    end
+
+    def slug_create
+      self.slug = username if slug.blank?
     end
 
 end
