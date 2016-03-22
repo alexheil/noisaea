@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'copyright' => 'static_pages#copyright'
   get 'stats' => 'static_pages#stats'
   get 'why' => 'static_pages#why'
+  get 'contest' => 'static_pages#contest'
   get 'register' => 'static_pages#register'
   get 'sign_in' => 'static_pages#sign_in'
 

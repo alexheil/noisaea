@@ -262,7 +262,7 @@ class Fan < ActiveRecord::Base
 
     def create_username
       if username.blank?
-        self.username = fan_name.gsub(/\s+/, "")
+        self.username = fan_name.gsub(/\s+/, "").downcase
       end
     end
 

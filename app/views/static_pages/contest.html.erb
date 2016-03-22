@@ -1,0 +1,54 @@
+<%= provide(:title, "Contact") %>
+<%= render "partials/uni_header" %>
+<div class="buffalo">
+  <div class="kenmore">
+    <div class="harlem">
+      <h1>contest 3.19.16 - 3.31.16</h1>
+    </div>
+
+    <p class="northrup"></p>
+
+    <div class="highgate">
+      <h3>rules</h3>
+    </div>
+
+    <p class="northrup">Win two free general admission tickets to any show in 2016 in your area under $50.00.</p>
+
+    <ul class="northrup">
+      <li>register as a fan on this site,</li>
+      <li>upload a profile and cover photo,</li>
+      <li>follow at least 5 artists using the discover page,</li>
+      <li>follow <a href="http://twitter.com/noisaea">@noisaea</a> on Twitter, so you can see the winner.</li>
+    </ul>
+
+    <p class="northrup">Winner will be randomly picked on March, 31st at 8pm est and announced on Twitter <a href="http://twitter.com/noisaea">@noisaea</a>.</p>
+
+  </div>
+
+  <div class="delaware">
+    <div class="highgate busti">
+      <h3>quick register</h3>
+    </div>
+
+    <div class="l">
+      <%= form_for(Fan.new, url: fan_registration_path) do |f| %>
+
+      <div class="m">
+        <%= f.text_field :fan_name, placeholder: "your name", class: "huron" %>
+      </div>
+      <div class="m">
+        <%= f.email_field :email, placeholder: "email address", class: "huron" %>
+      </div>
+      <div class="m">
+        <%= f.password_field :password, autocomplete: "off", placeholder: "password", class: "huron" %>
+      </div>
+
+      <div class="m">
+        <%= f.submit "register", class: "exchange" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>
+<%= render "partials/uni_footer" %>
