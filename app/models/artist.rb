@@ -2,8 +2,8 @@ class Artist < ActiveRecord::Base
   extend FriendlyId
   friendly_id :username, use: :slugged
 
-  devise :database_authenticatable, :registerable,:recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable, :timeoutable
-         #and :omniauthable
+  devise :database_authenticatable, :registerable,:recoverable, :rememberable, :trackable, :validatable, :timeoutable
+         #and :omniauthable, :confirmable, :lockable
 
   has_one :artist_profile, dependent: :destroy
 
@@ -42,11 +42,13 @@ class Artist < ActiveRecord::Base
   has_many :fans, through: :artist_relationships
   belongs_to :fan
 
-  validates :username, presence: true, uniqueness: true, length: { maximum: 25 }, format: { with: /\A[a-zA-Z0-9 ]+\Z/i }
+  validates :username, presence: true, uniqueness: true, length: { maximum: 25 }, format: { with: /\A[a-zA-Z0-9 ]+\Z/i }, allow_blank: true
   validates :artist_name, presence: true, length: { maximum: 50 }
 
   before_save :downcase_username
+  before_save :create_username
   before_save :should_generate_new_friendly_id?, if: :username_changed?
+  before_save :slug_create
 
   def self.lazy_mailer
     Artist.includes(:artist_microposts).where( :artist_microposts => { :artist_id => nil } ).find_each do |artist|
@@ -266,6 +268,16 @@ class Artist < ActiveRecord::Base
 
     def downcase_username
       self.username = username.downcase
+    end
+
+    def create_username
+      if username.blank?
+        self.username = artist_name.gsub(/\s+/, "").downcase
+      end
+    end
+
+    def slug_create
+      self.slug = username if slug.blank?
     end
 
 end

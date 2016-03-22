@@ -34,5 +34,10 @@ class Artists::ArtistsController < ApplicationController
     @microposts = ArtistMicropost.page params[:page]
   end
 
+  def quick_register
+    redirect_to artist_path(current_artist) if artist_signed_in?
+    flash.now[:notice] = "you are already signed in"
+  end
+
 end
 

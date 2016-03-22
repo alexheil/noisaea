@@ -1,0 +1,35 @@
+<%= provide(:title, "Artist Quick Register | Noisaea //") %>
+<div class="buffalo">
+  <div class="delaware">
+    <div class="busti harlem">
+      <h1>quick register as an artist</h1>
+    </div>
+    <div class="busti amherst">
+      no email confirmation required. it's free!
+    </div>
+
+    <div class="l">
+      <%= form_for(Artist.new, url: artist_registration_path) do |f| %>
+
+      <div class="m">
+        <%= f.text_field :artist_name, placeholder: "artist name", class: "huron" %>
+      </div>
+      <div class="m">
+        <%= f.email_field :email, placeholder: "email address", class: "huron" %>
+      </div>
+      <div class="m">
+        <%= f.password_field :password, autocomplete: "off", placeholder: "password", class: "huron" %>
+      </div>
+
+      <div class="m">
+        <%= f.submit "register", class: "exchange" %>
+      </div>
+      <% end %>
+    </div>
+
+    <div class="busti harlem">
+      by clicking 'register' you are agreeing to our <%= link_to 'terms of use', terms_of_use_path %> and <%= link_to 'privacy policy', privacy_path %>
+    </div>
+
+  </div>
+</div>

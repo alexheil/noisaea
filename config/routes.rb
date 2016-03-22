@@ -46,6 +46,7 @@ Rails.application.routes.draw do
   get 'index_artist_merch' => 'artists/artists#merch', path: :artist_merch
   get 'index_artist_shows' => 'artists/artists#shows', path: :artist_shows
   get 'index_artist_videos' => 'artists/artists#videos', path: :artist_videos
+  get 'artist_quick_register' => 'artists/artists#quick_register', path: :artist_quick_register
 
   ######################### FAN #############################
 
