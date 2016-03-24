@@ -6,16 +6,22 @@
       <div class="harlem">
         <h1>change your password</h1>
       </div>
-            <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
         <%= devise_error_messages! %>
         <%= f.hidden_field :reset_password_token %>
 
         <div class="highgate">
-          <%= f.password_field :password, autofocus: true, autocomplete: "off", placeholder: "new password", class: "huron"  %>
+          <div class="amherst temp">
+            password <span class="posted">(at least 8 characters)</span>
+          </div>
+          <%= f.password_field :password, autofocus: true, autocomplete: "off", class: "huron"  %>
         </div>
 
         <div class="highgate">
-          <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "confirm your password", class: "huron"  %>
+          <div class="amherst temp">
+            confirm password
+          </div>
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: "huron"  %>
         </div>
 
         <div class="ellicott">
