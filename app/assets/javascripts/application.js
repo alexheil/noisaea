@@ -485,25 +485,25 @@ var merchLightbox = function() {
     $('#back').show();
     $('#front').show();
     $('#close').show();
-    $(this).closest('.buffalo').toggleClass('hey')
+    $(this).closest('.buffalo').addClass('hey')
   });
 
   $('#back').click(function() {
     $('#back').hide();
     $('#front').hide();
-    $(this).closest('.buffalo').toggleClass('hey')
+    $(this).closest('.buffalo').removeClass('hey')
   });
 
   $('#front').click(function() {
     $('#back').hide();
     $('#front').hide();
-    $(this).closest('.buffalo').toggleClass('hey')
+    $(this).closest('.buffalo').removeClass('hey')
   });
 
   $('.lightbox-image').click(function() {
     $('#back').hide();
     $('#front').hide();
-    $(this).closest('.buffalo').toggleClass('hey')
+    $(this).closest('.buffalo').removeClass('hey')
   });
 
 };
