@@ -1,4 +1,4 @@
-<%= provide(:title, "Edit A Show") %>
+<%= provide(:title, "Edit | " + sanitize(@merch.title)) %>
 <div class="buffalo">
   <div class="delaware">
     <div class="elmwood">
@@ -9,7 +9,7 @@
       <%= form_for(@merch, url: artist_merch_path) do |f| %>
         <%= f.hidden_field :artist_id %>
         <%= render 'errors/merch_errors' %>
-                <div class="highgate">
+        <div class="highgate">
           <div class="amherst temp">
             title
           </div>

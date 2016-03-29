@@ -485,21 +485,25 @@ var merchLightbox = function() {
     $('#back').show();
     $('#front').show();
     $('#close').show();
+    $(this).closest('.buffalo').toggleClass('hey')
   });
 
   $('#back').click(function() {
     $('#back').hide();
     $('#front').hide();
+    $(this).closest('.buffalo').toggleClass('hey')
   });
 
   $('#front').click(function() {
     $('#back').hide();
     $('#front').hide();
+    $(this).closest('.buffalo').toggleClass('hey')
   });
 
   $('.lightbox-image').click(function() {
     $('#back').hide();
     $('#front').hide();
+    $(this).closest('.buffalo').toggleClass('hey')
   });
 
 };

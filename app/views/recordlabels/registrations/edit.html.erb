@@ -9,13 +9,22 @@
         <%= devise_error_messages! %>
 
         <div class="highgate">
-          <%= f.text_field :username, autofocus: true, placeholder: "username", class: "huron" %>
+          <div class="amherst temp">
+            username <span class="posted">(url)</span>
+          </div>
+          <%= f.text_field :username, autofocus: true, class: "huron" %>
         </div>
         <div class="highgate">
-          <%= f.text_field :label_name, placeholder: "record label name", class: "huron" %>
+          <div class="amherst temp">
+            record label name
+          </div>
+          <%= f.text_field :label_name, class: "huron" %>
         </div>
         <div class="highgate">
-          <%= f.email_field :email, placeholder: "email address", class: "huron" %>
+          <div class="amherst temp">
+            email
+          </div>
+          <%= f.email_field :email, class: "huron" %>
         </div>
 
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -35,14 +44,23 @@
         </div>
 
         <div class="highgate">
-          <%= f.password_field :password, autocomplete: "off", placeholder: "password", class: "huron" %>
+          <div class="amherst temp">
+            password <span class="posted">(at least 8 characters)</span>
+          </div>
+          <%= f.password_field :password, autocomplete: "off", class: "huron" %>
         </div>
         <div class="highgate">
-          <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "confirm your password", class: "huron" %>
+          <div class="amherst temp">
+            confirm password
+          </div>
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: "huron" %>
         </div>
 
         <div class="highgate">
-          <%= f.password_field :current_password, autocomplete: "off", placeholder: "current password to confirm changes", class: "huron" %>
+          <div class="amherst temp">
+            current password <span class="posted">(to confirm changes)</span>
+          </div>
+          <%= f.password_field :current_password, autocomplete: "off", class: "huron" %>
         </div>
 
         <div class="ellicott">

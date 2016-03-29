@@ -10,24 +10,36 @@
         <%= devise_error_messages! %>
 
         <div class="highgate">
-          <%= f.text_field :username, autofocus: true, placeholder: "username", class: "huron" %>
+          <div class="amherst temp">
+            username <span class="posted">(url)</span>
+          </div>
+          <%= f.text_field :username, autofocus: true, class: "huron" %>
         </div>
         <div class="highgate">
-          <%= f.text_field :label_name, placeholder: "record label name", class: "huron" %>
+          <div class="amherst temp">
+            record label name
+          </div>
+          <%= f.text_field :label_name, class: "huron" %>
         </div>
         <div class="highgate">
-          <%= f.email_field :email, placeholder: "email address", class: "huron" %>
+          <div class="amherst temp">
+            email
+          </div>
+          <%= f.email_field :email, class: "huron" %>
         </div>
         <div class="highgate">
-          <%= f.password_field :password, autocomplete: "off", placeholder: "password (8 characters)", class: "huron" %>
-        </div>
-        <div class="harlem">
-          by clicking 'register' you are agreeing to our <%= link_to 'terms of use', terms_of_use_path %> and <%= link_to 'privacy policy', privacy_path %>
+          <div class="amherst temp">
+            password <span class="posted">(at least 8 characters)</span>
+          </div>
+          <%= f.password_field :password, autocomplete: "off", class: "huron" %>
         </div>
         <div class="ellicott">
           <%= f.submit "register", class: "exchange" %>
         </div>
       <% end %>
+      <div class="harlem">
+        by clicking 'register' you are agreeing to our <%= link_to 'terms of use', terms_of_use_path %> and <%= link_to 'privacy policy', privacy_path %>
+      </div>
       <div class="virginia">
         <%= render "recordlabels/shared/links" %>
       </div>
