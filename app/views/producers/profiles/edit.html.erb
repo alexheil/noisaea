@@ -9,19 +9,34 @@
       <%= form_for(@profile, url: producer_profile_path) do |f| %>
         <%= render 'errors/profile_errors' %>
         <div class="highgate">
-          <%= f.text_field :location, placeholder: "location (city, state / city, country)", class: "huron" %>
+          <div class="amherst temp">
+            location <span class="posted">(city, state / city, country)</span>
+          </div>
+          <%= f.text_field :location, class: "huron" %>
         </div>
         <div class="highgate">
-          <%= f.text_field :founded, placeholder: "year founded", class: "huron" %>
+          <div class="amherst temp">
+            year founded
+          </div>
+          <%= f.text_field :founded, class: "huron" %>
         </div>
         <div class="highgate">
+          <div class="amherst temp">
+            genre
+          </div>
           <%= f.select :genre, options_for_select(music_genres)%>
         </div>
         <div class="highgate">
-          <%= f.text_field :artists, placeholder: "artists you've worked with", class: "huron" %>
+          <div class="amherst temp">
+            artists you've worked with <span class="posted">(separate with comma)</span>
+          </div>
+          <%= f.text_field :artists, class: "huron" %>
         </div>
         <div class="highgate">
-          <%= f.text_area :biography, placeholder: "biography", class: "chippewa" %>
+          <div class="amherst temp">
+            biography
+          </div>
+          <%= f.text_area :biography, class: "chippewa" %>
         </div>
         <div class="highgate temp">
           cover image: <span class="posted">1920x640</span>
@@ -31,27 +46,53 @@
         </div>
         <div class="highgate temp">
           profile image: <span class="posted">500x500</span>
+        </div><div class="highgate">
+          <div class="highgate temp">
+            cover image: <span class="posted">1920x640</span>
+          </div>
+          <%= f.file_field :cover_img %>
         </div>
         <div class="highgate">
+          <div class="highgate temp">
+            profile image: <span class="posted">500x500</span>
+          </div>
           <%= f.file_field :profile_img %>
         </div>
         <div class="highgate">
-          <%= f.text_field :theme_color, placeholder: "theme color (hex code)", class: "huron" %>
+          <div class="amherst temp">
+            theme color <span class="posted">(hex code)</span>
+          </div>
+          <%= f.text_field :theme_color, class: "huron" %>
         </div>
         <div class="highgate">
-          <%= f.text_field :website, placeholder: "your website", class: "huron" %>
+          <div class="amherst temp">
+            your website url
+          </div>
+          <%= f.text_field :website, class: "huron" %>
         </div>
         <div class="highgate">
-          <%= f.text_field :facebook_url, placeholder: "facebook url", class: "huron" %>
+          <div class="amherst temp">
+            facebook url
+          </div>
+          <%= f.text_field :facebook_url, class: "huron" %>
         </div>
         <div class="highgate">
-          <%= f.text_field :twitter_url, placeholder: "twitter url", class: "huron" %>
+          <div class="amherst temp">
+            twitter url
+          </div>
+          <%= f.text_field :twitter_url, class: "huron" %>
         </div>
         <div class="highgate">
-          <%= f.text_field :youtube_url, placeholder: "youtube url", class: "huron" %>
+          <div class="amherst temp">
+            YouTube url
+          </div>
+          <%= f.text_field :youtube_url, class: "huron" %>
         </div>
         <div class="highgate">
-          <%= f.text_field :letlyrics_url, placeholder: "let:lyrics url", class: "huron" %>
+          <div class="amherst temp">
+            let:lyrics url
+          </div>
+          <%= f.text_field :letlyrics_url, class: "huron" %>
         </div>
         <div class="ellicott">
           <%= f.submit "update profile", data: { disable_with: 'updating...' }, class: "exchange" %>

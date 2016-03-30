@@ -9,10 +9,16 @@
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="highgate">
-          <%= f.email_field :email, autofocus: true, placeholder: "email address", class: "huron" %>
+          <div class="amherst temp">
+            email
+          </div>
+          <%= f.email_field :email, autofocus: true, class: "huron" %>
         </div>
         <div class="highgate">
-          <%= f.password_field :password, autocomplete: "off", placeholder: "password", class: "huron" %>
+          <div class="amherst temp">
+            password
+          </div>
+          <%= f.password_field :password, autocomplete: "off", class: "huron" %>
         </div>
         <% if devise_mapping.rememberable? -%>
           <div class="highgate">

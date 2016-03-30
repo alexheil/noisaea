@@ -10,13 +10,22 @@
         <%= f.hidden_field :producer_id %>
         <%= render 'errors/video_errors' %>
         <div class="highgate">
-          <%= f.text_field :title, placeholder: "title", class: "huron" %>
+          <div class="amherst temp">
+            title
+          </div>
+          <%= f.text_field :title, class: "huron" %>
         </div>
         <div class="highgate">
-          <%= f.text_field :youtube_url, placeholder: "youtube url", class: "huron" %>
+          <div class="amherst temp">
+            youtube url
+          </div>
+          <%= f.text_field :youtube_url, class: "huron" %>
         </div>
         <div class="highgate">
-          <%= f.text_area :description, placeholder: "description", class: "chippewa" %>
+          <div class="amherst temp">
+            description
+          </div>
+          <%= f.text_area :description, class: "chippewa" %>
         </div>
         <div class="ellicott">
           <%= f.submit "add video", data: { disable_with: 'posting...' }, class: "exchange" %>

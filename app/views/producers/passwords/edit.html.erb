@@ -11,11 +11,17 @@
         <%= f.hidden_field :reset_password_token %>
 
         <div class="highgate">
-          <%= f.password_field :password, autofocus: true, autocomplete: "off", placeholder: "new password", class: "huron"  %>
+          <div class="amherst temp">
+            password <span class="posted">(at least 8 characters)</span>
+          </div>
+          <%= f.password_field :password, autofocus: true, autocomplete: "off", class: "huron"  %>
         </div>
 
         <div class="highgate">
-          <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "confirm your password", class: "huron"  %>
+          <div class="amherst temp">
+            confirm password
+          </div>
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: "huron"  %>
         </div>
 
         <div class="ellicott">
