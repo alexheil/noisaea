@@ -10,7 +10,7 @@ class Artists::PaymentSettingsController < ApplicationController
 
   def create
 
-    Stripe.api_key = STRIPE_SECRET_KEY
+    Stripe.api_key = Rails.configuration.stripe[:secret_key]
     @account = Stripe::Account.create(
       managed: true,
       country: country,
