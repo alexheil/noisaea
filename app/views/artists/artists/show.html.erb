@@ -43,3 +43,12 @@
     <li><%= @artist.last_sign_in_at %></li>
   </div>
 <% end %>
+
+<% if artist_signed_in? && current_artist == @artist %>
+<%= @artist.artist_payment_setting.stripe_id %>
+<%= @artist.artist_payment_setting.stripe_publishable_key %>
+<%= @artist.artist_payment_setting.stripe_secret_key %>
+<%= @artist.artist_payment_setting.first_name %>
+<%= @artist.artist_payment_setting.last_name %>
+<%= @artist.artist_payment_setting.month %>
+<% end %>

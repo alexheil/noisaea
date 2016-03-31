@@ -15,18 +15,18 @@ class Artists::PaymentSettingsController < ApplicationController
       managed: true,
       country: params[:country],
       email: @artist.email,
-      dob: {
-        day: params[:day],
-        month: params[:month],
-        year: params[:year]
-      },
-      first_name: params[:first_name],
-      last_name: params[:last_name],
       tos_acceptance: {
         ip: request.remote_ip,
         date: Time.now.to_i
       },
       legal_entity: {
+        dob: {
+          day: params[:day],
+          month: params[:month],
+          year: params[:year]
+        },
+        first_name: params[:first_name],
+        last_name: params[:last_name],
         type: 'individual',
       }
     )
