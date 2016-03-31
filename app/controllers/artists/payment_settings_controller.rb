@@ -37,7 +37,7 @@ class Artists::PaymentSettingsController < ApplicationController
           country: @account.country,
           stripe_id: @account.id,
           stripe_secret_key: @account.keys.secret,
-          stripe_publishable_key: @account.keys.publishable,
+          stripe_publishable_key: @account.keys.publishable
         )
     end
 
