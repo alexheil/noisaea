@@ -13,7 +13,7 @@ class Artists::PaymentSettingsController < ApplicationController
     Stripe.api_key = Rails.configuration.stripe[:secret_key]
     @account = Stripe::Account.create(
       managed: true,
-      country: params[:country],
+      country: params[:artist_payment_settting][:country],
       email: @artist.email,
       tos_acceptance: {
         ip: request.remote_ip,
@@ -21,12 +21,12 @@ class Artists::PaymentSettingsController < ApplicationController
       },
       legal_entity: {
         dob: {
-          day: params[:day],
-          month: params[:month],
-          year: params[:year]
+          day: params[:artist_payment_settting][:day],
+          month: params[:artist_payment_settting][:month],
+          year: params[:artist_payment_settting][:year]
         },
-        first_name: params[:first_name],
-        last_name: params[:last_name],
+        first_name: params[:artist_payment_settting][:first_name],
+        last_name: params[:artist_payment_settting][:last_name],
         type: 'individual',
       }
     )
