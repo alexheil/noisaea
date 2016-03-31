@@ -6,6 +6,7 @@ class Artist < ActiveRecord::Base
          #and :omniauthable, :confirmable, :lockable
 
   has_one :artist_profile, dependent: :destroy
+  has_one :artist_payment_setting, dependent: :destroy
 
   has_many :artist_notifications, dependent: :destroy
 

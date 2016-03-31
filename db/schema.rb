@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160314034451) do
+ActiveRecord::Schema.define(version: 20160331181627) do
 
   create_table "artist_albums", force: :cascade do |t|
     t.integer  "artist_id"
@@ -161,6 +161,27 @@ ActiveRecord::Schema.define(version: 20160314034451) do
   add_index "artist_notifications", ["notifier_producer_id"], name: "index_artist_notifications_on_notifier_producer_id"
   add_index "artist_notifications", ["notifier_record_label_id"], name: "index_artist_notifications_on_notifier_record_label_id"
   add_index "artist_notifications", ["notifier_venue_id"], name: "index_artist_notifications_on_notifier_venue_id"
+
+  create_table "artist_payment_settings", force: :cascade do |t|
+    t.integer  "artist_id"
+    t.string   "stripe_publishable_key"
+    t.string   "stripe_secret_key"
+    t.string   "stripe_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "currency"
+    t.string   "country"
+    t.integer  "month"
+    t.integer  "day"
+    t.integer  "year"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "artist_payment_settings", ["artist_id"], name: "index_artist_payment_settings_on_artist_id"
+  add_index "artist_payment_settings", ["stripe_id"], name: "index_artist_payment_settings_on_stripe_id"
+  add_index "artist_payment_settings", ["stripe_publishable_key"], name: "index_artist_payment_settings_on_stripe_publishable_key"
+  add_index "artist_payment_settings", ["stripe_secret_key"], name: "index_artist_payment_settings_on_stripe_secret_key"
 
   create_table "artist_profiles", force: :cascade do |t|
     t.integer  "artist_id"
