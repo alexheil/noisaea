@@ -21,8 +21,8 @@ class Artists::PaymentSettingsController < ApplicationController
       },
       legal_entity: {
         dob: {
-          day: params[:artist_payment_setting][:day],
           month: params[:artist_payment_setting][:month],
+          day: params[:artist_payment_setting][:day],
           year: params[:artist_payment_setting][:year]
         },
         first_name: params[:artist_payment_setting][:first_name],
@@ -36,8 +36,8 @@ class Artists::PaymentSettingsController < ApplicationController
           currency: @account.default_currency,
           country: @account.country,
           stripe_id: @account.id,
-          stripe_secret_key: @account.keys.secret,
           stripe_publishable_key: @account.keys.publishable
+          stripe_secret_key: @account.keys.secret,
         )
     end
 
