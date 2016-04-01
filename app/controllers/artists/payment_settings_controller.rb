@@ -36,8 +36,8 @@ class Artists::PaymentSettingsController < ApplicationController
           currency: @account.default_currency,
           country: @account.country,
           stripe_id: @account.id,
-          stripe_publishable_key: @account.keys.publishable,
-          stripe_secret_key: @account.keys.secret
+          stripe_publishable_key: @account[:keys][:publishable],
+          stripe_secret_key: @account[:keys][:secret]
         )
     end
 
