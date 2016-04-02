@@ -48,9 +48,12 @@
           <%= f.text_field :year, class: "huron" %>
         </div>
         <div class="ellicott">
-          <%= f.submit "create merchant account", data: { disable_with: 'posting...' }, class: "exchange" %>
+          <%= f.submit "create merchant account", data: { disable_with: 'creating...' }, class: "exchange" %>
         </div>
       <% end %>
+      <div class="harlem">
+        by registering your account, you agree to our <%= link_to 'Terms of Use', terms_of_use_path  %> and the <a href="https://stripe.com/connect/account-terms">Stripe Connected Account Agreement</a>.
+      </div>
 
     </div>
   </div>

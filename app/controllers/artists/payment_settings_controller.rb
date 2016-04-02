@@ -40,19 +40,32 @@ class Artists::PaymentSettingsController < ApplicationController
           year: @account.legal_entity.dob.year,
           currency: @account.default_currency,
           country: @account.country,
-          stripe_id: @account.id,
-          stripe_publishable_key: @account.keys.publishable,
-          stripe_secret_key: @account.keys.secret
+          stripe_id: @account.id
         )
     end
 
-    redirect_to artist_path(@artist)
+    redirect_to edit_artist_setting_path(@artist)
   end
 
   def edit
+    @payment = @artist.artist_payment_setting
   end
 
   def update
+    @payment = @artist.artist_payment_setting
+
+    Stripe.api_key = Rails.configuration.stripe[:secret_key]
+    account = Stripe::Account.retrieve(@payment.stripe_id)
+
+    account.legal_entity.address.line1 = params[:artist_payment_setting][:line1]
+    account.legal_entity.address.city = params[:artist_payment_setting][:city]
+    account.legal_entity.address.postal_code = params[:artist_payment_setting][:postal_code]
+    account.legal_entity.address.state = params[:artist_payment_setting][:state]
+    account.legal_entity.ssn_last_4 = params[:artist_payment_setting][:ssn_last_4]
+
+    account.save
+
+    redirect_to artist_path(@artist)
   end
 
   private
