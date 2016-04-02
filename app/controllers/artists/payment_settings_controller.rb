@@ -3,6 +3,7 @@ class Artists::PaymentSettingsController < ApplicationController
   before_action :authenticate_artist!
   before_action :correct_artist
   before_action :set_artist
+  before_action :have_merchant_account, only: [:new, :create]
 
   def new
     @payment = ArtistPaymentSetting.new
@@ -45,6 +46,7 @@ class Artists::PaymentSettingsController < ApplicationController
     end
 
     redirect_to edit_artist_payment_setting_path(@artist)
+    flash[:notice] = "before we can transfer your payments we need more information."
   end
 
   def edit
@@ -62,10 +64,12 @@ class Artists::PaymentSettingsController < ApplicationController
     account.legal_entity.address.postal_code = params[:artist_payment_setting][:postal_code]
     account.legal_entity.address.state = params[:artist_payment_setting][:state]
     account.legal_entity.ssn_last_4 = params[:artist_payment_setting][:ssn_last_4]
+    account.legal_entity.personal_id_number = params[:artist_payment_setting][:personal_id_number]
 
     account.save
 
     redirect_to artist_path(@artist)
+    flash[:notice] = "you've updated your merchant account."
   end
 
   private
@@ -80,6 +84,11 @@ class Artists::PaymentSettingsController < ApplicationController
         redirect_to artist_path(@artist)
         flash[:alert] = "this is not you."
       end
+    end
+
+    def have_merchant_account
+      @artist = current_artist
+      redirect_to edit_artist_payment_setting_path(@artist) if @artist.artist_payment_setting
     end
 
 end
