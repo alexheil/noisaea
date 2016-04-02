@@ -32,8 +32,8 @@ class Artists::PaymentSettingsController < ApplicationController
     )
 
     if @account.save
-      @payment = ArtistPaymentSetting.create(
-          artist_id: @artist.id,
+      @payment = @artist.create_artist_payment_setting(
+          artist_id: @artist.id
           first_name: @account.legal_entity.first_name,
           last_name: @account.legal_entity.last_name,
           month: @account.legal_entity.dob.month,
