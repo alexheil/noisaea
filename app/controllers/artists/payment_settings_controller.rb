@@ -44,7 +44,7 @@ class Artists::PaymentSettingsController < ApplicationController
         )
     end
 
-    redirect_to edit_artist_payment_settings_path(@artist)
+    redirect_to artist_path(@artist)
   end
 
   def edit
