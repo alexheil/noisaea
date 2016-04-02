@@ -88,7 +88,7 @@ class Artists::PaymentSettingsController < ApplicationController
 
     def have_merchant_account
       @artist = current_artist
-      redirect_to edit_artist_payment_setting_path(@artist) if @artist.artist_payment_setting
+      redirect_to edit_artist_payment_setting_path(@artist) if @artist.artist_payment_setting.county.present?
     end
 
 end
