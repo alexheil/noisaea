@@ -1,6 +1,8 @@
 class ArtistPaymentSetting < ActiveRecord::Base
   belongs_to :artist
 
+  attr_accessor :line1, :city, :postal_code, :state, :ssn_last_4
+
   validates :artist_id, presence: true
   validates :month, presence: true, length: { maximum: 2 }, numericality: { less_than_or_equal_to: 12, greater_than: 0}
   validates :day, presence: true, length: { maximum: 2 }, numericality: { less_than_or_equal_to: 31, greater_than: 0 }
