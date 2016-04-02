@@ -33,19 +33,23 @@ class Artists::PaymentSettingsController < ApplicationController
 
     if @account.save
       @payment = @artist.create_artist_payment_setting(
-          artist_id: @artist.id,
-          first_name: @account.legal_entity.first_name,
-          last_name: @account.legal_entity.last_name,
-          month: @account.legal_entity.dob.month,
-          day: @account.legal_entity.dob.day,
-          year: @account.legal_entity.dob.year,
-          currency: @account.default_currency,
-          country: @account.country,
-          stripe_id: @account.id
-        )
+        artist_id: @artist.id,
+        first_name: @account.legal_entity.first_name,
+        last_name: @account.legal_entity.last_name,
+        month: @account.legal_entity.dob.month,
+        day: @account.legal_entity.dob.day,
+        year: @account.legal_entity.dob.year,
+        currency: @account.default_currency,
+        country: @account.country,
+        stripe_id: @account.id
+      )
+      if @payment.save
+        redirect_to artist_path(@artist)
+      else
+        redirect_to root_url
+      end
     end
 
-    redirect_to artist_path(@artist)
   end
 
   def edit
