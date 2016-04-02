@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
   resources :artists, controller: 'artists/artists', only: [:show, :index] do
     resource :profile, controller: 'artists/profiles', only: [:edit, :update]
-    resource :payment_settings, controller: 'artists/payment_settings', only: [:new, :create, :edit, :update]
+    resources :payment_settings, controller: 'artists/payment_settings', only: [:new, :create, :edit, :update]
     resources :relationships, controller: 'artists/relationships', only: [:create, :destroy]
     resources :notifications, controller: 'artists/notifications', only: [:index, :update]
     resources :microposts, controller: 'artists/microposts', path: :status, only: [:create, :show, :destroy] do
