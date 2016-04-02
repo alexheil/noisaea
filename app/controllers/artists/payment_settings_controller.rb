@@ -34,11 +34,11 @@ class Artists::PaymentSettingsController < ApplicationController
     if @account.save
       @payment = @artist.create_artist_payment_setting(
         artist_id: @artist.id,
-        first_name: @account.legal_entity.first_name,
-        last_name: @account.legal_entity.last_name,
-        month: @account.legal_entity.dob.month,
-        day: @account.legal_entity.dob.day,
-        year: @account.legal_entity.dob.year,
+        first_name: @artist.first_name,
+        last_name: @artist.last_name,
+        month: @artist.month,
+        day: @artist.day,
+        year: @artist.year,
         currency: @account.default_currency,
         country: @account.country,
         stripe_id: @account.id
