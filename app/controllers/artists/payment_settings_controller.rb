@@ -64,7 +64,7 @@ class Artists::PaymentSettingsController < ApplicationController
 
     account.external_accounts.create(
       external_account: {
-        object: 'bank account',
+        object: 'bank_account',
         account_number: params[:artist_payment_setting][:bank_account_number],
         routing_number: params[:artist_payment_setting][:bank_routing_number],
         country: account.country,
