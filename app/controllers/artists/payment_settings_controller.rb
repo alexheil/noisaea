@@ -63,7 +63,7 @@ class Artists::PaymentSettingsController < ApplicationController
     account = Stripe::Account.retrieve(@payment.stripe_id)
 
     account.external_accounts.create(
-      :external_account {
+      external_account: {
         object: 'bank account',
         account_number: params[:artist_payment_setting][:bank_account_number],
         routing_number: params[:artist_payment_setting][:bank_routing_number],
