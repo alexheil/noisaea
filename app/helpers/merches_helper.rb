@@ -36,6 +36,23 @@ module MerchesHelper
     ]
   end
 
+  def default_currency
+    [
+      ['USD'],
+      ['AUD'],
+      ['CAD'],
+      ['CHF'],
+      ['DKK'],
+      ['EUR'],
+      ['GBP'],
+      ['JPY'],
+      ['MXN'],
+      ['NOK'],
+      ['SEK'],
+      ['SGD']
+    ]
+  end
+
   def currency_select
     [
       ['USD'],

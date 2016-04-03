@@ -20,11 +20,17 @@
           </div>
           <%= f.text_field :last_name, class: "huron" %>
         </div>
-        <div class="highgate">
+        <div class="hudson">
           <div class="amherst temp">
             country
           </div>
           <%= @payment.country %>
+        </div>
+        <div class="hudson">
+          <div class="amherst temp">
+            currency
+          </div>
+          <%= f.select :currency, options_for_select(default_currency) %>
         </div>
         <div class="amherst temp">
           date of birth
@@ -50,7 +56,7 @@
 
         <div class="highgate">
           <div class="amherst temp">
-            address street
+            street address
           </div>
           <%= f.text_field :line1, class: "huron" %>
         </div>
@@ -84,6 +90,27 @@
           </div>
           <%= f.text_field :ssn_last_4, class: "huron" %>
         </div>
+        <div class="highgate temp">
+          where will your money go?
+        </div>
+        <div class="amherst">
+          this is not saved on our site. only fill this out if you want to create a new bank account to transfer funds to.
+        </div>
+        <div class="highgate">
+          <div class="amherst temp">
+            bank account number
+          </div>
+          <%= f.text_field :bank_account_number, class: "huron" %>
+        </div>
+        <% if @payment.country == 'US' %>
+        <div class="highgate">
+          <div class="amherst temp">
+            bank routing number
+          </div>
+          <%= f.text_field :bank_routing_number, class: "huron" %>
+        </div>
+        <% end %>
+
 
         <div class="ellicott">
           <%= f.submit "update merchant account", data: { disable_with: 'updating...' }, class: "exchange" %>

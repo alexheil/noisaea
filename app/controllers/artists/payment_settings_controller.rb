@@ -28,7 +28,7 @@ class Artists::PaymentSettingsController < ApplicationController
         },
         first_name: params[:artist_payment_setting][:first_name],
         last_name: params[:artist_payment_setting][:last_name],
-        type: 'individual',
+        type: 'individual'
       }
     )
 
@@ -43,10 +43,13 @@ class Artists::PaymentSettingsController < ApplicationController
         country: @account.country,
         stripe_id: @account.id
       )
+      redirect_to edit_artist_payment_setting_path(@artist, @payment)
+      flash[:notice] = "before we can transfer your payments we need more information."
+    else
+      redirect_to artist_path(@artist)
+      flash[:alert] = "your merchant account failed to create."
     end
 
-    redirect_to edit_artist_payment_setting_path(@artist)
-    flash[:notice] = "before we can transfer your payments we need more information."
   end
 
   def edit
@@ -59,17 +62,40 @@ class Artists::PaymentSettingsController < ApplicationController
     Stripe.api_key = Rails.configuration.stripe[:secret_key]
     account = Stripe::Account.retrieve(@payment.stripe_id)
 
+    account.external_account.create(
+      object: 'bank account',
+      account_number: params[:artist_payment_setting][:bank_account_number],
+      routing_number: params[:artist_payment_setting][:bank_routing_number],
+      country: account.country,
+      currency: params[:artist_payment_setting][:currency]
+    )
+
     account.legal_entity.address.line1 = params[:artist_payment_setting][:line1]
     account.legal_entity.address.city = params[:artist_payment_setting][:city]
     account.legal_entity.address.postal_code = params[:artist_payment_setting][:postal_code]
     account.legal_entity.address.state = params[:artist_payment_setting][:state]
     account.legal_entity.ssn_last_4 = params[:artist_payment_setting][:ssn_last_4]
     account.legal_entity.personal_id_number = params[:artist_payment_setting][:personal_id_number]
+    account.default_currency = params[:artist_payment_setting][:currency]
 
     account.save
 
-    redirect_to artist_path(@artist)
-    flash[:notice] = "you've updated your merchant account."
+    if account.save
+      @payment.update_attributes(
+        first_name: params[:artist_payment_setting][:first_name],
+        last_name: params[:artist_payment_setting][:last_name],
+        month: params[:artist_payment_setting][:month],
+        day: params[:artist_payment_setting][:day],
+        year: params[:artist_payment_setting][:year],
+        currency: account.default_currency
+      )
+      redirect_to artist_path(@artist)
+      flash[:notice] = "you've updated your merchant account."
+    else
+      redirect_to artist_path(@artist)
+      flash[:alert] = "your merchant account failed to update."
+    end
+
   end
 
   private
@@ -88,7 +114,8 @@ class Artists::PaymentSettingsController < ApplicationController
 
     def have_merchant_account
       @artist = current_artist
-      redirect_to edit_artist_payment_setting_path(@artist) if @artist.artist_payment_setting.country.present?
+      @payment = @artist.artist_payment_setting
+      redirect_to edit_artist_payment_setting_path(@artist, @payment) if @payment.country.present?
     end
 
 end

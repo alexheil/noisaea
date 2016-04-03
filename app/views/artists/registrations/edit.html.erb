@@ -5,6 +5,13 @@
       <div class="harlem">
         <h1>edit your account</h1>
       </div>
+      <div class="harlem">
+        <% if @artist.artist_payment_setting.present? %>
+          <%= link_to "merchant settings", edit_artist_payment_setting_path(@artist, @artist.artist_payment_setting), class: "temp" %>
+        <% else %>
+          <%= link_to "create merchant account", new_artist_payment_setting_path(@artist), class: "temp" %>
+        <% end %>
+      </div>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
         <%= devise_error_messages! %>
 
