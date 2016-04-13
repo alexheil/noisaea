@@ -2227,6 +2227,11 @@ select {
     padding: 15vh 0;
   }
 
+  .miniback {
+    height: 540px;
+    background-size: 1920px 500px;
+  }
+
   .h {
     width: 100%;
   }
@@ -2508,6 +2513,11 @@ select {
     font-size: 5em;
   }
 
+  .miniback {
+    height: 465px;
+    background-size: 1920px 440px;
+  }
+
   .timeline-container {
     width: 87%;
   }
@@ -2532,6 +2542,11 @@ select {
     font-size: 4em;
   }
 
+  .miniback {
+    height: 410px;
+    background-size: 1920px 375px;
+  }
+
   .north {
     font-size: 2em;
   }
@@ -2543,6 +2558,11 @@ select {
 }
 
 @media screen and (max-width: 500px) {
+
+  .miniback {
+    height: 360px;
+    background-size: 1920px 300px;
+  }
 
   .timeline-container{
     width: 85%;
@@ -2562,6 +2582,11 @@ select {
 
   .niagara-falls {
     font-size: 3em;
+  }
+
+  .miniback {
+    height: 335px;
+    background-size: 1920px 280px;
   }
 
   .north {
