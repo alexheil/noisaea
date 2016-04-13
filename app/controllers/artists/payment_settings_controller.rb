@@ -62,7 +62,7 @@ class Artists::PaymentSettingsController < ApplicationController
     Stripe.api_key = Rails.configuration.stripe[:secret_key]
     account = Stripe::Account.retrieve(@payment.stripe_id)
 
-    if params[:artist_payment_setting][:bank_account_number]
+    if params[:artist_payment_setting][:bank_account_number].present?
       account.external_accounts.create(
         external_account: {
           object: 'bank_account',
