@@ -808,6 +808,7 @@ h4 {
     max-width: 1920px;
     max-height: 640px;
     display: block;
+    -webkit-backface-visibility: hidden;
     -webkit-transition: .3s ease-in-out;
     -moz-transition: .3s ease-in-out;
     -o-transition: .3s ease-in-out;
@@ -815,7 +816,6 @@ h4 {
       -webkit-transition: .3s ease-in-out;
       -moz-transition: .3s ease-in-out;
       -o-transition: .3s ease-in-out;
-      -webkit-backface-visibility: hidden;
       opacity: .75;
     }
   }
