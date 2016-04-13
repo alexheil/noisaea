@@ -77,9 +77,9 @@ class Artists::PaymentSettingsController < ApplicationController
     account.legal_entity.address.line1 = params[:artist_payment_setting][:line1]
     account.legal_entity.address.city = params[:artist_payment_setting][:city]
     account.legal_entity.address.postal_code = params[:artist_payment_setting][:postal_code]
-    account.legal_entity.personal_address.line1 = params[:artist_payment_setting][:line1] unless account.county == 'us'
-    account.legal_entity.personal_address.city = params[:artist_payment_setting][:city] unless account.county == 'us'
-    account.legal_entity.personal_address.postal_code = params[:artist_payment_setting][:postal_code] unless account.county == 'us'
+    account.legal_entity.personal_address.line1 = params[:artist_payment_setting][:line1] unless account.country == 'us'
+    account.legal_entity.personal_address.city = params[:artist_payment_setting][:city] unless account.country == 'us'
+    account.legal_entity.personal_address.postal_code = params[:artist_payment_setting][:postal_code] unless account.country == 'us'
     account.legal_entity.address.state = params[:artist_payment_setting][:state]
     account.legal_entity.ssn_last_4 = params[:artist_payment_setting][:ssn_last_4] if params[:artist_payment_setting][:ssn_last_4]
     account.legal_entity.personal_id_number = params[:artist_payment_setting][:personal_id_number] if params[:artist_payment_setting][:personal_id_number]
