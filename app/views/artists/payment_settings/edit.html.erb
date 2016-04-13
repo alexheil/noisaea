@@ -8,6 +8,7 @@
 
       <%= form_for(@payment, url: artist_payment_setting_path) do |f| %>
         <%= f.hidden_field :artist_id %>
+        <%= render 'errors/payment_setting_errors' %>
         <div class="hudson">
           <div class="amherst temp">
             first name
@@ -54,47 +55,52 @@
           <%= f.text_field :year, class: "huron" %>
         </div>
 
+        <div class="amherst">
+          none of this information gets stored in Noisaea's database.
+        </div>
         <div class="highgate">
           <div class="amherst temp">
             street address
           </div>
-          <%= f.text_field :line1, class: "huron" %>
+          <%= f.text_field :line1, required: true, class: "huron" %>
         </div>
         <div class="maryland">
           <div class="amherst temp">
             city
           </div>
-          <%= f.text_field :city, class: "huron" %>
-        </div>
-        <div class="maryland">
-          <div class="amherst temp">
-            postal code
-          </div>
-          <%= f.text_field :postal_code, class: "huron" %>
+          <%= f.text_field :city, required: true, class: "huron" %>
         </div>
         <div class="maryland">
           <div class="amherst temp">
             state
           </div>
-          <%= f.text_field :state, class: "huron" %>
+          <%= f.text_field :state, required: true, class: "huron" %>
         </div>
+        <div class="maryland">
+          <div class="amherst temp">
+            postal code
+          </div>
+          <%= f.text_field :postal_code, required: true, class: "huron" %>
+        </div>
+        <% if @payment.country == 'US' %>
         <div class="hudson">
           <div class="amherst temp">
             personal id number
           </div>
-          <%= f.text_field :personal_id_number, class: "huron" %>
+          <%= f.text_field :personal_id_number, required: true, class: "huron" %>
         </div>
         <div class="hudson">
           <div class="amherst temp">
             last 4 of social
           </div>
-          <%= f.text_field :ssn_last_4, class: "huron" %>
+          <%= f.text_field :ssn_last_4, required: true, class: "huron" %>
         </div>
+        <% end %>
         <div class="highgate temp">
           where will your money go?
         </div>
         <div class="amherst">
-          this is not saved on our site. only fill this out if you want to create a new bank account to transfer funds to.
+          this is not saved to Noisaea's database. only fill this out if you want to create a new bank account to transfer funds to.
         </div>
         <div class="highgate">
           <div class="amherst temp">

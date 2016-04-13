@@ -35,6 +35,7 @@ class Artist < ActiveRecord::Base
   has_many :artist_videos, dependent: :destroy
 
   has_many :artist_merches, dependent: :destroy
+  has_many :artist_merch_purchases
 
   has_many :artist_albums, dependent: :destroy
   has_many :artist_tracks, through: :artist_albums

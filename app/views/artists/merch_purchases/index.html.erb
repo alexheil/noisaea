@@ -1,0 +1,53 @@
+<%= provide(:title, sanitize(@artist.artist_name) + " | Merch Purchases") %>
+<div class="buffalo">
+
+  <%= render 'artists/partials/artist_cover_image' %>
+
+  <div class="delaware">
+
+    <%= render 'artists/partials/artist_name' %>
+
+    <% if @purchases.any? %>
+    <div class="harlem">
+    <% @purchases.each do |purchase| %>
+    <% if purchase.is_shipped == false && purchase.stripe_charge_id.present? && purchase.street_address.present? %>
+      <div class="dodge putnam auburn">
+    <% elsif purchase.stripe_charge_id.blank? || purchase.street_address.blank? %>
+      <div class="dodge livingston auburn">
+    <% else %>
+      <div class="dodge norwood auburn">
+    <% end %>
+        <div class="temp">
+          <%= purchase.artist_merch.title %>
+        </div>
+        <div class="amherst">
+          <% if purchase.stripe_charge_id.present? %>
+            <%= purchase.full_name %> (<%= purchase.fan.username %>) paid <%= purchase.complete_price %> and you made <%= (((purchase.complete_price - (purchase.complete_price * 0.184 + 0.30)) * 100).round) / 100.0 %>
+          <% else %>
+            this item has not been paid for yet.
+          <% end %>
+        </div>
+        <div class="amherst">
+          <% if purchase.street_address.present? %>
+            <%= purchase.street_address %>, <%= purchase.city %>, <%= purchase.state %> <%= purchase.zip_code %>, <%= purchase.country %>
+          <% else %>
+            this item does not have a shipping address yet.
+          <% end %>
+        </div>
+        <% if purchase.is_shipped == false && purchase.stripe_charge_id.present? && purchase.street_address.present? %>
+        <%= form_for(purchase, url: artist_merch_purchase_path(@artist, purchase.artist_merch, purchase)) do |f| %>
+          <%= f.submit "mark shipped", class: "normal" %>
+        <% end %>
+      <% elsif purchase.stripe_charge_id.blank? || purchase.street_address.blank? %>
+      <% else %>
+        you have marked this item shipped.
+      <% end %>
+      </div>
+    <% end %>
+    </div>
+    <% end %>
+
+
+  </div>
+</div>
+<%= render "partials/uni_footer" %>

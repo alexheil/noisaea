@@ -10,7 +10,7 @@
         the universal spot for the music industry
       </div>
       <div class="busti white">
-        music - media - events - shop.
+        music - media - events - shop
       </div>
       <div class="harlem busti">
         <%= link_to "find out more?", why_path, class: "wehrle" %>
@@ -32,100 +32,85 @@
   <% unless fan_signed_in? || artist_signed_in? || record_label_signed_in? || venue_signed_in? || producer_signed_in? %>
 
   <div class="c">
-    <div class="delaware">
+
+    <div class="g">
+      artists - record labels - venues - producers
+    </div>
+    <div id="postbackground" class="miniback">
       <div class="g">
-        artists - record labels - venues - producers
+        posts
       </div>
-      <div class="k">
-        <div class="h">
-          <img src="https://i.imgur.com/d8Q2ocW.jpgv" width="100%" height="auto" />
-        </div>
-        <div class="i">
-          <div class="j">
-            <div class="temp">
-              posts
-            </div>
-            <div class="highgate">
-              Post content including text, links, and images to your fanbase. Don't worry, your posts will be in ALL of your fan’s feeds without having to pay
-            </div>
-            <div class="northrup">
-              <%= link_to 'make a post', register_path, class: "prospect" %>
-            </div>
-          </div>
-        </div>
+      <div class="q">
+        <img src="https://i.imgur.com/7uBKCKY.jpg" width="100%" height="auto" />
       </div>
-      <div class="k">
-        <div class="i">
-          <div class="j">
-            <div class="temp">
-              music
-            </div>
-            <div class="highgate">
-              Add albums and tracks to your music page. Tracks can be played right along side their lyrics. Fans will be able to purchase full albums for a set price or their own price.
-            </div>
-            <div class="northrup">
-              <%= link_to 'start adding tracks', register_path, class: "prospect" %>
-            </div>
-          </div>
-        </div>
-        <div class="h">
-          <img src="https://i.imgur.com/VK9Mvtl.jpg" width="100%" height="auto" />
-        </div>
+    </div>
+    <div class="busti r">
+      Post content including text, links, and images to your fanbase. Don't worry, your posts will be in ALL of your fan’s feeds without having to pay
+      <div class="northrup">
+        <%= link_to 'make a post', register_path, class: "prospect" %>
       </div>
-      <div class="k">
-        <div class="h">
-          <img src="https://i.imgur.com/oJhBcyu.jpg" width="100%" height="auto" />
-        </div>
-        <div class="i">
-          <div class="j">
-            <div class="temp">
-              shows
-            </div>
-            <div class="highgate">
-              List all of your upcoming events by date and be able to sell tickets to each.
-            </div>
-            <div class="northrup">
-              <%= link_to 'list your shows', register_path, class: "prospect" %>
-            </div>
-          </div>
-        </div>
+    </div>
+    <div id="musicbackground" class="miniback">
+      <div class="g">
+        music
       </div>
-      <div class="k">
-        <div class="i">
-          <div class="j">
-            <div class="temp">
-              videos
-            </div>
-            <div class="highgate">
-              Post music videos, live shows, studio updates, and tour videos. Without that terrible autoplay feature.
-            </div>
-            <div class="northrup">
-              <%= link_to 'post a video', register_path, class: "prospect" %>
-            </div>
-          </div>
-        </div>
-        <div class="h">
-          <img src="https://i.imgur.com/DgpqHRl.jpg" width="100%" height="auto" />
-        </div>
+      <div class="q">
+        <img src="https://i.imgur.com/CUnqPbE.jpg" width="100%" height="auto" />
       </div>
-      <div class="k">
-        <div class="h">
-          <img src="https://i.imgur.com/kXSipbl.jpg" width="100%" height="auto" />
-        </div>
-        <div class="i">
-          <div class="j">
-            <div class="temp">
-              merch
-            </div>
-            <div class="highgate">
-              Display and sell your shirts, CDs, hoodies, flags, wristbands, records, anything on your page's storefront.
-            </div>
-            <div class="northrup">
-              <%= link_to 'open merch store', register_path, class: "prospect" %>
-            </div>
-          </div>
-        </div>
+    </div>
+    <div class="busti r">
+      Add albums and tracks to your music page. Tracks can be played right along side their lyrics. Fans will be able to purchase full albums for a set price or their own price.
+      <div class="northrup">
+        <%= link_to 'start adding tracks', register_path, class: "prospect" %>
       </div>
+    </div>
+    <div id="showsbackground" class="miniback">
+      <div class="g">
+        shows
+      </div>
+      <div class="q">
+        <img src="https://i.imgur.com/1jwpKIK.jpg" width="100%" height="auto" />
+      </div>
+    </div>
+    <div class="busti r">
+      List all of your upcoming events by date and be able to sell tickets to each.
+      <div class="northrup">
+        <%= link_to 'list your shows', register_path, class: "prospect" %>
+      </div>
+    </div>
+    <div id="videosbackground" class="miniback">
+      <div class="g white">
+        videos
+      </div>
+      <div class="q">
+        <img src="https://i.imgur.com/lw5NOPE.jpg" width="100%" height="auto" />
+      </div>
+    </div>
+    <div class="busti r">
+      Post music videos, live shows, studio updates, and tour videos. Without that terrible autoplay feature.
+      <div class="northrup">
+        <%= link_to 'post a video', register_path, class: "prospect" %>
+      </div>
+    </div>
+    <div id="merchbackground" class="miniback">
+      <div class="g">
+        merch
+      </div>
+      <div class="q">
+        <img src="https://i.imgur.com/ZUSJjZE.jpg" width="100%" height="auto" />
+      </div>
+    </div>
+    <div class="busti r">
+      Display and sell your shirts, CDs, hoodies, flags, wristbands, records, anything on your page's storefront.
+      <div class="northrup">
+        <%= link_to 'open merch store', register_path, class: "prospect" %>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="c">
+    <div class="delaware">
 
       <div class="g">
         fans

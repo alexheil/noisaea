@@ -37,10 +37,18 @@ Rails.application.routes.draw do
     resources :albums, controller: 'artists/albums' do
       resources :tracks, controller: 'artists/tracks', except: :index
     end
-    resources :merches, controller: 'artists/merches', path: :merch
+    resources :merches, controller: 'artists/merches', path: :merch do
+      resources :purchases, controller: 'artists/merch_purchases', only: [:create, :edit, :update, :destroy] do
+        member do
+          get 'checkout'
+          patch 'charge'
+        end
+      end
+    end
     resources :shows, controller: 'artists/shows'
     resources :videos, controller: 'artists/videos'
     get 'followers' => 'artists/artists#followers'
+    get 'merch_transactions' => 'artists/merch_purchases#index', as: :merch_transactions
   end
 
   get 'index_artist_microposts' => 'artists/artists#microposts', path: :artist_timeline
@@ -64,6 +72,7 @@ Rails.application.routes.draw do
     get 'merch' => 'fans/fans#merch'
     get 'shows' => 'fans/fans#shows'
     get 'videos' => 'fans/fans#videos'
+    get 'purchases' => 'fans/fans#purchases'
   end
 
   ####################### RECORD LABEL ##########################

@@ -45,4 +45,9 @@ class Fans::FansController < ApplicationController
     @artist_merch = @fan.artist_merches.page params[:page]
   end
 
+  def purchases
+    @fan = current_fan
+    @purchases = @fan.artist_merch_purchases
+  end
+
 end

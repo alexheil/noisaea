@@ -77,9 +77,12 @@ class Artists::PaymentSettingsController < ApplicationController
     account.legal_entity.address.line1 = params[:artist_payment_setting][:line1]
     account.legal_entity.address.city = params[:artist_payment_setting][:city]
     account.legal_entity.address.postal_code = params[:artist_payment_setting][:postal_code]
+    account.legal_entity.personal_address.line1 = params[:artist_payment_setting][:line1]
+    account.legal_entity.personal_address.city = params[:artist_payment_setting][:city]
+    account.legal_entity.personal_address.postal_code = params[:artist_payment_setting][:postal_code]
     account.legal_entity.address.state = params[:artist_payment_setting][:state]
-    account.legal_entity.ssn_last_4 = params[:artist_payment_setting][:ssn_last_4]
-    account.legal_entity.personal_id_number = params[:artist_payment_setting][:personal_id_number]
+    account.legal_entity.ssn_last_4 = params[:artist_payment_setting][:ssn_last_4] if params[:artist_payment_setting][:ssn_last_4]
+    account.legal_entity.personal_id_number = params[:artist_payment_setting][:personal_id_number] if params[:artist_payment_setting][:personal_id_number]
     account.default_currency = params[:artist_payment_setting][:currency]
 
     account.save
@@ -91,10 +94,14 @@ class Artists::PaymentSettingsController < ApplicationController
         month: params[:artist_payment_setting][:month],
         day: params[:artist_payment_setting][:day],
         year: params[:artist_payment_setting][:year],
-        currency: account.default_currency
+       currency: account.default_currency
       )
+      if @payment.save
       redirect_to artist_path(@artist)
       flash[:notice] = "you've updated your merchant account."
+      else
+        render 'edit'
+      end
     else
       redirect_to artist_path(@artist)
       flash[:alert] = "your merchant account failed to update."
@@ -118,8 +125,10 @@ class Artists::PaymentSettingsController < ApplicationController
 
     def have_merchant_account
       @artist = current_artist
-      @payment = @artist.artist_payment_setting
-      redirect_to edit_artist_payment_setting_path(@artist, @payment) if @payment.country.present?
+      if @artist.artist_payment_setting
+        @payment = @artist.artist_payment_setting
+        redirect_to edit_artist_payment_setting_path(@artist, @payment) if @payment.country.present?
+      end
     end
 
 end

@@ -17,4 +17,11 @@ class ArtistMailer < ApplicationMailer
     mail(to: @artist.email, subject: 'What\'s up?! Your timeline is empty... | Noisaea')
   end
 
+  def purchased_email(artist, artist_merch_purchase, fan)
+    @artist = artist
+    @purchase = artist_merch_purchase
+    @fan = fan
+    mail(to: @artist.email, subject: 'Looks like someone just bought some merch! | Noisaea')
+  end
+
 end

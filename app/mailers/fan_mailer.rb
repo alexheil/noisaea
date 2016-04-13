@@ -11,4 +11,11 @@ class FanMailer < ApplicationMailer
     mail(to: @fan.email, subject: 'Your profile is kinda... not there | Noisaea')
   end
 
+  def purchased_email(fan, artist, artist_merch_purchase)
+    @artist = artist
+    @purchase = artist_merch_purchase
+    @fan = fan
+    mail(to: @fan.email, subject: 'Your order has been marked "shipped" | Noisaea')
+  end
+
 end

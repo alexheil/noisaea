@@ -490,6 +490,13 @@ var merchLightbox = function() {
   $('#back').click(function() {
     $('#back').hide();
     $('#front').hide();
+    $('.prepurchaseform').hide();
+  });
+
+  $('#close').click(function() {
+    $('#back').hide();
+    $('#front').hide();
+    $('.prepurchaseform').hide();
   });
 
   $('#front').click(function() {
@@ -500,6 +507,11 @@ var merchLightbox = function() {
   $('.lightbox-image').click(function() {
     $('#back').hide();
     $('#front').hide();
+  });
+
+  $('.prepurchaseformbutton').click(function() {
+    $('#back').show();
+    $('.prepurchaseform').show();
   });
 
 };

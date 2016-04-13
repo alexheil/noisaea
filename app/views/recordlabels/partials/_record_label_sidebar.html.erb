@@ -57,7 +57,15 @@
     artists
   </div>
   <div class="fillmore">
-    <%= @record_label.record_label_profile.artists %>
+    <% @record_label.record_label_profile.list_of_artists.each do |artist| %>
+      <div class="amherst">
+        <% if Artist.exists?(:artist_name => "#{artist}") %>
+          <%= link_to artist, artist_path(Artist.where(:artist_name => "#{artist}").first) %>
+        <% else %>
+          <%= artist %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
   <% end %>
   <% if @record_label.record_label_profile.biography.present? %>

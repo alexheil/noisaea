@@ -24,52 +24,98 @@
               <img srcset="<%= @merch.item_img.url(:perfect) %>" width="100%" height="auto" />
             </div>
           </div>
-          <div class="fargo">
-            <div class="vermont busti">
-              <%= @merch.title %>
-            </div>
-            <div class="summer busti">
-              <%= @merch.category %>
-            </div>
-            <div class="summer busti">
-              <span class="posted">base price //</span> <%= @merch.base_price %> <%= @merch.currency %>
-            </div>
-            <% if @merch.shipping_price.present? %>
-            <div class="summer busti">
-              <span class="posted">shipping price //</span> <%= @merch.shipping_price %> <%= @merch.currency %>
-            </div>
-            <% end %>
-            <div class="summer busti">
-              <span class="posted">total price //</span> <%= @merch.total_price %> <%= @merch.currency %>
-            </div>
-            <div class="vermont busti">
-              <%= link_to "get this!", @merch.merch_url, class: "sugar" %>
-            </div>
-          </div>
-        <% else %>
-          <div class="vermont">
+        <% end %>
+        <div class="fargo">
+          <div class="vermont busti">
             <%= @merch.title %>
           </div>
-          <div class="summer">
+          <div class="summer busti">
             <%= @merch.category %>
           </div>
-          <div class="summer">
+          <div class="summer busti">
             <span class="posted">base price //</span> <%= @merch.base_price %> <%= @merch.currency %>
           </div>
           <% if @merch.shipping_price.present? %>
-          <div class="summer">
+          <div class="summer busti">
             <span class="posted">shipping price //</span> <%= @merch.shipping_price %> <%= @merch.currency %>
           </div>
           <% end %>
-          <div class="summer">
+          <div class="summer busti">
             <span class="posted">total price //</span> <%= @merch.total_price %> <%= @merch.currency %>
           </div>
-          <div class="vermont">
-            <%= link_to "get this!", @merch.merch_url, class: "sugar" %>
+          <% if @artist.artist_payment_setting %>
+          <div class="harlem busti prepurchaseformbutton">
+            <%= link_to "purchase", '#purchase', class: "exchange" %>
           </div>
-        <% end %>
+
+          <div id="back"></div>
+          <div class="prepurchaseform">
+            <div class="prepurchaseforminside">
+            <div id="close"></div>
+              <% if @merch.item_img_file_name.present? %>
+                <img srcset="<%= @merch.item_img.url(:perfect) %>" width="100%" height="auto" />
+              <% end %>
+              <div class="highgate busti j">
+                <%= @merch.title %>
+              </div>
+              <div class="highgate busti">
+                base price // <%= @merch.base_price %> <%= @merch.currency %>
+              </div>
+              <% if @merch.shipping_price.present? %>
+              <div class="highgate busti">
+                shipping price // <%= @merch.shipping_price %> <%= @merch.currency %>
+              </div>
+              <% end %>
+              <%= form_for(ArtistMerchPurchase.new, url: artist_merch_purchases_path(@artist, @merch) ) do |f| %>
+                <%= f.hidden_field :artist_merch_id %>
+                <%= f.hidden_field :artist_id %>
+                <%= f.hidden_field :fan_id %>
+                <div class="highgate busti j">
+                  <% if @merch.options.present? %>
+                  <div class="fargo baird winter">
+                    options //
+                  </div>
+                  <div class="fargo">
+                    <%= f.select :options, options_for_select(@merch.options_for_merch) %>
+                  </div>
+                  <% end %>
+                  <div class="fargo baird winter">
+                    add a price //
+                  </div>
+                  <div class="fargo">
+                    <%= f.text_field :pay_your_own_price, class: "huron" %>
+                  </div>
+                </div>
+                put extra money in your artist's pocket. the Stripe fee for this transaction will be $<%= ((@merch.total_price * 0.04 + 0.30) * 100).round / 100.0 %>.
+                <div class="highgate busti j">
+                  <div class="fargo baird winter">
+                    quantity //
+                  </div>
+                  <div class="fargo">
+                    <%= f.text_field :quantity, class: "huron" %>
+                  </div>
+                </div>
+                <% if fan_signed_in? %>
+                <div class="ellicott">
+                  <div class="hey">
+                    <%= f.submit "checkout",  class: "exchange" %>
+                  </div>
+                </div>
+                <% else %>
+                <div class="amherst">
+                  you must be <%= link_to "signed in", new_fan_session_path %> as a fan to make purchases
+                </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+          <% end %>
+
+        </div>
         <% if @artist == current_artist %>
+        <div class="amherst">
           // <%= link_to "edit", edit_artist_merch_path(@artist, @merch) %> or <%= link_to "delete", artist_merch_path(@artist, @merch), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+        </div>
         <% end %>
         <div class="best">
           <%= @merch.description %>

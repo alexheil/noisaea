@@ -59,6 +59,7 @@ class Fan < ActiveRecord::Base
   has_many :producer_videos, through: :producers
 
   has_many :artist_merches, through: :artists
+  has_many :artist_merch_purchases
 
   has_many :artist_albums, through: :artists
 

@@ -1,0 +1,52 @@
+<%= provide(:title, "Provide Shipping Information For Order #{@purchase.id}") %>
+<div class="buffalo">
+  <div class="delaware">
+    <div class="elmwood">
+      <div class="harlem">
+        <h1>checkout for <%= @purchase.artist_merch.title %></h1>
+      </div>
+
+      <div class="amherst temp">
+        <%= @purchase.complete_price %> <%= @artist.artist_payment_setting.currency %>
+      </div>
+
+      <%= form_for(@purchase, url: charge_artist_merch_purchase_path(@artist, @merch, @purchase), :html => {:id => "payment-form"}) do |f| %>
+        <span class="payment-errors"></span>
+
+        <div class="highgate">
+          <div class="amherst temp">
+            card number
+          </div>
+            <input class="huron" type="text" size="20" data-stripe="number"/>
+        </div>
+
+        <div class="highgate">
+          <div class="amherst temp">
+            cvc
+          </div>
+            <input class="huron" type="text" size="4" data-stripe="cvc"/>
+        </div>
+
+        <div class="amherst temp">
+          expiration
+        </div>
+        <div class="hudson">
+          <div class="amherst temp">
+            month
+          </div>
+          <input class="huron" type="text" size="2" data-stripe="exp-month"/>
+        </div>
+        <div class="hudson">
+          <div class="amherst temp">
+            year
+          </div>
+          <input class="huron" type="text" size="4" data-stripe="exp-year"/>
+        </div>
+
+        <button type="submit" class="exchange">submit payment</button>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+<%= render 'partials/uni_footer' %>

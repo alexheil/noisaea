@@ -15,6 +15,7 @@
     <%= render 'partials/shim' %>
     <%= render 'partials/analytics' %>
     <%= render 'partials/themes' %>
+    <%= render 'partials/stripe' if (params[:action] == 'checkout') %>
   </head>
   <body>
 

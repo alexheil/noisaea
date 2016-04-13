@@ -1,0 +1,13 @@
+noisaea //
+
+<%= @fan.fan_name %>!
+
+Looks like <%= @artist.artist_name %> just put <%= @purchase.artist_merch.title %> on the truck headed for you!
+
+It'll be there soon!
+
+<%= link_to "Your purchase history.", fan_purchases_url(@fan) %>
+
+Congratulations,
+
+<%= link_to "Noisaea", root_url %>

@@ -1,0 +1,8 @@
+<h1>noisaea //</h1>
+<p><%= @artist.artist_name %>!</p>
+<p>Looks like <%= @fan.fan_name %> just whipped open their wallet and bought <%= @purchase.artist_merch.title %> for <%= @purchase.complete_price %> <%= @purchase.artist_merch.currency %>!</p>
+<p>The money situation has already been taken care of and will be transfered to your merchant bank account in 2 business days.</p>
+<p>The only thing you have to do now is ship the product! You have 7 days.</p>
+<p><%= link_to "Your transactions history.", artist_merch_transactions_url(@artist) %></p>
+<p>Good job!</p>
+<p><%= link_to "Noisaea", root_url %></p>

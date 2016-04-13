@@ -8,6 +8,7 @@
 
       <%= form_for(@payment, url: artist_payment_settings_path) do |f| %>
         <%= f.hidden_field :artist_id %>
+        <%= render 'errors/payment_setting_errors' %>
         <div class="hudson">
           <div class="amherst temp">
             first name

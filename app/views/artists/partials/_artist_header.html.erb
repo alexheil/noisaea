@@ -18,6 +18,7 @@
     <li><%= link_to "merch", artist_merches_path(current_artist), class: "depew" %></li>
     <li><%= link_to "shows", artist_shows_path(current_artist), class: "depew" %></li>
     <li><%= link_to "videos", artist_videos_path(current_artist), class: "depew" %></li>
+    <li><%= link_to "purchases (#{current_artist.artist_merch_purchases.where(is_shipped: false).count})", artist_merch_transactions_path(current_artist), class: "depew" %></li>
     <li><%= link_to "profile", edit_artist_profile_path(current_artist), class: "depew" %></li>
     <li><%= link_to "settings", edit_artist_registration_path, class: "depew" %></li>
     <li><%= link_to "sign out", sign_out_path, class: "depew" %></li>

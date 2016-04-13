@@ -27,6 +27,14 @@ class RecordLabelProfile < ActiveRecord::Base
   before_save :add_pound_to_hex
   before_save :blank_genre
 
+  def list_of_artists
+    if self.artists.include? ","
+      self.artists.split(/\s*,\s*/)
+    else
+      [self.artists]
+    end
+  end
+
   protected
 
     def add_pound_to_hex

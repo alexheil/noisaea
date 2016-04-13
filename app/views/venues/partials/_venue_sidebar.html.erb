@@ -16,14 +16,14 @@
     </div>
   </div>
 
-  <% if venue_signed_in? && @venue.id == current_venue.id && @venue.venue_profile.location.blank? && @venue.venue_profile.founded.blank? && @venue.venue_profile.biography.blank? && @venue.venue_profile.facebook_url.blank? && @venue.venue_profile.twitter_url.blank? && @venue.venue_profile.youtube_url.blank? && @venue.venue_profile.website.blank? && @venue.venue_profile.ticketfly_url.blank? %>
+  <% if venue_signed_in? && @venue.id == current_venue.id && @venue.venue_profile.location.blank? && @venue.venue_profile.address.blank? && @venue.venue_profile.founded.blank? && @venue.venue_profile.biography.blank? && @venue.venue_profile.facebook_url.blank? && @venue.venue_profile.twitter_url.blank? && @venue.venue_profile.youtube_url.blank? && @venue.venue_profile.website.blank? && @venue.venue_profile.ticketfly_url.blank? %>
     <div class="amherst">
       you do not have any profile information
     </div>
     <div class="jefferson">
       <%= link_to "update your profile", edit_venue_profile_path(current_venue) %>
     </div>
-  <% elsif @venue.venue_profile.location.blank? && @venue.venue_profile.founded.blank? && @venue.venue_profile.biography.blank? && @venue.venue_profile.facebook_url.blank? && @venue.venue_profile.twitter_url.blank? && @venue.venue_profile.youtube_url.blank? && @venue.venue_profile.website.blank? && @venue.venue_profile.ticketfly_url.blank? %>
+  <% elsif @venue.venue_profile.location.blank? && @venue.venue_profile.address.blank? && @venue.venue_profile.founded.blank? && @venue.venue_profile.biography.blank? && @venue.venue_profile.facebook_url.blank? && @venue.venue_profile.twitter_url.blank? && @venue.venue_profile.youtube_url.blank? && @venue.venue_profile.website.blank? && @venue.venue_profile.ticketfly_url.blank? %>
     <div class="amherst"><%= "#{@venue.venue_name} does not have any profile information yet" %></div>
   <% end %>
   <% if @venue.venue_profile.location.present? %>
@@ -32,6 +32,14 @@
   </div>
   <div class="fillmore">
     <%= @venue.venue_profile.location %>
+  </div>
+  <% end %>
+  <% if @venue.venue_profile.address.present? %>
+  <div class="jefferson">
+    address
+  </div>
+  <div class="fillmore">
+    <%= @venue.venue_profile.address %>
   </div>
   <% end %>
   <% if @venue.venue_profile.founded.present? %>

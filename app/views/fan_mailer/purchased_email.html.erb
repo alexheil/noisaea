@@ -1,0 +1,7 @@
+<h1>noisaea //</h1>
+<p><%= @fan.fan_name %>!</p>
+<p>Looks like <%= @artist.artist_name %> just put <%= @purchase.artist_merch.title %> on the truck headed for you!</p>
+<p>It'll be there soon!</p>
+<p><%= link_to "Your purchase history.", fan_purchases_url(@fan) %></p>
+<p>Congratulations,</p>
+<p><%= link_to "Noisaea", root_url %></p>

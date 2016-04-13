@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160331181627) do
+ActiveRecord::Schema.define(version: 20160413002209) do
 
   create_table "artist_albums", force: :cascade do |t|
     t.integer  "artist_id"
@@ -35,6 +35,30 @@ ActiveRecord::Schema.define(version: 20160331181627) do
 
   add_index "artist_albums", ["artist_id"], name: "index_artist_albums_on_artist_id"
 
+  create_table "artist_merch_purchases", force: :cascade do |t|
+    t.integer  "artist_id"
+    t.integer  "fan_id"
+    t.integer  "artist_merch_id"
+    t.string   "stripe_charge_id"
+    t.integer  "quantity",           default: 1
+    t.integer  "pay_your_own_price", default: 0
+    t.integer  "complete_price"
+    t.string   "full_name",          default: ""
+    t.string   "street_address",     default: ""
+    t.string   "city",               default: ""
+    t.string   "state",              default: ""
+    t.string   "country",            default: ""
+    t.string   "zip_code",           default: ""
+    t.boolean  "is_shipped",         default: false, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "options"
+  end
+
+  add_index "artist_merch_purchases", ["artist_id"], name: "index_artist_merch_purchases_on_artist_id"
+  add_index "artist_merch_purchases", ["artist_merch_id"], name: "index_artist_merch_purchases_on_artist_merch_id"
+  add_index "artist_merch_purchases", ["fan_id"], name: "index_artist_merch_purchases_on_fan_id"
+
   create_table "artist_merches", force: :cascade do |t|
     t.integer  "artist_id"
     t.string   "title",                 limit: 255
@@ -54,6 +78,7 @@ ActiveRecord::Schema.define(version: 20160331181627) do
     t.string   "item_img_content_type"
     t.integer  "item_img_file_size"
     t.datetime "item_img_updated_at"
+    t.string   "options"
   end
 
   add_index "artist_merches", ["artist_id"], name: "index_artist_merches_on_artist_id"
@@ -979,6 +1004,7 @@ ActiveRecord::Schema.define(version: 20160331181627) do
     t.string   "profile_img_content_type"
     t.integer  "profile_img_file_size"
     t.datetime "profile_img_updated_at"
+    t.string   "address",                              default: ""
   end
 
   add_index "venue_profiles", ["venue_id"], name: "index_venue_profiles_on_venue_id", unique: true

@@ -1,0 +1,64 @@
+<%= provide(:title, "Provide Shipping Information For Order #{@purchase.id}") %>
+<div class="buffalo">
+  <div class="delaware">
+    <div class="elmwood">
+      <div class="harlem">
+        <h1>provide your shipping information</h1>
+      </div>
+
+      <%= form_for(@purchase, url: artist_merch_purchase_path) do |f| %>
+      <%= render 'errors/purchase_errors' %>
+        <div class="highgate">
+          <div class="amherst temp">
+            item name
+          </div>
+          <%= @purchase.artist_merch.title %>
+        </div>
+        <div class="highgate">
+          <div class="amherst temp">
+            full name
+          </div>
+          <%= f.text_field :full_name, required: true, class: "huron" %>
+        </div>
+        <div class="highgate">
+          <div class="amherst temp">
+            country
+          </div>
+          <%= f.select :country, options_for_select(country_select)%>
+        </div>
+
+        <div class="highgate">
+          <div class="amherst temp">
+            street address
+          </div>
+          <%= f.text_field :street_address, required: true, class: "huron" %>
+        </div>
+        <div class="maryland">
+          <div class="amherst temp">
+            city
+          </div>
+          <%= f.text_field :city, required: true, class: "huron" %>
+        </div>
+        <div class="maryland">
+          <div class="amherst temp">
+            state
+          </div>
+          <%= f.text_field :state, class: "huron" %>
+        </div>
+        <div class="maryland">
+          <div class="amherst temp">
+            postal code
+          </div>
+          <%= f.text_field :zip_code, required: true, class: "huron" %>
+        </div>
+
+
+        <div class="ellicott">
+          <%= f.submit "update shipping information", data: { disable_with: 'updating...' }, class: "exchange" %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+<%= render 'partials/uni_footer' %>
