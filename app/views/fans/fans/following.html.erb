@@ -19,7 +19,7 @@
             <%= render 'artists/partials/relationships/fan_following_count' %>
           </div>
           <% else %>
-            // following <%= pluralize(@fan.artists.count, "artist") %>
+            following <%= @fan.artists.count %>
           <% end %>
         </div>
       </div>
@@ -32,7 +32,7 @@
               <%= render 'recordlabels/partials/relationships/fan_following_count' %>
             </div>
           <% else %>
-            // following <%= pluralize(@fan.record_labels.count, "record label") %>
+            following <%= @fan.record_labels.count %>
           <% end %>
         </div>
       </div>
@@ -45,7 +45,7 @@
               <%= render 'venues/partials/relationships/fan_following_count' %>
             </div>
           <% else %>
-            // following <%= pluralize(@fan.venues.count, "venue") %>
+            following <%= @fan.venues.count %>
           <% end %>
         </div>
       </div>
@@ -58,7 +58,7 @@
               <%= render 'producers/partials/relationships/fan_following_count' %>
             </div>
           <% else %>
-            // following <%= pluralize(@fan.producers.count, "producer") %>
+            following <%= @fan.producers.count %>
           <% end %>
         </div>
       </div>

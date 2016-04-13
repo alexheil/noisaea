@@ -24,28 +24,28 @@
         <div class="allen">
           <a id="fan-artist-click"><strong>artists</strong></a>
           <div class="amherst">
-            // following <%= link_to pluralize(@fan.artists.count, "artist"), fan_following_path(@fan) %>
+            following <%= link_to @fan.artists.count, fan_following_path(@fan) %>
           </div>
         </div>
 
         <div class="allen">
           <a id="fan-record-label-click"><strong>record labels</strong></a>
           <div class="amherst">
-            // following <%= link_to pluralize(@fan.record_labels.count, "record label"), fan_following_path(@fan) %>
+            following <%= link_to @fan.record_labels.count, fan_following_path(@fan) %>
           </div>
         </div>
 
         <div class="allen">
           <a id="fan-venue-click"><strong>venues</strong></a>
           <div class="amherst">
-            // following <%= link_to pluralize(@fan.venues.count, "venue"), fan_following_path(@fan) %>
+            following <%= link_to @fan.venues.count, fan_following_path(@fan) %>
           </div>
         </div>
 
         <div class="allen">
           <a id="fan-producer-click"><strong>producers</strong></a>
           <div class="amherst">
-            // following <%= link_to pluralize(@fan.producers.count, "producer"), fan_following_path(@fan) %>
+            following <%= link_to @fan.producers.count, fan_following_path(@fan) %>
           </div>
         </div>
 
