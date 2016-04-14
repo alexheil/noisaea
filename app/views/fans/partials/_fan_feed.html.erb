@@ -36,7 +36,7 @@
 
       <% if micropost.artist.artist_profile.profile_img_file_name.blank? %>
         <div class="winspear">
-          <strong><%= link_to "#{micropost.artist.artist_name}", artist_micropost_path(micropost.artist, micropost) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
+          <%= link_to "#{micropost.artist.artist_name}", artist_path(micropost.artist) %> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
           <% if micropost.artist == current_artist %>
            // <%= link_to "delete post", artist_micropost_path(micropost.artist, micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete, remote: true %>
           <% end %>
@@ -49,7 +49,7 @@
         </div>
         <div class="lexington">
           <div class="anderson">
-            <%= link_to "#{micropost.artist.artist_name}", artist_micropost_path(micropost.artist, micropost) %>
+            <%= link_to "#{micropost.artist.artist_name}", artist_path(micropost.artist) %>
           </div>
           <div class="posted">
             posted <%= time_ago_in_words(micropost.created_at) %> ago
@@ -124,7 +124,7 @@
 
       <% if micropost.record_label.record_label_profile.profile_img_file_name.blank? %>
         <div class="winspear">
-          <strong><%= link_to "#{micropost.record_label.label_name}", record_label_micropost_path(micropost.record_label, micropost) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
+          <%= link_to "#{micropost.record_label.label_name}", record_label_path(micropost.record_label) %> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
           <% if micropost.record_label == current_record_label %>
            // <%= link_to "delete post", record_label_micropost_path(micropost.record_label, micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete, remote: true %>
           <% end %>
@@ -137,7 +137,7 @@
         </div>
         <div class="lexington">
           <div class="anderson">
-            <%= link_to "#{micropost.record_label.label_name}", record_label_micropost_path(micropost.record_label, micropost) %>
+            <%= link_to "#{micropost.record_label.label_name}", record_label_path(micropost.record_label) %>
           </div>
           <div class="posted">
             posted <%= time_ago_in_words(micropost.created_at) %> ago
@@ -212,7 +212,7 @@
 
       <% if micropost.venue.venue_profile.profile_img_file_name.blank? %>
         <div class="winspear">
-          <strong><%= link_to "#{micropost.venue.venue_name}", venue_micropost_path(micropost.venue, micropost) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
+          <%= link_to "#{micropost.venue.venue_name}", venue_path(micropost.venue) %> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
           <% if micropost.venue == current_venue %>
            // <%= link_to "delete post", venue_micropost_path(micropost.venue, micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete, remote: true %>
           <% end %>
@@ -225,7 +225,7 @@
         </div>
         <div class="lexington">
           <div class="anderson">
-            <%= link_to "#{micropost.venue.venue_name}", venue_micropost_path(micropost.venue, micropost) %>
+            <%= link_to "#{micropost.venue.venue_name}", venue_path(micropost.venue) %>
           </div>
           <div class="posted">
             posted <%= time_ago_in_words(micropost.created_at) %> ago
@@ -298,7 +298,7 @@
 
       <% if micropost.producer.producer_profile.profile_img_file_name.blank? %>
         <div class="winspear">
-          <strong><%= link_to "#{micropost.producer.producer_name}", producer_micropost_path(micropost.producer, micropost) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
+          <%= link_to "#{micropost.producer.producer_name}", producer_path(micropost.producer) %> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
           <% if micropost.producer == current_producer %>
            // <%= link_to "delete post", producer_micropost_path(micropost.producer, micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete, remote: true %>
           <% end %>
@@ -311,7 +311,7 @@
         </div>
         <div class="lexington">
           <div class="anderson">
-            <%= link_to "#{micropost.producer.producer_name}", producer_micropost_path(micropost.producer, micropost) %>
+            <%= link_to "#{micropost.producer.producer_name}", producer_path(micropost.producer) %>
           </div>
           <div class="posted">
             posted <%= time_ago_in_words(micropost.created_at) %> ago

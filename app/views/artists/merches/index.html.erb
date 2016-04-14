@@ -33,11 +33,13 @@
               <%= link_to image_tag("#{merch.item_img.url(:small)}", :width => "100%"), artist_merch_path(@artist, merch) %>
             </div>
             <% else %>
+            <div class="highgate">
               <% if @artist == current_artist %>
                 you do not have an image for this item. <%= link_to "add one?", edit_artist_merch_path(@artist, merch) %>
               <% else %>
                 <%= @artist.artist_name %> does not have an image for <%= merch.title %>.
               <% end %>
+            </div>
             <% end %>
             <% if @artist == current_artist %>
               // <%= link_to "edit", edit_artist_merch_path(@artist, merch) %> or <%= link_to "delete", artist_merch_path(@artist, merch), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
@@ -56,18 +58,18 @@
           </div>
           <div class="allen">
             <div class="summer">
-              <span class="posted">base price //</span> <%= merch.base_price %> <%= merch.currency %>
+              <span class="posted">price //</span> <%= merch.base_price %> <%= merch.currency %>
             </div>
             <div class="summer">
-              <span class="posted">shipping price //</span> <%= merch.shipping_price %> <%= merch.currency %>
+              <span class="posted">shipping //</span> <%= merch.shipping_price %> <%= merch.currency %>
             </div>
             <div class="summer">
               <span class="posted">total price //</span> <%= merch.total_price %> <%= merch.currency %>
             </div>
           </div>
           <div class="allen">
-            <div class="bryant highgate">
-              <%= link_to "get this?", merch.merch_url, class: "sugar" %>
+            <div class="highgate">
+              <%= link_to "purchase", artist_merch_path(@artist, merch), class: "temp" %>
             </div>
           </div>
         </div>

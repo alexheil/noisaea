@@ -33,11 +33,11 @@
             <%= @merch.category %>
           </div>
           <div class="summer busti">
-            <span class="posted">base price //</span> <%= @merch.base_price %> <%= @merch.currency %>
+            <span class="posted">price //</span> <%= @merch.base_price %> <%= @merch.currency %>
           </div>
           <% if @merch.shipping_price.present? %>
           <div class="summer busti">
-            <span class="posted">shipping price //</span> <%= @merch.shipping_price %> <%= @merch.currency %>
+            <span class="posted">shipping //</span> <%= @merch.shipping_price %> <%= @merch.currency %>
           </div>
           <% end %>
           <div class="summer busti">
@@ -59,11 +59,11 @@
                 <%= @merch.title %>
               </div>
               <div class="highgate busti">
-                base price // <%= @merch.base_price %> <%= @merch.currency %>
+                price // <%= @merch.base_price %> <%= @merch.currency %>
               </div>
               <% if @merch.shipping_price.present? %>
               <div class="highgate busti">
-                shipping price // <%= @merch.shipping_price %> <%= @merch.currency %>
+                shipping // <%= @merch.shipping_price %> <%= @merch.currency %>
               </div>
               <% end %>
               <%= form_for(ArtistMerchPurchase.new, url: artist_merch_purchases_path(@artist, @merch) ) do |f| %>
@@ -86,7 +86,7 @@
                     <%= f.text_field :pay_your_own_price, class: "huron" %>
                   </div>
                 </div>
-                put extra money in your artist's pocket. the Stripe fee for this transaction will be $<%= ((@merch.total_price * 0.04 + 0.30) * 100).round / 100.0 %>.
+                put extra money in your artist's pocket. the Stripe fee for this transaction will be $<%= (((@merch.total_price * 0.04 + 0.30) * 100) / 100.0).ceil %>.
                 <div class="highgate busti j">
                   <div class="fargo baird winter">
                     quantity //

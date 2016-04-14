@@ -4,7 +4,7 @@
 
       <% if @artist.artist_profile.profile_img_file_name.blank? %>
         <div class="winspear">
-          <strong><%= link_to "#{@artist.artist_name}", artist_micropost_path(@artist, micropost) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
+          <%= link_to "#{@artist.artist_name}", artist_micropost_path(@artist, micropost) %> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
           <% if @artist == current_artist %>
            // <%= link_to "delete post", artist_micropost_path(@artist, micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete, remote: true %>
           <% end %>

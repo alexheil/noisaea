@@ -16,7 +16,7 @@
 
       <div class="harlem">
         <div class="winspear">
-          <strong><%= "#{@producer.producer_name}" %></strong> <span class="posted">posted <%= time_ago_in_words(@micropost.created_at) %> ago</span>
+          <%= "#{@producer.producer_name}" %> <span class="posted">posted <%= time_ago_in_words(@micropost.created_at) %> ago</span>
           <% if @producer == current_producer %>
            // <%= link_to "delete post", producer_micropost_path(@producer, @micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
           <% end %>

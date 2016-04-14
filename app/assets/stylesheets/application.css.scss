@@ -1,15 +1,4 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
  *= require_tree .
  *= require_self
  */
@@ -48,25 +37,21 @@ a {
 
 h1 {
   font-size: 2em;
-  font-family: $fancy-font;
   font-weight: 400;
   line-height: 1.25em;
 }
 
 h2 {
   font-size: 1.25em;
-  font-family: $fancy-font;
 }
 
 h3 {
   font-size: 1.25em;
-  font-family: $fancy-font;
   font-weight: 400;
 }
 
 h4 {
   font-size: 3em;
-  font-family: $fancy-font;
   font-weight: 300;
   line-height: 1.25em;
 }
@@ -192,7 +177,6 @@ h4 {
     text-align: center;
     li {
       display: inline-block;
-      font-family: $fancy-font;
       padding: 1vh 0;
       position: relative;
       margin-left: 5vw;
@@ -205,7 +189,6 @@ h4 {
 
 .smith {
   color: #fff;
-  font-family: $fancy-font;
   &:hover {
     color: $main-color;
   }
@@ -252,7 +235,6 @@ h4 {
   font-size: 1.75em;
   color: #fff;
   padding: 1vh 0;
-  font-family: $fancy-font;
   &:hover {
     color: $main-color;
   }
@@ -272,7 +254,6 @@ h4 {
   display: inline-block;
   color: $my-black;
   padding: 1vh 0;
-  font-family: $fancy-font;
   &:hover {
     color: $main-color;
   }
@@ -292,7 +273,6 @@ h4 {
   .starin {
     color: #fff;
     padding: 6vh 1vw 2vh 1vw;
-    font-family: $fancy-font;
     cursor: pointer;
     -webkit-transition: .3s;
     -moz-transition: .3s;
@@ -347,7 +327,6 @@ h4 {
     float: right;
     li {
       display: inline-block;
-      font-family: $fancy-font;
       padding: 1vh 0;
       position: relative;
       margin-left: 3vw;
@@ -515,12 +494,17 @@ h4 {
 }
 
 .lasalle {
-  font-weight: 700;
+  color: $accent-color2;
+  a {
+    color: $accent-color2;
+    &:hover {
+      color: $accent-color3;
+    }
+  }
 }
 
 .depew {
   color: #fff;
-  font-family: $fancy-font;
   &:hover {
     color: $accent-color2;
   }
@@ -528,7 +512,6 @@ h4 {
 
 .leroy {
   color: #666666;
-  font-family: $fancy-font;
   &:hover {
     color: #fff;
   }
@@ -560,7 +543,6 @@ h4 {
 .eggert {
   width: 100%;
   display: inline-block;
-  font-family: $fancy-font;
   span {
     float: left;
     margin: 0;
@@ -585,7 +567,6 @@ h4 {
 
 .seneca {
   color: $my-black;
-  font-family: $fancy-font;
   &:hover {
     color: $main-color;
   }
@@ -595,7 +576,6 @@ h4 {
   width: 24%;
   margin: 1vh auto;
   display: inline-block;
-  font-family: $fancy-font;
   vertical-align: top;
 }
 
@@ -771,7 +751,6 @@ h4 {
   margin: 10vh auto;
   text-align: center;
   font-size: 2em;
-  font-family: $fancy-font;
   line-height: 1.25em;
 }
 
@@ -824,7 +803,6 @@ h4 {
   width: 90%;
   margin: 0 auto;
   text-align: center;
-  font-family: $fancy-font;
   line-height: 1.25em;
   min-height: 10vh;
 }
@@ -843,35 +821,28 @@ h4 {
 
 .hedley {
   font-size: 3em;
-  font-family: $fancy-font;
   line-height: 1.25em;
 }
 
 .jefferson {
-  font-family: $fancy-font;
-  font-weight: 700;
-  margin-bottom: 1vh;
+  font-size: 1.5em;
+  margin: 2vh 0;
 }
 
 .fillmore {
-  font-family: $fancy-font;
   padding-left: 1vh;
-  margin-bottom: 1vh;
 }
 
 .hertel {
-  font-family: $fancy-font;
   margin-bottom: 1vh;
 }
 
 .amherst {
-  font-family: $fancy-font;
   margin: 1vh 0;
 }
 
 .harlem {
   margin: 5vh 0;
-  font-family: $fancy-font;
 }
 
 .winspear {
@@ -931,7 +902,6 @@ h4 {
 
 .porter {
   height: 45px;
-  font-family: $fancy-font;
   margin: 1vh 2vw 1vh 0;
   display: inline-block;
   cursor: pointer;
@@ -944,7 +914,6 @@ h4 {
 
 .ferry {
   margin: 2vh 0;
-  font-family: $fancy-font;
 }
 
 .lafayette {
@@ -954,12 +923,10 @@ h4 {
 
 .bird {
   font-size: 2em;
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
   margin: 3vh 0;
 }
 
 .carolina {
-  font-family: $fancy-font;
   padding: 0 0 4vh 0;
   list-style: none;
   margin: 0;
@@ -984,7 +951,6 @@ h4 {
 }
 
 .potomac {
-  font-family: $fancy-font;
   font-size: 1.5em;
   padding: 0;
   list-style: none;
@@ -1012,7 +978,6 @@ h4 {
 
 .vermont {
   font-size: 2em;
-  font-family: $fancy-font;
   margin-bottom: 5vh;
   line-height: 1.15em;
 }
@@ -1045,7 +1010,6 @@ h4 {
   width: 9.5%;
   margin: 1vh auto;
   display: inline-block;
-  font-family: $fancy-font;
   vertical-align: top;
 }
 
@@ -1053,21 +1017,18 @@ h4 {
   width: 24%;
   margin: 1vh auto;
   display: inline-block;
-  font-family: $fancy-font;
   vertical-align: top;
   text-align: center;
 }
 
 .bryant {
   font-size: 1.25em;
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
 }
 
 .ogden {
   width: 32%;
   margin: 1vh auto;
   display: inline-block;
-  font-family: $fancy-font;
   vertical-align: top;
   text-align: center;
 }
@@ -1075,7 +1036,6 @@ h4 {
 .fargo {
   width: 49%;
   display: inline-block;
-  font-family: $fancy-font;
   vertical-align: top;
 }
 
@@ -1223,10 +1183,9 @@ h4 {
   font-size: 1.25em;
   .page {
     padding: 1vh 1vw;
-    border-left: 1px solid #ccc;
   }
   .current {
-    font-weight: 700;
+    font-size: 1.5em;
   }
   .first {
     padding: 1vh 2vw;
@@ -1282,7 +1241,6 @@ audio {
 
 .track-title {
   font-size: 2em;
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
   margin-bottom: 2vh;
   line-height: 1.15em;
 }
@@ -1295,7 +1253,6 @@ audio {
 
 .play {
   width: 7%;
-  font-family: $fancy-font;
   font-size: 7em;
   display: inline-block;
   line-height: 10px;
@@ -1307,7 +1264,6 @@ audio {
 
 .pause {
   width: 7%;
-  font-family: $fancy-font;
   font-size: 3em;
   display: inline-block;
   line-height: 20px;
@@ -1334,12 +1290,10 @@ audio {
 }
 
 #total_duration {
-  font-family: $fancy-font;
   display: inline-block;
 }
 
 #current_time {
-  font-family: $fancy-font;
   display: inline-block;
 }
 
@@ -1376,7 +1330,6 @@ audio {
 .normal {
   padding: 0;
   font-size: 1em;
-  font-family: $fancy-font;
   font-weight: 300;
   border: none;
   background-color: transparent;
@@ -1402,7 +1355,6 @@ audio {
 
 .huron {
   width: 100%;
-  font-family: $fancy-font;
   font-size: 18px;
   padding: 20px;
   border-top: 3px solid transparent;
@@ -1421,7 +1373,6 @@ audio {
   min-width: 100%;
   max-width: 100%;
   height: 25vh;
-  font-family: $fancy-font;
   font-size: 18px;
   padding: 20px;
   border-top: 3px solid transparent;
@@ -1437,7 +1388,6 @@ audio {
 
 select {
   width: 100%;
-  font-family: $fancy-font;
   font-size: 18px;
   padding: 19px;
   border-top: 3px solid transparent;
@@ -1468,7 +1418,6 @@ select {
 }
 
 .mohawk {
-  font-family: $fancy-font;
 }
 
 .maryland {
@@ -1494,7 +1443,6 @@ select {
   margin: 15vh 0;
   -webkit-transition: all .3s;
   transition: all .3s;
-  font-family: $fancy-font;
   box-sizing: border-box;
   &:after {
     content: "this can never be undone!";
@@ -1544,7 +1492,6 @@ select {
   width: 100%;
   padding: 20px 0;
   text-align: center;
-  font-family: $fancy-font;
   font-size: 1.3em;
   background-color: #fff;
   border: 3px solid #F44336;
@@ -1568,7 +1515,6 @@ select {
   width: 100%;
   padding: 2vh 5vw;
   text-align: center;
-  font-family: $fancy-font;
   font-size: 1.3em;
   font-weight: 300;
   border: 3px solid $main-color;
@@ -1591,7 +1537,6 @@ select {
   display: inline-block;
   float: left;
   text-align: center;
-  font-family: $fancy-font;
   font-size: 1.25em;
   border: none;
   background-color: transparent;
@@ -1612,7 +1557,6 @@ select {
   width: 100%;
   margin: 1vh auto;
   text-align: center;
-  font-family: $fancy-font;
   font-size: 1em;
   border: none;
   background-color: transparent;
@@ -1631,7 +1575,6 @@ select {
 }
 
 .virginia {
-  font-family: $fancy-font;
   margin-top: 2vh;
   margin-bottom: 4vh;
 }
@@ -1645,7 +1588,6 @@ select {
   min-width: 100%;
   max-width: 100%;
   height: 15vh;
-  font-family: $fancy-font;
   font-size: 18px;
   padding: 20px;
   border: 3px solid $my-black;
@@ -1739,7 +1681,6 @@ select {
 
 #error_explanation {
   color: #F44336;
-  font-family: $fancy-font;
   ul {
     margin: 1vh 0;
     list-style: none;
@@ -1757,7 +1698,6 @@ select {
 
 .delavan {
   padding: 2vh 0;
-  font-family: $fancy-font;
 }
 
 .a {
@@ -1778,7 +1718,6 @@ select {
 
 .d {
   width: 70%;
-  font-family: $fancy-font;
   font-size: 1.5em;
   padding: 1vh 1vw;
   font-weight: 300;
@@ -1792,7 +1731,6 @@ select {
 }
 .e {
   width: 30%;
-  font-family: $fancy-font;
   font-size: 1.5em;
   padding: 1vh 1vw;
   font-weight: 300;
@@ -1841,14 +1779,12 @@ select {
 .h {
   width: 30%;
   display: inline-block;
-  font-family: $fancy-font;
   vertical-align: top;
 }
 
 .i {
   width: 69%;
   display: inline-block;
-  font-family: $fancy-font;
   vertical-align: top;
 }
 
@@ -1867,7 +1803,6 @@ select {
 .m {
   width: 24%;
   display: inline-block;
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
   vertical-align: top;
   margin: 1vh 0;
 }
@@ -1908,7 +1843,6 @@ select {
 
 .temp {
   font-size: 1.5em;
-
 }
 
 .sanders {
@@ -1967,14 +1901,12 @@ select {
   margin: 10vh auto;
   font-size: 3em;
   text-align: center;
-  font-family: $fancy-font;
 }
 
 .elm {
   width: 48%;
   margin: 10vh auto;
   display: inline-block;
-  font-family: $fancy-font;
   vertical-align: top;
   text-align: center;
   font-size: 3em;
@@ -1984,7 +1916,6 @@ select {
   width: 32%;
   margin: 15vh auto;
   display: inline-block;
-  font-family: $fancy-font;
   vertical-align: top;
   text-align: center;
   font-size: 1.5em;
@@ -2016,14 +1947,12 @@ select {
 }
 
 .north {
-  font-family: $fancy-font;
   font-weight: 300;
   font-size: 5em;
   margin: 10vh 0 15vh 0;
 }
 
 .best {
-  font-family: $fancy-font;
   word-break: break-word;
   white-space: pre-line;
   margin: 3vh 0;
@@ -2033,7 +1962,6 @@ select {
 }
 
 .summer {
-  font-family: $fancy-font;
   font-size: 1.25em;
   margin: 2vh 0;
 }
@@ -2455,13 +2383,6 @@ select {
     font-size: 3em;
   }
 
-  #front {
-    .hi {
-      width: 60vh;
-      margin: 3vh auto;
-    }
-  }
-
   .audioplayer {
     width: 100%;
   }
@@ -2635,138 +2556,6 @@ select {
 
 }
 
-.record {
-  font-size: 1.25em;
-  display: inline-block;
-  width: 0.4em;
-  height: 0.4em;
-  border: 0.55em solid $my-black;
-  position: relative;
-  border-radius: 0.75em;
-  -webkit-transition: 0s;
-  -moz-transition: 0s;
-  -o-transition: 0s;
-  &:hover {
-    border: 0.55em solid $main-color;
-    -webkit-transition: 0s;
-    -moz-transition: 0s;
-    -o-transition: 0s;
-  }
-}
-
-.artist {
-  font-size: .5em;
-  display: inline-block;
-  height: 0.25em;
-  border: 1em solid $my-black;
-  position: relative;
-  border-radius: 1em;
-  top: -12px;
-  -webkit-transition: 0s;
-  -moz-transition: 0s;
-  -o-transition: 0s;
-  &:before {
-    content: "";
-    display: inline-block;
-    position: absolute;
-    right: -0.1em;
-    bottom: -2.5em;
-    border-width: 0;
-    background: $my-black;
-    width: 1em;
-    height: 2.5em;
-    -webkit-transition: 0s;
-    -moz-transition: 0s;
-    -o-transition: 0s;
-    -webkit-transform: rotate(15deg);
-    -moz-transform: rotate(15deg);
-    -ms-transform: rotate(15deg);
-    -o-transform: rotate(15deg);
-    }
-    &:hover {
-      -webkit-transition: 0s;
-      -moz-transition: 0s;
-      -o-transition: 0s;
-      border: 1em solid $main-color;
-    &:before {
-      -webkit-transition: 0s;
-      -moz-transition: 0s;
-      -o-transition: 0s;
-      background: $main-color;
-    }
-  }
-}
-
-.venue {
-  font-size: .5em;
-  display: inline-block;
-  height: 1.5em;
-  width: 0.9em;
-  border-top: 2em solid $my-black;
-  border-right: 1.65em solid $my-black;
-  border-left: 1.65em solid $my-black;
-  border-bottom: none;
-  position: relative;
-  -webkit-transition: 0s;
-  -moz-transition: 0s;
-  -o-transition: 0s;
-  &:hover {
-  border-top: 2em solid $main-color;
-  border-right: 1.65em solid $main-color;
-  border-left: 1.65em solid $main-color;
-  border-bottom: none;
-  -webkit-transition: 0s;
-  -moz-transition: 0s;
-  -o-transition: 0s;
-  }
-}
-
-.producer {
-  font-size: .5em;
-  display: inline-block;
-  height: 0;
-  width: .75em;
-  border-top-left-radius: 50%;
-  border-top-right-radius: 50%;
-  border-top: 2em solid $my-black;
-  border-right: 1.65em solid $my-black;
-  border-left: 1.65em solid $my-black;
-  border-bottom: none;
-  position: relative;
-  top: 18px;
-  -webkit-transition: 0s;
-  -moz-transition: 0s;
-  -o-transition: 0s;
-  &:before {
-    content: "";
-    font-size: 1em;
-    display: inline-block;
-    border: 1em solid $my-black;
-    position: relative;
-    border-radius: 1.55em;
-    top: -34px;
-    right: 5px;
-    -webkit-transition: 0s;
-    -moz-transition: 0s;
-    -o-transition: 0s;
-  }
-  &:hover {
-    border-top: 2em solid $main-color;
-    border-right: 1.65em solid $main-color;
-    border-left: 1.65em solid $main-color;
-    border-bottom: none;
-    -webkit-transition: 0s;
-    -moz-transition: 0s;
-    -o-transition: 0s;
-    &:before {
-    -webkit-transition: 0s;
-    -moz-transition: 0s;
-    -o-transition: 0s;
-      border: 1em solid $main-color;
-    }
-  }
-}
-
 @mixin tosaftereffect {
   width: auto;
   padding: 5px 15px;
@@ -2775,7 +2564,6 @@ select {
   background-color: $my-black;
   color: #fff;
   text-align: center;
-  font-family: $fancy-font;
   transition: .3s;
   -webkit-transition: .3s;
   -moz-transition: .3s;

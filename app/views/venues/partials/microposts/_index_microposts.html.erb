@@ -4,7 +4,7 @@
 
       <% if @venue.venue_profile.profile_img_file_name.blank? %>
         <div class="winspear">
-          <strong><%= link_to "#{@venue.venue_name}", venue_micropost_path(@venue, micropost) %></strong> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
+          <%= link_to "#{@venue.venue_name}", venue_micropost_path(@venue, micropost) %> <span class="posted">posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
           <% if @venue == current_venue %>
            // <%= link_to "delete post", venue_micropost_path(@venue, micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete, remote: true %>
           <% end %>
