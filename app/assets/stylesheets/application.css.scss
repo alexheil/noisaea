@@ -1348,6 +1348,14 @@ audio {
 
 /*                           ****************************** FORMS ****************************** */
 
+input {
+  font-family: $fancy-font;
+}
+
+textarea {
+  font-family: $fancy-font;
+}
+
 .elmwood {
   width: 40%;
   margin: 5vh auto;
