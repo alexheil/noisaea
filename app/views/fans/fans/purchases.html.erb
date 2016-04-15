@@ -20,6 +20,11 @@
         <div class="temp">
           <%= link_to purchase.artist_merch.title, artist_merch_path(purchase.artist, purchase.artist_merch) %>
         </div>
+        <% if purchase.options.present? %>
+        <div class="amherst">
+          <%= purchase.options %>
+        </div>
+        <% end %>
         <div class="amherst">
           <% if purchase.stripe_charge_id.present? %>
             you paid <%= purchase.complete_price %> and <%= purchase.artist.artist_name %> made <%= (((purchase.complete_price - (purchase.complete_price * 0.184 + 0.30)) * 100).round) / 100.0 %>
