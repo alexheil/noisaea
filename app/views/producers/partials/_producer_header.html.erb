@@ -7,11 +7,14 @@
       <li><%= link_to "p", edit_producer_profile_path(current_producer), class: "depew" %></li>
     </ul>
   </div>
-  <ul class="taunton pine-ridge">
-    <li><%= link_to "dashboard", current_producer, class: "military" %></li>
-    <li><%= link_to "videos", producer_videos_path(current_producer), class: "depew" %></li>
-    <li><%= link_to "profile", edit_producer_profile_path(current_producer), class: "depew" %></li>
-    <li><%= link_to "settings", edit_producer_registration_path, class: "depew" %></li>
-    <li><%= link_to "sign out", sign_out_path, class: "depew" %></li>
-  </ul>
+  <div class="taunton">
+    <ul class="pine-ridge">
+      <li><%= link_to "dashboard", current_producer, class: "military" %></li>
+      <li><%= link_to "videos", producer_videos_path(current_producer), class: "depew" %></li>
+      <li><%= link_to "profile", edit_producer_profile_path(current_producer), class: "depew" %></li>
+      <li><%= link_to "settings", edit_producer_registration_path, class: "depew" %></li>
+      <li><%= link_to "sign out", sign_out_path, class: "depew" %></li>
+    </ul>
+    <div id="closemenu"></div>
+  </div>
 </nav>

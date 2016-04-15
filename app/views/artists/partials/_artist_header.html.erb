@@ -11,16 +11,19 @@
       <li><%= link_to "p", edit_artist_profile_path(current_artist), class: "depew" %></li>
     </ul>
   </div>
-  <ul class="taunton pine-ridge">
-    <li><%= link_to "dashboard", current_artist, class: "military" %></li>
-    <li class="notifications_count"><%= render 'artists/partials/notifications/notifications_count' %></li>
-    <li><%= link_to "music", artist_albums_path(current_artist), class: "depew" %></li>
-    <li><%= link_to "merch", artist_merches_path(current_artist), class: "depew" %></li>
-    <li><%= link_to "shows", artist_shows_path(current_artist), class: "depew" %></li>
-    <li><%= link_to "videos", artist_videos_path(current_artist), class: "depew" %></li>
-    <li><%= link_to "purchases (#{current_artist.artist_merch_purchases.where(is_shipped: false).count})", artist_merch_transactions_path(current_artist), class: "depew" %></li>
-    <li><%= link_to "profile", edit_artist_profile_path(current_artist), class: "depew" %></li>
-    <li><%= link_to "settings", edit_artist_registration_path, class: "depew" %></li>
-    <li><%= link_to "sign out", sign_out_path, class: "depew" %></li>
-  </ul>
+  <div class="taunton">
+    <ul class="pine-ridge">
+      <li><%= link_to "dashboard", current_artist, class: "military" %></li>
+      <li class="notifications_count"><%= render 'artists/partials/notifications/notifications_count' %></li>
+      <li><%= link_to "music", artist_albums_path(current_artist), class: "depew" %></li>
+      <li><%= link_to "merch", artist_merches_path(current_artist), class: "depew" %></li>
+      <li><%= link_to "shows", artist_shows_path(current_artist), class: "depew" %></li>
+      <li><%= link_to "videos", artist_videos_path(current_artist), class: "depew" %></li>
+      <li><%= link_to "purchases (#{current_artist.artist_merch_purchases.where(is_shipped: false).count})", artist_merch_transactions_path(current_artist), class: "depew" %></li>
+      <li><%= link_to "profile", edit_artist_profile_path(current_artist), class: "depew" %></li>
+      <li><%= link_to "settings", edit_artist_registration_path, class: "depew" %></li>
+      <li><%= link_to "sign out", sign_out_path, class: "depew" %></li>
+    </ul>
+    <div id="closemenu"></div>
+  </div>
 </nav>

@@ -8,12 +8,15 @@
       <li><%= link_to "p", edit_venue_profile_path(current_venue), class: "depew" %></li>
     </ul>
   </div>
-  <ul class="taunton pine-ridge">
-    <li><%= link_to "dashboard", current_venue, class: "military" %></li>
-    <li><%= link_to "shows", venue_shows_path(current_venue), class: "depew" %></li>
-    <li><%= link_to "videos", venue_videos_path(current_venue), class: "depew" %></li>
-    <li><%= link_to "profile", edit_venue_profile_path(current_venue), class: "depew" %></li>
-    <li><%= link_to "settings", edit_venue_registration_path, class: "depew" %></li>
-    <li><%= link_to "sign out", sign_out_path, class: "depew" %></li>
-  </ul>
+  <div class="taunton">
+    <ul class="pine-ridge">
+      <li><%= link_to "dashboard", current_venue, class: "military" %></li>
+      <li><%= link_to "shows", venue_shows_path(current_venue), class: "depew" %></li>
+      <li><%= link_to "videos", venue_videos_path(current_venue), class: "depew" %></li>
+      <li><%= link_to "profile", edit_venue_profile_path(current_venue), class: "depew" %></li>
+      <li><%= link_to "settings", edit_venue_registration_path, class: "depew" %></li>
+      <li><%= link_to "sign out", sign_out_path, class: "depew" %></li>
+    </ul>
+    <div id="closemenu"></div>
+  </div>
 </nav>
