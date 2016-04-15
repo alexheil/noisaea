@@ -22,12 +22,15 @@
         </div>
         <% if purchase.options.present? %>
         <div class="amherst">
-          <%= purchase.options %>
+          options // <%= purchase.options %>
         </div>
         <% end %>
         <div class="amherst">
           <% if purchase.stripe_charge_id.present? %>
-            <%= purchase.full_name %> (<%= purchase.fan.username %>) paid <%= purchase.complete_price %> and you made <%= (((purchase.complete_price - (purchase.complete_price * 0.184 + 0.30)) * 100).round) / 100.0 %>
+            <%= purchase.full_name %> (<%= purchase.fan.username %>) paid <%= purchase.complete_price %> <%= purchase.artist.artist_payment_setting.currency.upcase %> and you made <%= ((((purchase.complete_price - (purchase.complete_price * 0.184 + 0.30)) * 100)) / 100).ceil %> <%= purchase.artist.artist_payment_setting.currency.upcase %>
+            <% unless purchase.pay_your_own_price == 0  %>
+              inlcuding <%= purchase.pay_your_own_price %> <%= purchase.artist.artist_payment_setting.currency.upcase %> extra!
+            <% end %>
           <% else %>
             this item has not been paid for yet.
           <% end %>
