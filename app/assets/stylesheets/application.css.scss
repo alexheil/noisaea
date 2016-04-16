@@ -1070,7 +1070,7 @@ h4 {
 }
 
 .prepurchaseform {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -1122,24 +1122,19 @@ h4 {
 
 #close {
   display: block;
-  width:50px;
-  height:50px;
+  width: 50px;
+  height: 50px;
   box-sizing: border-box;
-  background: white;
-  color: black;
+  color: $my-black;
   text-decoration: none;
   position: absolute;
   z-index: 1001;
   cursor: pointer;
-  -webkit-transition: .5s ease-in-out;
-  -moz-transition: .5s ease-in-out;
-  -o-transition: .5s ease-in-out;
-  transition: .5s ease-in-out;
   &:before {
     content: "";
     display: block;
     height: 30px;
-    width: 1px;
+    width: 2px;
     z-index: 1001;
     background: black;
     position: absolute;
@@ -1154,7 +1149,7 @@ h4 {
     content: "";
     display: block;
     height: 30px;
-    width: 1px;
+    width: 2px;
     z-index: 1001;
     background: black;
     position: absolute;
@@ -1397,6 +1392,7 @@ textarea {
 select {
   width: 100%;
   font-size: 18px;
+  font-family: $fancy-font;
   padding: 19px;
   border-top: 3px solid transparent;
   border-left: 3px solid transparent;
@@ -1797,7 +1793,7 @@ select {
 }
 
 .j {
-  padding: 0 5vw;
+  padding: 2vh 0;
 }
 
 .k {
@@ -2178,10 +2174,6 @@ select {
     width: 100%;
   }
 
-  .j {
-    padding: 0;
-  }
-
   .k {
     width: 100%;
     text-align: center;
@@ -2327,7 +2319,7 @@ select {
     content: "";
     display: block;
     height: 30px;
-    width: 3px;
+    width: 2px;
     z-index: 1001;
     background: #fff;
     position: absolute;
@@ -2345,7 +2337,7 @@ select {
     content: "";
     display: block;
     height: 30px;
-    width: 3px;
+    width: 2px;
     z-index: 1001;
     background: #fff;
     position: absolute;
@@ -2358,8 +2350,8 @@ select {
     -moz-transition: .3s ease-in-out;
     -o-transition: .3s ease-in-out;
     transition: .3s ease-in-out;
+    }
   }
-}
 
   .crescent {
     ul {
@@ -2431,8 +2423,19 @@ select {
   .d {
     font-size: 1em;
   }
+
   .e {
     font-size: 1em;
+  }
+
+  .prepurchaseform {
+    .prepurchaseforminside {
+      width: 90%;
+    }
+  }
+
+  .winter {
+    font-size: 1.5em;
   }
 
 }

@@ -411,18 +411,18 @@ var headerShow = function() {
   });
 
   $('.starin').click(function() {
-    $('.taunton').toggle(300);
+    $('.taunton').toggle();
     $('.crescent').toggle();
     $(this).parent().toggleClass('test');
   });
 
   $('.buffalo').click(function() {
-    $('.taunton').hide(300);
+    $('.taunton').hide();
     $('.crescent').show();
   });
 
   $('#closemenu').click(function() {
-    $('.taunton').toggle(300);
+    $('.taunton').toggle();
     $(this).parent().parent().toggleClass('test');
   });
 
