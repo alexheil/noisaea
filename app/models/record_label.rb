@@ -7,7 +7,7 @@ class RecordLabel < ActiveRecord::Base
 
   has_one :record_label_profile, dependent: :destroy
 
-  has_many :artist_notifications, dependent: :destroy
+  has_many :artist_notifications, foreign_key: 'notifier_record_label_id', dependent: :destroy
 
   has_many :record_label_microposts, dependent: :destroy
   has_many :artist_micropost_comments, dependent: :destroy

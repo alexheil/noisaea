@@ -8,7 +8,8 @@ class Artist < ActiveRecord::Base
   has_one :artist_profile, dependent: :destroy
   has_one :artist_payment_setting, dependent: :destroy
 
-  has_many :artist_notifications, dependent: :destroy
+  has_many :artist_notifications, foreign_key: 'notifier_artist_id', dependent: :destroy
+  has_many :artist_notifications, foreign_key: 'artist_id', dependent: :destroy
 
   has_many :artist_microposts, dependent: :destroy
   has_many :artist_micropost_comments, dependent: :destroy

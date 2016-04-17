@@ -19,3 +19,8 @@ task :fan_follow_mailer => :environment do
   Fan.follow_mailer
   puts "Lazy fan email sent!"
 end
+task :artist_merch_need_to_pay_mailer => :environment do
+  puts "Send email to fans who need to pay for artist merch."
+  ArtistMerchPurchase.artist_merch_need_to_pay_mailer
+  puts "Artist purchase mail sent!"
+end

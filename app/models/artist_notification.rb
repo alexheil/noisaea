@@ -6,11 +6,11 @@ class ArtistNotification < ActiveRecord::Base
   belongs_to :artist_micropost
   belongs_to :artist_micropost_comment
   belongs_to :artist_micropost_vote
-  belongs_to :artist
-  belongs_to :fan
-  belongs_to :record_label
-  belongs_to :venue
-  belongs_to :producer
+  belongs_to :notifier_artist, class_name: 'Artist'
+  belongs_to :notifier_fan, class_name: 'Fan'
+  belongs_to :notifier_record_label, class_name: 'RecordLabel'
+  belongs_to :notifier_venue, class_name: 'Venue'
+  belongs_to :notifier_producer, class_name: 'Producer'
 
   validates :notice_type, presence: true
 

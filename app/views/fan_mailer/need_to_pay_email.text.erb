@@ -1,0 +1,13 @@
+noisaea //
+
+<%= @fan.fan_name %>!
+
+You made an attempt to purchase <%= @purchase.artist_merch.title %> from <%= @purchase.artist.artist_name %>, but you forgot something a tad bit important.
+
+You've got to pay for it!
+
+<%= link_to "Of course!", checkout_artist_merch_purchase_url(@purchase.artist, @purchase.merch, @purchase) %>
+
+I'm sure <%= @purchase.artist.artist_name %> is eagerly waiting to package it up and send it off to you!
+
+<%= link_to "Noisaea", root_url %>

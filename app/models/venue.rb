@@ -7,7 +7,7 @@ class Venue < ActiveRecord::Base
 
   has_one :venue_profile, dependent: :destroy
 
-  has_many :artist_notifications, dependent: :destroy
+  has_many :artist_notifications, foreign_key: 'notifier_venue_id', dependent: :destroy
 
   has_many :venue_microposts, dependent: :destroy
   has_many :artist_micropost_comments, dependent: :destroy

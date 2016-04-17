@@ -7,7 +7,7 @@ class Producer < ActiveRecord::Base
 
   has_one :producer_profile, dependent: :destroy
 
-  has_many :artist_notifications, dependent: :destroy
+  has_many :artist_notifications, foreign_key: 'notifier_producer_id', dependent: :destroy
 
   has_many :producer_microposts, dependent: :destroy
   has_many :artist_micropost_comments, dependent: :destroy
