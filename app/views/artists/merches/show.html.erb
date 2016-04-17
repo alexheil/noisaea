@@ -56,7 +56,7 @@
                 <img class="hey" srcset="<%= @merch.item_img.url(:perfect) %>" width="100%" height="auto" />
               <% end %>
               <div class="delaware">
-                <div class="highgate large busti j">
+                <div class="large busti j">
                   <%= @merch.title %>
                 </div>
                 <div class="highgate busti">
@@ -97,7 +97,7 @@
                     </div>
                   </div>
                   <% if fan_signed_in? %>
-                  <div class="ellicott">
+                  <div class="ellicott j">
                     <%= f.submit "checkout",  class: "exchange" %>
                   </div>
                   <% else %>
