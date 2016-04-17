@@ -52,6 +52,9 @@
           <div class="prepurchaseform">
             <div class="prepurchaseforminside">
               <div id="close"></div>
+              <% if @merch.item_img_file_name.present? %>
+                <img class="hey" srcset="<%= @merch.item_img.url(:perfect) %>" width="100%" height="auto" />
+              <% end %>
               <div class="delaware">
                 <div class="highgate large busti j">
                   <%= @merch.title %>
@@ -95,9 +98,7 @@
                   </div>
                   <% if fan_signed_in? %>
                   <div class="ellicott">
-                    <div class="hey">
-                      <%= f.submit "checkout",  class: "exchange" %>
-                    </div>
+                    <%= f.submit "checkout",  class: "exchange" %>
                   </div>
                   <% else %>
                   <div class="amherst j">

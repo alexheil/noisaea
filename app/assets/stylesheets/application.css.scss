@@ -1084,7 +1084,8 @@ h4 {
     margin: 5vh auto;
   }
   .hey {
-    padding: 3vh 5vw;
+    height: 300px;
+    object-fit: cover;
   }
 }
 
@@ -2432,6 +2433,9 @@ select {
     .prepurchaseforminside {
       width: 90%;
     }
+    .hey {
+      height: 225px;
+    }
   }
 
   .winter {
@@ -2563,6 +2567,12 @@ select {
 
   .pause {
     width: 17%;
+  }
+
+  .prepurchaseform {
+    .hey {
+      height: 150px;
+    }
   }
 
 }
