@@ -2,6 +2,6 @@
 <p><%= @fan.fan_name %>!</p>
 <p>You made an attempt to purchase <%= @purchase.artist_merch.title %> from <%= @purchase.artist.artist_name %>, but you forgot something a tad bit important.</p>
 <p>You've got to pay for it!</p>
-<p><%= link_to "Of course!", checkout_artist_merch_purchase_url(@purchase.artist, @purchase.merch, @purchase) %></p>
+<p><%= link_to "Of course!", checkout_artist_merch_purchase_url(@purchase.artist, @purchase.artist_merch, @purchase) %></p>
 <p>I'm sure <%= @purchase.artist.artist_name %> is eagerly waiting to package it up and send it off to you!</p>
 <p><%= link_to "Noisaea", root_url %></p>

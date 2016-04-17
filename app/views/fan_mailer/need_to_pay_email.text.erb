@@ -6,7 +6,7 @@ You made an attempt to purchase <%= @purchase.artist_merch.title %> from <%= @pu
 
 You've got to pay for it!
 
-<%= link_to "Of course!", checkout_artist_merch_purchase_url(@purchase.artist, @purchase.merch, @purchase) %>
+<%= link_to "Of course!", checkout_artist_merch_purchase_url(@purchase.artist, @purchase.artist_merch, @purchase) %>
 
 I'm sure <%= @purchase.artist.artist_name %> is eagerly waiting to package it up and send it off to you!
 
