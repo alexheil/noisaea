@@ -143,13 +143,13 @@
             <% end %>
           <% end %>
           <div class="amherst busti">
-            <%= link_to @artist.artist_name, artist_path(@artist) %>
+            <%= @artist.artist_name %>
           </div>
           <div class="hertel busti blaine">
             <%= link_to merch.title, artist_merch_path(@artist, merch) %>
           </div>
           <div class="amherst busti">
-            <%= merch.base_price %> <%= merch.currency %>
+            <%= merch.base_price %> <%= merch.currency.downcase %>
           </div>
         </div>
         <% end %>
