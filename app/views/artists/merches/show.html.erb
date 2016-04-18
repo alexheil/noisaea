@@ -127,9 +127,9 @@
 
       <div class="highgate">
         <div class="highgate temp">
-          more items from <%= @artist.artist_name %>
+          popular items from <%= @artist.artist_name %>
         </div>
-        <% @artist.artist_merches.take(3).each do |merch| %>
+        <% @artist.artist_merches.order( 'id DESC' ).take(3).each do |merch| %>
         <div class="ogden">
           <% if merch.item_img_file_name.present? %>
           <div class="loretta">
