@@ -125,6 +125,36 @@
         </div>
       </div>
 
+      <div class="highgate">
+        <div class="highgate temp">
+          more items from <%= @artist.artist_name %>
+        </div>
+        <% @artist.artist_merches.take(3).each do |merch| %>
+        <div class="ogden">
+          <% if merch.item_img_file_name.present? %>
+          <div class="loretta">
+            <%= link_to image_tag("#{merch.item_img.url(:small)}", :width => "100%"), artist_merch_path(merch.artist, merch) %>
+          </div>
+          <% else %>
+            <% if merch.artist == current_artist %>
+              you do not have an image for this item. <%= link_to "add one?", edit_artist_merch_path(merch.artist, merch) %>
+            <% else %>
+              <%= merch.artist.artist_name %> does not have an image for <%= merch.title %>.
+            <% end %>
+          <% end %>
+          <div class="amherst busti">
+            <%= link_to @artist.artist_name, artist_path(@artist) %>
+          </div>
+          <div class="hertel busti blaine">
+            <%= link_to merch.title, artist_merch_path(@artist, merch) %>
+          </div>
+          <div class="amherst busti">
+            <%= merch.base_price %> <%= merch.currency %>
+          </div>
+        </div>
+        <% end %>
+      </div>
+
     </main>
 
     <%= render 'artists/partials/artist_sidebar' %>
