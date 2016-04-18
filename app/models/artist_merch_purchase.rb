@@ -13,4 +13,10 @@ class ArtistMerchPurchase < ActiveRecord::Base
     end
   end
 
+  def self.delete_expired_artist_merch_purchase
+    ArtistMerchPurchase.where("stripe_charge_id" => nil).find_each do |purchase|
+      purchase.destroy unless purchase.created_at > 7.days.ago
+    end
+  end
+
 end

@@ -24,3 +24,8 @@ task :artist_merch_need_to_pay_mailer => :environment do
   ArtistMerchPurchase.artist_merch_need_to_pay_mailer
   puts "Artist purchase mail sent!"
 end
+task :delete_expired_artist_merch_purchase => :environment do
+  puts "Delete all old artist merch purchases."
+  ArtistMerchPurchase.delete_expired_artist_merch_purchase
+  puts "Artist purchases deleted!"
+end
