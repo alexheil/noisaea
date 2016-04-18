@@ -86,8 +86,8 @@
                     <div class="fargo">
                       <%= f.text_field :pay_your_own_price, class: "huron" %>
                     </div>
+                    put extra money in your artist's pocket. the Stripe fee for this transaction will be $<%= (@merch.total_price * 0.04 + 0.30).ceil %>.
                   </div>
-                  put extra money in your artist's pocket. the Stripe fee for this transaction will be $<%= (((@merch.total_price * 0.04 + 0.30) * 100) / 100.0).ceil %>.
                   <div class="highgate busti">
                     <div class="fargo winter">
                       quantity //
@@ -99,9 +99,12 @@
                   <% if fan_signed_in? %>
                   <div class="ellicott j">
                     <%= f.submit "checkout",  class: "exchange" %>
+                    <div class="amherst">
+                      visa, mastercard, discover, amex
+                    </div>
                   </div>
                   <% else %>
-                  <div class="amherst j">
+                  <div class="j">
                     <%= link_to "you must be signed in as a fan to make purchases", new_fan_session_path %>
                   </div>
                   <% end %>

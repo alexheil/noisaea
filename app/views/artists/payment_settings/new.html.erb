@@ -25,26 +25,26 @@
           <div class="amherst temp">
             country
           </div>
-          <%= f.select :country, options_for_select(country_select)%>
+          <%= f.select :country, options_for_select(country_select) %>
         </div>
         <div class="amherst temp">
           date of birth
         </div>
         <div class="maryland">
           <div class="amherst temp">
-            month
+            month <span class="posted">(mm)</span>
           </div>
           <%= f.text_field :month, class: "huron" %>
         </div>
         <div class="maryland">
           <div class="amherst temp">
-            day
+            day <span class="posted">(dd)</span>
           </div>
           <%= f.text_field :day, class: "huron" %>
         </div>
         <div class="maryland">
           <div class="amherst temp">
-            year
+            year <span class="posted">(yyyy)</span>
           </div>
           <%= f.text_field :year, class: "huron" %>
         </div>
