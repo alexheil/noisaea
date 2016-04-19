@@ -485,28 +485,33 @@ var merchLightbox = function() {
     $('#back').show();
     $('#front').show();
     $('#close').show();
+    $('.buffalo').toggleClass('blur');
   });
 
   $('#back').click(function() {
     $('#back').hide();
     $('#front').hide();
     $('.prepurchaseform').hide();
+    $('.buffalo').toggleClass('blur');
   });
 
   $('#close').click(function() {
     $('#back').hide();
     $('#front').hide();
     $('.prepurchaseform').hide();
+    $('.buffalo').toggleClass('blur');
   });
 
   $('#front').click(function() {
     $('#back').hide();
     $('#front').hide();
+    $('.buffalo').toggleClass('blur');
   });
 
   $('.lightbox-image').click(function() {
     $('#back').hide();
     $('#front').hide();
+    $('.buffalo').toggleClass('blur');
   });
 
   $('.prepurchaseformbutton').click(function() {
