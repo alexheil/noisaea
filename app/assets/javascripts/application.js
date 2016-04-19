@@ -486,6 +486,7 @@ var merchLightbox = function() {
     $('#front').show();
     $('#close').show();
     $('.buffalo').addClass('blur');
+    $('.englewood').addClass('blur');
   });
 
   $('#back').click(function() {
@@ -493,6 +494,7 @@ var merchLightbox = function() {
     $('#front').hide();
     $('.prepurchaseform').hide();
     $('.buffalo').removeClass('blur');
+    $('.englewood').removeClass('blur');
   });
 
   $('#close').click(function() {
@@ -500,18 +502,21 @@ var merchLightbox = function() {
     $('#front').hide();
     $('.prepurchaseform').hide();
     $('.buffalo').removeClass('blur');
+    $('.englewood').removeClass('blur');
   });
 
   $('#front').click(function() {
     $('#back').hide();
     $('#front').hide();
     $('.buffalo').removeClass('blur');
+    $('.englewood').removeClass('blur');
   });
 
   $('.lightbox-image').click(function() {
     $('#back').hide();
     $('#front').hide();
     $('.buffalo').removeClass('blur');
+    $('.englewood').removeClass('blur');
   });
 
   $('.prepurchaseformbutton').click(function() {
