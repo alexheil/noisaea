@@ -485,39 +485,38 @@ var merchLightbox = function() {
     $('#back').show();
     $('#front').show();
     $('#close').show();
-    $('.buffalo').toggleClass('blur');
+    $('.buffalo').addClass('blur');
   });
 
   $('#back').click(function() {
     $('#back').hide();
     $('#front').hide();
     $('.prepurchaseform').hide();
-    $('.buffalo').toggleClass('blur');
+    $('.buffalo').removeClass('blur');
   });
 
   $('#close').click(function() {
     $('#back').hide();
     $('#front').hide();
     $('.prepurchaseform').hide();
-    $('.buffalo').toggleClass('blur');
+    $('.buffalo').removeClass('blur');
   });
 
   $('#front').click(function() {
     $('#back').hide();
     $('#front').hide();
-    $('.buffalo').toggleClass('blur');
+    $('.buffalo').removeClass('blur');
   });
 
   $('.lightbox-image').click(function() {
     $('#back').hide();
     $('#front').hide();
-    $('.buffalo').toggleClass('blur');
+    $('.buffalo').removeClass('blur');
   });
 
   $('.prepurchaseformbutton').click(function() {
     $('#back').show();
     $('.prepurchaseform').show();
-    $('.buffalo').toggleClass('blur');
   });
 
 };
