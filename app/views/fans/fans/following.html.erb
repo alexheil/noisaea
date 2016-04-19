@@ -69,11 +69,13 @@
 
             <%= render 'artists/partials/artist_profile_image', :artist => artist %>
 
+            <div class="busti">
+              <%= link_to artist.artist_name, artist_path(artist) %>
+            </div>
+
             <div class="artist_follow_button_<%= artist.id %>">
               <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
             </div>
-
-            <center><%= link_to artist.artist_name, artist_path(artist) %></center>
 
           </div>
         <% end %>
@@ -85,11 +87,14 @@
 
             <%= render 'recordlabels/partials/record_label_profile_image', :record_label => record_label %>
 
+            <div class="busti">
+              <%= link_to record_label.label_name, record_label_path(record_label) %>
+            </div>
+
             <div class="record_label_follow_button_<%= record_label.id %>">
               <%= render "recordlabels/partials/relationships/index_follow_button", :record_label => record_label %>
             </div>
 
-            <center><%= link_to record_label.label_name, record_label_path(record_label) %></center>
           </div>
         <% end %>
       </div>
@@ -100,11 +105,14 @@
 
             <%= render 'venues/partials/venue_profile_image', :venue => venue %>
 
+            <div class="busti">
+              <%= link_to venue.venue_name, venue_path(venue) %>
+            </div>
+
             <div class="venue_follow_button_<%= venue.id %>">
               <%= render "venues/partials/relationships/index_follow_button", :venue => venue %>
             </div>
 
-            <center><%= link_to venue.venue_name, venue_path(venue) %></center>
           </div>
         <% end %>
       </div>
@@ -115,12 +123,14 @@
 
             <%= render 'producers/partials/producer_profile_image', :producer => producer %>
 
+            <div class="busti">
+              <%= link_to producer.producer_name, producer_path(producer) %>
+            </div>
+
             <div class="producer_follow_button_<%= producer.id %>">
               <%= render "producers/partials/relationships/index_follow_button", :producer => producer %>
             </div>
 
-
-            <center><%= link_to producer.producer_name, producer_path(producer) %></center>
           </div>
         <% end %>
       </div>

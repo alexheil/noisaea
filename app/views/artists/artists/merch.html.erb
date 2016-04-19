@@ -64,7 +64,7 @@
     </div>
 
     <div id="container-popular" class="ferry">
-      <% @merch.take(100).each do |merch| %>
+      <% @merch.each do |merch| %>
         <div class="utica">
           <% if merch.item_img_file_name.present? %>
           <div class="loretta">
@@ -101,7 +101,7 @@
     </div>
 
     <div id="container-recent" class="ferry colvin">
-      <% @merch.order( 'id DESC' ).take(100).each do |merch| %>
+      <% @merch.order( 'id DESC' ).each do |merch| %>
         <div class="utica">
           <% if merch.item_img_file_name.present? %>
           <div class="loretta">

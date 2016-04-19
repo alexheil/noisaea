@@ -1097,7 +1097,7 @@ h4 {
   z-index: 1001;
   display: none;
   .lightbox-image {
-    width: 73vh;
+    width: 90vh;
     margin: 5vh auto;
   }
 }
@@ -1139,7 +1139,7 @@ h4 {
     z-index: 1001;
     background: black;
     position: absolute;
-    left: 26px;
+    left: 25px;
     top:10px;
     -webkit-transform:rotate(45deg);
     -moz-transform:rotate(45deg);
@@ -1154,7 +1154,7 @@ h4 {
     z-index: 1001;
     background: black;
     position: absolute;
-    left: 26px;
+    left: 25px;
     top:10px;
     -webkit-transform:rotate(-45deg);
     -moz-transform:rotate(-45deg);
@@ -2427,6 +2427,12 @@ select {
 
   .e {
     font-size: 1em;
+  }
+
+  #front {
+    .lightbox-image {
+      width: 90vw;
+    }
   }
 
   .prepurchaseform {
