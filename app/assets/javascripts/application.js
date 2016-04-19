@@ -517,6 +517,7 @@ var merchLightbox = function() {
   $('.prepurchaseformbutton').click(function() {
     $('#back').show();
     $('.prepurchaseform').show();
+    $('.buffalo').toggleClass('blur');
   });
 
 };
