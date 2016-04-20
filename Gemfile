@@ -11,7 +11,7 @@ gem 'aws-sdk'
 gem 'kaminari'
 gem 'stripe'
 
-gem 'devise', '~> 5.1.0'
+gem 'devise', '~> 3.5.7'
 
 gem 'jquery-rails'
 gem 'turbolinks'
