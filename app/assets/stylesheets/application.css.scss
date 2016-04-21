@@ -297,6 +297,22 @@ h4 {
     color: #fff;
     li {
       padding: 1vh 0;
+      a{
+        svg {
+          fill: #fff;
+          -webkit-transition: .3s;
+          -moz-transition: .3s;
+          -o-transition: .3s;
+        }
+        &:hover {
+          svg {
+            fill: $main-color;
+            -webkit-transition: .3s;
+            -moz-transition: .3s;
+            -o-transition: .3s;
+          }
+        }
+      }
     }
   }
   .pine-ridge {
@@ -309,6 +325,190 @@ h4 {
     }
   }
 }
+
+@mixin headeraftereffects {
+  width: auto;
+  padding: 5px 15px;
+  display: inline-block;
+  position: absolute;
+  background-color: $my-black;
+  color: #fff;
+  text-align: center;
+  margin: 0 2vw;
+  transition: .3s;
+  -webkit-transition: .3s;
+  -moz-transition: .3s;
+  -o-transition: .3s;
+}
+
+#dashboard {
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  color: $main-color;
+  &:after {
+    content: "dashboard";
+    opacity: 0;
+    @include headeraftereffects;
+  }
+  &:hover{
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    color: $accent-color1;
+    &:after {
+      content: "dashboard";
+      opacity: 1;
+      @include headeraftereffects;
+    }
+  }
+}
+
+#notifications {
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  color: #fff;
+  &:after {
+    content: "notifications";
+    opacity: 0;
+    @include headeraftereffects;
+  }
+  &:hover{
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    color: $main-color;
+    &:after {
+      content: "notifications";
+      opacity: 1;
+      @include headeraftereffects;
+    }
+  }
+}
+
+#music {
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  color: $main-color;
+  &:after {
+    content: "music";
+    opacity: 0;
+    @include headeraftereffects;
+  }
+  &:hover{
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    color: $accent-color1;
+    &:after {
+      content: "music";
+      opacity: 1;
+      @include headeraftereffects;
+    }
+  }
+}
+
+#merch {
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  color: $main-color;
+  &:after {
+    content: "merch";
+    opacity: 0;
+    @include headeraftereffects;
+  }
+  &:hover{
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    color: $accent-color1;
+    &:after {
+      content: "merch";
+      opacity: 1;
+      @include headeraftereffects;
+    }
+  }
+}
+
+#shows {
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  color: $main-color;
+  &:after {
+    content: "shows";
+    opacity: 0;
+    @include headeraftereffects;
+  }
+  &:hover{
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    color: $accent-color1;
+    &:after {
+      content: "shows";
+      opacity: 1;
+      @include headeraftereffects;
+    }
+  }
+}
+
+#videos {
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  color: $main-color;
+  &:after {
+    content: "videos";
+    opacity: 0;
+    @include headeraftereffects;
+  }
+  &:hover{
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    color: $accent-color1;
+    &:after {
+      content: "videos";
+      opacity: 1;
+      @include headeraftereffects;
+    }
+  }
+}
+
+#following {
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  color: #fff;
+  &:after {
+    content: "following";
+    opacity: 0;
+    @include headeraftereffects;
+  }
+  &:hover{
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    color: $main-color;
+    &:after {
+      content: "following";
+      opacity: 1;
+      @include headeraftereffects;
+    }
+  }
+}
+
+#profile {
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  color: $main-color;
+  &:after {
+    content: "profile";
+    opacity: 0;
+    @include headeraftereffects;
+  }
+  &:hover{
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    color: $accent-color1;
+    &:after {
+      content: "profile";
+      opacity: 1;
+      @include headeraftereffects;
+    }
+  }
+}
+
 
 .crescent {
   ul {

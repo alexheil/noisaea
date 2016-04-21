@@ -75,7 +75,7 @@
           <% end %>
         <% end %>
         <% if @show.headline_artist.present? %>
-          <div class="amherst sanders">
+          <div class="highgate sanders">
             <% if Artist.exists?(:artist_name => "#{@show.headline_artist}") %>
               <%= link_to @show.headline_artist, artist_path(Artist.where(:artist_name => "#{@show.headline_artist}").first) %>
             <% else %>
