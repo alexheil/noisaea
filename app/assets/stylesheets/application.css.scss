@@ -329,7 +329,6 @@ h4 {
 @mixin headeraftereffects {
   width: auto;
   padding: 5px 15px;
-  display: inline-block;
   position: absolute;
   background-color: $my-black;
   color: #fff;
@@ -348,6 +347,7 @@ h4 {
   &:after {
     content: "dashboard";
     opacity: 0;
+    display: none;
     @include headeraftereffects;
   }
   &:hover{
@@ -357,6 +357,7 @@ h4 {
     &:after {
       content: "dashboard";
       opacity: 1;
+      display: inline-block;
       @include headeraftereffects;
     }
   }
@@ -369,6 +370,7 @@ h4 {
   &:after {
     content: "notifications";
     opacity: 0;
+    display: none;
     @include headeraftereffects;
   }
   &:hover{
@@ -378,6 +380,7 @@ h4 {
     &:after {
       content: "notifications";
       opacity: 1;
+      display: inline-block;
       @include headeraftereffects;
     }
   }
@@ -390,6 +393,7 @@ h4 {
   &:after {
     content: "music";
     opacity: 0;
+    display: none;
     @include headeraftereffects;
   }
   &:hover{
@@ -399,6 +403,7 @@ h4 {
     &:after {
       content: "music";
       opacity: 1;
+      display: inline-block;
       @include headeraftereffects;
     }
   }
@@ -411,6 +416,7 @@ h4 {
   &:after {
     content: "merch";
     opacity: 0;
+    display: none;
     @include headeraftereffects;
   }
   &:hover{
@@ -420,6 +426,7 @@ h4 {
     &:after {
       content: "merch";
       opacity: 1;
+      display: inline-block;
       @include headeraftereffects;
     }
   }
@@ -432,6 +439,7 @@ h4 {
   &:after {
     content: "shows";
     opacity: 0;
+    display: none;
     @include headeraftereffects;
   }
   &:hover{
@@ -441,6 +449,7 @@ h4 {
     &:after {
       content: "shows";
       opacity: 1;
+      display: inline-block;
       @include headeraftereffects;
     }
   }
@@ -453,6 +462,7 @@ h4 {
   &:after {
     content: "videos";
     opacity: 0;
+    display: none;
     @include headeraftereffects;
   }
   &:hover{
@@ -462,6 +472,7 @@ h4 {
     &:after {
       content: "videos";
       opacity: 1;
+      display: inline-block;
       @include headeraftereffects;
     }
   }
@@ -474,6 +485,7 @@ h4 {
   &:after {
     content: "following";
     opacity: 0;
+    display: none;
     @include headeraftereffects;
   }
   &:hover{
@@ -483,6 +495,7 @@ h4 {
     &:after {
       content: "following";
       opacity: 1;
+      display: inline-block;
       @include headeraftereffects;
     }
   }
@@ -495,6 +508,7 @@ h4 {
   &:after {
     content: "profile";
     opacity: 0;
+    display: none;
     @include headeraftereffects;
   }
   &:hover{
@@ -504,6 +518,7 @@ h4 {
     &:after {
       content: "profile";
       opacity: 1;
+      display: inline-block;
       @include headeraftereffects;
     }
   }
