@@ -106,7 +106,7 @@
 
     <div class="niagara">
       <div class="highgate">
-      <center>
+
         <div id="mpopular" class="porter lafayette">
           <strong>popular</strong>
         </div>
@@ -176,7 +176,7 @@
             world
           </div>
         </div>
-      </center>
+
       </div>
     </div>
 
@@ -184,25 +184,25 @@
         <% @artists.sort_by{ |artist| -artist.fans.count }.each do |artist| %>
           <div class="utica">
             <%= render 'artists/partials/artist_profile_image', :artist => artist %>
-            <div class="hertel">
-              <center><%= link_to artist.artist_name, artist_path(artist) %></center>
-            </div>
-            <div class="hertel">
-              <span class="gray"><center><%= artist.artist_profile.genre unless artist.artist_profile.genre.blank? %></center></span>
-            </div>
-            <div class="hertel">
-              <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
-            </div>
-            <div class="hertel">
-              <div class="index_follower_count_<%= artist.id %>">
-                <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
+            <div class="smalll">
+              <%= link_to artist.artist_name, artist_path(artist) %>
+              <div class="posted">
+                <span class="gray"><%= artist.artist_profile.genre unless artist.artist_profile.genre.blank? %></span>
               </div>
-            </div>
+              <div class="posted">
+                <span class="gray"><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></span>
+              </div>
+              <div class="posted">
+                <div class="index_follower_count_<%= artist.id %>">
+                  <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
+                </div>
+              </div>
 
-            <div class="index_follow_button_<%= artist.id %>">
-              <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
-            </div>
+              <div class="index_follow_button_<%= artist.id %>">
+                <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
+              </div>
 
+            </div>
           </div>
         <% end %>
       </div>
@@ -211,16 +211,15 @@
         <% @artists.order( 'id DESC' ).each do |artist| %>
           <div class="utica">
             <%= render 'artists/partials/artist_profile_image', :artist => artist %>
-              <div class="hertel">
-                <center><%= link_to artist.artist_name, artist_path(artist) %></center>
+              <div class="smalll">
+                <%= link_to artist.artist_name, artist_path(artist) %>
+              <div class="posted">
+                <span class="gray"><%= artist.artist_profile.genre unless artist.artist_profile.genre.blank? %></span>
               </div>
-              <div class="hertel">
-                <span class="gray"><center><%= artist.artist_profile.genre unless artist.artist_profile.genre.blank? %></center></span>
+              <div class="posted">
+                <span class="gray"><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></span>
               </div>
-              <div class="hertel">
-                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
-              </div>
-              <div class="hertel">
+              <div class="posted">
                 <div class="index_follower_count_<%= artist.id %>">
                 <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
               </div>
@@ -230,6 +229,7 @@
               <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
             </div>
 
+            </div>
           </div>
         <% end %>
       </div>
@@ -237,34 +237,35 @@
       <div id="container-location" class="ferry colvin">
         <% if fan_signed_in? && current_fan.fan_profile.location.present? %>
           <% @artists.each do |artist| if artist.artist_profile.location == current_fan.fan_profile.location %>
-              <div class="utica">
-                <%= render 'artists/partials/artist_profile_image', :artist => artist %>
-                <div class="hertel">
-                  <center><%= link_to artist.artist_name, artist_path(artist) %></center>
+            <div class="utica">
+              <%= render 'artists/partials/artist_profile_image', :artist => artist %>
+              <div class="smalll">
+                <%= link_to artist.artist_name, artist_path(artist) %>
+
+                <div class="posted">
+                  <span class="gray"><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></span>
                 </div>
-                <div class="hertel">
-                  <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
+                <div class="posted">
+                  <div class="index_follower_count_<%= artist.id %>">
+                  <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
                 </div>
-                <div class="hertel">
-                <div class="index_follower_count_<%= artist.id %>">
-                <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
+              </div>
+
+              <div class="index_follow_button_<%= artist.id %>">
+                <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
+              </div>
+
               </div>
             </div>
-
-            <div class="index_follow_button_<%= artist.id %>">
-              <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
-            </div>
-
-              </div>
-            <% end %>
+          <% end %>
           <% end %>
         <% elsif fan_signed_in? && current_fan.fan_profile.location.blank? %>
-          <div class="hertel">
-            <center>Your location is blank! Go set it on <%= link_to "your profile", edit_fan_profile_path(current_fan) %>.</center>
+          <div class="harlem">
+            Your location is blank! Go set it on <%= link_to "your profile", edit_fan_profile_path(current_fan) %>.
           </div>
         <% else %>
           <div class="harlem">
-            <center><%= link_to "sign in", new_fan_session_path %> to view artists based on location</center>
+            <%= link_to "sign in", new_fan_session_path %> to view artists based on location
           </div>
         <% end %>
       </div>
@@ -273,13 +274,12 @@
         <% @artists.alternative.each do |artist| %>
           <div class="utica">
             <%= render 'artists/partials/artist_profile_image', :artist => artist %>
-              <div class="hertel">
-                <center><%= link_to artist.artist_name, artist_path(artist) %></center>
+              <div class="smalll">
+                <%= link_to artist.artist_name, artist_path(artist) %>
+              <div class="posted">
+                <span class="gray"><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></span>
               </div>
-              <div class="hertel">
-                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
-              </div>
-              <div class="hertel">
+              <div class="posted">
                 <div class="index_follower_count_<%= artist.id %>">
                 <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
               </div>
@@ -289,6 +289,7 @@
               <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
             </div>
 
+            </div>
           </div>
         <% end %>
       </div>
@@ -297,13 +298,12 @@
         <% @artists.ambient.each do |artist| %>
           <div class="utica">
             <%= render 'artists/partials/artist_profile_image', :artist => artist %>
-              <div class="hertel">
-                <center><%= link_to artist.artist_name, artist_path(artist) %></center>
+              <div class="smalll">
+                <%= link_to artist.artist_name, artist_path(artist) %>
+              <div class="posted">
+                <span class="gray"><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></span>
               </div>
-              <div class="hertel">
-                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
-              </div>
-              <div class="hertel">
+              <div class="posted">
                 <div class="index_follower_count_<%= artist.id %>">
                 <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
               </div>
@@ -313,6 +313,7 @@
               <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
             </div>
 
+            </div>
           </div>
         <% end %>
       </div>
@@ -321,13 +322,12 @@
         <% @artists.blues.each do |artist| %>
           <div class="utica">
             <%= render 'artists/partials/artist_profile_image', :artist => artist %>
-              <div class="hertel">
-                <center><%= link_to artist.artist_name, artist_path(artist) %></center>
+              <div class="smalll">
+                <%= link_to artist.artist_name, artist_path(artist) %>
+              <div class="posted">
+                <span class="gray"><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></span>
               </div>
-              <div class="hertel">
-                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
-              </div>
-              <div class="hertel">
+              <div class="posted">
                 <div class="index_follower_count_<%= artist.id %>">
                 <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
               </div>
@@ -337,6 +337,7 @@
               <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
             </div>
 
+            </div>
           </div>
         <% end %>
       </div>
@@ -345,13 +346,12 @@
         <% @artists.classical.each do |artist| %>
           <div class="utica">
             <%= render 'artists/partials/artist_profile_image', :artist => artist %>
-              <div class="hertel">
-                <center><%= link_to artist.artist_name, artist_path(artist) %></center>
+              <div class="smalll">
+                <%= link_to artist.artist_name, artist_path(artist) %>
+              <div class="posted">
+                <span class="gray"><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></span>
               </div>
-              <div class="hertel">
-                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
-              </div>
-              <div class="hertel">
+              <div class="posted">
                 <div class="index_follower_count_<%= artist.id %>">
                 <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
               </div>
@@ -361,6 +361,7 @@
               <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
             </div>
 
+            </div>
           </div>
         <% end %>
       </div>
@@ -369,13 +370,12 @@
         <% @artists.comedy.each do |artist| %>
           <div class="utica">
             <%= render 'artists/partials/artist_profile_image', :artist => artist %>
-              <div class="hertel">
-                <center><%= link_to artist.artist_name, artist_path(artist) %></center>
+              <div class="smalll">
+                <%= link_to artist.artist_name, artist_path(artist) %>
+              <div class="posted">
+                <span class="gray"><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></span>
               </div>
-              <div class="hertel">
-                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
-              </div>
-              <div class="hertel">
+              <div class="posted">
                 <div class="index_follower_count_<%= artist.id %>">
                 <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
               </div>
@@ -385,6 +385,7 @@
               <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
             </div>
 
+            </div>
           </div>
         <% end %>
       </div>
@@ -393,13 +394,12 @@
         <% @artists.country.each do |artist| %>
           <div class="utica">
             <%= render 'artists/partials/artist_profile_image', :artist => artist %>
-              <div class="hertel">
-                <center><%= link_to artist.artist_name, artist_path(artist) %></center>
+              <div class="smalll">
+                <%= link_to artist.artist_name, artist_path(artist) %>
+              <div class="posted">
+                <span class="gray"><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></span>
               </div>
-              <div class="hertel">
-                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
-              </div>
-              <div class="hertel">
+              <div class="posted">
                 <div class="index_follower_count_<%= artist.id %>">
                 <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
               </div>
@@ -409,6 +409,7 @@
               <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
             </div>
 
+            </div>
           </div>
         <% end %>
       </div>
@@ -417,13 +418,12 @@
         <% @artists.electronic.each do |artist| %>
           <div class="utica">
             <%= render 'artists/partials/artist_profile_image', :artist => artist %>
-              <div class="hertel">
-                <center><%= link_to artist.artist_name, artist_path(artist) %></center>
+              <div class="smalll">
+                <%= link_to artist.artist_name, artist_path(artist) %>
+              <div class="posted">
+                <span class="gray"><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></span>
               </div>
-              <div class="hertel">
-                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
-              </div>
-              <div class="hertel">
+              <div class="posted">
                 <div class="index_follower_count_<%= artist.id %>">
                 <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
               </div>
@@ -433,6 +433,7 @@
               <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
             </div>
 
+            </div>
           </div>
         <% end %>
       </div>
@@ -441,13 +442,12 @@
         <% @artists.experimental.each do |artist| %>
           <div class="utica">
             <%= render 'artists/partials/artist_profile_image', :artist => artist %>
-              <div class="hertel">
-                <center><%= link_to artist.artist_name, artist_path(artist) %></center>
+              <div class="smalll">
+                <%= link_to artist.artist_name, artist_path(artist) %>
+              <div class="posted">
+                <span class="gray"><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></span>
               </div>
-              <div class="hertel">
-                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
-              </div>
-              <div class="hertel">
+              <div class="posted">
                 <div class="index_follower_count_<%= artist.id %>">
                 <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
               </div>
@@ -457,6 +457,7 @@
               <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
             </div>
 
+            </div>
           </div>
         <% end %>
       </div>
@@ -465,13 +466,12 @@
         <% @artists.hiphoprap.each do |artist| %>
           <div class="utica">
             <%= render 'artists/partials/artist_profile_image', :artist => artist %>
-              <div class="hertel">
-                <center><%= link_to artist.artist_name, artist_path(artist) %></center>
+              <div class="smalll">
+                <%= link_to artist.artist_name, artist_path(artist) %>
+              <div class="posted">
+                <span class="gray"><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></span>
               </div>
-              <div class="hertel">
-                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
-              </div>
-              <div class="hertel">
+              <div class="posted">
                 <div class="index_follower_count_<%= artist.id %>">
                 <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
               </div>
@@ -481,6 +481,7 @@
               <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
             </div>
 
+            </div>
           </div>
         <% end %>
       </div>
@@ -489,13 +490,12 @@
         <% @artists.indie.each do |artist| %>
           <div class="utica">
             <%= render 'artists/partials/artist_profile_image', :artist => artist %>
-              <div class="hertel">
-                <center><%= link_to artist.artist_name, artist_path(artist) %></center>
+              <div class="smalll">
+                <%= link_to artist.artist_name, artist_path(artist) %>
+              <div class="posted">
+                <span class="gray"><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></span>
               </div>
-              <div class="hertel">
-                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
-              </div>
-             <div class="hertel">
+             <div class="posted">
                 <div class="index_follower_count_<%= artist.id %>">
                 <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
               </div>
@@ -505,6 +505,7 @@
               <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
             </div>
 
+            </div>
           </div>
         <% end %>
       </div>
@@ -513,13 +514,12 @@
         <% @artists.jazz.each do |artist| %>
           <div class="utica">
             <%= render 'artists/partials/artist_profile_image', :artist => artist %>
-              <div class="hertel">
-                <center><%= link_to artist.artist_name, artist_path(artist) %></center>
+              <div class="smalll">
+                <%= link_to artist.artist_name, artist_path(artist) %>
+              <div class="posted">
+                <span class="gray"><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></span>
               </div>
-              <div class="hertel">
-                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
-              </div>
-              <div class="hertel">
+              <div class="posted">
                 <div class="index_follower_count_<%= artist.id %>">
                 <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
               </div>
@@ -529,6 +529,7 @@
               <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
             </div>
 
+            </div>
           </div>
         <% end %>
       </div>
@@ -537,13 +538,12 @@
         <% @artists.latino.each do |artist| %>
           <div class="utica">
             <%= render 'artists/partials/artist_profile_image', :artist => artist %>
-              <div class="hertel">
-                <center><%= link_to artist.artist_name, artist_path(artist) %></center>
+              <div class="smalll">
+                <%= link_to artist.artist_name, artist_path(artist) %>
+              <div class="posted">
+                <span class="gray"><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></span>
               </div>
-              <div class="hertel">
-                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
-              </div>
-              <div class="hertel">
+              <div class="posted">
                 <div class="index_follower_count_<%= artist.id %>">
                 <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
               </div>
@@ -553,6 +553,7 @@
               <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
             </div>
 
+            </div>
           </div>
         <% end %>
       </div>
@@ -561,13 +562,12 @@
         <% @artists.metal.each do |artist| %>
           <div class="utica">
             <%= render 'artists/partials/artist_profile_image', :artist => artist %>
-              <div class="hertel">
-                <center><%= link_to artist.artist_name, artist_path(artist) %></center>
+              <div class="smalll">
+                <%= link_to artist.artist_name, artist_path(artist) %>
+              <div class="posted">
+                <span class="gray"><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></span>
               </div>
-              <div class="hertel">
-                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
-              </div>
-              <div class="hertel">
+              <div class="posted">
                 <div class="index_follower_count_<%= artist.id %>">
                 <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
               </div>
@@ -577,6 +577,7 @@
               <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
             </div>
 
+            </div>
           </div>
         <% end %>
       </div>
@@ -585,13 +586,12 @@
         <% @artists.pop.each do |artist| %>
           <div class="utica">
             <%= render 'artists/partials/artist_profile_image', :artist => artist %>
-              <div class="hertel">
-                <center><%= link_to artist.artist_name, artist_path(artist) %></center>
+              <div class="smalll">
+                <%= link_to artist.artist_name, artist_path(artist) %>
+              <div class="posted">
+                <span class="gray"><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></span>
               </div>
-              <div class="hertel">
-                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
-              </div>
-              <div class="hertel">
+              <div class="posted">
                 <div class="index_follower_count_<%= artist.id %>">
                 <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
               </div>
@@ -601,6 +601,7 @@
               <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
             </div>
 
+            </div>
           </div>
         <% end %>
       </div>
@@ -609,13 +610,12 @@
         <% @artists.rbsoul.each do |artist| %>
           <div class="utica">
            <%= render 'artists/partials/artist_profile_image', :artist => artist %>
-              <div class="hertel">
-                <center><%= link_to artist.artist_name, artist_path(artist) %></center>
+              <div class="smalll">
+                <%= link_to artist.artist_name, artist_path(artist) %>
+              <div class="posted">
+                <span class="gray"><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></span>
               </div>
-              <div class="hertel">
-                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
-              </div>
-              <div class="hertel">
+              <div class="posted">
                 <div class="index_follower_count_<%= artist.id %>">
                 <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
               </div>
@@ -625,6 +625,7 @@
               <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
             </div>
 
+            </div>
           </div>
         <% end %>
       </div>
@@ -633,13 +634,12 @@
         <% @artists.rock.each do |artist| %>
           <div class="utica">
             <%= render 'artists/partials/artist_profile_image', :artist => artist %>
-              <div class="hertel">
-                <center><%= link_to artist.artist_name, artist_path(artist) %></center>
+              <div class="smalll">
+                <%= link_to artist.artist_name, artist_path(artist) %>
+              <div class="posted">
+                <span class="gray"><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></span>
               </div>
-              <div class="hertel">
-                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
-              </div>
-              <div class="hertel">
+              <div class="posted">
                 <div class="index_follower_count_<%= artist.id %>">
                 <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
               </div>
@@ -649,6 +649,7 @@
               <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
             </div>
 
+            </div>
           </div>
         <% end %>
       </div>
@@ -657,13 +658,12 @@
         <% @artists.singersongwriter.each do |artist| %>
           <div class="utica">
            <%= render 'artists/partials/artist_profile_image', :artist => artist %>
-              <div class="hertel">
-                <center><%= link_to artist.artist_name, artist_path(artist) %></center>
+              <div class="smalll">
+                <%= link_to artist.artist_name, artist_path(artist) %>
+              <div class="posted">
+                <span class="gray"><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></span>
               </div>
-              <div class="hertel">
-                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
-              </div>
-              <div class="hertel">
+              <div class="posted">
                 <div class="index_follower_count_<%= artist.id %>">
                 <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
               </div>
@@ -673,6 +673,7 @@
               <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
             </div>
 
+            </div>
           </div>
         <% end %>
       </div>
@@ -681,13 +682,12 @@
         <% @artists.soundtrack.each do |artist| %>
           <div class="utica">
             <%= render 'artists/partials/artist_profile_image', :artist => artist %>
-              <div class="hertel">
-                <center><%= link_to artist.artist_name, artist_path(artist) %></center>
+              <div class="smalll">
+                <%= link_to artist.artist_name, artist_path(artist) %>
+              <div class="posted">
+                <span class="gray"><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></span>
               </div>
-              <div class="hertel">
-                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
-              </div>
-              <div class="hertel">
+              <div class="posted">
                 <div class="index_follower_count_<%= artist.id %>">
                 <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
               </div>
@@ -697,6 +697,7 @@
               <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
             </div>
 
+            </div>
           </div>
         <% end %>
       </div>
@@ -705,13 +706,12 @@
         <% @artists.world.each do |artist| %>
           <div class="utica">
             <%= render 'artists/partials/artist_profile_image', :artist => artist %>
-              <div class="hertel">
-                <center><%= link_to artist.artist_name, artist_path(artist) %></center>
+              <div class="smalll">
+                <%= link_to artist.artist_name, artist_path(artist) %>
+              <div class="posted">
+                <span class="gray"><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></span>
               </div>
-              <div class="hertel">
-                <span class="gray"><center><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></center></span>
-              </div>
-              <div class="hertel">
+              <div class="posted">
                 <div class="index_follower_count_<%= artist.id %>">
                 <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
               </div>
@@ -721,6 +721,7 @@
               <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
             </div>
 
+            </div>
           </div>
         <% end %>
       </div>
