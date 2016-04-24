@@ -1,5 +1,4 @@
 <% if fan_signed_in? %>
-  <div class="winspear">
   <% if fan_signed_in? && current_fan.following_venue?(venue) %>
     <%= button_to "unfollow", venue_relationship_path(venue, current_fan.venue_relationship_id(venue)), method: :delete, remote: true, data: { disable_with: 'unfollowing...' }, class: "seventh" %>
   <% else %>
@@ -7,5 +6,4 @@
       <%= f.submit "follow", data: { disable_with: 'following...' }, class: "seventh" %>
     <% end %>
   <% end %>
-  </div>
 <% end %>

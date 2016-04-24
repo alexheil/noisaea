@@ -276,18 +276,18 @@
             <%= render 'artists/partials/artist_profile_image', :artist => artist %>
               <div class="smalll">
                 <%= link_to artist.artist_name, artist_path(artist) %>
-              <div class="posted">
-                <span class="gray"><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></span>
+                <div class="posted">
+                  <span class="gray"><%= artist.artist_profile.location unless artist.artist_profile.location.blank? %></span>
+                </div>
+                <div class="posted">
+                  <div class="index_follower_count_<%= artist.id %>">
+                  <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
+                </div>
               </div>
-              <div class="posted">
-                <div class="index_follower_count_<%= artist.id %>">
-                <%= render "artists/partials/relationships/index_follower_count", :artist => artist %>
-              </div>
-            </div>
 
-            <div class="index_follow_button_<%= artist.id %>">
-              <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
-            </div>
+              <div class="index_follow_button_<%= artist.id %>">
+                <%= render "artists/partials/relationships/index_follow_button", :artist => artist %>
+              </div>
 
             </div>
           </div>
