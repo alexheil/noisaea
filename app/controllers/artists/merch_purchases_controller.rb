@@ -48,7 +48,7 @@ class Artists::MerchPurchasesController < ApplicationController
     Stripe.api_key = Rails.configuration.stripe[:secret_key]
     token = params[:stripeToken]
     amount = ((@purchase.complete_price) * 100)
-    noisaea_fee = ((@purchase.complete_price * 0.184 + 0.30) * 100).round
+    noisaea_fee = ((@purchase.complete_price * 0.134 + 0.30) * 100).round
 
     begin
       charge = Stripe::Charge.create(
