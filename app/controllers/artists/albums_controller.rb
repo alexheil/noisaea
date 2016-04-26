@@ -21,8 +21,8 @@ class Artists::AlbumsController < ApplicationController
   def create
     @album = @artist.artist_albums.build(album_params)
     if @album.save
-      redirect_to artist_albums_path(@artist)
-      flash[:notice] = "you've successfully added a album!"
+      redirect_to artist_album_path(@artist, @album)
+      flash[:notice] = "you've successfully added #{@album.title}!"
     else
       render 'new'
       flash.now[:alert] = "you've failed!"

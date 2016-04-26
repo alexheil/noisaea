@@ -26,8 +26,6 @@
       <% if @artist.artist_albums.any? %>
         <% @artist.artist_albums.each do |album| %>
 
-
-
         <div class="auburn dodge">
           <div class="ogden">
             <% if album.cover_img_file_name.present? %>
@@ -42,7 +40,12 @@
               <% end %>
             <% end %>
             <% if @artist == current_artist %>
+            <div class="amherst">
               // <%= link_to "edit", edit_artist_album_path(@artist, album) %> or <%= link_to "delete", artist_album_path(@artist, album), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+            </div>
+            <div class="amherst">
+              <%= link_to "add a track", new_artist_album_track_path(@artist, album), class: "sugar" %>
+            </div>
             <% end %>
           </div>
           <div class="ogden">
@@ -71,9 +74,6 @@
             </div>
           </div>
         </div>
-
-
-
 
         <% end %>
       <% else %>
