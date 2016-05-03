@@ -1,5 +1,7 @@
 //= require jquery
 //= require jquery_ujs
+//= require jquery-fileupload/vendor/jquery.ui.widget
+//= require jquery-fileupload/jquery.fileupload
 //= require_tree .
 
 var micropostComments = function() {
@@ -723,7 +725,7 @@ var trackUpload = function() {
       }
     });
   });
-});
+};
 
 $(document).ready(trackUpload);
 $(document).on('page:load', trackUpload);
