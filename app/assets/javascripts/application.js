@@ -1,8 +1,8 @@
-//= require_tree .
 //= require jquery
 //= require jquery_ujs
 //= require jquery-fileupload
 //= require jquery-fileupload/basic-plus
+//= require_tree .
 
 var micropostComments = function() {
   $('.microposts_js').on("click", ".linden", function() {
