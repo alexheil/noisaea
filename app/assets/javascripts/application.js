@@ -707,7 +707,7 @@ var fileTrackUpload = function() {
           css('width', '0%').
           text("Loading...");
       },
-      done: function(e, data) {
+      done: funcytion(e, data) {
         submitButton.prop('disabled', false);
         progressBar.text("Uploading done");
         var key   = $(data.jqXHR.responseXML).find("Key").text();
