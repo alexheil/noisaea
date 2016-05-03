@@ -727,7 +727,7 @@ $(function() {
       });
     });
   });
-}
+};
 
 $(document).ready(fileTrackUpload);
 $(document).on('page:load', fileTrackUpload);
