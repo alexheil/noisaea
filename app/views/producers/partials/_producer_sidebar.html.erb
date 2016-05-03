@@ -70,7 +70,7 @@
   <% end %>
   <% if @producer.producer_profile.website.present? %>
   <div class="fillmore">
-    <%= link_to "#{@producer.producer_name}'s website", @producer.producer_profile.website %>
+    <%= link_to "#{@producer.producer_profile.website.split('/')[2]}", @producer.producer_profile.website %>
   </div>
   <% end %>
   <% if @producer.producer_profile.facebook_url.present? %>

@@ -60,7 +60,7 @@
   <% end %>
   <% if @venue.venue_profile.website.present? %>
   <div class="fillmore">
-    <%= link_to "Website", @venue.venue_profile.website %>
+    <%= link_to "#{@venue.venue_profile.website.split('/')[2]}", @venue.venue_profile.website %>
   </div>
   <% end %>
   <% if @venue.venue_profile.facebook_url.present? %>

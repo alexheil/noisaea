@@ -78,7 +78,7 @@
   <% end %>
   <% if @record_label.record_label_profile.website.present? %>
   <div class="fillmore">
-    <%= link_to "Website", @record_label.record_label_profile.website %>
+    <%= link_to "#{@record_label.record_label_profile.website.split('/')[2]}", @record_label.record_label_profile.website %>
   </div>
   <% end %>
   <% if @record_label.record_label_profile.facebook_url.present? %>

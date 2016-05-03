@@ -74,7 +74,7 @@
   <% end %>
   <% if @artist.artist_profile.website.present? %>
   <div class="fillmore">
-    <%= link_to "Website", @artist.artist_profile.website %>
+    <%= link_to "#{@artist.artist_profile.website.split('/')[2]}", @artist.artist_profile.website %>
   </div>
   <% end %>
   <% if @artist.artist_profile.facebook_url.present? %>

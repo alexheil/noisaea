@@ -1909,6 +1909,17 @@ select {
   display: none;
 }
 
+.progress {
+  max-width: 600px;
+  margin: 0.2em 0 0.2em 0;
+  .bar {
+    height:  1.2em;
+    padding-left: 0.2em;
+    color: white;
+    display: none;
+  }
+}
+
 #error_explanation {
   color: #F44336;
   ul {

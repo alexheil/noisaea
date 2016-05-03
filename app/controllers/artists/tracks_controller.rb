@@ -4,6 +4,7 @@ class Artists::TracksController < ApplicationController
   before_action :correct_artist, except: [:show, :edit, :update, :destroy]
   before_action :set_artist, except: :show
   before_action :correct_track_artist, only: [:edit, :update, :destroy]
+  before_action :set_s3_direct_post, only: [:new, :edit, :create, :update]
 
   def show
     @artist = Artist.friendly.find(params[:artist_id])
@@ -60,13 +61,19 @@ class Artists::TracksController < ApplicationController
     end
 
     def correct_artist
-      @artist = current_artist
-      redirect_to artist_path(Artist.friendly.find(params[:artist_id])) if @artist != Artist.friendly.find(params[:artist_id])
+      artist = current_artist
+      redirect_to artist_path(Artist.friendly.find(params[:artist_id])) if artist != Artist.friendly.find(params[:artist_id])
     end
 
     def correct_track_artist
       @track = ArtistTrack.friendly.find(params[:id])
       redirect_to artist_path(@track.artist_id) if @track.artist_id != current_artist.id
+    end
+
+    def set_s3_direct_post
+      artist = current_artist
+      album = ArtistAlbum.friendly.find(params[:album_id])
+      @s3_direct_post = S3_BUCKET.presigned_post(key: "artists/00#{artist.id}/artist_albums/00#{album.id}/artist_tracks/#{SecureRandom.uuid}/${filename}", success_action_status: '201', acl: 'public-read')
     end
 
     def track_params
