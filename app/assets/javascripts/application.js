@@ -710,12 +710,8 @@ var fileTrackUpload = function() {
       done: function(e, data) {
         submitButton.prop('disabled', false);
         progressBar.text("Uploading done");
-
-        // extract key and generate URL from response
         var key   = $(data.jqXHR.responseXML).find("Key").text();
         var url   = '//' + form.data('host') + '/' + key;
-
-        // create hidden field
         var input = $("<input />", { type:'hidden', name: fileInput.attr('name'), value: url })
         form.append(input);
       },
@@ -728,6 +724,7 @@ var fileTrackUpload = function() {
       }
     });
   });
+};
 
 $(document).ready(fileTrackUpload);
 $(document).on('page:load', fileTrackUpload);
