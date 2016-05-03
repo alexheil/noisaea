@@ -1,6 +1,6 @@
 //= require jquery
 //= require jquery_ujs
-//= require jquery-fileupload
+//= require jquery-fileupload/basic
 //= require_tree .
 
 var micropostComments = function() {
