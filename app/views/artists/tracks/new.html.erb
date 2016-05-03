@@ -6,7 +6,7 @@
         <h1>add a track to <%= @album.title %></h1>
       </div>
 
-      <%= form_for(@track, url: artist_album_tracks_path, html: { class: 'directUpload', data: { 'form-data' => (@s3_direct_post.fields), 'url' => @s3_direct_post.url, 'host' => URI.parse(@s3_direct_post.url).host } }) do |f| %>
+      <%= form_for(@track, url: artist_album_tracks_path) do |f| %>
         <%= f.hidden_field :artist_id %>
         <%= f.hidden_field :artist_album_id %>
         <%= render 'errors/track_errors' %>
