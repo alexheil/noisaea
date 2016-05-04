@@ -699,7 +699,6 @@ var fileTrackUpload = function() {
       },
       start: function (e) {
         submitButton.prop('disabled', true);
-
         progressBar.
           css('background', 'green').
           css('display', 'block').
@@ -716,7 +715,6 @@ var fileTrackUpload = function() {
       },
       fail: function(e, data) {
         submitButton.prop('disabled', false);
-
         progressBar.
           css("background", "red").
           text("Failed");
