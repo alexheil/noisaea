@@ -73,7 +73,7 @@ class Artists::TracksController < ApplicationController
     def set_s3_direct_post
       artist = current_artist
       album = ArtistAlbum.friendly.find(params[:album_id])
-      #@s3_direct_post = S3_BUCKET.presigned_post(key: "artists/00#{artist.id}/artist_albums/00#{album.id}/artist_tracks/#{SecureRandom.uuid}/${filename}", success_action_status: '201', acl: 'public-read')
+      @s3_direct_post = S3_BUCKET.presigned_post(key: "artists/00#{artist.id}/artist_albums/00#{album.id}/artist_tracks/#{SecureRandom.uuid}/${filename}", success_action_status: '201', acl: 'public-read')
     end
 
     def track_params
