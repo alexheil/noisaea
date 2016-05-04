@@ -2,7 +2,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-fileupload/basic
-//= require jquery-fileupload/basic-plus
 
 var micropostComments = function() {
   $('.microposts_js').on("click", ".linden", function() {

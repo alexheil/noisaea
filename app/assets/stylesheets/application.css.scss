@@ -1910,12 +1910,11 @@ select {
 }
 
 .progress {
-  width: 100%;
-  background: #212121;
-  margin: 1vh auto;
+  max-width: 600px;
+  margin:    0.2em 0 0.2em 0;
   .bar {
-    height: 1vh;
-    padding-left: 1vw;
+    height:  1.2em;
+    padding-left: 0.2em;
     color: #fff;
     display: none;
   }
