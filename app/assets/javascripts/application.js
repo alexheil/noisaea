@@ -709,7 +709,7 @@ var fileTrackUpload = function() {
         submitButton.prop('disabled', false);
         progressBar.text("Uploading done");
         var key   = $(data.jqXHR.responseXML).find("Key").text();
-        var url   = '//' + form.data('host') + '/' + key;
+        var url   = form.data('url') + '/' + key;
         var input = $("<input />", { type:'hidden', name: fileInput.attr('name'), value: url })
         form.append(input);
       },
