@@ -1,7 +1,7 @@
-//= require_tree .
 //= require jquery
 //= require jquery_ujs
 //= require jquery-fileupload/basic
+//= require_tree .
 
 var micropostComments = function() {
   $('.microposts_js').on("click", ".linden", function() {
@@ -627,7 +627,6 @@ var musicPlayer = function() {
 
 $(document).ready(musicPlayer);
 $(document).on('page:load', musicPlayer);
-
 
 
 var lyricsAndTrack = function() {
