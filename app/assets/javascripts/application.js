@@ -1,5 +1,6 @@
 //= require jquery
 //= require jquery_ujs
+$.noConflict();
 //= require jquery-fileupload/basic
 //= require_tree .
 
