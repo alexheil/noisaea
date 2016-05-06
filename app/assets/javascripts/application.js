@@ -541,7 +541,6 @@ var musicPlayer = function() {
   playhead.addEventListener('mousedown', mouseDown, false);
   window.addEventListener('mouseup', mouseUp, false);
 
-
   var onplayhead = false;
 
   function mouseDown() {
@@ -632,7 +631,7 @@ $(document).on('page:load', musicPlayer);
 var lyricsAndTrack = function() {
 
   $('.artist-track-title').click(function() {
-    var music = $('#music');
+    var music = $('#music').get(0);
     var allLyrics = $('.show-lyrics');
     var hideLyrics = $('.hide-lyrics')
     var toggleLyrics = $('.toggle-lyrics')
