@@ -674,7 +674,7 @@ var lyricsAndTrack = function() {
 $(document).ready(lyricsAndTrack);
 $(document).on('page:load', lyricsAndTrack);
 
-var fileTrackUpload = function() {
+$( document ).ready(function() {
 
   $('.directUpload').find("input:file").each(function(i, elem) {
     var fileInput = $(elem);
@@ -721,6 +721,3 @@ var fileTrackUpload = function() {
     });
   });
 };
-
-$(document).ready(fileTrackUpload);
-$(document).on('page:load', fileTrackUpload);
