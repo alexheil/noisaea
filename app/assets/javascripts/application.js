@@ -720,4 +720,4 @@ $( document ).ready(function() {
       }
     });
   });
-};
+});
