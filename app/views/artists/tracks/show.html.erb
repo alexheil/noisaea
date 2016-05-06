@@ -92,10 +92,12 @@
 </div>
 <%= render "partials/uni_footer" %>
 
+<% if @album.cover_img_file_name.present? %>
 <div id="back"></div>
 <div id="front">
   <div class="lightbox-image">
   <div id="close"></div>
-    <img srcset="<%= @album.cover_art_url %>" width="100%" height="auto" />
+    <img srcset="<%= @album.cover_img.url(:perfect) %>" width="100%" height="auto" />
   </div>
 </div>
+<% end %>
