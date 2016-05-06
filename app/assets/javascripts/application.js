@@ -647,7 +647,7 @@ var lyricsAndTrack = function() {
     $(this).parent().find('.show-lyrics').show();
     $(this).parent().find('.track-details').show();
     $(this).parent().find('.toggle-lyrics').show();
-    $( 'audio' ).attr( 'src', trackSource);
+    $( 'audio' ).find('source').attr( 'src', trackSource);
     $('#total_duration').text('00:00');
     $('.track-title').text(trackTitle)
     if (music.paused) {
