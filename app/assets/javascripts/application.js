@@ -1,7 +1,6 @@
 //= require jquery
 //= require jquery_ujs
-$.noConflict();
-//= require jquery-fileupload/basic
+//= require jquery-fileupload/basic-plus
 //= require_tree .
 
 var micropostComments = function() {
@@ -521,16 +520,18 @@ $(document).on('page:load', merchLightbox);
 
 var musicPlayer = function() {
 
+  var music = document.getElementById('music');
   var duration;
+  var pButton = document.getElementById('pButton');
   var playhead = document.getElementById('playhead');
   var timeline = document.getElementById('timeline');
   var timelineWidth = timeline.offsetWidth - playhead.offsetWidth;
 
-  $('#music').get(0).addEventListener("timeupdate", timeUpdate, false);
+  music.addEventListener("timeupdate", timeUpdate, false);
 
   timeline.addEventListener("click", function (event) {
     moveplayhead(event);
-    $('#music').get(0).currentTime = duration * clickPercent(event);
+    music.currentTime = duration * clickPercent(event);
   }, false);
 
   function clickPercent(e) {
@@ -546,15 +547,15 @@ var musicPlayer = function() {
   function mouseDown() {
     onplayhead = true;
     window.addEventListener('mousemove', moveplayhead, true);
-    $('#music').get(0).removeEventListener('timeupdate', timeUpdate, false);
+    music.removeEventListener('timeupdate', timeUpdate, false);
   }
 
   function mouseUp(e) {
     if (onplayhead == true) {
       moveplayhead(e);
       window.removeEventListener('mousemove', moveplayhead, true);
-      $('#music').get(0).currentTime = duration * clickPercent(e);
-      $('#music').get(0).addEventListener('timeupdate', timeUpdate, false);
+      music.currentTime = duration * clickPercent(e);
+      music.addEventListener('timeupdate', timeUpdate, false);
     }
     onplayhead = false;
   }
@@ -573,29 +574,29 @@ var musicPlayer = function() {
   }
 
   function timeUpdate() {
-    var playPercent = timelineWidth * ($('#music').get(0).currentTime / duration);
+    var playPercent = timelineWidth * (music.currentTime / duration);
     playhead.style.marginLeft = playPercent + "px";
-    if ($('#music').get(0).currentTime == duration) {
-      $('#pButton').className = "";
-      $('#pButton').className = "play";
+    if (music.currentTime == duration) {
+      pButton.className = "";
+      pButton.className = "play";
     }
   }
 
   $('#pButton').click(function play() {
-    if ($('#music').get(0).paused) {
-      $('#music').get(0).play();
-      $('#pButton').get(0).className = "";
-      $('#pButton').get(0).className = "pause";
+    if (music.paused) {
+      music.play();
+      pButton.className = "";
+      pButton.className = "pause";
     }
     else {
-      $('#music').get(0).pause();
-      $('#pButton').get(0).className = "";
-      $('#pButton').get(0).className = "play";
+      music.pause();
+      pButton.className = "";
+      pButton.className = "play";
     }
   });
 
-  $('#music').get(0).addEventListener('timeupdate', function() {
-    var duration = $('#music').get(0).duration;
+  music.addEventListener('timeupdate', function() {
+    var duration = music.duration;
     var sec = new Number();
     var min = new Number();
     sec = Math.floor( duration );
@@ -606,8 +607,8 @@ var musicPlayer = function() {
     $("#total_duration").html(min + ":"+ sec);
   });
 
-  $('#music').get(0).addEventListener('timeupdate', function() {
-    var duration = $('#music').get(0).currentTime;
+  music.addEventListener('timeupdate', function() {
+    var duration = music.currentTime;
     var sec = new Number();
     var min = new Number();
     sec = Math.floor( duration );
@@ -618,8 +619,8 @@ var musicPlayer = function() {
     $("#current_time").html(min + ":"+ sec);
   });
 
-  $('#music').get(0).addEventListener("canplaythrough", function () {
-    duration = $('#music').get(0).duration;
+  music.addEventListener("canplaythrough", function () {
+    duration = music.duration;
   }, false);
 
 };
