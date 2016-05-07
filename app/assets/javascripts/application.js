@@ -632,6 +632,7 @@ $(document).on('page:load', musicPlayer);
 var lyricsAndTrack = function() {
 
   $('.artist-track-title').click(function() {
+    var music = document.getElementById('audioplayer');
     var allLyrics = $('.show-lyrics');
     var hideLyrics = $('.hide-lyrics')
     var toggleLyrics = $('.toggle-lyrics')
