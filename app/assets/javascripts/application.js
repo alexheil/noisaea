@@ -689,11 +689,16 @@ var fileTrackUpload = function() {
     fileInput: fileInput,
     url: form.data('url'),
     type: 'POST',
-    autoUpload: true,
+    autoUpload: false,
     formData: form.data('form-data'),
     paramName: 'file',
     dataType: 'XML',
     replaceFileInput: true,
+    add: function (e, data) {
+      $('.exchange').click(function() {
+        data.submit();
+      });
+    },
     progressall: function (e, data) {
       var progress = parseInt(data.loaded / data.total * 100, 10);
       progressBar.css('width', progress + '%')
