@@ -696,7 +696,7 @@ var fileTrackUpload = function() {
     replaceFileInput: false,
     add: function (e, data) {
       $('.uploadButton').show();
-      $('.uploadButton').click(function() {
+      $('.exchange').click(function() {
         data.submit();
       });
     },
