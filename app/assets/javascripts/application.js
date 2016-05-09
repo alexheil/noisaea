@@ -695,8 +695,8 @@ var fileTrackUpload = function() {
     dataType: 'XML',
     replaceFileInput: true,
     add: function (e, data) {
-      $('.button').show();
-      $('.button').click(function() {
+      $('.uploadButton').show();
+      $('.uploadButton').click(function() {
         data.submit();
       });
     },
@@ -715,7 +715,7 @@ var fileTrackUpload = function() {
     done: function(e, data) {
       submitButton.prop('disabled', false);
       progressBar.text("Uploading done");
-      $('.button').hide();
+      $('.uploadButton').hide();
       var key   = $(data.jqXHR.responseXML).find("Key").text();
       var url   = form.data('url') + '/' + key;
       var input = $("<input />", { type:'hidden', name: fileInput.attr('name'), value: url })
