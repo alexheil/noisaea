@@ -693,14 +693,14 @@ var fileTrackUpload = function() {
     formData: form.data('form-data'),
     paramName: 'file',
     dataType: 'XML',
-    replaceFileInput: true,
+    replaceFileInput: false,
     add: function (e, data) {
       $('.uploadButton').show();
       $('.uploadButton').click(function() {
         data.submit();
       });
     },
-    progressall: function (e, data) {
+    progress: function (e, data) {
       var progress = parseInt(data.loaded / data.total * 100, 10);
       progressBar.css('width', progress + '%')
     },
