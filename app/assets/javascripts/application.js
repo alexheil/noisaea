@@ -693,10 +693,10 @@ var fileTrackUpload = function() {
     formData: form.data('form-data'),
     paramName: 'file',
     dataType: 'XML',
-    replaceFileInput: false,
+    replaceFileInput: true,
     add: function (e, data) {
       $('.uploadButton').show();
-      $('.exchange').click(function() {
+      $('.uploadButton').click(function() {
         data.submit();
       });
     },
