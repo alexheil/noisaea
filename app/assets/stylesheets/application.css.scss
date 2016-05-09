@@ -1572,6 +1572,10 @@ input {
   font-family: $fancy-font;
 }
 
+.uploadButton {
+  display: none;
+}
+
 textarea {
   font-family: $fancy-font;
 }
