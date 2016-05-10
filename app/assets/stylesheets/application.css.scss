@@ -1573,8 +1573,44 @@ input {
 }
 
 .uploadButton {
+  width: 100%;
   display: none;
+  cursor: pointer;
+  padding: 2vh 2vw;
+  font-size: 1.3em;
+  text-align: center;
+  background-color: #fff;
+  border: 3px solid $my-black;
+  color: $my-black;
+  &:hover {
+    background-color: $accent-color2;
+    border: 3px solid $accent-color2;
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -o-transition: .3s;
+  }
 }
+
+  width: 100%;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 1.3em;
+  background-color: #fff;
+  border: 3px solid #F44336;
+  color: #F44336;
+  cursor: pointer;
+  box-sizing: border-box;
+  -webkit-transition: .3s;
+  -moz-transition: .3s;
+  -o-transition: .3s;
+  font-weight: 300;
+  &:hover {
+    background-color: #F44336;
+    color: #fff;
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -o-transition: .3s;
+  }
 
 textarea {
   font-family: $fancy-font;
