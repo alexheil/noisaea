@@ -1576,10 +1576,10 @@ input {
   width: 100%;
   display: none;
   cursor: pointer;
-  padding: 2vh 2vw;
+  padding: 2vh 5vw;
   font-size: 1.3em;
   text-align: center;
-  background-color: #fff;
+  background-color: transparent;
   border: 3px solid $my-black;
   color: $my-black;
   box-sizing: border-box;
@@ -1589,6 +1589,7 @@ input {
   &:hover {
     background-color: $accent-color2;
     border: 3px solid $accent-color2;
+    color: #fff;
     -webkit-transition: .3s;
     -moz-transition: .3s;
     -o-transition: .3s;
