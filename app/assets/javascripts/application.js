@@ -3,6 +3,17 @@
 //= require jquery-fileupload/basic-plus
 //= require_tree .
 
+var shutUp = function() {
+
+  $('.heyyo').click(function() {
+    $(this).toggle();
+  });
+
+};
+
+$(document).ready(shutUp);
+$(document).on('page:load', shutUp);
+
 var micropostComments = function() {
   $('.microposts_js').on("click", ".linden", function() {
     $(this).closest('.lisbon').next('.walden').slideToggle(300);
@@ -628,16 +639,6 @@ var musicPlayer = function() {
 $(document).ready(musicPlayer);
 $(document).on('page:load', musicPlayer);
 
-var shutUp = function() {
-
-  $('.heyyo').click(function() {
-    $(this).toggle();
-  });
-
-};
-
-$(document).ready(shutUp);
-$(document).on('page:load', shutUp);
 
 var lyricsAndTrack = function() {
 
