@@ -420,16 +420,6 @@ var headerShow = function() {
 $(document).ready(headerShow);
 $(document).on('page:load', headerShow);
 
-var shutUp = function() {
-
-  $('.heyyo').click(function() {
-    $(this).toggle();
-  });
-
-};
-
-$(document).ready(shutUp);
-$(document).on('page:load', shutUp);
 
 var showArtists = function() {
 
@@ -528,6 +518,17 @@ var merchLightbox = function() {
 
 $(document).ready(merchLightbox);
 $(document).on('page:load', merchLightbox);
+
+var shutUp = function() {
+
+  $('.heyyo').click(function() {
+    $(this).toggle();
+  });
+
+};
+
+$(document).ready(shutUp);
+$(document).on('page:load', shutUp);
 
 var musicPlayer = function() {
 
