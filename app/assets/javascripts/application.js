@@ -731,3 +731,10 @@ $(function() {
     }
   });
 });
+
+
+$(document).ready(function() {
+  $('.hey').click(function() {
+    $(this).hide();
+  });
+});
