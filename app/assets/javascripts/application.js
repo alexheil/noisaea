@@ -519,17 +519,6 @@ var merchLightbox = function() {
 $(document).ready(merchLightbox);
 $(document).on('page:load', merchLightbox);
 
-var shutUp = function() {
-
-  $('.heyyo').click(function() {
-    $(this).toggle();
-  });
-
-};
-
-$(document).ready(shutUp);
-$(document).on('page:load', shutUp);
-
 var musicPlayer = function() {
 
   var music = document.getElementById('audioplayer');
@@ -639,6 +628,17 @@ var musicPlayer = function() {
 
 $(document).ready(musicPlayer);
 $(document).on('page:load', musicPlayer);
+
+var shutUp = function() {
+
+  $('.heyyo').click(function() {
+    $(this).toggle();
+  });
+
+};
+
+$(document).ready(shutUp);
+$(document).on('page:load', shutUp);
 
 
 var lyricsAndTrack = function() {
