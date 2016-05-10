@@ -676,11 +676,14 @@ var lyricsAndTrack = function() {
 $(document).ready(lyricsAndTrack);
 $(document).on('page:load', lyricsAndTrack);
 
-$(document).ready(function() {
-  $('.hey').click(function() {
+var shutUp = function() {
+  $('.heyyo').click(function() {
     $(this).hide();
   });
-});
+};
+
+$(document).ready(shutUp);
+$(document).on('page:load', shutUp);
 
 $(function() {
   var fileInput = $('.musicInput');
