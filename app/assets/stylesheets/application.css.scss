@@ -1582,6 +1582,10 @@ input {
   background-color: #fff;
   border: 3px solid $my-black;
   color: $my-black;
+  box-sizing: border-box;
+  -webkit-transition: .3s;
+  -moz-transition: .3s;
+  -o-transition: .3s;
   &:hover {
     background-color: $accent-color2;
     border: 3px solid $accent-color2;
