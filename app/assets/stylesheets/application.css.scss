@@ -1591,27 +1591,6 @@ input {
   }
 }
 
-  width: 100%;
-  padding: 20px 0;
-  text-align: center;
-  font-size: 1.3em;
-  background-color: #fff;
-  border: 3px solid #F44336;
-  color: #F44336;
-  cursor: pointer;
-  box-sizing: border-box;
-  -webkit-transition: .3s;
-  -moz-transition: .3s;
-  -o-transition: .3s;
-  font-weight: 300;
-  &:hover {
-    background-color: #F44336;
-    color: #fff;
-    -webkit-transition: .3s;
-    -moz-transition: .3s;
-    -o-transition: .3s;
-  }
-
 textarea {
   font-family: $fancy-font;
 }
