@@ -628,7 +628,14 @@ var musicPlayer = function() {
 $(document).ready(musicPlayer);
 $(document).on('page:load', musicPlayer);
 
+var shutUp = function() {
+  $('.heyyo').click(function() {
+    $(this).hide();
+  });
+};
 
+$(document).ready(shutUp);
+$(document).on('page:load', shutUp);
 
 var lyricsAndTrack = function() {
 
@@ -676,14 +683,6 @@ var lyricsAndTrack = function() {
 $(document).ready(lyricsAndTrack);
 $(document).on('page:load', lyricsAndTrack);
 
-var shutUp = function() {
-  $('.heyyo').click(function() {
-    $(this).hide();
-  });
-};
-
-$(document).ready(shutUp);
-$(document).on('page:load', shutUp);
 
 $(function() {
   var fileInput = $('.musicInput');
