@@ -3,17 +3,6 @@
 //= require jquery-fileupload/basic-plus
 //= require_tree .
 
-var shutUp = function() {
-
-  $('.heyyo').click(function() {
-    $(this).toggle();
-  });
-
-};
-
-$(document).ready(shutUp);
-$(document).on('page:load', shutUp);
-
 var micropostComments = function() {
   $('.microposts_js').on("click", ".linden", function() {
     $(this).closest('.lisbon').next('.walden').slideToggle(300);
@@ -430,6 +419,17 @@ var headerShow = function() {
 
 $(document).ready(headerShow);
 $(document).on('page:load', headerShow);
+
+var shutUp = function() {
+
+  $('.heyyo').click(function() {
+    $(this).toggle();
+  });
+
+};
+
+$(document).ready(shutUp);
+$(document).on('page:load', shutUp);
 
 var showArtists = function() {
 
