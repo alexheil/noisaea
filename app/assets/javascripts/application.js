@@ -521,14 +521,14 @@ $(document).on('page:load', merchLightbox);
 
 var musicPlayer = function() {
 
-  var music = $('#music').get(0);
+  var music = $('#audioplayer').get(0);
   var duration;
   var pButton = $('#pButton').get(0);
   var playhead = $('#playhead').get(0);
   var timeline = $('#timeline').get(0);
   var timelineWidth = $('#timeline').width() - $('#playhead').width();
 
-  $('#music').bind("timeupdate", timeUpdate);
+  $('#audioplayer').bind("timeupdate", timeUpdate);
 
   $('#timeline').click(function(event) {
     moveplayhead(event);
@@ -548,7 +548,7 @@ var musicPlayer = function() {
   function mouseDown() {
     onplayhead = true;
     $(window).bind('mousemove', moveplayhead);
-    $('#music').bind('timeupdate', timeUpdate);
+    $('#audioplayer').bind('timeupdate', timeUpdate);
   }
 
   function mouseUp(e) {
@@ -556,7 +556,7 @@ var musicPlayer = function() {
       moveplayhead(e);
       $(window).unbind('mousemove', moveplayhead);
       music.currentTime = duration * clickPercent(e);
-      $('#music').bind('timeupdate', timeUpdate);
+      $('#audioplayer').bind('timeupdate', timeUpdate);
     }
     onplayhead = false;
   }
@@ -596,7 +596,7 @@ var musicPlayer = function() {
     }
   });
 
-  $('#music').bind('timeupdate', function() {
+  $('#audioplayer').bind('timeupdate', function() {
     var duration = music.duration;
     var sec = new Number();
     var min = new Number();
@@ -608,7 +608,7 @@ var musicPlayer = function() {
     $("#total_duration").html(min + ":"+ sec);
   });
 
-  $('#music').bind('timeupdate', function() {
+  $('#audioplayer').bind('timeupdate', function() {
     var duration = music.currentTime;
     var sec = new Number();
     var min = new Number();
@@ -620,7 +620,7 @@ var musicPlayer = function() {
     $("#current_time").html(min + ":"+ sec);
   });
 
-  $('#music').bind("canplaythrough", function() {
+  $('#audioplayer').bind("canplaythrough", function() {
     duration = music.duration;
   });
 
