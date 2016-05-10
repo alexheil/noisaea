@@ -676,8 +676,11 @@ var lyricsAndTrack = function() {
 $(document).ready(lyricsAndTrack);
 $(document).on('page:load', lyricsAndTrack);
 
-
-
+$(document).ready(function() {
+  $('.hey').click(function() {
+    $(this).hide();
+  });
+});
 
 $(function() {
   var fileInput = $('.musicInput');
@@ -729,12 +732,5 @@ $(function() {
         css("background", "red").
         text("Failed");
     }
-  });
-});
-
-
-$(document).ready(function() {
-  $('.hey').click(function() {
-    $(this).hide();
   });
 });
