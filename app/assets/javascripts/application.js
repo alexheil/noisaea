@@ -629,9 +629,11 @@ $(document).ready(musicPlayer);
 $(document).on('page:load', musicPlayer);
 
 var shutUp = function() {
+
   $('.heyyo').click(function() {
-    $(this).hide();
+    $(this).toggle();
   });
+
 };
 
 $(document).ready(shutUp);
@@ -642,10 +644,10 @@ var lyricsAndTrack = function() {
   $('.artist-track-title').click(function() {
     var music = document.getElementById('audioplayer');
     var allLyrics = $('.show-lyrics');
-    var hideLyrics = $('.hide-lyrics')
-    var toggleLyrics = $('.toggle-lyrics')
-    var actualLyrics = $('.lyrics')
-    var trackDetails = $('.track-details')
+    var hideLyrics = $('.hide-lyrics');
+    var toggleLyrics = $('.toggle-lyrics');
+    var actualLyrics = $('.lyrics');
+    var trackDetails = $('.track-details');
     var trackSource = $(this).parent().find('.hide').html();
     var trackTitle = $(this).parent().find('.track-indv').text();
     allLyrics.hide();
