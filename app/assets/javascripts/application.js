@@ -662,7 +662,7 @@ var lyricsAndTrack = function() {
     $(this).parent().find('.toggle-lyrics').show();
     $( 'audio' ).attr( 'src', trackSource);
     $('#total_duration').text('00:00');
-    $('.track-title').text(trackTitle)
+    $('.track-title').text(trackTitle);
     if (music.paused) {
       music.play();
       pButton.className = "";
@@ -688,7 +688,8 @@ $(document).ready(lyricsAndTrack);
 $(document).on('page:load', lyricsAndTrack);
 
 
-$(function() {
+var directUpload = function() {
+
   var fileInput = $('.musicInput');
   var form = $(fileInput.parents('form:first'));
   var submitButton = form.find('input[type="submit"]');
@@ -739,4 +740,5 @@ $(function() {
         text("Failed");
     }
   });
-});
+
+};
