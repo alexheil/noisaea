@@ -8,7 +8,7 @@
   </div>
 <% else %>
 <div class="washington">
-  <div style="background: url('<%= @fan.fan_profile.cover_img.url(:small) %>') no-repeat fixed; background-size: 100%;" class="broadway">
+  <div style="background: url('<%= @fan.fan_profile.cover_img.url(:perfect) %>') no-repeat fixed; background-size: 100%;" class="broadway">
     <div class="northland">
       <%= @fan.fan_name %> <span class="lakeview">
     </div>
@@ -16,7 +16,7 @@
 </div>
 <div class="niagara">
   <div class="broadway">
-    <img src="<%= @fan.fan_profile.cover_img.url(:small) %>" width="100%" height="auto'" />
+    <img src="<%= @fan.fan_profile.cover_img.url(:perfect) %>" width="100%" height="auto'" />
   </div>
 </div>
 <% end %>

@@ -8,7 +8,7 @@
   </div>
 <% else %>
 <div class="washington">
-  <div style="background: url('<%= @venue.venue_profile.cover_img.url(:small) %>') no-repeat fixed; background-size: 100%;" class="broadway">
+  <div style="background: url('<%= @venue.venue_profile.cover_img.url(:perfect) %>') no-repeat fixed; background-size: 100%;" class="broadway">
     <div class="northland">
       <%= @venue.venue_name %> <span class="cover_fan_count"><%= render 'venues/partials/relationships/cover_fan_count' %></span>
     </div>
@@ -16,7 +16,7 @@
 </div>
 <div class="niagara">
   <div class="broadway">
-    <img src="<%= @venue.venue_profile.cover_img.url(:small) %>" width="100%" height="auto'" />
+    <img src="<%= @venue.venue_profile.cover_img.url(:perfect) %>" width="100%" height="auto'" />
   </div>
 </div>
 <% end %>
