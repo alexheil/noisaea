@@ -1791,6 +1791,7 @@ select {
   float: left;
   text-align: center;
   font-size: 1.25em;
+  font-weight: 300;
   border: none;
   background-color: transparent;
   color: $main-color;
@@ -2211,10 +2212,17 @@ select {
   margin: 2vh auto;
 }
 
+.roesch {
+  width: 70%;
+  margin: 2vh auto;
+  font-size: 21px;
+}
+
 .north {
   font-weight: 300;
   font-size: 5em;
   margin: 10vh 0 15vh 0;
+  text-align: center;
 }
 
 .best {
@@ -2462,6 +2470,10 @@ select {
 
   .kenmore {
     width: 90%;
+  }
+
+  .roesch {
+    width: 100%;
   }
 
   .elmwood {

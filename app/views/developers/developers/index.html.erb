@@ -3,7 +3,7 @@
 <div class="buffalo">
   <div class="delaware">
 
-    <div class="main">
+    <main class="roesch">
       <% if @developers.any? %>
         <% @developers.each do |developer| %>
         <div class="highgate">
@@ -23,9 +23,7 @@
       <% else %>
         there are no posts lol
       <% end %>
-    </div>
-
-    <%= render "developers/partials/developer_sidebar" %>
+    </main>
 
   </div>
 </div>
