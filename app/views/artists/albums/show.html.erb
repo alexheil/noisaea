@@ -71,9 +71,6 @@
             </div>
           </div>
 
-          <audio id="audioplayer" preload="true">
-              <source src="<%= track.track_url %>">
-          </audio>
           <div class="audioplayer">
             <div id="pButton" class="play" alt="play"></div>
             <div class="timeline-container">
@@ -134,3 +131,5 @@
   </div>
 </div>
 <% end %>
+<audio id="audioplayer" preload="true" src="<%= @album.artist_tracks.first.track_url %>">
+</audio>

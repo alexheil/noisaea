@@ -10,6 +10,13 @@
         <%= f.hidden_field :artist_id %>
         <%= f.hidden_field :artist_album_id %>
         <%= render 'errors/track_errors' %>
+        <div class="northrup">
+          <div class="amherst temp">
+            track play url
+          </div>
+          <%= f.file_field :track_url, class: "musicInput", accept: 'audio/mpeg, audio/ogg, audio/wav' %>
+          <div class="uploadButton">upload</div>
+        </div>
         <div class="highgate">
           <div class="amherst temp">
             title
@@ -33,12 +40,6 @@
             currency
           </div>
           <%= f.select :currency, options_for_select(currency_select)%>
-        </div>
-        <div class="highgate">
-          <div class="amherst temp">
-            track play url
-          </div>
-          <%= f.text_field :track_url, class: "huron" %>
         </div>
         <div class="highgate">
           <div class="amherst temp">

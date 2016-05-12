@@ -649,7 +649,7 @@ var lyricsAndTrack = function() {
     $(this).parent().find('.show-lyrics').show();
     $(this).parent().find('.track-details').show();
     $(this).parent().find('.toggle-lyrics').show();
-    $( 'audio' ).attr( 'src', trackSource);
+    $('audio').attr('src', trackSource);
     $('#total_duration').text('00:00');
     $('.track-title').text(trackTitle);
     if (music.paused) {
@@ -685,6 +685,8 @@ var directUpload = function() {
   var uploadButton = $('.uploadButton');
   var progressBar = $("<div class='bar'></div>");
   var barContainer = $("<div class='progress'></div>").append(progressBar);
+  var uploadButtonContainer = $("<div class='uploadButton'>upload</div>");
+  var uploadInstructions = $("<div class='amherst'>Make sure to upload the track before submitting the rest of the information.</div>");
   fileInput.after(barContainer);
   fileInput.fileupload({
     fileInput: fileInput,
@@ -696,7 +698,8 @@ var directUpload = function() {
     dataType: 'XML',
     replaceFileInput: false,
     add: function (e, data) {
-      uploadButton.show();
+      fileInput.after(uploadButtonContainer);
+      uploadButtonContainer.after(uploadInstructions);
       uploadButton.click(function() {
         data.submit();
       });
