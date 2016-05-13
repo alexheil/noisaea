@@ -21,7 +21,7 @@
         <% if @merch.item_img_file_name.present? %>
           <div class="fargo">
             <div id="riley">
-              <img srcset="<%= @merch.item_img.url(:perfect) %>" width="100%" height="auto" />
+              <img srcset="<%= @merch.item_img.url(:small) %>" width="100%" height="auto" />
             </div>
           </div>
         <% end %>
@@ -53,7 +53,7 @@
             <div class="prepurchaseforminside">
               <div id="close"></div>
               <% if @merch.item_img_file_name.present? %>
-                <img class="hey" srcset="<%= @merch.item_img.url(:perfect) %>" width="100%" height="auto" />
+                <img class="hey" srcset="<%= @merch.item_img.url(:small) %>" width="100%" height="auto" />
               <% end %>
               <div class="delaware">
                 <div class="large busti j">
@@ -168,7 +168,7 @@
   <div id="front">
     <div class="lightbox-image">
     <div id="close"></div>
-      <img srcset="<%= @merch.item_img.url(:perfect) %>" width="100%" height="auto" />
+      <img srcset="<%= @merch.item_img.url(:small) %>" width="100%" height="auto" />
     </div>
   </div>
 <% end %>

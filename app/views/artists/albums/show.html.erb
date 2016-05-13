@@ -29,7 +29,7 @@
           <div class="fargo">
             <% if @album.cover_img_file_name.present? %>
               <div id="riley">
-                <img srcset="<%= @album.cover_img.url(:perfect) %>" width="100%" height="auto" />
+                <img srcset="<%= @album.cover_img.url(:small) %>" width="100%" height="auto" />
               </div>
             <% else %>
               <% if @artist == current_artist %>
@@ -127,7 +127,7 @@
 <div id="front">
   <div class="lightbox-image">
   <div id="close"></div>
-    <img srcset="<%= @album.cover_img.url(:perfect) %>" width="100%" height="auto" />
+    <img srcset="<%= @album.cover_img.url(:small) %>" width="100%" height="auto" />
   </div>
 </div>
 <% end %>
