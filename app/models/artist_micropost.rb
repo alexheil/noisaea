@@ -6,6 +6,8 @@ class ArtistMicropost < ActiveRecord::Base
 
   has_many :artist_micropost_votes
 
+  has_many :artist_notifications, dependent: :destroy
+
   default_scope -> { order('id DESC') }
 
   validates :artist_id, presence: true
