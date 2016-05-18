@@ -697,7 +697,6 @@ var directUpload = function() {
     dataType: 'XML',
     replaceFileInput: false,
     add: function (e, data) {
-      uploadButtonContainer.after(uploadInstructions);
       uploadButton.click(function() {
         data.submit();
       });
