@@ -685,8 +685,11 @@ var directUpload = function() {
   var uploadButton = $('.uploadButton');
   var progressBar = $("<div class='bar'></div>");
   var barContainer = $("<div class='progress'></div>").append(progressBar);
+  var uploadButtonContainer = $("<div class='uploadButton'>upload</div>");
   var uploadInstructions = $("<div class='amherst'>Make sure to upload the track before submitting the rest of the information.</div>");
   fileInput.after(barContainer);
+  fileInput.after(uploadButtonContainer);
+  uploadButtonContainer.after(uploadInstructions);
   fileInput.fileupload({
     fileInput: fileInput,
     url: form.data('url'),
