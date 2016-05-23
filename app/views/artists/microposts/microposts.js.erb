@@ -1,3 +1,9 @@
-$('.microposts_js').html('<%=  escape_javascript(render :partial => 'artists/partials/microposts/index_microposts') %>');
-$('.microposts_form').html('<%=  escape_javascript(render :partial => 'artists/partials/microposts/microposts_form') %>');
-$('.flash_js').html('<%=  escape_javascript(render :partial => 'partials/flash') %>');
+$('.microposts_js').html('<%= escape_javascript(render :partial => 'artists/partials/microposts/index_microposts') %>');
+$('.microposts_form').html('<%= escape_javascript(render :partial => 'artists/partials/microposts/microposts_form') %>');
+$('.flash_js').html('<%= escape_javascript(render :partial => 'partials/flash') %>');
+$('.micropost_share').html('<%= escape_javascript(render :partial => 'artists/partials/microposts/micropost_share') %>');
+$('.micropost_share').show();
+$('#back').show();
+$('#front').show();
+$('.buffalo').addClass('blur');
+$('.englewood').addClass('blur');

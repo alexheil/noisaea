@@ -19,7 +19,9 @@
         grant others with this knowledge on...
       </h3>
       <div class="amherst">
-        <%= render 'partials/share' %>
+        <a onclick="javascript:window.open('https://www.facebook.com/sharer/sharer.php?u=<%= developer_url(@developer) %>', '_blank', 'width=800, height=500, top=200, left=300');void(0)" class="sfacebook">facebook</a> |
+        <a onclick="javascript:window.open('http://twitter.com/share?text=<%= @developer.title %> - &amp;url=<%= developer_url(@developer) %>', '_blank', 'width=800, height=500, top=200, left=300');void(0)" class="stwitter">twitter</a> |
+        <a onclick="javascript:window.open('https://plus.google.com/share?url=<%= developer_url(@developer) %>', '_blank', 'width=800, height=500, top=200, left=300');void(0)" class="sgoogleplus">google+</a>
       </div>
 
       <div class="harlem">

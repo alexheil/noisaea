@@ -471,6 +471,22 @@ $(document).on('page:load', showArtists);
 
 var merchLightbox = function() {
 
+  $('.micropost_share').on("click", "#back", function() {
+    $('#back').hide();
+    $('#front').hide();
+    $('#close').hide();
+    $('.buffalo').removeClass('blur');
+    $('.englewood').removeClass('blur');
+  });
+
+  $('.micropost_share').on("click", "#close", function() {
+    $('#back').hide();
+    $('#front').hide();
+    $('#close').hide();
+    $('.buffalo').removeClass('blur');
+    $('.englewood').removeClass('blur');
+  });
+
   $('#riley').click(function() {
     $('#back').show();
     $('#front').show();

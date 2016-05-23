@@ -1,0 +1,29 @@
+<% if @artist.artist_microposts.any? %>
+<div id="back"></div>
+<div id="front">
+  <div class="share-container">
+    <div id="close"></div>
+    <% if @artist.artist_microposts.first.photo_url.present? %>
+      <img class="hey" srcset="<%= @artist.artist_microposts.first.photo_url %>" width="100%" height="auto" />
+    <% end %>
+    <div class="delaware">
+      <div class="large busti j">
+        share your post?!
+      </div>
+      <div class="j busti">
+        <%= @artist.artist_microposts.first.content %>
+        <% if @artist.artist_microposts.first.link_url %>
+        <div class="amherst">
+          <%= @artist.artist_microposts.first.link_url.split('/')[2] %>
+        </div>
+        <% end %>
+      </div>
+      <div class="j">
+        <a onclick="javascript:window.open('https://www.facebook.com/sharer/sharer.php?u=<%= artist_url(@artist) %>', '_blank', 'width=800, height=500, top=200, left=300');void(0)" class="sfacebook">facebook</a> |
+        <a onclick="javascript:window.open('http://twitter.com/share?text=<%= @artist.artist_microposts.first.content.truncate(111) %> - &amp;url=<%= artist_url(@artist) %>', '_blank', 'width=800, height=500, top=200, left=300');void(0)" class="stwitter">twitter</a> |
+        <a onclick="javascript:window.open('https://plus.google.com/share?url=<%= artist_url(@artist) %>', '_blank', 'width=800, height=500, top=200, left=300');void(0)" class="sgoogleplus">google+</a>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

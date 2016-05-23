@@ -43,3 +43,9 @@
     <li><%= @artist.last_sign_in_at %></li>
   </div>
 <% end %>
+
+<% if artist_signed_in? && @artist.id == current_artist.id %>
+<div class="micropost_share">
+  <%= render 'artists/partials/microposts/micropost_share' %>
+</div>
+<% end %>

@@ -1319,6 +1319,15 @@ h4 {
     width: 90vh;
     margin: 5vh auto;
   }
+  .share-container {
+    width: 65%;
+    background: #fff;
+    margin: 5vh auto;
+    .hey {
+      height: 300px;
+      object-fit: cover;
+    }
+  }
 }
 
 #back {
@@ -2710,6 +2719,11 @@ select {
     .lightbox-image {
       width: 90vw;
     }
+    .share-container {
+      .hey {
+        height: 225px;
+      }
+    }
   }
 
   .prepurchaseform {
@@ -2850,6 +2864,14 @@ select {
 
   .pause {
     width: 17%;
+  }
+
+  #front {
+    .share-container {
+      .hey {
+        height: 150px;
+      }
+    }
   }
 
   .prepurchaseform {
