@@ -20,10 +20,4 @@ class ArtistNotification < ActiveRecord::Base
     end
   end
 
-  def self.delete_bad_notifications
-    ArtistNotification.where(notice_type: 'vote').find_each do |notification|
-      notification.destroy
-    end
-  end
-
 end

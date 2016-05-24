@@ -29,8 +29,3 @@ task :delete_expired_artist_merch_purchase => :environment do
   ArtistMerchPurchase.delete_expired_artist_merch_purchase
   puts "Artist purchases deleted!"
 end
-task :delete_bad_notifications => :environment do
-  puts "Delete all bad artist notifications."
-  ArtistNotification.delete_bad_notifications
-  puts "Artist notifications deleted!"
-end
