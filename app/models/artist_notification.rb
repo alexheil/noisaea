@@ -21,7 +21,7 @@ class ArtistNotification < ActiveRecord::Base
   end
 
   def self.delete_bad_notifications
-    ArtistNotification.where(notice_type: 'comment').find_each do |notification|
+    ArtistNotification.where(notice_type: 'vote').find_each do |notification|
       notification.destroy
     end
   end
