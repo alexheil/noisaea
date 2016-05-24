@@ -20,7 +20,7 @@
       </div>
       <div class="j">
         <a onclick="javascript:window.open('https://www.facebook.com/sharer/sharer.php?u=<%= artist_url(@artist) %>', '_blank', 'width=800, height=500, top=200, left=300');void(0)" class="sfacebook">facebook</a> |
-        <a onclick="javascript:window.open('http://twitter.com/share?text=<%= @artist.artist_microposts.first.content.truncate(111) %> - &amp;url=<%= artist_url(@artist) %>', '_blank', 'width=800, height=500, top=200, left=300');void(0)" class="stwitter">twitter</a> |
+        <a onclick="javascript:window.open('http://twitter.com/share?text=<%= @artist.artist_microposts.first.content.truncate(112) %> - &amp;url=<%= artist_url(@artist) %>', '_blank', 'width=800, height=500, top=200, left=300');void(0)" class="stwitter">twitter</a> |
         <a onclick="javascript:window.open('https://plus.google.com/share?url=<%= artist_url(@artist) %>', '_blank', 'width=800, height=500, top=200, left=300');void(0)" class="sgoogleplus">google+</a>
       </div>
     </div>

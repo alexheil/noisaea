@@ -20,4 +20,10 @@ class ArtistNotification < ActiveRecord::Base
     end
   end
 
+  def self.delete_bad_notifications
+    ArtistNotification.where(notice_type: 'comment').find_each do |notification|
+      notification.destroy unless notification.created_at < 3.days.ago
+    end
+  end
+
 end
