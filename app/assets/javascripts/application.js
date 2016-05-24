@@ -714,7 +714,7 @@ var directUpload = function() {
     replaceFileInput: false,
     add: function (e, data) {
       uploadButton.show();
-      uploadButtonIntructions.show():
+      uploadButtonIntructions.show();
       uploadButton.click(function() {
         data.submit();
       });
