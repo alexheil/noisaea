@@ -897,6 +897,7 @@ h4 {
 }
 
 .sfacebook {
+  cursor: pointer;
   color: #3b5998;
   &:hover {
     color: $main-color;
@@ -904,6 +905,7 @@ h4 {
 }
 
 .stwitter {
+  cursor: pointer;
   color: #55acee;
   &:hover {
     color: $main-color;
@@ -911,6 +913,7 @@ h4 {
 }
 
 .sgoogleplus {
+  cursor: pointer;
   color: #dd4b39;
   &:hover {
     color: $main-color;
@@ -1595,6 +1598,7 @@ input {
   -webkit-transition: .3s;
   -moz-transition: .3s;
   -o-transition: .3s;
+  display: none;
   &:hover {
     background-color: $accent-color2;
     border: 3px solid $accent-color2;
@@ -1603,6 +1607,11 @@ input {
     -moz-transition: .3s;
     -o-transition: .3s;
   }
+}
+
+.uploadButtonIntructions {
+  margin: 2vh 0;
+  display: none;
 }
 
 textarea {

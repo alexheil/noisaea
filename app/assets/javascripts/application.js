@@ -699,6 +699,7 @@ var directUpload = function() {
   var form = $(fileInput.parents('form:first'));
   var submitButton = form.find('input[type="submit"]');
   var uploadButton = $('.uploadButton');
+  var uploadButtonIntructions = $('.uploadButtonIntructions');
   var progressBar = $("<div class='bar'></div>");
   var barContainer = $("<div class='progress'></div>").append(progressBar);
   fileInput.after(barContainer);
@@ -712,6 +713,8 @@ var directUpload = function() {
     dataType: 'XML',
     replaceFileInput: false,
     add: function (e, data) {
+      uploadButton.show();
+      uploadButtonIntructions.show():
       uploadButton.click(function() {
         data.submit();
       });
@@ -732,6 +735,7 @@ var directUpload = function() {
       submitButton.prop('disabled', false);
       progressBar.text("Upload finished.");
       uploadButton.hide();
+      uploadButtonIntructions.hide();
       var key   = $(data.jqXHR.responseXML).find("Key").text();
       var url   = form.data('url') + '/' + key;
       var input = $("<input />", { type:'hidden', name: fileInput.attr('name'), value: url })

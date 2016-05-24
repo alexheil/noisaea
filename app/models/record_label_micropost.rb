@@ -6,7 +6,7 @@ class RecordLabelMicropost < ActiveRecord::Base
 
   default_scope -> { order('id DESC') }
 
-  has_many :record_label_micropost_votes
+  has_many :record_label_micropost_votes, dependent: :destroy
 
   validates :record_label_id, presence: true
   validates :content, presence: true, length: { maximum: 14216 }
