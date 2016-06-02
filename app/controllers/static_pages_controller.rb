@@ -41,6 +41,9 @@ class StaticPagesController < ApplicationController
   def contest
   end
 
+  def join
+  end
+
   private
 
   def redirect_if_signed_in

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'stats' => 'static_pages#stats'
   get 'why' => 'static_pages#why'
   get 'contest' => 'static_pages#contest'
+  get 'join' => 'static_pages#join'
   get 'register' => 'static_pages#register'
   get 'sign_in' => 'static_pages#sign_in'
 

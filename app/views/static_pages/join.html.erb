@@ -1,0 +1,48 @@
+<%= provide(:title, "Join As A Fan...") %>
+<%= render "partials/uni_header" %>
+<div class="buffalo">
+  <div class="kenmore">
+    <div class="busti large highgate">
+      trying to listen to sick, new music?
+    </div>
+
+    <div class="busti sanders harlem">
+      noisaea is the place
+    </div>
+
+    <p class="amherst">Follow artists to get the latest news, music, merch, videos, and shows.</p>
+    <p class="amherst">Get notifications when a favorited artist releases new material.</p>
+    <p class="amherst">Dowload music, buy merch, purchase tickets (the artist gets 90% in their currency!)</p>
+
+  </div>
+
+  <div class="delaware">
+    <div class="highgate busti temp">
+      quick register
+    </div>
+    <div class="busti amherst">
+      no email confrimation required. it's free!
+    </div>
+
+    <div class="l">
+      <%= form_for(Fan.new, url: fan_registration_path) do |f| %>
+
+      <div class="m">
+        <%= f.text_field :fan_name, placeholder: "your name", class: "huron" %>
+      </div>
+      <div class="m">
+        <%= f.email_field :email, placeholder: "email address", class: "huron" %>
+      </div>
+      <div class="m">
+        <%= f.password_field :password, autocomplete: "off", placeholder: "password", class: "huron" %>
+      </div>
+
+      <div class="m">
+        <%= f.submit "register", class: "exchange" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>
+<%= render "partials/uni_footer" %>
