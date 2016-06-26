@@ -209,16 +209,12 @@ h4 {
 }
 
 .dodge {
-  border-left: 1px solid transparent;
-  border-right: 1px solid transparent;
-  border-bottom: 1px solid #ccc;
+  border-right: 3px solid transparent;
   -webkit-transition: .3s;
   -moz-transition: .3s;
   -o-transition: .3s;
   &:hover {
-    background: #eee;
-    border-left: 1px solid #ccc;
-    border-right: 1px solid #ccc;
+    border-right: 3px solid #ccc;
     -webkit-transition: .3s;
     -moz-transition: .3s;
     -o-transition: .3s;
