@@ -46,6 +46,7 @@
             <div class="bryant highgate busti">
               <span class="posted">price //</span> <%= @album.price %> <%= @album.currency %>
             </div>
+            <% if @album.album_url.present? %>
             <div class="vermont busti">
               <%= link_to "get this!", @album.album_url, class: "sugar" %>
             </div>
@@ -55,6 +56,7 @@
             <div class="amherst busti">
               <%= @album.album_url.split('/')[2] %>
             </div>
+            <% end %>
           </div>
           <% if @artist == current_artist %>
             // <%= link_to "edit", edit_artist_album_path(@artist, @album) %> or <%= link_to "delete", artist_album_path(@artist, @album), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
