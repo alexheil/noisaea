@@ -73,7 +73,7 @@ class ArtistProfile < ActiveRecord::Base
     def downcase_url
       self.facebook_url = facebook_url.downcase
       self.twitter_url = twitter_url.downcase
-      self.youtube_url = youtube_url.downcase
+      self.youtube_url = youtube_url.downcase unless youtube_url.include? "channel"
       self.itunes_url = itunes_url.downcase
       self.google_play_url = google_play_url.downcase
       self.amazon_url = amazon_url.downcase

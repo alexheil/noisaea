@@ -58,7 +58,7 @@ class ProducerProfile < ActiveRecord::Base
     def downcase_url
       self.facebook_url = facebook_url.downcase
       self.twitter_url = twitter_url.downcase
-      self.youtube_url = youtube_url.downcase
+      self.youtube_url = youtube_url.downcase unless youtube_url.include? "channel"
       self.website = website.downcase
       self.letlyrics_url = letlyrics_url.downcase
     end
